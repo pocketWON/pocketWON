@@ -23,6 +23,7 @@ function createReportView(loaded, navigate, options = {}) {
   const { el, button, heading, money } = PWUI;
   const source = loaded || { status: 'unavailable', state: null };
   const model = createReportViewModel(source.state);
+  const habit = createHabitScoreModel(source.state);
   const format = new Intl.NumberFormat('ko-KR');
   const segments = [['habit', '습관'], ['flow', '돈 흐름'], ['goal', '목표']];
   let activeSegment = segments.some(([id]) => id === options.segment) ? options.segment : 'habit';
@@ -62,12 +63,54 @@ function createReportView(loaded, navigate, options = {}) {
     return pwIllustrationPanel(profile, { panelClass: `pw-report-visual pw-compact-visual ${className}`.trim() });
   }
   function habitPanel() {
-    const { area, titleNode } = panel('pw-report-score', '저장된 습관 점수');
-    const value = el('p', model.score.status === 'available' ? 'pw-report-score-value' : 'pw-report-score-unknown',
-      model.score.status === 'available' ? String(model.score.value) : '확인 안 됨');
-    if (model.score.status === 'available') value.setAttribute('aria-label', `${model.score.value}점`);
-    area.append(visual('report', 'pw-report-score-visual'), titleNode, value,
-      el('p', 'pw-meta pw-muted', model.score.status === 'available' ? '저장된 값 그대로 보여드려요.' : '저장된 습관 점수가 없어요.'));
+    const { area, titleNode } = panel('pw-report-habit', '나의 습관 점수');
+    const header = el('div', 'pw-report-section-header');
+    const copy = el('div', 'pw-report-section-copy');
+    const basis = habit.partial ? `최근 ${habit.windowDays}일 기록 · 확인 가능한 기록만 포함했어요.` : `최근 ${habit.windowDays}일 기록으로 계산했어요.`;
+    copy.append(titleNode, el('p', 'pw-meta pw-muted', basis));
+    header.append(copy, visual('report'));
+    area.append(header);
+    if (habit.status !== 'available') {
+      area.classList.add('pw-report-habit--empty');
+      area.append(el('p', 'pw-report-habit-empty pw-muted', habit.status === 'insufficient'
+        ? `최근 ${habit.windowDays}일 동안 남긴 기록이 없어요. 기록을 남기면 점수를 계산해요.`
+        : '기록 정보를 확인할 수 없어 점수를 계산하지 못했어요.'));
+      return area;
+    }
+    const summary = el('div', 'pw-report-habit-summary');
+    const value = el('p', habit.score === null ? 'pw-report-score-unknown' : 'pw-report-habit-score');
+    if (habit.score === null) value.textContent = '확인 안 됨';
+    else {
+      value.setAttribute('aria-label', `100점 중 ${habit.score}점`);
+      const unit = el('span', 'pw-report-habit-unit', '/ 100점');
+      unit.setAttribute('aria-hidden', 'true');
+      value.append(String(habit.score), unit);
+    }
+    const change = habit.change === null ? '지난 기간과 비교할 수 없어요.'
+      : habit.change === 0 ? `지난 ${habit.windowDays}일과 같아요.`
+      : `지난 ${habit.windowDays}일보다 ${Math.abs(habit.change)}점 ${habit.change > 0 ? '올랐어요' : '내려갔어요'}.`;
+    const trend = el('p', 'pw-report-habit-change pw-meta', change);
+    trend.dataset.trend = habit.change === null ? 'none' : habit.change > 0 ? 'up' : habit.change < 0 ? 'down' : 'same';
+    summary.append(value, trend);
+    const list = el('dl', 'pw-report-habit-items');
+    for (const item of habit.items) {
+      const row = el('div', 'pw-report-habit-item');
+      row.dataset.habitItem = item.id;
+      const name = el('dt');
+      name.append(el('span', 'pw-report-habit-label', item.label), el('span', 'pw-report-habit-detail pw-muted', item.detail));
+      const points = el('dd', 'pw-report-habit-points', item.points === null ? '확인 안 됨' : `${item.points} / ${item.max}`);
+      const bar = el('div', 'pw-report-habit-bar');
+      bar.setAttribute('aria-hidden', 'true');
+      const fill = el('span');
+      fill.style.width = `${item.points === null ? 0 : item.points / item.max * 100}%`;
+      bar.append(fill);
+      row.append(name, points, bar);
+      list.append(row);
+    }
+    const coaching = el('div', 'pw-report-habit-coaching');
+    if (habit.coaching.strength) coaching.append(el('p', 'pw-meta', `잘하고 있어요 · ${habit.coaching.strength}`));
+    coaching.append(el('p', 'pw-meta', `다음엔 · ${habit.coaching.next}`));
+    area.append(summary, list, coaching);
     return area;
   }
   function flowPanel() {
