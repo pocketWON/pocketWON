@@ -1,0 +1,158 @@
+[
+  {
+    "screen": "home",
+    "viewport": [
+      360,
+      844
+    ],
+    "baseline": "evidence/PW-WOORI-04/home/screenshots/360x844-home.png",
+    "current": "evidence/PW-WOORI-05/home/screenshots/360x844-home.png",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDifference": 0,
+    "affectedBounds": null
+  },
+  {
+    "screen": "home",
+    "viewport": [
+      390,
+      844
+    ],
+    "baseline": "evidence/PW-WOORI-04/home/screenshots/390x844-home.png",
+    "current": "evidence/PW-WOORI-05/home/screenshots/390x844-home.png",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDifference": 0,
+    "affectedBounds": null
+  },
+  {
+    "screen": "home",
+    "viewport": [
+      430,
+      844
+    ],
+    "baseline": "evidence/PW-WOORI-04/home/screenshots/430x844-home.png",
+    "current": "evidence/PW-WOORI-05/home/screenshots/430x844-home.png",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDifference": 0,
+    "affectedBounds": null
+  },
+  {
+    "screen": "record",
+    "viewport": [
+      360,
+      844
+    ],
+    "baseline": "evidence/PW-WOORI-04/record/screenshots/360x844-record.png",
+    "current": "evidence/PW-WOORI-05/record/screenshots/360x844-record.png",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDifference": 0,
+    "affectedBounds": null
+  },
+  {
+    "screen": "record",
+    "viewport": [
+      390,
+      844
+    ],
+    "baseline": "evidence/PW-WOORI-04/record/screenshots/390x844-record.png",
+    "current": "evidence/PW-WOORI-05/record/screenshots/390x844-record.png",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDifference": 0,
+    "affectedBounds": null
+  },
+  {
+    "screen": "record",
+    "viewport": [
+      430,
+      844
+    ],
+    "baseline": "evidence/PW-WOORI-04/record/screenshots/430x844-record.png",
+    "current": "evidence/PW-WOORI-05/record/screenshots/430x844-record.png",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDifference": 0,
+    "affectedBounds": null
+  },
+  {
+    "screen": "goal",
+    "viewport": [
+      360,
+      844
+    ],
+    "baseline": "evidence/PW-WOORI-04/screenshots/360x844-goal.png",
+    "current": "evidence/PW-WOORI-05/goal/screenshots/360x844-goal.png",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDifference": 0,
+    "affectedBounds": null
+  },
+  {
+    "screen": "goal",
+    "viewport": [
+      390,
+      844
+    ],
+    "baseline": "evidence/PW-WOORI-04/screenshots/390x844-goal.png",
+    "current": "evidence/PW-WOORI-05/goal/screenshots/390x844-goal.png",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDifference": 0,
+    "affectedBounds": null
+  },
+  {
+    "screen": "goal",
+    "viewport": [
+      430,
+      844
+    ],
+    "baseline": "evidence/PW-WOORI-04/screenshots/430x844-goal.png",
+    "current": "evidence/PW-WOORI-05/goal/screenshots/430x844-goal.png",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDifference": 0,
+    "affectedBounds": null
+  },
+  {
+    "screen": "all",
+    "viewport": [
+      360,
+      844
+    ],
+    "baseline": "evidence/PW-WOORI-04/shell/screenshots/360x844-all.png",
+    "current": "evidence/PW-WOORI-05/shell/screenshots/360x844-all.png",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDifference": 0,
+    "affectedBounds": null
+  },
+  {
+    "screen": "all",
+    "viewport": [
+      390,
+      844
+    ],
+    "baseline": "evidence/PW-WOORI-04/shell/screenshots/390x844-all.png",
+    "current": "evidence/PW-WOORI-05/shell/screenshots/390x844-all.png",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDifference": 0,
+    "affectedBounds": null
+  },
+  {
+    "screen": "all",
+    "viewport": [
+      430,
+      844
+    ],
+    "baseline": "evidence/PW-WOORI-04/shell/screenshots/430x844-all.png",
+    "current": "evidence/PW-WOORI-05/shell/screenshots/430x844-all.png",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDifference": 0,
+    "affectedBounds": null
+  }
+]

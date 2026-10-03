@@ -1,0 +1,1070 @@
+{
+  "startedAt": "2026-09-11T01:25:29.313Z",
+  "url": "http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html",
+  "checks": [
+    {
+      "name": "Approved tokens/base/shell/tabs/home and all previous evidence remain byte-identical",
+      "status": "PASS",
+      "detail": {
+        "preserved": 174
+      }
+    },
+    {
+      "name": "Original fixture mapping and frozen source immutability",
+      "status": "PASS",
+      "detail": {
+        "greeting": {
+          "name": "민준"
+        },
+        "balance": 32500,
+        "monthly": {
+          "received": 15200,
+          "spent": 12300,
+          "remaining": 2900,
+          "period": "unknown"
+        },
+        "habit": {
+          "score": 82
+        },
+        "goal": {
+          "status": "active",
+          "title": "게임 아이템",
+          "target": 45000,
+          "current": 30600,
+          "percent": 68
+        },
+        "mission": {
+          "status": "unavailable"
+        }
+      }
+    },
+    {
+      "name": "Storage empty, invalid JSON/root, getter/read exceptions, partial and valid roots",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Missing versus zero, strict numeric checks, negative difference and score bounds",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Goal empty/invalid/active/complete, progress clamp and undated mission boundary",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Active runtime: one getItem and one explicit-save setItem call site, no Home write/delete, demo fallback, preservation fetch or API",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: 360×844 original fixture, 3 columns, bounds and last module",
+      "status": "PASS",
+      "detail": {
+        "width": 360,
+        "doc": 360,
+        "content": {
+          "client": 360,
+          "scroll": 360,
+          "bottom": 771
+        },
+        "navTop": 771,
+        "amounts": [
+          {
+            "width": 278,
+            "display": 158.4375,
+            "exact": "32,500원"
+          },
+          {
+            "width": 150,
+            "display": 63.734375,
+            "exact": "15,200원"
+          },
+          {
+            "width": 150,
+            "display": 63.96875,
+            "exact": "12,300원"
+          },
+          {
+            "width": 95,
+            "display": 78.21875,
+            "exact": "15,200원"
+          },
+          {
+            "width": 82,
+            "display": 78.453125,
+            "exact": "12,300원"
+          },
+          {
+            "width": 94,
+            "display": 69.359375,
+            "exact": "2,900원"
+          },
+          {
+            "width": 133,
+            "display": 66.84375,
+            "exact": "30,600원"
+          },
+          {
+            "width": 133,
+            "display": 66.859375,
+            "exact": "45,000원"
+          }
+        ],
+        "buttons": [
+          {
+            "name": "전체 메뉴",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "기록하기",
+            "width": 278,
+            "height": 50
+          },
+          {
+            "name": "리포트 보기›",
+            "width": 82.15625,
+            "height": 48
+          },
+          {
+            "name": "목표 보기›",
+            "width": 70.0625,
+            "height": 48
+          },
+          {
+            "name": "홈",
+            "width": 70.390625,
+            "height": 64
+          },
+          {
+            "name": "기록",
+            "width": 70.40625,
+            "height": 64
+          },
+          {
+            "name": "목표",
+            "width": 70.390625,
+            "height": 64
+          },
+          {
+            "name": "리포트",
+            "width": 70.40625,
+            "height": 64
+          },
+          {
+            "name": "전체",
+            "width": 70.40625,
+            "height": 64
+          }
+        ],
+        "metrics": "106.656px 106.672px 106.656px",
+        "scheme": "light"
+      }
+    },
+    {
+      "name": "Chromium: 390×844 original fixture, 3 columns, bounds and last module",
+      "status": "PASS",
+      "detail": {
+        "width": 390,
+        "doc": 390,
+        "content": {
+          "client": 390,
+          "scroll": 390,
+          "bottom": 771
+        },
+        "navTop": 771,
+        "amounts": [
+          {
+            "width": 308,
+            "display": 158.4375,
+            "exact": "32,500원"
+          },
+          {
+            "width": 167,
+            "display": 63.734375,
+            "exact": "15,200원"
+          },
+          {
+            "width": 167,
+            "display": 63.96875,
+            "exact": "12,300원"
+          },
+          {
+            "width": 105,
+            "display": 78.21875,
+            "exact": "15,200원"
+          },
+          {
+            "width": 92,
+            "display": 78.453125,
+            "exact": "12,300원"
+          },
+          {
+            "width": 104,
+            "display": 69.359375,
+            "exact": "2,900원"
+          },
+          {
+            "width": 148,
+            "display": 66.84375,
+            "exact": "30,600원"
+          },
+          {
+            "width": 148,
+            "display": 66.859375,
+            "exact": "45,000원"
+          }
+        ],
+        "buttons": [
+          {
+            "name": "전체 메뉴",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "기록하기",
+            "width": 308,
+            "height": 50
+          },
+          {
+            "name": "리포트 보기›",
+            "width": 82.15625,
+            "height": 48
+          },
+          {
+            "name": "목표 보기›",
+            "width": 70.0625,
+            "height": 48
+          },
+          {
+            "name": "홈",
+            "width": 76.390625,
+            "height": 64
+          },
+          {
+            "name": "기록",
+            "width": 76.40625,
+            "height": 64
+          },
+          {
+            "name": "목표",
+            "width": 76.390625,
+            "height": 64
+          },
+          {
+            "name": "리포트",
+            "width": 76.40625,
+            "height": 64
+          },
+          {
+            "name": "전체",
+            "width": 76.40625,
+            "height": 64
+          }
+        ],
+        "metrics": "116.656px 116.672px 116.656px",
+        "scheme": "light"
+      }
+    },
+    {
+      "name": "Chromium: 430×844 original fixture, 3 columns, bounds and last module",
+      "status": "PASS",
+      "detail": {
+        "width": 430,
+        "doc": 430,
+        "content": {
+          "client": 430,
+          "scroll": 430,
+          "bottom": 771
+        },
+        "navTop": 771,
+        "amounts": [
+          {
+            "width": 348,
+            "display": 158.4375,
+            "exact": "32,500원"
+          },
+          {
+            "width": 190,
+            "display": 63.734375,
+            "exact": "15,200원"
+          },
+          {
+            "width": 190,
+            "display": 63.96875,
+            "exact": "12,300원"
+          },
+          {
+            "width": 118,
+            "display": 78.21875,
+            "exact": "15,200원"
+          },
+          {
+            "width": 105,
+            "display": 78.453125,
+            "exact": "12,300원"
+          },
+          {
+            "width": 117,
+            "display": 69.359375,
+            "exact": "2,900원"
+          },
+          {
+            "width": 168,
+            "display": 66.84375,
+            "exact": "30,600원"
+          },
+          {
+            "width": 168,
+            "display": 66.859375,
+            "exact": "45,000원"
+          }
+        ],
+        "buttons": [
+          {
+            "name": "전체 메뉴",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "기록하기",
+            "width": 348,
+            "height": 50
+          },
+          {
+            "name": "리포트 보기›",
+            "width": 82.15625,
+            "height": 48
+          },
+          {
+            "name": "목표 보기›",
+            "width": 70.0625,
+            "height": 48
+          },
+          {
+            "name": "홈",
+            "width": 84.390625,
+            "height": 64
+          },
+          {
+            "name": "기록",
+            "width": 84.40625,
+            "height": 64
+          },
+          {
+            "name": "목표",
+            "width": 84.390625,
+            "height": 64
+          },
+          {
+            "name": "리포트",
+            "width": 84.40625,
+            "height": 64
+          },
+          {
+            "name": "전체",
+            "width": 84.40625,
+            "height": 64
+          }
+        ],
+        "metrics": "130px 130px 130px",
+        "scheme": "light"
+      }
+    },
+    {
+      "name": "Chromium: three home actions, record and placeholder destinations, focus, menu, reload and storage preservation",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: rendered home text contrast on actual surfaces >= 4.5:1",
+      "status": "PASS",
+      "detail": {
+        "minimum": 4.796116999863619
+      }
+    },
+    {
+      "name": "Chromium: heading hierarchy, named progress values, focus-visible and Enter/Space activation",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: injected 47/34/24px safe areas with scrolling home",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: 360×640 and 200% root font, metric reflow and exact amounts",
+      "status": "PASS",
+      "detail": {
+        "width": 360,
+        "doc": 360,
+        "content": {
+          "client": 360,
+          "scroll": 360,
+          "bottom": 495
+        },
+        "navTop": 495,
+        "amounts": [
+          {
+            "width": 198,
+            "display": 194.546875,
+            "exact": "32,500원"
+          },
+          {
+            "width": 198,
+            "display": 127.46875,
+            "exact": "15,200원"
+          },
+          {
+            "width": 198,
+            "display": 127.9375,
+            "exact": "12,300원"
+          },
+          {
+            "width": 280,
+            "display": 156.421875,
+            "exact": "15,200원"
+          },
+          {
+            "width": 280,
+            "display": 156.90625,
+            "exact": "12,300원"
+          },
+          {
+            "width": 280,
+            "display": 138.703125,
+            "exact": "2,900원"
+          },
+          {
+            "width": 198,
+            "display": 133.671875,
+            "exact": "30,600원"
+          },
+          {
+            "width": 198,
+            "display": 133.71875,
+            "exact": "45,000원"
+          }
+        ],
+        "buttons": [
+          {
+            "name": "전체 메뉴",
+            "width": 96,
+            "height": 96
+          },
+          {
+            "name": "기록하기",
+            "width": 198,
+            "height": 98
+          },
+          {
+            "name": "리포트 보기›",
+            "width": 164.3125,
+            "height": 96
+          },
+          {
+            "name": "목표 보기›",
+            "width": 140.125,
+            "height": 96
+          },
+          {
+            "name": "홈",
+            "width": 68.796875,
+            "height": 128
+          },
+          {
+            "name": "기록",
+            "width": 68.796875,
+            "height": 128
+          },
+          {
+            "name": "목표",
+            "width": 68.796875,
+            "height": 128
+          },
+          {
+            "name": "리포트",
+            "width": 68.796875,
+            "height": 128
+          },
+          {
+            "name": "전체",
+            "width": 68.8125,
+            "height": 128
+          }
+        ],
+        "metrics": "280px",
+        "scheme": "light"
+      }
+    },
+    {
+      "name": "Chromium: 360/390/430×844 at 200% root font without amount/control overflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Full home capture: viewport 390×844, capture-only expansion of inner scroll; header and nav included",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: empty truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: invalid-json truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: invalid-root truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: denied truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: partial truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: no-goal truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: complete-goal truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: invalid-goal truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: maximum safe integer, negative difference, long goal/name, HTML as text and 200% scale",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: 360×844 original fixture, 3 columns, bounds and last module",
+      "status": "PASS",
+      "detail": {
+        "width": 360,
+        "doc": 360,
+        "content": {
+          "client": 360,
+          "scroll": 360,
+          "bottom": 770.984375
+        },
+        "navTop": 770.984375,
+        "amounts": [
+          {
+            "width": 278,
+            "display": 158.4375,
+            "exact": "32,500원"
+          },
+          {
+            "width": 150,
+            "display": 63.734375,
+            "exact": "15,200원"
+          },
+          {
+            "width": 150,
+            "display": 63.96875,
+            "exact": "12,300원"
+          },
+          {
+            "width": 95,
+            "display": 78.21875,
+            "exact": "15,200원"
+          },
+          {
+            "width": 82,
+            "display": 78.453125,
+            "exact": "12,300원"
+          },
+          {
+            "width": 94,
+            "display": 69.359375,
+            "exact": "2,900원"
+          },
+          {
+            "width": 133,
+            "display": 66.84375,
+            "exact": "30,600원"
+          },
+          {
+            "width": 133,
+            "display": 66.859375,
+            "exact": "45,000원"
+          }
+        ],
+        "buttons": [
+          {
+            "name": "전체 메뉴",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "기록하기",
+            "width": 278,
+            "height": 50
+          },
+          {
+            "name": "리포트 보기›",
+            "width": 82.15625,
+            "height": 48
+          },
+          {
+            "name": "목표 보기›",
+            "width": 70.0625,
+            "height": 48
+          },
+          {
+            "name": "홈",
+            "width": 70.390625,
+            "height": 64
+          },
+          {
+            "name": "기록",
+            "width": 70.40625,
+            "height": 64
+          },
+          {
+            "name": "목표",
+            "width": 70.390625,
+            "height": 64
+          },
+          {
+            "name": "리포트",
+            "width": 70.40625,
+            "height": 64
+          },
+          {
+            "name": "전체",
+            "width": 70.40625,
+            "height": 64
+          }
+        ],
+        "metrics": "106.65625px 106.671875px 106.671875px",
+        "scheme": "light"
+      }
+    },
+    {
+      "name": "WebKit: 390×844 original fixture, 3 columns, bounds and last module",
+      "status": "PASS",
+      "detail": {
+        "width": 390,
+        "doc": 390,
+        "content": {
+          "client": 390,
+          "scroll": 390,
+          "bottom": 770.984375
+        },
+        "navTop": 770.984375,
+        "amounts": [
+          {
+            "width": 308,
+            "display": 158.4375,
+            "exact": "32,500원"
+          },
+          {
+            "width": 167,
+            "display": 63.734375,
+            "exact": "15,200원"
+          },
+          {
+            "width": 167,
+            "display": 63.96875,
+            "exact": "12,300원"
+          },
+          {
+            "width": 105,
+            "display": 78.21875,
+            "exact": "15,200원"
+          },
+          {
+            "width": 92,
+            "display": 78.453125,
+            "exact": "12,300원"
+          },
+          {
+            "width": 104,
+            "display": 69.359375,
+            "exact": "2,900원"
+          },
+          {
+            "width": 148,
+            "display": 66.84375,
+            "exact": "30,600원"
+          },
+          {
+            "width": 148,
+            "display": 66.859375,
+            "exact": "45,000원"
+          }
+        ],
+        "buttons": [
+          {
+            "name": "전체 메뉴",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "기록하기",
+            "width": 308,
+            "height": 50
+          },
+          {
+            "name": "리포트 보기›",
+            "width": 82.15625,
+            "height": 48
+          },
+          {
+            "name": "목표 보기›",
+            "width": 70.0625,
+            "height": 48
+          },
+          {
+            "name": "홈",
+            "width": 76.390625,
+            "height": 64
+          },
+          {
+            "name": "기록",
+            "width": 76.40625,
+            "height": 64
+          },
+          {
+            "name": "목표",
+            "width": 76.390625,
+            "height": 64
+          },
+          {
+            "name": "리포트",
+            "width": 76.40625,
+            "height": 64
+          },
+          {
+            "name": "전체",
+            "width": 76.40625,
+            "height": 64
+          }
+        ],
+        "metrics": "116.65625px 116.671875px 116.671875px",
+        "scheme": "light"
+      }
+    },
+    {
+      "name": "WebKit: 430×844 original fixture, 3 columns, bounds and last module",
+      "status": "PASS",
+      "detail": {
+        "width": 430,
+        "doc": 430,
+        "content": {
+          "client": 430,
+          "scroll": 430,
+          "bottom": 770.984375
+        },
+        "navTop": 770.984375,
+        "amounts": [
+          {
+            "width": 348,
+            "display": 158.4375,
+            "exact": "32,500원"
+          },
+          {
+            "width": 190,
+            "display": 63.734375,
+            "exact": "15,200원"
+          },
+          {
+            "width": 190,
+            "display": 63.96875,
+            "exact": "12,300원"
+          },
+          {
+            "width": 118,
+            "display": 78.21875,
+            "exact": "15,200원"
+          },
+          {
+            "width": 105,
+            "display": 78.453125,
+            "exact": "12,300원"
+          },
+          {
+            "width": 117,
+            "display": 69.359375,
+            "exact": "2,900원"
+          },
+          {
+            "width": 168,
+            "display": 66.84375,
+            "exact": "30,600원"
+          },
+          {
+            "width": 168,
+            "display": 66.859375,
+            "exact": "45,000원"
+          }
+        ],
+        "buttons": [
+          {
+            "name": "전체 메뉴",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "기록하기",
+            "width": 348,
+            "height": 50
+          },
+          {
+            "name": "리포트 보기›",
+            "width": 82.15625,
+            "height": 48
+          },
+          {
+            "name": "목표 보기›",
+            "width": 70.0625,
+            "height": 48
+          },
+          {
+            "name": "홈",
+            "width": 84.390625,
+            "height": 64
+          },
+          {
+            "name": "기록",
+            "width": 84.40625,
+            "height": 64
+          },
+          {
+            "name": "목표",
+            "width": 84.390625,
+            "height": 64
+          },
+          {
+            "name": "리포트",
+            "width": 84.40625,
+            "height": 64
+          },
+          {
+            "name": "전체",
+            "width": 84.40625,
+            "height": 64
+          }
+        ],
+        "metrics": "130px 130px 130px",
+        "scheme": "light"
+      }
+    },
+    {
+      "name": "WebKit: three home actions, record and placeholder destinations, focus, menu, reload and storage preservation",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: rendered home text contrast on actual surfaces >= 4.5:1",
+      "status": "PASS",
+      "detail": {
+        "minimum": 4.796116999863619
+      }
+    },
+    {
+      "name": "WebKit: heading hierarchy, named progress values, focus-visible and Enter/Space activation",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: injected 47/34/24px safe areas with scrolling home",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: 360×640 and 200% root font, metric reflow and exact amounts",
+      "status": "PASS",
+      "detail": {
+        "width": 360,
+        "doc": 360,
+        "content": {
+          "client": 360,
+          "scroll": 360,
+          "bottom": 495
+        },
+        "navTop": 495,
+        "amounts": [
+          {
+            "width": 198,
+            "display": 194.546875,
+            "exact": "32,500원"
+          },
+          {
+            "width": 198,
+            "display": 127.46875,
+            "exact": "15,200원"
+          },
+          {
+            "width": 198,
+            "display": 127.9375,
+            "exact": "12,300원"
+          },
+          {
+            "width": 280,
+            "display": 156.421875,
+            "exact": "15,200원"
+          },
+          {
+            "width": 280,
+            "display": 156.90625,
+            "exact": "12,300원"
+          },
+          {
+            "width": 280,
+            "display": 138.703125,
+            "exact": "2,900원"
+          },
+          {
+            "width": 198,
+            "display": 133.671875,
+            "exact": "30,600원"
+          },
+          {
+            "width": 198,
+            "display": 133.71875,
+            "exact": "45,000원"
+          }
+        ],
+        "buttons": [
+          {
+            "name": "전체 메뉴",
+            "width": 96,
+            "height": 96
+          },
+          {
+            "name": "기록하기",
+            "width": 198,
+            "height": 98
+          },
+          {
+            "name": "리포트 보기›",
+            "width": 164.3125,
+            "height": 96
+          },
+          {
+            "name": "목표 보기›",
+            "width": 140.125,
+            "height": 96
+          },
+          {
+            "name": "홈",
+            "width": 68.796875,
+            "height": 128
+          },
+          {
+            "name": "기록",
+            "width": 68.796875,
+            "height": 128
+          },
+          {
+            "name": "목표",
+            "width": 68.796875,
+            "height": 128
+          },
+          {
+            "name": "리포트",
+            "width": 68.796875,
+            "height": 128
+          },
+          {
+            "name": "전체",
+            "width": 68.796875,
+            "height": 128
+          }
+        ],
+        "metrics": "280px",
+        "scheme": "light"
+      }
+    },
+    {
+      "name": "WebKit: 360/390/430×844 at 200% root font without amount/control overflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: empty truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: invalid-json truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: invalid-root truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: denied truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: partial truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: no-goal truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: complete-goal truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: invalid-goal truthful fallback, geometry, action and unchanged storage",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: maximum safe integer, negative difference, long goal/name, HTML as text and 200% scale",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "All isolated contexts: zero console/page errors and failed resources",
+      "status": "PASS",
+      "detail": true
+    }
+  ],
+  "screenshots": [
+    "360x844-home.png",
+    "390x844-home.png",
+    "430x844-home.png",
+    "390x844-home-full.png"
+  ],
+  "consoleErrors": [],
+  "resourceErrors": [],
+  "browsers": {
+    "chromium": "151.0.7922.34",
+    "webkit": "26.5"
+  },
+  "status": "PASS",
+  "finishedAt": "2026-09-11T01:26:23.148Z"
+}

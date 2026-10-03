@@ -1,0 +1,3543 @@
+--- a/ks6s3juocjzc2.kimi.page/index.html
++++ b/ks6s3juocjzc2.kimi.page/index.html
+@@ -1,2662 +1,35 @@
+ <!DOCTYPE html>
+ <html lang="ko">
+-
+ <head>
+-    <meta charset="UTF-8" />
+-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+-    <meta name="color-scheme" content="light dark" />
+-    <title>포켓WON — 우리 아이 첫 돈 습관 앱</title>
+-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+-    <style>
+-        :root {
+-            --mint: #3ECF8E;
+-            --mint-dark: #2BB87A;
+-            --mint-soft: #E5F9F0;
+-            --yellow: #FFD54D;
+-            --yellow-soft: #FFF6DE;
+-            --coral: #FF6B6B;
+-            --coral-soft: #FFEDED;
+-            --blue: #4DA6FF;
+-            --blue-soft: #EAF4FF;
+-            --bg: #F5F7FA;
+-            --text: #202D2D;
+-            --text-sub: #7A8A8A;
+-            --card: #FFFFFF;
+-            --radius-lg: 22px;
+-            --radius-md: 16px;
+-            --shadow: 0 6px 24px rgba(32, 45, 45, .07);
+-            --shadow-sm: 0 3px 12px rgba(32, 45, 45, .05);
+-            --outer-bg: #EFECE4;
+-            --line: #F1F4F4;
+-            --nav-line: #EDF1F1;
+-            --track: #EDF2F2;
+-            --seg-bg: #EAEFEF;
+-            --chip-border: #C9D6D6;
+-            --grab: #DFE7E7;
+-            --plan-bar: #D5DFDF;
+-            --on-yellow: #8A6D1A;
+-            --intro-text: #33506B;
+-            --toast-bg: #202D2D;
+-            --toast-fg: #FFFFFF;
+-            --overlay-bg: rgba(32, 45, 45, .45);
+-            color-scheme: light;
+-        }
+-
+-        [data-theme="dark"] {
+-            --mint-dark: #45DDA0;
+-            --mint-soft: #16382B;
+-            --yellow-soft: #3B3115;
+-            --coral-soft: #3A2222;
+-            --blue-soft: #17293D;
+-            --bg: #151C1C;
+-            --text: #EAF1F1;
+-            --text-sub: #8CA0A0;
+-            --card: #222C2C;
+-            --shadow: 0 8px 26px rgba(0, 0, 0, .4);
+-            --shadow-sm: 0 3px 12px rgba(0, 0, 0, .32);
+-            --outer-bg: #0E1313;
+-            --line: #2B3737;
+-            --nav-line: #2B3737;
+-            --track: #2B3737;
+-            --seg-bg: #1C2626;
+-            --chip-border: #3A4848;
+-            --grab: #3A4848;
+-            --plan-bar: #3A4848;
+-            --on-yellow: #E9C86A;
+-            --intro-text: #B9D4EE;
+-            --toast-bg: #EAF1F1;
+-            --toast-fg: #1A2323;
+-            --overlay-bg: rgba(0, 0, 0, .55);
+-            color-scheme: dark;
+-        }
+-
+-        * {
+-            margin: 0;
+-            padding: 0;
+-            box-sizing: border-box;
+-            -webkit-tap-highlight-color: transparent
+-        }
+-
+-        html,
+-        body {
+-            height: 100%
+-        }
+-
+-        body {
+-            font-family: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+-            background: var(--outer-bg);
+-            color: var(--text);
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            min-height: 100dvh;
+-            overflow: hidden;
+-            transition: background-color .25s ease, color .25s ease;
+-        }
+-
+-        body,
+-        .phone,
+-        .card,
+-        .mini-card,
+-        .bottomnav,
+-        .sheet,
+-        .dialog {
+-            transition: background-color .22s ease, color .22s ease, border-color .22s ease
+-        }
+-
+-        button {
+-            font-family: inherit;
+-            border: none;
+-            background: none;
+-            cursor: pointer;
+-            color: inherit
+-        }
+-
+-        button:active {
+-            transform: scale(.98)
+-        }
+-
+-        input {
+-            font-family: inherit;
+-            border: none;
+-            outline: none;
+-            background: none;
+-            color: inherit
+-        }
+-
+-        /* ---------- Phone frame ---------- */
+-
+-        .phone {
+-            position: relative;
+-            width: 100vw;
+-            height: 100dvh;
+-            background: var(--bg);
+-            overflow: hidden;
+-            display: flex;
+-            flex-direction: column;
+-        }
+-
+-        @media (min-width:520px) {
+-            .phone {
+-                width: 390px;
+-                height: min(844px, 94dvh);
+-                border-radius: 46px;
+-                border: 8px solid #22302F;
+-                box-shadow: 0 30px 80px rgba(32, 45, 45, .28), 0 4px 16px rgba(32, 45, 45, .15);
+-            }
+-        }
+-
+-        /* ---------- Status bar ---------- */
+-
+-        .statusbar {
+-            flex: 0 0 auto;
+-            height: 42px;
+-            display: flex;
+-            align-items: center;
+-            justify-content: space-between;
+-            padding: 6px 22px 0;
+-            font-size: 13px;
+-            font-weight: 600;
+-            background: var(--bg);
+-            z-index: 5;
+-        }
+-
+-        .statusbar .sicons {
+-            display: flex;
+-            align-items: center;
+-            gap: 5px
+-        }
+-
+-        /* ---------- App scroll area ---------- */
+-
+-        .app {
+-            flex: 1 1 auto;
+-            overflow-y: auto;
+-            overflow-x: hidden;
+-            position: relative;
+-            scrollbar-width: none
+-        }
+-
+-        .app::-webkit-scrollbar {
+-            display: none
+-        }
+-
+-        .screen {
+-            padding: 6px 20px 108px;
+-            animation: screenIn .22s ease
+-        }
+-
+-        @keyframes screenIn {
+-            from {
+-                opacity: 0;
+-                transform: translateY(8px)
+-            }
+-            to {
+-                opacity: 1;
+-                transform: translateY(0)
+-            }
+-        }
+-
+-        /* ---------- Headers ---------- */
+-
+-        .appbar {
+-            display: flex;
+-            align-items: center;
+-            justify-content: space-between;
+-            height: 48px;
+-            margin-bottom: 10px
+-        }
+-
+-        .appbar .title {
+-            font-size: 17px;
+-            font-weight: 700
+-        }
+-
+-        .appbar .icon-btn {
+-            width: 38px;
+-            height: 38px;
+-            border-radius: 12px;
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            background: var(--card);
+-            box-shadow: var(--shadow-sm);
+-            color: var(--text);
+-        }
+-
+-        .greeting {
+-            font-size: 19px;
+-            font-weight: 800;
+-            letter-spacing: -.02em
+-        }
+-
+-        /* ---------- Cards ---------- */
+-
+-        .card {
+-            background: var(--card);
+-            border-radius: var(--radius-lg);
+-            box-shadow: var(--shadow);
+-            padding: 20px
+-        }
+-
+-        .card+.card {
+-            margin-top: 14px
+-        }
+-
+-        /* ---------- Home ---------- */
+-
+-        .intro-banner {
+-            display: flex;
+-            align-items: center;
+-            gap: 10px;
+-            background: var(--blue-soft);
+-            border-radius: var(--radius-md);
+-            padding: 12px 14px;
+-            margin-bottom: 14px;
+-            font-size: 12.5px;
+-            line-height: 1.5;
+-        }
+-
+-        .intro-banner p {
+-            flex: 1;
+-            color: var(--intro-text)
+-        }
+-
+-        .intro-banner button {
+-            flex: 0 0 auto;
+-            background: var(--blue);
+-            color: #fff;
+-            font-size: 12px;
+-            font-weight: 700;
+-            padding: 8px 12px;
+-            border-radius: 10px;
+-            white-space: nowrap;
+-        }
+-
+-        .hero-card {
+-            background: linear-gradient(135deg, #3ECF8E 0%, #2FBF7E 100%);
+-            border-radius: var(--radius-lg);
+-            padding: 22px 22px 18px;
+-            color: #fff;
+-            display: flex;
+-            justify-content: space-between;
+-            align-items: center;
+-            box-shadow: 0 10px 26px rgba(62, 207, 142, .35);
+-            position: relative;
+-            overflow: hidden;
+-        }
+-
+-        .hero-card .label {
+-            font-size: 13px;
+-            font-weight: 600;
+-            opacity: .92
+-        }
+-
+-        .hero-card .amount {
+-            font-size: 34px;
+-            font-weight: 800;
+-            letter-spacing: -.02em;
+-            margin: 6px 0 10px
+-        }
+-
+-        .hero-card .link {
+-            display: inline-flex;
+-            align-items: center;
+-            gap: 3px;
+-            font-size: 12.5px;
+-            font-weight: 600;
+-            color: #fff;
+-            opacity: .95;
+-            background: rgba(255, 255, 255, .18);
+-            padding: 7px 12px;
+-            border-radius: 999px;
+-        }
+-
+-        .hero-mascot {
+-            flex: 0 0 auto;
+-            animation: floaty 3s ease-in-out infinite
+-        }
+-
+-        @keyframes floaty {
+-            0%,
+-            100% {
+-                transform: translateY(0)
+-            }
+-            50% {
+-                transform: translateY(-5px)
+-            }
+-        }
+-
+-        .score-card {
+-            display: flex;
+-            align-items: center;
+-            justify-content: space-between
+-        }
+-
+-        .score-card .sc-title {
+-            font-size: 14px;
+-            font-weight: 700;
+-            color: var(--text-sub);
+-            margin-bottom: 4px
+-        }
+-
+-        .score-card .sc-value {
+-            font-size: 42px;
+-            font-weight: 800;
+-            letter-spacing: -.03em
+-        }
+-
+-        .score-card .sc-value small {
+-            font-size: 18px;
+-            font-weight: 700
+-        }
+-
+-        .score-card .sc-msg {
+-            font-size: 13px;
+-            font-weight: 600;
+-            color: var(--mint-dark);
+-            margin-top: 6px
+-        }
+-
+-        .ring-wrap {
+-            position: relative;
+-            width: 110px;
+-            height: 110px;
+-            flex: 0 0 auto
+-        }
+-
+-        .ring-wrap .ring-mascot {
+-            position: absolute;
+-            right: -4px;
+-            bottom: 2px
+-        }
+-
+-        .mini-row {
+-            display: grid;
+-            grid-template-columns: 1fr 1fr 1fr;
+-            gap: 10px;
+-            margin-top: 14px
+-        }
+-
+-        .mini-card {
+-            background: var(--card);
+-            border-radius: var(--radius-md);
+-            box-shadow: var(--shadow-sm);
+-            padding: 14px 12px;
+-            text-align: left;
+-        }
+-
+-        .mini-card .m-label {
+-            font-size: 12px;
+-            font-weight: 600;
+-            color: var(--text-sub)
+-        }
+-
+-        .mini-card .m-value {
+-            font-size: 16px;
+-            font-weight: 800;
+-            margin: 4px 0 2px;
+-            letter-spacing: -.01em
+-        }
+-
+-        .mini-card .m-pct {
+-            font-size: 11.5px;
+-            font-weight: 700
+-        }
+-
+-        .mini-card .m-ico {
+-            float: right;
+-            font-size: 17px
+-        }
+-
+-        .streak-banner {
+-            margin-top: 14px;
+-            display: flex;
+-            align-items: center;
+-            gap: 12px;
+-            background: var(--yellow-soft);
+-            border-radius: var(--radius-md);
+-            padding: 14px 16px;
+-            width: 100%;
+-            text-align: left;
+-            box-shadow: var(--shadow-sm);
+-        }
+-
+-        .streak-banner .sb-title {
+-            font-size: 14px;
+-            font-weight: 800
+-        }
+-
+-        .streak-banner .sb-sub {
+-            font-size: 12px;
+-            color: var(--on-yellow);
+-            margin-top: 2px
+-        }
+-
+-        .streak-banner .sb-arrow {
+-            margin-left: auto;
+-            color: #C9A93F
+-        }
+-
+-        .recent-card h3 {
+-            font-size: 14px;
+-            font-weight: 700;
+-            margin-bottom: 8px
+-        }
+-
+-        .tx-row {
+-            display: flex;
+-            align-items: center;
+-            gap: 12px;
+-            padding: 10px 0;
+-            border-bottom: 1px solid var(--line)
+-        }
+-
+-        .tx-row:last-child {
+-            border-bottom: none
+-        }
+-
+-        .tx-ico {
+-            width: 38px;
+-            height: 38px;
+-            border-radius: 12px;
+-            background: var(--bg);
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            font-size: 17px;
+-            flex: 0 0 auto
+-        }
+-
+-        .tx-mid {
+-            flex: 1
+-        }
+-
+-        .tx-mid .t1 {
+-            font-size: 13.5px;
+-            font-weight: 700
+-        }
+-
+-        .tx-mid .t2 {
+-            font-size: 11.5px;
+-            color: var(--text-sub);
+-            margin-top: 1px
+-        }
+-
+-        .tx-amt {
+-            font-size: 14px;
+-            font-weight: 800
+-        }
+-
+-        .tx-amt.in {
+-            color: var(--mint-dark)
+-        }
+-
+-        .tx-amt.out {
+-            color: var(--coral)
+-        }
+-
+-        /* ---------- Record ---------- */
+-
+-        .seg {
+-            display: flex;
+-            background: var(--seg-bg);
+-            border-radius: 14px;
+-            padding: 4px;
+-            margin-bottom: 18px;
+-        }
+-
+-        .seg button {
+-            flex: 1;
+-            padding: 10px 0;
+-            border-radius: 11px;
+-            font-size: 14px;
+-            font-weight: 700;
+-            color: var(--text-sub);
+-            transition: all .18s ease;
+-        }
+-
+-        .seg button.on {
+-            background: var(--mint);
+-            color: #fff;
+-            box-shadow: 0 4px 10px rgba(62, 207, 142, .4)
+-        }
+-
+-        .amount-box {
+-            text-align: center;
+-            padding: 8px 0 16px
+-        }
+-
+-        .amount-box .a-label {
+-            font-size: 12.5px;
+-            color: var(--text-sub);
+-            font-weight: 600
+-        }
+-
+-        .amount-line {
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            gap: 8px;
+-            margin-top: 6px
+-        }
+-
+-        .amount-line .won {
+-            font-size: 26px;
+-            font-weight: 700;
+-            color: var(--text-sub)
+-        }
+-
+-        .amount-line input {
+-            width: 190px;
+-            text-align: center;
+-            font-size: 36px;
+-            font-weight: 800;
+-            letter-spacing: -.02em;
+-            border-bottom: 2px solid var(--mint);
+-            padding: 2px 0;
+-        }
+-
+-        .amount-line input::placeholder {
+-            color: var(--text-sub)
+-        }
+-
+-        .cat-row {
+-            display: flex;
+-            gap: 8px;
+-            justify-content: space-between;
+-            margin: 6px 0 14px
+-        }
+-
+-        .cat-chip {
+-            flex: 1;
+-            display: flex;
+-            flex-direction: column;
+-            align-items: center;
+-            gap: 5px;
+-            background: var(--card);
+-            border: 2px solid transparent;
+-            border-radius: 14px;
+-            padding: 11px 0 9px;
+-            font-size: 11.5px;
+-            font-weight: 700;
+-            color: var(--text-sub);
+-            box-shadow: var(--shadow-sm);
+-            transition: border-color .15s ease;
+-        }
+-
+-        .cat-chip .ce {
+-            font-size: 20px
+-        }
+-
+-        .cat-chip.on {
+-            border-color: var(--mint);
+-            color: var(--text);
+-            background: var(--mint-soft)
+-        }
+-
+-        .receipt-btn {
+-            width: 100%;
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            gap: 8px;
+-            background: var(--card);
+-            border: 1.5px dashed var(--chip-border);
+-            border-radius: 14px;
+-            padding: 13px;
+-            font-size: 13px;
+-            font-weight: 700;
+-            color: var(--text-sub);
+-        }
+-
+-        .receipt-done {
+-            width: 100%;
+-            display: flex;
+-            align-items: center;
+-            gap: 10px;
+-            background: var(--mint-soft);
+-            border-radius: 14px;
+-            padding: 12px 14px;
+-        }
+-
+-        .receipt-done .thumb {
+-            width: 38px;
+-            height: 38px;
+-            border-radius: 10px;
+-            background: #fff;
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            font-size: 18px;
+-            box-shadow: var(--shadow-sm)
+-        }
+-
+-        .receipt-done .rt {
+-            font-size: 12.5px;
+-            font-weight: 700;
+-            color: var(--mint-dark)
+-        }
+-
+-        .receipt-done .rs {
+-            font-size: 11px;
+-            color: var(--text-sub)
+-        }
+-
+-        .keypad {
+-            display: grid;
+-            grid-template-columns: 1fr 1fr 1fr;
+-            gap: 10px;
+-            margin-top: 16px
+-        }
+-
+-        .keypad button {
+-            background: var(--card);
+-            border-radius: 14px;
+-            padding: 14px 0;
+-            font-size: 20px;
+-            font-weight: 700;
+-            box-shadow: var(--shadow-sm);
+-        }
+-
+-        .cta-primary {
+-            width: 100%;
+-            margin-top: 16px;
+-            background: var(--mint);
+-            color: #fff;
+-            font-size: 15.5px;
+-            font-weight: 800;
+-            padding: 16px;
+-            border-radius: 16px;
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            gap: 8px;
+-            box-shadow: 0 8px 20px rgba(62, 207, 142, .4);
+-        }
+-
+-        /* ---------- Goal ---------- */
+-
+-        .goal-hero {
+-            display: flex;
+-            gap: 16px;
+-            align-items: center
+-        }
+-
+-        .goal-hero .g-art {
+-            width: 86px;
+-            height: 86px;
+-            border-radius: 20px;
+-            background: var(--blue-soft);
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            flex: 0 0 auto;
+-        }
+-
+-        .goal-hero .g-name {
+-            font-size: 15px;
+-            font-weight: 800
+-        }
+-
+-        .goal-hero .g-amt {
+-            font-size: 24px;
+-            font-weight: 800;
+-            margin-top: 3px;
+-            letter-spacing: -.02em
+-        }
+-
+-        .goal-progress-meta {
+-            display: flex;
+-            justify-content: space-between;
+-            align-items: flex-end;
+-            margin-top: 20px
+-        }
+-
+-        .goal-progress-meta .gp-label {
+-            font-size: 12px;
+-            color: var(--text-sub);
+-            font-weight: 600
+-        }
+-
+-        .goal-progress-meta .gp-cur {
+-            font-size: 20px;
+-            font-weight: 800;
+-            margin-top: 2px
+-        }
+-
+-        .goal-progress-meta .gp-pct {
+-            font-size: 22px;
+-            font-weight: 800;
+-            color: var(--mint-dark)
+-        }
+-
+-        .pbar {
+-            height: 12px;
+-            border-radius: 999px;
+-            background: var(--track);
+-            margin-top: 10px;
+-            overflow: hidden
+-        }
+-
+-        .pbar>div {
+-            height: 100%;
+-            width: 0;
+-            border-radius: 999px;
+-            background: var(--mint);
+-            transition: width .55s cubic-bezier(.3, .7, .3, 1);
+-        }
+-
+-        .dday {
+-            margin-top: 14px;
+-            display: flex;
+-            align-items: center;
+-            gap: 8px;
+-            background: var(--yellow-soft);
+-            border-radius: 12px;
+-            padding: 11px 14px;
+-            font-size: 13px;
+-            font-weight: 700;
+-            color: var(--on-yellow);
+-        }
+-
+-        .mission-card h3 {
+-            font-size: 15px;
+-            font-weight: 800
+-        }
+-
+-        .mission-card .mc-range {
+-            font-size: 11.5px;
+-            color: var(--text-sub);
+-            font-weight: 600
+-        }
+-
+-        .mission-list {
+-            margin-top: 10px
+-        }
+-
+-        .mission {
+-            display: flex;
+-            align-items: center;
+-            gap: 12px;
+-            padding: 11px 0;
+-            border-bottom: 1px solid var(--line);
+-            width: 100%;
+-            text-align: left
+-        }
+-
+-        .mission:last-child {
+-            border-bottom: none
+-        }
+-
+-        .mission .check {
+-            width: 24px;
+-            height: 24px;
+-            border-radius: 50%;
+-            border: 2px solid var(--chip-border);
+-            flex: 0 0 auto;
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            transition: all .18s ease;
+-            background: #fff;
+-        }
+-
+-        .mission.done .check {
+-            background: var(--mint);
+-            border-color: var(--mint)
+-        }
+-
+-        .mission .check svg {
+-            opacity: 0;
+-            transition: opacity .15s ease
+-        }
+-
+-        .mission.done .check svg {
+-            opacity: 1
+-        }
+-
+-        .mission .m-day {
+-            font-size: 13px;
+-            font-weight: 800;
+-            width: 22px;
+-            color: var(--text-sub)
+-        }
+-
+-        .mission.done .m-day {
+-            color: var(--mint-dark)
+-        }
+-
+-        .mission .m-txt {
+-            font-size: 13.5px;
+-            font-weight: 600
+-        }
+-
+-        .mission.done .m-txt {
+-            color: var(--text-sub);
+-            text-decoration: line-through
+-        }
+-
+-        /* ---------- AI Score ---------- */
+-
+-        .score-hero {
+-            display: flex;
+-            align-items: center;
+-            justify-content: space-around;
+-            padding: 26px 16px
+-        }
+-
+-        .score-hero .big {
+-            font-size: 56px;
+-            font-weight: 800;
+-            color: var(--mint-dark);
+-            letter-spacing: -.03em
+-        }
+-
+-        .score-hero .big small {
+-            font-size: 24px;
+-            font-weight: 800
+-        }
+-
+-        .coach-card {
+-            display: flex;
+-            gap: 12px;
+-            align-items: center;
+-            background: var(--mint-soft);
+-            border-radius: var(--radius-md);
+-            padding: 14px 16px;
+-            margin-top: 14px
+-        }
+-
+-        .coach-card .cc-label {
+-            font-size: 11.5px;
+-            font-weight: 800;
+-            color: var(--mint-dark)
+-        }
+-
+-        .coach-card .cc-msg {
+-            font-size: 13.5px;
+-            font-weight: 700;
+-            margin-top: 2px
+-        }
+-
+-        .section-title {
+-            font-size: 15px;
+-            font-weight: 800;
+-            margin: 22px 0 12px
+-        }
+-
+-        .pva {
+-            display: flex;
+-            align-items: flex-end;
+-            justify-content: space-around;
+-            height: 150px;
+-            padding: 10px 6px 0
+-        }
+-
+-        .pva-group {
+-            display: flex;
+-            flex-direction: column;
+-            align-items: center;
+-            gap: 8px;
+-            flex: 1
+-        }
+-
+-        .pva-bars {
+-            display: flex;
+-            align-items: flex-end;
+-            gap: 6px;
+-            height: 104px
+-        }
+-
+-        .pva-bar {
+-            width: 20px;
+-            border-radius: 6px 6px 3px 3px;
+-            position: relative;
+-            transition: height .55s cubic-bezier(.3, .7, .3, 1)
+-        }
+-
+-        .pva-bar .pv {
+-            position: absolute;
+-            top: -16px;
+-            left: 50%;
+-            transform: translateX(-50%);
+-            font-size: 10px;
+-            font-weight: 800;
+-            white-space: nowrap
+-        }
+-
+-        .pva-name {
+-            font-size: 12px;
+-            font-weight: 700;
+-            color: var(--text-sub)
+-        }
+-
+-        .legend {
+-            display: flex;
+-            gap: 14px;
+-            justify-content: flex-end;
+-            font-size: 11px;
+-            color: var(--text-sub);
+-            font-weight: 600;
+-            margin-top: 4px
+-        }
+-
+-        .legend span {
+-            display: flex;
+-            align-items: center;
+-            gap: 5px
+-        }
+-
+-        .legend i {
+-            width: 9px;
+-            height: 9px;
+-            border-radius: 3px;
+-            display: inline-block
+-        }
+-
+-        .cat-report-row {
+-            display: flex;
+-            align-items: center;
+-            gap: 12px;
+-            padding: 11px 0;
+-            border-bottom: 1px solid var(--line)
+-        }
+-
+-        .cat-report-row:last-child {
+-            border-bottom: none
+-        }
+-
+-        .cat-report-row .cr-name {
+-            font-size: 13.5px;
+-            font-weight: 700;
+-            flex: 1
+-        }
+-
+-        .cat-report-row .cr-amt {
+-            font-size: 13.5px;
+-            font-weight: 800
+-        }
+-
+-        .cat-report-row .cr-pct {
+-            font-size: 12.5px;
+-            font-weight: 800;
+-            width: 38px;
+-            text-align: right
+-        }
+-
+-        /* ---------- Calendar ---------- */
+-
+-        .cal-head {
+-            display: flex;
+-            align-items: center;
+-            justify-content: space-between;
+-            margin-bottom: 8px
+-        }
+-
+-        .cal-head .cal-title {
+-            font-size: 16px;
+-            font-weight: 800
+-        }
+-
+-        .cal-head button {
+-            width: 34px;
+-            height: 34px;
+-            border-radius: 10px;
+-            background: var(--card);
+-            box-shadow: var(--shadow-sm);
+-            font-size: 15px;
+-            font-weight: 700;
+-            color: var(--text-sub)
+-        }
+-
+-        .cal-grid {
+-            display: grid;
+-            grid-template-columns: repeat(7, 1fr);
+-            gap: 4px;
+-            margin-top: 6px
+-        }
+-
+-        .cal-dow {
+-            text-align: center;
+-            font-size: 11px;
+-            font-weight: 700;
+-            color: var(--text-sub);
+-            padding: 6px 0
+-        }
+-
+-        .cal-cell {
+-            aspect-ratio: 1;
+-            display: flex;
+-            flex-direction: column;
+-            align-items: center;
+-            justify-content: center;
+-            font-size: 12.5px;
+-            font-weight: 700;
+-            border-radius: 12px;
+-            position: relative;
+-            gap: 2px;
+-        }
+-
+-        .cal-cell.today {
+-            background: var(--yellow-soft);
+-            outline: 2px solid var(--yellow);
+-            color: var(--on-yellow)
+-        }
+-
+-        .cal-cell .day-ico {
+-            font-size: 15px;
+-            line-height: 1
+-        }
+-
+-        .badge-grid {
+-            display: grid;
+-            grid-template-columns: repeat(4, 1fr);
+-            gap: 10px
+-        }
+-
+-        .badge-item {
+-            background: var(--card);
+-            border-radius: 14px;
+-            box-shadow: var(--shadow-sm);
+-            padding: 12px 4px 10px;
+-            display: flex;
+-            flex-direction: column;
+-            align-items: center;
+-            gap: 6px;
+-        }
+-
+-        .badge-item .b-ico {
+-            width: 44px;
+-            height: 44px;
+-            border-radius: 50%;
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            font-size: 20px;
+-            background: var(--yellow-soft);
+-        }
+-
+-        .badge-item.locked .b-ico {
+-            background: var(--track);
+-            filter: grayscale(1);
+-            opacity: .7
+-        }
+-
+-        .badge-item .b-name {
+-            font-size: 11px;
+-            font-weight: 700
+-        }
+-
+-        .badge-item.locked .b-name {
+-            color: var(--text-sub)
+-        }
+-
+-        .point-chip {
+-            display: flex;
+-            align-items: center;
+-            gap: 5px;
+-            background: var(--yellow-soft);
+-            padding: 8px 13px;
+-            border-radius: 999px;
+-            font-size: 12.5px;
+-            font-weight: 800;
+-            color: var(--on-yellow);
+-        }
+-
+-        /* ---------- Parent report ---------- */
+-
+-        .line-chart {
+-            width: 100%
+-        }
+-
+-        .lc-weeks {
+-            display: flex;
+-            justify-content: space-between;
+-            font-size: 10px;
+-            color: var(--text-sub);
+-            font-weight: 600;
+-            margin-top: 6px;
+-            padding: 0 4px
+-        }
+-
+-        .topic-card {
+-            background: var(--card);
+-            border-radius: var(--radius-md);
+-            box-shadow: var(--shadow-sm);
+-            padding: 16px 14px;
+-            text-align: center;
+-            display: flex;
+-            flex-direction: column;
+-            align-items: center;
+-            gap: 8px;
+-        }
+-
+-        .topic-card .t-ico {
+-            font-size: 30px
+-        }
+-
+-        .topic-card .t-txt {
+-            font-size: 12px;
+-            font-weight: 700;
+-            line-height: 1.45;
+-            min-height: 36px;
+-            display: flex;
+-            align-items: center
+-        }
+-
+-        .topic-card .t-cta {
+-            font-size: 10.5px;
+-            font-weight: 800;
+-            color: var(--blue);
+-            background: var(--blue-soft);
+-            padding: 6px 10px;
+-            border-radius: 999px;
+-            white-space: nowrap;
+-        }
+-
+-        .topic-row {
+-            display: grid;
+-            grid-template-columns: 1fr 1fr 1fr;
+-            gap: 10px
+-        }
+-
+-        .parent-cta-row {
+-            display: grid;
+-            grid-template-columns: 1fr 1fr;
+-            gap: 12px;
+-            margin-top: 14px
+-        }
+-
+-        .parent-cta {
+-            border-radius: 18px;
+-            padding: 18px 12px;
+-            color: #fff;
+-            font-size: 14px;
+-            font-weight: 800;
+-            display: flex;
+-            flex-direction: column;
+-            align-items: center;
+-            gap: 8px;
+-        }
+-
+-        .parent-cta.blue {
+-            background: var(--blue);
+-            box-shadow: 0 8px 20px rgba(77, 166, 255, .35)
+-        }
+-
+-        .parent-cta.mint {
+-            background: var(--mint);
+-            box-shadow: 0 8px 20px rgba(62, 207, 142, .35)
+-        }
+-
+-        .parent-cta span {
+-            font-size: 22px
+-        }
+-
+-        /* ---------- Bottom nav ---------- */
+-
+-        .bottomnav {
+-            flex: 0 0 auto;
+-            display: flex;
+-            background: var(--card);
+-            border-top: 1px solid var(--nav-line);
+-            padding: 8px 6px calc(10px + env(safe-area-inset-bottom));
+-            z-index: 10;
+-        }
+-
+-        .nav-item {
+-            flex: 1;
+-            display: flex;
+-            flex-direction: column;
+-            align-items: center;
+-            gap: 3px;
+-            font-size: 10.5px;
+-            font-weight: 700;
+-            color: var(--text-sub);
+-            padding: 6px 0;
+-            border-radius: 12px;
+-            transition: color .15s ease;
+-        }
+-
+-        .nav-item.on {
+-            color: var(--mint-dark)
+-        }
+-
+-        .nav-item svg {
+-            display: block
+-        }
+-
+-        /* ---------- Overlays / Sheet / Dialog ---------- */
+-
+-        .overlay {
+-            position: absolute;
+-            inset: 0;
+-            background: var(--overlay-bg);
+-            display: flex;
+-            z-index: 50;
+-            animation: fadeIn .18s ease;
+-        }
+-
+-        .overlay.hidden {
+-            display: none
+-        }
+-
+-        @keyframes fadeIn {
+-            from {
+-                opacity: 0
+-            }
+-            to {
+-                opacity: 1
+-            }
+-        }
+-
+-        .sheet {
+-            margin-top: auto;
+-            width: 100%;
+-            background: var(--card);
+-            border-radius: 26px 26px 0 0;
+-            padding: 14px 20px calc(24px + env(safe-area-inset-bottom));
+-            animation: sheetUp .26s cubic-bezier(.3, .8, .3, 1);
+-        }
+-
+-        @keyframes sheetUp {
+-            from {
+-                transform: translateY(60px);
+-                opacity: .6
+-            }
+-            to {
+-                transform: translateY(0);
+-                opacity: 1
+-            }
+-        }
+-
+-        .sheet .grab {
+-            width: 40px;
+-            height: 4px;
+-            border-radius: 999px;
+-            background: var(--grab);
+-            margin: 0 auto 16px
+-        }
+-
+-        .sheet h2 {
+-            font-size: 18px;
+-            font-weight: 800
+-        }
+-
+-        .sheet .sheet-sub {
+-            font-size: 12.5px;
+-            color: var(--text-sub);
+-            margin: 4px 0 14px
+-        }
+-
+-        .sheet-item {
+-            width: 100%;
+-            display: flex;
+-            align-items: center;
+-            gap: 13px;
+-            padding: 14px 6px;
+-            font-size: 14.5px;
+-            font-weight: 700;
+-            text-align: left;
+-            border-bottom: 1px solid var(--line);
+-        }
+-
+-        .sheet-item:last-of-type {
+-            border-bottom: none
+-        }
+-
+-        .sheet-item .si-ico {
+-            width: 38px;
+-            height: 38px;
+-            border-radius: 12px;
+-            background: var(--bg);
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            font-size: 17px;
+-            flex: 0 0 auto;
+-        }
+-
+-        .sheet-close {
+-            width: 100%;
+-            margin-top: 12px;
+-            padding: 13px;
+-            border-radius: 14px;
+-            background: var(--bg);
+-            font-size: 14px;
+-            font-weight: 800;
+-            color: var(--text-sub);
+-        }
+-
+-        .dialog {
+-            margin: auto;
+-            width: 86%;
+-            max-width: 330px;
+-            background: var(--card);
+-            border-radius: 22px;
+-            padding: 22px;
+-            animation: dialogPop .2s ease;
+-        }
+-
+-        @keyframes dialogPop {
+-            from {
+-                transform: scale(.94);
+-                opacity: 0
+-            }
+-            to {
+-                transform: scale(1);
+-                opacity: 1
+-            }
+-        }
+-
+-        .dialog h3 {
+-            font-size: 16px;
+-            font-weight: 800;
+-            margin-bottom: 4px
+-        }
+-
+-        .dialog .d-sub {
+-            font-size: 12.5px;
+-            color: var(--text-sub);
+-            line-height: 1.5
+-        }
+-
+-        .dialog .d-field {
+-            margin-top: 12px
+-        }
+-
+-        .dialog .d-field label {
+-            display: block;
+-            font-size: 11.5px;
+-            font-weight: 700;
+-            color: var(--text-sub);
+-            margin-bottom: 5px
+-        }
+-
+-        .dialog .d-field input {
+-            width: 100%;
+-            background: var(--bg);
+-            border-radius: 11px;
+-            padding: 11px 13px;
+-            font-size: 14px;
+-            font-weight: 600;
+-        }
+-
+-        .dialog .d-actions {
+-            display: flex;
+-            gap: 10px;
+-            margin-top: 18px
+-        }
+-
+-        .dialog .d-actions button {
+-            flex: 1;
+-            padding: 12px;
+-            border-radius: 13px;
+-            font-size: 13.5px;
+-            font-weight: 800
+-        }
+-
+-        .dialog .d-cancel {
+-            background: var(--bg);
+-            color: var(--text-sub)
+-        }
+-
+-        .dialog .d-ok {
+-            background: var(--mint);
+-            color: #fff
+-        }
+-
+-        .dialog .d-ok.blue {
+-            background: var(--blue)
+-        }
+-
+-        .reward-opt {
+-            width: 100%;
+-            display: flex;
+-            align-items: center;
+-            gap: 11px;
+-            padding: 12px 14px;
+-            margin-top: 8px;
+-            background: var(--bg);
+-            border-radius: 13px;
+-            font-size: 13.5px;
+-            font-weight: 700;
+-            text-align: left;
+-        }
+-
+-        /* ---------- Toast ---------- */
+-
+-        .toast-wrap {
+-            position: absolute;
+-            left: 0;
+-            right: 0;
+-            bottom: calc(86px + env(safe-area-inset-bottom));
+-            display: flex;
+-            flex-direction: column;
+-            align-items: center;
+-            gap: 8px;
+-            z-index: 80;
+-            pointer-events: none;
+-        }
+-
+-        .toast {
+-            background: var(--toast-bg);
+-            color: var(--toast-fg);
+-            font-size: 13px;
+-            font-weight: 700;
+-            padding: 12px 20px;
+-            border-radius: 999px;
+-            box-shadow: 0 10px 24px rgba(0, 0, 0, .25);
+-            animation: toastIn .25s ease;
+-            max-width: 82%;
+-            text-align: center;
+-        }
+-
+-        @keyframes toastIn {
+-            from {
+-                transform: translateY(12px);
+-                opacity: 0
+-            }
+-            to {
+-                transform: translateY(0);
+-                opacity: 1
+-            }
+-        }
+-
+-        .toast.bye {
+-            animation: toastOut .3s ease forwards
+-        }
+-
+-        @keyframes toastOut {
+-            to {
+-                transform: translateY(8px);
+-                opacity: 0
+-            }
+-        }
+-
+-        /* clickable card hover (desktop only) */
+-
+-        @media (hover:hover) {
+-            .clickable:hover {
+-                filter: brightness(.985)
+-            }
+-            .nav-item:hover {
+-                background: var(--bg)
+-            }
+-        }
+-    </style>
+-    <script src="https://www.kimi.com/sdk-seed.js" defer=""></script>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
++  <meta name="color-scheme" content="light">
++  <meta name="theme-color" content="#FFFFFF">
++  <title>홈 · 포켓WON</title>
++  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
++  <link rel="stylesheet" href="./styles/tokens.css">
++  <link rel="stylesheet" href="./styles/base.css">
++  <link rel="stylesheet" href="./styles/shell.css">
++  <script src="./scripts/icons.js" defer></script>
++  <script src="./scripts/tabs.js" defer></script>
++  <script src="./scripts/app.js" defer></script>
+ </head>
+-
+ <body>
+-    <div class="phone" id="phone">
+-        <div class="statusbar">
+-            <span>9:41</span>
+-            <span class="sicons">
+-      <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"></rect><rect x="4.5" y="5" width="3" height="6" rx="1"></rect><rect x="9" y="2.5" width="3" height="8.5" rx="1"></rect><rect x="13.5" y="0" width="3" height="11" rx="1"></rect></svg>
+-      <svg width="16" height="11" viewBox="0 0 16 12" fill="currentColor"><path d="M8 9.6a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2zM8 5.4c1.9 0 3.6.7 4.9 2l-1.4 1.4A4.9 4.9 0 0 0 8 7.4c-1.3 0-2.6.5-3.5 1.4L3.1 7.4a6.9 6.9 0 0 1 4.9-2zM8 1c2.9 0 5.6 1.1 7.6 3l-1.4 1.4A8 8 0 0 0 8 3a8 8 0 0 0-6.2 2.9L.4 4A11 11 0 0 1 8 1z" transform="translate(0,-1)"></path></svg>
+-      <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".4"></rect><rect x="2" y="2" width="16" height="8" rx="2" fill="currentColor"></rect><path d="M23.5 4v4a2 2 0 0 0 0-4z" fill="currentColor" opacity=".4"></path></svg>
+-    </span>
+-        </div>
+-        <main class="app" id="app"></main>
+-        <nav class="bottomnav" id="bottomnav"></nav>
+-        <div class="toast-wrap" id="toastWrap"></div>
+-        <div class="overlay hidden" id="overlay"></div>
+-    </div>
+-    <script>
+-        /* ================= STATE ================= */
+-        const LS_KEY = "pocketwon_demo_v1";
+-        const INTRO_KEY = "pocketwon_intro_done";
+-
+-        const defaultState = {
+-            user: {
+-                name: "민준"
+-            },
+-            balance: 32500,
+-            habitScore: 82,
+-            monthly: {
+-                spending: 12300,
+-                saving: 15200,
+-                goal: 45000
+-            },
+-            goal: {
+-                title: "게임 아이템",
+-                target: 45000,
+-                current: 30600,
+-                daysLeft: 12
+-            },
+-            streak: 7,
+-            points: 1250,
+-            transactions: [{
+-                    type: "out",
+-                    amount: 3500,
+-                    category: "간식",
+-                    ts: "2024-05-18T12:10:00",
+-                    receipt: false
+-                },
+-                {
+-                    type: "in",
+-                    amount: 10000,
+-                    category: "용돈",
+-                    ts: "2024-05-17T09:00:00",
+-                    receipt: false
+-                },
+-                {
+-                    type: "out",
+-                    amount: 1800,
+-                    category: "교통",
+-                    ts: "2024-05-16T16:40:00",
+-                    receipt: false
+-                },
+-                {
+-                    type: "out",
+-                    amount: 2700,
+-                    category: "게임",
+-                    ts: "2024-05-15T19:20:00",
+-                    receipt: false
+-                }
+-            ],
+-            missions: [true, true, true, false, false, false, false],
+-            recordedDays: [1, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+-            specialDays: [24],
+-            today: 18,
+-            calOffset: 0
+-        };
+-
+-        let state = loadState();
+-
+-        function loadState() {
+-            try {
+-                const raw = localStorage.getItem(LS_KEY);
+-                if (raw) {
+-                    const s = JSON.parse(raw);
+-                    if (s && s.user) return s;
+-                }
+-            } catch (e) {}
+-            return JSON.parse(JSON.stringify(defaultState));
+-        }
+-
+-        function saveState() {
+-            try {
+-                localStorage.setItem(LS_KEY, JSON.stringify(state));
+-            } catch (e) {}
+-        }
+-
+-        function resetState() {
+-            state = JSON.parse(JSON.stringify(defaultState));
+-            saveState();
+-            renderScreen("home");
+-            toast("데모 데이터를 초기화했어요");
+-        }
+-
+-        const fmt = n => "₩" + Number(n || 0).toLocaleString("ko-KR");
+-        const pct = (a, b) => b > 0 ? Math.round(a / b * 100) : 0;
+-
+-        /* ================= SVG ASSETS ================= */
+-        function coinSVG(size = 86, mood = "happy") {
+-            const mouth = mood === "happy" ?
+-                '<path d="M38 46 Q50 56 62 46" stroke="#8A5A00" stroke-width="3.4" fill="none" stroke-linecap="round"/>' :
+-                '<circle cx="50" cy="50" r="4" fill="#8A5A00"/>';
+-            return `<svg width="${size}" height="${size}" viewBox="0 0 100 100" fill="none">
+-    <circle cx="50" cy="52" r="34" fill="#FFD54D" stroke="#F0B429" stroke-width="4"/>
+-    <circle cx="50" cy="52" r="25" fill="#FFE08A" opacity=".65"/>
+-    <path d="M14 60 Q4 66 8 74" stroke="#F0B429" stroke-width="4" fill="none" stroke-linecap="round"/>
+-    <path d="M86 60 Q96 66 92 74" stroke="#F0B429" stroke-width="4" fill="none" stroke-linecap="round"/>
+-    <path d="M38 86 Q36 94 30 94" stroke="#F0B429" stroke-width="4" fill="none" stroke-linecap="round"/>
+-    <path d="M62 86 Q64 94 70 94" stroke="#F0B429" stroke-width="4" fill="none" stroke-linecap="round"/>
+-    <circle cx="40" cy="47" r="3.6" fill="#5A3D00"/>
+-    <circle cx="60" cy="47" r="3.6" fill="#5A3D00"/>
+-    <circle cx="35" cy="54" r="4" fill="#FFB03A" opacity=".55"/>
+-    <circle cx="65" cy="54" r="4" fill="#FFB03A" opacity=".55"/>
+-    ${mouth}
+-    <path d="M30 30 Q40 22 50 22" stroke="#FFF3C4" stroke-width="4" fill="none" stroke-linecap="round"/>
+-  </svg>`;
+-        }
+-
+-        function robotSVG(size = 44) {
+-            return `<svg width="${size}" height="${size}" viewBox="0 0 48 48" fill="none">
+-    <rect x="8" y="14" width="32" height="26" rx="9" fill="#4DA6FF"/>
+-    <path d="M24 14 V7" stroke="#4DA6FF" stroke-width="3" stroke-linecap="round"/>
+-    <circle cx="24" cy="6" r="3" fill="#FFD54D"/>
+-    <rect x="13" y="20" width="22" height="13" rx="6" fill="#202D2D"/>
+-    <circle cx="20" cy="26.5" r="2.2" fill="#7CF5C8"/>
+-    <circle cx="28" cy="26.5" r="2.2" fill="#7CF5C8"/>
+-    <path d="M21 30 Q24 32 27 30" stroke="#7CF5C8" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+-    <rect x="4" y="22" width="4" height="9" rx="2" fill="#4DA6FF"/>
+-    <rect x="40" y="22" width="4" height="9" rx="2" fill="#4DA6FF"/>
+-  </svg>`;
+-        }
+-
+-        function consoleSVG(size = 64) {
+-            return `<svg width="${size}" height="${size}" viewBox="0 0 72 52" fill="none">
+-    <rect x="2" y="6" width="68" height="40" rx="10" fill="#FF6B6B"/>
+-    <rect x="22" y="12" width="28" height="22" rx="4" fill="#202D2D"/>
+-    <rect x="25" y="15" width="22" height="14" rx="2" fill="#3ECF8E"/>
+-    <circle cx="12" cy="22" r="5" fill="#202D2D"/>
+-    <path d="M12 18.5 V25.5 M8.5 22 H15.5" stroke="#F5F7FA" stroke-width="1.8" stroke-linecap="round"/>
+-    <circle cx="60" cy="19" r="3" fill="#FFD54D"/>
+-    <circle cx="60" cy="27" r="3" fill="#4DA6FF"/>
+-    <rect x="30" y="38" width="12" height="3" rx="1.5" fill="#202D2D" opacity=".5"/>
+-  </svg>`;
+-        }
+-
+-        function pigSVG(size = 30) {
+-            return `<svg width="${size}" height="${size}" viewBox="0 0 40 40" fill="none">
+-    <ellipse cx="20" cy="23" rx="14" ry="11" fill="#FFB3C1"/>
+-    <circle cx="20" cy="16" r="9" fill="#FFC9D4"/>
+-    <path d="M13 10 L15 5 L18 9 Z" fill="#FFB3C1"/>
+-    <path d="M27 10 L25 5 L22 9 Z" fill="#FFB3C1"/>
+-    <ellipse cx="20" cy="19" rx="4" ry="3" fill="#FF97A9"/>
+-    <circle cx="18.6" cy="19" r=".9" fill="#B3546B"/><circle cx="21.4" cy="19" r=".9" fill="#B3546B"/>
+-    <circle cx="16.5" cy="14.5" r="1.3" fill="#5A3D43"/><circle cx="23.5" cy="14.5" r="1.3" fill="#5A3D43"/>
+-    <path d="M33 21 q4 -1 4 3" stroke="#FF97A9" stroke-width="2" fill="none" stroke-linecap="round"/>
+-  </svg>`;
+-        }
+-
+-        const NAV_ICONS = {
+-            home: c => `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg>`,
+-            record: c => `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>`,
+-            goal: c => `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="${c}" stroke="none"/></svg>`,
+-            score: c => `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L19 8.3l-3.5 3.4.8 5-4.3-2.4-4.3 2.4.8-5L5 8.3l5.1-.7z"/></svg>`,
+-            more: c => `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>`
+-        };
+-
+-        /* ================= TOAST ================= */
+-        function toast(msg, dur = 1800) {
+-            const wrap = document.getElementById("toastWrap");
+-            const el = document.createElement("div");
+-            el.className = "toast";
+-            el.textContent = msg;
+-            wrap.appendChild(el);
+-            setTimeout(() => {
+-                el.classList.add("bye");
+-                setTimeout(() => el.remove(), 300);
+-            }, dur);
+-        }
+-
+-        /* ================= OVERLAY / DIALOG ================= */
+-        const overlay = document.getElementById("overlay");
+-        overlay.addEventListener("click", e => {
+-            if (e.target === overlay) closeOverlay();
+-        });
+-
+-        function openOverlay(html, kind) {
+-            overlay.innerHTML = html;
+-            overlay.classList.remove("hidden");
+-            overlay.style.alignItems = kind === "sheet" ? "flex-end" : "center";
+-        }
+-
+-        function closeOverlay() {
+-            overlay.classList.add("hidden");
+-            overlay.innerHTML = "";
+-        }
+-
+-        function openSheet() {
+-            openOverlay(`
+-  <div class="sheet" role="dialog" aria-modal="true" aria-label="더보기 메뉴">
+-    <div class="grab"></div>
+-    <h2>포켓WON</h2>
+-    <p class="sheet-sub">용돈 습관을 게임처럼 재미있게 만들어 보세요.</p>
+-    <button class="sheet-item" data-act="calendar"><span class="si-ico">📅</span>습관 캘린더 · 배지</button>
+-    <button class="sheet-item" data-act="parentReport"><span class="si-ico">👨‍👩‍👧</span>부모 공유 리포트</button>
+-    <button class="sheet-item" data-act="about"><span class="si-ico">ℹ️</span>포켓WON 소개</button>
+-    <button class="sheet-item" data-act="theme"><span class="si-ico">🌗</span>테마 설정</button>
+-    <button class="sheet-item" data-act="reset"><span class="si-ico">↻</span>데모 데이터 초기화</button>
+-    <button class="sheet-close" data-act="close">닫기</button>
+-  </div>`, "sheet");
+-            overlay.querySelectorAll("[data-act]").forEach(b => {
+-                b.addEventListener("click", () => {
+-                    const act = b.dataset.act;
+-                    closeOverlay();
+-                    if (act === "calendar" || act === "parentReport") renderScreen(act);
+-                    else if (act === "reset") resetState();
+-                    else if (act === "about") openAbout();
+-                    else if (act === "theme") openThemeDialog();
+-                });
+-            });
+-        }
+-
+-        function openAbout() {
+-            openOverlay(`
+-  <div class="dialog" role="dialog" aria-modal="true">
+-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">${coinSVG(44)}<h3>포켓WON</h3></div>
+-    <p class="d-sub">AI가 용돈 습관을 분석해 습관 Score로 바꿔 주는<br>우리 아이 첫 돈 습관 앱이에요.<br><br>용돈 기록 · 저축 목표 · AI 습관 분석 · 습관 배지 · 부모 리포트까지, 아이 스스로 돈을 관리하는 힘을 길러줘요.</p>
+-    <div class="d-actions"><button class="d-ok" onclick="closeOverlay()">알겠어요</button></div>
+-  </div>`, "dialog");
+-        }
+-        /* ================= SCREEN: HOME ================= */
+-        function renderHome() {
+-            const goalPct = pct(state.goal.current, state.goal.target);
+-            const spendPct = pct(state.monthly.spending, 41000);
+-            const savePct = pct(state.monthly.saving, 41000);
+-            const ring = 2 * Math.PI * 44;
+-            const recent = state.transactions.slice(0, 3);
+-            const showIntro = !localStorage.getItem(INTRO_KEY);
+-
+-            return `
+-  <header class="appbar">
+-    <button class="icon-btn" id="menuBtn" aria-label="메뉴 열기">
+-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+-    </button>
+-    <span class="greeting">안녕, ${state.user.name}아!</span>
+-    <div style="display:flex;gap:8px">
+-      <button class="icon-btn" id="themeBtn" aria-label="테마 전환">${themeIcon()}</button>
+-      <button class="icon-btn" id="bellBtn" aria-label="알림">
+-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 20a2 2 0 0 1-3.4 0"/></svg>
+-      </button>
+-    </div>
+-  </header>
+-
+-  ${showIntro ? `
+-  <div class="intro-banner" id="introBanner">
+-    <p>용돈을 기록하면 <b>AI 코코</b>가 나의 소비·저축 습관을 분석해줘요.</p>
+-    <button id="introOk">시작해볼게요</button>
+-  </div>` : ""}
+-
+-  <section class="hero-card">
+-    <div>
+-      <div class="label">남은 용돈</div>
+-      <div class="amount">${fmt(state.balance)}</div>
+-      <button class="link" id="historyBtn">용돈 내역 보기&nbsp;›</button>
+-    </div>
+-    <div class="hero-mascot">${coinSVG(92)}</div>
+-  </section>
+-
+-  <section class="card score-card clickable" id="scoreCard" style="margin-top:14px">
+-    <div>
+-      <div class="sc-title">AI 습관 Score</div>
+-      <div class="sc-value">${state.habitScore}<small>점</small></div>
+-      <div class="sc-msg">잘하고 있어요! 👍</div>
+-    </div>
+-    <div class="ring-wrap">
+-      <svg width="110" height="110" viewBox="0 0 110 110">
+-        <circle cx="55" cy="55" r="44" stroke="var(--track)" stroke-width="11" fill="none"/>
+-        <circle id="scoreRing" cx="55" cy="55" r="44" stroke="var(--mint)" stroke-width="11" fill="none"
+-          stroke-linecap="round" stroke-dasharray="${ring}" stroke-dashoffset="${ring}"
+-          transform="rotate(-90 55 55)" style="transition:stroke-dashoffset .7s cubic-bezier(.3,.7,.3,1)"/>
+-      </svg>
+-      <div class="ring-mascot">${coinSVG(40)}</div>
+-    </div>
+-  </section>
+-
+-  <section class="mini-row">
+-    <button class="mini-card clickable" data-go="record"><span class="m-ico">💸</span><div class="m-label">소비</div><div class="m-value">${fmt(state.monthly.spending)}</div><div class="m-pct" style="color:var(--coral)">${spendPct}%</div></button>
+-    <button class="mini-card clickable" data-go="goal"><span class="m-ico">${pigSVG(20)}</span><div class="m-label">저축</div><div class="m-value">${fmt(state.monthly.saving)}</div><div class="m-pct" style="color:var(--mint-dark)">${savePct}%</div></button>
+-    <button class="mini-card clickable" data-go="goal"><span class="m-ico">🎯</span><div class="m-label">목표</div><div class="m-value">${fmt(state.goal.target)}</div><div class="m-pct" style="color:var(--blue)">${goalPct}%</div></button>
+-  </section>
+-
+-  <button class="streak-banner clickable" id="streakBtn">
+-    ${coinSVG(42)}
+-    <span>
+-      <div class="sb-title">${state.streak}일 연속 기록 중!</div>
+-      <div class="sb-sub">멋져요, 계속 함께해요!</div>
+-    </span>
+-    <span class="sb-arrow">›</span>
+-  </button>
+-
+-  ${recent.length ? `
+-  <section class="card recent-card" style="margin-top:14px">
+-    <h3>최근 기록</h3>
+-    ${recent.map(txRow).join("")}
+-  </section>` : ""}`;
+-        }
+-
+-        function txRow(t) {
+-            const ico = {
+-                간식: "🍪",
+-                문구: "✏️",
+-                게임: "🎮",
+-                교통: "🚌",
+-                기타: "👕",
+-                용돈: "💰"
+-            }[t.category] || "👕";
+-            const d = new Date(t.ts);
+-            const ds = isNaN(d) ? "" : `${d.getMonth()+1}/${d.getDate()}`;
+-            return `<div class="tx-row">
+-    <span class="tx-ico">${ico}</span>
+-    <span class="tx-mid"><div class="t1">${t.category}</div><div class="t2">${ds} · ${t.type==="in"?"수입":"지출"}${t.receipt?" · 🧾":""}</div></span>
+-    <span class="tx-amt ${t.type==="in"?"in":"out"}">${t.type==="in"?"+":"-"}${fmt(t.amount)}</span>
+-  </div>`;
+-        }
+-
+-        function bindHome() {
+-            document.getElementById("menuBtn").onclick = openSheet;
+-            document.getElementById("themeBtn").onclick = toggleThemeQuick;
+-            document.getElementById("bellBtn").onclick = () => toast("AI 코코: 이번 주 저축 미션 3개를 달성했어요! 🎉");
+-            document.getElementById("historyBtn").onclick = openHistory;
+-            document.getElementById("scoreCard").onclick = () => renderScreen("score");
+-            document.getElementById("streakBtn").onclick = () => renderScreen("calendar");
+-            document.querySelectorAll("[data-go]").forEach(b => b.onclick = () => renderScreen(b.dataset.go));
+-            const introOk = document.getElementById("introOk");
+-            if (introOk) introOk.onclick = () => {
+-                localStorage.setItem(INTRO_KEY, "1");
+-                document.getElementById("introBanner").remove();
+-                toast("포켓WON에 온 걸 환영해요! 🎉");
+-            };
+-            requestAnimationFrame(() => requestAnimationFrame(() => {
+-                const ring = 2 * Math.PI * 44;
+-                const el = document.getElementById("scoreRing");
+-                if (el) el.style.strokeDashoffset = ring * (1 - state.habitScore / 100);
+-            }));
+-        }
+-
+-        function openHistory() {
+-            const list = state.transactions.length ?
+-                state.transactions.map(txRow).join("") :
+-                `<p class="d-sub" style="padding:14px 0">아직 기록이 없어요. 첫 용돈을 기록해볼까요?</p>`;
+-            openOverlay(`
+-  <div class="sheet" role="dialog" aria-modal="true" aria-label="용돈 내역">
+-    <div class="grab"></div>
+-    <h2>용돈 내역</h2>
+-    <p class="sheet-sub">이번 달 수입과 지출을 모아봤어요.</p>
+-    <div style="max-height:46vh;overflow-y:auto">${list}</div>
+-    <button class="sheet-close" onclick="closeOverlay()">닫기</button>
+-  </div>`, "sheet");
+-        }
+-
+-        /* ================= SCREEN: RECORD ================= */
+-        const CATS = [{
+-                name: "간식",
+-                ico: "🍪"
+-            }, {
+-                name: "문구",
+-                ico: "✏️"
+-            }, {
+-                name: "게임",
+-                ico: "🎮"
+-            },
+-            {
+-                name: "교통",
+-                ico: "🚌"
+-            }, {
+-                name: "기타",
+-                ico: "👕"
+-            }
+-        ];
+-        let recType = "in",
+-            recCat = "간식",
+-            recReceipt = false;
+-
+-        function renderRecord() {
+-            return `
+-  <header class="appbar">
+-    <button class="icon-btn" data-back aria-label="뒤로 가기">
+-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+-    </button>
+-    <span class="title">용돈 기록</span>
+-    <button class="icon-btn" id="recHistory" aria-label="기록 내역">
+-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+-    </button>
+-  </header>
+-
+-  <div class="seg" role="tablist">
+-    <button id="segIn" class="${recType==="in"?"on":""}" role="tab">수입</button>
+-    <button id="segOut" class="${recType==="out"?"on":""}" role="tab">지출</button>
++  <div class="pw-shell">
++    <div class="pw-safe-area-top" aria-hidden="true"></div>
++    <header class="pw-header">
++      <p class="pw-header-context" id="pw-header-context" aria-label="포켓WON">Pocket<span class="pw-brand-accent">WON</span></p>
++      <button class="pw-icon-button" id="pw-menu" type="button" aria-label="전체 메뉴"></button>
++    </header>
++    <main class="pw-content" id="pw-content" aria-labelledby="pw-screen-title">
++      <section class="pw-placeholder" aria-labelledby="pw-screen-title">
++        <h1 class="pw-type-h1" id="pw-screen-title" aria-live="polite" aria-atomic="true">홈</h1>
++      </section>
++    </main>
++    <nav class="pw-bottom-navigation" aria-label="주요 메뉴">
++      <div class="pw-navigation-items" id="pw-navigation-items"></div>
++      <div class="pw-safe-area-bottom" aria-hidden="true"></div>
++    </nav>
+   </div>
+-
+-  <section class="card">
+-    <div class="amount-box">
+-      <div class="a-label">금액 입력</div>
+-      <div class="amount-line">
+-        <span class="won">₩</span>
+-        <input id="amountInput" inputmode="numeric" autocomplete="off" placeholder="0" aria-label="금액 입력" value="">
+-        <span style="width:30px">${coinSVG(34)}</span>
+-      </div>
+-    </div>
+-    <div class="cat-row" id="catRow">
+-      ${CATS.map(c=>`<button class="cat-chip ${c.name===recCat?"on":""}" data-cat="${c.name}"><span class="ce">${c.ico}</span>${c.name}</button>`).join("")}
+-    </div>
+-    <div id="receiptZone">
+-      ${recReceipt
+-        ? `<div class="receipt-done"><span class="thumb">🧾</span><span><div class="rt">영수증이 추가되었어요</div><div class="rs">기록과 함께 저장돼요</div></span></div>`
+-        : `<button class="receipt-btn" id="receiptBtn">📷 영수증 사진 찍기</button>`}
+-    </div>
+-    <div class="keypad" id="keypad">
+-      ${["1","2","3","4","5","6","7","8","9"].map(n=>`<button data-key="${n}">${n}</button>`).join("")}
+-      <button data-key="00" aria-label="더블 제로">00</button>
+-      <button data-key="0">0</button>
+-      <button data-key="back" aria-label="지우기">⌫</button>
+-    </div>
+-    <button class="cta-primary" id="saveBtn">
+-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>
+-      기록 저장하기
+-    </button>
+-  </section>`;
+-        }
+-
+-        function bindRecord() {
+-            const input = document.getElementById("amountInput");
+-            document.querySelector("[data-back]").onclick = () => renderScreen("home");
+-            document.getElementById("recHistory").onclick = openHistory;
+-            document.getElementById("segIn").onclick = e => {
+-                recType = "in";
+-                segPaint();
+-            };
+-            document.getElementById("segOut").onclick = e => {
+-                recType = "out";
+-                segPaint();
+-            };
+-
+-            function segPaint() {
+-                document.getElementById("segIn").classList.toggle("on", recType === "in");
+-                document.getElementById("segOut").classList.toggle("on", recType === "out");
+-            }
+-            input.addEventListener("input", () => {
+-                input.value = input.value.replace(/[^0-9]/g, "").slice(0, 8);
+-            });
+-            document.querySelectorAll(".cat-chip").forEach(ch => ch.onclick = () => {
+-                recCat = ch.dataset.cat;
+-                document.querySelectorAll(".cat-chip").forEach(x => x.classList.toggle("on", x.dataset.cat === recCat));
+-            });
+-            const receiptBtn = document.getElementById("receiptBtn");
+-            if (receiptBtn) receiptBtn.onclick = () => {
+-                recReceipt = true;
+-                document.getElementById("receiptZone").innerHTML =
+-                    `<div class="receipt-done"><span class="thumb">🧾</span><span><div class="rt">영수증이 추가되었어요</div><div class="rs">기록과 함께 저장돼요</div></span></div>`;
+-                toast("영수증이 추가되었어요");
+-            };
+-            document.getElementById("keypad").addEventListener("click", e => {
+-                const b = e.target.closest("button");
+-                if (!b) return;
+-                const k = b.dataset.key;
+-                let v = input.value;
+-                if (k === "back") v = v.slice(0, -1);
+-                else v = (v + k).replace(/^0+(?=\d)/, "").slice(0, 8);
+-                input.value = v;
+-            });
+-            document.getElementById("saveBtn").onclick = () => {
+-                const amount = parseInt(input.value || "0", 10);
+-                if (!amount || amount <= 0) {
+-                    toast("금액을 입력해주세요");
+-                    return;
+-                }
+-                const tx = {
+-                    type: recType,
+-                    amount,
+-                    category: recType === "out" ? recCat : "용돈",
+-                    ts: new Date().toISOString(),
+-                    receipt: recReceipt
+-                };
+-                state.transactions.unshift(tx);
+-                if (recType === "in") {
+-                    state.balance += amount;
+-                    state.monthly.saving += amount;
+-                } else {
+-                    state.balance = Math.max(0, state.balance - amount);
+-                    state.monthly.spending += amount;
+-                }
+-                if (!state.recordedDays.includes(state.today)) {
+-                    state.recordedDays.push(state.today);
+-                    state.streak += 1;
+-                }
+-                saveState();
+-                recReceipt = false;
+-                toast("용돈 기록을 저장했어요! 🎉");
+-                setTimeout(() => renderScreen("home"), 1500);
+-            };
+-        }
+-
+-        /* ================= SCREEN: GOAL ================= */
+-        function renderGoal() {
+-            const p = Math.min(100, pct(state.goal.current, state.goal.target));
+-            const days = ["월", "화", "수", "목", "금", "토", "일"];
+-            return `
+-  <header class="appbar">
+-    <button class="icon-btn" data-back aria-label="뒤로 가기">
+-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+-    </button>
+-    <span class="title">저축 목표</span>
+-    <button class="icon-btn" id="addGoal" aria-label="목표 추가">
+-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+-    </button>
+-  </header>
+-
+-  <section class="card">
+-    <div class="goal-hero">
+-      <span class="g-art">${consoleSVG(62)}</span>
+-      <div>
+-        <div class="g-name">${state.goal.title}</div>
+-        <div class="g-amt">${fmt(state.goal.target)}</div>
+-      </div>
+-    </div>
+-    <div class="goal-progress-meta">
+-      <div><div class="gp-label">현재까지 모은 금액</div><div class="gp-cur">${fmt(state.goal.current)}</div></div>
+-      <div class="gp-pct">${p}%</div>
+-    </div>
+-    <div class="pbar"><div id="goalBar"></div></div>
+-    <div class="dday">📅 D-${state.goal.daysLeft} 남았어요!</div>
+-  </section>
+-
+-  <section class="card mission-card">
+-    <div style="display:flex;justify-content:space-between;align-items:baseline">
+-      <h3>이번 주 저축 미션</h3><span class="mc-range">5.13 ~ 5.19</span>
+-    </div>
+-    <div class="mission-list">
+-      ${days.map((d,i)=>`
+-      <button class="mission ${state.missions[i]?"done":""}" data-mi="${i}" ${state.missions[i]?"disabled":""}>
+-        <span class="check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+-        <span class="m-day">${d}</span>
+-        <span class="m-txt">1,000원 저축하기</span>
+-      </button>`).join("")}
+-    </div>
+-  </section>`;
+-        }
+-
+-        function bindGoal() {
+-            document.querySelector("[data-back]").onclick = () => renderScreen("home");
+-            requestAnimationFrame(() => requestAnimationFrame(() => {
+-                const bar = document.getElementById("goalBar");
+-                if (bar) bar.style.width = Math.min(100, pct(state.goal.current, state.goal.target)) + "%";
+-            }));
+-            document.querySelectorAll(".mission:not(.done)").forEach(m => m.onclick = () => {
+-                const i = +m.dataset.mi;
+-                state.missions[i] = true;
+-                if (state.goal.current < state.goal.target)
+-                    state.goal.current = Math.min(state.goal.target, state.goal.current + 1000);
+-                state.points += 10;
+-                saveState();
+-                toast("미션 완료! 1,000원을 저축했어요 🐷");
+-                renderScreen("goal", true);
+-            });
+-            document.getElementById("addGoal").onclick = openGoalDialog;
+-        }
+-
+-        function openGoalDialog() {
+-            const g = state.goal;
+-            const d = new Date();
+-            d.setDate(d.getDate() + g.daysLeft);
+-            const iso = d.toISOString().slice(0, 10);
+-            openOverlay(`
+-  <div class="dialog" role="dialog" aria-modal="true" aria-label="목표 설정">
+-    <h3>저축 목표 ${g ? "수정" : "추가"}</h3>
+-    <p class="d-sub">갖고 싶은 것을 향해 조금씩 모아봐요.</p>
+-    <div class="d-field"><label>목표 이름</label><input id="gfName" value="${g.title}" maxlength="12"></div>
+-    <div class="d-field"><label>목표 금액 (원)</label><input id="gfTarget" inputmode="numeric" value="${g.target}"></div>
+-    <div class="d-field"><label>현재 저축액 (원)</label><input id="gfCurrent" inputmode="numeric" value="${g.current}"></div>
+-    <div class="d-field"><label>목표 날짜</label><input id="gfDate" type="date" value="${iso}"></div>
+-    <div class="d-actions">
+-      <button class="d-cancel" onclick="closeOverlay()">취소</button>
+-      <button class="d-ok" id="goalSave">목표 저장</button>
+-    </div>
+-  </div>`, "dialog");
+-            ["gfTarget", "gfCurrent"].forEach(id => {
+-                document.getElementById(id).addEventListener("input", e => {
+-                    e.target.value = e.target.value.replace(/[^0-9]/g, "").slice(0, 9);
+-                });
+-            });
+-            document.getElementById("goalSave").onclick = () => {
+-                const name = document.getElementById("gfName").value.trim() || "나의 목표";
+-                const target = parseInt(document.getElementById("gfTarget").value || "0", 10);
+-                const current = parseInt(document.getElementById("gfCurrent").value || "0", 10);
+-                const date = document.getElementById("gfDate").value;
+-                if (!target) {
+-                    toast("목표 금액을 입력해주세요");
+-                    return;
+-                }
+-                let daysLeft = state.goal.daysLeft;
+-                if (date) {
+-                    const diff = Math.ceil((new Date(date) - new Date()) / 86400000);
+-                    daysLeft = Math.max(0, diff);
+-                }
+-                state.goal = {
+-                    title: name,
+-                    target,
+-                    current: Math.min(current, target),
+-                    daysLeft
+-                };
+-                state.monthly.goal = target;
+-                saveState();
+-                closeOverlay();
+-                toast("저축 목표를 저장했어요 🎯");
+-                renderScreen("goal", true);
+-            };
+-        }
+-        /* ================= SCREEN: AI SCORE ================= */
+-        const CAT_BASE = {
+-            간식: 2700,
+-            문구: 3400,
+-            게임: 0,
+-            교통: 0
+-        }; // 시드 기록 제외한 기본값 (합산 시 6,200/3,400/2,700/1,800)
+-        const CAT_HIDDEN = 9700; // 항목화되지 않은 그 외 지출 (비율 계산용)
+-        function snackTotal(catMap) {
+-            return catMap["간식"] || 0;
+-        }
+-
+-        function categoryTotals() {
+-            const map = JSON.parse(JSON.stringify(CAT_BASE));
+-            state.transactions.forEach(t => {
+-                if (t.type === "out") map[t.category] = (map[t.category] || 0) + t.amount;
+-            });
+-            return map;
+-        }
+-
+-        function coachMessage() {
+-            const total = state.monthly.spending + state.monthly.saving;
+-            const spendShare = total ? state.monthly.spending / total : 0;
+-            const catMap = categoryTotals();
+-            if (snackTotal(catMap) >= 6000) return "간식 지출을 조금만 줄여 볼까?";
+-            if (spendShare > 0.55) return "이번 주는 소비가 조금 많았어요.";
+-            if (state.monthly.saving > state.monthly.spending) return "저축 습관이 아주 좋아지고 있어요!";
+-            return "꾸준히 기록하는 습관이 아주 좋아요!";
+-        }
+-
+-        function renderScore() {
+-            const pva = [{
+-                    name: "전체",
+-                    plan: 100,
+-                    real: Math.min(100, state.habitScore)
+-                },
+-                {
+-                    name: "소비",
+-                    plan: 72,
+-                    real: Math.min(100, pct(state.monthly.spending, 17000))
+-                },
+-                {
+-                    name: "저축",
+-                    plan: 100,
+-                    real: Math.min(130, pct(state.monthly.saving, 12000))
+-                },
+-                {
+-                    name: "목표",
+-                    plan: 85,
+-                    real: pct(state.goal.current, state.goal.target)
+-                }
+-            ];
+-            const catBase = categoryTotals();
+-            const catTotal = Object.values(catBase).reduce((a, b) => a + b, 0) + CAT_HIDDEN;
+-            const catIco = {
+-                간식: "🍪",
+-                문구: "✏️",
+-                게임: "🎮",
+-                교통: "🚌",
+-                기타: "👕"
+-            };
+-            const catColors = ["var(--coral)", "var(--yellow)", "var(--mint-dark)", "var(--blue)", "#9AACAC"];
+-            const cats = Object.entries(catBase).sort((a, b) => b[1] - a[1]);
+-
+-            return `
+-  <header class="appbar">
+-    <button class="icon-btn" data-back aria-label="뒤로 가기">
+-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+-    </button>
+-    <span class="title">AI 습관 Score</span>
+-    <button class="icon-btn" id="scoreHelp" aria-label="도움말">
+-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.3a2.6 2.6 0 1 1 3.4 2.5c-.8.3-.9 1-.9 1.7"/><circle cx="12" cy="17" r=".4" fill="#202D2D"/></svg>
+-    </button>
+-  </header>
+-
+-  <section class="card score-hero">
+-    <div class="big">${state.habitScore}<small>점</small></div>
+-    ${coinSVG(96)}
+-  </section>
+-
+-  <div class="coach-card">
+-    ${robotSVG(46)}
+-    <div>
+-      <div class="cc-label">AI 코코</div>
+-      <div class="cc-msg">${coachMessage()}</div>
+-    </div>
+-  </div>
+-
+-  <h2 class="section-title">계획 vs 실제 비교</h2>
+-  <section class="card">
+-    <div class="legend"><span><i style="background:var(--plan-bar)"></i>계획</span><span><i style="background:var(--mint)"></i>실제</span></div>
+-    <div class="pva">
+-      ${pva.map(g=>`
+-      <div class="pva-group">
+-        <div class="pva-bars">
+-          <div class="pva-bar" data-h="${g.plan}" style="height:0;background:var(--plan-bar)"><span class="pv" style="color:var(--text-sub)">${g.plan}%</span></div>
+-          <div class="pva-bar" data-h="${g.real}" style="height:0;background:${g.real>=g.plan?"var(--mint)":"var(--coral)"}"><span class="pv" style="color:${g.real>=g.plan?"var(--mint-dark)":"var(--coral)"}">${g.real}%</span></div>
+-        </div>
+-        <div class="pva-name">${g.name}</div>
+-      </div>`).join("")}
+-    </div>
+-  </section>
+-
+-  <h2 class="section-title">카테고리별 지출 리포트</h2>
+-  <section class="card">
+-    ${cats.map(([name,amt],i)=>`
+-    <div class="cat-report-row">
+-      <span class="tx-ico">${catIco[name]||"👕"}</span>
+-      <span class="cr-name">${name}</span>
+-      <span class="cr-amt">${fmt(amt)}</span>
+-      <span class="cr-pct" style="color:${catColors[i]||"#9AACAC"}">${pct(amt,catTotal)}%</span>
+-    </div>`).join("")}
+-    <button id="moreReport" style="width:100%;padding:12px 0 2px;font-size:12.5px;font-weight:700;color:var(--text-sub)">더보기 ›</button>
+-  </section>`;
+-        }
+-
+-        function bindScore() {
+-            document.querySelector("[data-back]").onclick = () => renderScreen("home");
+-            document.getElementById("scoreHelp").onclick = () => toast("기록·저축·계획 달성을 모아 100점 만점으로 계산해요");
+-            document.getElementById("moreReport").onclick = () => toast("상세 리포트는 목업에서 준비 중이에요");
+-            requestAnimationFrame(() => requestAnimationFrame(() => {
+-                document.querySelectorAll(".pva-bar").forEach(b => {
+-                    b.style.height = Math.min(100, +b.dataset.h) * 0.78 + "px";
+-                });
+-            }));
+-        }
+-
+-        /* ================= SCREEN: CALENDAR ================= */
+-        const BADGES = [{
+-                name: "첫 기록",
+-                ico: "🥇",
+-                on: true,
+-                cond: "첫 용돈 기록을 남겼어요",
+-                st: "2024.05.07 달성"
+-            },
+-            {
+-                name: "3일 연속",
+-                ico: "🔥",
+-                on: true,
+-                cond: "3일 연속으로 기록했어요",
+-                st: "2024.05.10 달성"
+-            },
+-            {
+-                name: "7일 연속",
+-                ico: "🔥",
+-                on: true,
+-                cond: "7일 연속으로 기록했어요",
+-                st: "2024.05.14 달성"
+-            },
+-            {
+-                name: "계획 달성",
+-                ico: "🛡️",
+-                on: true,
+-                cond: "이번 달 저축 계획을 지켰어요",
+-                st: "2024.05.17 달성"
+-            },
+-            {
+-                name: "저축왕",
+-                ico: "🔒",
+-                on: false,
+-                cond: "한 달 저축 20,000원 달성",
+-                st: `현재 ${fmt(state.monthly.saving)} / ₩20,000`
+-            },
+-            {
+-                name: "절약왕",
+-                ico: "🔒",
+-                on: false,
+-                cond: "간식 지출 30% 줄이기",
+-                st: "아직 도전 전이에요"
+-            },
+-            {
+-                name: "목표 달성",
+-                ico: "🔒",
+-                on: false,
+-                cond: "저축 목표 100% 달성",
+-                st: `현재 ${pct(state.goal.current,state.goal.target)}%`
+-            },
+-            {
+-                name: "꾸준왕",
+-                ico: "🔒",
+-                on: false,
+-                cond: "30일 연속 기록",
+-                st: `현재 ${state.streak}일 연속`
+-            }
+-        ];
+-
+-        function renderCalendar() {
+-            const base = new Date(2024, 4, 1); // 2024년 5월
+-            const view = new Date(2024, 4 + state.calOffset, 1);
+-            const y = view.getFullYear(),
+-                m = view.getMonth();
+-            const firstDow = (new Date(y, m, 1).getDay() + 6) % 7; // 월요일 시작
+-            const daysIn = new Date(y, m + 1, 0).getDate();
+-            const isBase = state.calOffset === 0;
+-            const dows = ["월", "화", "수", "목", "금", "토", "일"];
+-            let cells = "";
+-            for (let i = 0; i < firstDow; i++) cells += `<div class="cal-cell"></div>`;
+-            for (let d = 1; d <= daysIn; d++) {
+-                const rec = isBase && state.recordedDays.includes(d);
+-                const sp = isBase && state.specialDays.includes(d);
+-                const today = isBase && d === state.today;
+-                cells += `<div class="cal-cell ${today?"today":""}">
+-      ${rec ? `<span class="day-ico">${sp?"🔥":"🙂"}</span>` : `<span>${d}</span>`}
+-      ${today ? `<span style="font-size:9.5px;font-weight:800;color:var(--on-yellow)">오늘</span>` : ""}
+-    </div>`;
+-            }
+-            return `
+-  <header class="appbar">
+-    <button class="icon-btn" data-back aria-label="뒤로 가기">
+-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+-    </button>
+-    <span class="title">습관 캘린더</span>
+-    <button class="point-chip" id="pointChip" aria-label="내 포인트">🪙 ${state.points.toLocaleString()}P</button>
+-  </header>
+-
+-  <section class="card">
+-    <div class="cal-head">
+-      <button id="calPrev" aria-label="이전 달">‹</button>
+-      <span class="cal-title">${y}년 ${m+1}월</span>
+-      <button id="calNext" aria-label="다음 달">›</button>
+-    </div>
+-    <div class="cal-grid">
+-      ${dows.map(d=>`<div class="cal-dow">${d}</div>`).join("")}
+-      ${cells}
+-    </div>
+-  </section>
+-
+-  <div class="streak-banner" style="margin-top:14px">
+-    <span style="font-size:30px">🔥</span>
+-    <span>
+-      <div class="sb-title">${state.streak}일 연속 기록!</div>
+-      <div class="sb-sub">대단해요! 습관이 쑥쑥 자라고 있어요</div>
+-    </span>
+-  </div>
+-
+-  <h2 class="section-title">내 배지 컬렉션</h2>
+-  <div class="badge-grid">
+-    ${BADGES.map((b,i)=>`
+-    <button class="badge-item ${b.on?"":"locked"}" data-badge="${i}">
+-      <span class="b-ico">${b.ico}</span><span class="b-name">${b.name}</span>
+-    </button>`).join("")}
+-  </div>`;
+-        }
+-
+-        function bindCalendar() {
+-            document.querySelector("[data-back]").onclick = () => renderScreen("home");
+-            document.getElementById("pointChip").onclick = () => toast("기록과 미션으로 포인트를 모아요 🪙");
+-            document.getElementById("calPrev").onclick = () => {
+-                state.calOffset--;
+-                saveState();
+-                renderScreen("calendar", true);
+-            };
+-            document.getElementById("calNext").onclick = () => {
+-                state.calOffset++;
+-                saveState();
+-                renderScreen("calendar", true);
+-            };
+-            document.querySelectorAll("[data-badge]").forEach(b => b.onclick = () => {
+-                const bd = BADGES[+b.dataset.badge];
+-                openOverlay(`
+-    <div class="dialog" role="dialog" aria-modal="true" style="text-align:center">
+-      <div style="font-size:44px;margin-bottom:6px;${bd.on?"":"filter:grayscale(1);opacity:.6"}">${bd.ico}</div>
+-      <h3>${bd.name} 배지</h3>
+-      <p class="d-sub" style="margin-top:6px">달성 조건: ${bd.cond}</p>
+-      <p class="d-sub" style="margin-top:4px;font-weight:800;color:${bd.on?"var(--mint-dark)":"var(--text-sub)"}">${bd.on?"✅ "+bd.st:"🔒 "+bd.st}</p>
+-      <div class="d-actions"><button class="d-ok" onclick="closeOverlay()">확인</button></div>
+-    </div>`, "dialog");
+-            });
+-        }
+-
+-        /* ================= SCREEN: PARENT REPORT ================= */
+-        function renderParentReport() {
+-            const scores = [65, 72, 82, 90];
+-            const weeks = ["4/27~5/3", "5/4~5/10", "5/11~5/17", "5/18~5/24"];
+-            const W = 320,
+-                H = 150,
+-                pad = 26;
+-            const xs = i => pad + i * (W - pad * 2) / (scores.length - 1);
+-            const ys = v => H - 24 - (v - 55) / (95 - 55) * (H - 56);
+-            const pts = scores.map((s, i) => `${xs(i)},${ys(s)}`).join(" ");
+-            return `
+-  <header class="appbar">
+-    <button class="icon-btn" data-back aria-label="뒤로 가기">
+-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+-    </button>
+-    <span class="title">${state.user.name}이의 이번 달 리포트</span>
+-    <button class="icon-btn" id="shareBtn" aria-label="리포트 공유">
+-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.7l7.4-4.2M8.3 13.3l7.4 4.2"/></svg>
+-    </button>
+-  </header>
+-
+-  <section class="card">
+-    <h3 style="font-size:14.5px;font-weight:800;margin-bottom:10px">주간 습관 Score 추이</h3>
+-    <svg class="line-chart" viewBox="0 0 ${W} ${H}">
+-      <polyline points="${pts}" fill="none" stroke="var(--mint)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+-      ${scores.map((s,i)=>`
+-        <circle cx="${xs(i)}" cy="${ys(s)}" r="5" fill="var(--card)" stroke="var(--mint)" stroke-width="3.4"/>
+-        <text x="${xs(i)}" y="${ys(s)-12}" text-anchor="middle" font-size="12" font-weight="800" fill="var(--text)">${s}점</text>
+-      `).join("")}
+-    </svg>
+-    <div class="lc-weeks">${weeks.map(w=>`<span>${w}</span>`).join("")}</div>
+-  </section>
+-
+-  <h2 class="section-title">이번 달 이야기 주제</h2>
+-  <div class="topic-row">
+-    <div class="topic-card"><span class="t-ico">🍪</span><span class="t-txt">간식을 계획대로 먹는 게 좋아요</span><button class="t-cta" data-talk>함께 이야기해요</button></div>
+-    <div class="topic-card"><span class="t-ico">🐷</span><span class="t-txt">저축 습관이 멋지게 자라고 있어요</span><button class="t-cta" data-talk>함께 이야기해요</button></div>
+-    <div class="topic-card"><span class="t-ico">🎯</span><span class="t-txt">목표를 향해 꾸준히 나아가요</span><button class="t-cta" data-talk>함께 이야기해요</button></div>
+-  </div>
+-
+-  <div class="parent-cta-row">
+-    <button class="parent-cta blue" id="rewardBtn"><span>🎁</span>칭찬 보상 정하기</button>
+-    <button class="parent-cta mint" id="nextGoalBtn"><span>🎯</span>다음 달 목표 함께 정하기</button>
+-  </div>`;
+-        }
+-
+-        function bindParentReport() {
+-            document.querySelector("[data-back]").onclick = () => renderScreen("home");
+-            document.querySelectorAll("[data-talk]").forEach(b => b.onclick = () => toast("대화 가이드는 목업에서 준비 중이에요"));
+-            document.getElementById("shareBtn").onclick = async () => {
+-                const data = {
+-                    title: "포켓WON 리포트",
+-                    text: `${state.user.name}이의 이번 달 리포트 — 습관 Score ${state.habitScore}점, ${state.streak}일 연속 기록 중!`
+-                };
+-                if (navigator.share) {
+-                    try {
+-                        await navigator.share(data);
+-                    } catch (e) {}
+-                } else {
+-                    try {
+-                        await navigator.clipboard.writeText(data.text);
+-                    } catch (e) {}
+-                    toast("리포트 링크를 복사했어요");
+-                }
+-            };
+-            document.getElementById("rewardBtn").onclick = () => {
+-                openOverlay(`
+-    <div class="dialog" role="dialog" aria-modal="true">
+-      <h3>🎁 칭찬 보상 정하기</h3>
+-      <p class="d-sub">이번 달 잘한 일에 어떤 보상을 줄까요?</p>
+-      <button class="reward-opt" data-r="칭찬 스티커 5장">⭐ 칭찬 스티커 5장</button>
+-      <button class="reward-opt" data-r="용돈 보너스 3,000원">💰 용돈 보너스 3,000원</button>
+-      <button class="reward-opt" data-r="주말 외식 쿠폰">🍽️ 주말 외식 쿠폰</button>
+-      <div class="d-actions"><button class="d-cancel" onclick="closeOverlay()">닫기</button></div>
+-    </div>`, "dialog");
+-                overlay.querySelectorAll("[data-r]").forEach(b => b.onclick = () => {
+-                    closeOverlay();
+-                    toast(`'${b.dataset.r}' 보상을 정했어요!`);
+-                });
+-            };
+-            document.getElementById("nextGoalBtn").onclick = () => {
+-                openOverlay(`
+-    <div class="dialog" role="dialog" aria-modal="true">
+-      <h3>🎯 다음 달 목표 함께 정하기</h3>
+-      <p class="d-sub">아이와 함께 다음 달 저축 목표를 정해보세요.</p>
+-      <div class="d-field"><label>목표 이름</label><input id="ngName" placeholder="예: 새 운동화" maxlength="12"></div>
+-      <div class="d-field"><label>목표 금액 (원)</label><input id="ngAmt" inputmode="numeric" placeholder="예: 60000"></div>
+-      <div class="d-actions">
+-        <button class="d-cancel" onclick="closeOverlay()">취소</button>
+-        <button class="d-ok" id="ngSave">저장</button>
+-      </div>
+-    </div>`, "dialog");
+-                document.getElementById("ngAmt").addEventListener("input", e => {
+-                    e.target.value = e.target.value.replace(/[^0-9]/g, "").slice(0, 9);
+-                });
+-                document.getElementById("ngSave").onclick = () => {
+-                    const name = document.getElementById("ngName").value.trim();
+-                    const amt = parseInt(document.getElementById("ngAmt").value || "0", 10);
+-                    if (!name || !amt) {
+-                        toast("목표 이름과 금액을 입력해주세요");
+-                        return;
+-                    }
+-                    closeOverlay();
+-                    toast(`다음 달 목표 '${name}' ${fmt(amt)}을 정했어요 🎯`);
+-                };
+-            };
+-        }
+-
+-        /* ================= ROUTER & NAV ================= */
+-        const NAV = [{
+-                id: "home",
+-                label: "홈"
+-            },
+-            {
+-                id: "record",
+-                label: "기록"
+-            },
+-            {
+-                id: "goal",
+-                label: "목표"
+-            },
+-            {
+-                id: "score",
+-                label: "AI Score"
+-            },
+-            {
+-                id: "more",
+-                label: "더보기"
+-            }
+-        ];
+-        const NAV_ACTIVE = {
+-            home: "home",
+-            record: "record",
+-            goal: "goal",
+-            score: "score",
+-            calendar: "more",
+-            parentReport: "more"
+-        };
+-        const RENDER = {
+-            home: renderHome,
+-            record: renderRecord,
+-            goal: renderGoal,
+-            score: renderScore,
+-            calendar: renderCalendar,
+-            parentReport: renderParentReport
+-        };
+-        const BIND = {
+-            home: bindHome,
+-            record: bindRecord,
+-            goal: bindGoal,
+-            score: bindScore,
+-            calendar: bindCalendar,
+-            parentReport: bindParentReport
+-        };
+-
+-        let currentScreen = "home";
+-
+-        function renderScreen(id, keepScroll) {
+-            currentScreen = id;
+-            const app = document.getElementById("app");
+-            app.innerHTML = `<div class="screen">${RENDER[id]()}</div>`;
+-            BIND[id]();
+-            renderNav();
+-            if (!keepScroll) app.scrollTop = 0;
+-        }
+-
+-        function renderNav() {
+-            const active = NAV_ACTIVE[currentScreen];
+-            document.getElementById("bottomnav").innerHTML = NAV.map(n => {
+-                const on = n.id === active;
+-                return `<button class="nav-item ${on?"on":""}" data-nav="${n.id}" aria-label="${n.label}">${NAV_ICONS[n.id]("currentColor")}${n.label}</button>`;
+-            }).join("");
+-            document.querySelectorAll("[data-nav]").forEach(b => b.onclick = () => {
+-                const id = b.dataset.nav;
+-                if (id === "more") {
+-                    openSheet();
+-                    return;
+-                }
+-                if (id !== currentScreen) renderScreen(id);
+-            });
+-        }
+-
+-        /* ================= THEME ================= */
+-        const THEME_KEY = "pocketwon_theme";
+-        const themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
+-
+-        function themePref() {
+-            try {
+-                return localStorage.getItem(THEME_KEY) || "system";
+-            } catch (e) {
+-                return "system";
+-            }
+-        }
+-
+-        function isDark() {
+-            const p = themePref();
+-            return p === "dark" || (p === "system" && themeMedia.matches);
+-        }
+-
+-        function applyTheme() {
+-            document.documentElement.dataset.theme = isDark() ? "dark" : "light";
+-        }
+-
+-        function setTheme(p) {
+-            try {
+-                localStorage.setItem(THEME_KEY, p);
+-            } catch (e) {}
+-            applyTheme();
+-        }
+-        if (themeMedia.addEventListener) themeMedia.addEventListener("change", () => {
+-            if (themePref() === "system") applyTheme();
+-        });
+-
+-        function themeIcon() {
+-            return isDark() ?
+-                `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>` :
+-                `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>`;
+-        }
+-
+-        function toggleThemeQuick() {
+-            setTheme(isDark() ? "light" : "dark");
+-            toast(isDark() ? "다크 모드로 전환했어요 🌙" : "라이트 모드로 전환했어요 ☀️");
+-            if (currentScreen === "home") renderScreen("home", true);
+-        }
+-
+-        function openThemeDialog() {
+-            const cur = themePref();
+-            const opts = [{
+-                    v: "system",
+-                    ico: "📱",
+-                    name: "시스템 설정 따르기",
+-                    sub: "기기 설정에 맞춰 자동으로 바뀌어요"
+-                },
+-                {
+-                    v: "light",
+-                    ico: "☀️",
+-                    name: "라이트 모드",
+-                    sub: "항상 밝은 화면으로 사용해요"
+-                },
+-                {
+-                    v: "dark",
+-                    ico: "🌙",
+-                    name: "다크 모드",
+-                    sub: "항상 어두운 화면으로 사용해요"
+-                }
+-            ];
+-            openOverlay(`
+-  <div class="dialog" role="dialog" aria-modal="true" aria-label="테마 설정">
+-    <h3>테마 설정</h3>
+-    <p class="d-sub">포켓WON 화면 밝기를 골라주세요.</p>
+-    ${opts.map(o=>`
+-    <button class="reward-opt" data-t="${o.v}" style="${o.v===cur ? "outline:2px solid var(--mint);background:var(--mint-soft)" : ""}">
+-      <span style="font-size:17px">${o.ico}</span>
+-      <span style="text-align:left">
+-        <div style="font-size:13.5px;font-weight:800">${o.name}</div>
+-        <div style="font-size:11px;color:var(--text-sub);margin-top:2px">${o.sub}</div>
+-      </span>
+-      ${o.v===cur ? '<span style="margin-left:auto;color:var(--mint-dark);font-weight:800">✓</span>' : ""}
+-    </button>`).join("")}
+-    <div class="d-actions"><button class="d-cancel" onclick="closeOverlay()">닫기</button></div>
+-  </div>`, "dialog");
+-            overlay.querySelectorAll("[data-t]").forEach(b => b.onclick = () => {
+-                setTheme(b.dataset.t);
+-                closeOverlay();
+-                toast("테마를 변경했어요");
+-                renderScreen(currentScreen, true);
+-            });
+-        }
+-
+-        /* ================= INIT ================= */
+-        applyTheme();
+-        renderScreen("home");
+-    </script>
+-
+-
+ </body>
+-
+-</html>
+\ No newline at end of file
++</html>
+--- /dev/null
++++ b/ks6s3juocjzc2.kimi.page/styles/base.css
+@@ -0,0 +1,49 @@
++*, *::before, *::after { box-sizing: border-box; }
++html { color-scheme: light; -webkit-text-size-adjust: 100%; }
++body { margin: 0; color: var(--pw-color-text-primary); font: var(--pw-type-body); }
++h1, h2, h3, p { margin: 0; }
++button { font: inherit; color: inherit; cursor: pointer; }
++button:disabled { cursor: default; }
++:focus-visible { outline: var(--pw-focus-width) solid var(--pw-color-focus); outline-offset: var(--pw-focus-offset); }
++.pw-type-display { font: var(--pw-type-display); }
++.pw-type-h1 { font: var(--pw-type-h1); }
++.pw-type-h2 { font: var(--pw-type-h2); }
++.pw-type-h3 { font: var(--pw-type-h3); }
++.pw-type-body { font: var(--pw-type-body); }
++.pw-type-body-small { font: var(--pw-type-body-small); }
++.pw-type-caption { font: var(--pw-type-caption); }
++.pw-type-number-large { font: var(--pw-type-number-large); }
++.pw-type-number-medium { font: var(--pw-type-number-medium); }
++.pw-type-number-large, .pw-type-number-medium { font-variant-numeric: tabular-nums; }
++.pw-type-button { font: var(--pw-type-button); }
++.pw-button {
++  min-height: var(--pw-touch-target); min-width: var(--pw-touch-target);
++  padding: var(--pw-space-3) var(--pw-space-5);
++  border: var(--pw-border-width) solid transparent;
++  border-radius: var(--pw-button-radius);
++  background: var(--pw-button-background); color: var(--pw-button-foreground);
++  font: var(--pw-type-button); box-shadow: var(--pw-shadow-none);
++}
++.pw-icon-button {
++  display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center;
++  width: var(--pw-touch-target); height: var(--pw-touch-target); padding: var(--pw-space-3);
++  border: var(--pw-border-width) solid transparent; border-radius: var(--pw-radius-control);
++  background: transparent; color: var(--pw-color-text-primary);
++}
++.pw-icon { display: block; width: var(--pw-icon-size); height: var(--pw-icon-size); flex: 0 0 auto; }
++@media (hover: hover) {
++  .pw-button:hover:not(:disabled) { background: var(--pw-button-hover); }
++  .pw-icon-button:hover:not(:disabled) { background: var(--pw-color-surface-subtle); }
++}
++.pw-button:active:not(:disabled) { background: var(--pw-button-pressed); }
++.pw-icon-button:active:not(:disabled) { background: var(--pw-color-primary-soft); color: var(--pw-color-primary-pressed); }
++.pw-button:disabled { background: var(--pw-button-disabled-background); color: var(--pw-button-disabled-foreground); }
++.pw-icon-button:disabled { color: var(--pw-color-text-tertiary); }
++.pw-surface {
++  padding: var(--pw-surface-padding); background: var(--pw-surface-background);
++  border: var(--pw-border-width) solid var(--pw-surface-border);
++  border-radius: var(--pw-surface-radius); box-shadow: var(--pw-shadow-none);
++}
++.pw-surface--hero { border-radius: var(--pw-radius-hero); }
++.pw-surface--subtle { background: var(--pw-color-surface-subtle); }
++.pw-surface--blue { background: var(--pw-color-surface-blue); }
+--- /dev/null
++++ b/ks6s3juocjzc2.kimi.page/styles/shell.css
+@@ -0,0 +1,40 @@
++body { background: var(--pw-color-surface-subtle); }
++.pw-shell {
++  display: flex; flex-direction: column;
++  width: 100%; max-width: var(--pw-shell-max-width);
++  height: 100vh; height: 100dvh; margin-inline: auto;
++  background: var(--pw-shell-background);
++}
++.pw-safe-area-top { flex: 0 0 auto; height: var(--pw-safe-top); background: var(--pw-header-background); }
++.pw-safe-area-bottom { height: var(--pw-safe-bottom); }
++.pw-header {
++  display: flex; flex: 0 0 auto; align-items: center; justify-content: space-between;
++  gap: var(--pw-space-3); min-height: var(--pw-header-height);
++  padding-left: max(var(--pw-shell-gutter), var(--pw-safe-left));
++  padding-right: max(var(--pw-shell-gutter), var(--pw-safe-right));
++  background: var(--pw-header-background);
++}
++.pw-header-context { min-width: 0; font: var(--pw-type-h3); overflow-wrap: anywhere; }
++.pw-brand-accent { color: var(--pw-color-primary); }
++.pw-content { flex: 1 1 auto; min-height: 0; min-width: 0; overflow: auto; overscroll-behavior-y: contain; }
++.pw-placeholder {
++  padding-top: var(--pw-space-6); padding-bottom: var(--pw-space-6);
++  padding-left: max(var(--pw-shell-gutter), var(--pw-safe-left));
++  padding-right: max(var(--pw-shell-gutter), var(--pw-safe-right)); overflow-wrap: anywhere;
++}
++.pw-bottom-navigation {
++  flex: 0 0 auto; background: var(--pw-nav-background);
++  border-top: var(--pw-border-width) solid var(--pw-color-divider);
++}
++.pw-navigation-items {
++  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); min-height: var(--pw-nav-height);
++  padding: var(--pw-space-1) max(var(--pw-space-1), var(--pw-safe-right)) var(--pw-space-1) max(var(--pw-space-1), var(--pw-safe-left));
++}
++.pw-nav-item {
++  display: flex; align-items: center; justify-content: center; flex-direction: column;
++  gap: var(--pw-space-1); min-width: 0; min-height: var(--pw-touch-target);
++  padding: var(--pw-space-2) 0; border: 0; border-radius: 0;
++  background: transparent; color: var(--pw-nav-inactive); font: var(--pw-type-caption);
++}
++.pw-nav-item[aria-current="page"] { color: var(--pw-nav-active); font-weight: var(--pw-weight-bold); }
++.pw-nav-item:active { color: var(--pw-color-primary-pressed); }
+--- /dev/null
++++ b/ks6s3juocjzc2.kimi.page/styles/tokens.css
+@@ -0,0 +1,112 @@
++/* PocketWON × Woori · PW-WOORI-01 · Light only.
++ * Official CI: https://spot.wooribank.com/pot/Dream?withyou=BPBKI0056
++ * App mappings are PocketWON decisions, not official Woori app tokens.
++ */
++:root {
++  color-scheme: light;
++  /* 1. Primitive: keep official CI separate from application values. */
++  --pw-ci-deep-blue: #0067AC;
++  --pw-ci-blue: #0083CA;
++  --pw-ci-light-blue: #20C4F4;
++  --pw-ci-white: #FFFFFF;
++  --pw-palette-white: #FFFFFF;
++  --pw-palette-background: #F5F8FC;
++  --pw-palette-neutral-50: #F7F9FC;
++  --pw-palette-blue-50: #F1F7FC;
++  --pw-palette-blue-100: #E8F3FF;
++  --pw-palette-blue-600: #0075C8;
++  --pw-palette-blue-700: #0067AC;
++  --pw-palette-blue-800: #005B98;
++  --pw-palette-ink-900: #20252B;
++  --pw-palette-ink-700: #526170;
++  --pw-palette-ink-600: #637180;
++  --pw-palette-neutral-200: #DDE5EE;
++  --pw-palette-neutral-100: #E7EDF2;
++  --pw-palette-green-700: #157F61;
++  --pw-palette-amber-700: #946000;
++  --pw-palette-red-700: #C73744;
++  --pw-space-0: 0;
++  --pw-space-1: 0.25rem;
++  --pw-space-2: 0.5rem;
++  --pw-space-3: 0.75rem;
++  --pw-space-4: 1rem;
++  --pw-space-5: 1.25rem;
++  --pw-space-6: 1.5rem;
++  --pw-space-8: 2rem;
++  --pw-space-10: 2.5rem;
++  --pw-space-12: 3rem;
++  --pw-space-16: 4rem;
++  --pw-radius-control: 0.5rem;
++  --pw-radius-button: 0.75rem;
++  --pw-radius-card: 1.25rem;
++  --pw-radius-hero: 1.5rem;
++  --pw-shadow-none: none;
++  --pw-border-width: 1px;
++  --pw-focus-width: 2px;
++  --pw-focus-offset: 2px;
++  --pw-font-family: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
++  --pw-weight-regular: 400;
++  --pw-weight-medium: 500;
++  --pw-weight-semibold: 600;
++  --pw-weight-bold: 700;
++
++  /* 2. Semantic colors. */
++  --pw-color-background: var(--pw-palette-background);
++  --pw-color-surface: var(--pw-palette-white);
++  --pw-color-surface-subtle: var(--pw-palette-neutral-50);
++  --pw-color-surface-blue: var(--pw-palette-blue-50);
++  --pw-color-primary: var(--pw-palette-blue-600);
++  --pw-color-primary-hover: var(--pw-palette-blue-700);
++  --pw-color-primary-pressed: var(--pw-palette-blue-800);
++  --pw-color-primary-soft: var(--pw-palette-blue-100);
++  --pw-color-on-primary: var(--pw-palette-white);
++  --pw-color-text-primary: var(--pw-palette-ink-900);
++  --pw-color-text-secondary: var(--pw-palette-ink-700);
++  --pw-color-text-tertiary: var(--pw-palette-ink-600);
++  --pw-color-border: var(--pw-palette-neutral-200);
++  --pw-color-divider: var(--pw-palette-neutral-100);
++  --pw-color-success: var(--pw-palette-green-700);
++  --pw-color-warning: var(--pw-palette-amber-700);
++  --pw-color-danger: var(--pw-palette-red-700);
++  --pw-color-finance-positive: var(--pw-palette-green-700);
++  --pw-color-finance-negative: var(--pw-palette-red-700);
++  --pw-color-focus: var(--pw-color-primary);
++  --pw-type-display: var(--pw-weight-bold) 2.25rem/2.75rem var(--pw-font-family);
++  --pw-type-h1: var(--pw-weight-bold) 1.75rem/2.25rem var(--pw-font-family);
++  --pw-type-h2: var(--pw-weight-bold) 1.5rem/2rem var(--pw-font-family);
++  --pw-type-h3: var(--pw-weight-semibold) 1.25rem/1.75rem var(--pw-font-family);
++  --pw-type-body: var(--pw-weight-regular) 1rem/1.5rem var(--pw-font-family);
++  --pw-type-body-small: var(--pw-weight-regular) 0.875rem/1.25rem var(--pw-font-family);
++  --pw-type-caption: var(--pw-weight-medium) 0.75rem/1.125rem var(--pw-font-family);
++  --pw-type-number-large: var(--pw-weight-bold) 2.5rem/3rem var(--pw-font-family);
++  --pw-type-number-medium: var(--pw-weight-bold) 1.75rem/2.25rem var(--pw-font-family);
++  --pw-type-button: var(--pw-weight-semibold) 1rem/1.5rem var(--pw-font-family);
++
++  /* 3. Component aliases and layout. */
++  --pw-button-background: var(--pw-color-primary);
++  --pw-button-foreground: var(--pw-color-on-primary);
++  --pw-button-hover: var(--pw-color-primary-hover);
++  --pw-button-pressed: var(--pw-color-primary-pressed);
++  --pw-button-disabled-background: var(--pw-color-divider);
++  --pw-button-disabled-foreground: var(--pw-color-text-tertiary);
++  --pw-button-radius: var(--pw-radius-button);
++  --pw-touch-target: var(--pw-space-12);
++  --pw-icon-size: var(--pw-space-6);
++  --pw-surface-background: var(--pw-color-surface);
++  --pw-surface-border: var(--pw-color-border);
++  --pw-surface-radius: var(--pw-radius-card);
++  --pw-surface-padding: var(--pw-space-5);
++  --pw-shell-max-width: 430px;
++  --pw-shell-background: var(--pw-color-background);
++  --pw-shell-gutter: var(--pw-space-5);
++  --pw-header-height: 3.5rem;
++  --pw-header-background: var(--pw-color-surface);
++  --pw-nav-height: 4.5rem;
++  --pw-nav-background: var(--pw-color-surface);
++  --pw-nav-active: var(--pw-color-primary);
++  --pw-nav-inactive: var(--pw-color-text-tertiary);
++  --pw-safe-top: env(safe-area-inset-top, 0px);
++  --pw-safe-right: env(safe-area-inset-right, 0px);
++  --pw-safe-bottom: env(safe-area-inset-bottom, 0px);
++  --pw-safe-left: env(safe-area-inset-left, 0px);
++}
+--- /dev/null
++++ b/ks6s3juocjzc2.kimi.page/scripts/app.js
+@@ -0,0 +1,47 @@
++/* UI state only: no business-store reads, writes, imports, or automatic migrations. */
++(() => {
++  const content = document.getElementById('pw-content');
++  const heading = document.getElementById('pw-screen-title');
++  const context = document.getElementById('pw-header-context');
++  const menu = document.getElementById('pw-menu');
++  const navigation = document.getElementById('pw-navigation-items');
++  let currentScreen = 'home';
++
++  menu.innerHTML = pwIcon('menu');
++  const buttons = PW_TABS.map(tab => {
++    const button = document.createElement('button');
++    button.type = 'button';
++    button.className = 'pw-nav-item';
++    button.dataset.screen = tab.id;
++    button.innerHTML = pwIcon(tab.id);
++    const label = document.createElement('span');
++    label.textContent = tab.label;
++    button.append(label);
++    button.addEventListener('click', () => showScreen(tab.id));
++    navigation.append(button);
++    return button;
++  });
++
++  function showScreen(id) {
++    const tab = PW_TABS.find(item => item.id === id);
++    if (!tab) return;
++    currentScreen = tab.id;
++    heading.textContent = tab.label;
++    document.title = `${tab.label} · 포켓WON`;
++    if (id === 'home') {
++      context.innerHTML = 'Pocket<span class="pw-brand-accent">WON</span>';
++      context.setAttribute('aria-label', '포켓WON');
++    } else {
++      context.textContent = tab.label;
++      context.removeAttribute('aria-label');
++    }
++    for (const button of buttons) {
++      if (button.dataset.screen === currentScreen) button.setAttribute('aria-current', 'page');
++      else button.removeAttribute('aria-current');
++    }
++    content.scrollTop = 0;
++  }
++
++  menu.addEventListener('click', () => showScreen('all'));
++  showScreen(currentScreen);
++})();
+--- /dev/null
++++ b/ks6s3juocjzc2.kimi.page/scripts/icons.js
+@@ -0,0 +1,13 @@
++/* One 24 × 24 line icon family. Static, application-owned SVG only. */
++const PW_ICONS = Object.freeze({
++  home: '<path d="m3 10 9-7 9 7M5 9v12h5v-7h4v7h5V9"/>',
++  record: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/>',
++  goal: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
++  report: '<path d="M4 4v16h16M8 15v-4M12 15V7M16 15V9"/>',
++  all: '<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/>',
++  menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
++});
++
++function pwIcon(name) {
++  return `<svg class="pw-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${PW_ICONS[name]}</svg>`;
++}
+--- /dev/null
++++ b/ks6s3juocjzc2.kimi.page/scripts/tabs.js
+@@ -0,0 +1,8 @@
++/* Shell destinations only. Business data and old screen IDs are not migrated here. */
++const PW_TABS = Object.freeze([
++  Object.freeze({ id: 'home', label: '홈' }),
++  Object.freeze({ id: 'record', label: '기록' }),
++  Object.freeze({ id: 'goal', label: '목표' }),
++  Object.freeze({ id: 'report', label: '리포트' }),
++  Object.freeze({ id: 'all', label: '전체' }),
++]);
+--- /dev/null
++++ b/tests/fixtures/design-system.html
+@@ -0,0 +1,47 @@
++<!DOCTYPE html>
++<html lang="ko">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
++  <meta name="color-scheme" content="light">
++  <title>PW-WOORI-01 디자인 시스템 검증 fixture</title>
++  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
++  <link rel="stylesheet" href="../../ks6s3juocjzc2.kimi.page/styles/tokens.css">
++  <link rel="stylesheet" href="../../ks6s3juocjzc2.kimi.page/styles/base.css">
++  <style>
++    body { padding: var(--pw-space-5); background: var(--pw-color-background); }
++    main { display: grid; gap: var(--pw-space-5); max-width: var(--pw-shell-max-width); margin: auto; }
++    .samples { display: grid; gap: var(--pw-space-3); }
++  </style>
++</head>
++<body>
++  <main>
++    <h1 class="pw-type-h3">디자인 시스템 검증</h1>
++    <p class="pw-type-body-small">앱에서 연결하지 않는 검증 전용 fixture입니다.</p>
++    <section class="pw-surface samples" aria-label="Typography">
++      <p class="pw-type-display">Display</p>
++      <p class="pw-type-h1">큰 제목</p>
++      <p class="pw-type-h2">중간 제목</p>
++      <p class="pw-type-h3">작은 제목</p>
++      <p class="pw-type-body">본문을 편하게 읽어요.</p>
++      <p class="pw-type-body-small">짧고 명확한 안내</p>
++      <p class="pw-type-caption">보조 설명</p>
++      <p class="pw-type-number-large">123,456</p>
++      <p class="pw-type-number-medium">12,345</p>
++      <p class="pw-type-button">버튼 글자</p>
++    </section>
++    <section class="pw-surface pw-surface--hero samples" aria-label="Button states">
++      <button type="button" class="pw-button" id="primary">확인</button>
++      <button type="button" class="pw-button" disabled>사용할 수 없음</button>
++      <button type="button" class="pw-icon-button" aria-label="검증 메뉴">
++        <svg class="pw-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
++      </button>
++      <button type="button" class="pw-icon-button" disabled aria-label="비활성 검증 메뉴">
++        <svg class="pw-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
++      </button>
++    </section>
++    <section class="pw-surface pw-surface--subtle">Subtle surface</section>
++    <section class="pw-surface pw-surface--blue">Blue surface</section>
++  </main>
++</body>
++</html>
+--- /dev/null
++++ b/tests/verify-shell.cjs
+@@ -0,0 +1,307 @@
++/* Dev-only browser acceptance suite. No dependency is shipped to the app. */
++const assert = require('node:assert/strict');
++const fs = require('node:fs');
++const path = require('node:path');
++const crypto = require('node:crypto');
++const vm = require('node:vm');
++const os = require('node:os');
++const { chromium, webkit } = require(process.env.PW_PLAYWRIGHT_MODULE || 'playwright');
++
++const root = path.resolve(__dirname, '..');
++const origin = process.env.PW_BASE_URL || 'http://127.0.0.1:4173';
++assert(['127.0.0.1', 'localhost'].includes(new URL(origin).hostname), 'Use an isolated local origin');
++const url = `${origin}/ks6s3juocjzc2.kimi.page/index.html`;
++const output = path.join(root, 'evidence/PW-WOORI-01');
++fs.mkdirSync(path.join(output, 'screenshots'), { recursive: true });
++const labels = ['홈', '기록', '목표', '리포트', '전체'];
++const ids = ['home', 'record', 'goal', 'report', 'all'];
++const report = { startedAt: new Date().toISOString(), url, checks: [], screenshots: [], networkErrors: [], consoleErrors: [], browsers: {} };
++const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
++const pass = (name, detail = true) => report.checks.push({ name, status: 'PASS', detail });
++
++function executable(engine) {
++  const configured = process.env[engine === 'chromium' ? 'PW_CHROMIUM_EXECUTABLE' : 'PW_WEBKIT_EXECUTABLE'];
++  if (configured) return configured;
++  const type = engine === 'chromium' ? chromium : webkit;
++  if (fs.existsSync(type.executablePath())) return type.executablePath();
++  const cache = path.join(os.homedir(), 'Library/Caches/ms-playwright');
++  const prefix = engine === 'chromium' ? 'chromium_headless_shell-' : 'webkit-';
++  const versions = fs.existsSync(cache) ? fs.readdirSync(cache).filter(n => n.startsWith(prefix)).sort((a, b) => b.localeCompare(a, undefined, { numeric: true })) : [];
++  assert(versions.length, `Install Playwright ${engine} or set its executable override`);
++  return path.join(cache, versions[0], engine === 'chromium' ? 'chrome-headless-shell-mac-arm64/chrome-headless-shell' : 'pw_run.sh');
++}
++
++function sourceAudit() {
++  const baseline = JSON.parse(fs.readFileSync(path.join(root, 'preservation/PW-WOORI-01/baseline.json')));
++  const snapshot = fs.readFileSync(path.join(root, baseline.snapshot));
++  assert.equal(hash(snapshot), baseline.original_sha256);
++  for (const [file, sha] of Object.entries(baseline.files)) {
++    if (file !== baseline.entrypoint) assert.equal(hash(fs.readFileSync(path.join(root, file))), sha, file);
++  }
++  pass('Original snapshot and all 16 non-entrypoint original files preserved', baseline.original_sha256);
++  const app = path.join(root, 'ks6s3juocjzc2.kimi.page');
++  const activeFiles = ['index.html', ...['styles', 'scripts'].flatMap(dir => fs.readdirSync(path.join(app, dir)).map(file => `${dir}/${file}`))];
++  const activeText = activeFiles.map(file => fs.readFileSync(path.join(app, file), 'utf8')).join('\n');
++  const forbidden = /localStorage|sessionStorage|pocketwon_demo_v1|pocketwon_theme|prefers-color-scheme|data-theme|themeBtn|toggleTheme|sdk-seed|renderHome|parentReport|linear-gradient|radial-gradient|backdrop-filter|#3ECF8E|#FFD54D|#FF6B6B|--mint|--coral/i;
++  assert(!forbidden.test(activeText), 'Legacy visual/runtime reference remains');
++  for (const file of ['base.css', 'shell.css']) assert(!/#[0-9a-f]{3,8}\b/i.test(fs.readFileSync(path.join(app, 'styles', file), 'utf8')), file);
++  const tokens = fs.readFileSync(path.join(app, 'styles/tokens.css'), 'utf8');
++  const definitions = new Set([...tokens.matchAll(/(--pw-[\w-]+)\s*:/g)].map(m => m[1]));
++  for (const [, token] of activeText.matchAll(/var\((--pw-[\w-]+)/g)) assert(definitions.has(token), `Undefined token ${token}`);
++  pass('Active source: no legacy styling, dark runtime, storage access or SDK; all token references resolve', { files: activeFiles, tokens: definitions.size });
++  const literal = snapshot.toString().match(/const defaultState = (\{[\s\S]*?\n        \});/)[1];
++  return JSON.parse(JSON.stringify(vm.runInNewContext(`(${literal})`)));
++}
++
++function observe(page) {
++  page.on('pageerror', error => report.consoleErrors.push(error.message));
++  page.on('console', message => { if (message.type() === 'error') report.consoleErrors.push(message.text()); });
++  page.on('requestfailed', request => report.networkErrors.push({ url: request.url(), error: request.failure()?.errorText }));
++  page.on('response', response => { if (response.status() >= 400) report.networkErrors.push({ url: response.url(), status: response.status() }); });
++}
++
++async function ready(page) {
++  await page.locator('.pw-nav-item').last().waitFor();
++  await page.evaluate(() => document.fonts.ready);
++}
++
++async function geometry(page) {
++  return page.evaluate(() => {
++    const rect = selector => {
++      const r = document.querySelector(selector).getBoundingClientRect();
++      return { x: r.x, y: r.y, width: r.width, height: r.height, bottom: r.bottom, right: r.right };
++    };
++    return {
++      viewport: { width: innerWidth, height: innerHeight },
++      docWidth: document.documentElement.scrollWidth,
++      docHeight: document.documentElement.scrollHeight,
++      shell: rect('.pw-shell'), header: rect('.pw-header'), content: rect('.pw-content'), nav: rect('.pw-bottom-navigation'),
++      top: rect('.pw-safe-area-top'), bottom: rect('.pw-safe-area-bottom'),
++      controls: [...document.querySelectorAll('button')].map(el => {
++        const r = el.getBoundingClientRect();
++        return { label: el.getAttribute('aria-label') || el.textContent, width: r.width, height: r.height, x: r.x, right: r.right, bottom: r.bottom };
++      }),
++      styled: [...document.querySelectorAll('.pw-shell, .pw-header, .pw-content, .pw-bottom-navigation, button')].map(el => {
++        const s = getComputedStyle(el); return { image: s.backgroundImage, shadow: s.boxShadow, filter: s.backdropFilter };
++      }),
++      scheme: getComputedStyle(document.documentElement).colorScheme,
++      background: getComputedStyle(document.querySelector('.pw-shell')).backgroundColor,
++      active: [...document.querySelectorAll('[aria-current="page"]')].map(el => el.dataset.screen),
++    };
++  });
++}
++
++function checkGeometry(g, width) {
++  assert(g.docWidth <= width, 'Horizontal document overflow');
++  assert.equal(g.shell.width, Math.min(width, 430));
++  // WebKit rounds flex/dvh edges to fractional layout units (observed 1/64px).
++  const epsilon = 0.05;
++  assert(Math.abs(g.shell.height - g.viewport.height) <= epsilon);
++  assert(Math.abs(g.nav.bottom - g.viewport.height) <= epsilon);
++  assert(g.content.y + epsilon >= g.header.bottom);
++  assert(g.content.bottom <= g.nav.y + epsilon);
++  assert(g.controls.every(c => c.width >= 48 && c.height >= 48 && c.x >= g.shell.x && c.right <= g.shell.right && c.bottom <= g.nav.bottom));
++  assert(g.styled.every(s => s.image === 'none' && s.shadow === 'none' && s.filter === 'none'));
++  assert.equal(g.scheme, 'light');
++  assert.equal(g.background, 'rgb(245, 248, 252)');
++  assert.equal(g.active.length, 1);
++}
++
++async function matrix(browser, engine, screenshot) {
++  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1, locale: 'ko-KR', colorScheme: 'light', reducedMotion: 'reduce' });
++  const page = await context.newPage(); observe(page);
++  for (const width of [360, 390, 430]) {
++    await page.setViewportSize({ width, height: 844 });
++    await page.goto(url); await ready(page);
++    for (let i = 0; i < ids.length; i++) {
++      await page.getByRole('button', { name: labels[i], exact: true }).click();
++      await page.mouse.move(0, 0);
++      assert.equal(await page.locator('#pw-screen-title').textContent(), labels[i]);
++      assert.equal(await page.locator('#pw-content').innerText(), labels[i]);
++      assert.equal(await page.title(), `${labels[i]} · 포켓WON`);
++      assert.equal(await page.locator('#pw-header-context').innerText(), i === 0 ? 'PocketWON' : labels[i]);
++      assert.equal(page.url(), url);
++      const g = await geometry(page); checkGeometry(g, width);
++      assert.deepEqual(g.active, [ids[i]]);
++      pass(`${engine}: ${width}×844 ${ids[i]} placeholder, selection and bounds`, g);
++      if (screenshot) {
++        const name = `${width}x844-${ids[i]}.png`;
++        await page.screenshot({ path: path.join(output, 'screenshots', name) });
++        report.screenshots.push(`screenshots/${name}`);
++      }
++    }
++    await page.getByRole('button', { name: '전체', exact: true }).click();
++    assert.equal(await page.locator('[aria-current="page"]').count(), 1);
++    await page.getByRole('button', { name: '홈', exact: true }).click();
++    await page.getByRole('button', { name: '전체 메뉴', exact: true }).click();
++    assert.equal(await page.locator('#pw-screen-title').innerText(), '전체');
++    await page.reload(); await ready(page);
++    assert.equal(await page.locator('#pw-screen-title').innerText(), '홈');
++    assert.deepEqual(await page.evaluate(() => Object.keys(localStorage)), []);
++  }
++  pass(`${engine}: repeated tabs, header menu, reload-to-home; fresh storage remains empty`);
++  await context.close();
++}
++
++async function storageAndLight(browser, defaultState) {
++  const modified = structuredClone(defaultState);
++  modified.user.name = '보존 검증'; modified.balance = 87654;
++  modified.transactions.push({ type: 'in', amount: 4321, category: '용돈', ts: '2025-01-01T00:00:00.000Z', receipt: true });
++  for (const theme of ['dark', 'system', 'light']) {
++    const seed = { pocketwon_demo_v1: JSON.stringify(modified), pocketwon_intro_done: '1', pocketwon_theme: theme, unrelated_test_value: 'must stay identical' };
++    const context = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: 'dark' });
++    await context.addInitScript(values => {
++      const get = Storage.prototype.getItem;
++      const set = Storage.prototype.setItem;
++      if (get.call(localStorage, 'unrelated_test_value') === null) for (const [k, v] of Object.entries(values)) set.call(localStorage, k, v);
++      window.__pwStorageCalls = [];
++      window.__pwReadTestStorage = () => Object.fromEntries(Object.keys(localStorage).map(k => [k, get.call(localStorage, k)]));
++      for (const name of ['getItem', 'setItem', 'removeItem', 'clear']) {
++        const original = Storage.prototype[name];
++        Storage.prototype[name] = function (...args) { window.__pwStorageCalls.push(name); return original.apply(this, args); };
++      }
++    }, seed);
++    const page = await context.newPage(); observe(page);
++    await page.goto(url); await ready(page);
++    for (const label of labels) await page.getByRole('button', { name: label, exact: true }).click();
++    for (const phase of ['navigation', 'reload']) {
++      if (phase === 'reload') { await page.reload(); await ready(page); }
++      assert.deepEqual(await page.evaluate(() => window.__pwReadTestStorage()), seed);
++      assert.deepEqual(await page.evaluate(() => window.__pwStorageCalls), []);
++      assert.equal((await geometry(page)).scheme, 'light');
++    }
++    await page.emulateMedia({ colorScheme: 'light' });
++    await page.emulateMedia({ colorScheme: 'dark' });
++    assert.equal((await geometry(page)).background, 'rgb(245, 248, 252)');
++    pass(`OS dark + stored ${theme}: unchanged business/intro/theme/unrelated values; zero storage method calls`);
++    await context.close();
++  }
++  const context = await browser.newContext();
++  await context.addInitScript(() => {
++    Storage.prototype.getItem = Storage.prototype.setItem = Storage.prototype.removeItem = Storage.prototype.clear = () => { throw Error('Storage unavailable'); };
++  });
++  const page = await context.newPage(); observe(page);
++  await page.goto(url); await ready(page);
++  await page.getByRole('button', { name: '전체 메뉴', exact: true }).click();
++  assert.equal(await page.locator('#pw-screen-title').innerText(), '전체');
++  pass('Storage-unavailable environment: Shell navigation works');
++  await context.close();
++}
++
++async function accessibilityAndLayout(browser) {
++  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
++  const page = await context.newPage(); observe(page);
++  await page.goto(url); await ready(page);
++  for (const name of ['전체 메뉴', ...labels]) {
++    await page.keyboard.press('Tab');
++    const focus = await page.evaluate(() => {
++      const el = document.activeElement, s = getComputedStyle(el);
++      return { name: el.getAttribute('aria-label') || el.textContent, visible: el.matches(':focus-visible'), style: s.outlineStyle, width: s.outlineWidth };
++    });
++    assert.equal(focus.name, name); assert(focus.visible); assert.equal(focus.style, 'solid'); assert.equal(focus.width, '2px');
++  }
++  await page.keyboard.press('Enter'); assert.equal(await page.locator('#pw-screen-title').innerText(), '전체');
++  await page.keyboard.press('Shift+Tab'); await page.keyboard.press('Space');
++  assert.equal(await page.locator('#pw-screen-title').innerText(), '리포트');
++  pass('Keyboard order, visible focus, Enter and Space activation');
++
++  // Layout stress is injected into this isolated test page, never shipped as app content.
++  await page.evaluate(() => {
++    const root = document.documentElement;
++    root.style.setProperty('--pw-safe-top', '47px'); root.style.setProperty('--pw-safe-bottom', '34px');
++    root.style.setProperty('--pw-safe-left', '24px'); root.style.setProperty('--pw-safe-right', '24px');
++    const spacer = document.createElement('div'); spacer.style.height = '1500px'; document.querySelector('.pw-placeholder').append(spacer);
++    document.querySelector('.pw-content').scrollTop = 200;
++  });
++  const g = await geometry(page); checkGeometry(g, 390);
++  assert.equal(g.top.height, 47); assert.equal(g.header.y, 47); assert.equal(g.bottom.height, 34);
++  assert.equal(g.nav.height, 107); assert.equal(g.docHeight, 844);
++  assert((await page.locator('#pw-content').evaluate(el => el.scrollTop)) > 0);
++  await page.getByRole('button', { name: '홈', exact: true }).click();
++  assert.equal(await page.locator('#pw-content').evaluate(el => el.scrollTop), 0);
++  pass('Simulated 47/34px vertical and 24px horizontal safe areas applied once; independent scroll and reset', g);
++  await page.reload(); await ready(page);
++  await page.setViewportSize({ width: 360, height: 640 }); checkGeometry(await geometry(page), 360);
++  await page.evaluate(() => { document.documentElement.style.fontSize = '32px'; });
++  const zoom = await geometry(page); checkGeometry(zoom, 360);
++  pass('360×640 short viewport and 200% root text scale: no clipping/overlap', zoom);
++  await page.reload(); await ready(page);
++  await page.setViewportSize({ width: 1024, height: 900 });
++  const desktop = await geometry(page); checkGeometry(desktop, 1024); assert.equal(desktop.shell.x, 297);
++  pass('Desktop: 430px centered shell without decorative phone frame', desktop);
++  await context.close();
++}
++
++function contrast(a, b) {
++  const lum = rgb => rgb.match(/[\d.]+/g).slice(0, 3).map(Number).map(v => v / 255).map(v => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4).reduce((sum, v, i) => sum + v * [0.2126, 0.7152, 0.0722][i], 0);
++  const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
++}
++
++async function fixture(browser) {
++  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
++  const page = await context.newPage(); observe(page);
++  await page.goto(`${origin}/tests/fixtures/design-system.html`); await page.evaluate(() => document.fonts.ready);
++  const type = await page.locator('[class^="pw-type-"]').evaluateAll(els => els.map(el => {
++    const s = getComputedStyle(el); return { class: el.className, size: s.fontSize, line: s.lineHeight, number: s.fontVariantNumeric };
++  }));
++  for (const [name, size, line] of [['display', 36, 44], ['h1', 28, 36], ['h2', 24, 32], ['h3', 20, 28], ['body', 16, 24], ['body-small', 14, 20], ['caption', 12, 18], ['number-large', 40, 48], ['number-medium', 28, 36], ['button', 16, 24]]) {
++    const actual = type.find(t => t.class === `pw-type-${name}`);
++    assert.equal(actual.size, `${size}px`); assert.equal(actual.line, `${line}px`);
++    if (name.startsWith('number-')) assert.equal(actual.number, 'tabular-nums');
++  }
++  pass('All 10 typography roles, sizes, line heights and tabular number styles', type);
++  const button = page.locator('#primary');
++  const style = () => button.evaluate(el => { const s = getComputedStyle(el); return { background: s.backgroundColor, color: s.color, radius: s.borderRadius }; });
++  const normal = await style(); assert.equal(normal.background, 'rgb(0, 117, 200)'); assert.equal(normal.radius, '12px');
++  assert(contrast(normal.background, normal.color) >= 4.5);
++  await button.hover(); assert.equal((await style()).background, 'rgb(0, 103, 172)');
++  await page.mouse.down(); assert.equal((await style()).background, 'rgb(0, 91, 152)'); await page.mouse.up();
++  assert.equal(await page.locator('.pw-button:disabled').isEnabled(), false);
++  assert.equal(await page.locator('.pw-icon-button:disabled').isEnabled(), false);
++  await page.mouse.move(0, 0);
++  pass('Primary normal/hover/pressed/disabled and IconButton disabled states; primary white text contrast', contrast(normal.background, normal.color));
++  const colors = await page.evaluate(() => {
++    const s = getComputedStyle(document.documentElement);
++    const names = ['text-primary', 'text-secondary', 'text-tertiary', 'primary', 'success', 'warning', 'danger', 'finance-positive', 'finance-negative'];
++    const probe = document.createElement('span'); document.body.append(probe);
++    const values = {};
++    for (const name of names) { probe.style.color = `var(--pw-color-${name})`; values[name] = getComputedStyle(probe).color; }
++    probe.remove(); return values;
++  });
++  const ratios = Object.fromEntries(Object.entries(colors).map(([name, value]) => [name, contrast(value, 'rgb(255, 255, 255)')]));
++  assert(Object.values(ratios).every(value => value >= 4.5));
++  assert(contrast(colors['text-primary'], 'rgb(245, 248, 252)') >= 4.5);
++  pass('Text, navigation and semantic foreground colors meet 4.5:1 on white; main heading on background', ratios);
++  await page.screenshot({ path: path.join(output, 'screenshots/design-system-fixture.png'), fullPage: true });
++  await context.close();
++}
++
++(async () => {
++  let chrome, safari;
++  try {
++    const defaultState = sourceAudit();
++    const chromePath = executable('chromium');
++    chrome = await chromium.launch({ headless: true, executablePath: chromePath });
++    report.browsers.chromium = { version: chrome.version(), executable: chromePath };
++    await matrix(chrome, 'Chromium', true);
++    await storageAndLight(chrome, defaultState);
++    await accessibilityAndLayout(chrome);
++    await fixture(chrome);
++    const webkitPath = executable('webkit');
++    safari = await webkit.launch({ headless: true, executablePath: webkitPath });
++    report.browsers.webkit = { version: safari.version(), executable: webkitPath };
++    await matrix(safari, 'WebKit', false);
++    assert.deepEqual(report.consoleErrors, [], 'Console/page errors');
++    assert.deepEqual(report.networkErrors, [], 'Failed resource requests');
++    pass('All browser contexts: zero console/page errors and failed resource requests');
++    assert.equal(report.screenshots.length, 15);
++    report.status = 'PASS';
++  } catch (error) {
++    report.status = 'FAIL'; report.failure = error.stack; process.exitCode = 1;
++  } finally {
++    if (chrome) await chrome.close(); if (safari) await safari.close();
++    report.finishedAt = new Date().toISOString();
++    fs.writeFileSync(path.join(output, 'verification.json'), JSON.stringify(report, null, 2) + '\n');
++    console.log(JSON.stringify({ status: report.status, checks: report.checks.length, screenshots: report.screenshots.length, networkErrors: report.networkErrors, consoleErrors: report.consoleErrors, failure: report.failure }, null, 2));
++  }
++})();
+--- /dev/null
++++ b/docs/PW-WOORI-01.md
+@@ -0,0 +1,182 @@
++# PW-WOORI-01 — 구현·검수 보고서
++
++새 Light 디자인 시스템과 App Shell을 구현했습니다. 홈·기록·목표·리포트·전체는 각각 화면 이름만 표시합니다. 개별 기능 화면은 이번 슬라이스에서 제공하지 않습니다.
++
++## 실행 및 검수
++
++워크스페이스 루트에서 다음 명령을 실행합니다. 기존 진입 경로를 유지합니다.
++
++```sh
++python3 -m http.server 4173 --bind 127.0.0.1
++```
++
++- 앱: [PocketWON](http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html)
++- 검수 갤러리: [3개 폭 × 5개 탭](http://127.0.0.1:4173/evidence/PW-WOORI-01/index.html)
++- 검증 fixture: [기본 컴포넌트](http://127.0.0.1:4173/tests/fixtures/design-system.html) — 앱에서는 연결하지 않습니다.
++- [기계 판독 검증 결과](../evidence/PW-WOORI-01/verification.json)
++- [전체 소스 diff](../evidence/PW-WOORI-01/source.patch)
++- [변경 파일 목록](../evidence/PW-WOORI-01/changed-files.md)
++
++## 구현 전 분석
++
++| 항목 | 확인 결과 |
++|---|---|
++| 프레임워크·진입점 | 프레임워크 없는 정적 HTML. `ks6s3juocjzc2.kimi.page/index.html`에 CSS·상태·화면·이벤트 통합 |
++| 프로젝트 ZIP | Downloads의 `ks6s3juocjzc2.kimi.page.zip`과 진입 HTML SHA-256 일치 |
++| 라우팅 | `renderScreen`으로 DOM 교체. URL 라우터 없음. 더보기는 sheet |
++| 기존 화면 | 홈·기록·목표·AI Score·습관 캘린더·부모 공유 리포트 |
++| 공통 UI | 카드·버튼·헤더·하단 nav·sheet/dialog·toast |
++| 시각 토큰 | mint/yellow/coral/blue 기반 평면 변수, 16/22px radius, 다수 그림자·gradient |
++| 아이콘·서체 | 직접 작성한 SVG, 이모지, CDN Pretendard Variable |
++| 데이터 | 사용자, 잔액, 습관 점수, 월별 소비/저축/목표, 거래, 목표, 미션, 출석, 포인트·달력 상태 |
++| 영속 상태 | `pocketwon_demo_v1`, `pocketwon_intro_done`, `pocketwon_theme` |
++| 모바일 | viewport-fit=cover, 100dvh, 520px 이상에서 장식용 390px 휴대폰 프레임 |
++| 다크 모드 | data-theme, 시스템 감지 및 change listener, 빠른 전환·테마 선택창 |
++| 외부 스크립트 | Kimi 게시 SDK 로더; 화면 주입과 외부 호출 포함 |
++| 서버·인증·DB | 이 프로젝트에 자체 구현 없음 |
++
++1회차 작성본은 디자인의 배경 자료로만 검토했습니다. 수치나 리서치 주장을 새로 검증한 것으로 보고하지 않습니다. 2회차 워크북은 미작성 양식입니다. 기능 범위와 10~13세 핵심 UX 기준은 이번 사용자 지시를 따랐습니다.
++
++## 토큰 구조
++
++`styles/tokens.css`가 단일 토큰 원본입니다.
++
++```text
++Primitive: --pw-ci-* / --pw-palette-* / --pw-space-* / --pw-radius-*
++    ↓
++Semantic: --pw-color-* / --pw-type-*
++    ↓
++Component: --pw-button-* / --pw-surface-* / --pw-header-* / --pw-nav-*
++```
++
++공식 CI 값은 Deep Blue #0067AC, Blue #0083CA, Light Blue #20C4F4, White #FFFFFF입니다. 출처: [우리은행 CI](https://spot.wooribank.com/pot/Dream?withyou=BPBKI0056). **아래 앱 토큰은 PocketWON 적용값이며 공식 우리WON 내부 토큰을 주장하지 않습니다.** 제공 팩의 `OBSERVED_APPROX` 역시 공식값으로 승격하지 않았습니다. 우리다움체 바이너리는 팩에 없으므로 추가하지 않았습니다.
++
++| Semantic | 값 |
++|---|---|
++| background / surface | #F5F8FC / #FFFFFF |
++| surface-subtle / surface-blue | #F7F9FC / #F1F7FC |
++| primary / primary-soft | #0075C8 / #E8F3FF |
++| primary-hover / primary-pressed | #0067AC / #005B98 |
++| text-primary / secondary / tertiary | #20252B / #526170 / #637180 |
++| border / divider | #DDE5EE / #E7EDF2 |
++| success / warning / danger | #157F61 / #946000 / #C73744 |
++| finance-positive / finance-negative | #157F61 / #C73744 |
++| on-primary | #FFFFFF |
++
++- Spacing: 0/4/8/12/16/20/24/32/40/48/64px 상당 rem.
++- Radius: control 8px, button 12px, card 20px, hero 24px 상당 rem.
++- Shadow: none. 기능 surface는 border·배경·여백으로 구분.
++- Pretendard Variable → Pretendard → Apple SD Gothic Neo → Noto Sans KR → system-ui/sans-serif. 기존 CDN 사용 방식을 유지하며 로딩 실패 시 시스템 폰트로 표시합니다.
++- 숫자 스타일은 heading과 분리하며 `font-variant-numeric: tabular-nums`를 사용.
++
++| Typography | 크기/행간(px 상당 rem) | Weight |
++|---|---|---|
++| Display | 36/44 | 700 |
++| H1 | 28/36 | 700 |
++| H2 | 24/32 | 700 |
++| H3 | 20/28 | 600 |
++| Body | 16/24 | 400 |
++| Body Small | 14/20 | 400 |
++| Caption | 12/18 | 500 |
++| Number Large | 40/48 | 700 |
++| Number Medium | 28/36 | 700 |
++| Button | 16/24 | 600 |
++
++기본 Button, IconButton, Surface, Typography만 준비했습니다. 버튼은 hover/pressed/disabled/focus-visible 상태를 갖습니다. 앱 안에는 검증용 카드·예시 금액·가짜 CTA가 없습니다.
++
++## Shell 코드 구조
++
++```text
++index.html
++├─ styles/tokens.css   primitive → semantic → component
++├─ styles/base.css     기본 컴포넌트·타이포·포커스
++├─ styles/shell.css    Shell·safe area·header·content·nav
++├─ scripts/icons.js    24×24, 1.8 stroke, currentColor 라인 SVG
++├─ scripts/tabs.js     home / record / goal / report / all
++└─ scripts/app.js      메모리 기반 전환, DOM·제목·aria-current 동기화
++
++AppShell
++├─ SafeAreaTop
++├─ GlobalHeader: 브랜드/화면 문맥 + 전체 메뉴
++├─ ScreenContent: 해당 탭 이름만 표시
++└─ BottomNavigation: 5열 아이콘·라벨 + SafeAreaBottom
++```
++
++- 높이는 100dvh, fallback 100vh. 폭 100%, 최대 430px, 데스크톱 가운데 정렬.
++- 헤더 기본 56px, 좌우 20px. 메뉴는 48×48px 터치 영역.
++- 본문은 독립 스크롤. `min-height: 0`으로 nav 겹침 방지.
++- Nav 항목 영역 72px + 상단 1px divider + 실제 하단 safe area. 선택 배경 장식·그림자 없음.
++- Safe area는 상/하 각각 한 번만 적용. 가로 inset은 좌우 padding에 반영.
++- 탭 이동은 URL을 변경하지 않음. 새로고침하면 홈. 메뉴 버튼은 전체로 이동.
++- 버튼 DOM을 전환 때 재생성하지 않아 키보드 포커스 유지. Enter/Space 사용 가능.
++- 선택 항목에만 `aria-current="page"`. 주요 메뉴·전체 메뉴에 접근성 이름, SVG는 aria-hidden.
++- 외부 API·인증·DB schema·서버 설정·핵심 데이터 모델 변경 없음. 새 런타임 의존성 없음.
++
++## 보존 및 기능 비활성화
++
++원본 전체는 `preservation/PW-WOORI-01/original-index.html.txt`에 바이트 그대로 저장했습니다. `.txt`이며 실행 앱에서 import/link하지 않습니다. 기준 해시는 다음과 같습니다.
++
++```text
++24405c1c583da11d362f82b067add7fb7c62e152cba55f44d331f161b62314ba
++```
++
++`baseline.json`에는 원래 17개 파일의 해시가 있습니다. 진입 HTML을 제외한 기존 16개 파일은 변경하지 않았습니다. 원본 ZIP도 변경하지 않았습니다.
++
++| 기존 기능/자료 | 이번 처리 |
++|---|---|
++| defaultState와 기존 거래·목표·출석·포인트 데이터 | 원본 스냅샷 안에 원형 보존; 값·구조 변경 없음 |
++| 기록 저장·잔액/월별 합계 갱신·미션 보상·목표 변경·카테고리 집계 | 비실행 참조로 보존; 다음 기능 슬라이스에서 추출 |
++| 부모 리포트·공유·캘린더·배지 UI | 비실행 참조로 보존; 이번 앱에서는 진입 불가 |
++| 기존 사용자 localStorage | 읽기·쓰기·삭제·초기화·키 이름 변경 없음 |
++| 테마 저장값 | 그대로 두고 무시 |
++| 원래 SDK·폰트 관련 저장 파일 | 원형 유지. SDK는 새 앱에서 로딩하지 않음 |
++
++**기존 기능을 새 Shell에서 사용할 수 있다는 의미의 회귀 PASS가 아닙니다.** 이번에는 기능 화면을 의도적으로 비활성화하고 소스·데이터를 보존했습니다. 다음 슬라이스에서 실제 기능을 연결할 때 해당 동작의 회귀 검증이 필요합니다.
++
++## 디자인·다크 모드 잔존 점검
++
++| 위치 | 결과 |
++|---|---|
++| 활성 HTML/CSS/JS | 옛 palette/gradient/glass/그림자/캐릭터/렌더러 참조 없음 |
++| 활성 테마 코드 | dark selector, matchMedia, 테마 listener/toggle/dialog/storage 참조 없음 |
++| 화면 | 5개 placeholder와 새 Shell만 표시. 시간·배터리·OS 가짜 표시 없음 |
++| 원본 스냅샷·원본 대비 patch | 과거 디자인과 dark 코드가 보존·삭제 증거로 남음. 실행되지 않음 |
++| 기존 다운로드 SDK 파일 | 보존되어 있지만 새 앱에서 요청/실행하지 않음 |
++| 사용자 저장소 | 옛 theme 값이 남을 수 있으나 새 화면에 영향 없음 |
++
++## 검증 결과
++
++Chromium 151.0.7922.34 / WebKit 26.5에서 **46개 검증 묶음 PASS**, 앱 스크린샷 15개와 별도 fixture 캡처 1개를 생성했습니다.
++
++- 양 브라우저에서 360/390/430×844의 다섯 탭, 선택 표시·제목·placeholder·URL 유지·터치 영역·겹침 검사.
++- 반복 탭 선택, 헤더 메뉴, 새로고침 시 홈, 빈 저장소 유지.
++- Chromium 격리 context에서 사용자 지정 기존 데이터와 소개/테마/무관 키를 넣고 탐색·reload 전후 문자열 동일 확인. 세 테마 값 각각 저장소 메서드 호출 0회.
++- OS dark 및 실행 중 OS light↔dark 변경에도 Light 유지. 저장소 메서드가 예외를 던지는 환경에서도 탐색 성공.
++- 키보드 순서, Enter/Space, 2px focus-visible 확인.
++- 47px 상단·34px 하단·24px 가로 safe area를 fixture에서 주입: 적용 중복 없음, 본문 독립 스크롤, 탭 변경 시 scrollTop=0.
++- 360×640, 루트 글자 크기 200%, 데스크톱 1024×900도 레이아웃 검사 통과.
++- 10개 타이포 역할, 숫자 tabular 스타일, 버튼 상태, 모든 사용 CSS 변수 정의 확인.
++- Primary/white 대비 4.80:1, inactive nav/white 4.99:1. 텍스트·상태·금융 foreground는 white 위에서 모두 4.5:1 이상.
++- 콘솔/page error 0, 실패한 리소스 요청 0.
++
++초기 WebKit 검사에서는 1/64px 수준의 flex/dvh 반올림 차이가 발생했습니다. 기하 검사 허용 오차를 0.05px로 명시하고 전체 검증을 다시 통과했습니다. 제품 CSS를 이 차이에 맞추어 왜곡하지 않았습니다.
++
++실물 iPhone/Android나 스크린리더 실기기 검증은 수행하지 않았습니다. safe area는 브라우저의 CSS 환경 변수 처리와 수치 주입으로 검증한 결과입니다. 폰트 CDN의 오프라인 제공을 새로 구현하지 않았습니다.
++
++## 재현 명령
++
++정적 서버를 실행한 뒤 워크스페이스 루트에서:
++
++```sh
++node --check ks6s3juocjzc2.kimi.page/scripts/icons.js
++node --check ks6s3juocjzc2.kimi.page/scripts/tabs.js
++node --check ks6s3juocjzc2.kimi.page/scripts/app.js
++node --check tests/verify-shell.cjs
++node tests/verify-shell.cjs
++```
++
++검증에는 개발 환경의 Playwright가 필요합니다(이번 환경 1.61.0). 앱 런타임 의존성으로 추가하지 않았습니다. 검증 스크립트는 Playwright 기본 브라우저가 없으면 macOS 캐시의 기존 브라우저를 사용하며 실제 경로·버전은 verification.json에 기록합니다. 다른 환경에서는 `PW_PLAYWRIGHT_MODULE`, `PW_CHROMIUM_EXECUTABLE`, `PW_WEBKIT_EXECUTABLE`로 설치 위치를 지정할 수 있습니다. 로컬 서버 주소는 `PW_BASE_URL`로 지정하며 localhost/127.0.0.1만 허용합니다.
++
++프레임워크 build/lint 명령이 없는 정적 프로젝트이므로 JS 구문 검사와 실제 브라우저 검증을 수행했습니다. 검증은 임시 browser context에서만 데이터를 생성하고 종료 시 context를 폐기합니다.
++
++다음 기능 화면 개발·배포·외부 게시를 진행하지 않았습니다. PW-WOORI-01은 검수 대기 상태입니다.
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1,14 @@
++# PocketWON / 포켓WON
++
++PW-WOORI-01: 새 Light 디자인 시스템과 App Shell. 개별 기능 화면은 placeholder 상태입니다.
++
++```sh
++python3 -m http.server 4173 --bind 127.0.0.1
++```
++
++- [실행 앱](http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html)
++- [검수 갤러리](http://127.0.0.1:4173/evidence/PW-WOORI-01/index.html)
++- [구현·검증·보존 보고서](docs/PW-WOORI-01.md)
++- [변경 파일](evidence/PW-WOORI-01/changed-files.md)
++
++새 프레임워크나 앱 런타임 의존성 없이 정적 파일로 동작합니다. 원본 구현은 preservation 폴더의 비실행 텍스트로 보존되어 있으며 앱에서 사용하지 않습니다.

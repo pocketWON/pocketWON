@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>PW-WOORI-01 디자인 시스템 검증 fixture</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="../../ks6s3juocjzc2.kimi.page/styles/tokens.css">
+  <link rel="stylesheet" href="../../ks6s3juocjzc2.kimi.page/styles/base.css">
+  <style>
+    body { padding: var(--pw-space-5); background: var(--pw-color-background); }
+    main { display: grid; gap: var(--pw-space-5); max-width: var(--pw-shell-max-width); margin: auto; }
+    .samples { display: grid; gap: var(--pw-space-3); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 class="pw-type-h3">디자인 시스템 검증</h1>
+    <p class="pw-type-body-small">앱에서 연결하지 않는 검증 전용 fixture입니다.</p>
+    <section class="pw-surface samples" aria-label="Typography">
+      <p class="pw-type-display">Display</p>
+      <p class="pw-type-h1">큰 제목</p>
+      <p class="pw-type-h2">중간 제목</p>
+      <p class="pw-type-h3">작은 제목</p>
+      <p class="pw-type-body">본문을 편하게 읽어요.</p>
+      <p class="pw-type-body-small">짧고 명확한 안내</p>
+      <p class="pw-type-caption">보조 설명</p>
+      <p class="pw-type-number-large">123,456</p>
+      <p class="pw-type-number-medium">12,345</p>
+      <p class="pw-type-button">버튼 글자</p>
+    </section>
+    <section class="pw-surface pw-surface--hero samples" aria-label="Button states">
+      <button type="button" class="pw-button" id="primary">확인</button>
+      <button type="button" class="pw-button" disabled>사용할 수 없음</button>
+      <button type="button" class="pw-icon-button" aria-label="검증 메뉴">
+        <svg class="pw-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <button type="button" class="pw-icon-button" disabled aria-label="비활성 검증 메뉴">
+        <svg class="pw-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </section>
+    <section class="pw-surface pw-surface--subtle">Subtle surface</section>
+    <section class="pw-surface pw-surface--blue">Blue surface</section>
+  </main>
+</body>
+</html>

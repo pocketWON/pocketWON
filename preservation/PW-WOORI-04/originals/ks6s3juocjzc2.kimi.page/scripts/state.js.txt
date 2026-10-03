@@ -1,0 +1,170 @@
+/* Shared legacy contract. Reads never repair or persist data. */
+function loadPocketWONState(storageProvider = () => window.localStorage) {
+  let raw;
+  try {
+    raw = storageProvider().getItem('pocketwon_demo_v1');
+  } catch (_) {
+    return { status: 'unavailable', state: null };
+  }
+  if (raw === null) return { status: 'empty', state: null };
+  try {
+    const state = JSON.parse(raw);
+    if (!state || typeof state !== 'object' || Array.isArray(state)) {
+      return { status: 'invalid', state: null };
+    }
+    return { status: 'loaded', state };
+  } catch (_) {
+    return { status: 'invalid', state: null };
+  }
+}
+
+const PW_RECORD_CATEGORIES = Object.freeze({
+  in: Object.freeze(['용돈']),
+  out: Object.freeze(['간식', '문구', '게임', '교통', '기타']),
+});
+const pwMoney = value => Number.isSafeInteger(value) && value >= 0;
+const pwObject = value => value !== null && typeof value === 'object' && !Array.isArray(value);
+
+function validPocketWONTransaction(tx) {
+  return pwObject(tx) && (tx.type === 'in' || tx.type === 'out')
+    && pwMoney(tx.amount) && tx.amount > 0
+    && typeof tx.category === 'string' && tx.category.trim().length > 0;
+}
+
+function writablePocketWONState(state) {
+  return pwObject(state) && pwMoney(state.balance) && pwObject(state.monthly)
+    && pwMoney(state.monthly.saving) && pwMoney(state.monthly.spending)
+    && Array.isArray(state.transactions) && state.transactions.every(validPocketWONTransaction);
+}
+
+// Only the two ISO forms observed in the original contract: local ISO and zoned ISO.
+// Validate calendar components before Date parsing (which otherwise normalizes Feb 30).
+function parsePocketWONDate(value) {
+  if (typeof value !== 'string') return null;
+  const match = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d{1,3}))?(Z|[+-]\d{2}:\d{2})?$/.exec(value);
+  if (!match) return null;
+  const [, y, m, d, h, minute, second, , zone] = match;
+  const year = Number(y), month = Number(m), day = Number(d);
+  const leap = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+  const days = [31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  if (month < 1 || month > 12 || day < 1 || day > days[month - 1]
+    || Number(h) > 23 || Number(minute) > 59 || Number(second) > 59) return null;
+  if (zone && zone !== 'Z' && (Number(zone.slice(1, 3)) > 23 || Number(zone.slice(4)) > 59)) return null;
+  const date = new Date(value);
+  if (!Number.isFinite(date.getTime())) return null;
+  if (!zone && (date.getFullYear() !== year || date.getMonth() + 1 !== month || date.getDate() !== day
+    || date.getHours() !== Number(h) || date.getMinutes() !== Number(minute))) return null;
+  return date;
+}
+
+function createRecordViewModel(state, now = new Date()) {
+  const transactions = Array.isArray(state?.transactions) ? state.transactions : null;
+  const known = transactions !== null && transactions.every(validPocketWONTransaction);
+  const rows = (transactions || []).map(tx => ({ tx, date: parsePocketWONDate(tx?.ts) }));
+  const grouped = known && rows.every(row => row.date !== null);
+  if (grouped) rows.sort((a, b) => b.date.getTime() - a.date.getTime());
+  const dayKey = date => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  const today = dayKey(now), yesterdayDate = new Date(now);
+  yesterdayDate.setDate(yesterdayDate.getDate() - 1);
+  const yesterday = dayKey(yesterdayDate);
+  return {
+    balance: pwMoney(state?.balance) ? state.balance : null,
+    writable: writablePocketWONState(state),
+    history: transactions === null ? 'unavailable' : known ? (rows.length ? 'ready' : 'empty') : 'partial',
+    grouped,
+    rows: rows.slice(0, 20).map(({ tx, date }) => {
+      const valid = validPocketWONTransaction(tx);
+      const key = date ? dayKey(date) : '';
+      const dateLabel = !date ? '날짜 확인 안 됨' : key === today ? '오늘' : key === yesterday ? '어제'
+        : `${date.getFullYear() === now.getFullYear() ? '' : `${date.getFullYear()}년 `}${date.getMonth() + 1}월 ${date.getDate()}일`;
+      return {
+        valid, title: valid ? (typeof tx.memo === 'string' && tx.memo.trim() ? tx.memo : tx.category) : '확인할 수 없는 기록',
+        category: valid ? tx.category : '', type: valid ? tx.type : null, amount: valid ? tx.amount : null,
+        dateLabel, dayKey: key,
+      };
+    }),
+  };
+}
+
+// null means an explicitly empty storage key, never a failed read or malformed object.
+function validateRecordDraft(draft, state) {
+  const errors = {};
+  if (!pwObject(draft)) return { valid: false, errors: { form: '입력을 확인해주세요.' } };
+  const categories = draft.type === 'in' || draft.type === 'out' ? PW_RECORD_CATEGORIES[draft.type] : [];
+  if (!categories.length) errors.type = '받은 돈인지 쓴 돈인지 골라주세요.';
+  if (!categories.includes(draft.category)) errors.category = '어떤 돈이었는지 골라주세요.';
+  const raw = draft.amount;
+  const amount = typeof raw === 'string' && /^[0-9]+$/.test(raw) ? Number(raw) : NaN;
+  if (!Number.isSafeInteger(amount) || amount <= 0) errors.amount = '1원 이상의 정수로 입력해주세요.';
+  if (typeof draft.memo !== 'string' || Array.from(draft.memo).length > 50) errors.memo = '메모는 50자까지 적을 수 있어요.';
+  if (state !== null && !writablePocketWONState(state)) {
+    errors.form = '저장된 용돈 정보를 확인할 수 없어 기록을 저장할 수 없어요.';
+  } else if (!errors.amount && !errors.type) {
+    const balance = state === null ? 0 : state.balance;
+    const total = state === null ? 0 : state.monthly[draft.type === 'in' ? 'saving' : 'spending'];
+    if (draft.type === 'out' && amount > balance) errors.amount = '지금 가진 돈보다 큰 금액이에요.';
+    else if (!Number.isSafeInteger(total + amount) || (draft.type === 'in' && !Number.isSafeInteger(balance + amount))) {
+      errors.amount = '저장할 수 있는 금액 범위를 넘었어요.';
+    }
+  }
+  return { valid: Object.keys(errors).length === 0, errors, amount };
+}
+
+function applyTransaction(state, draft, timestamp) {
+  const checked = validateRecordDraft(draft, state);
+  if (!checked.valid || !parsePocketWONDate(timestamp)) throw new Error('Invalid record');
+  const source = state === null ? { balance: 0, monthly: { saving: 0, spending: 0 }, transactions: [] } : state;
+  const tx = { type: draft.type, amount: checked.amount, category: draft.category, ts: timestamp, receipt: false };
+  if (draft.memo.trim()) tx.memo = draft.memo.trim();
+  const incoming = draft.type === 'in';
+  return {
+    ...source,
+    balance: source.balance + (incoming ? checked.amount : -checked.amount),
+    monthly: { ...source.monthly, [incoming ? 'saving' : 'spending']: source.monthly[incoming ? 'saving' : 'spending'] + checked.amount },
+    transactions: [tx, ...source.transactions],
+  };
+}
+
+function persistPocketWONState(nextState, storageProvider = () => window.localStorage) {
+  try {
+    if (!writablePocketWONState(nextState)) return { status: 'failed' };
+    storageProvider().setItem('pocketwon_demo_v1', JSON.stringify(nextState));
+    return { status: 'saved' };
+  } catch (_) {
+    return { status: 'failed' };
+  }
+}
+
+function createHomeViewModel(state) {
+  const object = value => value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+  const money = value => Number.isSafeInteger(value) && value >= 0 ? value : null;
+  const text = value => typeof value === 'string' ? value.trim() : '';
+  const source = object(state);
+  const name = text(object(source.user).name);
+  const monthly = object(source.monthly);
+  const received = money(monthly.saving);
+  const spent = money(monthly.spending);
+  const score = typeof source.habitScore === 'number' && Number.isFinite(source.habitScore)
+    && source.habitScore >= 0 && source.habitScore <= 100 ? source.habitScore : null;
+  const storedGoal = object(source.goal);
+  const title = text(storedGoal.title);
+  const target = money(storedGoal.target);
+  const current = money(storedGoal.current);
+  let goal = { status: source.goal == null ? 'empty' : 'invalid' };
+  if (title && target !== null && target > 0 && current !== null) {
+    goal = {
+      status: current >= target ? 'complete' : 'active', title, target, current,
+      percent: Math.max(0, Math.min(100, Math.round(current / target * 100))),
+    };
+  }
+  // The preserved missions array has weekday flags, but no date or week identity.
+  // It cannot establish a mission for today. Do not infer completion from it.
+  return {
+    greeting: { name },
+    balance: money(source.balance),
+    monthly: { received, spent, remaining: received !== null && spent !== null ? received - spent : null, period: 'unknown' },
+    habit: { score },
+    goal,
+    mission: { status: 'unavailable' },
+  };
+}

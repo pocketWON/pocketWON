@@ -1,0 +1,158 @@
+{
+  "before": {
+    "user": {
+      "name": "민준"
+    },
+    "balance": 32500,
+    "habitScore": 82,
+    "monthly": {
+      "spending": 12300,
+      "saving": 15200,
+      "goal": 100000
+    },
+    "goal": null,
+    "streak": 7,
+    "points": 1250,
+    "transactions": [
+      {
+        "type": "out",
+        "amount": 3500,
+        "category": "간식",
+        "ts": "2024-05-18T12:10:00",
+        "receipt": false
+      },
+      {
+        "type": "in",
+        "amount": 10000,
+        "category": "용돈",
+        "ts": "2024-05-17T09:00:00",
+        "receipt": false
+      },
+      {
+        "type": "out",
+        "amount": 1800,
+        "category": "교통",
+        "ts": "2024-05-16T16:40:00",
+        "receipt": false
+      },
+      {
+        "type": "out",
+        "amount": 2700,
+        "category": "게임",
+        "ts": "2024-05-15T19:20:00",
+        "receipt": false
+      }
+    ],
+    "missions": [
+      true,
+      true,
+      true,
+      false,
+      false,
+      false,
+      false
+    ],
+    "recordedDays": [
+      1,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "specialDays": [
+      24
+    ],
+    "today": 18,
+    "calOffset": 0
+  },
+  "after": {
+    "user": {
+      "name": "민준"
+    },
+    "balance": 32500,
+    "habitScore": 82,
+    "monthly": {
+      "spending": 12300,
+      "saving": 15200,
+      "goal": 100000
+    },
+    "goal": {
+      "current": 0,
+      "title": "새 자전거",
+      "target": 100000
+    },
+    "streak": 7,
+    "points": 1250,
+    "transactions": [
+      {
+        "type": "out",
+        "amount": 3500,
+        "category": "간식",
+        "ts": "2024-05-18T12:10:00",
+        "receipt": false
+      },
+      {
+        "type": "in",
+        "amount": 10000,
+        "category": "용돈",
+        "ts": "2024-05-17T09:00:00",
+        "receipt": false
+      },
+      {
+        "type": "out",
+        "amount": 1800,
+        "category": "교통",
+        "ts": "2024-05-16T16:40:00",
+        "receipt": false
+      },
+      {
+        "type": "out",
+        "amount": 2700,
+        "category": "게임",
+        "ts": "2024-05-15T19:20:00",
+        "receipt": false
+      }
+    ],
+    "missions": [
+      true,
+      true,
+      true,
+      false,
+      false,
+      false,
+      false
+    ],
+    "recordedDays": [
+      1,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "specialDays": [
+      24
+    ],
+    "today": 18,
+    "calOffset": 0
+  }
+}

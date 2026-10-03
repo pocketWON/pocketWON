@@ -1,0 +1,47 @@
+/* UI state only: no business-store reads, writes, imports, or automatic migrations. */
+(() => {
+  const content = document.getElementById('pw-content');
+  const heading = document.getElementById('pw-screen-title');
+  const context = document.getElementById('pw-header-context');
+  const menu = document.getElementById('pw-menu');
+  const navigation = document.getElementById('pw-navigation-items');
+  let currentScreen = 'home';
+
+  menu.innerHTML = pwIcon('menu');
+  const buttons = PW_TABS.map(tab => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'pw-nav-item';
+    button.dataset.screen = tab.id;
+    button.innerHTML = pwIcon(tab.id);
+    const label = document.createElement('span');
+    label.textContent = tab.label;
+    button.append(label);
+    button.addEventListener('click', () => showScreen(tab.id));
+    navigation.append(button);
+    return button;
+  });
+
+  function showScreen(id) {
+    const tab = PW_TABS.find(item => item.id === id);
+    if (!tab) return;
+    currentScreen = tab.id;
+    heading.textContent = tab.label;
+    document.title = `${tab.label} · 포켓WON`;
+    if (id === 'home') {
+      context.innerHTML = 'Pocket<span class="pw-brand-accent">WON</span>';
+      context.setAttribute('aria-label', '포켓WON');
+    } else {
+      context.textContent = tab.label;
+      context.removeAttribute('aria-label');
+    }
+    for (const button of buttons) {
+      if (button.dataset.screen === currentScreen) button.setAttribute('aria-current', 'page');
+      else button.removeAttribute('aria-current');
+    }
+    content.scrollTop = 0;
+  }
+
+  menu.addEventListener('click', () => showScreen('all'));
+  showScreen(currentScreen);
+})();

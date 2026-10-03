@@ -1,0 +1,40 @@
+body { background: var(--pw-color-surface-subtle); }
+.pw-shell {
+  display: flex; flex-direction: column;
+  width: 100%; max-width: var(--pw-shell-max-width);
+  height: 100vh; height: 100dvh; margin-inline: auto;
+  background: var(--pw-shell-background);
+}
+.pw-safe-area-top { flex: 0 0 auto; height: var(--pw-safe-top); background: var(--pw-header-background); }
+.pw-safe-area-bottom { height: var(--pw-safe-bottom); }
+.pw-header {
+  display: flex; flex: 0 0 auto; align-items: center; justify-content: space-between;
+  gap: var(--pw-space-3); min-height: var(--pw-header-height);
+  padding-left: max(var(--pw-shell-gutter), var(--pw-safe-left));
+  padding-right: max(var(--pw-shell-gutter), var(--pw-safe-right));
+  background: var(--pw-header-background);
+}
+.pw-header-context { min-width: 0; font: var(--pw-type-h3); overflow-wrap: anywhere; }
+.pw-brand-accent { color: var(--pw-color-primary); }
+.pw-content { flex: 1 1 auto; min-height: 0; min-width: 0; overflow: auto; overscroll-behavior-y: contain; }
+.pw-placeholder {
+  padding-top: var(--pw-space-6); padding-bottom: var(--pw-space-6);
+  padding-left: max(var(--pw-shell-gutter), var(--pw-safe-left));
+  padding-right: max(var(--pw-shell-gutter), var(--pw-safe-right)); overflow-wrap: anywhere;
+}
+.pw-bottom-navigation {
+  flex: 0 0 auto; background: var(--pw-nav-background);
+  border-top: var(--pw-border-width) solid var(--pw-color-divider);
+}
+.pw-navigation-items {
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); min-height: var(--pw-nav-height);
+  padding: var(--pw-space-1) max(var(--pw-space-1), var(--pw-safe-right)) var(--pw-space-1) max(var(--pw-space-1), var(--pw-safe-left));
+}
+.pw-nav-item {
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  gap: var(--pw-space-1); min-width: 0; min-height: var(--pw-touch-target);
+  padding: var(--pw-space-2) 0; border: 0; border-radius: 0;
+  background: transparent; color: var(--pw-nav-inactive); font: var(--pw-type-caption);
+}
+.pw-nav-item[aria-current="page"] { color: var(--pw-nav-active); font-weight: var(--pw-weight-bold); }
+.pw-nav-item:active { color: var(--pw-color-primary-pressed); }

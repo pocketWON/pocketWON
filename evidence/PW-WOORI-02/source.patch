@@ -1,0 +1,971 @@
+--- a/README.md
++++ b/README.md
+@@ -1,14 +1,19 @@
+ # PocketWON / 포켓WON
+ 
+-PW-WOORI-01: 새 Light 디자인 시스템과 App Shell. 개별 기능 화면은 placeholder 상태입니다.
++PW-WOORI-02: 승인된 Light 디자인 시스템과 App Shell 위에 읽기 전용 홈을 구현했습니다. 기록·목표·리포트·전체는 placeholder 상태를 유지합니다.
+ 
+ ```sh
+ python3 -m http.server 4173 --bind 127.0.0.1
+ ```
+ 
+ - [실행 앱](http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html)
+-- [검수 갤러리](http://127.0.0.1:4173/evidence/PW-WOORI-01/index.html)
+-- [구현·검증·보존 보고서](docs/PW-WOORI-01.md)
+-- [변경 파일](evidence/PW-WOORI-01/changed-files.md)
++- [홈 검수 갤러리](http://127.0.0.1:4173/evidence/PW-WOORI-02/index.html)
++- [홈 구현·검증·보존 보고서](docs/PW-WOORI-02.md)
++- [홈 변경 파일](evidence/PW-WOORI-02/changed-files.md)
++- [PW-WOORI-01 보고서](docs/PW-WOORI-01.md)
+ 
+ 새 프레임워크나 앱 런타임 의존성 없이 정적 파일로 동작합니다. 원본 구현은 preservation 폴더의 비실행 텍스트로 보존되어 있으며 앱에서 사용하지 않습니다.
++
++홈은 `pocketwon_demo_v1`만 읽으며 저장·삭제·초기화하지 않습니다. 저장소가 비었거나 읽을 수 없으면 빈 상태를 표시합니다. 검수 갤러리의 값은 격리된 테스트 context에 주입한 원본 데이터이며 실제 사용자 데이터가 아닙니다.
++
++기존 개발 환경의 Playwright로 `node tests/verify-home.cjs`와 `node tests/verify-shell.cjs`를 실행합니다. 새 결과는 `evidence/PW-WOORI-02`에만 저장됩니다. PW-WOORI-01의 증거 파일은 유지합니다.
+--- /dev/null
++++ b/docs/PW-WOORI-02.md
+@@ -0,0 +1,140 @@
++# PW-WOORI-02 — 홈 화면 완료 보고
++
++## 1. 변경 파일 목록
++
++활성 앱: 진입 HTML과 앱 탐색 코드 수정, `scripts/state.js`, `scripts/home.js`, `styles/home.css` 추가.
++검증·문서: Shell 검사 수정, 홈 검사 추가, README 수정, 본 보고서 추가.
++
++- [전체 변경 목록](../evidence/PW-WOORI-02/changed-files.md)
++- [소스·테스트·문서 전체 diff](../evidence/PW-WOORI-02/source.patch)
++- [산출물·해시 명세](../evidence/PW-WOORI-02/delivery.json)
++
++승인된 tokens.css/base.css/shell.css/icons.js/tabs.js와 과거 자료를 포함한 기존 46개 파일은 바이트 동일합니다. 네 placeholder의 3개 폭 스크린샷 12개도 PW-WOORI-01과 바이트 동일합니다. Git 저장소가 아니므로 변경 대상 4개 원본을 `preservation/PW-WOORI-02/originals`에 비실행 텍스트로 보존하고 구현 전 50개 파일의 SHA-256을 기록했습니다.
++
++## 2. 홈 데이터 출처
++
++앱은 `pocketwon_demo_v1`만 읽습니다. 데이터 계약은 원본 스냅샷의 defaultState(1512행), loadState(1569행), 기록 저장 처리(1981행 이후), 목표/미션 로직에서 확인했습니다. 원본 HTML 화면·디자인·로직 전체를 다시 활성화하지 않았습니다.
++
++| 표시 | 기존 필드·계산 | 의미와 경계 |
++|---|---|---|
++| 인사 | user.name | 유효한 문자열만 사용, 이름 없음은 개인화 생략 |
++| 내 용돈 | balance | 0 이상 안전한 정수, 실제 0과 누락 구분 |
++| 받은 돈 | monthly.saving | 기존 입금 기록 시 증가하는 누계, 저축액으로 재해석하지 않음 |
++| 쓴 돈 | monthly.spending | 기존 지출 누계 |
++| 남은 돈 | saving − spending | 음수도 표시, balance와 구분 |
++| 습관 점수 | habitScore | 0~100의 유효한 숫자만 표시, 새로운 분석·증감 없음 |
++| 대표 목표 | goal.title/current/target | 단일 목표 구조, 유효한 미완료 목표만 진행 카드로 표시 |
++| 오늘의 미션 | missions의 날짜 유무 | boolean 배열에는 날짜가 없어 오늘의 상태를 확인할 수 없음 |
++
++monthly에는 연월 식별자가 없으므로 제목은 **저장된 돈 흐름**, 보조 문구는 **저장된 집계 · 기간 확인 안 됨**입니다. 거래 내역의 일부 합계나 오래된 날짜로 이번 달 값을 추정하지 않습니다. missions의 과거 주간 완료값을 오늘의 완료로 취급하지 않습니다.
++
++## 3. 새 state / Home ViewModel 구조
++
++```js
++loadPocketWONState()
++// { status: 'loaded' | 'empty' | 'invalid' | 'unavailable', state: object | null }
++
++createHomeViewModel(state)
++// {
++//   greeting: { name: string },
++//   balance: number | null,
++//   monthly: { received, spent, remaining, period: 'unknown' },
++//   habit: { score: number | null },
++//   goal: { status: 'empty' | 'invalid' }
++//      | { status: 'active' | 'complete', title, current, target, percent },
++//   mission: { status: 'unavailable' }
++// }
++
++createHomeView(viewModel, navigate, loadStatus)
++// { element, mount(), dispose() }
++```
++
++로더는 저장소 오류를 정규화하며 ViewModel 계산은 순수 함수입니다. 누락 필드를 다른 사용자·데모 값으로 채우지 않습니다. 돈은 음수가 아닌 안전한 정수인지 확인하고, 집계 차액만 음수를 허용합니다. 목표 비율은 0~100%로 제한하며 달성한 목표는 완료 안내를 표시합니다. 금액이 공간을 넘으면 만/억/조/경 단위의 근삿값과 정확한 원 단위 금액을 함께 제공하며, 접근성 이름에는 정확한 금액을 유지합니다.
++
++## 4. localStorage 읽기 / 쓰기
++
++- 런타임: `getItem('pocketwon_demo_v1')`만 사용. 초기 홈 및 홈 재진입 시 읽습니다.
++- 런타임 `setItem` / `removeItem` / `clear`: **0회**. 원본 데이터 변경·자동 마이그레이션·초기화 없음.
++- theme/intro/무관 키: 읽거나 변경하지 않음.
++- 정상·오류 상태의 탐색·새로고침에서 저장 문자열 동일성 확인.
++- fixture 준비의 쓰기는 **격리된 임시 Playwright context 안에서 계측 시작 전**에만 수행. 실제 사용자 브라우저를 열거나 데이터를 주입하지 않음.
++- preservation의 .txt를 앱에서 import/fetch하지 않음. 앱에 defaultState 없음.
++
++## 5. 360×844 screenshot
++
++![360×844 홈](../evidence/PW-WOORI-02/screenshots/360x844-home.png)
++
++## 6. 390×844 screenshot
++
++![390×844 홈](../evidence/PW-WOORI-02/screenshots/390x844-home.png)
++
++## 7. 430×844 screenshot
++
++![430×844 홈](../evidence/PW-WOORI-02/screenshots/430x844-home.png)
++
++## 8. 390×844 전체 페이지 screenshot
++
++![390px 폭 홈 전체](../evidence/PW-WOORI-02/screenshots/390x844-home-full.png)
++
++위 네 장은 **원본 defaultState를 주입한 격리 검수 fixture**입니다. 잔액 32,500원·점수 82점·목표 진행률 68%는 원본 값/계산이며 사용자 실제 잔액을 주장하지 않습니다. 실제 실행 시 저장소가 비어 있으면 [빈 상태](../evidence/PW-WOORI-02/screenshots/fallback-empty.png)가 표시됩니다.
++
++일반 캡처는 실제 844px viewport입니다. 전체 캡처는 390×844 viewport의 별도 검수 페이지에 촬영 전용 CSS로 Shell 높이를 auto, 내부 스크롤을 visible로 바꿔 Header부터 마지막 콘텐츠와 Nav까지 캡처했습니다. 앱 코드의 내부 스크롤 구조에는 이 CSS를 반영하지 않았습니다.
++
++## 9. 기록하기 → 기록
++
++Chromium / WebKit PASS. `record` 선택 표시, 제목·본문 ‘기록’, URL 유지, 목적지 h1 포커스를 확인했습니다. 입력 화면은 구현하지 않았습니다.
++
++## 10. 목표 보기 → 목표
++
++Chromium / WebKit PASS. `goal` 선택 표시, 제목·본문 ‘목표’, 목적지 포커스 확인. 목표 없음·오류 상태에서도 동일한 이동을 확인했습니다. 생성/수정 화면은 구현하지 않았습니다.
++
++## 11. 리포트 보기 → 리포트
++
++Chromium / WebKit PASS. `report` 선택 표시, 제목·본문 ‘리포트’, 목적지 포커스 확인. 상세 리포트는 구현하지 않았습니다. 전체 메뉴는 기존 ‘전체’ placeholder로 이동합니다.
++
++## 12. fallback 검증
++
++정상/부분 객체, 빈 저장소, JSON 오류, 잘못된 루트, 저장소 getter/read 예외, 실제 0, 문자열/음수/무한대/안전 정수 초과 금액, 점수 범위, 목표 없음/잘못된 목표/달성·초과 달성, 날짜 없는 미션을 검사했습니다. 동결된 원본 객체로 ViewModel을 생성하고 불변성을 확인했습니다.
++
++브라우저에서는 360/390/430×844, 360×640, 세 폭의 root 200%, safe area 주입, 최대 안전 정수, 음수 차액, 긴 목표·이름, HTML 형태의 문자열을 검사했습니다. 금액 표현과 CTA의 가로 넘침, document/content 가로 overflow, 마지막 모듈의 Nav 가림은 없습니다. 집계는 정상 크기에서 3열, 확대 시 1열입니다. 사용자 문자열은 textContent로 표현합니다.
++
++## 13. accessibility / 시각 검증
++
++- Chromium / WebKit: h1 1개와 6개 section h2, 목표 이름 h3, 이름·범위·현재값을 가진 progress 확인.
++- 실제 button, icon-only 메뉴의 이름, 장식 SVG aria-hidden, 터치 영역 48px 이상.
++- Tab 순서, focus-visible 2px, Enter/Space 동작, 홈 액션 전환의 목적지 제목 포커스 확인.
++- 실제 surface 위의 텍스트 대비 최솟값 **4.796:1**. 상태는 문구로 전달합니다.
++- [접근성 트리](../evidence/PW-WOORI-02/accessibility-tree.txt), [200% 확대 캡처](../evidence/PW-WOORI-02/screenshots/360x640-200percent.png).
++- 실물 기기·스크린리더 사용성 테스트와 axe 감사는 수행하지 않았습니다. 위 결과는 실제 브라우저 DOM·키보드·수치 검증 범위입니다.
++
++요청한 시각 품질 자체 점검은 10항목 모두 YES입니다. 밝은 배경·흰 카드·여백·숫자 중심 위계와 승인된 Shell을 유지했고, 채워진 Blue CTA는 한 개입니다. 인사/집계는 카드 밖에 두고, 3개 주요 카드와 작은 미션 영역으로 구성했습니다. 성인 금융 용어·캐릭터·무지개색·gradient·shadow는 없습니다. 어린이 문구와 작은 아이콘만 사용하며, 확인 불가능한 게임/미션 상태는 장식으로 보충하지 않았습니다. 이는 자체 검수이며 공식 우리WON 내부 UI와의 일치 인증을 의미하지 않습니다.
++
++## 14. console error / failed resource 결과
++
++홈 **44개 검증 묶음 PASS**, Shell **46개 검증 묶음 PASS**, 합계 **90개**입니다.
++
++- Chromium 151.0.7922.34 / WebKit 26.5.
++- 최종 실행의 console error / page error: **0건**.
++- 실패 요청 / HTTP 4xx·5xx 리소스: **0건**.
++- 초기 WebKit 검사에서 발견한 ResizeObserver 알림 루프는 너비 변경만 감지하고 DOM 갱신을 다음 프레임으로 분리하여 해결한 뒤 전체 검사를 다시 통과했습니다.
++- 프레임워크 build/lint가 없는 정적 프로젝트입니다. JavaScript 구문 검사와 실제 브라우저 검증을 수행했습니다. 외부 폰트는 기존 CDN을 유지하며 서버 폰트 장애 시 시스템 폰트로 대체됩니다.
++
++재현: README의 localhost 정적 서버를 실행한 상태에서 아래 명령을 실행합니다. Playwright는 기존 개발 환경의 설치를 사용합니다. 필요한 경우 `PW_PLAYWRIGHT_MODULE`, `PW_CHROMIUM_EXECUTABLE`, `PW_WEBKIT_EXECUTABLE`, `PW_BASE_URL`을 지정할 수 있습니다.
++
++```sh
++node --check ks6s3juocjzc2.kimi.page/scripts/state.js
++node --check ks6s3juocjzc2.kimi.page/scripts/home.js
++node --check ks6s3juocjzc2.kimi.page/scripts/app.js
++node --check tests/verify-home.cjs
++node --check tests/verify-shell.cjs
++node tests/verify-home.cjs
++node tests/verify-shell.cjs
++```
++
++[홈 기계 판독 결과](../evidence/PW-WOORI-02/verification.json) · [Shell 결과](../evidence/PW-WOORI-02/shell/verification.json)
++
++## 15. 전체 diff
++
++[전체 구현 diff](../evidence/PW-WOORI-02/source.patch)는 활성 앱·검증 코드·README·본 보고서의 모든 변경을 구현 직전 원본과 비교합니다. 캡처·생성된 검증 결과·보존용 복사본은 제품 소스 diff와 구분하며, 전체 파일 목록과 SHA-256은 [delivery.json](../evidence/PW-WOORI-02/delivery.json)에 있습니다.
++
++홈 구현 및 검수 자료 제출로 작업을 종료합니다. 다른 탭 개발·계좌 연결·포인트/미션 처리·API·DB·서버 개발·배포는 진행하지 않았습니다.
+--- a/ks6s3juocjzc2.kimi.page/index.html
++++ b/ks6s3juocjzc2.kimi.page/index.html
+@@ -10,8 +10,11 @@
+   <link rel="stylesheet" href="./styles/tokens.css">
+   <link rel="stylesheet" href="./styles/base.css">
+   <link rel="stylesheet" href="./styles/shell.css">
++  <link rel="stylesheet" href="./styles/home.css">
+   <script src="./scripts/icons.js" defer></script>
+   <script src="./scripts/tabs.js" defer></script>
++  <script src="./scripts/state.js" defer></script>
++  <script src="./scripts/home.js" defer></script>
+   <script src="./scripts/app.js" defer></script>
+ </head>
+ <body>
+--- a/ks6s3juocjzc2.kimi.page/scripts/app.js
++++ b/ks6s3juocjzc2.kimi.page/scripts/app.js
+@@ -1,11 +1,11 @@
+-/* UI state only: no business-store reads, writes, imports, or automatic migrations. */
++/* Shell navigation. Home reads business data without changing stored state. */
+ (() => {
+   const content = document.getElementById('pw-content');
+-  const heading = document.getElementById('pw-screen-title');
+   const context = document.getElementById('pw-header-context');
+   const menu = document.getElementById('pw-menu');
+   const navigation = document.getElementById('pw-navigation-items');
+   let currentScreen = 'home';
++  let homeView;
+ 
+   menu.innerHTML = pwIcon('menu');
+   const buttons = PW_TABS.map(tab => {
+@@ -22,24 +22,45 @@
+     return button;
+   });
+ 
+-  function showScreen(id) {
++  function showScreen(id, moveFocus = false) {
+     const tab = PW_TABS.find(item => item.id === id);
+     if (!tab) return;
+     currentScreen = tab.id;
+-    heading.textContent = tab.label;
++    if (homeView) homeView.dispose();
++    homeView = null;
+     document.title = `${tab.label} · 포켓WON`;
+     if (id === 'home') {
+       context.innerHTML = 'Pocket<span class="pw-brand-accent">WON</span>';
+       context.setAttribute('aria-label', '포켓WON');
++      const loaded = loadPocketWONState();
++      homeView = createHomeView(createHomeViewModel(loaded.state), target => showScreen(target, true), loaded.status);
++      content.replaceChildren(homeView.element);
++      homeView.mount();
+     } else {
+       context.textContent = tab.label;
+       context.removeAttribute('aria-label');
++      const placeholder = document.createElement('section');
++      placeholder.className = 'pw-placeholder';
++      placeholder.setAttribute('aria-labelledby', 'pw-screen-title');
++      const heading = document.createElement('h1');
++      heading.id = 'pw-screen-title';
++      heading.className = 'pw-type-h1';
++      heading.textContent = tab.label;
++      heading.setAttribute('aria-live', 'polite');
++      heading.setAttribute('aria-atomic', 'true');
++      placeholder.append(heading);
++      content.replaceChildren(placeholder);
+     }
+     for (const button of buttons) {
+       if (button.dataset.screen === currentScreen) button.setAttribute('aria-current', 'page');
+       else button.removeAttribute('aria-current');
+     }
+     content.scrollTop = 0;
++    if (moveFocus) {
++      const heading = document.getElementById('pw-screen-title');
++      heading.tabIndex = -1;
++      heading.focus({ preventScroll: true });
++    }
+   }
+ 
+   menu.addEventListener('click', () => showScreen('all'));
+--- /dev/null
++++ b/ks6s3juocjzc2.kimi.page/scripts/home.js
+@@ -0,0 +1,189 @@
++/* Home owns presentation only; navigation is injected by the existing Shell. */
++function createHomeView(viewModel, navigate, loadStatus) {
++  const moneyNodes = [];
++  const numberFormat = new Intl.NumberFormat('ko-KR', { maximumFractionDigits: 1 });
++  const integerFormat = new Intl.NumberFormat('ko-KR');
++  function element(tag, className, text) {
++    const node = document.createElement(tag);
++    if (className) node.className = className;
++    if (text !== undefined) node.textContent = text;
++    return node;
++  }
++  function action(label, screen, primary = false) {
++    const button = element('button', primary ? 'pw-button pw-home-primary' : 'pw-home-action', label);
++    button.type = 'button';
++    button.addEventListener('click', () => navigate(screen));
++    if (!primary) button.append(element('span', 'pw-home-chevron', '›'));
++    if (!primary) button.lastChild.setAttribute('aria-hidden', 'true');
++    return button;
++  }
++  function section(title, id, className) {
++    const node = element('section', className);
++    const heading = element('h2', 'pw-type-h3', title);
++    heading.id = id;
++    node.setAttribute('aria-labelledby', id);
++    node.append(heading);
++    return node;
++  }
++  function amount(value, size = 'medium') {
++    if (value === null) return element('p', 'pw-home-unknown', '확인할 수 없어요');
++    const wrapper = element('div', `pw-home-money pw-home-money--${size}`);
++    const display = element('span', 'pw-home-money-display');
++    const digits = element('span', 'pw-home-money-digits', integerFormat.format(value));
++    const unit = element('span', 'pw-home-money-unit', '원');
++    const exact = element('span', 'pw-home-money-exact', `${integerFormat.format(value)}원`);
++    exact.hidden = true;
++    wrapper.setAttribute('role', 'group');
++    wrapper.setAttribute('aria-label', `${integerFormat.format(value)}원`);
++    display.setAttribute('aria-hidden', 'true');
++    exact.setAttribute('aria-hidden', 'true');
++    display.append(digits, unit);
++    wrapper.append(display, exact);
++    moneyNodes.push({ wrapper, display, digits, unit, exact, value });
++    return wrapper;
++  }
++  function progress(label, value) {
++    const track = element('div', 'pw-home-progress');
++    track.setAttribute('role', 'progressbar');
++    track.setAttribute('aria-label', label);
++    track.setAttribute('aria-valuemin', '0');
++    track.setAttribute('aria-valuemax', '100');
++    track.setAttribute('aria-valuenow', String(value));
++    track.setAttribute('aria-valuetext', `${numberFormat.format(value)}${label === '습관 점수' ? '점 / 100점' : '%'}`);
++    const fill = element('span', 'pw-home-progress-fill');
++    fill.style.width = `${value}%`;
++    track.append(fill);
++    return track;
++  }
++
++  const root = element('div', 'pw-home');
++  const heading = element('h1', 'pw-home-sr-only', '홈');
++  heading.id = 'pw-screen-title';
++  const intro = element('div', 'pw-home-intro');
++  const name = viewModel.greeting.name;
++  if (name) {
++    const last = name.charCodeAt(name.length - 1);
++    const suffix = last >= 0xAC00 && last <= 0xD7A3 ? ((last - 0xAC00) % 28 ? '아,' : '야,') : ',';
++    intro.append(element('p', 'pw-home-greeting', `${name}${suffix}`));
++  }
++  intro.append(element('p', 'pw-home-muted pw-type-body-small', '오늘도 좋은 돈 습관을 만들어볼까요?'));
++  root.append(heading, intro);
++
++  const hero = section('내 용돈', 'pw-home-balance-title', 'pw-surface pw-surface--hero pw-home-hero');
++  hero.append(amount(viewModel.balance, 'large'));
++  if (loadStatus !== 'loaded') {
++    hero.append(element('p', 'pw-home-muted pw-type-body-small', loadStatus === 'empty' ? '아직 저장된 용돈 정보가 없어요.' : '저장된 용돈 정보를 불러오지 못했어요.'));
++  }
++  hero.append(element('p', 'pw-home-muted pw-type-body-small', viewModel.balance === null ? '용돈 정보가 있으면 여기에 보여드려요.' : '지금 쓸 수 있는 돈이에요.'));
++  const meta = element('dl', 'pw-home-hero-meta');
++  for (const [label, value] of [['받은 돈', viewModel.monthly.received], ['쓴 돈', viewModel.monthly.spent]]) {
++    const row = element('div');
++    const detail = element('dd');
++    detail.append(amount(value, 'small'));
++    row.append(element('dt', '', label), detail);
++    meta.append(row);
++  }
++  hero.append(meta, element('p', 'pw-home-period pw-type-caption', '저장된 집계 · 기간 확인 안 됨'), action('기록하기', 'record', true));
++  root.append(hero);
++
++  const flow = section('저장된 돈 흐름', 'pw-home-flow-title', 'pw-home-flow');
++  flow.append(element('p', 'pw-home-muted pw-type-caption', '저장된 집계 · 기간 확인 안 됨'));
++  const metrics = element('dl', 'pw-home-metrics');
++  for (const [label, value] of [['받은 돈', viewModel.monthly.received], ['쓴 돈', viewModel.monthly.spent], ['남은 돈', viewModel.monthly.remaining]]) {
++    const item = element('div', 'pw-home-metric');
++    const detail = element('dd');
++    detail.append(value === null ? element('p', 'pw-home-unknown', '확인 전') : amount(value));
++    item.append(element('dt', 'pw-home-muted pw-type-body-small', label), detail);
++    metrics.append(item);
++  }
++  flow.append(metrics, element('p', 'pw-home-muted pw-type-caption', '남은 돈은 받은 돈에서 쓴 돈을 뺀 금액이에요.'));
++  root.append(flow);
++
++  const habit = section('나의 돈 습관', 'pw-home-habit-title', 'pw-surface pw-home-habit');
++  habit.append(element('p', 'pw-home-muted pw-type-body-small', '습관 점수'));
++  if (viewModel.habit.score === null) {
++    habit.append(element('p', 'pw-home-empty', '아직 확인할 수 있는 점수가 없어요.'));
++  } else {
++    const score = element('p', 'pw-home-score', numberFormat.format(viewModel.habit.score));
++    score.append(element('span', '', '점'));
++    habit.append(score, progress('습관 점수', viewModel.habit.score), element('p', 'pw-home-muted pw-type-caption', '저장된 습관 점수예요.'));
++  }
++  habit.append(action('리포트 보기', 'report'));
++  root.append(habit);
++
++  const goal = section('지금 모으는 목표', 'pw-home-goal-title', 'pw-surface pw-home-goal');
++  if (viewModel.goal.status === 'active') {
++    const data = viewModel.goal;
++    goal.append(element('h3', 'pw-home-goal-name', data.title));
++    const totals = element('div', 'pw-home-goal-totals');
++    for (const [label, value] of [['모은 금액', data.current], ['목표 금액', data.target]]) {
++      const part = element('div');
++      part.append(element('p', 'pw-home-muted pw-type-caption', label), amount(value, 'small'));
++      totals.append(part);
++    }
++    goal.append(totals, progress('목표 진행률', data.percent), element('p', 'pw-home-percent', `${data.percent}%`));
++  } else {
++    const copy = { empty: '아직 모으는 목표가 없어요.', complete: '저장된 목표 금액을 모두 모았어요.', invalid: '목표 정보를 확인할 수 없어요.' };
++    goal.append(element('p', 'pw-home-empty', copy[viewModel.goal.status]));
++    if (viewModel.goal.status === 'empty') goal.append(element('p', 'pw-home-muted pw-type-body-small', '첫 목표를 만들어볼까요?'));
++  }
++  goal.append(action('목표 보기', 'goal'));
++  root.append(goal);
++
++  const mission = section('오늘의 미션', 'pw-home-mission-title', 'pw-home-mission');
++  const icon = element('span', 'pw-home-mission-icon');
++  icon.innerHTML = pwIcon('record');
++  icon.setAttribute('aria-hidden', 'true');
++  const message = element('p', 'pw-home-muted pw-type-body-small', '오늘의 미션을 확인할 수 없어요.');
++  const missionBody = element('div', 'pw-home-mission-body');
++  missionBody.append(icon, message);
++  mission.append(missionBody);
++  root.append(mission);
++
++  // Fit the representation, never shrink the user's chosen text size.
++  function fitAmounts() {
++    if (!root.isConnected) return;
++    for (const item of moneyNodes) {
++      const { wrapper, display, digits, unit, exact, value } = item;
++      digits.textContent = integerFormat.format(value);
++      unit.textContent = '원';
++      exact.hidden = true;
++      wrapper.classList.remove('pw-home-money--compact');
++      for (const [scale, suffix] of [[1e4, '만'], [1e8, '억'], [1e12, '조'], [1e16, '경']]) {
++        if (display.getBoundingClientRect().width <= wrapper.clientWidth + 0.05) break;
++        if (Math.abs(value) / scale < 0.1) continue;
++        digits.textContent = numberFormat.format(value / scale);
++        unit.textContent = `${suffix}원`;
++        exact.hidden = false;
++        wrapper.classList.add('pw-home-money--compact');
++      }
++    }
++  }
++  let frame;
++  const widths = new WeakMap();
++  function scheduleFit() {
++    cancelAnimationFrame(frame);
++    frame = requestAnimationFrame(fitAmounts);
++  }
++  const observer = new ResizeObserver(entries => {
++    // Height changes caused by exact-amount captions need no new fit pass.
++    // Defer width-driven DOM writes beyond ResizeObserver delivery (WebKit).
++    let changed = false;
++    for (const entry of entries) {
++      if (widths.get(entry.target) !== entry.contentRect.width) {
++        widths.set(entry.target, entry.contentRect.width);
++        changed = true;
++      }
++    }
++    if (changed) scheduleFit();
++  });
++  return {
++    element: root,
++    mount() {
++      moneyNodes.forEach(item => observer.observe(item.wrapper));
++      fitAmounts();
++      document.fonts.ready.then(scheduleFit);
++    },
++    dispose() { observer.disconnect(); cancelAnimationFrame(frame); },
++  };
++}
+--- /dev/null
++++ b/ks6s3juocjzc2.kimi.page/scripts/state.js
+@@ -0,0 +1,53 @@
++/* Legacy business data is read-only. Unknown values are never replaced with demo data. */
++function loadPocketWONState(storageProvider = () => window.localStorage) {
++  let raw;
++  try {
++    raw = storageProvider().getItem('pocketwon_demo_v1');
++  } catch (_) {
++    return { status: 'unavailable', state: null };
++  }
++  if (raw === null) return { status: 'empty', state: null };
++  try {
++    const state = JSON.parse(raw);
++    if (!state || typeof state !== 'object' || Array.isArray(state)) {
++      return { status: 'invalid', state: null };
++    }
++    return { status: 'loaded', state };
++  } catch (_) {
++    return { status: 'invalid', state: null };
++  }
++}
++
++function createHomeViewModel(state) {
++  const object = value => value && typeof value === 'object' && !Array.isArray(value) ? value : {};
++  const money = value => Number.isSafeInteger(value) && value >= 0 ? value : null;
++  const text = value => typeof value === 'string' ? value.trim() : '';
++  const source = object(state);
++  const name = text(object(source.user).name);
++  const monthly = object(source.monthly);
++  const received = money(monthly.saving);
++  const spent = money(monthly.spending);
++  const score = typeof source.habitScore === 'number' && Number.isFinite(source.habitScore)
++    && source.habitScore >= 0 && source.habitScore <= 100 ? source.habitScore : null;
++  const storedGoal = object(source.goal);
++  const title = text(storedGoal.title);
++  const target = money(storedGoal.target);
++  const current = money(storedGoal.current);
++  let goal = { status: source.goal == null ? 'empty' : 'invalid' };
++  if (title && target !== null && target > 0 && current !== null) {
++    goal = {
++      status: current >= target ? 'complete' : 'active', title, target, current,
++      percent: Math.max(0, Math.min(100, Math.round(current / target * 100))),
++    };
++  }
++  // The preserved missions array has weekday flags, but no date or week identity.
++  // It cannot establish a mission for today. Do not infer completion from it.
++  return {
++    greeting: { name },
++    balance: money(source.balance),
++    monthly: { received, spent, remaining: received !== null && spent !== null ? received - spent : null, period: 'unknown' },
++    habit: { score },
++    goal,
++    mission: { status: 'unavailable' },
++  };
++}
+--- /dev/null
++++ b/ks6s3juocjzc2.kimi.page/styles/home.css
+@@ -0,0 +1,77 @@
++/* Home presentation uses the approved PW-WOORI-01 tokens unchanged. */
++.pw-home {
++  padding: var(--pw-space-6) max(var(--pw-shell-gutter), var(--pw-safe-right)) var(--pw-space-10) max(var(--pw-shell-gutter), var(--pw-safe-left));
++  display: flex; flex-direction: column; gap: var(--pw-space-8);
++  container-type: inline-size; overflow-wrap: anywhere;
++}
++.pw-home-sr-only {
++  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
++  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
++}
++.pw-home-intro { display: grid; gap: var(--pw-space-1); }
++.pw-home-greeting { font: var(--pw-type-h3); }
++.pw-home-muted, .pw-home-period { color: var(--pw-color-text-secondary); }
++.pw-home-hero { padding: var(--pw-space-6) var(--pw-space-5); }
++.pw-home-hero h2 { font: var(--pw-type-body); font-weight: var(--pw-weight-semibold); }
++.pw-home-hero > .pw-home-money { margin-top: var(--pw-space-3); margin-bottom: var(--pw-space-2); }
++.pw-home-primary { width: 100%; margin-top: var(--pw-space-6); }
++.pw-home-money { min-width: 0; font-variant-numeric: tabular-nums; }
++.pw-home-money-display { display: inline-flex; align-items: baseline; gap: 0.125em; white-space: nowrap; }
++.pw-home-money-digits { font: var(--pw-type-h3); font-weight: var(--pw-weight-bold); }
++.pw-home-money-unit { font: var(--pw-type-caption); }
++.pw-home-money--large .pw-home-money-digits { font: var(--pw-type-number-large); }
++.pw-home-money--large .pw-home-money-unit { font: var(--pw-type-h3); }
++.pw-home-money--small .pw-home-money-digits { font: var(--pw-type-body); font-weight: var(--pw-weight-semibold); }
++.pw-home-money-exact { display: block; margin-top: var(--pw-space-1); color: var(--pw-color-text-secondary); font: var(--pw-type-caption); overflow-wrap: anywhere; }
++.pw-home-money-exact[hidden] { display: none; }
++.pw-home-money--compact .pw-home-money-exact::before { content: '정확한 금액 '; }
++.pw-home-money--compact::before { content: '약'; display: block; font: var(--pw-type-caption); color: var(--pw-color-text-secondary); }
++.pw-home-unknown { font: var(--pw-type-body-small); color: var(--pw-color-text-secondary); }
++.pw-home-hero > .pw-home-unknown { margin-block: var(--pw-space-5); font: var(--pw-type-h3); }
++.pw-home dl, .pw-home dd { margin: 0; }
++.pw-home .pw-home-hero-meta { display: grid; gap: var(--pw-space-2); border-top: var(--pw-border-width) solid var(--pw-color-divider); padding-top: var(--pw-space-4); margin-top: var(--pw-space-6); }
++.pw-home-hero-meta > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: var(--pw-space-3); align-items: baseline; }
++.pw-home-hero-meta dt { font: var(--pw-type-body-small); color: var(--pw-color-text-secondary); }
++.pw-home-hero-meta dd { text-align: right; min-width: 0; }
++.pw-home-period { margin-top: var(--pw-space-2); }
++.pw-home-flow > p:first-of-type { margin-top: var(--pw-space-2); }
++.pw-home-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding-block: var(--pw-space-5); }
++.pw-home-metric { min-width: 0; padding-inline: var(--pw-space-3); }
++.pw-home-metric:first-child { padding-left: 0; }
++.pw-home-metric:last-child { padding-right: 0; }
++.pw-home-metric + .pw-home-metric { border-left: var(--pw-border-width) solid var(--pw-color-divider); }
++.pw-home-metric dd { margin-top: var(--pw-space-2); }
++.pw-home-habit > .pw-home-muted:first-of-type { margin-top: var(--pw-space-5); }
++.pw-home-score { font: var(--pw-type-number-medium); font-variant-numeric: tabular-nums; margin-top: var(--pw-space-1); }
++.pw-home-score span { margin-left: var(--pw-space-1); font: var(--pw-type-body); }
++.pw-home-progress { height: var(--pw-space-2); background: var(--pw-color-primary-soft); border-radius: var(--pw-radius-control); overflow: hidden; margin-top: var(--pw-space-4); }
++.pw-home-progress-fill { display: block; height: 100%; border-radius: inherit; background: var(--pw-color-primary); }
++.pw-home-habit .pw-home-progress + p { margin-top: var(--pw-space-3); }
++.pw-home-action {
++  display: inline-flex; align-items: center; justify-content: space-between; gap: var(--pw-space-3);
++  min-height: var(--pw-touch-target); min-width: var(--pw-touch-target); max-width: 100%;
++  background: transparent; border: 0; border-radius: var(--pw-radius-control); padding: var(--pw-space-2) 0;
++  color: var(--pw-color-primary); font: var(--pw-type-body-small); font-weight: var(--pw-weight-semibold);
++  margin-top: var(--pw-space-3); text-align: left; overflow-wrap: anywhere;
++}
++.pw-home-action:hover { color: var(--pw-color-primary-hover); }
++.pw-home-action:active { color: var(--pw-color-primary-pressed); }
++.pw-home-chevron { font-size: 1.25em; }
++.pw-home-goal-name { margin-top: var(--pw-space-5); font: var(--pw-type-body); font-weight: var(--pw-weight-semibold); }
++.pw-home-goal-totals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--pw-space-3); margin-top: var(--pw-space-4); }
++.pw-home-goal-totals > div { min-width: 0; }
++.pw-home-goal-totals .pw-home-money { margin-top: var(--pw-space-1); }
++.pw-home-percent { text-align: right; margin-top: var(--pw-space-2); font: var(--pw-type-body-small); color: var(--pw-color-primary); font-weight: var(--pw-weight-semibold); }
++.pw-home-empty { margin-top: var(--pw-space-5); font: var(--pw-type-body); }
++.pw-home-empty + .pw-home-muted { margin-top: var(--pw-space-2); }
++.pw-home-mission { border-top: var(--pw-border-width) solid var(--pw-color-divider); padding-top: var(--pw-space-6); }
++.pw-home-mission-body { display: flex; align-items: center; gap: var(--pw-space-3); margin-top: var(--pw-space-4); }
++.pw-home-mission-icon { display: flex; align-items: center; justify-content: center; flex: 0 0 auto; padding: var(--pw-space-2); background: var(--pw-color-primary-soft); color: var(--pw-color-primary); border-radius: var(--pw-radius-control); }
++@container (max-width: 18rem) {
++  .pw-home-metrics { grid-template-columns: minmax(0, 1fr); gap: var(--pw-space-4); }
++  .pw-home-metric { padding: 0; }
++  .pw-home-metric + .pw-home-metric { border-left: 0; border-top: var(--pw-border-width) solid var(--pw-color-divider); padding-top: var(--pw-space-4); }
++  .pw-home-hero-meta > div, .pw-home-goal-totals { grid-template-columns: minmax(0, 1fr); }
++  .pw-home-hero-meta dd { text-align: left; }
++  .pw-home-mission-body { align-items: flex-start; }
++}
+--- /dev/null
++++ b/tests/verify-home.cjs
+@@ -0,0 +1,314 @@
++/* PW-WOORI-02: pure adapter checks and isolated browser acceptance. No user profile is opened. */
++const assert = require('node:assert/strict');
++const fs = require('node:fs');
++const path = require('node:path');
++const vm = require('node:vm');
++const os = require('node:os');
++const crypto = require('node:crypto');
++const { chromium, webkit } = require(process.env.PW_PLAYWRIGHT_MODULE || 'playwright');
++const root = path.resolve(__dirname, '..');
++const app = path.join(root, 'ks6s3juocjzc2.kimi.page');
++const output = path.join(root, 'evidence/PW-WOORI-02');
++const origin = process.env.PW_BASE_URL || 'http://127.0.0.1:4173';
++assert(['localhost', '127.0.0.1'].includes(new URL(origin).hostname));
++const url = `${origin}/ks6s3juocjzc2.kimi.page/index.html`;
++fs.mkdirSync(path.join(output, 'screenshots'), { recursive: true });
++const report = { startedAt: new Date().toISOString(), url, checks: [], screenshots: [], consoleErrors: [], resourceErrors: [], browsers: {} };
++const pass = (name, detail = true) => report.checks.push({ name, status: 'PASS', detail });
++const snapshot = fs.readFileSync(path.join(root, 'preservation/PW-WOORI-01/original-index.html.txt'), 'utf8');
++const literal = snapshot.match(/const defaultState = (\{[\s\S]*?\n        \});/)[1];
++const fixture = JSON.parse(JSON.stringify(vm.runInNewContext(`(${literal})`)));
++const copy = value => JSON.parse(JSON.stringify(value));
++const api = vm.runInNewContext(`${fs.readFileSync(path.join(app, 'scripts/state.js'), 'utf8')}\n({ loadPocketWONState, createHomeViewModel });`);
++const model = value => copy(api.createHomeViewModel(value));
++
++function executable(engine) {
++  const configured = process.env[engine === 'chromium' ? 'PW_CHROMIUM_EXECUTABLE' : 'PW_WEBKIT_EXECUTABLE'];
++  if (configured) return configured;
++  const cache = path.join(os.homedir(), 'Library/Caches/ms-playwright');
++  const prefix = engine === 'chromium' ? 'chromium_headless_shell-' : 'webkit-';
++  const versions = fs.readdirSync(cache).filter(n => n.startsWith(prefix)).sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
++  assert(versions.length, `Missing ${engine} browser; set executable override`);
++  return path.join(cache, versions[0], engine === 'chromium' ? 'chrome-headless-shell-mac-arm64/chrome-headless-shell' : 'pw_run.sh');
++}
++
++function adapterTests() {
++  const baseline = JSON.parse(fs.readFileSync(path.join(root, 'preservation/PW-WOORI-02/baseline.json')));
++  let preserved = 0;
++  for (const [name, hash] of Object.entries(baseline.files)) {
++    if (baseline.snapshots.includes(name)) continue;
++    assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(root, name))).digest('hex'), hash, name);
++    preserved++;
++  }
++  pass('Approved tokens/base/shell/icons/tabs and all previous evidence remain byte-identical', { preserved });
++  const before = JSON.stringify(fixture);
++  function freeze(value) { if (value && typeof value === 'object') { Object.values(value).forEach(freeze); Object.freeze(value); } }
++  freeze(fixture);
++  const actual = model(fixture);
++  assert.equal(actual.balance, 32500);
++  assert.deepEqual(actual.monthly, { received: 15200, spent: 12300, remaining: 2900, period: 'unknown' });
++  assert.equal(actual.habit.score, 82);
++  assert.deepEqual(actual.goal, { status: 'active', title: '게임 아이템', target: 45000, current: 30600, percent: 68 });
++  assert.equal(actual.mission.status, 'unavailable');
++  assert.equal(JSON.stringify(fixture), before);
++  pass('Original fixture mapping and frozen source immutability', actual);
++  const storage = raw => () => ({ getItem(key) { assert.equal(key, 'pocketwon_demo_v1'); return raw; } });
++  assert.equal(api.loadPocketWONState(storage(null)).status, 'empty');
++  for (const raw of ['', '{', 'null', '[]', 'false', '12', '"name"']) assert.equal(api.loadPocketWONState(storage(raw)).status, 'invalid');
++  assert.equal(api.loadPocketWONState(() => { throw Error('getter denied'); }).status, 'unavailable');
++  assert.equal(api.loadPocketWONState(() => ({ getItem() { throw Error('read denied'); } })).status, 'unavailable');
++  assert.equal(api.loadPocketWONState(storage('{}')).status, 'loaded');
++  assert.equal(api.loadPocketWONState(storage(before)).state.balance, 32500);
++  pass('Storage empty, invalid JSON/root, getter/read exceptions, partial and valid roots');
++  for (const value of [null, undefined, {}, [], 1, 'legacy', { user: null, monthly: [], goal: false }]) {
++    const result = model(value);
++    assert.equal(result.balance, null); assert.equal(result.habit.score, null);
++    assert.equal(result.greeting.name, ''); assert.equal(result.monthly.remaining, null);
++  }
++  for (const value of [-1, Infinity, NaN, '123', 1.5, Number.MAX_SAFE_INTEGER + 1, false]) {
++    const result = model({ balance: value, monthly: { spending: value, saving: value } });
++    assert.equal(result.balance, null); assert.equal(result.monthly.remaining, null);
++  }
++  const zero = model({ balance: 0, habitScore: 0, monthly: { spending: 0, saving: 0 } });
++  assert.equal(zero.balance, 0); assert.equal(zero.habit.score, 0); assert.equal(zero.monthly.remaining, 0);
++  assert.equal(model({ monthly: { saving: 0, spending: 100 } }).monthly.remaining, -100);
++  for (const value of [-1, 101, Infinity, '82', null]) assert.equal(model({ habitScore: value }).habit.score, null);
++  assert.equal(model({ habitScore: 99.5 }).habit.score, 99.5);
++  pass('Missing versus zero, strict numeric checks, negative difference and score bounds');
++  assert.equal(model({ goal: null }).goal.status, 'empty');
++  for (const goal of [{}, { title: '목표', current: 0, target: 0 }, { title: '', current: 1, target: 10 }, { title: '목표', current: -1, target: 10 }]) assert.equal(model({ goal }).goal.status, 'invalid');
++  for (const current of [0, 1, 100, 101, Number.MAX_SAFE_INTEGER]) {
++    const result = model({ goal: { title: '목표', current, target: 100 } }).goal;
++    assert(result.percent >= 0 && result.percent <= 100);
++    assert.equal(result.status, current >= 100 ? 'complete' : 'active');
++  }
++  for (const missions of [undefined, [], [true, false], Array(7).fill(true)]) assert.equal(model({ missions }).mission.status, 'unavailable');
++  pass('Goal empty/invalid/active/complete, progress clamp and undated mission boundary');
++  const source = ['index.html', ...fs.readdirSync(path.join(app, 'scripts')).map(p => `scripts/${p}`)].map(p => fs.readFileSync(path.join(app, p), 'utf8')).join('\n');
++  assert(!/\b(?:setItem|removeItem|clear)\s*\(|preservation\/|fetch\s*\(|XMLHttpRequest|defaultState/.test(source));
++  assert.equal((source.match(/getItem\(/g) || []).length, 1);
++  pass('Active runtime: one getItem call site, no write/delete, demo fallback, preservation fetch or API');
++}
++
++function observe(page, label) {
++  page.on('pageerror', e => report.consoleErrors.push({ label, message: e.message }));
++  page.on('console', m => { if (m.type() === 'error') report.consoleErrors.push({ label, message: m.text() }); });
++  page.on('requestfailed', r => report.resourceErrors.push({ label, url: r.url(), reason: r.failure()?.errorText }));
++  page.on('response', r => { if (r.status() >= 400) report.resourceErrors.push({ label, url: r.url(), status: r.status() }); });
++}
++async function contextFor(browser, raw, label, denied = false) {
++  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, locale: 'ko-KR', deviceScaleFactor: 1, colorScheme: 'light', reducedMotion: 'reduce' });
++  await context.addInitScript(({ raw, denied }) => {
++    const get = Storage.prototype.getItem;
++    const set = Storage.prototype.setItem;
++    // Test preparation only. These originals are captured before instrumentation.
++    if (get.call(localStorage, 'pw-test-sentinel') === null) {
++      set.call(localStorage, 'pw-test-sentinel', 'preserve');
++      set.call(localStorage, 'pocketwon_theme', 'dark');
++      set.call(localStorage, 'pocketwon_intro_done', '1');
++      if (raw !== null) set.call(localStorage, 'pocketwon_demo_v1', raw);
++    }
++    window.__pwReadStorage = () => Object.fromEntries(Object.keys(localStorage).map(k => [k, get.call(localStorage, k)]));
++    window.__pwBeforeStorage = window.__pwReadStorage();
++    window.__pwCalls = [];
++    for (const method of ['getItem', 'setItem', 'removeItem', 'clear']) {
++      const original = Storage.prototype[method];
++      Storage.prototype[method] = function (...args) {
++        window.__pwCalls.push({ method, key: args[0] });
++        if (denied && method === 'getItem') throw Error('Read unavailable');
++        return original.apply(this, args);
++      };
++    }
++  }, { raw, denied });
++  const page = await context.newPage(); observe(page, label);
++  await page.goto(url); await ready(page);
++  return { context, page };
++}
++async function ready(page) {
++  await page.locator('.pw-home').waitFor();
++  await page.evaluate(async () => { await document.fonts.ready; await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); });
++}
++async function storageUnchanged(page) {
++  const result = await page.evaluate(() => ({ before: window.__pwBeforeStorage, after: window.__pwReadStorage(), calls: window.__pwCalls }));
++  assert.deepEqual(result.before, result.after);
++  assert(result.calls.length > 0);
++  assert(result.calls.every(c => c.method === 'getItem' && c.key === 'pocketwon_demo_v1'));
++}
++async function geometry(page) {
++  const g = await page.evaluate(() => {
++    const content = document.querySelector('.pw-content'), nav = document.querySelector('.pw-bottom-navigation');
++    const home = document.querySelector('.pw-home');
++    return {
++      width: innerWidth, doc: document.documentElement.scrollWidth,
++      content: { client: content.clientWidth, scroll: content.scrollWidth, bottom: content.getBoundingClientRect().bottom },
++      navTop: nav.getBoundingClientRect().top,
++      amounts: [...home.querySelectorAll('.pw-home-money')].map(el => ({ width: el.clientWidth, display: el.querySelector('.pw-home-money-display').getBoundingClientRect().width, exact: el.getAttribute('aria-label') })),
++      buttons: [...document.querySelectorAll('button')].map(el => ({ name: el.textContent || el.getAttribute('aria-label'), width: el.getBoundingClientRect().width, height: el.getBoundingClientRect().height })),
++      metrics: getComputedStyle(document.querySelector('.pw-home-metrics')).gridTemplateColumns,
++      scheme: getComputedStyle(document.documentElement).colorScheme,
++    };
++  });
++  assert(g.doc <= g.width, JSON.stringify(g));
++  assert(g.content.scroll <= g.content.client, JSON.stringify(g));
++  assert(g.content.bottom <= g.navTop + 0.05);
++  assert(g.amounts.every(a => a.display <= a.width + 0.05), JSON.stringify(g.amounts));
++  assert(g.buttons.every(b => b.width >= 48 && b.height >= 48), JSON.stringify(g.buttons));
++  assert.equal(g.scheme, 'light');
++  return g;
++}
++async function lastContentVisible(page) {
++  await page.locator('.pw-content').evaluate(el => { el.scrollTop = el.scrollHeight; });
++  const bounds = await page.evaluate(() => ({ last: document.querySelector('.pw-home-mission').getBoundingClientRect().bottom, nav: document.querySelector('.pw-bottom-navigation').getBoundingClientRect().top }));
++  assert(bounds.last < bounds.nav - 20);
++  await page.locator('.pw-content').evaluate(el => { el.scrollTop = 0; });
++}
++async function navigation(page, engine) {
++  for (const [label, tab, title] of [['기록하기', 'record', '기록'], ['목표 보기', 'goal', '목표'], ['리포트 보기', 'report', '리포트']]) {
++    await page.getByRole('button', { name: label, exact: true }).click();
++    assert.equal(await page.locator('#pw-content').innerText(), title);
++    assert.equal(await page.locator('[aria-current="page"]').getAttribute('data-screen'), tab);
++    assert.equal(await page.evaluate(() => document.activeElement.id), 'pw-screen-title');
++    assert.equal(await page.locator('.pw-home').count(), 0);
++    assert.equal(page.url(), url);
++    await page.getByRole('button', { name: '홈', exact: true }).click(); await ready(page);
++  }
++  await page.getByRole('button', { name: '전체 메뉴', exact: true }).click();
++  assert.equal(await page.locator('#pw-content').innerText(), '전체');
++  await page.getByRole('button', { name: '홈', exact: true }).click(); await ready(page);
++  await storageUnchanged(page); await page.reload(); await ready(page); await storageUnchanged(page);
++  pass(`${engine}: three home actions, placeholder destinations, focus, menu, reload and storage preservation`);
++}
++async function accessibility(page, engine) {
++  assert.equal(await page.locator('h1').count(), 1);
++  assert.deepEqual(await page.locator('.pw-home h2').allTextContents(), ['내 용돈', '저장된 돈 흐름', '나의 돈 습관', '지금 모으는 목표', '오늘의 미션']);
++  assert.equal(await page.getByRole('progressbar', { name: '습관 점수' }).getAttribute('aria-valuenow'), '82');
++  assert.equal(await page.getByRole('progressbar', { name: '목표 진행률' }).getAttribute('aria-valuenow'), '68');
++  const contrast = await page.evaluate(() => {
++    const luminance = color => color.match(/[\d.]+/g).slice(0, 3).map(Number).map(v => v / 255).map(v => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4).reduce((a, v, i) => a + v * [0.2126, 0.7152, 0.0722][i], 0);
++    const ratio = (a, b) => { const x = luminance(a), y = luminance(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
++    return [...document.querySelectorAll('.pw-home h2, .pw-home-muted, .pw-home-period, .pw-home-money-digits, .pw-home-money-unit, .pw-home-action, .pw-home-primary, .pw-home-percent, .pw-home-score')].map(el => {
++      let parent = el;
++      while (parent && getComputedStyle(parent).backgroundColor === 'rgba(0, 0, 0, 0)') parent = parent.parentElement;
++      return { role: el.className, ratio: ratio(getComputedStyle(el).color, getComputedStyle(parent).backgroundColor) };
++    });
++  });
++  assert(contrast.every(c => c.ratio >= 4.5), JSON.stringify(contrast));
++  if (engine === 'Chromium') fs.writeFileSync(path.join(output, 'accessibility-tree.txt'), await page.locator('#pw-content').ariaSnapshot());
++  pass(`${engine}: rendered home text contrast on actual surfaces >= 4.5:1`, { minimum: Math.min(...contrast.map(c => c.ratio)) });
++  await page.getByRole('button', { name: '기록하기', exact: true }).focus();
++  await page.keyboard.press('Tab');
++  const focus = await page.evaluate(() => ({ text: document.activeElement.textContent, visible: document.activeElement.matches(':focus-visible'), width: getComputedStyle(document.activeElement).outlineWidth }));
++  assert.equal(focus.text, '리포트 보기›'); assert(focus.visible); assert.equal(focus.width, '2px');
++  await page.keyboard.press('Enter'); assert.equal(await page.locator('#pw-content').innerText(), '리포트');
++  await page.getByRole('button', { name: '홈', exact: true }).click(); await ready(page);
++  await page.getByRole('button', { name: '기록하기', exact: true }).focus(); await page.keyboard.press('Space');
++  assert.equal(await page.locator('#pw-content').innerText(), '기록');
++  await page.getByRole('button', { name: '홈', exact: true }).click(); await ready(page);
++  pass(`${engine}: heading hierarchy, named progress values, focus-visible and Enter/Space activation`);
++}
++async function matrix(browser, engine, screenshots) {
++  const { page, context } = await contextFor(browser, JSON.stringify(fixture), engine);
++  try {
++    for (const width of [360, 390, 430]) {
++      await page.setViewportSize({ width, height: 844 }); await ready(page);
++      const g = await geometry(page); await lastContentVisible(page);
++      assert.equal(g.metrics.split(' ').length, 3);
++      pass(`${engine}: ${width}×844 original fixture, 3 columns, bounds and last module`, g);
++      if (screenshots) {
++        const name = `${width}x844-home.png`;
++        await page.screenshot({ path: path.join(output, 'screenshots', name) }); report.screenshots.push(name);
++      }
++    }
++    await page.setViewportSize({ width: 390, height: 844 }); await ready(page);
++    await navigation(page, engine); await accessibility(page, engine);
++    await page.evaluate(() => { const s = document.documentElement.style; s.setProperty('--pw-safe-top', '47px'); s.setProperty('--pw-safe-bottom', '34px'); s.setProperty('--pw-safe-left', '24px'); s.setProperty('--pw-safe-right', '24px'); });
++    await ready(page); await geometry(page); await lastContentVisible(page);
++    pass(`${engine}: injected 47/34/24px safe areas with scrolling home`);
++    await page.reload(); await ready(page);
++    await page.setViewportSize({ width: 360, height: 640 }); await ready(page);
++    await geometry(page); await lastContentVisible(page);
++    await page.evaluate(() => { document.documentElement.style.fontSize = '32px'; }); await ready(page);
++    const zoom = await geometry(page); await lastContentVisible(page); assert.equal(zoom.metrics.split(' ').length, 1);
++    pass(`${engine}: 360×640 and 200% root font, metric reflow and exact amounts`, zoom);
++    if (screenshots) await page.screenshot({ path: path.join(output, 'screenshots/360x640-200percent.png') });
++    for (const width of [360, 390, 430]) {
++      await page.setViewportSize({ width, height: 844 }); await ready(page);
++      await geometry(page); await lastContentVisible(page);
++    }
++    pass(`${engine}: 360/390/430×844 at 200% root font without amount/control overflow`);
++    await page.emulateMedia({ colorScheme: 'dark' }); await geometry(page);
++    await storageUnchanged(page);
++    if (screenshots) {
++      await page.reload(); await ready(page); await page.setViewportSize({ width: 390, height: 844 }); await ready(page);
++      // Capture-only expansion: retain 390px width and all styles, expose the inner scroll content.
++      await page.addStyleTag({ content: '.pw-shell{height:auto;min-height:100dvh}.pw-content{flex:none;overflow:visible}' });
++      await page.screenshot({ path: path.join(output, 'screenshots/390x844-home-full.png'), fullPage: true });
++      report.screenshots.push('390x844-home-full.png');
++      pass('Full home capture: viewport 390×844, capture-only expansion of inner scroll; header and nav included');
++    }
++  } finally { await context.close(); }
++}
++async function fallbacks(browser, engine) {
++  const cases = [
++    ['empty', null, '아직 저장된 용돈 정보가 없어요.'],
++    ['invalid-json', '{', '저장된 용돈 정보를 불러오지 못했어요.'],
++    ['invalid-root', '[]', '저장된 용돈 정보를 불러오지 못했어요.'],
++    ['denied', JSON.stringify(fixture), '저장된 용돈 정보를 불러오지 못했어요.'],
++    ['partial', JSON.stringify({ balance: 0, user: null }), '아직 모으는 목표가 없어요.'],
++    ['no-goal', JSON.stringify({ ...fixture, goal: null }), '아직 모으는 목표가 없어요.'],
++    ['complete-goal', JSON.stringify({ ...fixture, goal: { title: '완료', target: 100, current: 120 } }), '저장된 목표 금액을 모두 모았어요.'],
++    ['invalid-goal', JSON.stringify({ ...fixture, goal: { title: '잘못된 목표', target: 0, current: 100 } }), '목표 정보를 확인할 수 없어요.'],
++  ];
++  for (const [label, raw, message] of cases) {
++    const { page, context } = await contextFor(browser, raw, `${engine}/${label}`, label === 'denied');
++    try {
++      assert((await page.locator('.pw-home').innerText()).includes(message));
++      assert.equal(await page.getByRole('progressbar', { name: '목표 진행률' }).count(), 0);
++      if (label === 'partial') assert.equal(await page.locator('.pw-home-hero .pw-home-money').first().getAttribute('aria-label'), '0원');
++      if (['empty', 'invalid-json', 'invalid-root', 'denied'].includes(label)) {
++        assert.equal(await page.locator('.pw-home-greeting').count(), 0);
++        assert.equal(await page.locator('.pw-home-money').count(), 0);
++      }
++      await geometry(page); await lastContentVisible(page); await storageUnchanged(page);
++      if (engine === 'Chromium' && ['empty', 'invalid-json', 'no-goal'].includes(label)) await page.screenshot({ path: path.join(output, `screenshots/fallback-${label}.png`) });
++      await page.getByRole('button', { name: '목표 보기', exact: true }).click();
++      assert.equal(await page.locator('#pw-content').innerText(), '목표');
++      pass(`${engine}: ${label} truthful fallback, geometry, action and unchanged storage`);
++    } finally { await context.close(); }
++  }
++  const stress = { ...fixture, user: { name: '<img src=x onerror=alert(1)>' + '아주긴이름'.repeat(12) }, balance: Number.MAX_SAFE_INTEGER, monthly: { saving: 0, spending: Number.MAX_SAFE_INTEGER }, goal: { title: '길고긴목표이름'.repeat(20), current: 999999999, target: Number.MAX_SAFE_INTEGER } };
++  const { page, context } = await contextFor(browser, JSON.stringify(stress), `${engine}/stress`);
++  try {
++    for (const scale of [16, 32]) {
++      await page.setViewportSize({ width: 360, height: 640 });
++      await page.evaluate(size => { document.documentElement.style.fontSize = `${size}px`; }, scale); await ready(page);
++      await geometry(page); await lastContentVisible(page);
++      assert.equal(await page.locator('.pw-home img').count(), 0);
++      assert.equal(await page.locator('.pw-home-hero > .pw-home-money').getAttribute('aria-label'), '9,007,199,254,740,991원');
++      assert(await page.locator('.pw-home-hero > .pw-home-money .pw-home-money-exact').isVisible());
++    }
++    await storageUnchanged(page);
++    pass(`${engine}: maximum safe integer, negative difference, long goal/name, HTML as text and 200% scale`);
++  } finally { await context.close(); }
++}
++(async () => {
++  let chrome, safari;
++  try {
++    adapterTests();
++    chrome = await chromium.launch({ headless: true, executablePath: executable('chromium') });
++    report.browsers.chromium = chrome.version();
++    await matrix(chrome, 'Chromium', true); await fallbacks(chrome, 'Chromium');
++    safari = await webkit.launch({ headless: true, executablePath: executable('webkit') });
++    report.browsers.webkit = safari.version();
++    await matrix(safari, 'WebKit', false); await fallbacks(safari, 'WebKit');
++    assert.deepEqual(report.consoleErrors, []); assert.deepEqual(report.resourceErrors, []);
++    pass('All isolated contexts: zero console/page errors and failed resources');
++    report.status = 'PASS';
++  } catch (error) { report.status = 'FAIL'; report.failure = error.stack; process.exitCode = 1; }
++  finally {
++    if (chrome) await chrome.close(); if (safari) await safari.close();
++    report.finishedAt = new Date().toISOString();
++    fs.writeFileSync(path.join(output, 'verification.json'), JSON.stringify(report, null, 2) + '\n');
++    console.log(JSON.stringify({ status: report.status, checks: report.checks.length, screenshots: report.screenshots, consoleErrors: report.consoleErrors, resourceErrors: report.resourceErrors, failure: report.failure }, null, 2));
++  }
++})();
+--- a/tests/verify-shell.cjs
++++ b/tests/verify-shell.cjs
+@@ -11,7 +11,7 @@
+ const origin = process.env.PW_BASE_URL || 'http://127.0.0.1:4173';
+ assert(['127.0.0.1', 'localhost'].includes(new URL(origin).hostname), 'Use an isolated local origin');
+ const url = `${origin}/ks6s3juocjzc2.kimi.page/index.html`;
+-const output = path.join(root, 'evidence/PW-WOORI-01');
++const output = path.join(root, 'evidence/PW-WOORI-02/shell');
+ fs.mkdirSync(path.join(output, 'screenshots'), { recursive: true });
+ const labels = ['홈', '기록', '목표', '리포트', '전체'];
+ const ids = ['home', 'record', 'goal', 'report', 'all'];
+@@ -42,13 +42,13 @@
+   const app = path.join(root, 'ks6s3juocjzc2.kimi.page');
+   const activeFiles = ['index.html', ...['styles', 'scripts'].flatMap(dir => fs.readdirSync(path.join(app, dir)).map(file => `${dir}/${file}`))];
+   const activeText = activeFiles.map(file => fs.readFileSync(path.join(app, file), 'utf8')).join('\n');
+-  const forbidden = /localStorage|sessionStorage|pocketwon_demo_v1|pocketwon_theme|prefers-color-scheme|data-theme|themeBtn|toggleTheme|sdk-seed|renderHome|parentReport|linear-gradient|radial-gradient|backdrop-filter|#3ECF8E|#FFD54D|#FF6B6B|--mint|--coral/i;
++  const forbidden = /sessionStorage|setItem\s*\(|removeItem\s*\(|\.clear\s*\(|pocketwon_theme|prefers-color-scheme|data-theme|themeBtn|toggleTheme|sdk-seed|renderHome|parentReport|linear-gradient|radial-gradient|backdrop-filter|#3ECF8E|#FFD54D|#FF6B6B|--mint|--coral/i;
+   assert(!forbidden.test(activeText), 'Legacy visual/runtime reference remains');
+   for (const file of ['base.css', 'shell.css']) assert(!/#[0-9a-f]{3,8}\b/i.test(fs.readFileSync(path.join(app, 'styles', file), 'utf8')), file);
+   const tokens = fs.readFileSync(path.join(app, 'styles/tokens.css'), 'utf8');
+   const definitions = new Set([...tokens.matchAll(/(--pw-[\w-]+)\s*:/g)].map(m => m[1]));
+   for (const [, token] of activeText.matchAll(/var\((--pw-[\w-]+)/g)) assert(definitions.has(token), `Undefined token ${token}`);
+-  pass('Active source: no legacy styling, dark runtime, storage access or SDK; all token references resolve', { files: activeFiles, tokens: definitions.size });
++  pass('Active source: no legacy styling, dark runtime, storage writes or SDK; all token references resolve', { files: activeFiles, tokens: definitions.size });
+   const literal = snapshot.toString().match(/const defaultState = (\{[\s\S]*?\n        \});/)[1];
+   return JSON.parse(JSON.stringify(vm.runInNewContext(`(${literal})`)));
+ }
+@@ -77,7 +77,7 @@
+       docHeight: document.documentElement.scrollHeight,
+       shell: rect('.pw-shell'), header: rect('.pw-header'), content: rect('.pw-content'), nav: rect('.pw-bottom-navigation'),
+       top: rect('.pw-safe-area-top'), bottom: rect('.pw-safe-area-bottom'),
+-      controls: [...document.querySelectorAll('button')].map(el => {
++      controls: [...document.querySelectorAll('.pw-header button, .pw-bottom-navigation button')].map(el => {
+         const r = el.getBoundingClientRect();
+         return { label: el.getAttribute('aria-label') || el.textContent, width: r.width, height: r.height, x: r.x, right: r.right, bottom: r.bottom };
+       }),
+@@ -117,13 +117,14 @@
+       await page.getByRole('button', { name: labels[i], exact: true }).click();
+       await page.mouse.move(0, 0);
+       assert.equal(await page.locator('#pw-screen-title').textContent(), labels[i]);
+-      assert.equal(await page.locator('#pw-content').innerText(), labels[i]);
++      if (i !== 0) assert.equal(await page.locator('#pw-content').innerText(), labels[i]);
++      else assert.equal(await page.locator('.pw-home').count(), 1);
+       assert.equal(await page.title(), `${labels[i]} · 포켓WON`);
+       assert.equal(await page.locator('#pw-header-context').innerText(), i === 0 ? 'PocketWON' : labels[i]);
+       assert.equal(page.url(), url);
+       const g = await geometry(page); checkGeometry(g, width);
+       assert.deepEqual(g.active, [ids[i]]);
+-      pass(`${engine}: ${width}×844 ${ids[i]} placeholder, selection and bounds`, g);
++      pass(`${engine}: ${width}×844 ${ids[i]} view, selection and bounds`, g);
+       if (screenshot) {
+         const name = `${width}x844-${ids[i]}.png`;
+         await page.screenshot({ path: path.join(output, 'screenshots', name) });
+@@ -167,13 +168,14 @@
+     for (const phase of ['navigation', 'reload']) {
+       if (phase === 'reload') { await page.reload(); await ready(page); }
+       assert.deepEqual(await page.evaluate(() => window.__pwReadTestStorage()), seed);
+-      assert.deepEqual(await page.evaluate(() => window.__pwStorageCalls), []);
++      const calls = await page.evaluate(() => window.__pwStorageCalls);
++      assert(calls.length > 0 && calls.every(name => name === 'getItem'));
+       assert.equal((await geometry(page)).scheme, 'light');
+     }
+     await page.emulateMedia({ colorScheme: 'light' });
+     await page.emulateMedia({ colorScheme: 'dark' });
+     assert.equal((await geometry(page)).background, 'rgb(245, 248, 252)');
+-    pass(`OS dark + stored ${theme}: unchanged business/intro/theme/unrelated values; zero storage method calls`);
++    pass(`OS dark + stored ${theme}: unchanged business/intro/theme/unrelated values; read-only storage calls`);
+     await context.close();
+   }
+   const context = await browser.newContext();
+@@ -192,7 +194,7 @@
+   const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+   const page = await context.newPage(); observe(page);
+   await page.goto(url); await ready(page);
+-  for (const name of ['전체 메뉴', ...labels]) {
++  for (const name of ['전체 메뉴', '기록하기', '리포트 보기›', '목표 보기›', ...labels]) {
+     await page.keyboard.press('Tab');
+     const focus = await page.evaluate(() => {
+       const el = document.activeElement, s = getComputedStyle(el);

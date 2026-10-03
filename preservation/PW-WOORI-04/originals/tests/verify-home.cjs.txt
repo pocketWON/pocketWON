@@ -1,0 +1,318 @@
+/* PW-WOORI-02: pure adapter checks and isolated browser acceptance. No user profile is opened. */
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+const os = require('node:os');
+const crypto = require('node:crypto');
+const { chromium, webkit } = require(process.env.PW_PLAYWRIGHT_MODULE || 'playwright');
+const root = path.resolve(__dirname, '..');
+const app = path.join(root, 'ks6s3juocjzc2.kimi.page');
+const output = path.join(root, 'evidence/PW-WOORI-03/home');
+const origin = process.env.PW_BASE_URL || 'http://127.0.0.1:4173';
+assert(['localhost', '127.0.0.1'].includes(new URL(origin).hostname));
+const url = `${origin}/ks6s3juocjzc2.kimi.page/index.html`;
+fs.mkdirSync(path.join(output, 'screenshots'), { recursive: true });
+const report = { startedAt: new Date().toISOString(), url, checks: [], screenshots: [], consoleErrors: [], resourceErrors: [], browsers: {} };
+const pass = (name, detail = true) => report.checks.push({ name, status: 'PASS', detail });
+const snapshot = fs.readFileSync(path.join(root, 'preservation/PW-WOORI-01/original-index.html.txt'), 'utf8');
+const literal = snapshot.match(/const defaultState = (\{[\s\S]*?\n        \});/)[1];
+const fixture = JSON.parse(JSON.stringify(vm.runInNewContext(`(${literal})`)));
+const copy = value => JSON.parse(JSON.stringify(value));
+const api = vm.runInNewContext(`${fs.readFileSync(path.join(app, 'scripts/state.js'), 'utf8')}\n({ loadPocketWONState, createHomeViewModel });`);
+const model = value => copy(api.createHomeViewModel(value));
+
+function executable(engine) {
+  const configured = process.env[engine === 'chromium' ? 'PW_CHROMIUM_EXECUTABLE' : 'PW_WEBKIT_EXECUTABLE'];
+  if (configured) return configured;
+  const cache = path.join(os.homedir(), 'Library/Caches/ms-playwright');
+  const prefix = engine === 'chromium' ? 'chromium_headless_shell-' : 'webkit-';
+  const versions = fs.readdirSync(cache).filter(n => n.startsWith(prefix)).sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
+  assert(versions.length, `Missing ${engine} browser; set executable override`);
+  return path.join(cache, versions[0], engine === 'chromium' ? 'chrome-headless-shell-mac-arm64/chrome-headless-shell' : 'pw_run.sh');
+}
+
+function adapterTests() {
+  const baseline = JSON.parse(fs.readFileSync(path.join(root, 'preservation/PW-WOORI-03/baseline.json')));
+  let preserved = 0;
+  for (const [name, hash] of Object.entries(baseline.files)) {
+    if (baseline.snapshots.includes(name)) continue;
+    assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(root, name))).digest('hex'), hash, name);
+    preserved++;
+  }
+  pass('Approved tokens/base/shell/tabs/home and all previous evidence remain byte-identical', { preserved });
+  const before = JSON.stringify(fixture);
+  function freeze(value) { if (value && typeof value === 'object') { Object.values(value).forEach(freeze); Object.freeze(value); } }
+  freeze(fixture);
+  const actual = model(fixture);
+  assert.equal(actual.balance, 32500);
+  assert.deepEqual(actual.monthly, { received: 15200, spent: 12300, remaining: 2900, period: 'unknown' });
+  assert.equal(actual.habit.score, 82);
+  assert.deepEqual(actual.goal, { status: 'active', title: '게임 아이템', target: 45000, current: 30600, percent: 68 });
+  assert.equal(actual.mission.status, 'unavailable');
+  assert.equal(JSON.stringify(fixture), before);
+  pass('Original fixture mapping and frozen source immutability', actual);
+  const storage = raw => () => ({ getItem(key) { assert.equal(key, 'pocketwon_demo_v1'); return raw; } });
+  assert.equal(api.loadPocketWONState(storage(null)).status, 'empty');
+  for (const raw of ['', '{', 'null', '[]', 'false', '12', '"name"']) assert.equal(api.loadPocketWONState(storage(raw)).status, 'invalid');
+  assert.equal(api.loadPocketWONState(() => { throw Error('getter denied'); }).status, 'unavailable');
+  assert.equal(api.loadPocketWONState(() => ({ getItem() { throw Error('read denied'); } })).status, 'unavailable');
+  assert.equal(api.loadPocketWONState(storage('{}')).status, 'loaded');
+  assert.equal(api.loadPocketWONState(storage(before)).state.balance, 32500);
+  pass('Storage empty, invalid JSON/root, getter/read exceptions, partial and valid roots');
+  for (const value of [null, undefined, {}, [], 1, 'legacy', { user: null, monthly: [], goal: false }]) {
+    const result = model(value);
+    assert.equal(result.balance, null); assert.equal(result.habit.score, null);
+    assert.equal(result.greeting.name, ''); assert.equal(result.monthly.remaining, null);
+  }
+  for (const value of [-1, Infinity, NaN, '123', 1.5, Number.MAX_SAFE_INTEGER + 1, false]) {
+    const result = model({ balance: value, monthly: { spending: value, saving: value } });
+    assert.equal(result.balance, null); assert.equal(result.monthly.remaining, null);
+  }
+  const zero = model({ balance: 0, habitScore: 0, monthly: { spending: 0, saving: 0 } });
+  assert.equal(zero.balance, 0); assert.equal(zero.habit.score, 0); assert.equal(zero.monthly.remaining, 0);
+  assert.equal(model({ monthly: { saving: 0, spending: 100 } }).monthly.remaining, -100);
+  for (const value of [-1, 101, Infinity, '82', null]) assert.equal(model({ habitScore: value }).habit.score, null);
+  assert.equal(model({ habitScore: 99.5 }).habit.score, 99.5);
+  pass('Missing versus zero, strict numeric checks, negative difference and score bounds');
+  assert.equal(model({ goal: null }).goal.status, 'empty');
+  for (const goal of [{}, { title: '목표', current: 0, target: 0 }, { title: '', current: 1, target: 10 }, { title: '목표', current: -1, target: 10 }]) assert.equal(model({ goal }).goal.status, 'invalid');
+  for (const current of [0, 1, 100, 101, Number.MAX_SAFE_INTEGER]) {
+    const result = model({ goal: { title: '목표', current, target: 100 } }).goal;
+    assert(result.percent >= 0 && result.percent <= 100);
+    assert.equal(result.status, current >= 100 ? 'complete' : 'active');
+  }
+  for (const missions of [undefined, [], [true, false], Array(7).fill(true)]) assert.equal(model({ missions }).mission.status, 'unavailable');
+  pass('Goal empty/invalid/active/complete, progress clamp and undated mission boundary');
+  const source = ['index.html', ...fs.readdirSync(path.join(app, 'scripts')).map(p => `scripts/${p}`)].map(p => fs.readFileSync(path.join(app, p), 'utf8')).join('\n');
+  assert(!/\b(?:removeItem|clear)\s*\(|preservation\/|fetch\s*\(|XMLHttpRequest|defaultState/.test(source));
+  assert.equal((source.match(/setItem\(/g) || []).length, 1);
+  assert(!/setItem/.test(fs.readFileSync(path.join(app, 'scripts/home.js'), 'utf8')));
+  assert.equal((source.match(/getItem\(/g) || []).length, 1);
+  pass('Active runtime: one getItem and one explicit-save setItem call site, no Home write/delete, demo fallback, preservation fetch or API');
+}
+
+function observe(page, label) {
+  page.on('pageerror', e => report.consoleErrors.push({ label, message: e.message }));
+  page.on('console', m => { if (m.type() === 'error') report.consoleErrors.push({ label, message: m.text() }); });
+  page.on('requestfailed', r => report.resourceErrors.push({ label, url: r.url(), reason: r.failure()?.errorText }));
+  page.on('response', r => { if (r.status() >= 400) report.resourceErrors.push({ label, url: r.url(), status: r.status() }); });
+}
+async function contextFor(browser, raw, label, denied = false) {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, locale: 'ko-KR', deviceScaleFactor: 1, colorScheme: 'light', reducedMotion: 'reduce' });
+  await context.addInitScript(({ raw, denied }) => {
+    const get = Storage.prototype.getItem;
+    const set = Storage.prototype.setItem;
+    // Test preparation only. These originals are captured before instrumentation.
+    if (get.call(localStorage, 'pw-test-sentinel') === null) {
+      set.call(localStorage, 'pw-test-sentinel', 'preserve');
+      set.call(localStorage, 'pocketwon_theme', 'dark');
+      set.call(localStorage, 'pocketwon_intro_done', '1');
+      if (raw !== null) set.call(localStorage, 'pocketwon_demo_v1', raw);
+    }
+    window.__pwReadStorage = () => Object.fromEntries(Object.keys(localStorage).map(k => [k, get.call(localStorage, k)]));
+    window.__pwBeforeStorage = window.__pwReadStorage();
+    window.__pwCalls = [];
+    for (const method of ['getItem', 'setItem', 'removeItem', 'clear']) {
+      const original = Storage.prototype[method];
+      Storage.prototype[method] = function (...args) {
+        window.__pwCalls.push({ method, key: args[0] });
+        if (denied && method === 'getItem') throw Error('Read unavailable');
+        return original.apply(this, args);
+      };
+    }
+  }, { raw, denied });
+  const page = await context.newPage(); observe(page, label);
+  await page.goto(url); await ready(page);
+  return { context, page };
+}
+async function ready(page) {
+  await page.locator('.pw-home').waitFor();
+  await page.evaluate(async () => { await document.fonts.ready; await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); });
+}
+async function storageUnchanged(page) {
+  const result = await page.evaluate(() => ({ before: window.__pwBeforeStorage, after: window.__pwReadStorage(), calls: window.__pwCalls }));
+  assert.deepEqual(result.before, result.after);
+  assert(result.calls.length > 0);
+  assert(result.calls.every(c => c.method === 'getItem' && c.key === 'pocketwon_demo_v1'));
+}
+async function geometry(page) {
+  const g = await page.evaluate(() => {
+    const content = document.querySelector('.pw-content'), nav = document.querySelector('.pw-bottom-navigation');
+    const home = document.querySelector('.pw-home');
+    return {
+      width: innerWidth, doc: document.documentElement.scrollWidth,
+      content: { client: content.clientWidth, scroll: content.scrollWidth, bottom: content.getBoundingClientRect().bottom },
+      navTop: nav.getBoundingClientRect().top,
+      amounts: [...home.querySelectorAll('.pw-home-money')].map(el => ({ width: el.clientWidth, display: el.querySelector('.pw-home-money-display').getBoundingClientRect().width, exact: el.getAttribute('aria-label') })),
+      buttons: [...document.querySelectorAll('button')].map(el => ({ name: el.textContent || el.getAttribute('aria-label'), width: el.getBoundingClientRect().width, height: el.getBoundingClientRect().height })),
+      metrics: getComputedStyle(document.querySelector('.pw-home-metrics')).gridTemplateColumns,
+      scheme: getComputedStyle(document.documentElement).colorScheme,
+    };
+  });
+  assert(g.doc <= g.width, JSON.stringify(g));
+  assert(g.content.scroll <= g.content.client, JSON.stringify(g));
+  assert(g.content.bottom <= g.navTop + 0.05);
+  assert(g.amounts.every(a => a.display <= a.width + 0.05), JSON.stringify(g.amounts));
+  assert(g.buttons.every(b => b.width >= 48 && b.height >= 48), JSON.stringify(g.buttons));
+  assert.equal(g.scheme, 'light');
+  return g;
+}
+async function lastContentVisible(page) {
+  await page.locator('.pw-content').evaluate(el => { el.scrollTop = el.scrollHeight; });
+  const bounds = await page.evaluate(() => ({ last: document.querySelector('.pw-home-mission').getBoundingClientRect().bottom, nav: document.querySelector('.pw-bottom-navigation').getBoundingClientRect().top }));
+  assert(bounds.last < bounds.nav - 20);
+  await page.locator('.pw-content').evaluate(el => { el.scrollTop = 0; });
+}
+async function navigation(page, engine) {
+  for (const [label, tab, title] of [['기록하기', 'record', '기록'], ['목표 보기', 'goal', '목표'], ['리포트 보기', 'report', '리포트']]) {
+    await page.getByRole('button', { name: label, exact: true }).click();
+    if (tab === 'record') assert.equal(await page.getByRole('button', { name: '새 기록 추가', exact: true }).count(), 1);
+    else assert.equal(await page.locator('#pw-content').innerText(), title);
+    assert.equal(await page.locator('[aria-current="page"]').getAttribute('data-screen'), tab);
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'pw-screen-title');
+    assert.equal(await page.locator('.pw-home').count(), 0);
+    assert.equal(page.url(), url);
+    await page.getByRole('button', { name: '홈', exact: true }).click(); await ready(page);
+  }
+  await page.getByRole('button', { name: '전체 메뉴', exact: true }).click();
+  assert.equal(await page.locator('#pw-content').innerText(), '전체');
+  await page.getByRole('button', { name: '홈', exact: true }).click(); await ready(page);
+  await storageUnchanged(page); await page.reload(); await ready(page); await storageUnchanged(page);
+  pass(`${engine}: three home actions, record and placeholder destinations, focus, menu, reload and storage preservation`);
+}
+async function accessibility(page, engine) {
+  assert.equal(await page.locator('h1').count(), 1);
+  assert.deepEqual(await page.locator('.pw-home h2').allTextContents(), ['내 용돈', '저장된 돈 흐름', '나의 돈 습관', '지금 모으는 목표', '오늘의 미션']);
+  assert.equal(await page.getByRole('progressbar', { name: '습관 점수' }).getAttribute('aria-valuenow'), '82');
+  assert.equal(await page.getByRole('progressbar', { name: '목표 진행률' }).getAttribute('aria-valuenow'), '68');
+  const contrast = await page.evaluate(() => {
+    const luminance = color => color.match(/[\d.]+/g).slice(0, 3).map(Number).map(v => v / 255).map(v => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4).reduce((a, v, i) => a + v * [0.2126, 0.7152, 0.0722][i], 0);
+    const ratio = (a, b) => { const x = luminance(a), y = luminance(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+    return [...document.querySelectorAll('.pw-home h2, .pw-home-muted, .pw-home-period, .pw-home-money-digits, .pw-home-money-unit, .pw-home-action, .pw-home-primary, .pw-home-percent, .pw-home-score')].map(el => {
+      let parent = el;
+      while (parent && getComputedStyle(parent).backgroundColor === 'rgba(0, 0, 0, 0)') parent = parent.parentElement;
+      return { role: el.className, ratio: ratio(getComputedStyle(el).color, getComputedStyle(parent).backgroundColor) };
+    });
+  });
+  assert(contrast.every(c => c.ratio >= 4.5), JSON.stringify(contrast));
+  if (engine === 'Chromium') fs.writeFileSync(path.join(output, 'accessibility-tree.txt'), await page.locator('#pw-content').ariaSnapshot());
+  pass(`${engine}: rendered home text contrast on actual surfaces >= 4.5:1`, { minimum: Math.min(...contrast.map(c => c.ratio)) });
+  await page.getByRole('button', { name: '기록하기', exact: true }).focus();
+  await page.keyboard.press('Tab');
+  const focus = await page.evaluate(() => ({ text: document.activeElement.textContent, visible: document.activeElement.matches(':focus-visible'), width: getComputedStyle(document.activeElement).outlineWidth }));
+  assert.equal(focus.text, '리포트 보기›'); assert(focus.visible); assert.equal(focus.width, '2px');
+  await page.keyboard.press('Enter'); assert.equal(await page.locator('#pw-content').innerText(), '리포트');
+  await page.getByRole('button', { name: '홈', exact: true }).click(); await ready(page);
+  await page.getByRole('button', { name: '기록하기', exact: true }).focus(); await page.keyboard.press('Space');
+  assert.equal(await page.locator('#pw-screen-title').innerText(), '기록');
+  assert.equal(await page.getByRole('button', { name: '새 기록 추가', exact: true }).count(), 1);
+  await page.getByRole('button', { name: '홈', exact: true }).click(); await ready(page);
+  pass(`${engine}: heading hierarchy, named progress values, focus-visible and Enter/Space activation`);
+}
+async function matrix(browser, engine, screenshots) {
+  const { page, context } = await contextFor(browser, JSON.stringify(fixture), engine);
+  try {
+    for (const width of [360, 390, 430]) {
+      await page.setViewportSize({ width, height: 844 }); await ready(page);
+      const g = await geometry(page); await lastContentVisible(page);
+      assert.equal(g.metrics.split(' ').length, 3);
+      pass(`${engine}: ${width}×844 original fixture, 3 columns, bounds and last module`, g);
+      if (screenshots) {
+        const name = `${width}x844-home.png`;
+        await page.screenshot({ path: path.join(output, 'screenshots', name) }); report.screenshots.push(name);
+      }
+    }
+    await page.setViewportSize({ width: 390, height: 844 }); await ready(page);
+    await navigation(page, engine); await accessibility(page, engine);
+    await page.evaluate(() => { const s = document.documentElement.style; s.setProperty('--pw-safe-top', '47px'); s.setProperty('--pw-safe-bottom', '34px'); s.setProperty('--pw-safe-left', '24px'); s.setProperty('--pw-safe-right', '24px'); });
+    await ready(page); await geometry(page); await lastContentVisible(page);
+    pass(`${engine}: injected 47/34/24px safe areas with scrolling home`);
+    await page.reload(); await ready(page);
+    await page.setViewportSize({ width: 360, height: 640 }); await ready(page);
+    await geometry(page); await lastContentVisible(page);
+    await page.evaluate(() => { document.documentElement.style.fontSize = '32px'; }); await ready(page);
+    const zoom = await geometry(page); await lastContentVisible(page); assert.equal(zoom.metrics.split(' ').length, 1);
+    pass(`${engine}: 360×640 and 200% root font, metric reflow and exact amounts`, zoom);
+    if (screenshots) await page.screenshot({ path: path.join(output, 'screenshots/360x640-200percent.png') });
+    for (const width of [360, 390, 430]) {
+      await page.setViewportSize({ width, height: 844 }); await ready(page);
+      await geometry(page); await lastContentVisible(page);
+    }
+    pass(`${engine}: 360/390/430×844 at 200% root font without amount/control overflow`);
+    await page.emulateMedia({ colorScheme: 'dark' }); await geometry(page);
+    await storageUnchanged(page);
+    if (screenshots) {
+      await page.reload(); await ready(page); await page.setViewportSize({ width: 390, height: 844 }); await ready(page);
+      // Capture-only expansion: retain 390px width and all styles, expose the inner scroll content.
+      await page.addStyleTag({ content: '.pw-shell{height:auto;min-height:100dvh}.pw-content{flex:none;overflow:visible}' });
+      await page.screenshot({ path: path.join(output, 'screenshots/390x844-home-full.png'), fullPage: true });
+      report.screenshots.push('390x844-home-full.png');
+      pass('Full home capture: viewport 390×844, capture-only expansion of inner scroll; header and nav included');
+    }
+  } finally { await context.close(); }
+}
+async function fallbacks(browser, engine) {
+  const cases = [
+    ['empty', null, '아직 저장된 용돈 정보가 없어요.'],
+    ['invalid-json', '{', '저장된 용돈 정보를 불러오지 못했어요.'],
+    ['invalid-root', '[]', '저장된 용돈 정보를 불러오지 못했어요.'],
+    ['denied', JSON.stringify(fixture), '저장된 용돈 정보를 불러오지 못했어요.'],
+    ['partial', JSON.stringify({ balance: 0, user: null }), '아직 모으는 목표가 없어요.'],
+    ['no-goal', JSON.stringify({ ...fixture, goal: null }), '아직 모으는 목표가 없어요.'],
+    ['complete-goal', JSON.stringify({ ...fixture, goal: { title: '완료', target: 100, current: 120 } }), '저장된 목표 금액을 모두 모았어요.'],
+    ['invalid-goal', JSON.stringify({ ...fixture, goal: { title: '잘못된 목표', target: 0, current: 100 } }), '목표 정보를 확인할 수 없어요.'],
+  ];
+  for (const [label, raw, message] of cases) {
+    const { page, context } = await contextFor(browser, raw, `${engine}/${label}`, label === 'denied');
+    try {
+      assert((await page.locator('.pw-home').innerText()).includes(message));
+      assert.equal(await page.getByRole('progressbar', { name: '목표 진행률' }).count(), 0);
+      if (label === 'partial') assert.equal(await page.locator('.pw-home-hero .pw-home-money').first().getAttribute('aria-label'), '0원');
+      if (['empty', 'invalid-json', 'invalid-root', 'denied'].includes(label)) {
+        assert.equal(await page.locator('.pw-home-greeting').count(), 0);
+        assert.equal(await page.locator('.pw-home-money').count(), 0);
+      }
+      await geometry(page); await lastContentVisible(page); await storageUnchanged(page);
+      if (engine === 'Chromium' && ['empty', 'invalid-json', 'no-goal'].includes(label)) await page.screenshot({ path: path.join(output, `screenshots/fallback-${label}.png`) });
+      await page.getByRole('button', { name: '목표 보기', exact: true }).click();
+      assert.equal(await page.locator('#pw-content').innerText(), '목표');
+      pass(`${engine}: ${label} truthful fallback, geometry, action and unchanged storage`);
+    } finally { await context.close(); }
+  }
+  const stress = { ...fixture, user: { name: '<img src=x onerror=alert(1)>' + '아주긴이름'.repeat(12) }, balance: Number.MAX_SAFE_INTEGER, monthly: { saving: 0, spending: Number.MAX_SAFE_INTEGER }, goal: { title: '길고긴목표이름'.repeat(20), current: 999999999, target: Number.MAX_SAFE_INTEGER } };
+  const { page, context } = await contextFor(browser, JSON.stringify(stress), `${engine}/stress`);
+  try {
+    for (const scale of [16, 32]) {
+      await page.setViewportSize({ width: 360, height: 640 });
+      await page.evaluate(size => { document.documentElement.style.fontSize = `${size}px`; }, scale); await ready(page);
+      await geometry(page); await lastContentVisible(page);
+      assert.equal(await page.locator('.pw-home img').count(), 0);
+      assert.equal(await page.locator('.pw-home-hero > .pw-home-money').getAttribute('aria-label'), '9,007,199,254,740,991원');
+      assert(await page.locator('.pw-home-hero > .pw-home-money .pw-home-money-exact').isVisible());
+    }
+    await storageUnchanged(page);
+    pass(`${engine}: maximum safe integer, negative difference, long goal/name, HTML as text and 200% scale`);
+  } finally { await context.close(); }
+}
+(async () => {
+  let chrome, safari;
+  try {
+    adapterTests();
+    chrome = await chromium.launch({ headless: true, executablePath: executable('chromium') });
+    report.browsers.chromium = chrome.version();
+    await matrix(chrome, 'Chromium', true); await fallbacks(chrome, 'Chromium');
+    safari = await webkit.launch({ headless: true, executablePath: executable('webkit') });
+    report.browsers.webkit = safari.version();
+    await matrix(safari, 'WebKit', false); await fallbacks(safari, 'WebKit');
+    assert.deepEqual(report.consoleErrors, []); assert.deepEqual(report.resourceErrors, []);
+    pass('All isolated contexts: zero console/page errors and failed resources');
+    report.status = 'PASS';
+  } catch (error) { report.status = 'FAIL'; report.failure = error.stack; process.exitCode = 1; }
+  finally {
+    if (chrome) await chrome.close(); if (safari) await safari.close();
+    report.finishedAt = new Date().toISOString();
+    fs.writeFileSync(path.join(output, 'verification.json'), JSON.stringify(report, null, 2) + '\n');
+    console.log(JSON.stringify({ status: report.status, checks: report.checks.length, screenshots: report.screenshots, consoleErrors: report.consoleErrors, resourceErrors: report.resourceErrors, failure: report.failure }, null, 2));
+  }
+})();

@@ -1,0 +1,309 @@
+/* Dev-only browser acceptance suite. No dependency is shipped to the app. */
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const crypto = require('node:crypto');
+const vm = require('node:vm');
+const os = require('node:os');
+const { chromium, webkit } = require(process.env.PW_PLAYWRIGHT_MODULE || 'playwright');
+
+const root = path.resolve(__dirname, '..');
+const origin = process.env.PW_BASE_URL || 'http://127.0.0.1:4173';
+assert(['127.0.0.1', 'localhost'].includes(new URL(origin).hostname), 'Use an isolated local origin');
+const url = `${origin}/ks6s3juocjzc2.kimi.page/index.html`;
+const output = path.join(root, 'evidence/PW-WOORI-02/shell');
+fs.mkdirSync(path.join(output, 'screenshots'), { recursive: true });
+const labels = ['홈', '기록', '목표', '리포트', '전체'];
+const ids = ['home', 'record', 'goal', 'report', 'all'];
+const report = { startedAt: new Date().toISOString(), url, checks: [], screenshots: [], networkErrors: [], consoleErrors: [], browsers: {} };
+const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+const pass = (name, detail = true) => report.checks.push({ name, status: 'PASS', detail });
+
+function executable(engine) {
+  const configured = process.env[engine === 'chromium' ? 'PW_CHROMIUM_EXECUTABLE' : 'PW_WEBKIT_EXECUTABLE'];
+  if (configured) return configured;
+  const type = engine === 'chromium' ? chromium : webkit;
+  if (fs.existsSync(type.executablePath())) return type.executablePath();
+  const cache = path.join(os.homedir(), 'Library/Caches/ms-playwright');
+  const prefix = engine === 'chromium' ? 'chromium_headless_shell-' : 'webkit-';
+  const versions = fs.existsSync(cache) ? fs.readdirSync(cache).filter(n => n.startsWith(prefix)).sort((a, b) => b.localeCompare(a, undefined, { numeric: true })) : [];
+  assert(versions.length, `Install Playwright ${engine} or set its executable override`);
+  return path.join(cache, versions[0], engine === 'chromium' ? 'chrome-headless-shell-mac-arm64/chrome-headless-shell' : 'pw_run.sh');
+}
+
+function sourceAudit() {
+  const baseline = JSON.parse(fs.readFileSync(path.join(root, 'preservation/PW-WOORI-01/baseline.json')));
+  const snapshot = fs.readFileSync(path.join(root, baseline.snapshot));
+  assert.equal(hash(snapshot), baseline.original_sha256);
+  for (const [file, sha] of Object.entries(baseline.files)) {
+    if (file !== baseline.entrypoint) assert.equal(hash(fs.readFileSync(path.join(root, file))), sha, file);
+  }
+  pass('Original snapshot and all 16 non-entrypoint original files preserved', baseline.original_sha256);
+  const app = path.join(root, 'ks6s3juocjzc2.kimi.page');
+  const activeFiles = ['index.html', ...['styles', 'scripts'].flatMap(dir => fs.readdirSync(path.join(app, dir)).map(file => `${dir}/${file}`))];
+  const activeText = activeFiles.map(file => fs.readFileSync(path.join(app, file), 'utf8')).join('\n');
+  const forbidden = /sessionStorage|setItem\s*\(|removeItem\s*\(|\.clear\s*\(|pocketwon_theme|prefers-color-scheme|data-theme|themeBtn|toggleTheme|sdk-seed|renderHome|parentReport|linear-gradient|radial-gradient|backdrop-filter|#3ECF8E|#FFD54D|#FF6B6B|--mint|--coral/i;
+  assert(!forbidden.test(activeText), 'Legacy visual/runtime reference remains');
+  for (const file of ['base.css', 'shell.css']) assert(!/#[0-9a-f]{3,8}\b/i.test(fs.readFileSync(path.join(app, 'styles', file), 'utf8')), file);
+  const tokens = fs.readFileSync(path.join(app, 'styles/tokens.css'), 'utf8');
+  const definitions = new Set([...tokens.matchAll(/(--pw-[\w-]+)\s*:/g)].map(m => m[1]));
+  for (const [, token] of activeText.matchAll(/var\((--pw-[\w-]+)/g)) assert(definitions.has(token), `Undefined token ${token}`);
+  pass('Active source: no legacy styling, dark runtime, storage writes or SDK; all token references resolve', { files: activeFiles, tokens: definitions.size });
+  const literal = snapshot.toString().match(/const defaultState = (\{[\s\S]*?\n        \});/)[1];
+  return JSON.parse(JSON.stringify(vm.runInNewContext(`(${literal})`)));
+}
+
+function observe(page) {
+  page.on('pageerror', error => report.consoleErrors.push(error.message));
+  page.on('console', message => { if (message.type() === 'error') report.consoleErrors.push(message.text()); });
+  page.on('requestfailed', request => report.networkErrors.push({ url: request.url(), error: request.failure()?.errorText }));
+  page.on('response', response => { if (response.status() >= 400) report.networkErrors.push({ url: response.url(), status: response.status() }); });
+}
+
+async function ready(page) {
+  await page.locator('.pw-nav-item').last().waitFor();
+  await page.evaluate(() => document.fonts.ready);
+}
+
+async function geometry(page) {
+  return page.evaluate(() => {
+    const rect = selector => {
+      const r = document.querySelector(selector).getBoundingClientRect();
+      return { x: r.x, y: r.y, width: r.width, height: r.height, bottom: r.bottom, right: r.right };
+    };
+    return {
+      viewport: { width: innerWidth, height: innerHeight },
+      docWidth: document.documentElement.scrollWidth,
+      docHeight: document.documentElement.scrollHeight,
+      shell: rect('.pw-shell'), header: rect('.pw-header'), content: rect('.pw-content'), nav: rect('.pw-bottom-navigation'),
+      top: rect('.pw-safe-area-top'), bottom: rect('.pw-safe-area-bottom'),
+      controls: [...document.querySelectorAll('.pw-header button, .pw-bottom-navigation button')].map(el => {
+        const r = el.getBoundingClientRect();
+        return { label: el.getAttribute('aria-label') || el.textContent, width: r.width, height: r.height, x: r.x, right: r.right, bottom: r.bottom };
+      }),
+      styled: [...document.querySelectorAll('.pw-shell, .pw-header, .pw-content, .pw-bottom-navigation, button')].map(el => {
+        const s = getComputedStyle(el); return { image: s.backgroundImage, shadow: s.boxShadow, filter: s.backdropFilter };
+      }),
+      scheme: getComputedStyle(document.documentElement).colorScheme,
+      background: getComputedStyle(document.querySelector('.pw-shell')).backgroundColor,
+      active: [...document.querySelectorAll('[aria-current="page"]')].map(el => el.dataset.screen),
+    };
+  });
+}
+
+function checkGeometry(g, width) {
+  assert(g.docWidth <= width, 'Horizontal document overflow');
+  assert.equal(g.shell.width, Math.min(width, 430));
+  // WebKit rounds flex/dvh edges to fractional layout units (observed 1/64px).
+  const epsilon = 0.05;
+  assert(Math.abs(g.shell.height - g.viewport.height) <= epsilon);
+  assert(Math.abs(g.nav.bottom - g.viewport.height) <= epsilon);
+  assert(g.content.y + epsilon >= g.header.bottom);
+  assert(g.content.bottom <= g.nav.y + epsilon);
+  assert(g.controls.every(c => c.width >= 48 && c.height >= 48 && c.x >= g.shell.x && c.right <= g.shell.right && c.bottom <= g.nav.bottom));
+  assert(g.styled.every(s => s.image === 'none' && s.shadow === 'none' && s.filter === 'none'));
+  assert.equal(g.scheme, 'light');
+  assert.equal(g.background, 'rgb(245, 248, 252)');
+  assert.equal(g.active.length, 1);
+}
+
+async function matrix(browser, engine, screenshot) {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1, locale: 'ko-KR', colorScheme: 'light', reducedMotion: 'reduce' });
+  const page = await context.newPage(); observe(page);
+  for (const width of [360, 390, 430]) {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto(url); await ready(page);
+    for (let i = 0; i < ids.length; i++) {
+      await page.getByRole('button', { name: labels[i], exact: true }).click();
+      await page.mouse.move(0, 0);
+      assert.equal(await page.locator('#pw-screen-title').textContent(), labels[i]);
+      if (i !== 0) assert.equal(await page.locator('#pw-content').innerText(), labels[i]);
+      else assert.equal(await page.locator('.pw-home').count(), 1);
+      assert.equal(await page.title(), `${labels[i]} · 포켓WON`);
+      assert.equal(await page.locator('#pw-header-context').innerText(), i === 0 ? 'PocketWON' : labels[i]);
+      assert.equal(page.url(), url);
+      const g = await geometry(page); checkGeometry(g, width);
+      assert.deepEqual(g.active, [ids[i]]);
+      pass(`${engine}: ${width}×844 ${ids[i]} view, selection and bounds`, g);
+      if (screenshot) {
+        const name = `${width}x844-${ids[i]}.png`;
+        await page.screenshot({ path: path.join(output, 'screenshots', name) });
+        report.screenshots.push(`screenshots/${name}`);
+      }
+    }
+    await page.getByRole('button', { name: '전체', exact: true }).click();
+    assert.equal(await page.locator('[aria-current="page"]').count(), 1);
+    await page.getByRole('button', { name: '홈', exact: true }).click();
+    await page.getByRole('button', { name: '전체 메뉴', exact: true }).click();
+    assert.equal(await page.locator('#pw-screen-title').innerText(), '전체');
+    await page.reload(); await ready(page);
+    assert.equal(await page.locator('#pw-screen-title').innerText(), '홈');
+    assert.deepEqual(await page.evaluate(() => Object.keys(localStorage)), []);
+  }
+  pass(`${engine}: repeated tabs, header menu, reload-to-home; fresh storage remains empty`);
+  await context.close();
+}
+
+async function storageAndLight(browser, defaultState) {
+  const modified = structuredClone(defaultState);
+  modified.user.name = '보존 검증'; modified.balance = 87654;
+  modified.transactions.push({ type: 'in', amount: 4321, category: '용돈', ts: '2025-01-01T00:00:00.000Z', receipt: true });
+  for (const theme of ['dark', 'system', 'light']) {
+    const seed = { pocketwon_demo_v1: JSON.stringify(modified), pocketwon_intro_done: '1', pocketwon_theme: theme, unrelated_test_value: 'must stay identical' };
+    const context = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: 'dark' });
+    await context.addInitScript(values => {
+      const get = Storage.prototype.getItem;
+      const set = Storage.prototype.setItem;
+      if (get.call(localStorage, 'unrelated_test_value') === null) for (const [k, v] of Object.entries(values)) set.call(localStorage, k, v);
+      window.__pwStorageCalls = [];
+      window.__pwReadTestStorage = () => Object.fromEntries(Object.keys(localStorage).map(k => [k, get.call(localStorage, k)]));
+      for (const name of ['getItem', 'setItem', 'removeItem', 'clear']) {
+        const original = Storage.prototype[name];
+        Storage.prototype[name] = function (...args) { window.__pwStorageCalls.push(name); return original.apply(this, args); };
+      }
+    }, seed);
+    const page = await context.newPage(); observe(page);
+    await page.goto(url); await ready(page);
+    for (const label of labels) await page.getByRole('button', { name: label, exact: true }).click();
+    for (const phase of ['navigation', 'reload']) {
+      if (phase === 'reload') { await page.reload(); await ready(page); }
+      assert.deepEqual(await page.evaluate(() => window.__pwReadTestStorage()), seed);
+      const calls = await page.evaluate(() => window.__pwStorageCalls);
+      assert(calls.length > 0 && calls.every(name => name === 'getItem'));
+      assert.equal((await geometry(page)).scheme, 'light');
+    }
+    await page.emulateMedia({ colorScheme: 'light' });
+    await page.emulateMedia({ colorScheme: 'dark' });
+    assert.equal((await geometry(page)).background, 'rgb(245, 248, 252)');
+    pass(`OS dark + stored ${theme}: unchanged business/intro/theme/unrelated values; read-only storage calls`);
+    await context.close();
+  }
+  const context = await browser.newContext();
+  await context.addInitScript(() => {
+    Storage.prototype.getItem = Storage.prototype.setItem = Storage.prototype.removeItem = Storage.prototype.clear = () => { throw Error('Storage unavailable'); };
+  });
+  const page = await context.newPage(); observe(page);
+  await page.goto(url); await ready(page);
+  await page.getByRole('button', { name: '전체 메뉴', exact: true }).click();
+  assert.equal(await page.locator('#pw-screen-title').innerText(), '전체');
+  pass('Storage-unavailable environment: Shell navigation works');
+  await context.close();
+}
+
+async function accessibilityAndLayout(browser) {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const page = await context.newPage(); observe(page);
+  await page.goto(url); await ready(page);
+  for (const name of ['전체 메뉴', '기록하기', '리포트 보기›', '목표 보기›', ...labels]) {
+    await page.keyboard.press('Tab');
+    const focus = await page.evaluate(() => {
+      const el = document.activeElement, s = getComputedStyle(el);
+      return { name: el.getAttribute('aria-label') || el.textContent, visible: el.matches(':focus-visible'), style: s.outlineStyle, width: s.outlineWidth };
+    });
+    assert.equal(focus.name, name); assert(focus.visible); assert.equal(focus.style, 'solid'); assert.equal(focus.width, '2px');
+  }
+  await page.keyboard.press('Enter'); assert.equal(await page.locator('#pw-screen-title').innerText(), '전체');
+  await page.keyboard.press('Shift+Tab'); await page.keyboard.press('Space');
+  assert.equal(await page.locator('#pw-screen-title').innerText(), '리포트');
+  pass('Keyboard order, visible focus, Enter and Space activation');
+
+  // Layout stress is injected into this isolated test page, never shipped as app content.
+  await page.evaluate(() => {
+    const root = document.documentElement;
+    root.style.setProperty('--pw-safe-top', '47px'); root.style.setProperty('--pw-safe-bottom', '34px');
+    root.style.setProperty('--pw-safe-left', '24px'); root.style.setProperty('--pw-safe-right', '24px');
+    const spacer = document.createElement('div'); spacer.style.height = '1500px'; document.querySelector('.pw-placeholder').append(spacer);
+    document.querySelector('.pw-content').scrollTop = 200;
+  });
+  const g = await geometry(page); checkGeometry(g, 390);
+  assert.equal(g.top.height, 47); assert.equal(g.header.y, 47); assert.equal(g.bottom.height, 34);
+  assert.equal(g.nav.height, 107); assert.equal(g.docHeight, 844);
+  assert((await page.locator('#pw-content').evaluate(el => el.scrollTop)) > 0);
+  await page.getByRole('button', { name: '홈', exact: true }).click();
+  assert.equal(await page.locator('#pw-content').evaluate(el => el.scrollTop), 0);
+  pass('Simulated 47/34px vertical and 24px horizontal safe areas applied once; independent scroll and reset', g);
+  await page.reload(); await ready(page);
+  await page.setViewportSize({ width: 360, height: 640 }); checkGeometry(await geometry(page), 360);
+  await page.evaluate(() => { document.documentElement.style.fontSize = '32px'; });
+  const zoom = await geometry(page); checkGeometry(zoom, 360);
+  pass('360×640 short viewport and 200% root text scale: no clipping/overlap', zoom);
+  await page.reload(); await ready(page);
+  await page.setViewportSize({ width: 1024, height: 900 });
+  const desktop = await geometry(page); checkGeometry(desktop, 1024); assert.equal(desktop.shell.x, 297);
+  pass('Desktop: 430px centered shell without decorative phone frame', desktop);
+  await context.close();
+}
+
+function contrast(a, b) {
+  const lum = rgb => rgb.match(/[\d.]+/g).slice(0, 3).map(Number).map(v => v / 255).map(v => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4).reduce((sum, v, i) => sum + v * [0.2126, 0.7152, 0.0722][i], 0);
+  const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
+}
+
+async function fixture(browser) {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const page = await context.newPage(); observe(page);
+  await page.goto(`${origin}/tests/fixtures/design-system.html`); await page.evaluate(() => document.fonts.ready);
+  const type = await page.locator('[class^="pw-type-"]').evaluateAll(els => els.map(el => {
+    const s = getComputedStyle(el); return { class: el.className, size: s.fontSize, line: s.lineHeight, number: s.fontVariantNumeric };
+  }));
+  for (const [name, size, line] of [['display', 36, 44], ['h1', 28, 36], ['h2', 24, 32], ['h3', 20, 28], ['body', 16, 24], ['body-small', 14, 20], ['caption', 12, 18], ['number-large', 40, 48], ['number-medium', 28, 36], ['button', 16, 24]]) {
+    const actual = type.find(t => t.class === `pw-type-${name}`);
+    assert.equal(actual.size, `${size}px`); assert.equal(actual.line, `${line}px`);
+    if (name.startsWith('number-')) assert.equal(actual.number, 'tabular-nums');
+  }
+  pass('All 10 typography roles, sizes, line heights and tabular number styles', type);
+  const button = page.locator('#primary');
+  const style = () => button.evaluate(el => { const s = getComputedStyle(el); return { background: s.backgroundColor, color: s.color, radius: s.borderRadius }; });
+  const normal = await style(); assert.equal(normal.background, 'rgb(0, 117, 200)'); assert.equal(normal.radius, '12px');
+  assert(contrast(normal.background, normal.color) >= 4.5);
+  await button.hover(); assert.equal((await style()).background, 'rgb(0, 103, 172)');
+  await page.mouse.down(); assert.equal((await style()).background, 'rgb(0, 91, 152)'); await page.mouse.up();
+  assert.equal(await page.locator('.pw-button:disabled').isEnabled(), false);
+  assert.equal(await page.locator('.pw-icon-button:disabled').isEnabled(), false);
+  await page.mouse.move(0, 0);
+  pass('Primary normal/hover/pressed/disabled and IconButton disabled states; primary white text contrast', contrast(normal.background, normal.color));
+  const colors = await page.evaluate(() => {
+    const s = getComputedStyle(document.documentElement);
+    const names = ['text-primary', 'text-secondary', 'text-tertiary', 'primary', 'success', 'warning', 'danger', 'finance-positive', 'finance-negative'];
+    const probe = document.createElement('span'); document.body.append(probe);
+    const values = {};
+    for (const name of names) { probe.style.color = `var(--pw-color-${name})`; values[name] = getComputedStyle(probe).color; }
+    probe.remove(); return values;
+  });
+  const ratios = Object.fromEntries(Object.entries(colors).map(([name, value]) => [name, contrast(value, 'rgb(255, 255, 255)')]));
+  assert(Object.values(ratios).every(value => value >= 4.5));
+  assert(contrast(colors['text-primary'], 'rgb(245, 248, 252)') >= 4.5);
+  pass('Text, navigation and semantic foreground colors meet 4.5:1 on white; main heading on background', ratios);
+  await page.screenshot({ path: path.join(output, 'screenshots/design-system-fixture.png'), fullPage: true });
+  await context.close();
+}
+
+(async () => {
+  let chrome, safari;
+  try {
+    const defaultState = sourceAudit();
+    const chromePath = executable('chromium');
+    chrome = await chromium.launch({ headless: true, executablePath: chromePath });
+    report.browsers.chromium = { version: chrome.version(), executable: chromePath };
+    await matrix(chrome, 'Chromium', true);
+    await storageAndLight(chrome, defaultState);
+    await accessibilityAndLayout(chrome);
+    await fixture(chrome);
+    const webkitPath = executable('webkit');
+    safari = await webkit.launch({ headless: true, executablePath: webkitPath });
+    report.browsers.webkit = { version: safari.version(), executable: webkitPath };
+    await matrix(safari, 'WebKit', false);
+    assert.deepEqual(report.consoleErrors, [], 'Console/page errors');
+    assert.deepEqual(report.networkErrors, [], 'Failed resource requests');
+    pass('All browser contexts: zero console/page errors and failed resource requests');
+    assert.equal(report.screenshots.length, 15);
+    report.status = 'PASS';
+  } catch (error) {
+    report.status = 'FAIL'; report.failure = error.stack; process.exitCode = 1;
+  } finally {
+    if (chrome) await chrome.close(); if (safari) await safari.close();
+    report.finishedAt = new Date().toISOString();
+    fs.writeFileSync(path.join(output, 'verification.json'), JSON.stringify(report, null, 2) + '\n');
+    console.log(JSON.stringify({ status: report.status, checks: report.checks.length, screenshots: report.screenshots.length, networkErrors: report.networkErrors, consoleErrors: report.consoleErrors, failure: report.failure }, null, 2));
+  }
+})();

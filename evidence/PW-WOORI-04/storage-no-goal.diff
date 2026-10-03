@@ -1,0 +1,15 @@
+--- before/pocketwon_demo_v1
++++ after/pocketwon_demo_v1
+@@ -9,7 +9,11 @@
+     "saving": 15200,
+     "goal": 100000
+   },
+-  "goal": null,
++  "goal": {
++    "current": 0,
++    "title": "새 자전거",
++    "target": 100000
++  },
+   "streak": 7,
+   "points": 1250,
+   "transactions": [

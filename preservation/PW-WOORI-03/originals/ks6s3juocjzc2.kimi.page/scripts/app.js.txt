@@ -1,0 +1,68 @@
+/* Shell navigation. Home reads business data without changing stored state. */
+(() => {
+  const content = document.getElementById('pw-content');
+  const context = document.getElementById('pw-header-context');
+  const menu = document.getElementById('pw-menu');
+  const navigation = document.getElementById('pw-navigation-items');
+  let currentScreen = 'home';
+  let homeView;
+
+  menu.innerHTML = pwIcon('menu');
+  const buttons = PW_TABS.map(tab => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'pw-nav-item';
+    button.dataset.screen = tab.id;
+    button.innerHTML = pwIcon(tab.id);
+    const label = document.createElement('span');
+    label.textContent = tab.label;
+    button.append(label);
+    button.addEventListener('click', () => showScreen(tab.id));
+    navigation.append(button);
+    return button;
+  });
+
+  function showScreen(id, moveFocus = false) {
+    const tab = PW_TABS.find(item => item.id === id);
+    if (!tab) return;
+    currentScreen = tab.id;
+    if (homeView) homeView.dispose();
+    homeView = null;
+    document.title = `${tab.label} · 포켓WON`;
+    if (id === 'home') {
+      context.innerHTML = 'Pocket<span class="pw-brand-accent">WON</span>';
+      context.setAttribute('aria-label', '포켓WON');
+      const loaded = loadPocketWONState();
+      homeView = createHomeView(createHomeViewModel(loaded.state), target => showScreen(target, true), loaded.status);
+      content.replaceChildren(homeView.element);
+      homeView.mount();
+    } else {
+      context.textContent = tab.label;
+      context.removeAttribute('aria-label');
+      const placeholder = document.createElement('section');
+      placeholder.className = 'pw-placeholder';
+      placeholder.setAttribute('aria-labelledby', 'pw-screen-title');
+      const heading = document.createElement('h1');
+      heading.id = 'pw-screen-title';
+      heading.className = 'pw-type-h1';
+      heading.textContent = tab.label;
+      heading.setAttribute('aria-live', 'polite');
+      heading.setAttribute('aria-atomic', 'true');
+      placeholder.append(heading);
+      content.replaceChildren(placeholder);
+    }
+    for (const button of buttons) {
+      if (button.dataset.screen === currentScreen) button.setAttribute('aria-current', 'page');
+      else button.removeAttribute('aria-current');
+    }
+    content.scrollTop = 0;
+    if (moveFocus) {
+      const heading = document.getElementById('pw-screen-title');
+      heading.tabIndex = -1;
+      heading.focus({ preventScroll: true });
+    }
+  }
+
+  menu.addEventListener('click', () => showScreen('all'));
+  showScreen(currentScreen);
+})();

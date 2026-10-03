@@ -1,0 +1,35 @@
+/* PW-WOORI-05: saved values, flat surfaces, existing Light tokens. */
+.pw-report { padding: var(--pw-space-6) max(var(--pw-shell-gutter), var(--pw-safe-right)) var(--pw-space-10) max(var(--pw-shell-gutter), var(--pw-safe-left)); display: flex; flex-direction: column; gap: var(--pw-space-5); overflow-wrap: anywhere; container-type: inline-size; }
+.pw-report-intro { display: grid; gap: var(--pw-space-2); }
+.pw-report-muted { color: var(--pw-color-text-secondary); }
+.pw-report-score { padding: var(--pw-space-2) 0 var(--pw-space-1); }
+.pw-report-score > h2 { font: var(--pw-type-body); font-weight: var(--pw-weight-semibold); }
+.pw-report-score-value { font: var(--pw-type-number-large); font-size: var(--pw-space-16); line-height: 1.15; color: var(--pw-color-primary-hover); font-variant-numeric: tabular-nums; margin-block: var(--pw-space-2); overflow-wrap: anywhere; }
+.pw-report-score-unknown { margin-block: var(--pw-space-3); }
+.pw-report-surface { background: var(--pw-color-surface); border: var(--pw-border-width) solid var(--pw-color-border); border-radius: var(--pw-radius-card); padding: var(--pw-space-5); min-width: 0; }
+.pw-report-surface > h2 { margin-bottom: var(--pw-space-2); }
+.pw-report-flow-values { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--pw-space-3); margin-block: var(--pw-space-5) var(--pw-space-4); }
+.pw-report-flow-values > div, .pw-report-goal-values > div { min-width: 0; }
+.pw-report dd { margin: var(--pw-space-2) 0 0; }
+.pw-report-money { min-width: 0; font: var(--pw-type-h3); font-variant-numeric: tabular-nums; }
+.pw-report-money-display { display: inline-flex; align-items: baseline; gap: 0.125em; white-space: nowrap; }
+.pw-report-money-digits { white-space: nowrap; }
+.pw-report-money-display--wrap { flex-wrap: wrap; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+.pw-report-money-exact { display: block; color: var(--pw-color-text-secondary); overflow-wrap: anywhere; }
+.pw-report-money-exact[hidden] { display: none; }
+.pw-report-goal-name { font-weight: var(--pw-weight-semibold); margin-bottom: var(--pw-space-4); }
+.pw-report-goal-values { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--pw-space-4); margin: 0; }
+.pw-report-progress { height: var(--pw-space-2); background: var(--pw-color-primary-soft); border-radius: var(--pw-radius-button); overflow: hidden; margin-top: var(--pw-space-4); }
+.pw-report-progress > span { display: block; height: 100%; background: var(--pw-color-primary); border-radius: inherit; }
+.pw-report-percent { color: var(--pw-color-primary-hover); margin-top: var(--pw-space-2); font-weight: var(--pw-weight-semibold); }
+.pw-report-remaining { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: baseline; gap: var(--pw-space-2); border-top: var(--pw-border-width) solid var(--pw-color-divider); margin-top: var(--pw-space-4); padding-top: var(--pw-space-3); }
+.pw-report-remaining > .pw-report-money { max-width: 100%; text-align: right; }
+.pw-report-records { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--pw-space-2); border-bottom: var(--pw-border-width) solid var(--pw-color-border); padding: var(--pw-space-1) 0 var(--pw-space-4); }
+.pw-report-records > h2 { font: var(--pw-type-body); font-weight: var(--pw-weight-semibold); }
+.pw-report-records > .pw-report-muted { flex-basis: 100%; }
+.pw-report-actions { display: flex; flex-wrap: wrap; gap: var(--pw-space-3); }
+.pw-report-action { background: var(--pw-color-surface); border: var(--pw-border-width) solid var(--pw-color-border); border-radius: var(--pw-radius-button); padding: var(--pw-space-3) var(--pw-space-4); min-width: var(--pw-touch-target); min-height: var(--pw-touch-target); max-width: 100%; color: var(--pw-color-primary-hover); font: var(--pw-type-button); }
+.pw-report-action:hover { background: var(--pw-color-surface-blue); }
+.pw-report-status { padding-block: var(--pw-space-8); }
+.pw-report-status > .pw-report-action { margin-top: var(--pw-space-5); }
+@container (max-width: 19rem) { .pw-report-flow-values { grid-template-columns: minmax(0, 1fr); gap: var(--pw-space-4); } .pw-report-goal-values, .pw-report-remaining { grid-template-columns: minmax(0, 1fr); } .pw-report-remaining > .pw-report-money { text-align: left; } }

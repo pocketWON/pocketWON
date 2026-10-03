@@ -1,0 +1,102 @@
+{
+  "homeComparison": [
+    {
+      "width": 360,
+      "height": 844,
+      "changedPixels": 0,
+      "bounds": null,
+      "maximumChannelDifference": 0,
+      "examples": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "changedPixels": 0,
+      "bounds": null,
+      "maximumChannelDifference": 0,
+      "examples": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "changedPixels": 19,
+      "bounds": [
+        20,
+        179,
+        23,
+        771
+      ],
+      "maximumChannelDifference": 1,
+      "examples": [
+        [
+          21,
+          179,
+          [
+            237,
+            241,
+            247
+          ],
+          [
+            236,
+            241,
+            247
+          ]
+        ],
+        [
+          22,
+          179,
+          [
+            233,
+            239,
+            244
+          ],
+          [
+            232,
+            239,
+            244
+          ]
+        ],
+        [
+          22,
+          180,
+          [
+            244,
+            246,
+            249
+          ],
+          [
+            244,
+            247,
+            250
+          ]
+        ],
+        [
+          21,
+          181,
+          [
+            222,
+            230,
+            239
+          ],
+          [
+            221,
+            229,
+            238
+          ]
+        ]
+      ]
+    }
+  ],
+  "placeholderImagesByteIdentical": [
+    "360x844-goal",
+    "360x844-report",
+    "360x844-all",
+    "390x844-goal",
+    "390x844-report",
+    "390x844-all",
+    "430x844-goal",
+    "430x844-report",
+    "430x844-all"
+  ],
+  "interpretation": "360/390 pixel-identical. At 430, only 19 card-edge pixels differ; Home source and styles unchanged. No screenshot-byte identity claim for 430."
+}

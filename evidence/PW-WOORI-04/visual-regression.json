@@ -1,0 +1,74 @@
+[
+  {
+    "screen": "home/360x844-home",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  },
+  {
+    "screen": "home/390x844-home",
+    "byteIdentical": false,
+    "changedPixels": 13,
+    "maxChannelDelta": 2
+  },
+  {
+    "screen": "home/430x844-home",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  },
+  {
+    "screen": "record/360x844-record",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  },
+  {
+    "screen": "record/390x844-record",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  },
+  {
+    "screen": "record/430x844-record",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  },
+  {
+    "screen": "shell/360x844-report",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  },
+  {
+    "screen": "shell/360x844-all",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  },
+  {
+    "screen": "shell/390x844-report",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  },
+  {
+    "screen": "shell/390x844-all",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  },
+  {
+    "screen": "shell/430x844-report",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  },
+  {
+    "screen": "shell/430x844-all",
+    "byteIdentical": true,
+    "changedPixels": 0,
+    "maxChannelDelta": 0
+  }
+]

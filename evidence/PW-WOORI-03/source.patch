@@ -1,0 +1,1558 @@
+--- a/ks6s3juocjzc2.kimi.page/index.html
++++ b/ks6s3juocjzc2.kimi.page/index.html
+@@ -11,10 +11,12 @@
+   <link rel="stylesheet" href="./styles/base.css">
+   <link rel="stylesheet" href="./styles/shell.css">
+   <link rel="stylesheet" href="./styles/home.css">
++  <link rel="stylesheet" href="./styles/record.css">
+   <script src="./scripts/icons.js" defer></script>
+   <script src="./scripts/tabs.js" defer></script>
+   <script src="./scripts/state.js" defer></script>
+   <script src="./scripts/home.js" defer></script>
++  <script src="./scripts/record.js" defer></script>
+   <script src="./scripts/app.js" defer></script>
+ </head>
+ <body>
+--- a/ks6s3juocjzc2.kimi.page/scripts/state.js
++++ b/ks6s3juocjzc2.kimi.page/scripts/state.js
+@@ -1,4 +1,4 @@
+-/* Legacy business data is read-only. Unknown values are never replaced with demo data. */
++/* Shared legacy contract. Reads never repair or persist data. */
+ function loadPocketWONState(storageProvider = () => window.localStorage) {
+   let raw;
+   try {
+@@ -15,6 +15,123 @@
+     return { status: 'loaded', state };
+   } catch (_) {
+     return { status: 'invalid', state: null };
++  }
++}
++
++const PW_RECORD_CATEGORIES = Object.freeze({
++  in: Object.freeze(['용돈']),
++  out: Object.freeze(['간식', '문구', '게임', '교통', '기타']),
++});
++const pwMoney = value => Number.isSafeInteger(value) && value >= 0;
++const pwObject = value => value !== null && typeof value === 'object' && !Array.isArray(value);
++
++function validPocketWONTransaction(tx) {
++  return pwObject(tx) && (tx.type === 'in' || tx.type === 'out')
++    && pwMoney(tx.amount) && tx.amount > 0
++    && typeof tx.category === 'string' && tx.category.trim().length > 0;
++}
++
++function writablePocketWONState(state) {
++  return pwObject(state) && pwMoney(state.balance) && pwObject(state.monthly)
++    && pwMoney(state.monthly.saving) && pwMoney(state.monthly.spending)
++    && Array.isArray(state.transactions) && state.transactions.every(validPocketWONTransaction);
++}
++
++// Only the two ISO forms observed in the original contract: local ISO and zoned ISO.
++// Validate calendar components before Date parsing (which otherwise normalizes Feb 30).
++function parsePocketWONDate(value) {
++  if (typeof value !== 'string') return null;
++  const match = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d{1,3}))?(Z|[+-]\d{2}:\d{2})?$/.exec(value);
++  if (!match) return null;
++  const [, y, m, d, h, minute, second, , zone] = match;
++  const year = Number(y), month = Number(m), day = Number(d);
++  const leap = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
++  const days = [31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
++  if (month < 1 || month > 12 || day < 1 || day > days[month - 1]
++    || Number(h) > 23 || Number(minute) > 59 || Number(second) > 59) return null;
++  if (zone && zone !== 'Z' && (Number(zone.slice(1, 3)) > 23 || Number(zone.slice(4)) > 59)) return null;
++  const date = new Date(value);
++  if (!Number.isFinite(date.getTime())) return null;
++  if (!zone && (date.getFullYear() !== year || date.getMonth() + 1 !== month || date.getDate() !== day
++    || date.getHours() !== Number(h) || date.getMinutes() !== Number(minute))) return null;
++  return date;
++}
++
++function createRecordViewModel(state, now = new Date()) {
++  const transactions = Array.isArray(state?.transactions) ? state.transactions : null;
++  const known = transactions !== null && transactions.every(validPocketWONTransaction);
++  const rows = (transactions || []).map(tx => ({ tx, date: parsePocketWONDate(tx?.ts) }));
++  const grouped = known && rows.every(row => row.date !== null);
++  if (grouped) rows.sort((a, b) => b.date.getTime() - a.date.getTime());
++  const dayKey = date => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
++  const today = dayKey(now), yesterdayDate = new Date(now);
++  yesterdayDate.setDate(yesterdayDate.getDate() - 1);
++  const yesterday = dayKey(yesterdayDate);
++  return {
++    balance: pwMoney(state?.balance) ? state.balance : null,
++    writable: writablePocketWONState(state),
++    history: transactions === null ? 'unavailable' : known ? (rows.length ? 'ready' : 'empty') : 'partial',
++    grouped,
++    rows: rows.slice(0, 20).map(({ tx, date }) => {
++      const valid = validPocketWONTransaction(tx);
++      const key = date ? dayKey(date) : '';
++      const dateLabel = !date ? '날짜 확인 안 됨' : key === today ? '오늘' : key === yesterday ? '어제'
++        : `${date.getFullYear() === now.getFullYear() ? '' : `${date.getFullYear()}년 `}${date.getMonth() + 1}월 ${date.getDate()}일`;
++      return {
++        valid, title: valid ? (typeof tx.memo === 'string' && tx.memo.trim() ? tx.memo : tx.category) : '확인할 수 없는 기록',
++        category: valid ? tx.category : '', type: valid ? tx.type : null, amount: valid ? tx.amount : null,
++        dateLabel, dayKey: key,
++      };
++    }),
++  };
++}
++
++// null means an explicitly empty storage key, never a failed read or malformed object.
++function validateRecordDraft(draft, state) {
++  const errors = {};
++  if (!pwObject(draft)) return { valid: false, errors: { form: '입력을 확인해주세요.' } };
++  const categories = draft.type === 'in' || draft.type === 'out' ? PW_RECORD_CATEGORIES[draft.type] : [];
++  if (!categories.length) errors.type = '받은 돈인지 쓴 돈인지 골라주세요.';
++  if (!categories.includes(draft.category)) errors.category = '어떤 돈이었는지 골라주세요.';
++  const raw = draft.amount;
++  const amount = typeof raw === 'string' && /^[0-9]+$/.test(raw) ? Number(raw) : NaN;
++  if (!Number.isSafeInteger(amount) || amount <= 0) errors.amount = '1원 이상의 정수로 입력해주세요.';
++  if (typeof draft.memo !== 'string' || Array.from(draft.memo).length > 50) errors.memo = '메모는 50자까지 적을 수 있어요.';
++  if (state !== null && !writablePocketWONState(state)) {
++    errors.form = '저장된 용돈 정보를 확인할 수 없어 기록을 저장할 수 없어요.';
++  } else if (!errors.amount && !errors.type) {
++    const balance = state === null ? 0 : state.balance;
++    const total = state === null ? 0 : state.monthly[draft.type === 'in' ? 'saving' : 'spending'];
++    if (draft.type === 'out' && amount > balance) errors.amount = '지금 가진 돈보다 큰 금액이에요.';
++    else if (!Number.isSafeInteger(total + amount) || (draft.type === 'in' && !Number.isSafeInteger(balance + amount))) {
++      errors.amount = '저장할 수 있는 금액 범위를 넘었어요.';
++    }
++  }
++  return { valid: Object.keys(errors).length === 0, errors, amount };
++}
++
++function applyTransaction(state, draft, timestamp) {
++  const checked = validateRecordDraft(draft, state);
++  if (!checked.valid || !parsePocketWONDate(timestamp)) throw new Error('Invalid record');
++  const source = state === null ? { balance: 0, monthly: { saving: 0, spending: 0 }, transactions: [] } : state;
++  const tx = { type: draft.type, amount: checked.amount, category: draft.category, ts: timestamp, receipt: false };
++  if (draft.memo.trim()) tx.memo = draft.memo.trim();
++  const incoming = draft.type === 'in';
++  return {
++    ...source,
++    balance: source.balance + (incoming ? checked.amount : -checked.amount),
++    monthly: { ...source.monthly, [incoming ? 'saving' : 'spending']: source.monthly[incoming ? 'saving' : 'spending'] + checked.amount },
++    transactions: [tx, ...source.transactions],
++  };
++}
++
++function persistPocketWONState(nextState, storageProvider = () => window.localStorage) {
++  try {
++    if (!writablePocketWONState(nextState)) return { status: 'failed' };
++    storageProvider().setItem('pocketwon_demo_v1', JSON.stringify(nextState));
++    return { status: 'saved' };
++  } catch (_) {
++    return { status: 'failed' };
+   }
+ }
+ 
+--- /dev/null
++++ b/ks6s3juocjzc2.kimi.page/scripts/record.js
+@@ -0,0 +1,204 @@
++/* Record presentation and explicit-submit orchestration. No writes during rendering. */
++function createRecordView(initialLoad) {
++  const format = new Intl.NumberFormat('ko-KR');
++  let loaded = initialLoad, validationLoad = initialLoad, disposed = false, busy = false, submitted = false;
++  let draft, touched, feedbackTimer;
++  const element = (tag, className, text) => {
++    const node = document.createElement(tag);
++    if (className) node.className = className;
++    if (text !== undefined) node.textContent = text;
++    return node;
++  };
++  const root = element('div', 'pw-record');
++  const intro = element('div', 'pw-record-intro');
++  const heading = element('h1', 'pw-type-h1', '기록'); heading.id = 'pw-screen-title';
++  intro.append(heading, element('p', 'pw-record-muted pw-type-body-small', '돈이 들어오고 나간 순간을 간단히 남겨보세요.'));
++  const summary = element('section', 'pw-record-summary'); summary.setAttribute('aria-label', '현재 용돈');
++  const add = element('button', 'pw-button pw-record-add', '새 기록 추가'); add.type = 'button';
++  const feedback = element('p', 'pw-record-feedback pw-type-body-small'); feedback.setAttribute('role', 'status');
++  const recent = element('section', 'pw-record-recent'); recent.setAttribute('aria-labelledby', 'pw-recent-title');
++  root.append(intro, summary, add, feedback, recent);
++
++  const dialog = element('dialog', 'pw-record-sheet');
++  dialog.setAttribute('aria-labelledby', 'pw-record-sheet-title');
++  const header = element('div', 'pw-record-sheet-header');
++  const title = element('h2', 'pw-type-h3', '돈 기록하기'); title.id = 'pw-record-sheet-title';
++  const close = element('button', 'pw-icon-button'); close.type = 'button'; close.setAttribute('aria-label', '돈 기록하기 닫기');
++  close.innerHTML = pwIcon('close'); header.append(title, close);
++  const form = element('form', 'pw-record-form'); form.noValidate = true;
++  const body = element('div', 'pw-record-fields');
++  const typeField = element('fieldset', 'pw-record-field');
++  typeField.append(element('legend', 'pw-record-label', '어떤 돈인가요?'));
++  const segments = element('div', 'pw-record-segments');
++  const radio = (name, value, label, className) => {
++    const wrapper = element('label', className);
++    const input = element('input'); input.type = 'radio'; input.name = name; input.value = value;
++    wrapper.append(input, element('span', '', label));
++    return { wrapper, input };
++  };
++  const typeInputs = ['in', 'out'].map((value, index) => {
++    const choice = radio('record-type', value, index ? '쓴 돈' : '받은 돈', 'pw-record-choice');
++    segments.append(choice.wrapper); return choice.input;
++  });
++  typeField.append(segments);
++  const amountField = element('div', 'pw-record-field');
++  const amountLabel = element('label', 'pw-record-label', '얼마인가요?'); amountLabel.htmlFor = 'pw-record-amount';
++  const preview = element('p', 'pw-record-amount-preview', '0원'); preview.setAttribute('aria-hidden', 'true');
++  const amount = element('input', 'pw-record-input pw-record-amount');
++  amount.type = 'text'; amount.inputMode = 'numeric'; amount.autocomplete = 'off'; amount.id = 'pw-record-amount'; amount.placeholder = '숫자로 입력';
++  amount.setAttribute('aria-describedby', 'pw-amount-help pw-amount-error');
++  const amountHelp = element('p', 'pw-record-muted pw-type-caption', '원 단위로 숫자만 입력해주세요.'); amountHelp.id = 'pw-amount-help';
++  amountField.append(amountLabel, preview, amount, amountHelp);
++  const categoryField = element('fieldset', 'pw-record-field');
++  categoryField.append(element('legend', 'pw-record-label', '어떤 돈이었나요?'));
++  const chips = element('div', 'pw-record-chips'); categoryField.append(chips);
++  const memoField = element('div', 'pw-record-field');
++  const memoLabel = element('label', 'pw-record-label', '메모'); memoLabel.htmlFor = 'pw-record-memo';
++  memoLabel.append(element('span', 'pw-record-optional', '선택'));
++  const memo = element('input', 'pw-record-input'); memo.id = 'pw-record-memo'; memo.type = 'text';
++  memo.placeholder = '예: 학교 끝나고 간식'; memo.setAttribute('aria-describedby', 'pw-memo-help pw-memo-error');
++  const memoHelp = element('p', 'pw-record-muted pw-type-caption', '50자까지 적을 수 있어요.'); memoHelp.id = 'pw-memo-help';
++  memoField.append(memoLabel, memo, memoHelp);
++  const errors = {};
++  for (const [name, field] of [['type', typeField], ['amount', amountField], ['category', categoryField], ['memo', memoField]]) {
++    const message = element('p', 'pw-record-error pw-type-body-small'); message.id = `pw-${name}-error`; message.hidden = true;
++    message.setAttribute('aria-live', 'polite'); errors[name] = message; field.append(message);
++  }
++  for (const input of typeInputs) input.setAttribute('aria-describedby', errors.type.id);
++  body.append(typeField, amountField, categoryField, memoField);
++  const footer = element('div', 'pw-record-sheet-footer');
++  const formError = element('p', 'pw-record-error pw-type-body-small'); formError.id = 'pw-record-save-error'; formError.hidden = true; formError.setAttribute('role', 'alert');
++  const save = element('button', 'pw-button', '기록 저장'); save.type = 'submit'; save.disabled = true; save.setAttribute('aria-describedby', formError.id);
++  footer.append(formError, save); form.append(body, footer); dialog.append(header, form);
++
++  function renderSummary() {
++    const model = createRecordViewModel(loaded.state);
++    summary.replaceChildren(element('p', 'pw-record-muted pw-type-body-small', '지금 쓸 수 있는 돈'));
++    summary.append(element('p', 'pw-record-balance', model.balance === null ? '확인 전' : `${format.format(model.balance)}원`));
++    if (loaded.status === 'empty') summary.append(element('p', 'pw-record-muted pw-type-caption', '첫 기록은 0원에서 시작해요. 받은 돈을 먼저 남겨보세요.'));
++    else if (!model.writable) summary.append(element('p', 'pw-record-muted pw-type-body-small', '저장된 용돈 정보를 확인할 수 없어 기록을 저장할 수 없어요.'));
++    recent.replaceChildren(element('h2', 'pw-type-h3', '최근 기록')); recent.firstChild.id = 'pw-recent-title';
++    if (loaded.status === 'empty' || model.history === 'empty') {
++      const empty = element('div', 'pw-record-empty');
++      empty.append(element('p', '', '아직 기록이 없어요.'), element('p', 'pw-record-muted pw-type-body-small', '돈을 받거나 썼을 때 한 번씩 남겨보세요.'));
++      recent.append(empty); return;
++    }
++    if (model.history === 'unavailable' || model.history === 'partial') recent.append(element('p', 'pw-record-muted pw-type-body-small', '일부 기록 정보를 확인할 수 없어요.'));
++    let groupKey, list;
++    for (const row of model.rows) {
++      if (!list || (model.grouped && row.dayKey !== groupKey)) {
++        groupKey = row.dayKey;
++        if (model.grouped) recent.append(element('h3', 'pw-record-date-heading pw-type-caption', row.dateLabel));
++        list = element('ul', 'pw-record-list'); recent.append(list);
++      }
++      const item = element('li', 'pw-record-row');
++      const icon = element('span', 'pw-record-row-icon'); icon.innerHTML = pwIcon('record');
++      const description = element('div', 'pw-record-row-description');
++      description.append(element('p', 'pw-record-row-title', row.title));
++      const detail = [row.category && row.category !== row.title ? row.category : '', row.dateLabel].filter(Boolean).join(' · ');
++      description.append(element('p', 'pw-record-muted pw-type-caption', detail));
++      const money = element('p', `pw-record-row-money${row.valid ? ` pw-record-row-money--${row.type}` : ''}`, row.valid ? `${row.type === 'in' ? '+' : '-'}${format.format(row.amount)}원` : '금액 확인 안 됨');
++      if (row.valid) money.setAttribute('aria-label', `${row.type === 'in' ? '받은 돈' : '쓴 돈'} ${format.format(row.amount)}원`);
++      if (row.valid && format.format(row.amount).length > 12) item.classList.add('pw-record-row--long');
++      item.append(icon, description, money); list.append(item);
++    }
++  }
++  function renderCategories() {
++    chips.replaceChildren();
++    if (!draft.type) chips.append(element('p', 'pw-record-muted pw-type-body-small', '받은 돈인지 쓴 돈인지 먼저 골라주세요.'));
++    const categories = draft.type === 'in' || draft.type === 'out' ? PW_RECORD_CATEGORIES[draft.type] : [];
++    for (const category of categories) {
++      const choice = radio('record-category', category, category, 'pw-record-chip');
++      choice.input.checked = draft.category === category;
++      choice.input.setAttribute('aria-describedby', errors.category.id);
++      choice.input.addEventListener('change', () => { draft.category = choice.input.value; touched.category = true; update(); });
++      chips.append(choice.wrapper);
++    }
++  }
++  function check() {
++    if (!['loaded', 'empty'].includes(validationLoad.status)) return { valid: false, errors: { form: '저장된 용돈 정보를 불러오지 못했어요. 다시 시도해주세요.' } };
++    return validateRecordDraft(draft, validationLoad.state);
++  }
++  function update(keepFormError = false) {
++    const result = check();
++    save.disabled = busy || submitted || !result.valid;
++    const numeric = /^[0-9]+$/.test(draft.amount) ? Number(draft.amount) : NaN;
++    preview.textContent = !draft.amount ? '0원' : Number.isSafeInteger(numeric) ? `${format.format(numeric)}원` : '금액 확인';
++    preview.classList.toggle('pw-record-amount-preview--long', preview.textContent.length > 14);
++    for (const name of ['type', 'amount', 'category', 'memo']) {
++      const message = touched[name] ? result.errors[name] || '' : '';
++      errors[name].textContent = message; errors[name].hidden = !message;
++      const controls = name === 'amount' ? [amount] : name === 'memo' ? [memo] : name === 'type' ? typeInputs : [...chips.querySelectorAll('input')];
++      for (const input of controls) input.setAttribute('aria-invalid', message ? 'true' : 'false');
++    }
++    if (!keepFormError) { formError.textContent = result.errors.form || ''; formError.hidden = !formError.textContent; }
++  }
++  function fitViewport() {
++    const viewport = window.visualViewport;
++    const height = viewport ? viewport.height : window.innerHeight;
++    const bottom = viewport ? Math.max(0, window.innerHeight - viewport.height - viewport.offsetTop) : 0;
++    dialog.style.setProperty('--record-viewport-height', `${height}px`);
++    dialog.style.setProperty('--record-viewport-bottom', `${bottom}px`);
++  }
++  function closeSheet() { if (dialog.open) dialog.close(); }
++  function onClose() {
++    if (dialog.open) return;
++    draft = null; busy = false;
++    if (!disposed) add.focus({ preventScroll: true });
++  }
++  function openSheet() {
++    if (disposed || dialog.open) return;
++    validationLoad = loadPocketWONState();
++    draft = { type: '', amount: '', category: '', memo: '' }; touched = {};
++    busy = false; submitted = false; amount.value = ''; memo.value = '';
++    for (const input of typeInputs) input.checked = false;
++    feedback.textContent = ''; renderCategories(); update(); fitViewport();
++    dialog.showModal(); body.scrollTop = 0; typeInputs[0].focus({ preventScroll: true });
++  }
++  for (const input of typeInputs) input.addEventListener('change', () => {
++    draft.type = input.value; draft.category = draft.type === 'in' ? '용돈' : '';
++    touched.type = true; touched.category = false; renderCategories(); update();
++  });
++  amount.addEventListener('input', () => { draft.amount = amount.value; touched.amount = true; update(); });
++  memo.addEventListener('input', () => { draft.memo = memo.value; touched.memo = true; update(); });
++  close.addEventListener('click', closeSheet); add.addEventListener('click', openSheet);
++  // Enter while editing is not an explicit activation of the save button.
++  form.addEventListener('keydown', event => {
++    if (event.key === 'Enter' && event.target !== save) event.preventDefault();
++  });
++  dialog.addEventListener('close', onClose);
++  dialog.addEventListener('keydown', event => {
++    if (event.key !== 'Tab') return;
++    const all = [...dialog.querySelectorAll('button:not(:disabled), input:not(:disabled)')];
++    const focusable = all.filter(input => input.type !== 'radio' || input.checked || (!all.some(other => other.type === 'radio' && other.name === input.name && other.checked) && all.find(other => other.type === 'radio' && other.name === input.name) === input));
++    const first = focusable[0], last = focusable[focusable.length - 1];
++    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
++    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
++  });
++  form.addEventListener('submit', event => {
++    event.preventDefault();
++    if (disposed || !dialog.open || !draft || busy || submitted || save.disabled) return;
++    busy = true; save.disabled = true;
++    validationLoad = loadPocketWONState();
++    const checked = check();
++    if (!checked.valid) {
++      busy = false; touched = { type: true, amount: true, category: true, memo: true }; update(); return;
++    }
++    let nextState;
++    try { nextState = applyTransaction(validationLoad.state, draft, new Date().toISOString()); }
++    catch (_) { /* Keep the draft and report the same normalized save failure below. */ }
++    if (!nextState || persistPocketWONState(nextState).status !== 'saved') {
++      busy = false; formError.textContent = '기록을 저장하지 못했어요. 다시 시도해주세요.'; formError.hidden = false; update(true); return;
++    }
++    submitted = true;
++    loaded = { status: 'loaded', state: nextState }; validationLoad = loaded;
++    renderSummary(); closeSheet(); feedback.textContent = '기록했어요.';
++    clearTimeout(feedbackTimer); feedbackTimer = setTimeout(() => { feedback.textContent = ''; }, 4000);
++  });
++  renderSummary();
++  return {
++    element: root,
++    mount() { document.body.append(dialog); window.visualViewport?.addEventListener('resize', fitViewport); window.visualViewport?.addEventListener('scroll', fitViewport); window.addEventListener('resize', fitViewport); },
++    dispose() { disposed = true; clearTimeout(feedbackTimer); closeSheet(); dialog.remove(); window.visualViewport?.removeEventListener('resize', fitViewport); window.visualViewport?.removeEventListener('scroll', fitViewport); window.removeEventListener('resize', fitViewport); },
++  };
++}
+--- a/ks6s3juocjzc2.kimi.page/scripts/app.js
++++ b/ks6s3juocjzc2.kimi.page/scripts/app.js
+@@ -5,7 +5,7 @@
+   const menu = document.getElementById('pw-menu');
+   const navigation = document.getElementById('pw-navigation-items');
+   let currentScreen = 'home';
+-  let homeView;
++  let currentView;
+ 
+   menu.innerHTML = pwIcon('menu');
+   const buttons = PW_TABS.map(tab => {
+@@ -26,16 +26,22 @@
+     const tab = PW_TABS.find(item => item.id === id);
+     if (!tab) return;
+     currentScreen = tab.id;
+-    if (homeView) homeView.dispose();
+-    homeView = null;
++    if (currentView) currentView.dispose();
++    currentView = null;
+     document.title = `${tab.label} · 포켓WON`;
+     if (id === 'home') {
+       context.innerHTML = 'Pocket<span class="pw-brand-accent">WON</span>';
+       context.setAttribute('aria-label', '포켓WON');
+       const loaded = loadPocketWONState();
+-      homeView = createHomeView(createHomeViewModel(loaded.state), target => showScreen(target, true), loaded.status);
+-      content.replaceChildren(homeView.element);
+-      homeView.mount();
++      currentView = createHomeView(createHomeViewModel(loaded.state), target => showScreen(target, true), loaded.status);
++      content.replaceChildren(currentView.element);
++      currentView.mount();
++    } else if (id === 'record') {
++      context.textContent = tab.label;
++      context.removeAttribute('aria-label');
++      currentView = createRecordView(loadPocketWONState());
++      content.replaceChildren(currentView.element);
++      currentView.mount();
+     } else {
+       context.textContent = tab.label;
+       context.removeAttribute('aria-label');
+--- a/ks6s3juocjzc2.kimi.page/scripts/icons.js
++++ b/ks6s3juocjzc2.kimi.page/scripts/icons.js
+@@ -1,5 +1,6 @@
+ /* One 24 × 24 line icon family. Static, application-owned SVG only. */
+ const PW_ICONS = Object.freeze({
++  close: '<path d="m6 6 12 12M18 6 6 18"/>',
+   home: '<path d="m3 10 9-7 9 7M5 9v12h5v-7h4v7h5V9"/>',
+   record: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/>',
+   goal: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+--- /dev/null
++++ b/ks6s3juocjzc2.kimi.page/styles/record.css
+@@ -0,0 +1,84 @@
++/* PW-WOORI-03 uses the approved Light tokens; no Home layout changes. */
++.pw-record {
++  padding: var(--pw-space-6) max(var(--pw-shell-gutter), var(--pw-safe-right)) var(--pw-space-10) max(var(--pw-shell-gutter), var(--pw-safe-left));
++  display: flex; flex-direction: column; gap: var(--pw-space-6); overflow-wrap: anywhere;
++  container-type: inline-size;
++}
++.pw-record-intro { display: grid; gap: var(--pw-space-2); }
++.pw-record-muted { color: var(--pw-color-text-secondary); }
++.pw-record-summary { padding: var(--pw-space-5); background: var(--pw-color-surface-blue); border-radius: var(--pw-radius-card); }
++.pw-record-balance { font: var(--pw-type-number-medium); font-variant-numeric: tabular-nums; margin-top: var(--pw-space-2); overflow-wrap: anywhere; }
++.pw-record-summary > p:nth-child(3) { margin-top: var(--pw-space-3); }
++.pw-record-add { width: 100%; }
++.pw-record-feedback { color: var(--pw-color-success); }
++.pw-record-feedback:empty { margin-top: calc(-1 * var(--pw-space-6)); }
++.pw-record-recent > h2 { margin-bottom: var(--pw-space-5); }
++.pw-record-date-heading { color: var(--pw-color-text-secondary); margin-top: var(--pw-space-5); margin-bottom: var(--pw-space-1); }
++.pw-record-list { list-style: none; padding: 0; margin: 0; }
++.pw-record-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--pw-space-3); align-items: center; padding-block: var(--pw-space-4); border-bottom: var(--pw-border-width) solid var(--pw-color-divider); }
++.pw-record-row-icon { color: var(--pw-color-text-secondary); padding: var(--pw-space-2); background: var(--pw-color-surface); border-radius: var(--pw-radius-control); }
++.pw-record-row-title { font: var(--pw-type-body); font-weight: var(--pw-weight-semibold); }
++.pw-record-row-description { min-width: 0; }
++.pw-record-row-description > p + p { margin-top: var(--pw-space-1); }
++.pw-record-row-money { font: var(--pw-type-body); font-weight: var(--pw-weight-semibold); font-variant-numeric: tabular-nums; text-align: right; }
++.pw-record-row-money--in { color: var(--pw-color-finance-positive); }
++.pw-record-row-money--out { color: var(--pw-color-finance-negative); }
++.pw-record-row--long .pw-record-row-money { grid-column: 2 / -1; text-align: left; }
++.pw-record-empty { padding-block: var(--pw-space-6); }
++.pw-record-empty > p + p { margin-top: var(--pw-space-2); }
++.pw-record-sheet {
++  position: fixed; inset: auto 0 var(--record-viewport-bottom, 0px); margin: 0 auto;
++  width: 100%; max-width: var(--pw-shell-max-width);
++  max-height: calc(min(var(--record-viewport-height, 100dvh), 100dvh) - max(var(--pw-space-3), var(--pw-safe-top)));
++  padding: 0; border: 0; border-radius: var(--pw-radius-hero) var(--pw-radius-hero) 0 0;
++  background: var(--pw-color-surface); color: var(--pw-color-text-primary); overflow: hidden;
++  font: var(--pw-type-body); box-shadow: var(--pw-shadow-none); overflow-wrap: anywhere;
++}
++.pw-record-sheet[open] { display: flex; flex-direction: column; }
++.pw-record-sheet::backdrop { background: color-mix(in srgb, var(--pw-color-text-primary) 28%, transparent); }
++.pw-record-sheet-header {
++  display: flex; flex: 0 0 auto; align-items: center; justify-content: space-between; gap: var(--pw-space-3);
++  padding: var(--pw-space-3) max(var(--pw-space-4), var(--pw-safe-right)) var(--pw-space-2) max(var(--pw-space-5), var(--pw-safe-left));
++}
++.pw-record-sheet-header h2 { word-break: keep-all; }
++.pw-record-form { display: flex; flex-direction: column; min-height: 0; min-width: 0; }
++.pw-record-fields {
++  overflow: auto; overscroll-behavior: contain; min-height: 0; display: flex; flex-direction: column; gap: var(--pw-space-6);
++  padding: var(--pw-space-3) max(var(--pw-space-5), var(--pw-safe-right)) var(--pw-space-6) max(var(--pw-space-5), var(--pw-safe-left));
++}
++.pw-record-field { min-width: 0; padding: 0; margin: 0; border: 0; flex: 0 0 auto; }
++.pw-record-label { display: block; padding: 0; margin-bottom: var(--pw-space-3); font: var(--pw-type-body); font-weight: var(--pw-weight-semibold); }
++.pw-record-segments { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--pw-space-1); padding: var(--pw-space-1); background: var(--pw-color-surface-subtle); border-radius: var(--pw-radius-button); }
++.pw-record-choice, .pw-record-chip { display: flex; min-width: 0; position: relative; cursor: pointer; }
++.pw-record-choice > input, .pw-record-chip > input { position: absolute; opacity: 0; width: 1px; height: 1px; }
++.pw-record-choice > span, .pw-record-chip > span {
++  display: flex; align-items: center; justify-content: center; min-height: var(--pw-touch-target); min-width: var(--pw-touch-target); width: 100%;
++  border: var(--pw-border-width) solid var(--pw-color-border); border-radius: var(--pw-radius-control);
++  padding: var(--pw-space-2) var(--pw-space-3); background: var(--pw-color-surface); font: var(--pw-type-body-small);
++}
++.pw-record-choice > span { border-color: transparent; background: transparent; font: var(--pw-type-button); }
++.pw-record-choice > input:checked + span, .pw-record-chip > input:checked + span { background: var(--pw-color-primary-soft); color: var(--pw-color-primary-hover); border-color: var(--pw-color-primary); font-weight: var(--pw-weight-semibold); }
++/* WebKit arrow-key radio focus can omit :focus-visible. Keep an actual focus ring. */
++.pw-record-choice > input:focus + span, .pw-record-chip > input:focus + span { outline: var(--pw-focus-width) solid var(--pw-color-focus); outline-offset: var(--pw-focus-offset); }
++.pw-record-chips { display: flex; flex-wrap: wrap; gap: var(--pw-space-2); }
++.pw-record-chip { max-width: 100%; }
++.pw-record-amount-preview { font: var(--pw-type-number-large); font-variant-numeric: tabular-nums; margin-bottom: var(--pw-space-3); overflow-wrap: anywhere; }
++.pw-record-amount-preview--long { font: var(--pw-type-number-medium); }
++.pw-record-input {
++  display: block; width: 100%; min-width: 0; min-height: var(--pw-touch-target); border: var(--pw-border-width) solid var(--pw-color-border);
++  border-radius: var(--pw-radius-control); background: var(--pw-color-surface); color: var(--pw-color-text-primary);
++  padding: var(--pw-space-3); font: var(--pw-type-body); box-shadow: var(--pw-shadow-none);
++}
++.pw-record-input::placeholder { color: var(--pw-color-text-tertiary); opacity: 1; }
++.pw-record-input[aria-invalid="true"] { border-color: var(--pw-color-danger); }
++.pw-record-input + p { margin-top: var(--pw-space-2); }
++.pw-record-optional { font: var(--pw-type-caption); font-weight: var(--pw-weight-regular); margin-left: var(--pw-space-2); color: var(--pw-color-text-secondary); }
++.pw-record-error { color: var(--pw-color-danger); margin-top: var(--pw-space-2); }
++.pw-record-error[hidden] { display: none; }
++.pw-record-sheet-footer { flex: 0 0 auto; border-top: var(--pw-border-width) solid var(--pw-color-divider); background: var(--pw-color-surface); padding: var(--pw-space-3) max(var(--pw-space-5), var(--pw-safe-right)) calc(var(--pw-space-3) + var(--pw-safe-bottom)) max(var(--pw-space-5), var(--pw-safe-left)); }
++.pw-record-sheet-footer > .pw-button { width: 100%; }
++.pw-record-sheet-footer > .pw-record-error { margin-top: 0; margin-bottom: var(--pw-space-3); }
++@container (max-width: 18rem) {
++  .pw-record-row { grid-template-columns: auto minmax(0, 1fr); }
++  .pw-record-row-money { grid-column: 2; text-align: left; }
++}
+--- /dev/null
++++ b/tests/verify-record.cjs
+@@ -0,0 +1,452 @@
++/* PW-WOORI-03: isolated synthetic data, real Chromium/WebKit; no user profile. */
++const assert = require('node:assert/strict');
++const fs = require('node:fs');
++const path = require('node:path');
++const vm = require('node:vm');
++const os = require('node:os');
++const crypto = require('node:crypto');
++const { chromium, webkit } = require(process.env.PW_PLAYWRIGHT_MODULE || 'playwright');
++const root = path.resolve(__dirname, '..');
++const app = path.join(root, 'ks6s3juocjzc2.kimi.page');
++const output = path.join(root, 'evidence/PW-WOORI-03');
++const origin = process.env.PW_BASE_URL || 'http://127.0.0.1:4173';
++assert(['127.0.0.1', 'localhost'].includes(new URL(origin).hostname));
++const url = `${origin}/ks6s3juocjzc2.kimi.page/index.html`;
++fs.mkdirSync(path.join(output, 'screenshots'), { recursive: true });
++const report = { startedAt: new Date().toISOString(), url, checks: [], screenshots: [], consoleErrors: [], resourceErrors: [], browsers: {}, limitations: ['No physical mobile keyboard or screen reader testing', 'No atomic cross-tab localStorage transaction guarantee'] };
++const pass = (name, detail = true) => { report.checks.push({ name, status: 'PASS', detail }); console.log(`PASS ${name}`); };
++const copy = value => JSON.parse(JSON.stringify(value));
++const snapshot = fs.readFileSync(path.join(root, 'preservation/PW-WOORI-01/original-index.html.txt'), 'utf8');
++const literal = snapshot.match(/const defaultState = (\{[\s\S]*?\n        \});/)[1];
++const fixture = copy(vm.runInNewContext(`(${literal})`));
++const stateSource = fs.readFileSync(path.join(app, 'scripts/state.js'), 'utf8');
++const api = vm.runInNewContext(`${stateSource}\n({loadPocketWONState,createHomeViewModel,createRecordViewModel,validateRecordDraft,applyTransaction,persistPocketWONState,parsePocketWONDate})`);
++const draft = (type = 'out', amount = '3500', category = '간식', memo = '') => ({ type, amount, category, memo });
++const stamp = '2026-09-11T04:05:06.000Z';
++const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
++function executable(engine) {
++  const configured = process.env[engine === 'chromium' ? 'PW_CHROMIUM_EXECUTABLE' : 'PW_WEBKIT_EXECUTABLE'];
++  if (configured) return configured;
++  const cache = path.join(os.homedir(), 'Library/Caches/ms-playwright');
++  const prefix = engine === 'chromium' ? 'chromium_headless_shell-' : 'webkit-';
++  const versions = fs.readdirSync(cache).filter(n => n.startsWith(prefix)).sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
++  assert(versions.length);
++  return path.join(cache, versions[0], engine === 'chromium' ? 'chrome-headless-shell-mac-arm64/chrome-headless-shell' : 'pw_run.sh');
++}
++function unitTests() {
++  const baseline = JSON.parse(fs.readFileSync(path.join(root, 'preservation/PW-WOORI-03/baseline.json')));
++  let count = 0;
++  for (const [file, sha] of Object.entries(baseline.files)) {
++    if (baseline.snapshots.includes(file)) continue;
++    assert.equal(hash(fs.readFileSync(path.join(root, file))), sha, file); count++;
++  }
++  pass('Baseline: untouched files and all historical evidence preserved', { files: count });
++  function freeze(value) { if (value && typeof value === 'object') { Object.values(value).forEach(freeze); Object.freeze(value); } return value; }
++  const frozen = freeze(copy(fixture));
++  const before = JSON.stringify(frozen);
++  const out = api.applyTransaction(frozen, draft(), stamp);
++  assert.equal(out.balance, 29000); assert.equal(out.monthly.spending, 15800); assert.equal(out.monthly.saving, 15200);
++  assert.equal(out.transactions.length, 5); assert.equal(out.transactions[0].receipt, false);
++  assert.deepEqual(Object.keys(out.transactions[0]), ['type', 'amount', 'category', 'ts', 'receipt']);
++  const incoming = api.applyTransaction(frozen, draft('in', '10000', '용돈', '고마워요'), stamp);
++  assert.equal(incoming.balance, 42500); assert.equal(incoming.monthly.saving, 25200);
++  assert.equal(incoming.transactions[0].memo, '고마워요');
++  for (const key of Object.keys(fixture).filter(k => !['balance', 'monthly', 'transactions'].includes(k))) assert.deepEqual(copy(out[key]), fixture[key]);
++  assert.equal(JSON.stringify(frozen), before); assert.notEqual(out, frozen); assert.notEqual(out.monthly, frozen.monthly); assert.notEqual(out.transactions, frozen.transactions);
++  assert.equal(api.createHomeViewModel(out).monthly.remaining, -600); assert.equal(api.createHomeViewModel(incoming).monthly.remaining, 12900);
++  pass('A/B: immutable original schema, exact balance/aggregates, no ID, unrelated fields preserved');
++  const initial = copy(api.applyTransaction(null, draft('in', '10000', '용돈'), stamp));
++  assert.deepEqual(Object.keys(initial), ['balance', 'monthly', 'transactions']); assert.deepEqual(initial.monthly, { saving: 10000, spending: 0 });
++  assert.equal(api.validateRecordDraft(draft(), null).valid, false);
++  const extra = { ...fixture, extra: { keep: true }, monthly: { ...fixture.monthly, custom: 'unchanged' } };
++  const next = copy(api.applyTransaction(extra, draft(), stamp)); assert.deepEqual(next.extra, extra.extra); assert.equal(next.monthly.custom, 'unchanged');
++  pass('Empty-key first save creates only money fields; unknown existing properties survive');
++  for (const raw of ['', '0', '-1', '1.2', '1e3', 'NaN', 'Infinity', '12abc', '1,000', ' 12', '12 ', '１２', '١٢', '+3', '0x10', '1\n', String(Number.MAX_SAFE_INTEGER + 1), '9'.repeat(400), 12, NaN, Infinity, null]) {
++    assert.equal(api.validateRecordDraft(draft('out', raw), frozen).valid, false, String(raw));
++  }
++  assert(api.validateRecordDraft(draft('out', '0001'), frozen).valid);
++  assert(api.validateRecordDraft(draft('out', '32500'), frozen).valid);
++  assert(!api.validateRecordDraft(draft('out', '32501'), frozen).valid);
++  for (const type of ['', 'income', 'constructor', '__proto__', ['in'], {}, null]) assert(!api.validateRecordDraft(draft(type), frozen).valid);
++  for (const category of ['', '선물', '편의점', '__proto__', '용돈']) assert(!api.validateRecordDraft(draft('out', '1', category), frozen).valid);
++  for (const category of ['간식', '문구', '게임', '교통', '기타']) assert(api.validateRecordDraft(draft('out', '1', category), frozen).valid);
++  assert(!api.validateRecordDraft(draft('in', '1', '간식'), frozen).valid);
++  assert(api.validateRecordDraft(draft('in', '1', '용돈', '가'.repeat(50)), frozen).valid);
++  assert(!api.validateRecordDraft(draft('in', '1', '용돈', '가'.repeat(51)), frozen).valid);
++  assert(api.validateRecordDraft(draft('in', '1', '용돈', '😀'.repeat(50)), frozen).valid);
++  assert(!api.validateRecordDraft(draft('in', '1', '용돈', null), frozen).valid);
++  pass('C/D/E: strict full-string amount, type/category allowlist, 50-code-point optional memo');
++  const max = Number.MAX_SAFE_INTEGER;
++  assert(!api.validateRecordDraft(draft('in', '1', '용돈'), { ...fixture, balance: max }).valid);
++  for (const [type, key, category] of [['in', 'saving', '용돈'], ['out', 'spending', '간식']]) assert(!api.validateRecordDraft(draft(type, '1', category), { ...fixture, monthly: { ...fixture.monthly, [key]: max } }).valid);
++  assert(api.validateRecordDraft(draft('in', String(max), '용돈'), null).valid);
++  for (const state of [{}, { ...fixture, balance: '32500' }, { ...fixture, monthly: {} }, { ...fixture, transactions: null }, { ...fixture, transactions: [null] }, { ...fixture, balance: -1 }]) assert(!api.validateRecordDraft(draft(), state).valid);
++  assert.throws(() => api.applyTransaction(frozen, draft('out', '0'), stamp));
++  assert.throws(() => api.applyTransaction(frozen, draft(), '09/11/26'));
++  pass('Unsafe aggregate arithmetic and malformed stored data cannot be written');
++  for (const value of ['2024-05-18T12:10:00', stamp, '2024-02-29T01:02:03+09:00']) assert(api.parsePocketWONDate(value));
++  for (const value of ['2024-02-30T00:00:00', '2023-02-29T00:00:00', '2024-05-01T24:00:00', '2024-13-01T00:00:00', '5/18/2024', 0, null]) assert.equal(api.parsePocketWONDate(value), null);
++  const sorted = api.createRecordViewModel({ ...fixture, transactions: [...fixture.transactions].reverse() });
++  assert.equal(sorted.rows[0].amount, 3500); assert.equal(sorted.grouped, true);
++  const mixed = api.createRecordViewModel({ ...fixture, transactions: [{ ...fixture.transactions[1], ts: '5/17/24' }, fixture.transactions[0]] });
++  assert.equal(mixed.grouped, false); assert.equal(mixed.rows[0].amount, 10000); assert.equal(mixed.rows[0].dateLabel, '날짜 확인 안 됨');
++  assert.equal(api.createRecordViewModel({ transactions: [null] }).history, 'partial');
++  let writes = 0;
++  assert.equal(api.persistPocketWONState(out, () => ({ setItem(key, value) { assert.equal(key, 'pocketwon_demo_v1'); assert.equal(JSON.parse(value).balance, 29000); writes++; } })).status, 'saved');
++  assert.equal(writes, 1);
++  assert.equal(api.persistPocketWONState(out, () => { throw Error('secret'); }).status, 'failed');
++  assert.equal(api.persistPocketWONState(out, () => ({ setItem() { throw Error('quota'); } })).status, 'failed');
++  assert.equal(api.persistPocketWONState({}, () => { throw Error('must not call'); }).status, 'failed');
++  pass('Strict dates/grouping, unavailable rows and normalized persist errors');
++  const files = fs.readdirSync(path.join(app, 'scripts')).map(f => [f, fs.readFileSync(path.join(app, 'scripts', f), 'utf8')]);
++  assert.equal(files.reduce((sum, [, content]) => sum + (content.match(/setItem\s*\(/g) || []).length, 0), 1);
++  assert.equal(files.find(([f]) => f === 'state.js')[1].match(/setItem\s*\(/g).length, 1);
++  assert(!files.some(([, text]) => /removeItem\s*\(|localStorage\.clear|pocketwon_theme|pocketwon_intro_done|fetch\s*\(/.test(text)));
++  pass('Source: one persist write site, no other storage keys/removal/network business path');
++}
++function observe(page) {
++  page.on('pageerror', error => report.consoleErrors.push(error.message));
++  page.on('console', event => { if (event.type() === 'error') report.consoleErrors.push(event.text()); });
++  page.on('requestfailed', request => report.resourceErrors.push({ url: request.url(), failure: request.failure() }));
++  page.on('response', response => { if (response.status() >= 400) report.resourceErrors.push({ url: response.url(), status: response.status() }); });
++}
++async function setup(browser, data = fixture, width = 390, height = 844) {
++  const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: 1, locale: 'ko-KR', timezoneId: 'Asia/Seoul', reducedMotion: 'reduce' });
++  const raw = data === null ? null : typeof data === 'string' ? data : JSON.stringify(data);
++  await context.addInitScript(seed => {
++    const get = Storage.prototype.getItem, set = Storage.prototype.setItem, remove = Storage.prototype.removeItem;
++    if (get.call(localStorage, 'unrelated_test_value') === null) {
++      if (seed !== null) set.call(localStorage, 'pocketwon_demo_v1', seed);
++      set.call(localStorage, 'pocketwon_theme', 'dark'); set.call(localStorage, 'pocketwon_intro_done', '1'); set.call(localStorage, 'unrelated_test_value', 'keep');
++    }
++    window.__calls = []; window.__writeFailure = false; window.__readFailure = false;
++    window.__rawRead = () => Object.fromEntries(Object.keys(localStorage).map(k => [k, get.call(localStorage, k)]));
++    window.__replace = value => value === null ? remove.call(localStorage, 'pocketwon_demo_v1') : set.call(localStorage, 'pocketwon_demo_v1', value);
++    for (const method of ['getItem', 'setItem', 'removeItem', 'clear']) {
++      const original = Storage.prototype[method];
++      Storage.prototype[method] = function(...args) {
++        window.__calls.push({ method, key: args[0] });
++        if (method === 'setItem' && window.__writeFailure) throw new DOMException('Injected quota failure', 'QuotaExceededError');
++        if (method === 'getItem' && window.__readFailure) throw new DOMException('Injected read failure', 'SecurityError');
++        return original.apply(this, args);
++      };
++    }
++  }, raw);
++  const page = await context.newPage(); observe(page);
++  await page.goto(url); await page.evaluate(() => document.fonts.ready);
++  await page.getByRole('button', { name: '기록', exact: true }).click();
++  return { context, page, raw };
++}
++const read = page => page.evaluate(() => window.__rawRead());
++const calls = page => page.evaluate(() => window.__calls.filter(call => call.method !== 'getItem'));
++const stored = async page => JSON.parse((await read(page)).pocketwon_demo_v1);
++async function screenshot(page, name, enabled) {
++  if (!enabled) return;
++  await page.mouse.move(0, 0);
++  await page.screenshot({ path: path.join(output, 'screenshots', `${name}.png`) });
++  report.screenshots.push(`screenshots/${name}.png`);
++}
++async function open(page, type = 'out', amount = '3500', category = '간식') {
++  await page.getByRole('button', { name: '새 기록 추가', exact: true }).click();
++  if (type) await page.getByRole('radio', { name: type === 'in' ? '받은 돈' : '쓴 돈', exact: true }).check();
++  if (amount !== null) await page.getByLabel('얼마인가요?', { exact: true }).fill(amount);
++  if (type === 'out' && category) await page.getByRole('radio', { name: category, exact: true }).check();
++}
++async function close(page) {
++  await page.getByRole('button', { name: '돈 기록하기 닫기', exact: true }).click();
++  await page.waitForFunction(() => document.activeElement.textContent === '새 기록 추가');
++}
++async function geometry(page, sheet = false) {
++  const result = await page.evaluate(sheet => {
++    const content = document.querySelector('.pw-content'), dialog = document.querySelector('dialog');
++    const box = node => { const r = node.getBoundingClientRect(); return { x: r.x, y: r.y, right: r.right, bottom: r.bottom, width: r.width, height: r.height }; };
++    const controls = sheet ? [...dialog.querySelectorAll('button,input[type="text"],.pw-record-choice>span,.pw-record-chip>span')] : [...document.querySelectorAll('.pw-record button')];
++    const fields = document.querySelector('.pw-record-fields'), footer = document.querySelector('.pw-record-sheet-footer');
++    return {
++      width: innerWidth, height: innerHeight, docWidth: document.documentElement.scrollWidth, contentWidth: content.clientWidth, contentScroll: content.scrollWidth,
++      dialog: box(dialog), fields: box(fields), footer: box(footer), fieldsScroll: fields.scrollHeight, fieldsClient: fields.clientHeight,
++      controls: controls.map(node => ({ ...box(node), scrollWidth: node.scrollWidth, clientWidth: node.clientWidth })),
++      nav: box(document.querySelector('.pw-bottom-navigation')), sheetScroll: dialog.scrollWidth, sheetClient: dialog.clientWidth,
++    };
++  }, sheet);
++  assert(result.docWidth <= result.width && result.contentScroll <= result.contentWidth, JSON.stringify(result));
++  if (sheet) {
++    assert(result.dialog.x >= -0.1 && result.dialog.right <= result.width + 0.1 && result.dialog.y >= -0.1 && result.dialog.bottom <= result.height + 0.1, JSON.stringify(result));
++    assert(result.fields.bottom <= result.footer.y + 0.1, JSON.stringify(result));
++    assert(result.footer.bottom <= result.dialog.bottom + 0.1, JSON.stringify(result));
++    assert(result.sheetScroll <= result.sheetClient, JSON.stringify(result));
++    assert(result.controls.every(c => c.width >= 48 && c.height >= 48 && c.x >= result.dialog.x - 0.1 && c.right <= result.dialog.right + 0.1), JSON.stringify(result));
++  }
++  return result;
++}
++async function transactions(browser, engine) {
++  for (const [type, amount, category, balance, total, remaining] of [['out', '3500', '간식', 29000, 15800, -600], ['in', '10000', '용돈', 42500, 25200, 12900]]) {
++    const { context, page } = await setup(browser);
++    try {
++      const before = await read(page);
++      await open(page, type, amount, category);
++      await page.getByLabel('메모선택', { exact: true }).fill('학교 끝나고 간식');
++      await page.getByRole('button', { name: '기록 저장', exact: true }).click();
++      assert.equal(await page.locator('dialog[open]').count(), 0);
++      assert.equal(await page.getByRole('status').textContent(), '기록했어요.');
++      await page.waitForFunction(() => document.activeElement.textContent === '새 기록 추가');
++      const next = await stored(page), after = await read(page);
++      assert.equal(next.balance, balance); assert.equal(next.monthly[type === 'in' ? 'saving' : 'spending'], total);
++      assert.equal(next.transactions.length, fixture.transactions.length + 1);
++      assert.equal(next.transactions[0].memo, '학교 끝나고 간식'); assert.equal(next.transactions[0].receipt, false);
++      assert.equal(next.transactions[0].type, type); assert.equal(next.transactions[0].category, category);
++      assert(api.parsePocketWONDate(next.transactions[0].ts));
++      assert(Math.abs(Date.now() - Date.parse(next.transactions[0].ts)) < 60000);
++      assert.deepEqual(next.transactions.slice(1), fixture.transactions);
++      for (const key of Object.keys(fixture).filter(k => !['balance', 'monthly', 'transactions'].includes(k))) assert.deepEqual(next[key], fixture[key]);
++      for (const key of Object.keys(before).filter(k => k !== 'pocketwon_demo_v1')) assert.equal(after[key], before[key]);
++      assert.deepEqual(await calls(page), [{ method: 'setItem', key: 'pocketwon_demo_v1' }]);
++      assert((await page.locator('.pw-record-balance').textContent()).includes(balance.toLocaleString('ko-KR')));
++      await screenshot(page, `saved-${type}`, engine === 'Chromium');
++      if (engine === 'Chromium') fs.writeFileSync(path.join(output, `storage-${type}.json`), JSON.stringify({ before: JSON.parse(before.pocketwon_demo_v1), after: next }, null, 2) + '\n');
++      await page.getByRole('button', { name: '홈', exact: true }).click();
++      assert.equal(await page.locator('.pw-home-hero > .pw-home-money').getAttribute('aria-label'), `${balance.toLocaleString('ko-KR')}원`);
++      const amounts = await page.locator('.pw-home-metric .pw-home-money').evaluateAll(nodes => nodes.map(n => n.getAttribute('aria-label')));
++      assert.deepEqual(amounts, [`${next.monthly.saving.toLocaleString('ko-KR')}원`, `${next.monthly.spending.toLocaleString('ko-KR')}원`, `${remaining.toLocaleString('ko-KR')}원`]);
++      await screenshot(page, `home-after-${type}`, engine === 'Chromium');
++      const savedString = after.pocketwon_demo_v1;
++      await page.reload(); await page.evaluate(() => document.fonts.ready);
++      assert.equal((await read(page)).pocketwon_demo_v1, savedString); assert.deepEqual(await calls(page), []);
++      await page.getByRole('button', { name: '기록', exact: true }).click();
++      assert.equal(await page.locator('.pw-record-row').count(), 5);
++      await screenshot(page, `reload-${type}`, engine === 'Chromium');
++      pass(`${engine}: ${type} A/B/G/H exact aggregates, Home reentry, persistence and one explicit write`);
++    } finally { await context.close(); }
++  }
++}
++async function validation(browser, engine) {
++  const { context, page } = await setup(browser);
++  try {
++    const before = await read(page);
++    await open(page, 'out', '32501');
++    assert.equal(await page.getByRole('button', { name: '기록 저장', exact: true }).isDisabled(), true);
++    assert.equal(await page.locator('#pw-amount-error').textContent(), '지금 가진 돈보다 큰 금액이에요.');
++    await screenshot(page, 'insufficient-balance', engine === 'Chromium');
++    for (const value of ['0', '-1', '1.5', '1e3', 'NaN', 'Infinity', '12abc', '1,000', ' 12', '１２', String(Number.MAX_SAFE_INTEGER + 1)]) {
++      await page.locator('#pw-record-amount').fill(value);
++      assert(await page.getByRole('button', { name: '기록 저장', exact: true }).isDisabled(), value);
++      assert.equal(await page.locator('#pw-record-amount').inputValue(), value);
++      assert.equal(await page.locator('#pw-record-amount').getAttribute('aria-invalid'), 'true');
++    }
++    await screenshot(page, 'validation-error', engine === 'Chromium');
++    await page.locator('#pw-record-amount').fill('100');
++    await page.getByRole('radio', { name: '간식', exact: true }).evaluate(input => { input.value = '편의점'; input.dispatchEvent(new Event('change', { bubbles: true })); });
++    assert(await page.getByRole('button', { name: '기록 저장', exact: true }).isDisabled());
++    await screenshot(page, 'invalid-category', engine === 'Chromium');
++    await page.getByRole('radio', { name: '문구', exact: true }).check();
++    await page.locator('#pw-record-memo').fill('가'.repeat(51));
++    assert(await page.getByRole('button', { name: '기록 저장', exact: true }).isDisabled());
++    await page.locator('#pw-record-memo').fill('가'.repeat(50));
++    assert(!(await page.getByRole('button', { name: '기록 저장', exact: true }).isDisabled()));
++    await page.locator('#pw-record-amount').focus(); await page.keyboard.press('Enter');
++    assert.equal(await page.locator('dialog[open]').count(), 1); assert.deepEqual(await calls(page), []);
++    await close(page);
++    for (const tab of ['목표', '리포트', '전체', '홈', '기록']) await page.getByRole('button', { name: tab, exact: true }).click();
++    assert.deepEqual(await read(page), before); assert.deepEqual(await calls(page), []);
++    await page.reload(); await page.evaluate(() => document.fonts.ready); assert.deepEqual(await read(page), before); assert.deepEqual(await calls(page), []);
++    pass(`${engine}: C/D/E invalid drafts/category/memo, Enter editing, cancel/navigation/reload never write`);
++  } finally { await context.close(); }
++}
++async function failureAndLatest(browser, engine) {
++  const { context, page } = await setup(browser);
++  try {
++    const before = await read(page); const beforeView = await page.locator('.pw-record').innerText();
++    await open(page, 'out', '3500'); await page.locator('#pw-record-memo').fill('학교 끝나고 간식');
++    await page.evaluate(() => { window.__writeFailure = true; });
++    await page.getByRole('button', { name: '기록 저장', exact: true }).click();
++    assert.equal(await page.locator('dialog[open]').count(), 1);
++    assert.equal(await page.locator('#pw-record-save-error').textContent(), '기록을 저장하지 못했어요. 다시 시도해주세요.');
++    assert.equal(await page.locator('#pw-record-amount').inputValue(), '3500');
++    assert.equal(await page.locator('#pw-record-memo').inputValue(), '학교 끝나고 간식');
++    assert.equal(await page.locator('.pw-record').innerText(), beforeView); assert.equal(await page.getByRole('status').textContent(), '');
++    assert.deepEqual(await read(page), before); await screenshot(page, 'storage-write-failure', engine === 'Chromium');
++    await page.evaluate(() => { window.__writeFailure = false; });
++    await page.locator('#pw-record-memo').fill('<img src=x onerror=alert(1)>');
++    await page.getByRole('button', { name: '기록 저장', exact: true }).click();
++    assert.equal((await stored(page)).transactions[0].memo, '<img src=x onerror=alert(1)>');
++    assert.equal(await page.locator('.pw-record img').count(), 0);
++    pass(`${engine}: F quota failure preserves draft/UI/storage, retry succeeds, memo renders as text`);
++  } finally { await context.close(); }
++  for (const scenario of ['reduced', 'increased', 'invalid', 'read-error', 'removed']) {
++    const { context, page } = await setup(browser);
++    try {
++      await open(page, 'out', '3500');
++      const latest = copy(fixture); latest.balance = scenario === 'reduced' ? 1000 : 40000; latest.monthly.spending = 13000; latest.extra = 'latest'; latest.transactions.unshift({ type: 'in', amount: 50, category: '용돈', ts: stamp, receipt: false });
++      await page.evaluate(({ scenario, latest }) => {
++        if (scenario === 'read-error') window.__readFailure = true;
++        else window.__replace(scenario === 'removed' ? null : scenario === 'invalid' ? '{' : JSON.stringify(latest));
++      }, { scenario, latest });
++      const before = await read(page);
++      await page.getByRole('button', { name: '기록 저장', exact: true }).click();
++      if (scenario === 'increased') {
++        const next = await stored(page); assert.equal(next.balance, 36500); assert.equal(next.monthly.spending, 16500); assert.equal(next.extra, 'latest'); assert.equal(next.transactions.length, 6); assert.deepEqual(next.transactions.slice(1), latest.transactions);
++        assert.equal((await calls(page)).length, 1);
++      } else { assert.deepEqual(await read(page), before); assert.deepEqual(await calls(page), []); assert.equal(await page.locator('dialog[open]').count(), 1); }
++      pass(`${engine}: save-time reload ${scenario} uses latest state or blocks without write`);
++    } finally { await context.close(); }
++  }
++  const duplicate = await setup(browser);
++  try {
++    await open(duplicate.page, 'in', '10000', '용돈');
++    await duplicate.page.getByRole('button', { name: '기록 저장', exact: true }).evaluate(button => { button.click(); button.click(); button.form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true })); });
++    assert.equal((await stored(duplicate.page)).transactions.length, 5); assert.equal((await calls(duplicate.page)).length, 1);
++    pass(`${engine}: I synchronous double activation plus submit creates exactly one transaction`);
++  } finally { await duplicate.context.close(); }
++}
++async function initialStates(browser, engine) {
++  for (const [label, data] of [['empty-key', null], ['empty-transactions', { ...fixture, transactions: [] }], ['invalid-json', '{'], ['partial-state', {}], ['invalid-row', { ...fixture, transactions: [null] }]]) {
++    const { context, page } = await setup(browser, data);
++    try {
++      const before = await read(page); assert.deepEqual(await calls(page), []);
++      await screenshot(page, label, engine === 'Chromium');
++      await open(page, 'in', '10000', '용돈');
++      if (label.startsWith('empty')) {
++        assert(!(await page.getByRole('button', { name: '기록 저장', exact: true }).isDisabled()));
++        await page.getByRole('button', { name: '기록 저장', exact: true }).click();
++        const next = await stored(page);
++        if (label === 'empty-key') { assert.equal(next.balance, 10000); assert.deepEqual(Object.keys(next), ['balance', 'monthly', 'transactions']); }
++        else assert.equal(next.balance, 42500);
++      } else {
++        assert(await page.getByRole('button', { name: '기록 저장', exact: true }).isDisabled());
++        assert.deepEqual(await read(page), before); assert.deepEqual(await calls(page), []);
++      }
++      pass(`${engine}: ${label} initialization / no repair boundary`);
++    } finally { await context.close(); }
++  }
++}
++async function textContrast(page, selector) {
++  const values = await page.locator(selector).evaluateAll(nodes => {
++    const lum = color => color.match(/[\d.]+/g).slice(0, 3).map(Number).map(v => v / 255).map(v => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4).reduce((a, v, i) => a + v * [0.2126, 0.7152, 0.0722][i], 0);
++    return nodes.filter(node => node.getBoundingClientRect().height > 0 && node.textContent).map(node => {
++      let surface = node;
++      while (surface.parentElement && getComputedStyle(surface).backgroundColor === 'rgba(0, 0, 0, 0)') surface = surface.parentElement;
++      const a = lum(getComputedStyle(node).color), b = lum(getComputedStyle(surface).backgroundColor);
++      return { text: node.textContent, ratio: (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05) };
++    });
++  });
++  assert(values.length); assert(values.every(value => value.ratio >= 4.5), JSON.stringify(values));
++  return Math.min(...values.map(value => value.ratio));
++}
++async function layoutAndAccess(browser, engine) {
++  const { context, page } = await setup(browser);
++  try {
++    for (const [width, height, scale] of [[360,844,1],[390,844,1],[430,844,1],[360,640,1],[360,844,2],[390,844,2],[430,844,2],[360,640,2]]) {
++      await page.setViewportSize({ width, height });
++      await page.evaluate(scale => { document.documentElement.style.fontSize = `${16 * scale}px`; }, scale);
++      const base = await geometry(page);
++      await textContrast(page, '.pw-record h1,.pw-record h2,.pw-record h3,.pw-record p,.pw-record-add');
++      await screenshot(page, `${width}x${height}${scale === 2 ? '-200percent' : ''}-record`, engine === 'Chromium');
++      await open(page, 'out', '3500');
++      const sheet = await geometry(page, true);
++      await page.locator('#pw-record-memo').focus();
++      await page.locator('#pw-record-memo').fill('학교 끝나고 간식');
++      await page.getByRole('button', { name: '기록 저장', exact: true }).scrollIntoViewIfNeeded();
++      await screenshot(page, `${width}x${height}${scale === 2 ? '-200percent' : ''}-sheet`, engine === 'Chromium');
++      await close(page);
++      pass(`${engine}: layout ${width}x${height} root ${scale * 100}%`, { base, sheet });
++    }
++    await page.setViewportSize({ width: 390, height: 844 }); await page.evaluate(() => { document.documentElement.style.fontSize = '16px'; });
++    await page.locator('.pw-content').evaluate(el => { el.scrollTop = 0; });
++    await open(page, 'in', '10000', '용돈');
++    const contrast = await textContrast(page, 'dialog h2,dialog legend,dialog label.pw-record-label,dialog p:not([hidden]),.pw-record-choice>span,.pw-record-chip>span,dialog button[type=submit]');
++    pass(`${engine}: rendered record and Sheet text contrast >= 4.5:1`, { minimumSheet: contrast });
++    await screenshot(page, 'sheet-received', engine === 'Chromium');
++    assert.deepEqual(await page.locator('[name="record-category"]').evaluateAll(nodes => nodes.map(n => n.value)), ['용돈']);
++    assert.equal(await page.locator('#pw-record-amount').getAttribute('inputmode'), 'numeric');
++    assert.equal(await page.locator('.pw-record-amount-preview').textContent(), '10,000원');
++    if (engine === 'Chromium') fs.writeFileSync(path.join(output, 'accessibility-tree.txt'), await page.locator('dialog').ariaSnapshot());
++    await close(page);
++    await open(page, 'out', '3500'); await screenshot(page, 'sheet-spent', engine === 'Chromium');
++    assert.deepEqual(await page.locator('[name="record-category"]').evaluateAll(nodes => nodes.map(n => n.value)), ['간식', '문구', '게임', '교통', '기타']);
++    await close(page);
++    await page.getByRole('button', { name: '새 기록 추가', exact: true }).focus(); await page.keyboard.press('Enter');
++    assert.equal(await page.evaluate(() => document.activeElement.value), 'in');
++    await page.keyboard.press('Space'); assert(await page.getByRole('radio', { name: '받은 돈', exact: true }).isChecked());
++    await page.keyboard.press('ArrowRight'); assert(await page.getByRole('radio', { name: '쓴 돈', exact: true }).isChecked());
++    await page.keyboard.press('Tab'); assert.equal(await page.evaluate(() => document.activeElement.id), 'pw-record-amount');
++    await page.keyboard.type('100'); await page.keyboard.press('Tab');
++    assert.equal(await page.evaluate(() => document.activeElement.name), 'record-category');
++    await page.keyboard.press('Space'); await page.keyboard.press('ArrowRight'); assert(await page.getByRole('radio', { name: '문구', exact: true }).isChecked());
++    const focus = await page.getByRole('radio', { name: '문구', exact: true }).evaluate(input => ({ focused: input.matches(':focus'), visible: input.matches(':focus-visible'), outline: getComputedStyle(input.nextElementSibling).outlineWidth, style: getComputedStyle(input.nextElementSibling).outlineStyle }));
++    assert(focus.focused); assert.equal(focus.outline, '2px'); assert.equal(focus.style, 'solid');
++    await page.keyboard.press('Tab'); assert.equal(await page.evaluate(() => document.activeElement.id), 'pw-record-memo');
++    await page.keyboard.press('Tab'); assert.equal(await page.evaluate(() => document.activeElement.textContent), '기록 저장');
++    await page.keyboard.press('Tab'); assert.equal(await page.evaluate(() => document.activeElement.getAttribute('aria-label')), '돈 기록하기 닫기');
++    await page.keyboard.press('Shift+Tab'); assert.equal(await page.evaluate(() => document.activeElement.textContent), '기록 저장');
++    await page.keyboard.press('Escape');
++    await page.waitForFunction(() => document.activeElement.textContent === '새 기록 추가');
++    assert.equal(await page.locator('dialog[open]').count(), 0); assert.deepEqual(await calls(page), []);
++    pass(`${engine}: dialog semantics, first focus, native radio arrows/Space, Tab trap, Escape and restoration`);
++    await page.evaluate(() => {
++      document.documentElement.style.setProperty('--pw-safe-top', '47px'); document.documentElement.style.setProperty('--pw-safe-bottom', '34px');
++      document.documentElement.style.setProperty('--pw-safe-left', '24px'); document.documentElement.style.setProperty('--pw-safe-right', '24px');
++    });
++    await open(page, 'out', '3500'); await geometry(page, true);
++    const safe = await page.evaluate(() => ({ bottom: getComputedStyle(document.querySelector('.pw-record-sheet-footer')).paddingBottom, fields: getComputedStyle(document.querySelector('.pw-record-fields')).paddingLeft }));
++    assert.deepEqual(safe, { bottom: '46px', fields: '24px' });
++    await screenshot(page, 'safe-area-sheet', engine === 'Chromium');
++    await page.setViewportSize({ width: 360, height: 440 });
++    await page.locator('#pw-record-amount').focus(); await geometry(page, true);
++    await page.locator('#pw-record-memo').focus();
++    await page.locator('#pw-record-memo').fill('키보드 높이 검증');
++    const buttonBox = await page.getByRole('button', { name: '기록 저장', exact: true }).boundingBox(); assert(buttonBox.y + buttonBox.height <= 440);
++    await screenshot(page, 'keyboard-height-simulation', engine === 'Chromium');
++    pass(`${engine}: safe area applied once and short visual viewport input/footer accessibility`, safe);
++    await close(page);
++  } finally { await context.close(); }
++  const many = copy(fixture);
++  const today = new Date(), yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
++  many.transactions = Array.from({ length: 24 }, (_, i) => ({ type: i % 2 ? 'out' : 'in', amount: 1000 + i * 100, category: i % 2 ? '간식' : '용돈', ts: new Date((i < 4 ? today : yesterday).getTime() - i * 60000).toISOString(), receipt: false, ...(i === 0 ? { memo: '오늘 받은 용돈' } : {}) }));
++  const multiple = await setup(browser, many);
++  try {
++    assert.equal(await multiple.page.locator('.pw-record-row').count(), 20);
++    assert((await multiple.page.locator('.pw-record-date-heading').allTextContents()).includes('오늘'));
++    await screenshot(multiple.page, 'many-transactions', engine === 'Chromium');
++    await multiple.page.locator('.pw-content').evaluate(el => { el.scrollTop = el.scrollHeight; });
++    const last = await multiple.page.locator('.pw-record-row').last().boundingBox(), nav = await multiple.page.locator('.pw-bottom-navigation').boundingBox();
++    assert(last.y + last.height < nav.y);
++    await screenshot(multiple.page, 'many-transactions-bottom', engine === 'Chromium');
++    pass(`${engine}: recent list capped at 20, local today/yesterday groups and last row visible`);
++  } finally { await multiple.context.close(); }
++  const huge = copy(fixture); huge.balance = Number.MAX_SAFE_INTEGER;
++  huge.transactions = [{ type: 'in', amount: Number.MAX_SAFE_INTEGER, category: '용돈', ts: stamp, receipt: false, memo: '<svg onload=alert(1)> 아주 긴 메모를 화면에서 안전하게 보여줘요' }];
++  const long = await setup(browser, huge, 360, 640);
++  try {
++    await long.page.evaluate(() => { document.documentElement.style.fontSize = '32px'; });
++    await geometry(long.page); await screenshot(long.page, 'long-amount-200percent', engine === 'Chromium');
++    assert.equal(await long.page.locator('.pw-record-row-title svg').count(), 0);
++    await open(long.page, 'out', String(Number.MAX_SAFE_INTEGER)); await geometry(long.page, true);
++    await long.page.locator('#pw-record-amount').fill('3500');
++    await long.page.setViewportSize({ width: 360, height: 844 });
++    await long.page.locator('.pw-record-fields').evaluate(el => { const chips = el.querySelector('.pw-record-chips'); el.scrollTop += chips.getBoundingClientRect().top - el.getBoundingClientRect().top - 72; });
++    await screenshot(long.page, 'category-wrapping', engine === 'Chromium');
++    const tops = await long.page.locator('.pw-record-chip').evaluateAll(nodes => nodes.map(n => n.getBoundingClientRect().top)); assert(new Set(tops).size > 1);
++    await close(long.page); assert.deepEqual(await calls(long.page), []);
++    pass(`${engine}: maximum safe integer/memo text and 200% category wrapping without horizontal overflow`);
++  } finally { await long.context.close(); }
++}
++(async () => {
++  let chrome, safari;
++  try {
++    unitTests();
++    chrome = await chromium.launch({ headless: true, executablePath: executable('chromium') }); report.browsers.chromium = { version: chrome.version(), executable: executable('chromium') };
++    for (const [browser, engine] of [[chrome, 'Chromium']]) {
++      await transactions(browser, engine); await validation(browser, engine); await failureAndLatest(browser, engine); await initialStates(browser, engine); await layoutAndAccess(browser, engine);
++    }
++    safari = await webkit.launch({ headless: true, executablePath: executable('webkit') }); report.browsers.webkit = { version: safari.version(), executable: executable('webkit') };
++    await transactions(safari, 'WebKit'); await validation(safari, 'WebKit'); await failureAndLatest(safari, 'WebKit'); await initialStates(safari, 'WebKit'); await layoutAndAccess(safari, 'WebKit');
++    assert.deepEqual(report.consoleErrors, []); assert.deepEqual(report.resourceErrors, []);
++    pass('All isolated contexts: console/page errors 0, failed requests and HTTP errors 0'); report.status = 'PASS';
++  } catch (error) { report.status = 'FAIL'; report.failure = error.stack; process.exitCode = 1; }
++  finally {
++    if (chrome) await chrome.close(); if (safari) await safari.close();
++    report.finishedAt = new Date().toISOString();
++    fs.writeFileSync(path.join(output, 'verification.json'), JSON.stringify(report, null, 2) + '\n');
++    console.log(JSON.stringify({ status: report.status, checks: report.checks.length, screenshots: report.screenshots.length, failure: report.failure, consoleErrors: report.consoleErrors, resourceErrors: report.resourceErrors }, null, 2));
++  }
++})();
+--- a/tests/verify-home.cjs
++++ b/tests/verify-home.cjs
+@@ -8,7 +8,7 @@
+ const { chromium, webkit } = require(process.env.PW_PLAYWRIGHT_MODULE || 'playwright');
+ const root = path.resolve(__dirname, '..');
+ const app = path.join(root, 'ks6s3juocjzc2.kimi.page');
+-const output = path.join(root, 'evidence/PW-WOORI-02');
++const output = path.join(root, 'evidence/PW-WOORI-03/home');
+ const origin = process.env.PW_BASE_URL || 'http://127.0.0.1:4173';
+ assert(['localhost', '127.0.0.1'].includes(new URL(origin).hostname));
+ const url = `${origin}/ks6s3juocjzc2.kimi.page/index.html`;
+@@ -33,14 +33,14 @@
+ }
+ 
+ function adapterTests() {
+-  const baseline = JSON.parse(fs.readFileSync(path.join(root, 'preservation/PW-WOORI-02/baseline.json')));
++  const baseline = JSON.parse(fs.readFileSync(path.join(root, 'preservation/PW-WOORI-03/baseline.json')));
+   let preserved = 0;
+   for (const [name, hash] of Object.entries(baseline.files)) {
+     if (baseline.snapshots.includes(name)) continue;
+     assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(root, name))).digest('hex'), hash, name);
+     preserved++;
+   }
+-  pass('Approved tokens/base/shell/icons/tabs and all previous evidence remain byte-identical', { preserved });
++  pass('Approved tokens/base/shell/tabs/home and all previous evidence remain byte-identical', { preserved });
+   const before = JSON.stringify(fixture);
+   function freeze(value) { if (value && typeof value === 'object') { Object.values(value).forEach(freeze); Object.freeze(value); } }
+   freeze(fixture);
+@@ -85,9 +85,11 @@
+   for (const missions of [undefined, [], [true, false], Array(7).fill(true)]) assert.equal(model({ missions }).mission.status, 'unavailable');
+   pass('Goal empty/invalid/active/complete, progress clamp and undated mission boundary');
+   const source = ['index.html', ...fs.readdirSync(path.join(app, 'scripts')).map(p => `scripts/${p}`)].map(p => fs.readFileSync(path.join(app, p), 'utf8')).join('\n');
+-  assert(!/\b(?:setItem|removeItem|clear)\s*\(|preservation\/|fetch\s*\(|XMLHttpRequest|defaultState/.test(source));
++  assert(!/\b(?:removeItem|clear)\s*\(|preservation\/|fetch\s*\(|XMLHttpRequest|defaultState/.test(source));
++  assert.equal((source.match(/setItem\(/g) || []).length, 1);
++  assert(!/setItem/.test(fs.readFileSync(path.join(app, 'scripts/home.js'), 'utf8')));
+   assert.equal((source.match(/getItem\(/g) || []).length, 1);
+-  pass('Active runtime: one getItem call site, no write/delete, demo fallback, preservation fetch or API');
++  pass('Active runtime: one getItem and one explicit-save setItem call site, no Home write/delete, demo fallback, preservation fetch or API');
+ }
+ 
+ function observe(page, label) {
+@@ -165,7 +167,8 @@
+ async function navigation(page, engine) {
+   for (const [label, tab, title] of [['기록하기', 'record', '기록'], ['목표 보기', 'goal', '목표'], ['리포트 보기', 'report', '리포트']]) {
+     await page.getByRole('button', { name: label, exact: true }).click();
+-    assert.equal(await page.locator('#pw-content').innerText(), title);
++    if (tab === 'record') assert.equal(await page.getByRole('button', { name: '새 기록 추가', exact: true }).count(), 1);
++    else assert.equal(await page.locator('#pw-content').innerText(), title);
+     assert.equal(await page.locator('[aria-current="page"]').getAttribute('data-screen'), tab);
+     assert.equal(await page.evaluate(() => document.activeElement.id), 'pw-screen-title');
+     assert.equal(await page.locator('.pw-home').count(), 0);
+@@ -176,7 +179,7 @@
+   assert.equal(await page.locator('#pw-content').innerText(), '전체');
+   await page.getByRole('button', { name: '홈', exact: true }).click(); await ready(page);
+   await storageUnchanged(page); await page.reload(); await ready(page); await storageUnchanged(page);
+-  pass(`${engine}: three home actions, placeholder destinations, focus, menu, reload and storage preservation`);
++  pass(`${engine}: three home actions, record and placeholder destinations, focus, menu, reload and storage preservation`);
+ }
+ async function accessibility(page, engine) {
+   assert.equal(await page.locator('h1').count(), 1);
+@@ -202,7 +205,8 @@
+   await page.keyboard.press('Enter'); assert.equal(await page.locator('#pw-content').innerText(), '리포트');
+   await page.getByRole('button', { name: '홈', exact: true }).click(); await ready(page);
+   await page.getByRole('button', { name: '기록하기', exact: true }).focus(); await page.keyboard.press('Space');
+-  assert.equal(await page.locator('#pw-content').innerText(), '기록');
++  assert.equal(await page.locator('#pw-screen-title').innerText(), '기록');
++  assert.equal(await page.getByRole('button', { name: '새 기록 추가', exact: true }).count(), 1);
+   await page.getByRole('button', { name: '홈', exact: true }).click(); await ready(page);
+   pass(`${engine}: heading hierarchy, named progress values, focus-visible and Enter/Space activation`);
+ }
+--- a/tests/verify-shell.cjs
++++ b/tests/verify-shell.cjs
+@@ -11,7 +11,7 @@
+ const origin = process.env.PW_BASE_URL || 'http://127.0.0.1:4173';
+ assert(['127.0.0.1', 'localhost'].includes(new URL(origin).hostname), 'Use an isolated local origin');
+ const url = `${origin}/ks6s3juocjzc2.kimi.page/index.html`;
+-const output = path.join(root, 'evidence/PW-WOORI-02/shell');
++const output = path.join(root, 'evidence/PW-WOORI-03/shell');
+ fs.mkdirSync(path.join(output, 'screenshots'), { recursive: true });
+ const labels = ['홈', '기록', '목표', '리포트', '전체'];
+ const ids = ['home', 'record', 'goal', 'report', 'all'];
+@@ -42,13 +42,13 @@
+   const app = path.join(root, 'ks6s3juocjzc2.kimi.page');
+   const activeFiles = ['index.html', ...['styles', 'scripts'].flatMap(dir => fs.readdirSync(path.join(app, dir)).map(file => `${dir}/${file}`))];
+   const activeText = activeFiles.map(file => fs.readFileSync(path.join(app, file), 'utf8')).join('\n');
+-  const forbidden = /sessionStorage|setItem\s*\(|removeItem\s*\(|\.clear\s*\(|pocketwon_theme|prefers-color-scheme|data-theme|themeBtn|toggleTheme|sdk-seed|renderHome|parentReport|linear-gradient|radial-gradient|backdrop-filter|#3ECF8E|#FFD54D|#FF6B6B|--mint|--coral/i;
++  const forbidden = /sessionStorage|removeItem\s*\(|\.clear\s*\(|pocketwon_theme|prefers-color-scheme|data-theme|themeBtn|toggleTheme|sdk-seed|renderHome|parentReport|linear-gradient|radial-gradient|backdrop-filter|#3ECF8E|#FFD54D|#FF6B6B|--mint|--coral/i;
+   assert(!forbidden.test(activeText), 'Legacy visual/runtime reference remains');
+   for (const file of ['base.css', 'shell.css']) assert(!/#[0-9a-f]{3,8}\b/i.test(fs.readFileSync(path.join(app, 'styles', file), 'utf8')), file);
+   const tokens = fs.readFileSync(path.join(app, 'styles/tokens.css'), 'utf8');
+   const definitions = new Set([...tokens.matchAll(/(--pw-[\w-]+)\s*:/g)].map(m => m[1]));
+   for (const [, token] of activeText.matchAll(/var\((--pw-[\w-]+)/g)) assert(definitions.has(token), `Undefined token ${token}`);
+-  pass('Active source: no legacy styling, dark runtime, storage writes or SDK; all token references resolve', { files: activeFiles, tokens: definitions.size });
++  pass('Active source: no legacy styling, dark runtime, automatic storage writes or SDK; all token references resolve', { files: activeFiles, tokens: definitions.size });
+   const literal = snapshot.toString().match(/const defaultState = (\{[\s\S]*?\n        \});/)[1];
+   return JSON.parse(JSON.stringify(vm.runInNewContext(`(${literal})`)));
+ }
+@@ -117,8 +117,8 @@
+       await page.getByRole('button', { name: labels[i], exact: true }).click();
+       await page.mouse.move(0, 0);
+       assert.equal(await page.locator('#pw-screen-title').textContent(), labels[i]);
+-      if (i !== 0) assert.equal(await page.locator('#pw-content').innerText(), labels[i]);
+-      else assert.equal(await page.locator('.pw-home').count(), 1);
++      if (i > 1) assert.equal(await page.locator('#pw-content').innerText(), labels[i]);
++      else assert.equal(await page.locator(i === 0 ? '.pw-home' : '.pw-record').count(), 1);
+       assert.equal(await page.title(), `${labels[i]} · 포켓WON`);
+       assert.equal(await page.locator('#pw-header-context').innerText(), i === 0 ? 'PocketWON' : labels[i]);
+       assert.equal(page.url(), url);
+--- /dev/null
++++ b/tests/build-record-delivery.py
+@@ -0,0 +1,260 @@
++"""Build the PW-WOORI-03 review bundle from completed local test evidence."""
++from pathlib import Path
++from datetime import datetime, timezone
++import difflib
++import hashlib
++import html
++import json
++
++root = Path(__file__).resolve().parent.parent
++out = root / 'evidence/PW-WOORI-03'
++baseline = json.loads((root / 'preservation/PW-WOORI-03/baseline.json').read_text())
++reports = {name: json.loads((out / suffix / 'verification.json').read_text()) for name, suffix in [('record', ''), ('home', 'home'), ('shell', 'shell')]}
++assert all(report['status'] == 'PASS' for report in reports.values()), 'Complete all three checks before submitting.'
++assert all(not report.get('consoleErrors') and not report.get('resourceErrors') and not report.get('networkErrors') for report in reports.values())
++sha = lambda data: hashlib.sha256(data).hexdigest()
++for name, digest in baseline['files'].items():
++    if name not in baseline['snapshots']:
++        assert sha((root / name).read_bytes()) == digest, name
++for kind in ['in', 'out']:
++    pair = json.loads((out / f'storage-{kind}.json').read_text())
++    before = json.dumps(pair['before'], ensure_ascii=False, indent=2) + '\n'
++    after = json.dumps(pair['after'], ensure_ascii=False, indent=2) + '\n'
++    (out / f'storage-{kind}.diff').write_text(''.join(difflib.unified_diff(before.splitlines(True), after.splitlines(True), fromfile='before/pocketwon_demo_v1', tofile='after/pocketwon_demo_v1')))
++
++counts = {name: len(report['checks']) for name, report in reports.items()}
++record = reports['record']
++chrome = record['browsers']['chromium']['version']
++webkit = record['browsers']['webkit']['version']
++minimum = min(check['detail']['minimumSheet'] for check in record['checks'] if 'minimumSheet' in (check.get('detail') if isinstance(check.get('detail'), dict) else {}))
++source_files = [
++    'ks6s3juocjzc2.kimi.page/index.html', 'ks6s3juocjzc2.kimi.page/scripts/state.js',
++    'ks6s3juocjzc2.kimi.page/scripts/record.js', 'ks6s3juocjzc2.kimi.page/scripts/app.js',
++    'ks6s3juocjzc2.kimi.page/scripts/icons.js', 'ks6s3juocjzc2.kimi.page/styles/record.css',
++    'tests/verify-record.cjs', 'tests/verify-home.cjs', 'tests/verify-shell.cjs',
++    'tests/build-record-delivery.py', 'README.md', 'docs/PW-WOORI-03.md',
++]
++changed = '# PW-WOORI-03 변경 파일\n\n'
++for name in source_files:
++    changed += f'- {"수정" if name in baseline["files"] else "추가"}: `{name}`\n'
++changed += '\n`tokens.css`, `base.css`, `shell.css`, `home.css`, `home.js`, `tabs.js`는 변경하지 않았습니다. icons.js는 닫기 아이콘 하나만 추가했습니다.\n\n'
++changed += '생성 증거는 `evidence/PW-WOORI-03/`, 구현 전 스냅샷·해시는 `preservation/PW-WOORI-03/`에 있습니다. 전체 파일 해시는 delivery.json을 확인하세요. 이전 슬라이스 증거는 바이트 동일합니다.\n'
++(out / 'changed-files.md').write_text(changed)
++
++screens = [
++    ('6. 기록 기본 화면 360×844', '360x844-record'),
++    ('7. 기록 기본 화면 390×844', '390x844-record'),
++    ('8. 기록 기본 화면 430×844', '430x844-record'),
++    ('9. 새 기록 Sheet — 받은 돈', 'sheet-received'),
++    ('10. 새 기록 Sheet — 쓴 돈', 'sheet-spent'),
++    ('11. 카테고리 wrapping — root 200%', 'category-wrapping'),
++    ('12. 금액 validation 오류', 'validation-error'),
++    ('13. 잔액 부족', 'insufficient-balance'),
++    ('14. storage write failure', 'storage-write-failure'),
++    ('15. 빈 거래 목록', 'empty-transactions'),
++    ('16. 최근 기록 다수 — 20개 제한', 'many-transactions'),
++]
++extra_screens = [
++    ('빈 저장소 — 첫 저장 전', 'empty-key'), ('invalid category', 'invalid-category'),
++    ('손상 JSON', 'invalid-json'), ('누락 필드', 'partial-state'), ('잘못된 거래', 'invalid-row'),
++    ('360×640', '360x640-record'), ('360×640 Sheet', '360x640-sheet'),
++    ('360×640 root 200%', '360x640-200percent-sheet'), ('긴 금액 root 200%', 'long-amount-200percent'),
++    ('safe area', 'safe-area-sheet'), ('키보드 높이 모사 — 360×440', 'keyboard-height-simulation'),
++    ('다수 기록 마지막 행', 'many-transactions-bottom'),
++    ('지출 저장 후 기록', 'saved-out'), ('입금 저장 후 기록', 'saved-in'),
++    ('18. 지출 후 홈', 'home-after-out'), ('18. 입금 후 홈', 'home-after-in'),
++    ('19. 지출 reload 후', 'reload-out'), ('19. 입금 reload 후', 'reload-in'),
++]
++for _, name in screens + extra_screens:
++    assert (out / 'screenshots' / f'{name}.png').is_file(), name
++
++report_text = f'''# PW-WOORI-03 — 기록 화면 및 거래 저장 제출
++
++기록 탭과 명시적 저장을 구현했습니다. **기록 {counts['record']}개 + 홈 {counts['home']}개 + Shell {counts['shell']}개 = {sum(counts.values())}개 검증 묶음 PASS**입니다. Chromium {chrome} / WebKit {webkit}에서 검사했습니다.
++
++[23개 제출 항목 갤러리](../evidence/PW-WOORI-03/index.html) · [기계 판독 결과](../evidence/PW-WOORI-03/verification.json)
++
++PW-WOORI-01/02 승인된 디자인을 유지합니다. 이번 보고서의 캡처는 격리된 임시 context의 원본 fixture·합성 데이터이며 실제 사용자 잔액이나 사용자 브라우저 저장소를 나타내지 않습니다.
++
++## 1. 변경 파일 목록과 보존
++
++[변경 파일](../evidence/PW-WOORI-03/changed-files.md) · [전체 파일 해시](../evidence/PW-WOORI-03/delivery.json)
++
++활성 앱은 진입 HTML, state/app/icons 수정과 record.js/record.css 추가입니다. 닫기 아이콘 하나를 기존 라인 아이콘 집합에 추가했습니다. tests 3종과 제출 생성기, README, 본 보고서를 포함합니다.
++
++Git 저장소가 아니므로 구현 전 {len(baseline['files'])}개 파일의 SHA-256과 변경 대상 {len(baseline['snapshots'])}개의 원본을 비실행 텍스트로 보존했습니다. 변경 허용 원본을 제외한 {len(baseline['files']) - len(baseline['snapshots'])}개 파일은 바이트 동일합니다. tokens/base/shell/home 스타일과 home.js/tabs.js, PW-WOORI-01/02 증거를 그대로 유지했습니다.
++
++## 2. 기존 transaction schema 분석
++
++원본 근거: [보존 HTML](../preservation/PW-WOORI-01/original-index.html.txt)의 defaultState(1512행), txRow(1805행), CATS(1857행), 기록 저장(1971행 이후).
++
++```js
++{{
++  type: 'in' | 'out',
++  amount: number,
++  category: string,
++  ts: string,
++  receipt: boolean,
++  memo?: string // 사용자 승인된 선택적 확장
++}}
++```
++
++원본 거래에 ID·memo·date 필드는 없으며 날짜는 ts입니다. 초기 fixture는 timezone 없는 ISO 로컬 문자열이고 원본 저장은 `new Date().toISOString()`입니다. 새 기록도 저장 순간을 ISO UTC로 저장하고 로컬 시간으로 표시합니다. 카테고리는 받은 돈 `용돈` 1종, 쓴 돈 `간식/문구/게임/교통/기타` 5종입니다. 선물·보상·편의점 등 새 분류를 만들지 않았습니다.
++
++원본처럼 거래 배열 맨 앞에 추가하고 새 거래는 `receipt: false`입니다. memo는 Unicode code point 기준 최대 50자, 양끝 공백 제거 후 비어 있으면 필드를 생략합니다. 기존 거래·알 수 없는 추가 속성은 유지합니다.
++
++목록은 날짜가 모두 신뢰 가능하면 복사본을 최신순으로 정렬·그룹화합니다. 불명확한 날짜가 섞이면 저장 배열 순서를 유지하며 '날짜 확인 안 됨'으로 표시합니다. 원본 배열의 순서를 재저장하지 않습니다. 이전 연도의 날짜에는 연도를 함께 표시합니다. 잘못된 거래는 확인 불가 안내를 제공하고 저장을 막습니다.
++
++## 3. 받은 돈 / 쓴 돈 저장 변경 필드
++
++| 구분 | balance | monthly.saving | monthly.spending | transactions |
++|---|---|---|---|---|
++| 받은 돈 | +amount | +amount | 유지 | 새 in 거래를 앞에 추가 |
++| 쓴 돈 | −amount | 유지 | +amount | 새 out 거래를 앞에 추가 |
++
++원본의 monthly.saving은 받은 돈 누계로 유지하며 UI에 저축으로 노출하지 않습니다. monthly에 기간 식별자가 없어 월 초기화나 재계산을 하지 않습니다. habitScore·goal·monthly.goal·missions·points·recordedDays·streak 등은 변경하지 않습니다.
++
++| 검증 | 저장 전 | 저장 후 |
++|---|---|---|
++| A. 쓴 돈 3,500원 | balance 32,500 / spending 12,300 | balance **29,000** / spending **15,800** |
++| B. 받은 돈 10,000원 | balance 32,500 / saving 15,200 | balance **42,500** / saving **25,200** |
++| 홈 남은 돈 | saving − spending | A **−600원**, B **12,900원** |
++
++빈 키의 첫 유효 저장에만 `balance`, `monthly: {{saving, spending}}`, `transactions`를 생성합니다. 첫 기록 전에는 '확인 전'과 0원 시작 안내를 표시하며 데모 잔액·사용자·목표·점수를 채우지 않습니다. 0원 기준의 첫 지출은 잔액 부족으로 막습니다.
++
++## 4. 새 state 함수 구조
++
++| 함수 | 책임 |
++|---|---|
++| loadPocketWONState | loaded/empty/invalid/unavailable 구분, 읽기만 수행 |
++| createRecordViewModel | 잔액·최근 20개·유효성·날짜 표시, 순수 변환 |
++| validateRecordDraft | type/category/금액/메모/원본 상태/잔액/합산 범위 검증 |
++| applyTransaction | 검증 후 새 state/monthly/transactions 생성, 원본 불변 |
++| persistPocketWONState | 단일 setItem, saved/failed 반환 |
++
++record.js는 View·native dialog·입력·제출 순서를 담당하고 app.js는 View 생성·해제와 탭 이동을 관리합니다. home.js는 수정하지 않았습니다.
++
++## 5. localStorage write 조건
++
++유효한 입력으로 **기록 저장 버튼을 마우스·터치·키보드로 활성화**했을 때만 `pocketwon_demo_v1`에 한 번 씁니다. 입력 중 Enter는 저장하지 않습니다.
++
++제출 잠금 → 최신 storage 재조회 → 검증 → 새 상태 계산 → setItem → 성공 후에만 화면 갱신 순서입니다. 동일 Sheet의 연속 click/submit은 한 거래만 생성합니다. 입력·닫기·진입·tab 이동·reload는 쓰기 0회이며 theme/intro/무관 키는 읽거나 변경하지 않습니다.
++
++저장 실패에는 Sheet·입력·기존 화면·저장 문자열을 유지하고 지정 문구를 표시합니다. 재시도는 최신 값을 다시 읽습니다. 손상·누락 상태 자동 복구나 마이그레이션은 없습니다. 받은 돈의 balance/saving 합산과 쓴 돈의 spending 합산도 safe integer를 확인합니다.
++
++저장 직전 다른 상태로 변경된 경우와 키 삭제·읽기 오류를 실제 브라우저에서 검증했습니다. localStorage는 여러 탭에 대한 원자적 트랜잭션을 제공하지 않으므로 동시 탭 간 무손실 저장까지 보장하지 않습니다.
++
++'''
++for title, name in screens:
++    report_text += f'## {title}\n\n![{title}](../evidence/PW-WOORI-03/screenshots/{name}.png)\n\n'
++report_text += f'''## 17. 저장 전/후 storage JSON diff
++
++- [받은 돈 JSON](../evidence/PW-WOORI-03/storage-in.json) · [받은 돈 diff](../evidence/PW-WOORI-03/storage-in.diff)
++- [쓴 돈 JSON](../evidence/PW-WOORI-03/storage-out.json) · [쓴 돈 diff](../evidence/PW-WOORI-03/storage-out.diff)
++
++JSON diff는 격리 fixture의 저장 전후 구조를 읽기 좋게 정렬하지 않고 들여쓰기한 비교입니다. 실제 브라우저 검증은 실패·금지 경로에서 원래 저장 문자열의 동일성을 별도로 확인합니다. 타 키 문자열과 기존 거래, 비대상 필드의 동일성도 확인합니다.
++
++## 18. 저장 후 홈 갱신 화면
++
++![지출 후 홈](../evidence/PW-WOORI-03/screenshots/home-after-out.png)
++
++![입금 후 홈](../evidence/PW-WOORI-03/screenshots/home-after-in.png)
++
++홈 재진입 시 로더를 다시 호출하는 기존 구조를 유지했습니다. balance·받은 돈·쓴 돈·남은 돈 네 값의 DOM·접근성 이름을 검사했습니다. 홈 디자인·레이아웃·문구는 변경하지 않았습니다. [시각 회귀 비교](../evidence/PW-WOORI-03/visual-regression.json)에서 360/390px 홈은 픽셀 동일, 430px은 카드 테두리의 19픽셀에서 채널값 최대 1 차이만 관찰됐습니다. 430px 이미지가 바이트 동일하다고 주장하지 않습니다. 세 placeholder의 3개 폭 이미지 9개는 바이트 동일합니다.
++
++## 19. reload persistence 검증
++
++![입금 reload 후 기록](../evidence/PW-WOORI-03/screenshots/reload-in.png)
++
++두 거래 유형 모두 저장 문자열과 새 거래가 reload 후 유지됩니다. reload는 홈으로 돌아가는 기존 동작을 유지하고 기록 탭에 재진입해 확인했습니다. reload 이후 저장 호출은 0회입니다.
++
++## 20. keyboard / accessibility / 반응형
++
++[접근성 트리](../evidence/PW-WOORI-03/accessibility-tree.txt)
++
++- native modal dialog 이름·제목, native radio fieldset/legend, label/input 연결, 오류 aria-describedby·aria-invalid, 저장 실패 role=alert, 성공 role=status.
++- 첫 의미 있는 type control 포커스, radio Space/방향키, Tab·Shift+Tab 포커스 제한, Escape·닫기 후 CTA 포커스 복귀를 양 브라우저에서 확인했습니다.
++- WebKit은 native radio 방향키 이동 후 `:focus-visible`을 생략하는 경우가 있어 라디오 `:focus` 자체에도 2px 테두리를 표시합니다. 실제 활성 요소와 테두리의 굵기·스타일을 검사했습니다.
++- 360/390/430×844, 360×640 및 각 root 200%에서 기본 화면·Sheet를 검사했습니다. 최소 48px 상당 터치 영역, 내부 스크롤, 칩 wrapping, 긴 금액, nav 간섭·가로 overflow를 검사했습니다.
++- 47px 상단/34px 하단/24px 좌우 safe area 주입, 360×440 키보드 높이 모사도 통과했습니다. Sheet 높이는 현재 dvh와 visualViewport 중 작은 높이로 제한합니다. 하단 safe area는 footer에서 한 번만 적용합니다.
++- 선택 chip은 기존 primary-hover 색을 사용해 primary-soft 배경과 충분한 대비를 확보합니다. 측정한 Sheet 텍스트 최소 대비는 **{minimum:.3f}:1**이며 기본 화면 텍스트도 4.5:1 이상입니다. 금융 의미 색은 금액에만 사용하고 +/- 및 접근성 이름을 제공합니다.
++
++실물 iPhone/Android 키보드·스크린리더 실기기 검증 및 axe 감사는 수행하지 않았습니다. visual viewport·키보드 검증은 브라우저 resize 모사와 DOM/키보드 검사 범위입니다. '10초 기록'은 항목 수와 흐름에 대한 자체 검수이며 어린이 사용자 대상 시간 측정을 주장하지 않습니다.
++
++## 21. console / page error
++
++최종 기록·홈·Shell 검증 전체 **0건**입니다. [기록 결과](../evidence/PW-WOORI-03/verification.json), [홈 결과](../evidence/PW-WOORI-03/home/verification.json), [Shell 결과](../evidence/PW-WOORI-03/shell/verification.json)를 제공합니다.
++
++## 22. failed resource 요청
++
++requestfailed와 HTTP 4xx/5xx **0건**입니다. 기존 Pretendard CDN만 유지하며 SDK를 재활성화하지 않았습니다. 테스트는 기존 로컬 Chromium/WebKit을 사용했습니다.
++
++## 23. 전체 source diff
++
++[소스·테스트·문서 전체 diff](../evidence/PW-WOORI-03/source.patch)
++
++진입 HTML, 활성 JS/CSS, 검사 코드와 제출 생성기, README와 본 보고서의 변경을 구현 전 원본과 비교합니다. 생성 이미지·검증 결과·보존 사본은 source diff와 구분하고 delivery.json에 해시로 기록합니다.
++
++## 시각 품질 자체 점검
++
++| 항목 | 판정 |
++|---|---|
++| 우리WON 계열의 차분한 White/pale blue | YES |
++| 빽빽한 가계부·불필요한 설정 없음 | YES |
++| 새 기록 추가가 유일한 기본 화면 primary CTA | YES |
++| 금액 입력 영역의 숫자가 가장 강한 위계 | YES |
++| 카테고리 무지개색 없음 | YES |
++| 받은/쓴 돈·금액·종류·선택 메모의 짧은 기록 흐름 | YES |
++| 최근 기록의 명확한 숫자·+/− | YES |
++| 홈과 공통 토큰·라인 아이콘 유지 | YES |
++| 실패·잔액 부족은 짧은 인라인 문구 | YES |
++| 추가 입력·목표·통계 기능 없음 | YES |
++
++## 재현과 완료 경계
++
++```sh
++python3 -m http.server 4173 --bind 127.0.0.1
++# 별도 터미널에서
++node tests/verify-record.cjs
++node tests/verify-home.cjs
++node tests/verify-shell.cjs
++python3 tests/build-record-delivery.py
++```
++
++JavaScript 구문 검사도 통과했습니다. 정적 프로젝트이며 프레임워크 build/lint와 신규 런타임 의존성은 없습니다. 검증 환경 경로 override는 README를 따릅니다. 테스트 fixture는 계측 시작 전에 임시 context에만 주입하고 종료 시 폐기합니다.
++
++초기 검사에서 발견한 viewport 축소 시 Sheet 상한 문제와 WebKit radio 포커스 표시를 수정했고, 선택 chip 대비를 보완한 뒤 최종 소스로 전체 검사를 통과했습니다. 과거 증거 파일은 수정하지 않았습니다.
++
++**PW-WOORI-03 제출로 작업을 멈추고 검수를 기다립니다. 목표·리포트·전체 개발, 외부 게시·배포는 진행하지 않았습니다.**
++'''
++(root / 'docs/PW-WOORI-03.md').write_text(report_text)
++
++links = [
++    ('1. 변경 파일', 'changed-files.md'), ('2–5. 원본 schema·변경 필드·state 함수·쓰기 조건', '../../docs/PW-WOORI-03.md'),
++    ('17. 받은 돈 JSON diff', 'storage-in.diff'), ('17. 쓴 돈 JSON diff', 'storage-out.diff'),
++    ('19–22. 기록 검증 결과', 'verification.json'), ('20. 접근성 트리', 'accessibility-tree.txt'),
++    ('21–22. 홈 회귀 검증', 'home/verification.json'), ('21–22. Shell 회귀 검증', 'shell/verification.json'),
++    ('23. 전체 source diff', 'source.patch'), ('전체 해시', 'delivery.json'), ('홈·placeholder 시각 회귀', 'visual-regression.json'),
++]
++gallery = '''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PW-WOORI-03 검수 자료</title><style>
++*{box-sizing:border-box}body{margin:0;background:#f5f8fc;color:#20252b;font:16px/1.6 system-ui,sans-serif}main{max-width:1320px;margin:auto;padding:32px 20px}h1{font-size:28px}h2{font-size:18px}a{color:#0067ac}.links{display:flex;flex-wrap:wrap;gap:12px 24px;margin:24px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px}figure{margin:0;padding:16px;background:white;border:1px solid #dde5ee;border-radius:16px}img{display:block;max-width:100%;height:auto;margin:auto;border:1px solid #dde5ee}figcaption{margin-bottom:12px;font-weight:600}.note{color:#526170}code{overflow-wrap:anywhere}a:focus-visible{outline:2px solid #0075c8;outline-offset:3px}</style></head><body><main>'''
++gallery += f'<h1>PW-WOORI-03 · 기록 화면</h1><p>기록 {counts["record"]} + 홈 {counts["home"]} + Shell {counts["shell"]} = {sum(counts.values())}개 검증 묶음 PASS</p><p class="note">모든 캡처는 임시 브라우저 context의 fixture입니다. 사용자 저장소에 데이터를 주입하지 않았습니다. 이미지를 누르면 원본 크기로 열립니다.</p><nav class="links">'
++for label, href in links:
++    gallery += f'<a href="{html.escape(href)}">{html.escape(label)}</a>'
++gallery += '</nav><h2>요청한 화면과 오류 상태</h2><div class="grid">'
++for title, name in screens + extra_screens:
++    gallery += f'<figure><figcaption>{html.escape(title)}</figcaption><a href="screenshots/{name}.png"><img src="screenshots/{name}.png" alt="{html.escape(title)}" loading="lazy"></a></figure>'
++gallery += '</div><p class="note">실물 모바일 키보드·스크린리더 테스트는 미수행입니다. 여러 탭의 동시 localStorage 쓰기에 대한 원자적 트랜잭션을 보장하지 않습니다. 목표·리포트·전체는 placeholder이며 다음 슬라이스를 구현하지 않았습니다.</p></main></body></html>'
++(out / 'index.html').write_text(gallery)
++
++patch = ''
++for name in source_files:
++    original = root / 'preservation/PW-WOORI-03/originals' / (name + '.txt')
++    before = original.read_text() if original.exists() else ''
++    after = (root / name).read_text()
++    patch += ''.join(difflib.unified_diff(before.splitlines(True), after.splitlines(True), fromfile='a/' + name if original.exists() else '/dev/null', tofile='b/' + name))
++(out / 'source.patch').write_text(patch)
++files = {str(p.relative_to(root)): sha(p.read_bytes()) for p in root.rglob('*') if p.is_file() and '__pycache__' not in p.parts and p != out / 'delivery.json'}
++delivery = {'generatedAt': datetime.now(timezone.utc).isoformat(), 'status': 'PASS', 'checks': counts, 'sourceFiles': source_files, 'baselineFileCount': len(baseline['files']), 'preservedFiles': len(baseline['files']) - len(baseline['snapshots']), 'files': files, 'selfHashExcluded': True}
++(out / 'delivery.json').write_text(json.dumps(delivery, ensure_ascii=False, indent=2) + '\n')
++print(json.dumps({'status': 'PASS', 'checks': counts, 'sourceFiles': len(source_files), 'evidenceImages': len(record['screenshots']), 'hashedFiles': len(files)}, ensure_ascii=False))
+--- a/README.md
++++ b/README.md
+@@ -1,19 +1,29 @@
+ # PocketWON / 포켓WON
+ 
+-PW-WOORI-02: 승인된 Light 디자인 시스템과 App Shell 위에 읽기 전용 홈을 구현했습니다. 기록·목표·리포트·전체는 placeholder 상태를 유지합니다.
++PW-WOORI-03: 승인된 Light 디자인 시스템·홈 위에 기록 탭과 명시적 거래 저장을 구현했습니다. 목표·리포트·전체는 placeholder로 유지합니다. PW-WOORI-01/02 승인 이력을 바탕으로 이번 기록 슬라이스의 검수를 기다립니다.
+ 
+ ```sh
+ python3 -m http.server 4173 --bind 127.0.0.1
+ ```
+ 
+ - [실행 앱](http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html)
+-- [홈 검수 갤러리](http://127.0.0.1:4173/evidence/PW-WOORI-02/index.html)
+-- [홈 구현·검증·보존 보고서](docs/PW-WOORI-02.md)
+-- [홈 변경 파일](evidence/PW-WOORI-02/changed-files.md)
+-- [PW-WOORI-01 보고서](docs/PW-WOORI-01.md)
++- [기록 검수 갤러리 · 23개 제출 항목](http://127.0.0.1:4173/evidence/PW-WOORI-03/index.html)
++- [기록 구현·검증 보고서](docs/PW-WOORI-03.md)
++- [전체 소스 diff](evidence/PW-WOORI-03/source.patch)
++- [PW-WOORI-02 홈 보고서](docs/PW-WOORI-02.md)
++- [PW-WOORI-01 Shell 보고서](docs/PW-WOORI-01.md)
+ 
+-새 프레임워크나 앱 런타임 의존성 없이 정적 파일로 동작합니다. 원본 구현은 preservation 폴더의 비실행 텍스트로 보존되어 있으며 앱에서 사용하지 않습니다.
++새 프레임워크나 앱 런타임 의존성이 없는 정적 앱입니다. 원본 구현과 과거 검수 자료는 preservation/evidence 폴더에 보존합니다.
+ 
+-홈은 `pocketwon_demo_v1`만 읽으며 저장·삭제·초기화하지 않습니다. 저장소가 비었거나 읽을 수 없으면 빈 상태를 표시합니다. 검수 갤러리의 값은 격리된 테스트 context에 주입한 원본 데이터이며 실제 사용자 데이터가 아닙니다.
++저장은 사용자가 유효한 입력으로 **기록 저장 버튼을 직접 활성화했을 때만** `pocketwon_demo_v1`에 발생합니다. 진입·입력·닫기·탭 이동·reload는 쓰지 않습니다. 빈 저장소의 첫 받은 돈 기록은 0원 기준으로 시작하며, 손상된 기존 데이터는 덮어쓰지 않습니다. 홈은 재진입 시 최신 값을 읽습니다.
+ 
+-기존 개발 환경의 Playwright로 `node tests/verify-home.cjs`와 `node tests/verify-shell.cjs`를 실행합니다. 새 결과는 `evidence/PW-WOORI-02`에만 저장됩니다. PW-WOORI-01의 증거 파일은 유지합니다.
++캡처의 수치는 격리된 테스트 context의 원본 fixture·합성 데이터이며 실제 사용자 데이터가 아닙니다. 테스트는 기존 개발 환경의 Playwright를 사용하며 사용자 브라우저 프로필을 열지 않습니다.
++
++```sh
++node tests/verify-record.cjs
++node tests/verify-home.cjs
++node tests/verify-shell.cjs
++python3 tests/build-record-delivery.py
++```
++
++서버 실행 후 검증합니다. 새 결과는 PW-WOORI-03에만 저장됩니다. 기존 환경의 Chromium/WebKit 실행 경로를 사용하며 `PW_PLAYWRIGHT_MODULE`, `PW_CHROMIUM_EXECUTABLE`, `PW_WEBKIT_EXECUTABLE`, `PW_BASE_URL`로 재지정할 수 있습니다. `PW_BASE_URL`은 localhost/127.0.0.1만 허용합니다. 제출 생성기는 세 검증 결과가 모두 PASS인 경우에만 보고서·갤러리·diff·해시 명세를 생성합니다.
+--- /dev/null
++++ b/docs/PW-WOORI-03.md
+@@ -0,0 +1,199 @@
++# PW-WOORI-03 — 기록 화면 및 거래 저장 제출
++
++기록 탭과 명시적 저장을 구현했습니다. **기록 64개 + 홈 44개 + Shell 46개 = 154개 검증 묶음 PASS**입니다. Chromium 151.0.7922.34 / WebKit 26.5에서 검사했습니다.
++
++[23개 제출 항목 갤러리](../evidence/PW-WOORI-03/index.html) · [기계 판독 결과](../evidence/PW-WOORI-03/verification.json)
++
++PW-WOORI-01/02 승인된 디자인을 유지합니다. 이번 보고서의 캡처는 격리된 임시 context의 원본 fixture·합성 데이터이며 실제 사용자 잔액이나 사용자 브라우저 저장소를 나타내지 않습니다.
++
++## 1. 변경 파일 목록과 보존
++
++[변경 파일](../evidence/PW-WOORI-03/changed-files.md) · [전체 파일 해시](../evidence/PW-WOORI-03/delivery.json)
++
++활성 앱은 진입 HTML, state/app/icons 수정과 record.js/record.css 추가입니다. 닫기 아이콘 하나를 기존 라인 아이콘 집합에 추가했습니다. tests 3종과 제출 생성기, README, 본 보고서를 포함합니다.
++
++Git 저장소가 아니므로 구현 전 91개 파일의 SHA-256과 변경 대상 7개의 원본을 비실행 텍스트로 보존했습니다. 변경 허용 원본을 제외한 84개 파일은 바이트 동일합니다. tokens/base/shell/home 스타일과 home.js/tabs.js, PW-WOORI-01/02 증거를 그대로 유지했습니다.
++
++## 2. 기존 transaction schema 분석
++
++원본 근거: [보존 HTML](../preservation/PW-WOORI-01/original-index.html.txt)의 defaultState(1512행), txRow(1805행), CATS(1857행), 기록 저장(1971행 이후).
++
++```js
++{
++  type: 'in' | 'out',
++  amount: number,
++  category: string,
++  ts: string,
++  receipt: boolean,
++  memo?: string // 사용자 승인된 선택적 확장
++}
++```
++
++원본 거래에 ID·memo·date 필드는 없으며 날짜는 ts입니다. 초기 fixture는 timezone 없는 ISO 로컬 문자열이고 원본 저장은 `new Date().toISOString()`입니다. 새 기록도 저장 순간을 ISO UTC로 저장하고 로컬 시간으로 표시합니다. 카테고리는 받은 돈 `용돈` 1종, 쓴 돈 `간식/문구/게임/교통/기타` 5종입니다. 선물·보상·편의점 등 새 분류를 만들지 않았습니다.
++
++원본처럼 거래 배열 맨 앞에 추가하고 새 거래는 `receipt: false`입니다. memo는 Unicode code point 기준 최대 50자, 양끝 공백 제거 후 비어 있으면 필드를 생략합니다. 기존 거래·알 수 없는 추가 속성은 유지합니다.
++
++목록은 날짜가 모두 신뢰 가능하면 복사본을 최신순으로 정렬·그룹화합니다. 불명확한 날짜가 섞이면 저장 배열 순서를 유지하며 '날짜 확인 안 됨'으로 표시합니다. 원본 배열의 순서를 재저장하지 않습니다. 이전 연도의 날짜에는 연도를 함께 표시합니다. 잘못된 거래는 확인 불가 안내를 제공하고 저장을 막습니다.
++
++## 3. 받은 돈 / 쓴 돈 저장 변경 필드
++
++| 구분 | balance | monthly.saving | monthly.spending | transactions |
++|---|---|---|---|---|
++| 받은 돈 | +amount | +amount | 유지 | 새 in 거래를 앞에 추가 |
++| 쓴 돈 | −amount | 유지 | +amount | 새 out 거래를 앞에 추가 |
++
++원본의 monthly.saving은 받은 돈 누계로 유지하며 UI에 저축으로 노출하지 않습니다. monthly에 기간 식별자가 없어 월 초기화나 재계산을 하지 않습니다. habitScore·goal·monthly.goal·missions·points·recordedDays·streak 등은 변경하지 않습니다.
++
++| 검증 | 저장 전 | 저장 후 |
++|---|---|---|
++| A. 쓴 돈 3,500원 | balance 32,500 / spending 12,300 | balance **29,000** / spending **15,800** |
++| B. 받은 돈 10,000원 | balance 32,500 / saving 15,200 | balance **42,500** / saving **25,200** |
++| 홈 남은 돈 | saving − spending | A **−600원**, B **12,900원** |
++
++빈 키의 첫 유효 저장에만 `balance`, `monthly: {saving, spending}`, `transactions`를 생성합니다. 첫 기록 전에는 '확인 전'과 0원 시작 안내를 표시하며 데모 잔액·사용자·목표·점수를 채우지 않습니다. 0원 기준의 첫 지출은 잔액 부족으로 막습니다.
++
++## 4. 새 state 함수 구조
++
++| 함수 | 책임 |
++|---|---|
++| loadPocketWONState | loaded/empty/invalid/unavailable 구분, 읽기만 수행 |
++| createRecordViewModel | 잔액·최근 20개·유효성·날짜 표시, 순수 변환 |
++| validateRecordDraft | type/category/금액/메모/원본 상태/잔액/합산 범위 검증 |
++| applyTransaction | 검증 후 새 state/monthly/transactions 생성, 원본 불변 |
++| persistPocketWONState | 단일 setItem, saved/failed 반환 |
++
++record.js는 View·native dialog·입력·제출 순서를 담당하고 app.js는 View 생성·해제와 탭 이동을 관리합니다. home.js는 수정하지 않았습니다.
++
++## 5. localStorage write 조건
++
++유효한 입력으로 **기록 저장 버튼을 마우스·터치·키보드로 활성화**했을 때만 `pocketwon_demo_v1`에 한 번 씁니다. 입력 중 Enter는 저장하지 않습니다.
++
++제출 잠금 → 최신 storage 재조회 → 검증 → 새 상태 계산 → setItem → 성공 후에만 화면 갱신 순서입니다. 동일 Sheet의 연속 click/submit은 한 거래만 생성합니다. 입력·닫기·진입·tab 이동·reload는 쓰기 0회이며 theme/intro/무관 키는 읽거나 변경하지 않습니다.
++
++저장 실패에는 Sheet·입력·기존 화면·저장 문자열을 유지하고 지정 문구를 표시합니다. 재시도는 최신 값을 다시 읽습니다. 손상·누락 상태 자동 복구나 마이그레이션은 없습니다. 받은 돈의 balance/saving 합산과 쓴 돈의 spending 합산도 safe integer를 확인합니다.
++
++저장 직전 다른 상태로 변경된 경우와 키 삭제·읽기 오류를 실제 브라우저에서 검증했습니다. localStorage는 여러 탭에 대한 원자적 트랜잭션을 제공하지 않으므로 동시 탭 간 무손실 저장까지 보장하지 않습니다.
++
++## 6. 기록 기본 화면 360×844
++
++![6. 기록 기본 화면 360×844](../evidence/PW-WOORI-03/screenshots/360x844-record.png)
++
++## 7. 기록 기본 화면 390×844
++
++![7. 기록 기본 화면 390×844](../evidence/PW-WOORI-03/screenshots/390x844-record.png)
++
++## 8. 기록 기본 화면 430×844
++
++![8. 기록 기본 화면 430×844](../evidence/PW-WOORI-03/screenshots/430x844-record.png)
++
++## 9. 새 기록 Sheet — 받은 돈
++
++![9. 새 기록 Sheet — 받은 돈](../evidence/PW-WOORI-03/screenshots/sheet-received.png)
++
++## 10. 새 기록 Sheet — 쓴 돈
++
++![10. 새 기록 Sheet — 쓴 돈](../evidence/PW-WOORI-03/screenshots/sheet-spent.png)
++
++## 11. 카테고리 wrapping — root 200%
++
++![11. 카테고리 wrapping — root 200%](../evidence/PW-WOORI-03/screenshots/category-wrapping.png)
++
++## 12. 금액 validation 오류
++
++![12. 금액 validation 오류](../evidence/PW-WOORI-03/screenshots/validation-error.png)
++
++## 13. 잔액 부족
++
++![13. 잔액 부족](../evidence/PW-WOORI-03/screenshots/insufficient-balance.png)
++
++## 14. storage write failure
++
++![14. storage write failure](../evidence/PW-WOORI-03/screenshots/storage-write-failure.png)
++
++## 15. 빈 거래 목록
++
++![15. 빈 거래 목록](../evidence/PW-WOORI-03/screenshots/empty-transactions.png)
++
++## 16. 최근 기록 다수 — 20개 제한
++
++![16. 최근 기록 다수 — 20개 제한](../evidence/PW-WOORI-03/screenshots/many-transactions.png)
++
++## 17. 저장 전/후 storage JSON diff
++
++- [받은 돈 JSON](../evidence/PW-WOORI-03/storage-in.json) · [받은 돈 diff](../evidence/PW-WOORI-03/storage-in.diff)
++- [쓴 돈 JSON](../evidence/PW-WOORI-03/storage-out.json) · [쓴 돈 diff](../evidence/PW-WOORI-03/storage-out.diff)
++
++JSON diff는 격리 fixture의 저장 전후 구조를 읽기 좋게 정렬하지 않고 들여쓰기한 비교입니다. 실제 브라우저 검증은 실패·금지 경로에서 원래 저장 문자열의 동일성을 별도로 확인합니다. 타 키 문자열과 기존 거래, 비대상 필드의 동일성도 확인합니다.
++
++## 18. 저장 후 홈 갱신 화면
++
++![지출 후 홈](../evidence/PW-WOORI-03/screenshots/home-after-out.png)
++
++![입금 후 홈](../evidence/PW-WOORI-03/screenshots/home-after-in.png)
++
++홈 재진입 시 로더를 다시 호출하는 기존 구조를 유지했습니다. balance·받은 돈·쓴 돈·남은 돈 네 값의 DOM·접근성 이름을 검사했습니다. 홈 디자인·레이아웃·문구는 변경하지 않았습니다. [시각 회귀 비교](../evidence/PW-WOORI-03/visual-regression.json)에서 360/390px 홈은 픽셀 동일, 430px은 카드 테두리의 19픽셀에서 채널값 최대 1 차이만 관찰됐습니다. 430px 이미지가 바이트 동일하다고 주장하지 않습니다. 세 placeholder의 3개 폭 이미지 9개는 바이트 동일합니다.
++
++## 19. reload persistence 검증
++
++![입금 reload 후 기록](../evidence/PW-WOORI-03/screenshots/reload-in.png)
++
++두 거래 유형 모두 저장 문자열과 새 거래가 reload 후 유지됩니다. reload는 홈으로 돌아가는 기존 동작을 유지하고 기록 탭에 재진입해 확인했습니다. reload 이후 저장 호출은 0회입니다.
++
++## 20. keyboard / accessibility / 반응형
++
++[접근성 트리](../evidence/PW-WOORI-03/accessibility-tree.txt)
++
++- native modal dialog 이름·제목, native radio fieldset/legend, label/input 연결, 오류 aria-describedby·aria-invalid, 저장 실패 role=alert, 성공 role=status.
++- 첫 의미 있는 type control 포커스, radio Space/방향키, Tab·Shift+Tab 포커스 제한, Escape·닫기 후 CTA 포커스 복귀를 양 브라우저에서 확인했습니다.
++- WebKit은 native radio 방향키 이동 후 `:focus-visible`을 생략하는 경우가 있어 라디오 `:focus` 자체에도 2px 테두리를 표시합니다. 실제 활성 요소와 테두리의 굵기·스타일을 검사했습니다.
++- 360/390/430×844, 360×640 및 각 root 200%에서 기본 화면·Sheet를 검사했습니다. 최소 48px 상당 터치 영역, 내부 스크롤, 칩 wrapping, 긴 금액, nav 간섭·가로 overflow를 검사했습니다.
++- 47px 상단/34px 하단/24px 좌우 safe area 주입, 360×440 키보드 높이 모사도 통과했습니다. Sheet 높이는 현재 dvh와 visualViewport 중 작은 높이로 제한합니다. 하단 safe area는 footer에서 한 번만 적용합니다.
++- 선택 chip은 기존 primary-hover 색을 사용해 primary-soft 배경과 충분한 대비를 확보합니다. 측정한 Sheet 텍스트 최소 대비는 **4.796:1**이며 기본 화면 텍스트도 4.5:1 이상입니다. 금융 의미 색은 금액에만 사용하고 +/- 및 접근성 이름을 제공합니다.
++
++실물 iPhone/Android 키보드·스크린리더 실기기 검증 및 axe 감사는 수행하지 않았습니다. visual viewport·키보드 검증은 브라우저 resize 모사와 DOM/키보드 검사 범위입니다. '10초 기록'은 항목 수와 흐름에 대한 자체 검수이며 어린이 사용자 대상 시간 측정을 주장하지 않습니다.
++
++## 21. console / page error
++
++최종 기록·홈·Shell 검증 전체 **0건**입니다. [기록 결과](../evidence/PW-WOORI-03/verification.json), [홈 결과](../evidence/PW-WOORI-03/home/verification.json), [Shell 결과](../evidence/PW-WOORI-03/shell/verification.json)를 제공합니다.
++
++## 22. failed resource 요청
++
++requestfailed와 HTTP 4xx/5xx **0건**입니다. 기존 Pretendard CDN만 유지하며 SDK를 재활성화하지 않았습니다. 테스트는 기존 로컬 Chromium/WebKit을 사용했습니다.
++
++## 23. 전체 source diff
++
++[소스·테스트·문서 전체 diff](../evidence/PW-WOORI-03/source.patch)
++
++진입 HTML, 활성 JS/CSS, 검사 코드와 제출 생성기, README와 본 보고서의 변경을 구현 전 원본과 비교합니다. 생성 이미지·검증 결과·보존 사본은 source diff와 구분하고 delivery.json에 해시로 기록합니다.
++
++## 시각 품질 자체 점검
++
++| 항목 | 판정 |
++|---|---|
++| 우리WON 계열의 차분한 White/pale blue | YES |
++| 빽빽한 가계부·불필요한 설정 없음 | YES |
++| 새 기록 추가가 유일한 기본 화면 primary CTA | YES |
++| 금액 입력 영역의 숫자가 가장 강한 위계 | YES |
++| 카테고리 무지개색 없음 | YES |
++| 받은/쓴 돈·금액·종류·선택 메모의 짧은 기록 흐름 | YES |
++| 최근 기록의 명확한 숫자·+/− | YES |
++| 홈과 공통 토큰·라인 아이콘 유지 | YES |
++| 실패·잔액 부족은 짧은 인라인 문구 | YES |
++| 추가 입력·목표·통계 기능 없음 | YES |
++
++## 재현과 완료 경계
++
++```sh
++python3 -m http.server 4173 --bind 127.0.0.1
++# 별도 터미널에서
++node tests/verify-record.cjs
++node tests/verify-home.cjs
++node tests/verify-shell.cjs
++python3 tests/build-record-delivery.py
++```
++
++JavaScript 구문 검사도 통과했습니다. 정적 프로젝트이며 프레임워크 build/lint와 신규 런타임 의존성은 없습니다. 검증 환경 경로 override는 README를 따릅니다. 테스트 fixture는 계측 시작 전에 임시 context에만 주입하고 종료 시 폐기합니다.
++
++초기 검사에서 발견한 viewport 축소 시 Sheet 상한 문제와 WebKit radio 포커스 표시를 수정했고, 선택 chip 대비를 보완한 뒤 최종 소스로 전체 검사를 통과했습니다. 과거 증거 파일은 수정하지 않았습니다.
++
++**PW-WOORI-03 제출로 작업을 멈추고 검수를 기다립니다. 목표·리포트·전체 개발, 외부 게시·배포는 진행하지 않았습니다.**

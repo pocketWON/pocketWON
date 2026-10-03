@@ -1,0 +1,25 @@
+{
+  "captured_at": "2026-09-10T13:00:38.488138+00:00",
+  "entrypoint": "ks6s3juocjzc2.kimi.page/index.html",
+  "original_sha256": "24405c1c583da11d362f82b067add7fb7c62e152cba55f44d331f161b62314ba",
+  "snapshot": "preservation/PW-WOORI-01/original-index.html.txt",
+  "files": {
+    "_DataURI/data.image.png.ebb931481abfa.txt": "0f78f0b367e9c2b81e741a1158b665787964c2caa12e9dacf8fdf43fcd1c82dc",
+    "cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css": "22b1d31c802edb3143db19f5b567bf1beca11950d4da83c54aa0dd659c89e9d3",
+    "cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css": "5c8665a842510cbc592e3850d8ae03d7e15f615a0dfe7ac2757b3aa146572ee9",
+    "cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/variable/woff2-dynamic-subset/PretendardVariable.subset.75.woff2": "07f0ddae65c844dfe5d294087749e19b05e95cfd904b20df3501b040f1a5f61e",
+    "cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/variable/woff2-dynamic-subset/PretendardVariable.subset.78.woff2": "67f065415552e8c66da5e60fc67a891ec1ba74bfb9370078261bbf9a718a182f",
+    "cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/variable/woff2-dynamic-subset/PretendardVariable.subset.83.woff2": "f8f1fe652aaf3c759d78f37e48afe1c58c1d335e9261c5be2a2d90ff5bbfb9cc",
+    "cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/variable/woff2-dynamic-subset/PretendardVariable.subset.84.woff2": "d28ace2d199ca5c6304a6191f4233e28ddb225d341d6e0b41db040e9447c2cc9",
+    "cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/variable/woff2-dynamic-subset/PretendardVariable.subset.85.woff2": "757b9fc85ad85a1024fcacc04a9b688ace2db7af393e9ddc3b5dd2ba605b5a9b",
+    "cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/variable/woff2-dynamic-subset/PretendardVariable.subset.87.woff2": "04ca8277cfe3d27235573956255b0211575504cb695cdeab644c583df774e257",
+    "cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/variable/woff2-dynamic-subset/PretendardVariable.subset.88.woff2": "192abc4c6ad933f53d809d8a46ee6237ae71e766bf66199fdce4678841fe12d7",
+    "cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/variable/woff2-dynamic-subset/PretendardVariable.subset.89.woff2": "44634e793e0d50fcdf803a2ad513d8bf0482d9adccbbd4ef534325cae9b2ee01",
+    "cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/variable/woff2-dynamic-subset/PretendardVariable.subset.90.woff2": "ed2d605d80cbe4f2c1df801852f7a1d8ad5e1a4972b26d8fee93427317f32f09",
+    "cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/variable/woff2-dynamic-subset/PretendardVariable.subset.91.woff2": "fc9fcd1bea9c8f43f97136a1e89bfa6e34db85f820f86538288647b4c24c5b06",
+    "cdn.jsdelivr.net/sm/jsdelivr-header.css": "5ebfab6c5b345fb74ac2943e2666c9f76c37a6ff7d792bf3c96ca45cc76dda4b",
+    "ks6s3juocjzc2.kimi.page/index.html": "24405c1c583da11d362f82b067add7fb7c62e152cba55f44d331f161b62314ba",
+    "statics.kimi.ai/sdk/publish.BVfeTG34.min.js": "affaaa7a56bf831069b01341bf60042313c8af2f36b0a43b911c098748604abf",
+    "www.kimi.com/sdk-seed.js": "90872de1fa3908e9d855f09a8f647177c18bc0d5b15a69b2ebe03b73c9ea6168"
+  }
+}

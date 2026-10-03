@@ -1,0 +1,11 @@
+--- before/pocketwon_demo_v1
++++ after/pocketwon_demo_v1
+@@ -10,7 +10,7 @@
+     "goal": 100000
+   },
+   "goal": {
+-    "title": "새 자전거",
++    "title": "나의 자전거",
+     "current": 42000,
+     "target": 100000,
+     "daysLeft": 12

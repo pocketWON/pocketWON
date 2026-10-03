@@ -1,0 +1,53 @@
+/* Legacy business data is read-only. Unknown values are never replaced with demo data. */
+function loadPocketWONState(storageProvider = () => window.localStorage) {
+  let raw;
+  try {
+    raw = storageProvider().getItem('pocketwon_demo_v1');
+  } catch (_) {
+    return { status: 'unavailable', state: null };
+  }
+  if (raw === null) return { status: 'empty', state: null };
+  try {
+    const state = JSON.parse(raw);
+    if (!state || typeof state !== 'object' || Array.isArray(state)) {
+      return { status: 'invalid', state: null };
+    }
+    return { status: 'loaded', state };
+  } catch (_) {
+    return { status: 'invalid', state: null };
+  }
+}
+
+function createHomeViewModel(state) {
+  const object = value => value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+  const money = value => Number.isSafeInteger(value) && value >= 0 ? value : null;
+  const text = value => typeof value === 'string' ? value.trim() : '';
+  const source = object(state);
+  const name = text(object(source.user).name);
+  const monthly = object(source.monthly);
+  const received = money(monthly.saving);
+  const spent = money(monthly.spending);
+  const score = typeof source.habitScore === 'number' && Number.isFinite(source.habitScore)
+    && source.habitScore >= 0 && source.habitScore <= 100 ? source.habitScore : null;
+  const storedGoal = object(source.goal);
+  const title = text(storedGoal.title);
+  const target = money(storedGoal.target);
+  const current = money(storedGoal.current);
+  let goal = { status: source.goal == null ? 'empty' : 'invalid' };
+  if (title && target !== null && target > 0 && current !== null) {
+    goal = {
+      status: current >= target ? 'complete' : 'active', title, target, current,
+      percent: Math.max(0, Math.min(100, Math.round(current / target * 100))),
+    };
+  }
+  // The preserved missions array has weekday flags, but no date or week identity.
+  // It cannot establish a mission for today. Do not infer completion from it.
+  return {
+    greeting: { name },
+    balance: money(source.balance),
+    monthly: { received, spent, remaining: received !== null && spent !== null ? received - spent : null, period: 'unknown' },
+    habit: { score },
+    goal,
+    mission: { status: 'unavailable' },
+  };
+}

@@ -1,0 +1,18 @@
+{
+  "id": "appgdep_6aa39d83480081918cab50cac8352507",
+  "project_id": "appgprj_6aa39d0030a0819184664d4bd991b0d5",
+  "title": "포켓WON",
+  "version_id": "appgprj_6aa39d0030a0819184664d4bd991b0d5~appgver_4dd8ce235e44819186ba2725ee4a4c8b",
+  "type": "publish",
+  "status": "succeeded",
+  "url": "https://pocketwon-woori.gimjeonghugimk.chatgpt.site",
+  "screenshot_asset_pointer": null,
+  "provider_deployment_id": "site---6aa39d0030a0819184664d4bd991b0d5",
+  "failure_message": null,
+  "env_set_revision": 0,
+  "updated_at": "2026-09-11T06:20:00.358442+00:00",
+  "access_mode": "public",
+  "commit_sha": "151a2c20fe8415a750586156d0b8eb958023910a",
+  "appFilesByteIdentical": 16,
+  "archiveNote": "macOS AppleDouble metadata is excluded from the connector's 17-file deployment archive."
+}

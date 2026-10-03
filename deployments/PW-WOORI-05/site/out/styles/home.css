@@ -1,0 +1,77 @@
+/* Home presentation uses the approved PW-WOORI-01 tokens unchanged. */
+.pw-home {
+  padding: var(--pw-space-6) max(var(--pw-shell-gutter), var(--pw-safe-right)) var(--pw-space-10) max(var(--pw-shell-gutter), var(--pw-safe-left));
+  display: flex; flex-direction: column; gap: var(--pw-space-8);
+  container-type: inline-size; overflow-wrap: anywhere;
+}
+.pw-home-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+.pw-home-intro { display: grid; gap: var(--pw-space-1); }
+.pw-home-greeting { font: var(--pw-type-h3); }
+.pw-home-muted, .pw-home-period { color: var(--pw-color-text-secondary); }
+.pw-home-hero { padding: var(--pw-space-6) var(--pw-space-5); }
+.pw-home-hero h2 { font: var(--pw-type-body); font-weight: var(--pw-weight-semibold); }
+.pw-home-hero > .pw-home-money { margin-top: var(--pw-space-3); margin-bottom: var(--pw-space-2); }
+.pw-home-primary { width: 100%; margin-top: var(--pw-space-6); }
+.pw-home-money { min-width: 0; font-variant-numeric: tabular-nums; }
+.pw-home-money-display { display: inline-flex; align-items: baseline; gap: 0.125em; white-space: nowrap; }
+.pw-home-money-digits { font: var(--pw-type-h3); font-weight: var(--pw-weight-bold); }
+.pw-home-money-unit { font: var(--pw-type-caption); }
+.pw-home-money--large .pw-home-money-digits { font: var(--pw-type-number-large); }
+.pw-home-money--large .pw-home-money-unit { font: var(--pw-type-h3); }
+.pw-home-money--small .pw-home-money-digits { font: var(--pw-type-body); font-weight: var(--pw-weight-semibold); }
+.pw-home-money-exact { display: block; margin-top: var(--pw-space-1); color: var(--pw-color-text-secondary); font: var(--pw-type-caption); overflow-wrap: anywhere; }
+.pw-home-money-exact[hidden] { display: none; }
+.pw-home-money--compact .pw-home-money-exact::before { content: '정확한 금액 '; }
+.pw-home-money--compact::before { content: '약'; display: block; font: var(--pw-type-caption); color: var(--pw-color-text-secondary); }
+.pw-home-unknown { font: var(--pw-type-body-small); color: var(--pw-color-text-secondary); }
+.pw-home-hero > .pw-home-unknown { margin-block: var(--pw-space-5); font: var(--pw-type-h3); }
+.pw-home dl, .pw-home dd { margin: 0; }
+.pw-home .pw-home-hero-meta { display: grid; gap: var(--pw-space-2); border-top: var(--pw-border-width) solid var(--pw-color-divider); padding-top: var(--pw-space-4); margin-top: var(--pw-space-6); }
+.pw-home-hero-meta > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: var(--pw-space-3); align-items: baseline; }
+.pw-home-hero-meta dt { font: var(--pw-type-body-small); color: var(--pw-color-text-secondary); }
+.pw-home-hero-meta dd { text-align: right; min-width: 0; }
+.pw-home-period { margin-top: var(--pw-space-2); }
+.pw-home-flow > p:first-of-type { margin-top: var(--pw-space-2); }
+.pw-home-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding-block: var(--pw-space-5); }
+.pw-home-metric { min-width: 0; padding-inline: var(--pw-space-3); }
+.pw-home-metric:first-child { padding-left: 0; }
+.pw-home-metric:last-child { padding-right: 0; }
+.pw-home-metric + .pw-home-metric { border-left: var(--pw-border-width) solid var(--pw-color-divider); }
+.pw-home-metric dd { margin-top: var(--pw-space-2); }
+.pw-home-habit > .pw-home-muted:first-of-type { margin-top: var(--pw-space-5); }
+.pw-home-score { font: var(--pw-type-number-medium); font-variant-numeric: tabular-nums; margin-top: var(--pw-space-1); }
+.pw-home-score span { margin-left: var(--pw-space-1); font: var(--pw-type-body); }
+.pw-home-progress { height: var(--pw-space-2); background: var(--pw-color-primary-soft); border-radius: var(--pw-radius-control); overflow: hidden; margin-top: var(--pw-space-4); }
+.pw-home-progress-fill { display: block; height: 100%; border-radius: inherit; background: var(--pw-color-primary); }
+.pw-home-habit .pw-home-progress + p { margin-top: var(--pw-space-3); }
+.pw-home-action {
+  display: inline-flex; align-items: center; justify-content: space-between; gap: var(--pw-space-3);
+  min-height: var(--pw-touch-target); min-width: var(--pw-touch-target); max-width: 100%;
+  background: transparent; border: 0; border-radius: var(--pw-radius-control); padding: var(--pw-space-2) 0;
+  color: var(--pw-color-primary); font: var(--pw-type-body-small); font-weight: var(--pw-weight-semibold);
+  margin-top: var(--pw-space-3); text-align: left; overflow-wrap: anywhere;
+}
+.pw-home-action:hover { color: var(--pw-color-primary-hover); }
+.pw-home-action:active { color: var(--pw-color-primary-pressed); }
+.pw-home-chevron { font-size: 1.25em; }
+.pw-home-goal-name { margin-top: var(--pw-space-5); font: var(--pw-type-body); font-weight: var(--pw-weight-semibold); }
+.pw-home-goal-totals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--pw-space-3); margin-top: var(--pw-space-4); }
+.pw-home-goal-totals > div { min-width: 0; }
+.pw-home-goal-totals .pw-home-money { margin-top: var(--pw-space-1); }
+.pw-home-percent { text-align: right; margin-top: var(--pw-space-2); font: var(--pw-type-body-small); color: var(--pw-color-primary); font-weight: var(--pw-weight-semibold); }
+.pw-home-empty { margin-top: var(--pw-space-5); font: var(--pw-type-body); }
+.pw-home-empty + .pw-home-muted { margin-top: var(--pw-space-2); }
+.pw-home-mission { border-top: var(--pw-border-width) solid var(--pw-color-divider); padding-top: var(--pw-space-6); }
+.pw-home-mission-body { display: flex; align-items: center; gap: var(--pw-space-3); margin-top: var(--pw-space-4); }
+.pw-home-mission-icon { display: flex; align-items: center; justify-content: center; flex: 0 0 auto; padding: var(--pw-space-2); background: var(--pw-color-primary-soft); color: var(--pw-color-primary); border-radius: var(--pw-radius-control); }
+@container (max-width: 18rem) {
+  .pw-home-metrics { grid-template-columns: minmax(0, 1fr); gap: var(--pw-space-4); }
+  .pw-home-metric { padding: 0; }
+  .pw-home-metric + .pw-home-metric { border-left: 0; border-top: var(--pw-border-width) solid var(--pw-color-divider); padding-top: var(--pw-space-4); }
+  .pw-home-hero-meta > div, .pw-home-goal-totals { grid-template-columns: minmax(0, 1fr); }
+  .pw-home-hero-meta dd { text-align: left; }
+  .pw-home-mission-body { align-items: flex-start; }
+}

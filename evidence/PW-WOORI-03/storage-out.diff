@@ -1,0 +1,30 @@
+--- before/pocketwon_demo_v1
++++ after/pocketwon_demo_v1
+@@ -2,10 +2,10 @@
+   "user": {
+     "name": "민준"
+   },
+-  "balance": 32500,
++  "balance": 29000,
+   "habitScore": 82,
+   "monthly": {
+-    "spending": 12300,
++    "spending": 15800,
+     "saving": 15200,
+     "goal": 45000
+   },
+@@ -18,6 +18,14 @@
+   "streak": 7,
+   "points": 1250,
+   "transactions": [
++    {
++      "type": "out",
++      "amount": 3500,
++      "category": "간식",
++      "ts": "2026-09-10T23:52:01.723Z",
++      "receipt": false,
++      "memo": "학교 끝나고 간식"
++    },
+     {
+       "type": "out",
+       "amount": 3500,

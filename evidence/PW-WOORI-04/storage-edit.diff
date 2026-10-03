@@ -1,0 +1,17 @@
+--- before/pocketwon_demo_v1
++++ after/pocketwon_demo_v1
+@@ -7,12 +7,12 @@
+   "monthly": {
+     "spending": 12300,
+     "saving": 15200,
+-    "goal": 100000
++    "goal": 120000
+   },
+   "goal": {
+     "title": "새 자전거",
+     "current": 42000,
+-    "target": 100000,
++    "target": 120000,
+     "daysLeft": 12
+   },
+   "streak": 7,

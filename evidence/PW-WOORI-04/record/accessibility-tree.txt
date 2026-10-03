@@ -1,0 +1,23 @@
+- dialog "돈 기록하기":
+  - heading "돈 기록하기" [level=2]
+  - button "돈 기록하기 닫기"
+  - group "어떤 돈인가요?":
+    - text: 어떤 돈인가요?
+    - radio "받은 돈" [checked]
+    - text: 받은 돈
+    - radio "쓴 돈"
+    - text: 쓴 돈
+  - text: 얼마인가요?
+  - textbox "얼마인가요?":
+    - /placeholder: 숫자로 입력
+    - text: "10000"
+  - paragraph: 원 단위로 숫자만 입력해주세요.
+  - group "어떤 돈이었나요?":
+    - text: 어떤 돈이었나요?
+    - radio "용돈" [checked]
+    - text: 용돈
+  - text: 메모선택
+  - textbox "메모선택":
+    - /placeholder: "예: 학교 끝나고 간식"
+  - paragraph: 50자까지 적을 수 있어요.
+  - button "기록 저장"

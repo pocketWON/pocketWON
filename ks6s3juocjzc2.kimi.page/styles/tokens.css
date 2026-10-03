@@ -1,0 +1,112 @@
+/* PocketWON × Woori · PW-WOORI-01 · Light only.
+ * Official CI: https://spot.wooribank.com/pot/Dream?withyou=BPBKI0056
+ * App mappings are PocketWON decisions, not official Woori app tokens.
+ */
+:root {
+  color-scheme: light;
+  /* 1. Primitive: keep official CI separate from application values. */
+  --pw-ci-deep-blue: #0067AC;
+  --pw-ci-blue: #0083CA;
+  --pw-ci-light-blue: #20C4F4;
+  --pw-ci-white: #FFFFFF;
+  --pw-palette-white: #FFFFFF;
+  --pw-palette-background: #F5F8FC;
+  --pw-palette-neutral-50: #F7F9FC;
+  --pw-palette-blue-50: #F1F7FC;
+  --pw-palette-blue-100: #E8F3FF;
+  --pw-palette-blue-600: #0075C8;
+  --pw-palette-blue-700: #0067AC;
+  --pw-palette-blue-800: #005B98;
+  --pw-palette-ink-900: #20252B;
+  --pw-palette-ink-700: #526170;
+  --pw-palette-ink-600: #637180;
+  --pw-palette-neutral-200: #DDE5EE;
+  --pw-palette-neutral-100: #E7EDF2;
+  --pw-palette-green-700: #157F61;
+  --pw-palette-amber-700: #946000;
+  --pw-palette-red-700: #C73744;
+  --pw-space-0: 0;
+  --pw-space-1: 0.25rem;
+  --pw-space-2: 0.5rem;
+  --pw-space-3: 0.75rem;
+  --pw-space-4: 1rem;
+  --pw-space-5: 1.25rem;
+  --pw-space-6: 1.5rem;
+  --pw-space-8: 2rem;
+  --pw-space-10: 2.5rem;
+  --pw-space-12: 3rem;
+  --pw-space-16: 4rem;
+  --pw-radius-control: 0.5rem;
+  --pw-radius-button: 0.75rem;
+  --pw-radius-card: 1.25rem;
+  --pw-radius-hero: 1.5rem;
+  --pw-shadow-none: none;
+  --pw-border-width: 1px;
+  --pw-focus-width: 2px;
+  --pw-focus-offset: 2px;
+  --pw-font-family: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  --pw-weight-regular: 400;
+  --pw-weight-medium: 500;
+  --pw-weight-semibold: 600;
+  --pw-weight-bold: 700;
+
+  /* 2. Semantic colors. */
+  --pw-color-background: var(--pw-palette-background);
+  --pw-color-surface: var(--pw-palette-white);
+  --pw-color-surface-subtle: var(--pw-palette-neutral-50);
+  --pw-color-surface-blue: var(--pw-palette-blue-50);
+  --pw-color-primary: var(--pw-palette-blue-600);
+  --pw-color-primary-hover: var(--pw-palette-blue-700);
+  --pw-color-primary-pressed: var(--pw-palette-blue-800);
+  --pw-color-primary-soft: var(--pw-palette-blue-100);
+  --pw-color-on-primary: var(--pw-palette-white);
+  --pw-color-text-primary: var(--pw-palette-ink-900);
+  --pw-color-text-secondary: var(--pw-palette-ink-700);
+  --pw-color-text-tertiary: var(--pw-palette-ink-600);
+  --pw-color-border: var(--pw-palette-neutral-200);
+  --pw-color-divider: var(--pw-palette-neutral-100);
+  --pw-color-success: var(--pw-palette-green-700);
+  --pw-color-warning: var(--pw-palette-amber-700);
+  --pw-color-danger: var(--pw-palette-red-700);
+  --pw-color-finance-positive: var(--pw-palette-green-700);
+  --pw-color-finance-negative: var(--pw-palette-red-700);
+  --pw-color-focus: var(--pw-color-primary);
+  --pw-type-display: var(--pw-weight-bold) 2.25rem/2.75rem var(--pw-font-family);
+  --pw-type-h1: var(--pw-weight-bold) 1.75rem/2.25rem var(--pw-font-family);
+  --pw-type-h2: var(--pw-weight-bold) 1.5rem/2rem var(--pw-font-family);
+  --pw-type-h3: var(--pw-weight-semibold) 1.25rem/1.75rem var(--pw-font-family);
+  --pw-type-body: var(--pw-weight-regular) 1rem/1.5rem var(--pw-font-family);
+  --pw-type-body-small: var(--pw-weight-regular) 0.875rem/1.25rem var(--pw-font-family);
+  --pw-type-caption: var(--pw-weight-medium) 0.75rem/1.125rem var(--pw-font-family);
+  --pw-type-number-large: var(--pw-weight-bold) 2.5rem/3rem var(--pw-font-family);
+  --pw-type-number-medium: var(--pw-weight-bold) 1.75rem/2.25rem var(--pw-font-family);
+  --pw-type-button: var(--pw-weight-semibold) 1rem/1.5rem var(--pw-font-family);
+
+  /* 3. Component aliases and layout. */
+  --pw-button-background: var(--pw-color-primary);
+  --pw-button-foreground: var(--pw-color-on-primary);
+  --pw-button-hover: var(--pw-color-primary-hover);
+  --pw-button-pressed: var(--pw-color-primary-pressed);
+  --pw-button-disabled-background: var(--pw-color-divider);
+  --pw-button-disabled-foreground: var(--pw-color-text-tertiary);
+  --pw-button-radius: var(--pw-radius-button);
+  --pw-touch-target: var(--pw-space-12);
+  --pw-icon-size: var(--pw-space-6);
+  --pw-surface-background: var(--pw-color-surface);
+  --pw-surface-border: var(--pw-color-border);
+  --pw-surface-radius: var(--pw-radius-card);
+  --pw-surface-padding: var(--pw-space-5);
+  --pw-shell-max-width: 430px;
+  --pw-shell-background: var(--pw-color-background);
+  --pw-shell-gutter: var(--pw-space-5);
+  --pw-header-height: 3.5rem;
+  --pw-header-background: var(--pw-color-surface);
+  --pw-nav-height: 4.5rem;
+  --pw-nav-background: var(--pw-color-surface);
+  --pw-nav-active: var(--pw-color-primary);
+  --pw-nav-inactive: var(--pw-color-text-tertiary);
+  --pw-safe-top: env(safe-area-inset-top, 0px);
+  --pw-safe-right: env(safe-area-inset-right, 0px);
+  --pw-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --pw-safe-left: env(safe-area-inset-left, 0px);
+}
