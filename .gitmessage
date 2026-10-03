@@ -1,0 +1,10 @@
+
+# <type>(<scope>): <subject>   ← 50자 이내, 마침표 없이
+#
+# <body>   ← 무엇을, 왜 바꿨는지 (72자 줄바꿈)
+#
+# <footer> ← BREAKING CHANGE: ... / Closes #12
+#
+# type: feat | fix | docs | style | refactor | perf | test | build | ci | chore | revert
+# scope 예: home, record, goal, report, all, shell, state, sprites, tests, deploy
+# 자세한 내용: COMMIT_CONVENTION.md
