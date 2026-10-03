@@ -1,0 +1,24 @@
+{
+  "profile": "success",
+  "frame": "crouch",
+  "tool": "built-in image_gen",
+  "prompt": "Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is the immutable identity/camera/scale reference; input 2 (when provided) is the previous sequential frame to edit. Keep all artwork from the previous frame except the specifically requested pose/expression. Exact same white bean/wallet body, asymmetrical folded top, big dark oval eyes, eye spacing, navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and same canvas coordinates. Frame canvas square: artwork has the same framing as reference; grounded feet center is (50%,82%) of canvas, head approximately y=27%, body width about46% ofcanvas. Single flat 2D editorial line-art character only; no UI, text, letters, numbers, real graphs, background, shadows, extra effects, border or panels. True transparent alpha background, opaque white body. Keep transparent margins. Do not zoom, crop, recenter or change proportions. Props may be pale blue; coins small muted gold. Preserve identity over posing. SUCCESS ANTICIPATION: no wallet or props. Bend knees and crouch subtly with body squashabout5percent, feet fixed on sameground. Pull both little arms down and out ready to raise them. Happy focused closedmouth. Keep character identity and ground anchor.\n",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/success/neutral.png"
+  ],
+  "raw": "sprite-source/raw/success/crouch.png",
+  "source": "sprite-source/frames/success/crouch.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "88ab3899447000a98a0ba29c3426aa85d1b976710f1eb5b4cd8002a5fd396144",
+  "sourceSha256": "fc7ec7ecc53f37792f5a41c43fdda0a7a58ef1eb9a5a96053fea3c9b7f248e61"
+}

@@ -1,0 +1,115 @@
+{
+  "events": [
+    {
+      "event": "animationstart",
+      "time": 361,
+      "profile": "balance",
+      "clip": "action"
+    },
+    {
+      "event": "animationend",
+      "time": 1145.4000000059605,
+      "profile": "balance",
+      "clip": "action"
+    },
+    {
+      "event": "animationstart",
+      "time": 3515.2999999821186,
+      "profile": "balance",
+      "clip": "idle"
+    },
+    {
+      "event": "animationend",
+      "time": 4512,
+      "profile": "balance",
+      "clip": "idle"
+    },
+    {
+      "event": "animationstart",
+      "time": 4528,
+      "profile": "report",
+      "clip": "idle"
+    },
+    {
+      "event": "animationend",
+      "time": 5528.5999999940395,
+      "profile": "report",
+      "clip": "idle"
+    },
+    {
+      "event": "animationstart",
+      "time": 5545.199999988079,
+      "profile": "record",
+      "clip": "idle"
+    },
+    {
+      "event": "animationend",
+      "time": 6528.5,
+      "profile": "record",
+      "clip": "idle"
+    },
+    {
+      "event": "animationstart",
+      "time": 8377.299999982119,
+      "profile": "report",
+      "clip": "idle"
+    }
+  ],
+  "players": [
+    {
+      "profile": "balance",
+      "state": "static",
+      "clip": null,
+      "ready": false,
+      "paused": false,
+      "reduced": false,
+      "visible": false,
+      "suspended": false,
+      "priority": null
+    },
+    {
+      "profile": "record",
+      "state": "static",
+      "clip": null,
+      "ready": false,
+      "paused": false,
+      "reduced": false,
+      "visible": true,
+      "suspended": false,
+      "priority": null
+    },
+    {
+      "profile": "report",
+      "state": "playing",
+      "clip": "idle",
+      "ready": true,
+      "paused": false,
+      "reduced": false,
+      "visible": true,
+      "suspended": false,
+      "priority": "idle"
+    },
+    {
+      "profile": "goal",
+      "state": "static",
+      "clip": null,
+      "ready": false,
+      "paused": false,
+      "reduced": false,
+      "visible": false,
+      "suspended": false,
+      "priority": null
+    },
+    {
+      "profile": "all",
+      "state": "static",
+      "clip": null,
+      "ready": false,
+      "paused": false,
+      "reduced": false,
+      "visible": false,
+      "suspended": false,
+      "priority": null
+    }
+  ]
+}

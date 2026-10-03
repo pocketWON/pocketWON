@@ -1,0 +1,2882 @@
+{
+  "startedAt": "2026-10-03T09:38:37.658Z",
+  "cases": [
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "out",
+      "label": "confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          875
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "out",
+      "label": "confirm-return",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          875
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "out",
+      "label": "quota-error",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          875
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "out",
+      "label": "retry-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          875
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "out",
+      "label": "result",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          720
+        ],
+        "dialog": null,
+        "pager": null,
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "out",
+      "label": "confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          875
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "out",
+      "label": "confirm-return",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          875
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "in",
+      "label": "confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          699
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "out",
+      "label": "quota-error",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          875
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "in",
+      "label": "confirm-return",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          699
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "out",
+      "label": "retry-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          875
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "in",
+      "label": "quota-error",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          699
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "out",
+      "label": "result",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          720
+        ],
+        "dialog": null,
+        "pager": null,
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "in",
+      "label": "retry-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          699
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "in",
+      "label": "result",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          720
+        ],
+        "dialog": null,
+        "pager": null,
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          560
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          186,
+          456,
+          186
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "confirm-return",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          560
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          186,
+          456,
+          186
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "quota-error",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          560
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "in",
+      "label": "confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          699
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "retry-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          560
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          186,
+          456,
+          186
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "result",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          365
+        ],
+        "dialog": null,
+        "pager": null,
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "in",
+      "label": "confirm-return",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          699
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "in",
+      "label": "quota-error",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          699
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          557
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          186,
+          456,
+          186
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "in",
+      "label": "retry-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          699
+        ],
+        "dialog": [
+          320,
+          568,
+          320,
+          610,
+          42
+        ],
+        "pager": [
+          296,
+          292,
+          296,
+          292
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "confirm-return",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          557
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          186,
+          456,
+          186
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "in",
+      "label": "result",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          720
+        ],
+        "dialog": null,
+        "pager": null,
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "quota-error",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          557
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "retry-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          557
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          186,
+          456,
+          186
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "result",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          365
+        ],
+        "dialog": null,
+        "pager": null,
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          696
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          52,
+          456,
+          52
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "confirm-return",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          696
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          52,
+          456,
+          52
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "quota-error",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          696
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          560
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          186,
+          456,
+          186
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "confirm-return",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          560
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          186,
+          456,
+          186
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "retry-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          696
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          52,
+          456,
+          52
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "quota-error",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          560
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "result",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          542
+        ],
+        "dialog": null,
+        "pager": null,
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "retry-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          560
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          186,
+          456,
+          186
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "result",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          365
+        ],
+        "dialog": null,
+        "pager": null,
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          660
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          52,
+          456,
+          52
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "confirm-return",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          660
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          52,
+          456,
+          52
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "quota-error",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          660
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          557
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          186,
+          456,
+          186
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "retry-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          660
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          52,
+          456,
+          52
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "result",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          542
+        ],
+        "dialog": null,
+        "pager": null,
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "confirm-return",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          557
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          186,
+          456,
+          186
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "quota-error",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          557
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "retry-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          557
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          186,
+          456,
+          186
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "result",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          480,
+          360,
+          480,
+          365
+        ],
+        "dialog": null,
+        "pager": null,
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          696
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          52,
+          456,
+          52
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "confirm-return",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          696
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          52,
+          456,
+          52
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "quota-error",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          696
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "retry-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          696
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          52,
+          456,
+          52
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "result",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          542
+        ],
+        "dialog": null,
+        "pager": null,
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          660
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          52,
+          456,
+          52
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "confirm-return",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          660
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          52,
+          456,
+          52
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "quota-error",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          660
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "retry-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          660
+        ],
+        "dialog": [
+          480,
+          360,
+          480,
+          360,
+          0
+        ],
+        "pager": [
+          456,
+          52,
+          456,
+          52
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "result",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          480,
+          360,
+          480,
+          542
+        ],
+        "dialog": null,
+        "pager": null,
+        "clip": [],
+        "unreachable": []
+      }
+    }
+  ],
+  "actions": [
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "out",
+      "label": "initial-confirm",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 116
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 426,
+          "bottom": 522
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "out",
+      "label": "confirm",
+      "pages": 2,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "out",
+      "label": "confirm-return",
+      "pages": 2,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "out",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": -22,
+          "bottom": 74
+        },
+        "visible": false,
+        "scrollTop": 42
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 384,
+          "bottom": 480
+        },
+        "visible": true,
+        "scrollTop": 42
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "out",
+      "label": "retry-confirm",
+      "pages": 2,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "out",
+      "label": "save-retry-result-cancel-focus",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "out",
+      "label": "initial-confirm",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 116
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 426,
+          "bottom": 522
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "out",
+      "label": "confirm",
+      "pages": 2,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "in",
+      "label": "initial-confirm",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 116
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 426,
+          "bottom": 522
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "out",
+      "label": "confirm-return",
+      "pages": 2,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "in",
+      "label": "confirm",
+      "pages": 2,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "in",
+      "label": "confirm-return",
+      "pages": 2,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "out",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": -22,
+          "bottom": 74
+        },
+        "visible": false,
+        "scrollTop": 42
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 384,
+          "bottom": 480
+        },
+        "visible": true,
+        "scrollTop": 42
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "out",
+      "label": "retry-confirm",
+      "pages": 2,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "in",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": -22,
+          "bottom": 74
+        },
+        "visible": false,
+        "scrollTop": 42
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 384,
+          "bottom": 480
+        },
+        "visible": true,
+        "scrollTop": 42
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "in",
+      "label": "retry-confirm",
+      "pages": 2,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "out",
+      "label": "save-retry-result-cancel-focus",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "type": "in",
+      "label": "save-retry-result-cancel-focus",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "initial-confirm",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 68
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 278,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "confirm",
+      "pages": 1,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "confirm-return",
+      "pages": 1,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "in",
+      "label": "initial-confirm",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 116
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 426,
+          "bottom": 522
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "in",
+      "label": "confirm",
+      "pages": 2,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 68
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 278,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "retry-confirm",
+      "pages": 1,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "in",
+      "label": "confirm-return",
+      "pages": 2,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "save-retry-result-cancel-focus",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "in",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": -22,
+          "bottom": 74
+        },
+        "visible": false,
+        "scrollTop": 42
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 384,
+          "bottom": 480
+        },
+        "visible": true,
+        "scrollTop": 42
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "initial-confirm",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 68
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 278,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "confirm",
+      "pages": 1,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "in",
+      "label": "retry-confirm",
+      "pages": 2,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "confirm-return",
+      "pages": 1,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "type": "in",
+      "label": "save-retry-result-cancel-focus",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 68
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 278,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "retry-confirm",
+      "pages": 1,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "save-retry-result-cancel-focus",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "initial-confirm",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 116
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 230,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "confirm",
+      "pages": 3,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "confirm-return",
+      "pages": 3,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "initial-confirm",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 68
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 278,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 116
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 230,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "confirm",
+      "pages": 1,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "retry-confirm",
+      "pages": 3,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "confirm-return",
+      "pages": 1,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 68
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 278,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "retry-confirm",
+      "pages": 1,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "save-retry-result-cancel-focus",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "out",
+      "label": "save-retry-result-cancel-focus",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "initial-confirm",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 116
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 230,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "confirm",
+      "pages": 3,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "confirm-return",
+      "pages": 3,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 116
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 230,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "retry-confirm",
+      "pages": 3,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "initial-confirm",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 68
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 278,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "confirm",
+      "pages": 1,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "confirm-return",
+      "pages": 1,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "save-retry-result-cancel-focus",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 68
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 278,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "retry-confirm",
+      "pages": 1,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "zoomFallback",
+      "type": "in",
+      "label": "save-retry-result-cancel-focus",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "initial-confirm",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 116
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 230,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "confirm",
+      "pages": 3,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "confirm-return",
+      "pages": 3,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 116
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 230,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "retry-confirm",
+      "pages": 3,
+      "characters": 96,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "out",
+      "label": "save-retry-result-cancel-focus",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "initial-confirm",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 116
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 230,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "confirm",
+      "pages": 3,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "confirm-return",
+      "pages": 3,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": 20,
+          "bottom": 116
+        },
+        "visible": true,
+        "scrollTop": 0
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 230,
+          "bottom": 326
+        },
+        "visible": true,
+        "scrollTop": 0
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "retry-confirm",
+      "pages": 3,
+      "characters": 97,
+      "exactMatch": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200Landscape",
+      "type": "in",
+      "label": "save-retry-result-cancel-focus",
+      "passed": true
+    }
+  ],
+  "findings": [
+    {
+      "type": "out",
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": -22,
+          "bottom": 74
+        },
+        "visible": false,
+        "scrollTop": 42
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 384,
+          "bottom": 480
+        },
+        "visible": true,
+        "scrollTop": 42
+      }
+    },
+    {
+      "type": "out",
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": -22,
+          "bottom": 74
+        },
+        "visible": false,
+        "scrollTop": 42
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 384,
+          "bottom": 480
+        },
+        "visible": true,
+        "scrollTop": 42
+      }
+    },
+    {
+      "type": "in",
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": -22,
+          "bottom": 74
+        },
+        "visible": false,
+        "scrollTop": 42
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 384,
+          "bottom": 480
+        },
+        "visible": true,
+        "scrollTop": 42
+      }
+    },
+    {
+      "type": "in",
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "quota-error",
+      "forward": {
+        "label": "이전 단계",
+        "rect": {
+          "top": -22,
+          "bottom": 74
+        },
+        "visible": false,
+        "scrollTop": 42
+      },
+      "reverse": {
+        "label": "기록 저장",
+        "rect": {
+          "top": 384,
+          "bottom": 480
+        },
+        "visible": true,
+        "scrollTop": 42
+      }
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "chromium-text200-out-confirm.png",
+    "chromium-text200-out-confirm-return.png",
+    "chromium-text200-out-quota-error.png",
+    "chromium-text200-out-retry-confirm.png",
+    "chromium-text200-out-result.png",
+    "webkit-text200-out-confirm.png",
+    "webkit-text200-out-confirm-return.png",
+    "chromium-text200-in-confirm.png",
+    "webkit-text200-out-quota-error.png",
+    "chromium-text200-in-confirm-return.png",
+    "webkit-text200-out-retry-confirm.png",
+    "chromium-text200-in-quota-error.png",
+    "webkit-text200-out-result.png",
+    "chromium-text200-in-retry-confirm.png",
+    "chromium-text200-in-result.png",
+    "chromium-zoomFallback-out-confirm.png",
+    "chromium-zoomFallback-out-confirm-return.png",
+    "chromium-zoomFallback-out-quota-error.png",
+    "webkit-text200-in-confirm.png",
+    "chromium-zoomFallback-out-retry-confirm.png",
+    "chromium-zoomFallback-out-result.png",
+    "webkit-text200-in-confirm-return.png",
+    "webkit-text200-in-quota-error.png",
+    "chromium-zoomFallback-in-confirm.png",
+    "webkit-text200-in-retry-confirm.png",
+    "chromium-zoomFallback-in-confirm-return.png",
+    "webkit-text200-in-result.png",
+    "chromium-zoomFallback-in-quota-error.png",
+    "chromium-zoomFallback-in-retry-confirm.png",
+    "chromium-zoomFallback-in-result.png",
+    "chromium-text200Landscape-out-confirm.png",
+    "chromium-text200Landscape-out-confirm-return.png",
+    "chromium-text200Landscape-out-quota-error.png",
+    "webkit-zoomFallback-out-confirm.png",
+    "webkit-zoomFallback-out-confirm-return.png",
+    "chromium-text200Landscape-out-retry-confirm.png",
+    "webkit-zoomFallback-out-quota-error.png",
+    "chromium-text200Landscape-out-result.png",
+    "webkit-zoomFallback-out-retry-confirm.png",
+    "webkit-zoomFallback-out-result.png",
+    "chromium-text200Landscape-in-confirm.png",
+    "chromium-text200Landscape-in-confirm-return.png",
+    "chromium-text200Landscape-in-quota-error.png",
+    "webkit-zoomFallback-in-confirm.png",
+    "chromium-text200Landscape-in-retry-confirm.png",
+    "chromium-text200Landscape-in-result.png",
+    "webkit-zoomFallback-in-confirm-return.png",
+    "webkit-zoomFallback-in-quota-error.png",
+    "webkit-zoomFallback-in-retry-confirm.png",
+    "webkit-zoomFallback-in-result.png",
+    "webkit-text200Landscape-out-confirm.png",
+    "webkit-text200Landscape-out-confirm-return.png",
+    "webkit-text200Landscape-out-quota-error.png",
+    "webkit-text200Landscape-out-retry-confirm.png",
+    "webkit-text200Landscape-out-result.png",
+    "webkit-text200Landscape-in-confirm.png",
+    "webkit-text200Landscape-in-confirm-return.png",
+    "webkit-text200Landscape-in-quota-error.png",
+    "webkit-text200Landscape-in-retry-confirm.png",
+    "webkit-text200Landscape-in-result.png"
+  ],
+  "completedAt": "2026-10-03T09:38:58.182Z",
+  "status": "FAIL"
+}

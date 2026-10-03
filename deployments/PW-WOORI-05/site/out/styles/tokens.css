@@ -1,5 +1,7 @@
 /* PocketWON reference-synchronized design tokens. */
 :root {
+  --pw-stage-gutter: 16px;
+  --pw-stage-gap: 16px;
   color-scheme: light;
   --pw-canvas: #fafcfd;
   --pw-surface: #ffffff;
@@ -113,3 +115,5 @@
   --pw-safe-bottom: env(safe-area-inset-bottom, 0px);
   --pw-safe-left: env(safe-area-inset-left, 0px);
 }
+
+@media (max-height: 667px) { :root { --pw-stage-gutter: 12px; --pw-stage-gap: 12px; } }

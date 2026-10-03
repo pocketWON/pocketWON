@@ -1,0 +1,24 @@
+{
+  "profile": "all",
+  "frame": "blink",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is immutable identity/camera/scale reference. When input 2 exists it is the previous sequential frame to edit. Preserve all artwork except the specifically requested pose/expression/prop changes. Exact same opaque white bean/wallet body, asymmetrical folded top, big dark oval eyes with same eye spacing and eye size, dark navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and exact canvas coordinates. Square canvas. Grounded feet center at (50%,82%). Head y approximately27%, body width about46% of canvas. Single flat 2D editorial line-art character. No UI, text, letters, numbers, graphs, background, shadow, border or panels. True transparent alpha, wide transparent margins. Do not zoom, crop, recenter, or change proportions. Props pale blue, coins muted gold. Preserve identity over posing. FRAME blink, subtle IDLE closed-eye beat. Edit input 2 only: close BOTH eyes completely as two short, gentle dark navy curved eyelid strokes at the eyes' horizontal centerlines. Remove open oval outlines and dark pupil fill for this single closed-eye frame. Keep eyebrows and smiling mouth exactly. Same neutral pose, exact flag if present, all body and feet coordinates unchanged. No wallet or extra props. Eyelid-only edit; no zoom or silhouette change.",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/all/half.png"
+  ],
+  "raw": "sprite-source/raw/all/blink.png",
+  "source": "sprite-source/frames/all/blink.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "0e4cd05b0b911e66477acf31b590819c30983b828785f32874e85fea35e79bbe",
+  "sourceSha256": "d19d92af3d41c128b3e86ec6cb6577048ab28c0b7bc875707a578ed8aecc255b"
+}

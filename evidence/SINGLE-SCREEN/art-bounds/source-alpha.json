@@ -1,0 +1,773 @@
+{
+  "cell": 384,
+  "anchor": {
+    "x": 192,
+    "y": 315
+  },
+  "threshold": "alpha > 0",
+  "profiles": {
+    "balance": {
+      "bounds": [
+        105,
+        100,
+        297,
+        319
+      ],
+      "sources": [
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-balance-action-sprite.webp",
+          "size": [
+            3072,
+            384
+          ],
+          "frames": 8,
+          "alphaBounds": [
+            [
+              106,
+              103,
+              295,
+              317
+            ],
+            [
+              105,
+              102,
+              296,
+              318
+            ],
+            [
+              105,
+              100,
+              296,
+              318
+            ],
+            [
+              105,
+              101,
+              296,
+              318
+            ],
+            [
+              105,
+              101,
+              296,
+              319
+            ],
+            [
+              105,
+              100,
+              296,
+              319
+            ],
+            [
+              105,
+              102,
+              296,
+              318
+            ],
+            [
+              106,
+              103,
+              295,
+              317
+            ]
+          ],
+          "sha256": "fc34ef0e1de4f6ac7cf43bd85969f8d8615a3e724cec0851a04ce211e43f8d0d"
+        },
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-balance-idle-sprite.webp",
+          "size": [
+            2304,
+            384
+          ],
+          "frames": 6,
+          "alphaBounds": [
+            [
+              106,
+              103,
+              295,
+              317
+            ],
+            [
+              105,
+              102,
+              295,
+              318
+            ],
+            [
+              105,
+              102,
+              296,
+              319
+            ],
+            [
+              105,
+              101,
+              297,
+              319
+            ],
+            [
+              105,
+              102,
+              295,
+              318
+            ],
+            [
+              106,
+              103,
+              295,
+              317
+            ]
+          ],
+          "sha256": "3864042d06d56c29417c8508223f2910388901162b00a175c62b5ad0cff06a47"
+        },
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-balance-poster.webp",
+          "size": [
+            384,
+            384
+          ],
+          "frames": 1,
+          "alphaBounds": [
+            [
+              106,
+              103,
+              295,
+              317
+            ]
+          ],
+          "sha256": "3df0660517ec5904147e5bbd73c9981b43e077a954817a86859b3145a30f5a18"
+        }
+      ]
+    },
+    "record": {
+      "bounds": [
+        99,
+        96,
+        314,
+        319
+      ],
+      "sources": [
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-record-action-sprite.webp",
+          "size": [
+            3072,
+            384
+          ],
+          "frames": 8,
+          "alphaBounds": [
+            [
+              105,
+              101,
+              296,
+              319
+            ],
+            [
+              105,
+              100,
+              297,
+              319
+            ],
+            [
+              104,
+              115,
+              296,
+              318
+            ],
+            [
+              99,
+              96,
+              314,
+              319
+            ],
+            [
+              103,
+              101,
+              306,
+              318
+            ],
+            [
+              105,
+              101,
+              296,
+              316
+            ],
+            [
+              105,
+              101,
+              296,
+              318
+            ],
+            [
+              105,
+              101,
+              296,
+              319
+            ]
+          ],
+          "sha256": "a9c0f0042513ce762a1357a1b199d00311feae94b32c66cc3e667b6acccdb047"
+        },
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-record-idle-sprite.webp",
+          "size": [
+            2304,
+            384
+          ],
+          "frames": 6,
+          "alphaBounds": [
+            [
+              105,
+              101,
+              296,
+              319
+            ],
+            [
+              105,
+              102,
+              296,
+              319
+            ],
+            [
+              105,
+              101,
+              296,
+              319
+            ],
+            [
+              105,
+              102,
+              296,
+              319
+            ],
+            [
+              105,
+              102,
+              296,
+              319
+            ],
+            [
+              105,
+              101,
+              296,
+              319
+            ]
+          ],
+          "sha256": "7b597a7d08e945e014597484b6a3f7b364577bcc6b345ccd7cda8351a3f515ff"
+        },
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-record-poster.webp",
+          "size": [
+            384,
+            384
+          ],
+          "frames": 1,
+          "alphaBounds": [
+            [
+              105,
+              101,
+              296,
+              319
+            ]
+          ],
+          "sha256": "5657ce8005b82cb2121c7d3870e489f869a53f0eb7b71628e68b04e17d595e0c"
+        }
+      ]
+    },
+    "report": {
+      "bounds": [
+        104,
+        101,
+        299,
+        319
+      ],
+      "sources": [
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-report-action-sprite.webp",
+          "size": [
+            3072,
+            384
+          ],
+          "frames": 8,
+          "alphaBounds": [
+            [
+              105,
+              102,
+              296,
+              318
+            ],
+            [
+              104,
+              102,
+              296,
+              319
+            ],
+            [
+              104,
+              101,
+              297,
+              319
+            ],
+            [
+              104,
+              101,
+              297,
+              318
+            ],
+            [
+              104,
+              101,
+              299,
+              318
+            ],
+            [
+              104,
+              101,
+              299,
+              319
+            ],
+            [
+              104,
+              101,
+              298,
+              319
+            ],
+            [
+              105,
+              102,
+              296,
+              318
+            ]
+          ],
+          "sha256": "f899120c4a06e3d177d07e30f2021e9972d3dfdea7839ecef05c16c65590f86a"
+        },
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-report-idle-sprite.webp",
+          "size": [
+            2304,
+            384
+          ],
+          "frames": 6,
+          "alphaBounds": [
+            [
+              105,
+              102,
+              296,
+              318
+            ],
+            [
+              105,
+              101,
+              296,
+              319
+            ],
+            [
+              105,
+              102,
+              297,
+              319
+            ],
+            [
+              105,
+              101,
+              297,
+              319
+            ],
+            [
+              105,
+              101,
+              296,
+              319
+            ],
+            [
+              105,
+              102,
+              296,
+              318
+            ]
+          ],
+          "sha256": "66a3bf38fd81c26ecb242838caffe8b4683bebffdffdf45976e5f7ea35528a4b"
+        },
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-report-poster.webp",
+          "size": [
+            384,
+            384
+          ],
+          "frames": 1,
+          "alphaBounds": [
+            [
+              105,
+              102,
+              296,
+              318
+            ]
+          ],
+          "sha256": "cf38853fcd6262f8f89e141243d154448ee3bdd12ee75f02fc4cf8586e83ad60"
+        }
+      ]
+    },
+    "goal": {
+      "bounds": [
+        51,
+        94,
+        298,
+        319
+      ],
+      "sources": [
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-goal-action-sprite.webp",
+          "size": [
+            3072,
+            384
+          ],
+          "frames": 8,
+          "alphaBounds": [
+            [
+              59,
+              102,
+              296,
+              318
+            ],
+            [
+              55,
+              100,
+              297,
+              319
+            ],
+            [
+              54,
+              114,
+              298,
+              315
+            ],
+            [
+              56,
+              94,
+              295,
+              298
+            ],
+            [
+              51,
+              101,
+              297,
+              306
+            ],
+            [
+              59,
+              101,
+              296,
+              319
+            ],
+            [
+              59,
+              102,
+              296,
+              319
+            ],
+            [
+              59,
+              102,
+              296,
+              318
+            ]
+          ],
+          "sha256": "c5f158b3955d9c7b847cc91bcb2287df626e49f48a279ee749cc65bac7cd2b6c"
+        },
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-goal-idle-sprite.webp",
+          "size": [
+            2304,
+            384
+          ],
+          "frames": 6,
+          "alphaBounds": [
+            [
+              59,
+              102,
+              296,
+              318
+            ],
+            [
+              59,
+              101,
+              296,
+              319
+            ],
+            [
+              59,
+              101,
+              298,
+              319
+            ],
+            [
+              59,
+              100,
+              298,
+              319
+            ],
+            [
+              59,
+              101,
+              296,
+              319
+            ],
+            [
+              59,
+              102,
+              296,
+              318
+            ]
+          ],
+          "sha256": "9b424b0b210c5b96e9f8ff178ed98bb67bf3748c6e42cdfe7a7eeeed9f9e0023"
+        },
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-goal-poster.webp",
+          "size": [
+            384,
+            384
+          ],
+          "frames": 1,
+          "alphaBounds": [
+            [
+              59,
+              102,
+              296,
+              318
+            ]
+          ],
+          "sha256": "5cffbd8d0369b2116d5673dbbcc99bd368520eb0732ea1f1ed22cb45a0def937"
+        }
+      ]
+    },
+    "all": {
+      "bounds": [
+        75,
+        100,
+        299,
+        319
+      ],
+      "sources": [
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-all-action-sprite.webp",
+          "size": [
+            3072,
+            384
+          ],
+          "frames": 8,
+          "alphaBounds": [
+            [
+              105,
+              102,
+              295,
+              318
+            ],
+            [
+              95,
+              102,
+              296,
+              319
+            ],
+            [
+              95,
+              100,
+              299,
+              319
+            ],
+            [
+              89,
+              100,
+              296,
+              318
+            ],
+            [
+              75,
+              100,
+              297,
+              318
+            ],
+            [
+              82,
+              101,
+              296,
+              318
+            ],
+            [
+              105,
+              102,
+              296,
+              319
+            ],
+            [
+              105,
+              102,
+              295,
+              318
+            ]
+          ],
+          "sha256": "d234587fd2d2e9070972e72c1f0cf68384fbd6418d181583b19b1c141b7a8a17"
+        },
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-all-idle-sprite.webp",
+          "size": [
+            2304,
+            384
+          ],
+          "frames": 6,
+          "alphaBounds": [
+            [
+              105,
+              102,
+              295,
+              318
+            ],
+            [
+              105,
+              100,
+              296,
+              319
+            ],
+            [
+              105,
+              102,
+              296,
+              319
+            ],
+            [
+              105,
+              102,
+              296,
+              319
+            ],
+            [
+              105,
+              100,
+              296,
+              319
+            ],
+            [
+              105,
+              102,
+              295,
+              318
+            ]
+          ],
+          "sha256": "1510613a868346912240776e08010256510b83d1e618002ade681f3b65793e5a"
+        },
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-all-poster.webp",
+          "size": [
+            384,
+            384
+          ],
+          "frames": 1,
+          "alphaBounds": [
+            [
+              105,
+              102,
+              295,
+              318
+            ]
+          ],
+          "sha256": "146337934586e92c079475260357262c5b47a8c1c5d7b9eebc6f8c263c00562f"
+        }
+      ]
+    },
+    "success": {
+      "bounds": [
+        80,
+        81,
+        305,
+        319
+      ],
+      "sources": [
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-success-action-sprite.webp",
+          "size": [
+            3840,
+            384
+          ],
+          "frames": 10,
+          "alphaBounds": [
+            [
+              105,
+              102,
+              296,
+              318
+            ],
+            [
+              103,
+              111,
+              296,
+              317
+            ],
+            [
+              94,
+              98,
+              296,
+              314
+            ],
+            [
+              83,
+              91,
+              304,
+              306
+            ],
+            [
+              81,
+              89,
+              304,
+              296
+            ],
+            [
+              81,
+              81,
+              305,
+              311
+            ],
+            [
+              80,
+              81,
+              305,
+              319
+            ],
+            [
+              106,
+              104,
+              295,
+              317
+            ],
+            [
+              104,
+              102,
+              296,
+              318
+            ],
+            [
+              105,
+              102,
+              296,
+              318
+            ]
+          ],
+          "sha256": "6e52f2b03c4cb98bc411ac142a03a26c00a49453a9ce4791ce40405e41cd73e9"
+        },
+        {
+          "source": "ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-success-poster.webp",
+          "size": [
+            384,
+            384
+          ],
+          "frames": 1,
+          "alphaBounds": [
+            [
+              105,
+              102,
+              296,
+              318
+            ]
+          ],
+          "sha256": "cf1acc5075ca7f87e9246c2542edc63edb16c0da60e49ecec89d792e931d154f"
+        }
+      ]
+    }
+  }
+}

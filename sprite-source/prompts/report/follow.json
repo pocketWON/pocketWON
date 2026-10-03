@@ -1,0 +1,24 @@
+{
+  "profile": "report",
+  "frame": "follow",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is the immutable identity/camera/scale reference; input 2 when present is the previous sequential frame to edit. Keep artwork except specifically requested pose/expression. Exact same opaque white bean/wallet body, asymmetrical folded top, big dark oval eyes, eye spacing, dark navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and exact canvas coordinates. Square canvas. Grounded feet center at (50%,82%). Head y approximately27%, body width about46% of canvas. Single flat 2D editorial line-art character. No UI, text, letters, numbers, graphs, background, shadow, border or panels. True transparent alpha, wide transparent margins. Do not zoom, crop, recenter, or change proportions. Props pale blue, coins muted gold. Preserve identity over posing. FRAME follow: Keep magnifying glass in front of viewer RIGHT eye at SAME position and size as Input2, right hand still. Change both pupils to gaze clearly toward viewer LEFT, looking toward an imaginary DOM chart outside artwork. Very small head tilt 2 degrees toward viewer left; silhouette remains essentially same, feet still original anchor. Keep left hand, clasp, clear lens rim/handle and eye geometry consistent. No chart, writing, wallet, or extra objects.\n",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/report/peak.png"
+  ],
+  "raw": "sprite-source/raw/report/follow.png",
+  "source": "sprite-source/frames/report/follow.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "f740bc903f1cc34749b49a753734582879be5d0561797cbf6fc0df0e338421bf",
+  "sourceSha256": "178cacfebd4369b03459f4ebdd3653993c622eb2ce72ba4d521656dadf8a4765"
+}

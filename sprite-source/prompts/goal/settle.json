@@ -1,0 +1,24 @@
+{
+  "profile": "goal",
+  "frame": "settle",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Make ONE transparent PocketWON frame by editing IMAGE2. IMAGE1 is only the identity master. Copy IMAGE2's neutral flag character exactly: same canvas coordinates, body silhouette, body height and width, head and face, clasp on viewer RIGHT, feet at same pixels, hands at same pixels. Only change the small pale-blue triangular flag cloth so its outer viewer-left edge bends gently upward in a little ripple after a landing. Do NOT move flagpole, hands, body, feet, eyes, or the camera. Character is fully grounded at y420 on512square; match IMAGE2's entire character. No shortening or squashing of torso. One slight flag cloth edit only. Flat opaque white body with dark navy outline. True transparent alpha, exact same square canvas with wide margins. No text, numbers, UI, wallet, coin, background, shadow or FX.",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/goal/neutral.png"
+  ],
+  "raw": "sprite-source/raw/goal/settle.png",
+  "source": "sprite-source/frames/goal/settle.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "4c291d38e141a39cbb5422f42d7316774dfd64142e3a949a3cd7d5f9f48d75c1",
+  "sourceSha256": "4f4fafd9a532b6a2e3973fe85fe20473c15aa19cd7d744dee539217b5adda04f"
+}

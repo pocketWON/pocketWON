@@ -1,0 +1,149 @@
+{
+  "profile": "all",
+  "review": "Individual generated frames inspected with view_image. Same white folded body, navy outlines, viewer-right clasp, paired eyes. No UI or typography. Full-square normalization only.",
+  "idle": "Neutral/glance/half/blink/glance/neutral; endpoints reuse the same neutral source.",
+  "action": "Neutral/preparation/anticipation/peak/follow-through/settle/return/neutral.",
+  "artNotes": "Viewer-left hand raises, moves outward and lowers. Ground anchor stable within one source pixel.",
+  "frames": [
+    {
+      "frame": "neutral",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        144,
+        139,
+        390,
+        420
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "glance",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        143,
+        137,
+        391,
+        421
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "half",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        144,
+        139,
+        391,
+        421
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "blink",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        144,
+        139,
+        392,
+        421
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "prepare",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        130,
+        139,
+        391,
+        421
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "anticipate",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        130,
+        137,
+        396,
+        421
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "peak",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        122,
+        138,
+        391,
+        420
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "follow",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        103,
+        137,
+        392,
+        420
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "settle",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        112,
+        139,
+        392,
+        421
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "return",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        144,
+        139,
+        391,
+        421
+      ],
+      "alphaCorner": 0
+    }
+  ]
+}

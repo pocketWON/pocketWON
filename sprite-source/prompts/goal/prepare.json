@@ -1,0 +1,24 @@
+{
+  "profile": "goal",
+  "frame": "prepare",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is immutable identity/camera/scale reference. When input 2 exists it is the previous sequential frame to edit. Preserve all artwork except the specifically requested pose/expression/prop changes. Exact same opaque white bean/wallet body, asymmetrical folded top, big dark oval eyes with same eye spacing and eye size, dark navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and exact canvas coordinates. Square canvas. Grounded feet center at (50%,82%). Head y approximately27%, body width about46% of canvas. Single flat 2D editorial line-art character. No UI, text, letters, numbers, graphs, background, shadow, border or panels. True transparent alpha, wide transparent margins. Do not zoom, crop, recenter, or change proportions. Props pale blue, coins muted gold. Preserve identity over posing. FRAME prepare, GOAL ACTION. Edit input 2 neutral flag pose. Move flag-holding viewer-left hand a little upward on the flagpole in a deliberate preparatory grip; pole slightly tilted toward viewer-left, flag stays pale blue pointing left. Free viewer-right hand lifts slightly in front of waist. Open eyes look toward flag. Keep body and grounded feet same exact coordinates, no jump yet. Do not add handheld wallet or coins. Keep folded top and permanent body clasp unchanged.",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/goal/neutral.png"
+  ],
+  "raw": "sprite-source/raw/goal/prepare.png",
+  "source": "sprite-source/frames/goal/prepare.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "7ef0d684260f25e687fa400e83cebf41dd4aa9d7cf2dd2812dc0a5a113c1865a",
+  "sourceSha256": "1ddc593f4243b6eca8585975f0eb5d53e6734984df705fdcb002510c9e1cd5f4"
+}

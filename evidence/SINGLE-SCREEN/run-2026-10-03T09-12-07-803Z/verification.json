@@ -1,0 +1,15 @@
+{
+  "checks": [],
+  "geometry": [],
+  "screenshots": [],
+  "errors": [],
+  "engines": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12"
+    }
+  ],
+  "physicalKeyboardVerified": false,
+  "status": "FAIL",
+  "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.pw-nav [data-screen=\"home\"]')\u001b[22m\n\n    at enter (/Users/jeonghu/포켓WON/tests/verify-single-screen.cjs:48:104)\n    at matrix (/Users/jeonghu/포켓WON/tests/verify-single-screen.cjs:76:15)\n    at async /Users/jeonghu/포켓WON/tests/verify-single-screen.cjs:130:237"
+}

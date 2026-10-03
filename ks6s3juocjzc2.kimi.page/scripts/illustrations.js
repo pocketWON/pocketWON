@@ -38,7 +38,30 @@ function pwIllustrationPanel(name, options = {}) {
   const panel = document.createElement('div');
   panel.className = ['pw-illustration-panel', options.panelClass].filter(Boolean).join(' ');
   panel.setAttribute('aria-hidden', 'true');
-  const image = pwIllustration(name, { className: options.imageClass || 'pw-illustration', loading: options.loading });
-  panel.append(image);
+  if (typeof createPocketWONSprite === 'function' && ['balance', 'record', 'report', 'goal', 'all', 'success'].includes(name)) {
+    const sprite = createPocketWONSprite(name, { autoplay: false });
+    // Old illustration classes expand cropped PNGs far beyond their panels.
+    // Sprite cells already share one square canvas and have their own framing.
+    if (options.ambient === false) sprite.element.dataset.spriteAmbient = 'false';
+    if (options.idle === false) sprite.element.dataset.spriteIdle = 'false';
+    if (options.goalKey) sprite.element.dataset.spriteGoalKey = options.goalKey;
+    panel.classList.add('pw-sprite-panel');
+    panel.append(sprite.element);
+  } else {
+    panel.append(pwIllustration(name, { className: options.imageClass || 'pw-illustration', loading: options.loading }));
+  }
   return panel;
+}
+
+/** A completed snapshot is only eligible after the exact financial comparison. */
+function pwSpriteGoalKey(goal) {
+  return goal?.status === 'complete' && goal.current >= goal.target
+    ? JSON.stringify([goal.title, goal.target, goal.current]) : undefined;
+}
+
+/** Request source feedback, then carry a one-shot intent without delaying navigation. */
+function pwSpriteEntryMotion(root, trigger, destination) {
+  const source = trigger.closest('section, article')?.querySelector('.pw-sprite') || root.querySelector('.pw-sprite');
+  if (typeof PocketWONMotion !== 'undefined') PocketWONMotion.controllerFor(root)?.request(source, 'action', 'interaction');
+  return { profile: destination === 'home' || destination === 'all' ? 'balance' : destination, clip: 'action' };
 }

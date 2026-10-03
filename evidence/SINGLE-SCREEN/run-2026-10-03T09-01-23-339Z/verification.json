@@ -1,0 +1,680 @@
+{
+  "checks": [
+    {
+      "name": "chromium/320x568/false/home contains content and controls"
+    },
+    {
+      "name": "chromium/320x568/false/record contains content and controls"
+    },
+    {
+      "name": "chromium/320x568/false/goal contains content and controls"
+    },
+    {
+      "name": "chromium/320x568/false/report contains content and controls"
+    }
+  ],
+  "geometry": [
+    {
+      "label": "chromium/320x568/false/home",
+      "frames": [
+        {
+          "cls": "",
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "right": 320,
+          "bottom": 568,
+          "sh": 568,
+          "ch": 568,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-shell",
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "right": 320,
+          "bottom": 568,
+          "sh": 568,
+          "ch": 568,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-content",
+          "x": 0,
+          "y": 48,
+          "w": 320,
+          "h": 464,
+          "right": 320,
+          "bottom": 512,
+          "sh": 464,
+          "ch": 464,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-screen pw-home",
+          "x": 0,
+          "y": 48,
+          "w": 320,
+          "h": 464,
+          "right": 320,
+          "bottom": 512,
+          "sh": 464,
+          "ch": 464,
+          "sw": 320,
+          "cw": 320
+        }
+      ],
+      "controls": [
+        {
+          "cls": "pw-home-card pw-motion-enter--visible",
+          "x": 12,
+          "y": 215.984375,
+          "w": 142,
+          "h": 136,
+          "right": 154,
+          "bottom": 351.984375,
+          "sh": 136,
+          "ch": 136,
+          "sw": 142,
+          "cw": 142
+        },
+        {
+          "cls": "pw-home-card pw-motion-enter--visible",
+          "x": 166,
+          "y": 215.984375,
+          "w": 142,
+          "h": 136,
+          "right": 308,
+          "bottom": 351.984375,
+          "sh": 136,
+          "ch": 136,
+          "sw": 142,
+          "cw": 142
+        },
+        {
+          "cls": "pw-home-card pw-motion-enter--visible",
+          "x": 12,
+          "y": 363.984375,
+          "w": 142,
+          "h": 136.015625,
+          "right": 154,
+          "bottom": 500,
+          "sh": 136,
+          "ch": 136,
+          "sw": 142,
+          "cw": 142
+        },
+        {
+          "cls": "pw-home-card pw-motion-enter--visible",
+          "x": 166,
+          "y": 363.984375,
+          "w": 142,
+          "h": 136.015625,
+          "right": 308,
+          "bottom": 500,
+          "sh": 136,
+          "ch": 136,
+          "sw": 142,
+          "cw": 142
+        }
+      ],
+      "outside": [],
+      "viewport": [
+        320,
+        568
+      ]
+    },
+    {
+      "label": "chromium/320x568/false/record",
+      "frames": [
+        {
+          "cls": "",
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "right": 320,
+          "bottom": 568,
+          "sh": 568,
+          "ch": 568,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-shell",
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "right": 320,
+          "bottom": 568,
+          "sh": 568,
+          "ch": 568,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-content",
+          "x": 0,
+          "y": 48,
+          "w": 320,
+          "h": 464,
+          "right": 320,
+          "bottom": 512,
+          "sh": 464,
+          "ch": 464,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-screen pw-record",
+          "x": 0,
+          "y": 48,
+          "w": 320,
+          "h": 464,
+          "right": 320,
+          "bottom": 512,
+          "sh": 464,
+          "ch": 464,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-record-history",
+          "x": 12,
+          "y": 212,
+          "w": 296,
+          "h": 288,
+          "right": 308,
+          "bottom": 500,
+          "sh": 288,
+          "ch": 288,
+          "sw": 296,
+          "cw": 296
+        },
+        {
+          "cls": "pw-record-list",
+          "x": 12,
+          "y": 212,
+          "w": 296,
+          "h": 232,
+          "right": 308,
+          "bottom": 444,
+          "sh": 232,
+          "ch": 232,
+          "sw": 296,
+          "cw": 296
+        }
+      ],
+      "controls": [
+        {
+          "cls": "pw-button pw-record-add",
+          "x": 209.125,
+          "y": 156,
+          "w": 98.875,
+          "h": 48,
+          "right": 308,
+          "bottom": 204,
+          "sh": 48,
+          "ch": 48,
+          "sw": 99,
+          "cw": 99
+        },
+        {
+          "cls": "pw-record-row-button",
+          "x": 12,
+          "y": 212,
+          "w": 296,
+          "h": 64,
+          "right": 308,
+          "bottom": 276,
+          "sh": 62,
+          "ch": 62,
+          "sw": 294,
+          "cw": 294
+        },
+        {
+          "cls": "pw-record-row-button",
+          "x": 12,
+          "y": 284,
+          "w": 296,
+          "h": 64,
+          "right": 308,
+          "bottom": 348,
+          "sh": 62,
+          "ch": 62,
+          "sw": 294,
+          "cw": 294
+        },
+        {
+          "cls": "pw-record-row-button",
+          "x": 12,
+          "y": 356,
+          "w": 296,
+          "h": 64,
+          "right": 308,
+          "bottom": 420,
+          "sh": 62,
+          "ch": 62,
+          "sw": 294,
+          "cw": 294
+        },
+        {
+          "cls": "pw-record-secondary",
+          "x": 12,
+          "y": 452,
+          "w": 72,
+          "h": 48,
+          "right": 84,
+          "bottom": 500,
+          "sh": 46,
+          "ch": 46,
+          "sw": 70,
+          "cw": 70
+        },
+        {
+          "cls": "pw-record-secondary",
+          "x": 236,
+          "y": 452,
+          "w": 72,
+          "h": 48,
+          "right": 308,
+          "bottom": 500,
+          "sh": 46,
+          "ch": 46,
+          "sw": 70,
+          "cw": 70
+        }
+      ],
+      "outside": [],
+      "stage": "list",
+      "viewport": [
+        320,
+        568
+      ]
+    },
+    {
+      "label": "chromium/320x568/false/goal",
+      "frames": [
+        {
+          "cls": "",
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "right": 320,
+          "bottom": 568,
+          "sh": 568,
+          "ch": 568,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-shell",
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "right": 320,
+          "bottom": 568,
+          "sh": 568,
+          "ch": 568,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-content",
+          "x": 0,
+          "y": 48,
+          "w": 320,
+          "h": 464,
+          "right": 320,
+          "bottom": 512,
+          "sh": 464,
+          "ch": 464,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-screen pw-goal",
+          "x": 0,
+          "y": 48,
+          "w": 320,
+          "h": 464,
+          "right": 320,
+          "bottom": 512,
+          "sh": 464,
+          "ch": 464,
+          "sw": 320,
+          "cw": 320
+        }
+      ],
+      "controls": [
+        {
+          "cls": "pw-goal-name-action",
+          "x": 28,
+          "y": 76,
+          "w": 264,
+          "h": 48,
+          "right": 292,
+          "bottom": 124,
+          "sh": 48,
+          "ch": 48,
+          "sw": 264,
+          "cw": 264
+        },
+        {
+          "cls": "pw-button",
+          "x": 12,
+          "y": 452,
+          "w": 144,
+          "h": 48,
+          "right": 156,
+          "bottom": 500,
+          "sh": 48,
+          "ch": 48,
+          "sw": 144,
+          "cw": 144
+        },
+        {
+          "cls": "pw-button pw-button--secondary",
+          "x": 164,
+          "y": 452,
+          "w": 144,
+          "h": 48,
+          "right": 308,
+          "bottom": 500,
+          "sh": 48,
+          "ch": 48,
+          "sw": 144,
+          "cw": 144
+        }
+      ],
+      "outside": [],
+      "stage": "detail",
+      "viewport": [
+        320,
+        568
+      ]
+    },
+    {
+      "label": "chromium/320x568/false/report",
+      "frames": [
+        {
+          "cls": "",
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "right": 320,
+          "bottom": 568,
+          "sh": 568,
+          "ch": 568,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-shell",
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "right": 320,
+          "bottom": 568,
+          "sh": 568,
+          "ch": 568,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-content",
+          "x": 0,
+          "y": 48,
+          "w": 320,
+          "h": 464,
+          "right": 320,
+          "bottom": 512,
+          "sh": 464,
+          "ch": 464,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-report pw-screen",
+          "x": 0,
+          "y": 48,
+          "w": 320,
+          "h": 464,
+          "right": 320,
+          "bottom": 512,
+          "sh": 464,
+          "ch": 464,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-report-content",
+          "x": 12,
+          "y": 128,
+          "w": 296,
+          "h": 312,
+          "right": 308,
+          "bottom": 440,
+          "sh": 312,
+          "ch": 312,
+          "sw": 296,
+          "cw": 296
+        }
+      ],
+      "controls": [
+        {
+          "cls": "pw-report-tab",
+          "x": 16,
+          "y": 64,
+          "w": 93.328125,
+          "h": 48,
+          "right": 109.328125,
+          "bottom": 112,
+          "sh": 48,
+          "ch": 48,
+          "sw": 93,
+          "cw": 93
+        },
+        {
+          "cls": "pw-report-tab",
+          "x": 113.328125,
+          "y": 64,
+          "w": 93.328125,
+          "h": 48,
+          "right": 206.65625,
+          "bottom": 112,
+          "sh": 48,
+          "ch": 48,
+          "sw": 93,
+          "cw": 93
+        },
+        {
+          "cls": "pw-report-tab",
+          "x": 210.65625,
+          "y": 64,
+          "w": 93.34375,
+          "h": 48,
+          "right": 304,
+          "bottom": 112,
+          "sh": 48,
+          "ch": 48,
+          "sw": 93,
+          "cw": 93
+        },
+        {
+          "cls": "pw-report-action",
+          "x": 12,
+          "y": 452,
+          "w": 296,
+          "h": 48,
+          "right": 308,
+          "bottom": 500,
+          "sh": 48,
+          "ch": 48,
+          "sw": 296,
+          "cw": 296
+        }
+      ],
+      "outside": [],
+      "viewport": [
+        320,
+        568
+      ]
+    },
+    {
+      "label": "chromium/320/false/report-돈 흐름",
+      "frames": [
+        {
+          "cls": "",
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "right": 320,
+          "bottom": 568,
+          "sh": 568,
+          "ch": 568,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-shell",
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "right": 320,
+          "bottom": 568,
+          "sh": 568,
+          "ch": 568,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-content",
+          "x": 0,
+          "y": 48,
+          "w": 320,
+          "h": 464,
+          "right": 320,
+          "bottom": 512,
+          "sh": 464,
+          "ch": 464,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-report pw-screen",
+          "x": 0,
+          "y": 48,
+          "w": 320,
+          "h": 464,
+          "right": 320,
+          "bottom": 512,
+          "sh": 464,
+          "ch": 464,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-report-content",
+          "x": 12,
+          "y": 128,
+          "w": 296,
+          "h": 312,
+          "right": 308,
+          "bottom": 440,
+          "sh": 312,
+          "ch": 312,
+          "sw": 306,
+          "cw": 296
+        }
+      ],
+      "controls": [
+        {
+          "cls": "pw-report-tab",
+          "x": 16,
+          "y": 64,
+          "w": 93.328125,
+          "h": 48,
+          "right": 109.328125,
+          "bottom": 112,
+          "sh": 48,
+          "ch": 48,
+          "sw": 93,
+          "cw": 93
+        },
+        {
+          "cls": "pw-report-tab",
+          "x": 113.328125,
+          "y": 64,
+          "w": 93.328125,
+          "h": 48,
+          "right": 206.65625,
+          "bottom": 112,
+          "sh": 48,
+          "ch": 48,
+          "sw": 93,
+          "cw": 93
+        },
+        {
+          "cls": "pw-report-tab",
+          "x": 210.65625,
+          "y": 64,
+          "w": 93.34375,
+          "h": 48,
+          "right": 304,
+          "bottom": 112,
+          "sh": 48,
+          "ch": 48,
+          "sw": 93,
+          "cw": 93
+        },
+        {
+          "cls": "pw-report-action",
+          "x": 12,
+          "y": 452,
+          "w": 296,
+          "h": 48,
+          "right": 308,
+          "bottom": 500,
+          "sh": 48,
+          "ch": 48,
+          "sw": 296,
+          "cw": 296
+        }
+      ],
+      "outside": [],
+      "viewport": [
+        320,
+        568
+      ]
+    }
+  ],
+  "screenshots": [
+    "screenshots/chromium-home-320-reduce.png",
+    "screenshots/chromium-record-320-reduce.png",
+    "screenshots/chromium-goal-320-reduce.png"
+  ],
+  "errors": [],
+  "engines": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12"
+    }
+  ],
+  "physicalKeyboardVerified": false,
+  "status": "FAIL",
+  "failure": "AssertionError [ERR_ASSERTION]: chromium/320/false/report-돈 흐름 scroll extent [{\"cls\":\"\",\"x\":0,\"y\":0,\"w\":320,\"h\":568,\"right\":320,\"bottom\":568,\"sh\":568,\"ch\":568,\"sw\":320,\"cw\":320},{\"cls\":\"pw-shell\",\"x\":0,\"y\":0,\"w\":320,\"h\":568,\"right\":320,\"bottom\":568,\"sh\":568,\"ch\":568,\"sw\":320,\"cw\":320},{\"cls\":\"pw-content\",\"x\":0,\"y\":48,\"w\":320,\"h\":464,\"right\":320,\"bottom\":512,\"sh\":464,\"ch\":464,\"sw\":320,\"cw\":320},{\"cls\":\"pw-report pw-screen\",\"x\":0,\"y\":48,\"w\":320,\"h\":464,\"right\":320,\"bottom\":512,\"sh\":464,\"ch\":464,\"sw\":320,\"cw\":320},{\"cls\":\"pw-report-content\",\"x\":12,\"y\":128,\"w\":296,\"h\":312,\"right\":308,\"bottom\":440,\"sh\":312,\"ch\":312,\"sw\":306,\"cw\":296}]\n    at geometry (/Users/jeonghu/포켓WON/tests/verify-single-screen.cjs:63:3)\n    at async matrix (/Users/jeonghu/포켓WON/tests/verify-single-screen.cjs:77:161)\n    at async /Users/jeonghu/포켓WON/tests/verify-single-screen.cjs:128:237"
+}

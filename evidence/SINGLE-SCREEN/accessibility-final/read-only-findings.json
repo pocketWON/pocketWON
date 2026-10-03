@@ -1,0 +1,1197 @@
+{
+  "startedAt": "2026-10-03T09:19:17.917Z",
+  "cases": [
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "home",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          844
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "record",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1327
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "goal",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          855
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "report",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          843
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "report-flow",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          859
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "report-goal",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          843
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "all",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          757
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "goal-name",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          855
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "goal-target",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          855
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "goal-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          855
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "record-type",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1327
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "record-amount",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1327
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "record-category",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1327
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "record-memo",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1327
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "record-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1327
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "home",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          645
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "record",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          557
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "goal",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          586
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "report",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          677
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "report-flow",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          677
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "report-goal",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          677
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "all",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          665
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "goal-name",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          586
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "goal-target",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          586
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "goal-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          586
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "record-type",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          557
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "record-amount",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          557
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "record-category",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          557
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "record-memo",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          557
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "record-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          557
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "home",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          844
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "record",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1327
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "goal",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          855
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "report",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          843
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "report-flow",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          859
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "report-goal",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          843
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "all",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          757
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "goal-name",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          855
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "goal-target",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          855
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "goal-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          855
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "record-type",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1327
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "record-amount",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1327
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "record-category",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1327
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "record-memo",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1327
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "record-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1327
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "home",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          645
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "record",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          557
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "goal",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          586
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "report",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          677
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "report-flow",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          677
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "report-goal",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          677
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "all",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          665
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "goal-name",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          586
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "goal-target",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          586
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "goal-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          586
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "record-type",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          557
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "record-amount",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          557
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "record-category",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          557
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "record-memo",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          557
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "record-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          280,
+          557
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    }
+  ],
+  "failures": [],
+  "actions": [
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "screen home",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "screen record",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "screen goal",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "screen report",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "screen all",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "goal wizard save/cancel",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "record wizard save/cancel",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "label": "screen home",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "label": "screen record",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "label": "screen goal",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "label": "screen report",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "label": "screen all",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "label": "goal wizard save/cancel",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "label": "record wizard save/cancel",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "screen home",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "screen record",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "screen goal",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "screen report",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "screen all",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "goal wizard save/cancel",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "record wizard save/cancel",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "label": "screen home",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "label": "screen record",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "label": "screen goal",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "label": "screen report",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "label": "screen all",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "label": "goal wizard save/cancel",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "label": "record wizard save/cancel",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

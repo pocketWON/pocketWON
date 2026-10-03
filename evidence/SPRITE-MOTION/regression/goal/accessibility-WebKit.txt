@@ -1,0 +1,42 @@
+- banner:
+  - paragraph: 목표
+  - button "전체 메뉴"
+- main "목표":
+  - heading "목표" [level=1]
+  - paragraph: 갖고 싶은 것을 정하고 조금씩 가까워져 보세요.
+  - region "새 자전거":
+    - heading "새 자전거" [level=2]
+    - group "42,000원"
+    - paragraph: 모았어요
+    - progressbar "목표 진행률"
+    - paragraph: 42% 달성
+    - term: 목표 금액
+    - definition:
+      - group "100,000원"
+    - term: 남은 금액
+    - definition:
+      - group "58,000원"
+    - button "목표 수정"
+  - status
+  - paragraph: 돈을 받거나 썼다면 기록해보세요.
+  - button "기록하러 가기"
+- navigation "주요 메뉴":
+  - button "홈"
+  - button "기록"
+  - button "목표"
+  - button "리포트"
+  - button "전체"
+- dialog "목표 수정":
+  - heading "목표 수정" [level=2]
+  - button "목표 설정 닫기"
+  - text: 무엇을 모으고 있나요?
+  - textbox "무엇을 모으고 있나요?":
+    - /placeholder: "예: 새 자전거"
+    - text: 새 자전거
+  - paragraph: 30자까지 적을 수 있어요.
+  - text: 얼마가 필요하나요?
+  - textbox "얼마가 필요하나요?":
+    - /placeholder: 숫자로 입력
+    - text: "100000"
+  - paragraph: 원 단위로 숫자만 입력해주세요.
+  - button "목표 저장"

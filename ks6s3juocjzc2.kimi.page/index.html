@@ -14,10 +14,15 @@
   <link rel="stylesheet" href="./styles/record.css">
   <link rel="stylesheet" href="./styles/goal.css">
   <link rel="stylesheet" href="./styles/report.css">
+  <link rel="stylesheet" href="./styles/sprites.css">
+  <link rel="stylesheet" href="./styles/stage-sprites.css">
   <script src="./scripts/icons.js" defer></script>
   <script src="./scripts/tabs.js" defer></script>
   <script src="./scripts/state.js" defer></script>
+  <script src="./scripts/sprite-manifest.js" defer></script>
+  <script src="./scripts/sprites.js" defer></script>
   <script src="./scripts/illustrations.js" defer></script>
+  <script src="./scripts/ui.js" defer></script>
   <script src="./scripts/home.js" defer></script>
   <script src="./scripts/record.js" defer></script>
   <script src="./scripts/goal.js" defer></script>
@@ -27,10 +32,8 @@
 </head>
 <body>
   <div class="pw-shell">
-    <div class="pw-safe-area-top" aria-hidden="true"></div>
     <header class="pw-header">
       <p class="pw-header-context" id="pw-header-context" aria-label="포켓WON">Pocket<span class="pw-brand-accent">WON</span></p>
-      <button class="pw-icon-button" id="pw-menu" type="button" aria-label="전체 메뉴"></button>
     </header>
     <main class="pw-content" id="pw-content" aria-labelledby="pw-screen-title">
       <section class="pw-placeholder" aria-labelledby="pw-screen-title">
@@ -39,7 +42,6 @@
     </main>
     <nav class="pw-bottom-navigation" aria-label="주요 메뉴">
       <div class="pw-navigation-items" id="pw-navigation-items"></div>
-      <div class="pw-safe-area-bottom" aria-hidden="true"></div>
     </nav>
   </div>
 </body>

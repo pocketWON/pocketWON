@@ -1,43 +1,45 @@
 /* All is a destination menu for screens that already exist in PocketWON. */
-function createAllView(navigate) {
-  const el = (tag, className, text) => {
-    const node = document.createElement(tag);
-    if (className) node.className = className;
-    if (text !== undefined) node.textContent = text;
-    return node;
-  };
-  const root = el('div', 'pw-all');
-  const heading = el('h1', 'pw-type-h1', '전체');
-  heading.id = 'pw-screen-title';
-  heading.setAttribute('aria-live', 'polite');
-  heading.setAttribute('aria-atomic', 'true');
-  const intro = el('div', 'pw-all-intro');
-  intro.append(el('p', 'pw-all-eyebrow', 'POCKETWON'), el('p', 'pw-all-description', '필요한 돈 관리 기능을 골라보세요.'));
-  root.append(heading, intro);
-  const grid = el('div', 'pw-all-grid');
+function createAllView(navigate, options = {}) {
+  const { el, button, heading } = PWUI;
+  let disposed = false;
+  const players = [];
+  const root = el('div', 'pw-all pw-screen');
+  root.append(heading('전체 메뉴'));
+  const list = el('div', 'pw-all-list');
   const destinations = [
-    ['home', '홈', '내 용돈과 오늘의 흐름을 확인해요.', 'balance', '열기'],
-    ['record', '기록', '받은 돈과 쓴 돈을 남겨요.', 'record', '기록하기'],
-    ['goal', '목표', '모으고 싶은 목표를 관리해요.', 'goal', '관리하기'],
-    ['report', '리포트', '돈 습관을 한눈에 살펴봐요.', 'report', '살펴보기'],
+    ['home', '홈', '내 용돈과 주요 행동', 'balance'],
+    ['record', '기록', '받은 돈과 쓴 돈', 'record'],
+    ['goal', '목표', '모으고 싶은 목표', 'goal'],
+    ['report', '리포트', '저장된 돈 습관', 'report'],
   ];
-  for (const [screen, title, description, artwork, cta] of destinations) {
-    const card = el('article', `pw-all-card pw-all-card--${screen}`);
-    const panel = pwIllustrationPanel(artwork, { panelClass: 'pw-all-card-visual' });
-    const body = el('div', 'pw-all-card-body');
-    const cardTitle = el('h2', 'pw-all-card-title', title);
-    const copy = el('p', 'pw-all-card-description', description);
-    const button = el('button', 'pw-button pw-all-card-action', cta);
-    button.type = 'button';
-    button.addEventListener('click', () => navigate(screen));
-    body.append(cardTitle, copy, button);
-    card.append(panel, body);
-    grid.append(card);
+  for (const [screen, title, description, profile] of destinations) {
+    const item = button('', () => {
+      if (disposed) return;
+      if (typeof PocketWONMotion !== 'undefined') PocketWONMotion.controllerFor(root)?.request(player.element, 'action', 'interaction');
+      navigate(screen, { profile: screen === 'home' ? 'balance' : profile, clip: 'action' });
+    }, `pw-all-item pw-all-item--${screen}`);
+    item.dataset.pwMotionCard = '';
+    item.dataset.screen = screen;
+    const stage = el('span', 'pw-all-item-visual pw-compact-visual');
+    stage.setAttribute('aria-hidden', 'true');
+    const player = createPocketWONSprite(profile, { autoplay: false, loading: 'eager' });
+    players.push(player);
+    stage.append(player.element);
+    const body = el('span', 'pw-all-item-body');
+    const titleNode = el('span', 'pw-all-item-title', title);
+    titleNode.id = `pw-all-${screen}-title`;
+    const copy = el('span', 'pw-all-item-description pw-meta pw-muted', description);
+    body.append(titleNode, copy);
+    const arrow = el('span', 'pw-all-item-chevron', '→');
+    arrow.setAttribute('aria-hidden', 'true');
+    item.setAttribute('aria-labelledby', titleNode.id);
+    item.append(stage, body, arrow);
+    list.append(item);
   }
-  root.append(grid);
+  root.append(list);
   return {
     element: root,
-    mount() {},
-    dispose() {},
+    mount() { if (!disposed) PWUI.refreshMotion(root); },
+    dispose() { disposed = true; for (const player of players) player.dispose(); },
   };
 }

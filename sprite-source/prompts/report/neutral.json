@@ -1,0 +1,23 @@
+{
+  "profile": "report",
+  "frame": "neutral",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is the immutable identity/camera/scale reference; input 2 when present is the previous sequential frame to edit. Keep artwork except specifically requested pose/expression. Exact same opaque white bean/wallet body, asymmetrical folded top, big dark oval eyes, eye spacing, dark navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and exact canvas coordinates. Square canvas. Grounded feet center at (50%,82%). Head y approximately27%, body width about46% of canvas. Single flat 2D editorial line-art character. No UI, text, letters, numbers, graphs, background, shadow, border or panels. True transparent alpha, wide transparent margins. Do not zoom, crop, recenter, or change proportions. Props pale blue, coins muted gold. Preserve identity over posing. FRAME neutral: Preserve body, face, top fold, side clasp, feet, and camera exactly. Replace only the wallet/coin in front of the belly with one simple pale-blue magnifying glass held low near waist with hand on viewer RIGHT, with dark navy circular rim and small handle; other hand relaxed close to body. The magnifier does not cover the eyes in neutral pose. No graph and no writing. Relaxed neutral open eyes and gentle smile. Grounded feet anchored.\n",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png"
+  ],
+  "raw": "sprite-source/raw/report/neutral.png",
+  "source": "sprite-source/frames/report/neutral.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "456521f0eca2f565e3cff0e2b4374fc36020624be37eb2ebe62a4f3856705fe8",
+  "sourceSha256": "32225fec7f15c4c6b9880fea1913fd149d61a62542058a3bc2ed752af1317766"
+}

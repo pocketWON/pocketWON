@@ -1,0 +1,119 @@
+{
+  "events": [
+    {
+      "event": "animationstart",
+      "time": 244.09999999403954,
+      "profile": "balance",
+      "clip": "action"
+    },
+    {
+      "event": "animationend",
+      "time": 1045.2999999821186,
+      "profile": "balance",
+      "clip": "action"
+    },
+    {
+      "event": "animationstart",
+      "time": 3414,
+      "profile": "balance",
+      "clip": "idle"
+    },
+    {
+      "event": "animationend",
+      "time": 4412,
+      "profile": "balance",
+      "clip": "idle"
+    },
+    {
+      "event": "animationstart",
+      "time": 4428.199999988079,
+      "profile": "report",
+      "clip": "idle"
+    },
+    {
+      "event": "animationend",
+      "time": 5410.799999982119,
+      "profile": "report",
+      "clip": "idle"
+    },
+    {
+      "event": "animationstart",
+      "time": 5427.5,
+      "profile": "record",
+      "clip": "idle"
+    },
+    {
+      "event": "animationend",
+      "time": 6411.199999988079,
+      "profile": "record",
+      "clip": "idle"
+    },
+    {
+      "event": "animationstart",
+      "time": 8260.90000000596,
+      "profile": "report",
+      "clip": "idle"
+    }
+  ],
+  "players": [
+    {
+      "profile": "balance",
+      "state": "static",
+      "clip": null,
+      "ready": false,
+      "paused": false,
+      "reduced": false,
+      "visible": false,
+      "suspended": false,
+      "priority": null
+    },
+    {
+      "profile": "record",
+      "state": "static",
+      "clip": null,
+      "ready": false,
+      "paused": false,
+      "reduced": false,
+      "visible": true,
+      "suspended": false,
+      "priority": null
+    },
+    {
+      "profile": "report",
+      "state": "playing",
+      "clip": "idle",
+      "ready": true,
+      "paused": false,
+      "reduced": false,
+      "visible": true,
+      "suspended": false,
+      "priority": "idle"
+    },
+    {
+      "profile": "goal",
+      "state": "static",
+      "clip": null,
+      "ready": false,
+      "paused": false,
+      "reduced": false,
+      "visible": false,
+      "suspended": false,
+      "priority": null
+    },
+    {
+      "profile": "all",
+      "state": "static",
+      "clip": null,
+      "ready": false,
+      "paused": false,
+      "reduced": false,
+      "visible": false,
+      "suspended": false,
+      "priority": null
+    }
+  ],
+  "changes": [
+    "240ms quiet interval between automatic strong entrances; interaction/success bypass",
+    "Home balance canvas145%->165%, horizontal offset recentered; same reserved stage"
+  ]
+}

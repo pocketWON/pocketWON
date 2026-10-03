@@ -1,0 +1,3773 @@
+{
+  "startedAt": "2026-10-03T07:34:54.028Z",
+  "url": "http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html",
+  "checks": [
+    {
+      "name": "Baseline: untouched files and all historical evidence preserved",
+      "status": "PASS",
+      "detail": {
+        "files": 311
+      }
+    },
+    {
+      "name": "A/B: immutable original schema, exact balance/aggregates, no ID, unrelated fields preserved",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Empty-key first save creates only money fields; unknown existing properties survive",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "C/D/E: strict full-string amount, type/category allowlist, 50-code-point optional memo",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Unsafe aggregate arithmetic and malformed stored data cannot be written",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Strict dates/grouping, unavailable rows and normalized persist errors",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Source: one persist write site, no other storage keys/removal/network business path",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: out A/B/G/H exact aggregates, Home reentry, persistence and one explicit write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: in A/B/G/H exact aggregates, Home reentry, persistence and one explicit write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: C/D/E invalid drafts/category/memo, Enter editing, cancel/navigation/reload never write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: F quota failure preserves draft/UI/storage, retry succeeds, memo renders as text",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: save-time reload reduced uses latest state or blocks without write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: save-time reload increased uses latest state or blocks without write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: save-time reload invalid uses latest state or blocks without write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: save-time reload read-error uses latest state or blocks without write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: save-time reload removed uses latest state or blocks without write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: I synchronous double activation plus submit creates exactly one transaction",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: empty-key initialization / no repair boundary",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: empty-transactions initialization / no repair boundary",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: invalid-json initialization / no repair boundary",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: partial-state initialization / no repair boundary",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: invalid-row initialization / no repair boundary",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: layout 360x844 root 100%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 360,
+          "height": 844,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 20,
+              "y": 514.375,
+              "right": 340,
+              "bottom": 562.375,
+              "width": 320,
+              "height": 48,
+              "scrollWidth": 320,
+              "clientWidth": 320
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 748,
+            "right": 344,
+            "bottom": 832,
+            "width": 328,
+            "height": 84
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 360,
+          "height": 844,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 139.984375,
+            "right": 360,
+            "bottom": 844,
+            "width": 360,
+            "height": 704.015625
+          },
+          "fields": {
+            "x": 0,
+            "y": 219.984375,
+            "right": 360,
+            "bottom": 771,
+            "width": 360,
+            "height": 551.015625
+          },
+          "footer": {
+            "x": 0,
+            "y": 771,
+            "right": 360,
+            "bottom": 844,
+            "width": 360,
+            "height": 73
+          },
+          "fieldsScroll": 551,
+          "fieldsClient": 551,
+          "controls": [
+            {
+              "x": 296,
+              "y": 159.984375,
+              "right": 344,
+              "bottom": 207.984375,
+              "width": 48,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 24,
+              "y": 271.65625,
+              "right": 178,
+              "bottom": 319.65625,
+              "width": 154,
+              "height": 48,
+              "scrollWidth": 152,
+              "clientWidth": 152
+            },
+            {
+              "x": 182,
+              "y": 271.65625,
+              "right": 336,
+              "bottom": 319.65625,
+              "width": 154,
+              "height": 48,
+              "scrollWidth": 152,
+              "clientWidth": 152
+            },
+            {
+              "x": 20,
+              "y": 433.125,
+              "right": 340,
+              "bottom": 482.796875,
+              "width": 320,
+              "height": 49.671875,
+              "scrollWidth": 318,
+              "clientWidth": 318
+            },
+            {
+              "x": 20,
+              "y": 566.0625,
+              "right": 70.203125,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 78.203125,
+              "y": 566.0625,
+              "right": 128.40625,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 136.40625,
+              "y": 566.0625,
+              "right": 186.609375,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 194.609375,
+              "y": 566.0625,
+              "right": 244.8125,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 252.8125,
+              "y": 566.0625,
+              "right": 303.015625,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 20,
+              "y": 673.734375,
+              "right": 340,
+              "bottom": 723.40625,
+              "width": 320,
+              "height": 49.671875,
+              "scrollWidth": 318,
+              "clientWidth": 318
+            },
+            {
+              "x": 20,
+              "y": 784,
+              "right": 340,
+              "bottom": 832,
+              "width": 320,
+              "height": 48,
+              "scrollWidth": 320,
+              "clientWidth": 320
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 748,
+            "right": 344,
+            "bottom": 832,
+            "width": 328,
+            "height": 84
+          },
+          "sheetScroll": 360,
+          "sheetClient": 360
+        }
+      }
+    },
+    {
+      "name": "Chromium: layout 390x844 root 100%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 390,
+          "height": 844,
+          "docWidth": 390,
+          "contentWidth": 390,
+          "contentScroll": 390,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 20,
+              "y": 514.375,
+              "right": 370,
+              "bottom": 562.375,
+              "width": 350,
+              "height": 48,
+              "scrollWidth": 350,
+              "clientWidth": 350
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 748,
+            "right": 374,
+            "bottom": 832,
+            "width": 358,
+            "height": 84
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 390,
+          "height": 844,
+          "docWidth": 390,
+          "contentWidth": 390,
+          "contentScroll": 390,
+          "dialog": {
+            "x": 0,
+            "y": 136.84375,
+            "right": 390,
+            "bottom": 844,
+            "width": 390,
+            "height": 707.15625
+          },
+          "fields": {
+            "x": 0,
+            "y": 216.84375,
+            "right": 390,
+            "bottom": 771,
+            "width": 390,
+            "height": 554.15625
+          },
+          "footer": {
+            "x": 0,
+            "y": 771,
+            "right": 390,
+            "bottom": 844,
+            "width": 390,
+            "height": 73
+          },
+          "fieldsScroll": 554,
+          "fieldsClient": 554,
+          "controls": [
+            {
+              "x": 326,
+              "y": 156.84375,
+              "right": 374,
+              "bottom": 204.84375,
+              "width": 48,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 24,
+              "y": 268.515625,
+              "right": 193,
+              "bottom": 316.515625,
+              "width": 169,
+              "height": 48,
+              "scrollWidth": 167,
+              "clientWidth": 167
+            },
+            {
+              "x": 197,
+              "y": 268.515625,
+              "right": 366,
+              "bottom": 316.515625,
+              "width": 169,
+              "height": 48,
+              "scrollWidth": 167,
+              "clientWidth": 167
+            },
+            {
+              "x": 20,
+              "y": 433.125,
+              "right": 370,
+              "bottom": 482.796875,
+              "width": 350,
+              "height": 49.671875,
+              "scrollWidth": 348,
+              "clientWidth": 348
+            },
+            {
+              "x": 20,
+              "y": 566.0625,
+              "right": 70.203125,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 78.203125,
+              "y": 566.0625,
+              "right": 128.40625,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 136.40625,
+              "y": 566.0625,
+              "right": 186.609375,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 194.609375,
+              "y": 566.0625,
+              "right": 244.8125,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 252.8125,
+              "y": 566.0625,
+              "right": 303.015625,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 20,
+              "y": 673.734375,
+              "right": 370,
+              "bottom": 723.40625,
+              "width": 350,
+              "height": 49.671875,
+              "scrollWidth": 348,
+              "clientWidth": 348
+            },
+            {
+              "x": 20,
+              "y": 784,
+              "right": 370,
+              "bottom": 832,
+              "width": 350,
+              "height": 48,
+              "scrollWidth": 350,
+              "clientWidth": 350
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 748,
+            "right": 374,
+            "bottom": 832,
+            "width": 358,
+            "height": 84
+          },
+          "sheetScroll": 390,
+          "sheetClient": 390
+        }
+      }
+    },
+    {
+      "name": "Chromium: layout 430x844 root 100%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 430,
+          "height": 844,
+          "docWidth": 430,
+          "contentWidth": 430,
+          "contentScroll": 430,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 20,
+              "y": 514.375,
+              "right": 410,
+              "bottom": 562.375,
+              "width": 390,
+              "height": 48,
+              "scrollWidth": 390,
+              "clientWidth": 390
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 748,
+            "right": 414,
+            "bottom": 832,
+            "width": 398,
+            "height": 84
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 430,
+          "height": 844,
+          "docWidth": 430,
+          "contentWidth": 430,
+          "contentScroll": 430,
+          "dialog": {
+            "x": 0,
+            "y": 132.640625,
+            "right": 430,
+            "bottom": 844,
+            "width": 430,
+            "height": 711.359375
+          },
+          "fields": {
+            "x": 0,
+            "y": 212.640625,
+            "right": 430,
+            "bottom": 771,
+            "width": 430,
+            "height": 558.359375
+          },
+          "footer": {
+            "x": 0,
+            "y": 771,
+            "right": 430,
+            "bottom": 844,
+            "width": 430,
+            "height": 73
+          },
+          "fieldsScroll": 558,
+          "fieldsClient": 558,
+          "controls": [
+            {
+              "x": 366,
+              "y": 152.640625,
+              "right": 414,
+              "bottom": 200.640625,
+              "width": 48,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 24,
+              "y": 264.3125,
+              "right": 213,
+              "bottom": 312.3125,
+              "width": 189,
+              "height": 48,
+              "scrollWidth": 187,
+              "clientWidth": 187
+            },
+            {
+              "x": 217,
+              "y": 264.3125,
+              "right": 406,
+              "bottom": 312.3125,
+              "width": 189,
+              "height": 48,
+              "scrollWidth": 187,
+              "clientWidth": 187
+            },
+            {
+              "x": 20,
+              "y": 433.125,
+              "right": 410,
+              "bottom": 482.796875,
+              "width": 390,
+              "height": 49.671875,
+              "scrollWidth": 388,
+              "clientWidth": 388
+            },
+            {
+              "x": 20,
+              "y": 566.0625,
+              "right": 70.203125,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 78.203125,
+              "y": 566.0625,
+              "right": 128.40625,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 136.40625,
+              "y": 566.0625,
+              "right": 186.609375,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 194.609375,
+              "y": 566.0625,
+              "right": 244.8125,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 252.8125,
+              "y": 566.0625,
+              "right": 303.015625,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 20,
+              "y": 673.734375,
+              "right": 410,
+              "bottom": 723.40625,
+              "width": 390,
+              "height": 49.671875,
+              "scrollWidth": 388,
+              "clientWidth": 388
+            },
+            {
+              "x": 20,
+              "y": 784,
+              "right": 410,
+              "bottom": 832,
+              "width": 390,
+              "height": 48,
+              "scrollWidth": 390,
+              "clientWidth": 390
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 748,
+            "right": 414,
+            "bottom": 832,
+            "width": 398,
+            "height": 84
+          },
+          "sheetScroll": 430,
+          "sheetClient": 430
+        }
+      }
+    },
+    {
+      "name": "Chromium: layout 360x640 root 100%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 360,
+          "height": 640,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 20,
+              "y": 514.375,
+              "right": 340,
+              "bottom": 562.375,
+              "width": 320,
+              "height": 48,
+              "scrollWidth": 320,
+              "clientWidth": 320
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 544,
+            "right": 344,
+            "bottom": 628,
+            "width": 328,
+            "height": 84
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 360,
+          "height": 640,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 12,
+            "right": 360,
+            "bottom": 640,
+            "width": 360,
+            "height": 628
+          },
+          "fields": {
+            "x": 0,
+            "y": 92,
+            "right": 360,
+            "bottom": 567,
+            "width": 360,
+            "height": 475
+          },
+          "footer": {
+            "x": 0,
+            "y": 567,
+            "right": 360,
+            "bottom": 640,
+            "width": 360,
+            "height": 73
+          },
+          "fieldsScroll": 551,
+          "fieldsClient": 475,
+          "controls": [
+            {
+              "x": 296,
+              "y": 32,
+              "right": 344,
+              "bottom": 80,
+              "width": 48,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 24,
+              "y": 143.671875,
+              "right": 178,
+              "bottom": 191.671875,
+              "width": 154,
+              "height": 48,
+              "scrollWidth": 152,
+              "clientWidth": 152
+            },
+            {
+              "x": 182,
+              "y": 143.671875,
+              "right": 336,
+              "bottom": 191.671875,
+              "width": 154,
+              "height": 48,
+              "scrollWidth": 152,
+              "clientWidth": 152
+            },
+            {
+              "x": 20,
+              "y": 305.140625,
+              "right": 340,
+              "bottom": 354.8125,
+              "width": 320,
+              "height": 49.671875,
+              "scrollWidth": 318,
+              "clientWidth": 318
+            },
+            {
+              "x": 20,
+              "y": 438.078125,
+              "right": 70.203125,
+              "bottom": 486.078125,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 78.203125,
+              "y": 438.078125,
+              "right": 128.40625,
+              "bottom": 486.078125,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 136.40625,
+              "y": 438.078125,
+              "right": 186.609375,
+              "bottom": 486.078125,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 194.609375,
+              "y": 438.078125,
+              "right": 244.8125,
+              "bottom": 486.078125,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 252.8125,
+              "y": 438.078125,
+              "right": 303.015625,
+              "bottom": 486.078125,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 20,
+              "y": 545.75,
+              "right": 340,
+              "bottom": 595.421875,
+              "width": 320,
+              "height": 49.671875,
+              "scrollWidth": 318,
+              "clientWidth": 318
+            },
+            {
+              "x": 20,
+              "y": 580,
+              "right": 340,
+              "bottom": 628,
+              "width": 320,
+              "height": 48,
+              "scrollWidth": 320,
+              "clientWidth": 320
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 544,
+            "right": 344,
+            "bottom": 628,
+            "width": 328,
+            "height": 84
+          },
+          "sheetScroll": 360,
+          "sheetClient": 360
+        }
+      }
+    },
+    {
+      "name": "Chromium: layout 360x844 root 200%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 360,
+          "height": 844,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 40,
+              "y": 1141.5625,
+              "right": 320,
+              "bottom": 1237.5625,
+              "width": 280,
+              "height": 96,
+              "scrollWidth": 280,
+              "clientWidth": 280
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 637.625,
+            "right": 328,
+            "bottom": 820,
+            "width": 296,
+            "height": 182.375
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 360,
+          "height": 844,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 24,
+            "right": 360,
+            "bottom": 844,
+            "width": 360,
+            "height": 820
+          },
+          "fields": {
+            "x": 0,
+            "y": 184,
+            "right": 360,
+            "bottom": 699,
+            "width": 360,
+            "height": 515
+          },
+          "footer": {
+            "x": 0,
+            "y": 699,
+            "right": 360,
+            "bottom": 844,
+            "width": 360,
+            "height": 145
+          },
+          "fieldsScroll": 1345,
+          "fieldsClient": 515,
+          "controls": [
+            {
+              "x": 232,
+              "y": 64,
+              "right": 328,
+              "bottom": 160,
+              "width": 96,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 48,
+              "y": -171.640625,
+              "right": 176,
+              "bottom": -75.640625,
+              "width": 128,
+              "height": 96,
+              "scrollWidth": 126,
+              "clientWidth": 126
+            },
+            {
+              "x": 184,
+              "y": -171.640625,
+              "right": 312,
+              "bottom": -75.640625,
+              "width": 128,
+              "height": 96,
+              "scrollWidth": 126,
+              "clientWidth": 126
+            },
+            {
+              "x": 40,
+              "y": 142.90625,
+              "right": 320,
+              "bottom": 240.265625,
+              "width": 280,
+              "height": 97.359375,
+              "scrollWidth": 278,
+              "clientWidth": 278
+            },
+            {
+              "x": 40,
+              "y": 438,
+              "right": 138.40625,
+              "bottom": 534,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 438,
+              "right": 252.8125,
+              "bottom": 534,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 550,
+              "right": 138.40625,
+              "bottom": 646,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 550,
+              "right": 252.8125,
+              "bottom": 646,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 662,
+              "right": 138.40625,
+              "bottom": 758,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 877.359375,
+              "right": 320,
+              "bottom": 974.71875,
+              "width": 280,
+              "height": 97.359375,
+              "scrollWidth": 278,
+              "clientWidth": 278
+            },
+            {
+              "x": 40,
+              "y": 724,
+              "right": 320,
+              "bottom": 820,
+              "width": 280,
+              "height": 96,
+              "scrollWidth": 280,
+              "clientWidth": 280
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 637.625,
+            "right": 328,
+            "bottom": 820,
+            "width": 296,
+            "height": 182.375
+          },
+          "sheetScroll": 360,
+          "sheetClient": 360
+        }
+      }
+    },
+    {
+      "name": "Chromium: layout 390x844 root 200%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 390,
+          "height": 844,
+          "docWidth": 390,
+          "contentWidth": 390,
+          "contentScroll": 390,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 40,
+              "y": 335.578125,
+              "right": 350,
+              "bottom": 431.578125,
+              "width": 310,
+              "height": 96,
+              "scrollWidth": 310,
+              "clientWidth": 310
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 637.625,
+            "right": 358,
+            "bottom": 820,
+            "width": 326,
+            "height": 182.375
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 390,
+          "height": 844,
+          "docWidth": 390,
+          "contentWidth": 390,
+          "contentScroll": 390,
+          "dialog": {
+            "x": 0,
+            "y": 24,
+            "right": 390,
+            "bottom": 844,
+            "width": 390,
+            "height": 820
+          },
+          "fields": {
+            "x": 0,
+            "y": 184,
+            "right": 390,
+            "bottom": 699,
+            "width": 390,
+            "height": 515
+          },
+          "footer": {
+            "x": 0,
+            "y": 699,
+            "right": 390,
+            "bottom": 844,
+            "width": 390,
+            "height": 145
+          },
+          "fieldsScroll": 1314,
+          "fieldsClient": 515,
+          "controls": [
+            {
+              "x": 262,
+              "y": 64,
+              "right": 358,
+              "bottom": 160,
+              "width": 96,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 48,
+              "y": -140.640625,
+              "right": 191,
+              "bottom": -44.640625,
+              "width": 143,
+              "height": 96,
+              "scrollWidth": 141,
+              "clientWidth": 141
+            },
+            {
+              "x": 199,
+              "y": -140.640625,
+              "right": 342,
+              "bottom": -44.640625,
+              "width": 143,
+              "height": 96,
+              "scrollWidth": 141,
+              "clientWidth": 141
+            },
+            {
+              "x": 40,
+              "y": 173.90625,
+              "right": 350,
+              "bottom": 271.265625,
+              "width": 310,
+              "height": 97.359375,
+              "scrollWidth": 308,
+              "clientWidth": 308
+            },
+            {
+              "x": 40,
+              "y": 437.8125,
+              "right": 138.40625,
+              "bottom": 533.8125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 437.8125,
+              "right": 252.8125,
+              "bottom": 533.8125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 549.8125,
+              "right": 138.40625,
+              "bottom": 645.8125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 549.8125,
+              "right": 252.8125,
+              "bottom": 645.8125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 661.8125,
+              "right": 138.40625,
+              "bottom": 757.8125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 877.171875,
+              "right": 350,
+              "bottom": 974.53125,
+              "width": 310,
+              "height": 97.359375,
+              "scrollWidth": 308,
+              "clientWidth": 308
+            },
+            {
+              "x": 40,
+              "y": 724,
+              "right": 350,
+              "bottom": 820,
+              "width": 310,
+              "height": 96,
+              "scrollWidth": 310,
+              "clientWidth": 310
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 637.625,
+            "right": 358,
+            "bottom": 820,
+            "width": 326,
+            "height": 182.375
+          },
+          "sheetScroll": 390,
+          "sheetClient": 390
+        }
+      }
+    },
+    {
+      "name": "Chromium: layout 430x844 root 200%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 430,
+          "height": 844,
+          "docWidth": 430,
+          "contentWidth": 430,
+          "contentScroll": 430,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 40,
+              "y": 335.578125,
+              "right": 390,
+              "bottom": 431.578125,
+              "width": 350,
+              "height": 96,
+              "scrollWidth": 350,
+              "clientWidth": 350
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 652,
+            "right": 398,
+            "bottom": 820,
+            "width": 366,
+            "height": 168
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 430,
+          "height": 844,
+          "docWidth": 430,
+          "contentWidth": 430,
+          "contentScroll": 430,
+          "dialog": {
+            "x": 0,
+            "y": 24,
+            "right": 430,
+            "bottom": 844,
+            "width": 430,
+            "height": 820
+          },
+          "fields": {
+            "x": 0,
+            "y": 184,
+            "right": 430,
+            "bottom": 699,
+            "width": 430,
+            "height": 515
+          },
+          "footer": {
+            "x": 0,
+            "y": 699,
+            "right": 430,
+            "bottom": 844,
+            "width": 430,
+            "height": 145
+          },
+          "fieldsScroll": 1202,
+          "fieldsClient": 515,
+          "controls": [
+            {
+              "x": 302,
+              "y": 64,
+              "right": 398,
+              "bottom": 160,
+              "width": 96,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 48,
+              "y": -140.640625,
+              "right": 211,
+              "bottom": -44.640625,
+              "width": 163,
+              "height": 96,
+              "scrollWidth": 161,
+              "clientWidth": 161
+            },
+            {
+              "x": 219,
+              "y": -140.640625,
+              "right": 382,
+              "bottom": -44.640625,
+              "width": 163,
+              "height": 96,
+              "scrollWidth": 161,
+              "clientWidth": 161
+            },
+            {
+              "x": 40,
+              "y": 173.90625,
+              "right": 390,
+              "bottom": 271.265625,
+              "width": 350,
+              "height": 97.359375,
+              "scrollWidth": 348,
+              "clientWidth": 348
+            },
+            {
+              "x": 40,
+              "y": 437.8125,
+              "right": 138.40625,
+              "bottom": 533.8125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 437.8125,
+              "right": 252.8125,
+              "bottom": 533.8125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 268.8125,
+              "y": 437.8125,
+              "right": 367.21875,
+              "bottom": 533.8125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 549.8125,
+              "right": 138.40625,
+              "bottom": 645.8125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 549.8125,
+              "right": 252.8125,
+              "bottom": 645.8125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 765.171875,
+              "right": 390,
+              "bottom": 862.53125,
+              "width": 350,
+              "height": 97.359375,
+              "scrollWidth": 348,
+              "clientWidth": 348
+            },
+            {
+              "x": 40,
+              "y": 724,
+              "right": 390,
+              "bottom": 820,
+              "width": 350,
+              "height": 96,
+              "scrollWidth": 350,
+              "clientWidth": 350
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 652,
+            "right": 398,
+            "bottom": 820,
+            "width": 366,
+            "height": 168
+          },
+          "sheetScroll": 430,
+          "sheetClient": 430
+        }
+      }
+    },
+    {
+      "name": "Chromium: layout 360x640 root 200%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 360,
+          "height": 640,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 40,
+              "y": 428.5625,
+              "right": 320,
+              "bottom": 524.5625,
+              "width": 280,
+              "height": 96,
+              "scrollWidth": 280,
+              "clientWidth": 280
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 433.625,
+            "right": 328,
+            "bottom": 616,
+            "width": 296,
+            "height": 182.375
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 360,
+          "height": 640,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 24,
+            "right": 360,
+            "bottom": 640,
+            "width": 360,
+            "height": 616
+          },
+          "fields": {
+            "x": 0,
+            "y": 184,
+            "right": 360,
+            "bottom": 495,
+            "width": 360,
+            "height": 311
+          },
+          "footer": {
+            "x": 0,
+            "y": 495,
+            "right": 360,
+            "bottom": 640,
+            "width": 360,
+            "height": 145
+          },
+          "fieldsScroll": 1345,
+          "fieldsClient": 311,
+          "controls": [
+            {
+              "x": 232,
+              "y": 64,
+              "right": 328,
+              "bottom": 160,
+              "width": 96,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 48,
+              "y": -273.640625,
+              "right": 176,
+              "bottom": -177.640625,
+              "width": 128,
+              "height": 96,
+              "scrollWidth": 126,
+              "clientWidth": 126
+            },
+            {
+              "x": 184,
+              "y": -273.640625,
+              "right": 312,
+              "bottom": -177.640625,
+              "width": 128,
+              "height": 96,
+              "scrollWidth": 126,
+              "clientWidth": 126
+            },
+            {
+              "x": 40,
+              "y": 40.90625,
+              "right": 320,
+              "bottom": 138.265625,
+              "width": 280,
+              "height": 97.359375,
+              "scrollWidth": 278,
+              "clientWidth": 278
+            },
+            {
+              "x": 40,
+              "y": 336,
+              "right": 138.40625,
+              "bottom": 432,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 336,
+              "right": 252.8125,
+              "bottom": 432,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 448,
+              "right": 138.40625,
+              "bottom": 544,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 448,
+              "right": 252.8125,
+              "bottom": 544,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 560,
+              "right": 138.40625,
+              "bottom": 656,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 775.359375,
+              "right": 320,
+              "bottom": 872.71875,
+              "width": 280,
+              "height": 97.359375,
+              "scrollWidth": 278,
+              "clientWidth": 278
+            },
+            {
+              "x": 40,
+              "y": 520,
+              "right": 320,
+              "bottom": 616,
+              "width": 280,
+              "height": 96,
+              "scrollWidth": 280,
+              "clientWidth": 280
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 433.625,
+            "right": 328,
+            "bottom": 616,
+            "width": 296,
+            "height": 182.375
+          },
+          "sheetScroll": 360,
+          "sheetClient": 360
+        }
+      }
+    },
+    {
+      "name": "Chromium: rendered record and Sheet text contrast >= 4.5:1",
+      "status": "PASS",
+      "detail": {
+        "minimumSheet": 4.535339450041179
+      }
+    },
+    {
+      "name": "Chromium: dialog semantics, first focus, native radio arrows/Space, Tab trap, Escape and restoration",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: safe area applied once and short visual viewport input/footer accessibility",
+      "status": "PASS",
+      "detail": {
+        "bottom": "46px",
+        "fields": "24px"
+      }
+    },
+    {
+      "name": "Chromium: recent list capped at 20, local today/yesterday groups and last row visible",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: maximum safe integer/memo text and 200% category wrapping without horizontal overflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: out A/B/G/H exact aggregates, Home reentry, persistence and one explicit write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: in A/B/G/H exact aggregates, Home reentry, persistence and one explicit write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: C/D/E invalid drafts/category/memo, Enter editing, cancel/navigation/reload never write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: F quota failure preserves draft/UI/storage, retry succeeds, memo renders as text",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: save-time reload reduced uses latest state or blocks without write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: save-time reload increased uses latest state or blocks without write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: save-time reload invalid uses latest state or blocks without write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: save-time reload read-error uses latest state or blocks without write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: save-time reload removed uses latest state or blocks without write",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: I synchronous double activation plus submit creates exactly one transaction",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: empty-key initialization / no repair boundary",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: empty-transactions initialization / no repair boundary",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: invalid-json initialization / no repair boundary",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: partial-state initialization / no repair boundary",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: invalid-row initialization / no repair boundary",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: layout 360x844 root 100%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 360,
+          "height": 844,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 20,
+              "y": 514.375,
+              "right": 340,
+              "bottom": 562.375,
+              "width": 320,
+              "height": 48,
+              "scrollWidth": 320,
+              "clientWidth": 320
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 747.984375,
+            "right": 344,
+            "bottom": 831.984375,
+            "width": 328,
+            "height": 84
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 360,
+          "height": 844,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 139.984375,
+            "right": 360,
+            "bottom": 844,
+            "width": 360,
+            "height": 704.015625
+          },
+          "fields": {
+            "x": 0,
+            "y": 219.984375,
+            "right": 360,
+            "bottom": 771,
+            "width": 360,
+            "height": 551.015625
+          },
+          "footer": {
+            "x": 0,
+            "y": 771,
+            "right": 360,
+            "bottom": 844,
+            "width": 360,
+            "height": 73
+          },
+          "fieldsScroll": 551,
+          "fieldsClient": 551,
+          "controls": [
+            {
+              "x": 296,
+              "y": 159.984375,
+              "right": 344,
+              "bottom": 207.984375,
+              "width": 48,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 24,
+              "y": 271.65625,
+              "right": 178,
+              "bottom": 319.65625,
+              "width": 154,
+              "height": 48,
+              "scrollWidth": 152,
+              "clientWidth": 152
+            },
+            {
+              "x": 182,
+              "y": 271.65625,
+              "right": 336,
+              "bottom": 319.65625,
+              "width": 154,
+              "height": 48,
+              "scrollWidth": 152,
+              "clientWidth": 152
+            },
+            {
+              "x": 20,
+              "y": 433.125,
+              "right": 340,
+              "bottom": 482.796875,
+              "width": 320,
+              "height": 49.671875,
+              "scrollWidth": 318,
+              "clientWidth": 318
+            },
+            {
+              "x": 20,
+              "y": 566.0625,
+              "right": 70.203125,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 78.203125,
+              "y": 566.0625,
+              "right": 128.40625,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 136.40625,
+              "y": 566.0625,
+              "right": 186.609375,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 194.609375,
+              "y": 566.0625,
+              "right": 244.8125,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 252.8125,
+              "y": 566.0625,
+              "right": 303.015625,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 20,
+              "y": 673.734375,
+              "right": 340,
+              "bottom": 723.40625,
+              "width": 320,
+              "height": 49.671875,
+              "scrollWidth": 318,
+              "clientWidth": 318
+            },
+            {
+              "x": 20,
+              "y": 784,
+              "right": 340,
+              "bottom": 832,
+              "width": 320,
+              "height": 48,
+              "scrollWidth": 320,
+              "clientWidth": 320
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 747.984375,
+            "right": 344,
+            "bottom": 831.984375,
+            "width": 328,
+            "height": 84
+          },
+          "sheetScroll": 360,
+          "sheetClient": 360
+        }
+      }
+    },
+    {
+      "name": "WebKit: layout 390x844 root 100%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 390,
+          "height": 844,
+          "docWidth": 390,
+          "contentWidth": 390,
+          "contentScroll": 390,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 20,
+              "y": 514.375,
+              "right": 370,
+              "bottom": 562.375,
+              "width": 350,
+              "height": 48,
+              "scrollWidth": 350,
+              "clientWidth": 350
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 747.984375,
+            "right": 374,
+            "bottom": 831.984375,
+            "width": 358,
+            "height": 84
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 390,
+          "height": 844,
+          "docWidth": 390,
+          "contentWidth": 390,
+          "contentScroll": 390,
+          "dialog": {
+            "x": 0,
+            "y": 136.84375,
+            "right": 390,
+            "bottom": 844,
+            "width": 390,
+            "height": 707.15625
+          },
+          "fields": {
+            "x": 0,
+            "y": 216.84375,
+            "right": 390,
+            "bottom": 771,
+            "width": 390,
+            "height": 554.15625
+          },
+          "footer": {
+            "x": 0,
+            "y": 771,
+            "right": 390,
+            "bottom": 844,
+            "width": 390,
+            "height": 73
+          },
+          "fieldsScroll": 554,
+          "fieldsClient": 554,
+          "controls": [
+            {
+              "x": 326,
+              "y": 156.84375,
+              "right": 374,
+              "bottom": 204.84375,
+              "width": 48,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 24,
+              "y": 268.515625,
+              "right": 193,
+              "bottom": 316.515625,
+              "width": 169,
+              "height": 48,
+              "scrollWidth": 167,
+              "clientWidth": 167
+            },
+            {
+              "x": 197,
+              "y": 268.515625,
+              "right": 366,
+              "bottom": 316.515625,
+              "width": 169,
+              "height": 48,
+              "scrollWidth": 167,
+              "clientWidth": 167
+            },
+            {
+              "x": 20,
+              "y": 433.125,
+              "right": 370,
+              "bottom": 482.796875,
+              "width": 350,
+              "height": 49.671875,
+              "scrollWidth": 348,
+              "clientWidth": 348
+            },
+            {
+              "x": 20,
+              "y": 566.0625,
+              "right": 70.203125,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 78.203125,
+              "y": 566.0625,
+              "right": 128.40625,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 136.40625,
+              "y": 566.0625,
+              "right": 186.609375,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 194.609375,
+              "y": 566.0625,
+              "right": 244.8125,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 252.8125,
+              "y": 566.0625,
+              "right": 303.015625,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 20,
+              "y": 673.734375,
+              "right": 370,
+              "bottom": 723.40625,
+              "width": 350,
+              "height": 49.671875,
+              "scrollWidth": 348,
+              "clientWidth": 348
+            },
+            {
+              "x": 20,
+              "y": 784,
+              "right": 370,
+              "bottom": 832,
+              "width": 350,
+              "height": 48,
+              "scrollWidth": 350,
+              "clientWidth": 350
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 747.984375,
+            "right": 374,
+            "bottom": 831.984375,
+            "width": 358,
+            "height": 84
+          },
+          "sheetScroll": 390,
+          "sheetClient": 390
+        }
+      }
+    },
+    {
+      "name": "WebKit: layout 430x844 root 100%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 430,
+          "height": 844,
+          "docWidth": 430,
+          "contentWidth": 430,
+          "contentScroll": 430,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 20,
+              "y": 514.375,
+              "right": 410,
+              "bottom": 562.375,
+              "width": 390,
+              "height": 48,
+              "scrollWidth": 390,
+              "clientWidth": 390
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 747.984375,
+            "right": 414,
+            "bottom": 831.984375,
+            "width": 398,
+            "height": 84
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 430,
+          "height": 844,
+          "docWidth": 430,
+          "contentWidth": 430,
+          "contentScroll": 430,
+          "dialog": {
+            "x": 0,
+            "y": 132.640625,
+            "right": 430,
+            "bottom": 844,
+            "width": 430,
+            "height": 711.359375
+          },
+          "fields": {
+            "x": 0,
+            "y": 212.640625,
+            "right": 430,
+            "bottom": 771,
+            "width": 430,
+            "height": 558.359375
+          },
+          "footer": {
+            "x": 0,
+            "y": 771,
+            "right": 430,
+            "bottom": 844,
+            "width": 430,
+            "height": 73
+          },
+          "fieldsScroll": 558,
+          "fieldsClient": 558,
+          "controls": [
+            {
+              "x": 366,
+              "y": 152.640625,
+              "right": 414,
+              "bottom": 200.640625,
+              "width": 48,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 24,
+              "y": 264.3125,
+              "right": 213,
+              "bottom": 312.3125,
+              "width": 189,
+              "height": 48,
+              "scrollWidth": 187,
+              "clientWidth": 187
+            },
+            {
+              "x": 217,
+              "y": 264.3125,
+              "right": 406,
+              "bottom": 312.3125,
+              "width": 189,
+              "height": 48,
+              "scrollWidth": 187,
+              "clientWidth": 187
+            },
+            {
+              "x": 20,
+              "y": 433.125,
+              "right": 410,
+              "bottom": 482.796875,
+              "width": 390,
+              "height": 49.671875,
+              "scrollWidth": 388,
+              "clientWidth": 388
+            },
+            {
+              "x": 20,
+              "y": 566.0625,
+              "right": 70.203125,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 78.203125,
+              "y": 566.0625,
+              "right": 128.40625,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 136.40625,
+              "y": 566.0625,
+              "right": 186.609375,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 194.609375,
+              "y": 566.0625,
+              "right": 244.8125,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 252.8125,
+              "y": 566.0625,
+              "right": 303.015625,
+              "bottom": 614.0625,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 20,
+              "y": 673.734375,
+              "right": 410,
+              "bottom": 723.40625,
+              "width": 390,
+              "height": 49.671875,
+              "scrollWidth": 388,
+              "clientWidth": 388
+            },
+            {
+              "x": 20,
+              "y": 784,
+              "right": 410,
+              "bottom": 832,
+              "width": 390,
+              "height": 48,
+              "scrollWidth": 390,
+              "clientWidth": 390
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 747.984375,
+            "right": 414,
+            "bottom": 831.984375,
+            "width": 398,
+            "height": 84
+          },
+          "sheetScroll": 430,
+          "sheetClient": 430
+        }
+      }
+    },
+    {
+      "name": "WebKit: layout 360x640 root 100%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 360,
+          "height": 640,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 20,
+              "y": 514.375,
+              "right": 340,
+              "bottom": 562.375,
+              "width": 320,
+              "height": 48,
+              "scrollWidth": 320,
+              "clientWidth": 320
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 544,
+            "right": 344,
+            "bottom": 628,
+            "width": 328,
+            "height": 84
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 360,
+          "height": 640,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 12,
+            "right": 360,
+            "bottom": 640,
+            "width": 360,
+            "height": 628
+          },
+          "fields": {
+            "x": 0,
+            "y": 92,
+            "right": 360,
+            "bottom": 567,
+            "width": 360,
+            "height": 475
+          },
+          "footer": {
+            "x": 0,
+            "y": 567,
+            "right": 360,
+            "bottom": 640,
+            "width": 360,
+            "height": 73
+          },
+          "fieldsScroll": 551,
+          "fieldsClient": 475,
+          "controls": [
+            {
+              "x": 296,
+              "y": 32,
+              "right": 344,
+              "bottom": 80,
+              "width": 48,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 24,
+              "y": 143.671875,
+              "right": 178,
+              "bottom": 191.671875,
+              "width": 154,
+              "height": 48,
+              "scrollWidth": 152,
+              "clientWidth": 152
+            },
+            {
+              "x": 182,
+              "y": 143.671875,
+              "right": 336,
+              "bottom": 191.671875,
+              "width": 154,
+              "height": 48,
+              "scrollWidth": 152,
+              "clientWidth": 152
+            },
+            {
+              "x": 20,
+              "y": 305.140625,
+              "right": 340,
+              "bottom": 354.8125,
+              "width": 320,
+              "height": 49.671875,
+              "scrollWidth": 318,
+              "clientWidth": 318
+            },
+            {
+              "x": 20,
+              "y": 438.078125,
+              "right": 70.203125,
+              "bottom": 486.078125,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 78.203125,
+              "y": 438.078125,
+              "right": 128.40625,
+              "bottom": 486.078125,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 136.40625,
+              "y": 438.078125,
+              "right": 186.609375,
+              "bottom": 486.078125,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 194.609375,
+              "y": 438.078125,
+              "right": 244.8125,
+              "bottom": 486.078125,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 252.8125,
+              "y": 438.078125,
+              "right": 303.015625,
+              "bottom": 486.078125,
+              "width": 50.203125,
+              "height": 48,
+              "scrollWidth": 48,
+              "clientWidth": 48
+            },
+            {
+              "x": 20,
+              "y": 545.75,
+              "right": 340,
+              "bottom": 595.421875,
+              "width": 320,
+              "height": 49.671875,
+              "scrollWidth": 318,
+              "clientWidth": 318
+            },
+            {
+              "x": 20,
+              "y": 580,
+              "right": 340,
+              "bottom": 628,
+              "width": 320,
+              "height": 48,
+              "scrollWidth": 320,
+              "clientWidth": 320
+            }
+          ],
+          "nav": {
+            "x": 16,
+            "y": 544,
+            "right": 344,
+            "bottom": 628,
+            "width": 328,
+            "height": 84
+          },
+          "sheetScroll": 360,
+          "sheetClient": 360
+        }
+      }
+    },
+    {
+      "name": "WebKit: layout 360x844 root 200%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 360,
+          "height": 844,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 40,
+              "y": 1112.5625,
+              "right": 320,
+              "bottom": 1208.5625,
+              "width": 280,
+              "height": 96,
+              "scrollWidth": 280,
+              "clientWidth": 280
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 637.609375,
+            "right": 328,
+            "bottom": 819.984375,
+            "width": 296,
+            "height": 182.375
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 360,
+          "height": 844,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 24.015625,
+            "right": 360,
+            "bottom": 844,
+            "width": 360,
+            "height": 819.984375
+          },
+          "fields": {
+            "x": 0,
+            "y": 184.015625,
+            "right": 360,
+            "bottom": 699,
+            "width": 360,
+            "height": 514.984375
+          },
+          "footer": {
+            "x": 0,
+            "y": 699,
+            "right": 360,
+            "bottom": 844,
+            "width": 360,
+            "height": 145
+          },
+          "fieldsScroll": 1345,
+          "fieldsClient": 515,
+          "controls": [
+            {
+              "x": 232,
+              "y": 64.015625,
+              "right": 328,
+              "bottom": 160.015625,
+              "width": 96,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 48,
+              "y": -172.625,
+              "right": 176,
+              "bottom": -76.625,
+              "width": 128,
+              "height": 96,
+              "scrollWidth": 126,
+              "clientWidth": 126
+            },
+            {
+              "x": 184,
+              "y": -172.625,
+              "right": 312,
+              "bottom": -76.625,
+              "width": 128,
+              "height": 96,
+              "scrollWidth": 126,
+              "clientWidth": 126
+            },
+            {
+              "x": 40,
+              "y": 141.921875,
+              "right": 320,
+              "bottom": 239.28125,
+              "width": 280,
+              "height": 97.359375,
+              "scrollWidth": 278,
+              "clientWidth": 278
+            },
+            {
+              "x": 40,
+              "y": 437.015625,
+              "right": 138.40625,
+              "bottom": 533.015625,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 437.015625,
+              "right": 252.8125,
+              "bottom": 533.015625,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 549.015625,
+              "right": 138.40625,
+              "bottom": 645.015625,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 549.015625,
+              "right": 252.8125,
+              "bottom": 645.015625,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 661.015625,
+              "right": 138.40625,
+              "bottom": 757.015625,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 876.375,
+              "right": 320,
+              "bottom": 973.734375,
+              "width": 280,
+              "height": 97.359375,
+              "scrollWidth": 278,
+              "clientWidth": 278
+            },
+            {
+              "x": 40,
+              "y": 724,
+              "right": 320,
+              "bottom": 820,
+              "width": 280,
+              "height": 96,
+              "scrollWidth": 280,
+              "clientWidth": 280
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 637.609375,
+            "right": 328,
+            "bottom": 819.984375,
+            "width": 296,
+            "height": 182.375
+          },
+          "sheetScroll": 360,
+          "sheetClient": 360
+        }
+      }
+    },
+    {
+      "name": "WebKit: layout 390x844 root 200%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 390,
+          "height": 844,
+          "docWidth": 390,
+          "contentWidth": 390,
+          "contentScroll": 390,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 40,
+              "y": 335.578125,
+              "right": 350,
+              "bottom": 431.578125,
+              "width": 310,
+              "height": 96,
+              "scrollWidth": 310,
+              "clientWidth": 310
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 637.609375,
+            "right": 358,
+            "bottom": 819.984375,
+            "width": 326,
+            "height": 182.375
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 390,
+          "height": 844,
+          "docWidth": 390,
+          "contentWidth": 390,
+          "contentScroll": 390,
+          "dialog": {
+            "x": 0,
+            "y": 24.015625,
+            "right": 390,
+            "bottom": 844,
+            "width": 390,
+            "height": 819.984375
+          },
+          "fields": {
+            "x": 0,
+            "y": 184.015625,
+            "right": 390,
+            "bottom": 699,
+            "width": 390,
+            "height": 514.984375
+          },
+          "footer": {
+            "x": 0,
+            "y": 699,
+            "right": 390,
+            "bottom": 844,
+            "width": 390,
+            "height": 145
+          },
+          "fieldsScroll": 1314,
+          "fieldsClient": 515,
+          "controls": [
+            {
+              "x": 262,
+              "y": 64.015625,
+              "right": 358,
+              "bottom": 160.015625,
+              "width": 96,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 48,
+              "y": -140.625,
+              "right": 191,
+              "bottom": -44.625,
+              "width": 143,
+              "height": 96,
+              "scrollWidth": 141,
+              "clientWidth": 141
+            },
+            {
+              "x": 199,
+              "y": -140.625,
+              "right": 342,
+              "bottom": -44.625,
+              "width": 143,
+              "height": 96,
+              "scrollWidth": 141,
+              "clientWidth": 141
+            },
+            {
+              "x": 40,
+              "y": 173.921875,
+              "right": 350,
+              "bottom": 271.28125,
+              "width": 310,
+              "height": 97.359375,
+              "scrollWidth": 308,
+              "clientWidth": 308
+            },
+            {
+              "x": 40,
+              "y": 437.828125,
+              "right": 138.40625,
+              "bottom": 533.828125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 437.828125,
+              "right": 252.8125,
+              "bottom": 533.828125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 549.828125,
+              "right": 138.40625,
+              "bottom": 645.828125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 549.828125,
+              "right": 252.8125,
+              "bottom": 645.828125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 661.828125,
+              "right": 138.40625,
+              "bottom": 757.828125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 877.1875,
+              "right": 350,
+              "bottom": 974.546875,
+              "width": 310,
+              "height": 97.359375,
+              "scrollWidth": 308,
+              "clientWidth": 308
+            },
+            {
+              "x": 40,
+              "y": 724,
+              "right": 350,
+              "bottom": 820,
+              "width": 310,
+              "height": 96,
+              "scrollWidth": 310,
+              "clientWidth": 310
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 637.609375,
+            "right": 358,
+            "bottom": 819.984375,
+            "width": 326,
+            "height": 182.375
+          },
+          "sheetScroll": 390,
+          "sheetClient": 390
+        }
+      }
+    },
+    {
+      "name": "WebKit: layout 430x844 root 200%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 430,
+          "height": 844,
+          "docWidth": 430,
+          "contentWidth": 430,
+          "contentScroll": 430,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 40,
+              "y": 335.578125,
+              "right": 390,
+              "bottom": 431.578125,
+              "width": 350,
+              "height": 96,
+              "scrollWidth": 350,
+              "clientWidth": 350
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 637.609375,
+            "right": 398,
+            "bottom": 819.984375,
+            "width": 366,
+            "height": 182.375
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 430,
+          "height": 844,
+          "docWidth": 430,
+          "contentWidth": 430,
+          "contentScroll": 430,
+          "dialog": {
+            "x": 0,
+            "y": 24.015625,
+            "right": 430,
+            "bottom": 844,
+            "width": 430,
+            "height": 819.984375
+          },
+          "fields": {
+            "x": 0,
+            "y": 184.015625,
+            "right": 430,
+            "bottom": 699,
+            "width": 430,
+            "height": 514.984375
+          },
+          "footer": {
+            "x": 0,
+            "y": 699,
+            "right": 430,
+            "bottom": 844,
+            "width": 430,
+            "height": 145
+          },
+          "fieldsScroll": 1202,
+          "fieldsClient": 515,
+          "controls": [
+            {
+              "x": 302,
+              "y": 64.015625,
+              "right": 398,
+              "bottom": 160.015625,
+              "width": 96,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 48,
+              "y": -140.625,
+              "right": 211,
+              "bottom": -44.625,
+              "width": 163,
+              "height": 96,
+              "scrollWidth": 161,
+              "clientWidth": 161
+            },
+            {
+              "x": 219,
+              "y": -140.625,
+              "right": 382,
+              "bottom": -44.625,
+              "width": 163,
+              "height": 96,
+              "scrollWidth": 161,
+              "clientWidth": 161
+            },
+            {
+              "x": 40,
+              "y": 173.921875,
+              "right": 390,
+              "bottom": 271.28125,
+              "width": 350,
+              "height": 97.359375,
+              "scrollWidth": 348,
+              "clientWidth": 348
+            },
+            {
+              "x": 40,
+              "y": 437.828125,
+              "right": 138.40625,
+              "bottom": 533.828125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 437.828125,
+              "right": 252.8125,
+              "bottom": 533.828125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 268.8125,
+              "y": 437.828125,
+              "right": 367.21875,
+              "bottom": 533.828125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 549.828125,
+              "right": 138.40625,
+              "bottom": 645.828125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 549.828125,
+              "right": 252.8125,
+              "bottom": 645.828125,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 765.1875,
+              "right": 390,
+              "bottom": 862.546875,
+              "width": 350,
+              "height": 97.359375,
+              "scrollWidth": 348,
+              "clientWidth": 348
+            },
+            {
+              "x": 40,
+              "y": 724,
+              "right": 390,
+              "bottom": 820,
+              "width": 350,
+              "height": 96,
+              "scrollWidth": 350,
+              "clientWidth": 350
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 637.609375,
+            "right": 398,
+            "bottom": 819.984375,
+            "width": 366,
+            "height": 182.375
+          },
+          "sheetScroll": 430,
+          "sheetClient": 430
+        }
+      }
+    },
+    {
+      "name": "WebKit: layout 360x640 root 200%",
+      "status": "PASS",
+      "detail": {
+        "base": {
+          "width": 360,
+          "height": 640,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fields": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "footer": {
+            "x": 0,
+            "y": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fieldsScroll": 0,
+          "fieldsClient": 0,
+          "controls": [
+            {
+              "x": 40,
+              "y": 390.5625,
+              "right": 320,
+              "bottom": 486.5625,
+              "width": 280,
+              "height": 96,
+              "scrollWidth": 280,
+              "clientWidth": 280
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 433.625,
+            "right": 328,
+            "bottom": 616,
+            "width": 296,
+            "height": 182.375
+          },
+          "sheetScroll": 0,
+          "sheetClient": 0
+        },
+        "sheet": {
+          "width": 360,
+          "height": 640,
+          "docWidth": 360,
+          "contentWidth": 360,
+          "contentScroll": 360,
+          "dialog": {
+            "x": 0,
+            "y": 24,
+            "right": 360,
+            "bottom": 640,
+            "width": 360,
+            "height": 616
+          },
+          "fields": {
+            "x": 0,
+            "y": 184,
+            "right": 360,
+            "bottom": 495,
+            "width": 360,
+            "height": 311
+          },
+          "footer": {
+            "x": 0,
+            "y": 495,
+            "right": 360,
+            "bottom": 640,
+            "width": 360,
+            "height": 145
+          },
+          "fieldsScroll": 1345,
+          "fieldsClient": 311,
+          "controls": [
+            {
+              "x": 232,
+              "y": 64,
+              "right": 328,
+              "bottom": 160,
+              "width": 96,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 48,
+              "y": -273.640625,
+              "right": 176,
+              "bottom": -177.640625,
+              "width": 128,
+              "height": 96,
+              "scrollWidth": 126,
+              "clientWidth": 126
+            },
+            {
+              "x": 184,
+              "y": -273.640625,
+              "right": 312,
+              "bottom": -177.640625,
+              "width": 128,
+              "height": 96,
+              "scrollWidth": 126,
+              "clientWidth": 126
+            },
+            {
+              "x": 40,
+              "y": 40.90625,
+              "right": 320,
+              "bottom": 138.265625,
+              "width": 280,
+              "height": 97.359375,
+              "scrollWidth": 278,
+              "clientWidth": 278
+            },
+            {
+              "x": 40,
+              "y": 336,
+              "right": 138.40625,
+              "bottom": 432,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 336,
+              "right": 252.8125,
+              "bottom": 432,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 448,
+              "right": 138.40625,
+              "bottom": 544,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 154.40625,
+              "y": 448,
+              "right": 252.8125,
+              "bottom": 544,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 560,
+              "right": 138.40625,
+              "bottom": 656,
+              "width": 98.40625,
+              "height": 96,
+              "scrollWidth": 96,
+              "clientWidth": 96
+            },
+            {
+              "x": 40,
+              "y": 775.359375,
+              "right": 320,
+              "bottom": 872.71875,
+              "width": 280,
+              "height": 97.359375,
+              "scrollWidth": 278,
+              "clientWidth": 278
+            },
+            {
+              "x": 40,
+              "y": 520,
+              "right": 320,
+              "bottom": 616,
+              "width": 280,
+              "height": 96,
+              "scrollWidth": 280,
+              "clientWidth": 280
+            }
+          ],
+          "nav": {
+            "x": 32,
+            "y": 433.625,
+            "right": 328,
+            "bottom": 616,
+            "width": 296,
+            "height": 182.375
+          },
+          "sheetScroll": 360,
+          "sheetClient": 360
+        }
+      }
+    },
+    {
+      "name": "WebKit: rendered record and Sheet text contrast >= 4.5:1",
+      "status": "PASS",
+      "detail": {
+        "minimumSheet": 4.535339450041179
+      }
+    },
+    {
+      "name": "WebKit: dialog semantics, first focus, native radio arrows/Space, Tab trap, Escape and restoration",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: safe area applied once and short visual viewport input/footer accessibility",
+      "status": "PASS",
+      "detail": {
+        "bottom": "46px",
+        "fields": "24px"
+      }
+    },
+    {
+      "name": "WebKit: recent list capped at 20, local today/yesterday groups and last row visible",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: maximum safe integer/memo text and 200% category wrapping without horizontal overflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "All isolated contexts: console/page errors 0, failed requests and HTTP errors 0",
+      "status": "PASS",
+      "detail": true
+    }
+  ],
+  "screenshots": [
+    "screenshots/saved-out.png",
+    "screenshots/home-after-out.png",
+    "screenshots/reload-out.png",
+    "screenshots/saved-in.png",
+    "screenshots/home-after-in.png",
+    "screenshots/reload-in.png",
+    "screenshots/insufficient-balance.png",
+    "screenshots/validation-error.png",
+    "screenshots/invalid-category.png",
+    "screenshots/storage-write-failure.png",
+    "screenshots/empty-key.png",
+    "screenshots/empty-transactions.png",
+    "screenshots/invalid-json.png",
+    "screenshots/partial-state.png",
+    "screenshots/invalid-row.png",
+    "screenshots/360x844-record.png",
+    "screenshots/360x844-sheet.png",
+    "screenshots/390x844-record.png",
+    "screenshots/390x844-sheet.png",
+    "screenshots/430x844-record.png",
+    "screenshots/430x844-sheet.png",
+    "screenshots/360x640-record.png",
+    "screenshots/360x640-sheet.png",
+    "screenshots/360x844-200percent-record.png",
+    "screenshots/360x844-200percent-sheet.png",
+    "screenshots/390x844-200percent-record.png",
+    "screenshots/390x844-200percent-sheet.png",
+    "screenshots/430x844-200percent-record.png",
+    "screenshots/430x844-200percent-sheet.png",
+    "screenshots/360x640-200percent-record.png",
+    "screenshots/360x640-200percent-sheet.png",
+    "screenshots/sheet-received.png",
+    "screenshots/sheet-spent.png",
+    "screenshots/safe-area-sheet.png",
+    "screenshots/keyboard-height-simulation.png",
+    "screenshots/many-transactions.png",
+    "screenshots/many-transactions-bottom.png",
+    "screenshots/long-amount-200percent.png",
+    "screenshots/category-wrapping.png"
+  ],
+  "consoleErrors": [],
+  "resourceErrors": [],
+  "browsers": {
+    "chromium": {
+      "version": "153.0.8010.12",
+      "executable": "/Users/jeonghu/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell"
+    },
+    "webkit": {
+      "version": "26.5",
+      "executable": "/Users/jeonghu/Library/Caches/ms-playwright/webkit-2287/pw_run.sh"
+    }
+  },
+  "limitations": [
+    "No physical mobile keyboard or screen reader testing",
+    "No atomic cross-tab localStorage transaction guarantee"
+  ],
+  "status": "PASS",
+  "finishedAt": "2026-10-03T07:35:22.974Z"
+}

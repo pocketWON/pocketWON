@@ -1,0 +1,22 @@
+{
+  "startedAt": "2026-10-03T09:35:20.254Z",
+  "visualViewport": {
+    "height": 260,
+    "scale": 1,
+    "offsetTop": 0
+  },
+  "checks": [],
+  "errors": [],
+  "samples": [],
+  "browsers": {
+    "chromium": {
+      "version": "153.0.8010.12"
+    }
+  },
+  "status": "FAIL",
+  "limitations": [
+    "VisualViewport and safe areas are mocked; native mobile keyboard dismissal is modeled by restoring full height on non-input steps."
+  ],
+  "failure": "page.evaluate: ReferenceError: n is not defined\n    at eval (eval at evaluate (:303:30), <anonymous>:1:1419)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at sample (/private/tmp/pocketwon-record-vv260-check.cjs:10:65)\n    at /private/tmp/pocketwon-record-vv260-check.cjs:12:1701",
+  "finishedAt": "2026-10-03T09:35:21.124Z"
+}

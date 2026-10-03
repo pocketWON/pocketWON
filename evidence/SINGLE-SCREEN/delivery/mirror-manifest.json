@@ -1,0 +1,267 @@
+{
+  "scope": "Local mirror only; no public deployment",
+  "source": "ks6s3juocjzc2.kimi.page",
+  "mirror": "deployments/PW-WOORI-05/site/out",
+  "verified": true,
+  "files": [
+    {
+      "path": "assets/fonts/OFL.txt",
+      "bytes": 4418,
+      "sha256": "d31ddd9f2bed32fd7e302a205cf2380ba0de6529152d239ef99cfb6f261bfc04"
+    },
+    {
+      "path": "assets/fonts/PretendardVariable.woff2",
+      "bytes": 2057688,
+      "sha256": "9599f12fd42fc0bce1cd50b47a0c022e108d7aa64dd0d1bb0ed44f3282d900b4"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-all.png",
+      "bytes": 252480,
+      "sha256": "84cdcf12e98704532b5730cd1ccc3d871e77b72b4eafb790586a426970ea7e6d"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-balance.png",
+      "bytes": 172953,
+      "sha256": "cc36876930f3c6a1f37cbe31f4c99ad7c5736db021f9b5cdfa7a4034d89f96d2"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-empty.png",
+      "bytes": 158002,
+      "sha256": "04a9cafefc7c99ee71b17317cee4243d08cebab503a0a8f76de0599736db7f33"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-goal.png",
+      "bytes": 176984,
+      "sha256": "88d88053a548858e92be7489bfcc08bfb3588239249d352507678f876b5dde96"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-master.png",
+      "bytes": 634885,
+      "sha256": "7344c6221a688d1eaa9914256e496cdd151062351eead8a41b8c2670110f9d11"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-record.png",
+      "bytes": 223054,
+      "sha256": "d7efce9b543caec460f87b45a16c3480ef9d3f6e8c62360640ce3dd6d51bd4b4"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-report.png",
+      "bytes": 161850,
+      "sha256": "852999b6ed1ed1042bf205b99f23a4381b657d38cbbf6ff55e0379d5e907b666"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-success.png",
+      "bytes": 189462,
+      "sha256": "db8014e447eae929d8f02c32f320342cb568c6318eb51e9d4844850e26ba7597"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-all-action-sprite.webp",
+      "bytes": 294054,
+      "sha256": "d234587fd2d2e9070972e72c1f0cf68384fbd6418d181583b19b1c141b7a8a17"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-all-idle-sprite.webp",
+      "bytes": 162778,
+      "sha256": "1510613a868346912240776e08010256510b83d1e618002ade681f3b65793e5a"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-all-poster.webp",
+      "bytes": 37318,
+      "sha256": "146337934586e92c079475260357262c5b47a8c1c5d7b9eebc6f8c263c00562f"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-balance-action-sprite.webp",
+      "bytes": 307170,
+      "sha256": "fc34ef0e1de4f6ac7cf43bd85969f8d8615a3e724cec0851a04ce211e43f8d0d"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-balance-idle-sprite.webp",
+      "bytes": 169720,
+      "sha256": "3864042d06d56c29417c8508223f2910388901162b00a175c62b5ad0cff06a47"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-balance-poster.webp",
+      "bytes": 39924,
+      "sha256": "3df0660517ec5904147e5bbd73c9981b43e077a954817a86859b3145a30f5a18"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-goal-action-sprite.webp",
+      "bytes": 302190,
+      "sha256": "c5f158b3955d9c7b847cc91bcb2287df626e49f48a279ee749cc65bac7cd2b6c"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-goal-idle-sprite.webp",
+      "bytes": 173230,
+      "sha256": "9b424b0b210c5b96e9f8ff178ed98bb67bf3748c6e42cdfe7a7eeeed9f9e0023"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-goal-poster.webp",
+      "bytes": 39864,
+      "sha256": "5cffbd8d0369b2116d5673dbbcc99bd368520eb0732ea1f1ed22cb45a0def937"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-record-action-sprite.webp",
+      "bytes": 304920,
+      "sha256": "a9c0f0042513ce762a1357a1b199d00311feae94b32c66cc3e667b6acccdb047"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-record-idle-sprite.webp",
+      "bytes": 167224,
+      "sha256": "7b597a7d08e945e014597484b6a3f7b364577bcc6b345ccd7cda8351a3f515ff"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-record-poster.webp",
+      "bytes": 39178,
+      "sha256": "5657ce8005b82cb2121c7d3870e489f869a53f0eb7b71628e68b04e17d595e0c"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-report-action-sprite.webp",
+      "bytes": 297610,
+      "sha256": "f899120c4a06e3d177d07e30f2021e9972d3dfdea7839ecef05c16c65590f86a"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-report-idle-sprite.webp",
+      "bytes": 165556,
+      "sha256": "66a3bf38fd81c26ecb242838caffe8b4683bebffdffdf45976e5f7ea35528a4b"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-report-poster.webp",
+      "bytes": 38990,
+      "sha256": "cf38853fcd6262f8f89e141243d154448ee3bdd12ee75f02fc4cf8586e83ad60"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-success-action-sprite.webp",
+      "bytes": 379368,
+      "sha256": "6e52f2b03c4cb98bc411ac142a03a26c00a49453a9ce4791ce40405e41cd73e9"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-success-poster.webp",
+      "bytes": 36620,
+      "sha256": "cf1acc5075ca7f87e9246c2542edc63edb16c0da60e49ecec89d792e931d154f"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2217,
+      "sha256": "fcbbfe01c7e68e2a712cf49dd0a4f46640f10046dd95fbfbd70c8d41a5c52a34"
+    },
+    {
+      "path": "scripts/all.js",
+      "bytes": 2067,
+      "sha256": "3239b4992a2d5add853e22711eff1db5e2e389240d372da4c544dc8551cdbec4"
+    },
+    {
+      "path": "scripts/app.js",
+      "bytes": 3915,
+      "sha256": "112cb51ff3ca0075f29a95d373565241245ad325ddafc228b16a995797154755"
+    },
+    {
+      "path": "scripts/goal.js",
+      "bytes": 13437,
+      "sha256": "cf6b62846554a532894eb1dc1f1bb1bc0f456a5adc4c54dedf3fbb4fa064d09f"
+    },
+    {
+      "path": "scripts/home.js",
+      "bytes": 2187,
+      "sha256": "0514b76c45aac931dc4577ff5b1e839b74767d18e8cf8a83683b10c77ea27d31"
+    },
+    {
+      "path": "scripts/icons.js",
+      "bytes": 963,
+      "sha256": "86231f75d52a658eb8ec64968b6ab4a965e087df64c84be60d8bdd442f1738c2"
+    },
+    {
+      "path": "scripts/illustrations.js",
+      "bytes": 3562,
+      "sha256": "673204c50f44cb658676ce66f375feb1820fe739cf41c8895d6bb0a251ac0d0d"
+    },
+    {
+      "path": "scripts/record.js",
+      "bytes": 19099,
+      "sha256": "97fdc87395bc5bd3ee2279ad79914850b1947739d8b59f5c97443d9f22905062"
+    },
+    {
+      "path": "scripts/report.js",
+      "bytes": 10699,
+      "sha256": "75497c0384fe18f469663449d329286389bee367f9c66f713ecaaf35670648ac"
+    },
+    {
+      "path": "scripts/sprite-manifest.js",
+      "bytes": 5627,
+      "sha256": "f12a5f1556fac3635d43176b2d38653e723fd33aea09692c1491b3a6f91c53bf"
+    },
+    {
+      "path": "scripts/sprites.js",
+      "bytes": 23280,
+      "sha256": "e0b86d02b9d682941c985ee7a2b096dd2195876b3ac146b3513bcba3c7356195"
+    },
+    {
+      "path": "scripts/state.js",
+      "bytes": 11478,
+      "sha256": "d7669998ad65a1460802dd82d46029e90cb7b67a6e6917cf38275e464deaafd6"
+    },
+    {
+      "path": "scripts/tabs.js",
+      "bytes": 376,
+      "sha256": "fb3626ad3f9829a05505984827e8c8c96f94e4f1d7a4fbc5189801b7de87fb58"
+    },
+    {
+      "path": "scripts/ui.js",
+      "bytes": 5779,
+      "sha256": "6b9d3b358789eb5205c4f2678369bd0ff175d34b1e494fc5c256931264792849"
+    },
+    {
+      "path": "styles/base.css",
+      "bytes": 4415,
+      "sha256": "5fcd0c00af63afbd34b4f613b164034eb94cd4051d1e81f65e5c86bb27cd6cc9"
+    },
+    {
+      "path": "styles/goal.css",
+      "bytes": 6670,
+      "sha256": "30cb70709bf652807d7039a928fef07eabe408d3b02d3aa6586dde051061e3c0"
+    },
+    {
+      "path": "styles/home.css",
+      "bytes": 2235,
+      "sha256": "d9ac0e0b79428a475ee4a0f2297cdc07c39bcbca1f582f7864c4a40a250bc1a9"
+    },
+    {
+      "path": "styles/record.css",
+      "bytes": 9228,
+      "sha256": "63da2aeac8da0944c1d1a59c29fede742b697f569b5ff65060e4946bc546e588"
+    },
+    {
+      "path": "styles/report.css",
+      "bytes": 8413,
+      "sha256": "3a253d33abab1f267142ede816eaabfe22a801817f8ab7ec470d6fc189f2e746"
+    },
+    {
+      "path": "styles/shell.css",
+      "bytes": 9614,
+      "sha256": "ac6e9697cce3ce7fa789643c8606cefaee06f4f5c6e8ed17ec71e0e0ba14f1ac"
+    },
+    {
+      "path": "styles/sprites.css",
+      "bytes": 2146,
+      "sha256": "b6397c27b5f6c62166445508f2f9d45218cbe132abe1d538e2b8f0b382f30d88"
+    },
+    {
+      "path": "styles/stage-sprites.css",
+      "bytes": 862,
+      "sha256": "c83860a5a6040182b21acc92ce2b823f62a278e51545c68cb236c5f68563f670"
+    },
+    {
+      "path": "styles/tokens.css",
+      "bytes": 4772,
+      "sha256": "25e980da6e137d9865c79521f2750eeaa748de4de77ea61941f629de11369739"
+    }
+  ],
+  "fileCount": 50,
+  "spriteSheetCount": 11,
+  "spriteSheetBytes": 2723820,
+  "sourceFramesExcluded": true,
+  "historicalReleaseMetadataUnchanged": [
+    "deployment.json",
+    "source-manifest.json",
+    "site.tar.gz"
+  ]
+}

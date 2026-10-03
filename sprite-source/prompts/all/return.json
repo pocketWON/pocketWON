@@ -1,0 +1,25 @@
+{
+  "profile": "all",
+  "frame": "return",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is immutable identity/camera/scale reference. When input 2 exists it is the previous sequential frame to edit. Preserve all artwork except the specifically requested pose/expression/prop changes. Exact same opaque white bean/wallet body, asymmetrical folded top, big dark oval eyes with same eye spacing and eye size, dark navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and exact canvas coordinates. Square canvas. Grounded feet center at (50%,82%). Head y approximately27%, body width about46% of canvas. Single flat 2D editorial line-art character. No UI, text, letters, numbers, graphs, background, shadow, border or panels. True transparent alpha, wide transparent margins. Do not zoom, crop, recenter, or change proportions. Props pale blue, coins muted gold. Preserve identity over posing. FRAME return, HELLO ACTION nearly neutral. REFERENCE ROLES: Input1 identity master. Input2 is the exact neutral canvas composition to reproduce. Input3 is prior lowered-hand frame only to understand movement continuity. Edit and copy INPUT2 almost exactly: same body silhouette, exact eyes, clasp, same grounded feet and head coordinates. Viewer-left hand now reaches down by waist, just5px higher than its original position in INPUT2; right hand unchanged. No lean, no rescaling, no props. This is a very small final hand settling before neutral.",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/all/neutral.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/all/settle.png"
+  ],
+  "raw": "sprite-source/raw/all/return.png",
+  "source": "sprite-source/frames/all/return.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "5c6f278aacccba48ed7f2c24da6d3a2e0fb3959cb52721597f90caf119bea901",
+  "sourceSha256": "16b3976f45864f3647f8b0f6bf47ae882afb78542a23f744295769bc331caccd"
+}

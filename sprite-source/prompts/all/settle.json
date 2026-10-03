@@ -1,0 +1,25 @@
+{
+  "profile": "all",
+  "frame": "settle",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is immutable identity/camera/scale reference. When input 2 exists it is the previous sequential frame to edit. Preserve all artwork except the specifically requested pose/expression/prop changes. Exact same opaque white bean/wallet body, asymmetrical folded top, big dark oval eyes with same eye spacing and eye size, dark navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and exact canvas coordinates. Square canvas. Grounded feet center at (50%,82%). Head y approximately27%, body width about46% of canvas. Single flat 2D editorial line-art character. No UI, text, letters, numbers, graphs, background, shadow, border or panels. True transparent alpha, wide transparent margins. Do not zoom, crop, recenter, or change proportions. Props pale blue, coins muted gold. Preserve identity over posing. FRAME settle, HELLO ACTION. Input3 is exact neutral frame position reference. Character returns to original upright body shape and exact grounded feet coordinates matching input3. Viewer-left waving hand now lowers from head height to shoulder height, round hand slightly inward, arm curved, still a small delayed followthrough. Viewer-right hand unchanged near waist. Same open eyes facing front, smile, body clasp. No props or effects. Do not shift, crop or rescale.",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/all/follow.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/all/neutral.png"
+  ],
+  "raw": "sprite-source/raw/all/settle.png",
+  "source": "sprite-source/frames/all/settle.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "f322798cad28f835fb733e727b4f3f521ae6757cb3da5dbae9b02e6e041a3101",
+  "sourceSha256": "94b0e8f27f09b10bf9374811575cd7887b7d4910a3f3a8f5ff40385c2f9628ec"
+}

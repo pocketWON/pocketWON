@@ -1,0 +1,24 @@
+{
+  "profile": "success",
+  "frame": "drift",
+  "tool": "built-in image_gen",
+  "prompt": "Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is the immutable identity/camera/scale reference; input 2 (when provided) is the previous sequential frame to edit. Keep all artwork from the previous frame except the specifically requested pose/expression. Exact same white bean/wallet body, asymmetrical folded top, big dark oval eyes, eye spacing, navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and same canvas coordinates. Frame canvas square: artwork has the same framing as reference; grounded feet center is (50%,82%) of canvas, head approximately y=27%, body width about46% ofcanvas. Single flat 2D editorial line-art character only; no UI, text, letters, numbers, real graphs, background, shadows, extra effects, border or panels. True transparent alpha background, opaque white body. Keep transparent margins. Do not zoom, crop, recenter or change proportions. Props may be pale blue; coins small muted gold. Preserve identity over posing. SUCCESS FOLLOW-THROUGH: mascot starts descending by8pixels on512canvas, arms still raised but elbows softer, smile stays. The two tiny gold coins continue upward another8pixels AFTER the body has begun falling, same coins and size. Preserve camera, identity, body proportions and wide transparent margins.\n",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/success/apex.png"
+  ],
+  "raw": "sprite-source/raw/success/drift.png",
+  "source": "sprite-source/frames/success/drift.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "5c270442f802274aa4378a2da73682f79d30a3fae3551dd2aabd63b13781898d",
+  "sourceSha256": "fc2a839f3d87f5fbee4695f28f4d7ebb0b2e4f92f320e044a7f41f622b239f44"
+}

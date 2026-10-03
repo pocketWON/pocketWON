@@ -1,0 +1,47 @@
+- banner:
+  - paragraph: 리포트
+  - button "전체 메뉴"
+- main "용돈 습관 리포트":
+  - heading "용돈 습관 리포트" [level=1]
+  - paragraph: 내 기록을 한눈에 살펴봐요
+  - region "습관 Score":
+    - heading "습관 Score" [level=2]
+    - paragraph: "82"
+    - paragraph: 저장된 습관 점수
+  - region "저장된 돈 흐름":
+    - heading "저장된 돈 흐름" [level=2]
+    - paragraph: 저장된 집계 · 기간 확인 안 됨
+    - term: 받은 돈
+    - definition:
+      - group "15,200원"
+    - term: 쓴 돈
+    - definition:
+      - group "12,300원"
+    - term: 차이
+    - definition:
+      - group "2,900원"
+    - paragraph: 차이는 받은 돈에서 쓴 돈을 뺀 금액이에요.
+  - region "나의 목표":
+    - heading "나의 목표" [level=2]
+    - paragraph: 게임 아이템
+    - term: 현재 모은 금액
+    - definition:
+      - group "30,600원"
+    - term: 목표 금액
+    - definition:
+      - group "45,000원"
+    - progressbar "목표 진행률"
+    - paragraph: 68%
+    - paragraph: 목표까지 남은 금액
+    - group "14,400원"
+  - region "저장된 기록":
+    - heading "저장된 기록" [level=2]
+    - paragraph: 4건
+  - button "기록 보기"
+  - button "목표 보기"
+- navigation "주요 메뉴":
+  - button "홈"
+  - button "기록"
+  - button "목표"
+  - button "리포트"
+  - button "전체"

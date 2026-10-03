@@ -1,0 +1,24 @@
+{
+  "profile": "report",
+  "frame": "peak",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is the immutable identity/camera/scale reference; input 2 when present is the previous sequential frame to edit. Keep artwork except specifically requested pose/expression. Exact same opaque white bean/wallet body, asymmetrical folded top, big dark oval eyes, eye spacing, dark navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and exact canvas coordinates. Square canvas. Grounded feet center at (50%,82%). Head y approximately27%, body width about46% of canvas. Single flat 2D editorial line-art character. No UI, text, letters, numbers, graphs, background, shadow, border or panels. True transparent alpha, wide transparent margins. Do not zoom, crop, recenter, or change proportions. Props pale blue, coins muted gold. Preserve identity over posing. FRAME peak: Lift magnifying glass fully in front of the viewer RIGHT eye: lens center x59% y49%, same lens diameter and short handle from previous frame, held with right-side hand just below eye. The eye remains visible through CLEAR pale-blue-tinted lens, with only one small white reflection and no distortion of eye size. Both eyes now focus through lens at viewer, friendly curious mouth. Head straightens from slight anticipation tilt. Preserve entire body silhouette, clasp, feet, camera, and scale. No charts, UI, text, or duplicated glasses.\n",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/report/anticipate.png"
+  ],
+  "raw": "sprite-source/raw/report/peak.png",
+  "source": "sprite-source/frames/report/peak.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "b36a8a751d83405edfa020bb4ef24211243691b76c977a02ac49726af860eb13",
+  "sourceSha256": "0c9d0b33a7058f85c07657414185aa78c24c7b6ffd6c7d72eb5687d51d3109cd"
+}

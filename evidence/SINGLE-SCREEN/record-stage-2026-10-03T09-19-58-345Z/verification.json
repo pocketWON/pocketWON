@@ -1,0 +1,118 @@
+{
+  "startedAt": "2026-10-03T09:19:58.361Z",
+  "url": "http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html",
+  "checks": [
+    {
+      "name": "chromium: incoming skips category, supports optional memo, and confirms 용돈 without writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "chromium: one final read preserves latest fields/current and transaction order; duplicate activation saves once",
+      "status": "PASS",
+      "detail": {
+        "writes": [
+          {
+            "method": "setItem",
+            "key": "pocketwon_demo_v1"
+          }
+        ],
+        "transactionCount": 6
+      }
+    },
+    {
+      "name": "chromium: every backward/forward step retains type, amount, category and memo draft",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "chromium: Close and Escape discard draft and restore the original opener without writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "chromium: Home form Close/Escape returns focus to the original 기록하기 action",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "chromium: Tab stays inside the modal; input and composing Enter never advance or save",
+      "status": "PASS",
+      "detail": {
+        "tabSamples": 10,
+        "composingEnterPrevented": true
+      }
+    },
+    {
+      "name": "chromium: latest insufficient balance prevents writes and preserves the complete draft",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "chromium: read-error retry reads recovered storage once and never repairs or writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "chromium: resize keeps the focused transaction and focus; unfocused anchor and navigation page remain stable",
+      "status": "PASS",
+      "detail": {
+        "focusedSource": "17",
+        "restoredPage": 5,
+        "transactions": 37
+      }
+    },
+    {
+      "name": "chromium: record observer tolerates viewport/font reflow without stale work or loop errors",
+      "status": "PASS",
+      "detail": {
+        "reflows": 4
+      }
+    },
+    {
+      "name": "webkit: incoming skips category, supports optional memo, and confirms 용돈 without writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "webkit: one final read preserves latest fields/current and transaction order; duplicate activation saves once",
+      "status": "PASS",
+      "detail": {
+        "writes": [
+          {
+            "method": "setItem",
+            "key": "pocketwon_demo_v1"
+          }
+        ],
+        "transactionCount": 6
+      }
+    },
+    {
+      "name": "webkit: every backward/forward step retains type, amount, category and memo draft",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "webkit: Close and Escape discard draft and restore the original opener without writes",
+      "status": "PASS",
+      "detail": true
+    }
+  ],
+  "browsers": {
+    "chromium": {
+      "version": "153.0.8010.12",
+      "executable": "/Users/jeonghu/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell"
+    },
+    "webkit": {
+      "version": "26.5",
+      "executable": "/Users/jeonghu/Library/Caches/ms-playwright/webkit-2287/pw_run.sh"
+    }
+  },
+  "errors": [],
+  "status": "FAIL",
+  "limitations": [
+    "Keyboard events run in isolated desktop engines; physical mobile IME and keyboard are not verified"
+  ],
+  "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nnull !== '기록하기'\n\n    at homeEntryCancellation (/Users/jeonghu/포켓WON/tests/verify-record-stage.cjs:139:14)\n    at async /Users/jeonghu/포켓WON/tests/verify-record-stage.cjs:245:100",
+  "finishedAt": "2026-10-03T09:20:18.317Z"
+}

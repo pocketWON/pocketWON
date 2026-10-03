@@ -1,0 +1,24 @@
+{
+  "profile": "all",
+  "frame": "peak",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is immutable identity/camera/scale reference. When input 2 exists it is the previous sequential frame to edit. Preserve all artwork except the specifically requested pose/expression/prop changes. Exact same opaque white bean/wallet body, asymmetrical folded top, big dark oval eyes with same eye spacing and eye size, dark navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and exact canvas coordinates. Square canvas. Grounded feet center at (50%,82%). Head y approximately27%, body width about46% of canvas. Single flat 2D editorial line-art character. No UI, text, letters, numbers, graphs, background, shadow, border or panels. True transparent alpha, wide transparent margins. Do not zoom, crop, recenter, or change proportions. Props pale blue, coins muted gold. Preserve identity over posing. FRAME peak, HELLO ACTION. Input 2 is leaned anticipation. Now raise viewer-left hand above shoulder to head height near x25%,y35%, small round cartoon hand facing viewer, arm curved outward. Body returns to nearly upright, feet remain grounded and fixed. Eyes warmly look at viewer and smile slightly wider. Viewer-right hand stays relaxed at waist. Keep same body scale, folded top, viewer-right clasp and silhouette. No FX, no props, no fingers added, no tiles.",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/all/anticipate.png"
+  ],
+  "raw": "sprite-source/raw/all/peak.png",
+  "source": "sprite-source/frames/all/peak.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "da27019aa07a6a71a92cebfd7cb30653e7823fcf331ab1bf467535a58c3960d3",
+  "sourceSha256": "4c08158cf81c682d4d4d24d775099019f0c4c13c1c927adc96502d0663341547"
+}

@@ -1,0 +1,1014 @@
+{
+  "canvas": [
+    512,
+    512
+  ],
+  "serviceCell": [
+    384,
+    384
+  ],
+  "profiles": {
+    "balance": {
+      "poster": "./assets/pocketwon/sprites/pocketwon-balance-poster.webp",
+      "fallback": "./assets/pocketwon/characters/pocketwon-mascot-balance.png",
+      "clips": {
+        "idle": {
+          "src": "./assets/pocketwon/sprites/pocketwon-balance-idle-sprite.webp",
+          "poster": "./assets/pocketwon/sprites/pocketwon-balance-poster.webp",
+          "frameWidth": 384,
+          "frameHeight": 384,
+          "frameCount": 6,
+          "fps": 6,
+          "loop": false,
+          "anchor": {
+            "x": 192,
+            "y": 315
+          },
+          "bytes": 169720
+        },
+        "action": {
+          "src": "./assets/pocketwon/sprites/pocketwon-balance-action-sprite.webp",
+          "poster": "./assets/pocketwon/sprites/pocketwon-balance-poster.webp",
+          "frameWidth": 384,
+          "frameHeight": 384,
+          "frameCount": 8,
+          "fps": 10,
+          "loop": false,
+          "anchor": {
+            "x": 192,
+            "y": 315
+          },
+          "bytes": 307170
+        }
+      }
+    },
+    "record": {
+      "poster": "./assets/pocketwon/sprites/pocketwon-record-poster.webp",
+      "fallback": "./assets/pocketwon/characters/pocketwon-mascot-record.png",
+      "clips": {
+        "idle": {
+          "src": "./assets/pocketwon/sprites/pocketwon-record-idle-sprite.webp",
+          "poster": "./assets/pocketwon/sprites/pocketwon-record-poster.webp",
+          "frameWidth": 384,
+          "frameHeight": 384,
+          "frameCount": 6,
+          "fps": 6,
+          "loop": false,
+          "anchor": {
+            "x": 192,
+            "y": 315
+          },
+          "bytes": 167224
+        },
+        "action": {
+          "src": "./assets/pocketwon/sprites/pocketwon-record-action-sprite.webp",
+          "poster": "./assets/pocketwon/sprites/pocketwon-record-poster.webp",
+          "frameWidth": 384,
+          "frameHeight": 384,
+          "frameCount": 8,
+          "fps": 10,
+          "loop": false,
+          "anchor": {
+            "x": 192,
+            "y": 315
+          },
+          "bytes": 304920
+        }
+      }
+    },
+    "report": {
+      "poster": "./assets/pocketwon/sprites/pocketwon-report-poster.webp",
+      "fallback": "./assets/pocketwon/characters/pocketwon-mascot-report.png",
+      "clips": {
+        "idle": {
+          "src": "./assets/pocketwon/sprites/pocketwon-report-idle-sprite.webp",
+          "poster": "./assets/pocketwon/sprites/pocketwon-report-poster.webp",
+          "frameWidth": 384,
+          "frameHeight": 384,
+          "frameCount": 6,
+          "fps": 6,
+          "loop": false,
+          "anchor": {
+            "x": 192,
+            "y": 315
+          },
+          "bytes": 165556
+        },
+        "action": {
+          "src": "./assets/pocketwon/sprites/pocketwon-report-action-sprite.webp",
+          "poster": "./assets/pocketwon/sprites/pocketwon-report-poster.webp",
+          "frameWidth": 384,
+          "frameHeight": 384,
+          "frameCount": 8,
+          "fps": 10,
+          "loop": false,
+          "anchor": {
+            "x": 192,
+            "y": 315
+          },
+          "bytes": 297610
+        }
+      }
+    },
+    "goal": {
+      "poster": "./assets/pocketwon/sprites/pocketwon-goal-poster.webp",
+      "fallback": "./assets/pocketwon/characters/pocketwon-mascot-goal.png",
+      "clips": {
+        "idle": {
+          "src": "./assets/pocketwon/sprites/pocketwon-goal-idle-sprite.webp",
+          "poster": "./assets/pocketwon/sprites/pocketwon-goal-poster.webp",
+          "frameWidth": 384,
+          "frameHeight": 384,
+          "frameCount": 6,
+          "fps": 6,
+          "loop": false,
+          "anchor": {
+            "x": 192,
+            "y": 315
+          },
+          "bytes": 173230
+        },
+        "action": {
+          "src": "./assets/pocketwon/sprites/pocketwon-goal-action-sprite.webp",
+          "poster": "./assets/pocketwon/sprites/pocketwon-goal-poster.webp",
+          "frameWidth": 384,
+          "frameHeight": 384,
+          "frameCount": 8,
+          "fps": 10,
+          "loop": false,
+          "anchor": {
+            "x": 192,
+            "y": 315
+          },
+          "bytes": 302190
+        }
+      }
+    },
+    "all": {
+      "poster": "./assets/pocketwon/sprites/pocketwon-all-poster.webp",
+      "fallback": "./assets/pocketwon/characters/pocketwon-mascot-all.png",
+      "clips": {
+        "idle": {
+          "src": "./assets/pocketwon/sprites/pocketwon-all-idle-sprite.webp",
+          "poster": "./assets/pocketwon/sprites/pocketwon-all-poster.webp",
+          "frameWidth": 384,
+          "frameHeight": 384,
+          "frameCount": 6,
+          "fps": 6,
+          "loop": false,
+          "anchor": {
+            "x": 192,
+            "y": 315
+          },
+          "bytes": 162778
+        },
+        "action": {
+          "src": "./assets/pocketwon/sprites/pocketwon-all-action-sprite.webp",
+          "poster": "./assets/pocketwon/sprites/pocketwon-all-poster.webp",
+          "frameWidth": 384,
+          "frameHeight": 384,
+          "frameCount": 8,
+          "fps": 10,
+          "loop": false,
+          "anchor": {
+            "x": 192,
+            "y": 315
+          },
+          "bytes": 294054
+        }
+      }
+    },
+    "success": {
+      "poster": "./assets/pocketwon/sprites/pocketwon-success-poster.webp",
+      "fallback": "./assets/pocketwon/characters/pocketwon-mascot-success.png",
+      "clips": {
+        "action": {
+          "src": "./assets/pocketwon/sprites/pocketwon-success-action-sprite.webp",
+          "poster": "./assets/pocketwon/sprites/pocketwon-success-poster.webp",
+          "frameWidth": 384,
+          "frameHeight": 384,
+          "frameCount": 10,
+          "fps": 10,
+          "loop": false,
+          "anchor": {
+            "x": 192,
+            "y": 315
+          },
+          "bytes": 379368
+        }
+      }
+    }
+  },
+  "sequences": [
+    {
+      "profile": "balance",
+      "clip": "idle",
+      "src": "./assets/pocketwon/sprites/pocketwon-balance-idle-sprite.webp",
+      "poster": "./assets/pocketwon/sprites/pocketwon-balance-poster.webp",
+      "frameWidth": 384,
+      "frameHeight": 384,
+      "frameCount": 6,
+      "fps": 6,
+      "loop": false,
+      "anchor": {
+        "x": 192,
+        "y": 315
+      },
+      "bytes": 169720,
+      "dimensions": [
+        2304,
+        384
+      ],
+      "decodedBytes": 3538944,
+      "encodings": {
+        "png": 244386,
+        "losslessWebp": 169720
+      },
+      "sha256": "3864042d06d56c29417c8508223f2910388901162b00a175c62b5ad0cff06a47",
+      "sources": [
+        {
+          "frame": 0,
+          "pose": "neutral",
+          "source": "sprite-source/frames/balance/neutral.png",
+          "sha256": "666184efbd04b43903cc1773f9f747d536dc8cbe7b4c07ecceb44ebca3ce21b9"
+        },
+        {
+          "frame": 1,
+          "pose": "glance",
+          "source": "sprite-source/frames/balance/glance.png",
+          "sha256": "53c5bfcff472daf981175362dc8a34488dc925da1c86f71dd0413f740e06cdc6"
+        },
+        {
+          "frame": 2,
+          "pose": "half",
+          "source": "sprite-source/frames/balance/half.png",
+          "sha256": "6c1e7b61380767426dcc7d304510dafa7530452da91b38ce12f5745a5e73022b"
+        },
+        {
+          "frame": 3,
+          "pose": "blink",
+          "source": "sprite-source/frames/balance/blink.png",
+          "sha256": "ec5cef61c8e68400c8dede7d70731f577f32dcd813721da40387096cea8c91f7"
+        },
+        {
+          "frame": 4,
+          "pose": "glance",
+          "source": "sprite-source/frames/balance/glance.png",
+          "sha256": "53c5bfcff472daf981175362dc8a34488dc925da1c86f71dd0413f740e06cdc6"
+        },
+        {
+          "frame": 5,
+          "pose": "neutral",
+          "source": "sprite-source/frames/balance/neutral.png",
+          "sha256": "666184efbd04b43903cc1773f9f747d536dc8cbe7b4c07ecceb44ebca3ce21b9"
+        }
+      ],
+      "uniqueSourceFrames": 4,
+      "verifiedCellEquality": true
+    },
+    {
+      "profile": "balance",
+      "clip": "action",
+      "src": "./assets/pocketwon/sprites/pocketwon-balance-action-sprite.webp",
+      "poster": "./assets/pocketwon/sprites/pocketwon-balance-poster.webp",
+      "frameWidth": 384,
+      "frameHeight": 384,
+      "frameCount": 8,
+      "fps": 10,
+      "loop": false,
+      "anchor": {
+        "x": 192,
+        "y": 315
+      },
+      "bytes": 307170,
+      "dimensions": [
+        3072,
+        384
+      ],
+      "decodedBytes": 4718592,
+      "encodings": {
+        "png": 424824,
+        "losslessWebp": 307170
+      },
+      "sha256": "fc34ef0e1de4f6ac7cf43bd85969f8d8615a3e724cec0851a04ce211e43f8d0d",
+      "sources": [
+        {
+          "frame": 0,
+          "pose": "neutral",
+          "source": "sprite-source/frames/balance/neutral.png",
+          "sha256": "666184efbd04b43903cc1773f9f747d536dc8cbe7b4c07ecceb44ebca3ce21b9"
+        },
+        {
+          "frame": 1,
+          "pose": "prepare",
+          "source": "sprite-source/frames/balance/prepare.png",
+          "sha256": "da565f1cab8ccce4f8cfc68c0bdccfc26c003cd2c11c3519014cb94e198f8149"
+        },
+        {
+          "frame": 2,
+          "pose": "anticipate",
+          "source": "sprite-source/frames/balance/anticipate.png",
+          "sha256": "dbe7f9ed46058bbbc31dd4e2bb0ddcb67d2df274468c0b54907db9a35adbd6c1"
+        },
+        {
+          "frame": 3,
+          "pose": "peak",
+          "source": "sprite-source/frames/balance/peak.png",
+          "sha256": "fc956f3ccd938d56318765af4d3b2f1f4b58a5684dce79a64cbfff210e5e669b"
+        },
+        {
+          "frame": 4,
+          "pose": "follow",
+          "source": "sprite-source/frames/balance/follow.png",
+          "sha256": "8cf215c0cc1db749faaf4f321d952e93883e75af73d7e9ef21558c7ae31a9efe"
+        },
+        {
+          "frame": 5,
+          "pose": "settle",
+          "source": "sprite-source/frames/balance/settle.png",
+          "sha256": "6f20a470cb1b9007419bff0c654b1e58e0904149114d6493e64731b186af4c35"
+        },
+        {
+          "frame": 6,
+          "pose": "return",
+          "source": "sprite-source/frames/balance/return.png",
+          "sha256": "79f6be0e1626863f72c3fc55839d790b5fe88e0970481ebd0a920c0d58c6e3b2"
+        },
+        {
+          "frame": 7,
+          "pose": "neutral",
+          "source": "sprite-source/frames/balance/neutral.png",
+          "sha256": "666184efbd04b43903cc1773f9f747d536dc8cbe7b4c07ecceb44ebca3ce21b9"
+        }
+      ],
+      "uniqueSourceFrames": 7,
+      "verifiedCellEquality": true
+    },
+    {
+      "profile": "record",
+      "clip": "idle",
+      "src": "./assets/pocketwon/sprites/pocketwon-record-idle-sprite.webp",
+      "poster": "./assets/pocketwon/sprites/pocketwon-record-poster.webp",
+      "frameWidth": 384,
+      "frameHeight": 384,
+      "frameCount": 6,
+      "fps": 6,
+      "loop": false,
+      "anchor": {
+        "x": 192,
+        "y": 315
+      },
+      "bytes": 167224,
+      "dimensions": [
+        2304,
+        384
+      ],
+      "decodedBytes": 3538944,
+      "encodings": {
+        "png": 239028,
+        "losslessWebp": 167224
+      },
+      "sha256": "7b597a7d08e945e014597484b6a3f7b364577bcc6b345ccd7cda8351a3f515ff",
+      "sources": [
+        {
+          "frame": 0,
+          "pose": "neutral",
+          "source": "sprite-source/frames/record/neutral.png",
+          "sha256": "cb6ca62b6d57699ae6dc1bc9dd937707e3458e79c1930224b58b8e51dae0e51a"
+        },
+        {
+          "frame": 1,
+          "pose": "glance",
+          "source": "sprite-source/frames/record/glance.png",
+          "sha256": "3c9564384185cb58284b86ef93dfb9ae6cf5e5f7859876af0bff32fec7a03eba"
+        },
+        {
+          "frame": 2,
+          "pose": "half",
+          "source": "sprite-source/frames/record/half.png",
+          "sha256": "53d5fbad75ce40fce5c1242f6de5b33e25cd671c1afe92e8053a171897db20ad"
+        },
+        {
+          "frame": 3,
+          "pose": "blink",
+          "source": "sprite-source/frames/record/blink.png",
+          "sha256": "87e1309f10e34fe48c5a385c82b53ad0a38382c6a67155b0926e11e766df96db"
+        },
+        {
+          "frame": 4,
+          "pose": "glance",
+          "source": "sprite-source/frames/record/glance.png",
+          "sha256": "3c9564384185cb58284b86ef93dfb9ae6cf5e5f7859876af0bff32fec7a03eba"
+        },
+        {
+          "frame": 5,
+          "pose": "neutral",
+          "source": "sprite-source/frames/record/neutral.png",
+          "sha256": "cb6ca62b6d57699ae6dc1bc9dd937707e3458e79c1930224b58b8e51dae0e51a"
+        }
+      ],
+      "uniqueSourceFrames": 4,
+      "verifiedCellEquality": true
+    },
+    {
+      "profile": "record",
+      "clip": "action",
+      "src": "./assets/pocketwon/sprites/pocketwon-record-action-sprite.webp",
+      "poster": "./assets/pocketwon/sprites/pocketwon-record-poster.webp",
+      "frameWidth": 384,
+      "frameHeight": 384,
+      "frameCount": 8,
+      "fps": 10,
+      "loop": false,
+      "anchor": {
+        "x": 192,
+        "y": 315
+      },
+      "bytes": 304920,
+      "dimensions": [
+        3072,
+        384
+      ],
+      "decodedBytes": 4718592,
+      "encodings": {
+        "png": 422390,
+        "losslessWebp": 304920
+      },
+      "sha256": "a9c0f0042513ce762a1357a1b199d00311feae94b32c66cc3e667b6acccdb047",
+      "sources": [
+        {
+          "frame": 0,
+          "pose": "neutral",
+          "source": "sprite-source/frames/record/neutral.png",
+          "sha256": "cb6ca62b6d57699ae6dc1bc9dd937707e3458e79c1930224b58b8e51dae0e51a"
+        },
+        {
+          "frame": 1,
+          "pose": "prepare",
+          "source": "sprite-source/frames/record/prepare.png",
+          "sha256": "7a2d148eeebdac71e88c742b841bfddc2c441adfc64066065ecdecde23a627af"
+        },
+        {
+          "frame": 2,
+          "pose": "anticipate",
+          "source": "sprite-source/frames/record/anticipate.png",
+          "sha256": "7bfba51233f67aeeba6a0513cddafdc535f7f697bb851446e5454107c0838328"
+        },
+        {
+          "frame": 3,
+          "pose": "peak",
+          "source": "sprite-source/frames/record/peak.png",
+          "sha256": "c59d72b0e05f3bbb72fe526aa553a74e3266d4f3753332edcddea8c95482ca4e"
+        },
+        {
+          "frame": 4,
+          "pose": "follow",
+          "source": "sprite-source/frames/record/follow.png",
+          "sha256": "f3b6636c01ea0ae42ff1939a806d494b1ac76340d5bd5e20c0e74992cef788af"
+        },
+        {
+          "frame": 5,
+          "pose": "settle",
+          "source": "sprite-source/frames/record/settle.png",
+          "sha256": "f82d7d40da61ce990422eafe8031f58f2dc3147f0b4babf9e8051958b728a6b3"
+        },
+        {
+          "frame": 6,
+          "pose": "return",
+          "source": "sprite-source/frames/record/return.png",
+          "sha256": "9da535d8c55955a59bac2049d50b5071c15dd493d48be71d391164a588143549"
+        },
+        {
+          "frame": 7,
+          "pose": "neutral",
+          "source": "sprite-source/frames/record/neutral.png",
+          "sha256": "cb6ca62b6d57699ae6dc1bc9dd937707e3458e79c1930224b58b8e51dae0e51a"
+        }
+      ],
+      "uniqueSourceFrames": 7,
+      "verifiedCellEquality": true
+    },
+    {
+      "profile": "report",
+      "clip": "idle",
+      "src": "./assets/pocketwon/sprites/pocketwon-report-idle-sprite.webp",
+      "poster": "./assets/pocketwon/sprites/pocketwon-report-poster.webp",
+      "frameWidth": 384,
+      "frameHeight": 384,
+      "frameCount": 6,
+      "fps": 6,
+      "loop": false,
+      "anchor": {
+        "x": 192,
+        "y": 315
+      },
+      "bytes": 165556,
+      "dimensions": [
+        2304,
+        384
+      ],
+      "decodedBytes": 3538944,
+      "encodings": {
+        "png": 239358,
+        "losslessWebp": 165556
+      },
+      "sha256": "66a3bf38fd81c26ecb242838caffe8b4683bebffdffdf45976e5f7ea35528a4b",
+      "sources": [
+        {
+          "frame": 0,
+          "pose": "neutral",
+          "source": "sprite-source/frames/report/neutral.png",
+          "sha256": "32225fec7f15c4c6b9880fea1913fd149d61a62542058a3bc2ed752af1317766"
+        },
+        {
+          "frame": 1,
+          "pose": "glance",
+          "source": "sprite-source/frames/report/glance.png",
+          "sha256": "f52f0bb651fd45fd6b8e3c9786e0e1e536372a3215e5ed0c73356a49b4a935aa"
+        },
+        {
+          "frame": 2,
+          "pose": "half",
+          "source": "sprite-source/frames/report/half.png",
+          "sha256": "97c78ef1b7d53c5a4d49df20d62c27616b4737534966ac0da6c7cf00728ec2c9"
+        },
+        {
+          "frame": 3,
+          "pose": "blink",
+          "source": "sprite-source/frames/report/blink.png",
+          "sha256": "a2ccae8795a3ed6d90c621a3a1b2c809c42e9cd1741d18b910f47aaf9c443f51"
+        },
+        {
+          "frame": 4,
+          "pose": "glance",
+          "source": "sprite-source/frames/report/glance.png",
+          "sha256": "f52f0bb651fd45fd6b8e3c9786e0e1e536372a3215e5ed0c73356a49b4a935aa"
+        },
+        {
+          "frame": 5,
+          "pose": "neutral",
+          "source": "sprite-source/frames/report/neutral.png",
+          "sha256": "32225fec7f15c4c6b9880fea1913fd149d61a62542058a3bc2ed752af1317766"
+        }
+      ],
+      "uniqueSourceFrames": 4,
+      "verifiedCellEquality": true
+    },
+    {
+      "profile": "report",
+      "clip": "action",
+      "src": "./assets/pocketwon/sprites/pocketwon-report-action-sprite.webp",
+      "poster": "./assets/pocketwon/sprites/pocketwon-report-poster.webp",
+      "frameWidth": 384,
+      "frameHeight": 384,
+      "frameCount": 8,
+      "fps": 10,
+      "loop": false,
+      "anchor": {
+        "x": 192,
+        "y": 315
+      },
+      "bytes": 297610,
+      "dimensions": [
+        3072,
+        384
+      ],
+      "decodedBytes": 4718592,
+      "encodings": {
+        "png": 415518,
+        "losslessWebp": 297610
+      },
+      "sha256": "f899120c4a06e3d177d07e30f2021e9972d3dfdea7839ecef05c16c65590f86a",
+      "sources": [
+        {
+          "frame": 0,
+          "pose": "neutral",
+          "source": "sprite-source/frames/report/neutral.png",
+          "sha256": "32225fec7f15c4c6b9880fea1913fd149d61a62542058a3bc2ed752af1317766"
+        },
+        {
+          "frame": 1,
+          "pose": "prepare",
+          "source": "sprite-source/frames/report/prepare.png",
+          "sha256": "9de4790ff8eb5df40fd6dfd958ed05a0d7db48fc03990ce9dd56eec6346bd5d8"
+        },
+        {
+          "frame": 2,
+          "pose": "anticipate",
+          "source": "sprite-source/frames/report/anticipate.png",
+          "sha256": "805a36b3f79f4542736c6ef61a928406e80ec2e8da5004d5ab9b3696b7aa2db9"
+        },
+        {
+          "frame": 3,
+          "pose": "peak",
+          "source": "sprite-source/frames/report/peak.png",
+          "sha256": "0c9d0b33a7058f85c07657414185aa78c24c7b6ffd6c7d72eb5687d51d3109cd"
+        },
+        {
+          "frame": 4,
+          "pose": "follow",
+          "source": "sprite-source/frames/report/follow.png",
+          "sha256": "178cacfebd4369b03459f4ebdd3653993c622eb2ce72ba4d521656dadf8a4765"
+        },
+        {
+          "frame": 5,
+          "pose": "settle",
+          "source": "sprite-source/frames/report/settle.png",
+          "sha256": "ccc39c768c5f318d5f9fb4cfacbd5369abff996e0f987351548c65e5b8a7d1f3"
+        },
+        {
+          "frame": 6,
+          "pose": "return",
+          "source": "sprite-source/frames/report/return.png",
+          "sha256": "ff76774e733c13a2a63cf2a2c16948394206fa3357b4ed28cc25341c672f913d"
+        },
+        {
+          "frame": 7,
+          "pose": "neutral",
+          "source": "sprite-source/frames/report/neutral.png",
+          "sha256": "32225fec7f15c4c6b9880fea1913fd149d61a62542058a3bc2ed752af1317766"
+        }
+      ],
+      "uniqueSourceFrames": 7,
+      "verifiedCellEquality": true
+    },
+    {
+      "profile": "goal",
+      "clip": "idle",
+      "src": "./assets/pocketwon/sprites/pocketwon-goal-idle-sprite.webp",
+      "poster": "./assets/pocketwon/sprites/pocketwon-goal-poster.webp",
+      "frameWidth": 384,
+      "frameHeight": 384,
+      "frameCount": 6,
+      "fps": 6,
+      "loop": false,
+      "anchor": {
+        "x": 192,
+        "y": 315
+      },
+      "bytes": 173230,
+      "dimensions": [
+        2304,
+        384
+      ],
+      "decodedBytes": 3538944,
+      "encodings": {
+        "png": 250033,
+        "losslessWebp": 173230
+      },
+      "sha256": "9b424b0b210c5b96e9f8ff178ed98bb67bf3748c6e42cdfe7a7eeeed9f9e0023",
+      "sources": [
+        {
+          "frame": 0,
+          "pose": "neutral",
+          "source": "sprite-source/frames/goal/neutral.png",
+          "sha256": "23d7c4f7948cd0bc06cd49784ee6305da4d4731de4ae772ffe93eadc42bf5e5b"
+        },
+        {
+          "frame": 1,
+          "pose": "glance",
+          "source": "sprite-source/frames/goal/glance.png",
+          "sha256": "37dc151fe5a824117b50918ffbbc2c20364bcc5df7a7b7046dae82f5486a893a"
+        },
+        {
+          "frame": 2,
+          "pose": "half",
+          "source": "sprite-source/frames/goal/half.png",
+          "sha256": "7e70a4054b0f8e57e1e48cc8f0c373118d105d9cde68d676470b73c510fb0c16"
+        },
+        {
+          "frame": 3,
+          "pose": "blink",
+          "source": "sprite-source/frames/goal/blink.png",
+          "sha256": "829cf3a45024a27d51b1394f9308ae7539821b979c815dfca457c593a4e06958"
+        },
+        {
+          "frame": 4,
+          "pose": "glance",
+          "source": "sprite-source/frames/goal/glance.png",
+          "sha256": "37dc151fe5a824117b50918ffbbc2c20364bcc5df7a7b7046dae82f5486a893a"
+        },
+        {
+          "frame": 5,
+          "pose": "neutral",
+          "source": "sprite-source/frames/goal/neutral.png",
+          "sha256": "23d7c4f7948cd0bc06cd49784ee6305da4d4731de4ae772ffe93eadc42bf5e5b"
+        }
+      ],
+      "uniqueSourceFrames": 4,
+      "verifiedCellEquality": true
+    },
+    {
+      "profile": "goal",
+      "clip": "action",
+      "src": "./assets/pocketwon/sprites/pocketwon-goal-action-sprite.webp",
+      "poster": "./assets/pocketwon/sprites/pocketwon-goal-poster.webp",
+      "frameWidth": 384,
+      "frameHeight": 384,
+      "frameCount": 8,
+      "fps": 10,
+      "loop": false,
+      "anchor": {
+        "x": 192,
+        "y": 315
+      },
+      "bytes": 302190,
+      "dimensions": [
+        3072,
+        384
+      ],
+      "decodedBytes": 4718592,
+      "encodings": {
+        "png": 424132,
+        "losslessWebp": 302190
+      },
+      "sha256": "c5f158b3955d9c7b847cc91bcb2287df626e49f48a279ee749cc65bac7cd2b6c",
+      "sources": [
+        {
+          "frame": 0,
+          "pose": "neutral",
+          "source": "sprite-source/frames/goal/neutral.png",
+          "sha256": "23d7c4f7948cd0bc06cd49784ee6305da4d4731de4ae772ffe93eadc42bf5e5b"
+        },
+        {
+          "frame": 1,
+          "pose": "prepare",
+          "source": "sprite-source/frames/goal/prepare.png",
+          "sha256": "1ddc593f4243b6eca8585975f0eb5d53e6734984df705fdcb002510c9e1cd5f4"
+        },
+        {
+          "frame": 2,
+          "pose": "anticipate",
+          "source": "sprite-source/frames/goal/anticipate.png",
+          "sha256": "fe7979e5fbcfea2ecab9885bfe8c20406344f4c52471b9cf2de1522f2d65caac"
+        },
+        {
+          "frame": 3,
+          "pose": "peak",
+          "source": "sprite-source/frames/goal/peak.png",
+          "sha256": "255536705aa6f8b9cab20cb13a67186e4c9e9329a5a378ebc2e101e19009539b"
+        },
+        {
+          "frame": 4,
+          "pose": "follow",
+          "source": "sprite-source/frames/goal/follow.png",
+          "sha256": "209e6dfdae05ed1d9f10ac9fc12f54688770d26af412e0d508c0f4fee7504c6d"
+        },
+        {
+          "frame": 5,
+          "pose": "settle",
+          "source": "sprite-source/frames/goal/settle.png",
+          "sha256": "4f4fafd9a532b6a2e3973fe85fe20473c15aa19cd7d744dee539217b5adda04f"
+        },
+        {
+          "frame": 6,
+          "pose": "return",
+          "source": "sprite-source/frames/goal/return.png",
+          "sha256": "d9b5810e85748812ecc7268c0090049e8d002ac663d9dfd89f30b01351819017"
+        },
+        {
+          "frame": 7,
+          "pose": "neutral",
+          "source": "sprite-source/frames/goal/neutral.png",
+          "sha256": "23d7c4f7948cd0bc06cd49784ee6305da4d4731de4ae772ffe93eadc42bf5e5b"
+        }
+      ],
+      "uniqueSourceFrames": 7,
+      "verifiedCellEquality": true
+    },
+    {
+      "profile": "all",
+      "clip": "idle",
+      "src": "./assets/pocketwon/sprites/pocketwon-all-idle-sprite.webp",
+      "poster": "./assets/pocketwon/sprites/pocketwon-all-poster.webp",
+      "frameWidth": 384,
+      "frameHeight": 384,
+      "frameCount": 6,
+      "fps": 6,
+      "loop": false,
+      "anchor": {
+        "x": 192,
+        "y": 315
+      },
+      "bytes": 162778,
+      "dimensions": [
+        2304,
+        384
+      ],
+      "decodedBytes": 3538944,
+      "encodings": {
+        "png": 233371,
+        "losslessWebp": 162778
+      },
+      "sha256": "1510613a868346912240776e08010256510b83d1e618002ade681f3b65793e5a",
+      "sources": [
+        {
+          "frame": 0,
+          "pose": "neutral",
+          "source": "sprite-source/frames/all/neutral.png",
+          "sha256": "18da44ff29ce14c747618b1bac8729fe5d78e53a3d2f426e5c7b90cc57af83cf"
+        },
+        {
+          "frame": 1,
+          "pose": "glance",
+          "source": "sprite-source/frames/all/glance.png",
+          "sha256": "020b72b5a8e80fbc016edd2d7a395f59964c81e58398428cda49cc3203f294d2"
+        },
+        {
+          "frame": 2,
+          "pose": "half",
+          "source": "sprite-source/frames/all/half.png",
+          "sha256": "5cf9f72d4b59313673e84318c883146f409a39e793e3ddc2785a03bfff682110"
+        },
+        {
+          "frame": 3,
+          "pose": "blink",
+          "source": "sprite-source/frames/all/blink.png",
+          "sha256": "d19d92af3d41c128b3e86ec6cb6577048ab28c0b7bc875707a578ed8aecc255b"
+        },
+        {
+          "frame": 4,
+          "pose": "glance",
+          "source": "sprite-source/frames/all/glance.png",
+          "sha256": "020b72b5a8e80fbc016edd2d7a395f59964c81e58398428cda49cc3203f294d2"
+        },
+        {
+          "frame": 5,
+          "pose": "neutral",
+          "source": "sprite-source/frames/all/neutral.png",
+          "sha256": "18da44ff29ce14c747618b1bac8729fe5d78e53a3d2f426e5c7b90cc57af83cf"
+        }
+      ],
+      "uniqueSourceFrames": 4,
+      "verifiedCellEquality": true
+    },
+    {
+      "profile": "all",
+      "clip": "action",
+      "src": "./assets/pocketwon/sprites/pocketwon-all-action-sprite.webp",
+      "poster": "./assets/pocketwon/sprites/pocketwon-all-poster.webp",
+      "frameWidth": 384,
+      "frameHeight": 384,
+      "frameCount": 8,
+      "fps": 10,
+      "loop": false,
+      "anchor": {
+        "x": 192,
+        "y": 315
+      },
+      "bytes": 294054,
+      "dimensions": [
+        3072,
+        384
+      ],
+      "decodedBytes": 4718592,
+      "encodings": {
+        "png": 407050,
+        "losslessWebp": 294054
+      },
+      "sha256": "d234587fd2d2e9070972e72c1f0cf68384fbd6418d181583b19b1c141b7a8a17",
+      "sources": [
+        {
+          "frame": 0,
+          "pose": "neutral",
+          "source": "sprite-source/frames/all/neutral.png",
+          "sha256": "18da44ff29ce14c747618b1bac8729fe5d78e53a3d2f426e5c7b90cc57af83cf"
+        },
+        {
+          "frame": 1,
+          "pose": "prepare",
+          "source": "sprite-source/frames/all/prepare.png",
+          "sha256": "11aa55837dfc0c6f2d3ca76cef4d9d2518d6d48ccab072ce3072976a65862170"
+        },
+        {
+          "frame": 2,
+          "pose": "anticipate",
+          "source": "sprite-source/frames/all/anticipate.png",
+          "sha256": "425691b191acb7818774463b8d9eda54a2d1ad4a897e4e2a1456f1b0ab3e9652"
+        },
+        {
+          "frame": 3,
+          "pose": "peak",
+          "source": "sprite-source/frames/all/peak.png",
+          "sha256": "4c08158cf81c682d4d4d24d775099019f0c4c13c1c927adc96502d0663341547"
+        },
+        {
+          "frame": 4,
+          "pose": "follow",
+          "source": "sprite-source/frames/all/follow.png",
+          "sha256": "ebb18c995d59f84dd176fcd58df7fcdd9b575f761c5a082f49fa896672b89160"
+        },
+        {
+          "frame": 5,
+          "pose": "settle",
+          "source": "sprite-source/frames/all/settle.png",
+          "sha256": "94b0e8f27f09b10bf9374811575cd7887b7d4910a3f3a8f5ff40385c2f9628ec"
+        },
+        {
+          "frame": 6,
+          "pose": "return",
+          "source": "sprite-source/frames/all/return.png",
+          "sha256": "16b3976f45864f3647f8b0f6bf47ae882afb78542a23f744295769bc331caccd"
+        },
+        {
+          "frame": 7,
+          "pose": "neutral",
+          "source": "sprite-source/frames/all/neutral.png",
+          "sha256": "18da44ff29ce14c747618b1bac8729fe5d78e53a3d2f426e5c7b90cc57af83cf"
+        }
+      ],
+      "uniqueSourceFrames": 7,
+      "verifiedCellEquality": true
+    },
+    {
+      "profile": "success",
+      "clip": "action",
+      "src": "./assets/pocketwon/sprites/pocketwon-success-action-sprite.webp",
+      "poster": "./assets/pocketwon/sprites/pocketwon-success-poster.webp",
+      "frameWidth": 384,
+      "frameHeight": 384,
+      "frameCount": 10,
+      "fps": 10,
+      "loop": false,
+      "anchor": {
+        "x": 192,
+        "y": 315
+      },
+      "bytes": 379368,
+      "dimensions": [
+        3840,
+        384
+      ],
+      "decodedBytes": 5898240,
+      "encodings": {
+        "png": 531480,
+        "losslessWebp": 379368
+      },
+      "sha256": "6e52f2b03c4cb98bc411ac142a03a26c00a49453a9ce4791ce40405e41cd73e9",
+      "sources": [
+        {
+          "frame": 0,
+          "pose": "neutral",
+          "source": "sprite-source/frames/success/neutral.png",
+          "sha256": "143f747434cca785aed9210dcc9508c4f5d987a48f2eb3374c3b2846982407c6"
+        },
+        {
+          "frame": 1,
+          "pose": "crouch",
+          "source": "sprite-source/frames/success/crouch.png",
+          "sha256": "fc7ec7ecc53f37792f5a41c43fdda0a7a58ef1eb9a5a96053fea3c9b7f248e61"
+        },
+        {
+          "frame": 2,
+          "pose": "raise",
+          "source": "sprite-source/frames/success/raise.png",
+          "sha256": "b9dbe54ed0dfc438611b4ea87cb43c2d90c932e9182a933b6e600376317c4eb7"
+        },
+        {
+          "frame": 3,
+          "pose": "lift",
+          "source": "sprite-source/frames/success/lift.png",
+          "sha256": "bff3b5cfda240868aa99ddaadb6b05b9d380da1e40cf154a28e90fabe9bce697"
+        },
+        {
+          "frame": 4,
+          "pose": "apex",
+          "source": "sprite-source/frames/success/apex.png",
+          "sha256": "72566774ae62367a8b7a1f6508607540862ccc0275f0e5828d6ce4891f227b7b"
+        },
+        {
+          "frame": 5,
+          "pose": "drift",
+          "source": "sprite-source/frames/success/drift.png",
+          "sha256": "fc2a839f3d87f5fbee4695f28f4d7ebb0b2e4f92f320e044a7f41f622b239f44"
+        },
+        {
+          "frame": 6,
+          "pose": "land",
+          "source": "sprite-source/frames/success/land.png",
+          "sha256": "c509e69c5588d49c2e344853638c233771eee6d5abab5e92b5a88eb19337f4de"
+        },
+        {
+          "frame": 7,
+          "pose": "recover",
+          "source": "sprite-source/frames/success/recover.png",
+          "sha256": "33804f7c83f700fb9b5e5fe65527b9a3af13ceb5504e40afcf0dd9b6ae04b644"
+        },
+        {
+          "frame": 8,
+          "pose": "settle",
+          "source": "sprite-source/frames/success/settle.png",
+          "sha256": "fc556dd3e0f050701e2f636b071bb16a6a184aa56d6ebbcbb0dedd2583d866bf"
+        },
+        {
+          "frame": 9,
+          "pose": "neutral",
+          "source": "sprite-source/frames/success/neutral.png",
+          "sha256": "143f747434cca785aed9210dcc9508c4f5d987a48f2eb3374c3b2846982407c6"
+        }
+      ],
+      "uniqueSourceFrames": 9,
+      "verifiedCellEquality": true
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "engines": {
+    "chromium": {
+      "version": "153.0.8010.12",
+      "result": {
+        "accepted": true,
+        "metadata": {
+          "src": "./assets/pocketwon/sprites/pocketwon-balance-idle-sprite.webp",
+          "poster": "./assets/pocketwon/sprites/pocketwon-balance-poster.webp",
+          "frameWidth": 384,
+          "frameHeight": 384,
+          "frameCount": 6,
+          "fps": 6,
+          "loop": false,
+          "anchor": {
+            "x": 192,
+            "y": 315
+          },
+          "bytes": 169720
+        },
+        "samples": [
+          {
+            "frame": 0,
+            "portion": 0.05,
+            "position": "0%"
+          },
+          {
+            "frame": 0,
+            "portion": 0.95,
+            "position": "0%"
+          },
+          {
+            "frame": 1,
+            "portion": 0.05,
+            "position": "20%"
+          },
+          {
+            "frame": 1,
+            "portion": 0.95,
+            "position": "20%"
+          },
+          {
+            "frame": 2,
+            "portion": 0.05,
+            "position": "40%"
+          },
+          {
+            "frame": 2,
+            "portion": 0.95,
+            "position": "40%"
+          },
+          {
+            "frame": 3,
+            "portion": 0.05,
+            "position": "60%"
+          },
+          {
+            "frame": 3,
+            "portion": 0.95,
+            "position": "60%"
+          },
+          {
+            "frame": 4,
+            "portion": 0.05,
+            "position": "80%"
+          },
+          {
+            "frame": 4,
+            "portion": 0.95,
+            "position": "80%"
+          },
+          {
+            "frame": 5,
+            "portion": 0.05,
+            "position": "100%"
+          },
+          {
+            "frame": 5,
+            "portion": 0.95,
+            "position": "100%"
+          }
+        ],
+        "loopPosition": "0%",
+        "duration": 1000,
+        "width": 256,
+        "state": {
+          "profile": "balance",
+          "state": "playing",
+          "clip": "idle",
+          "ready": true,
+          "paused": false,
+          "reduced": false
+        }
+      },
+      "pause": {
+        "before": 149.89999999999992,
+        "after": 149.89999999999992,
+        "resumed": 233.26599999999996
+      },
+      "reduced": {
+        "state": {
+          "profile": "balance",
+          "state": "static",
+          "clip": null,
+          "ready": false,
+          "paused": false,
+          "reduced": true
+        },
+        "accepted": false,
+        "visibility": "visible"
+      },
+      "overlap": {
+        "blocked": true,
+        "strong": 0,
+        "idle": 0,
+        "playing": 0,
+        "acceptedAfterResume": true
+      },
+      "errors": []
+    },
+    "webkit": {
+      "version": "26.5",
+      "result": {
+        "accepted": true,
+        "metadata": {
+          "src": "./assets/pocketwon/sprites/pocketwon-balance-idle-sprite.webp",
+          "poster": "./assets/pocketwon/sprites/pocketwon-balance-poster.webp",
+          "frameWidth": 384,
+          "frameHeight": 384,
+          "frameCount": 6,
+          "fps": 6,
+          "loop": false,
+          "anchor": {
+            "x": 192,
+            "y": 315
+          },
+          "bytes": 169720
+        },
+        "samples": [
+          {
+            "frame": 0,
+            "portion": 0.05,
+            "position": "0%"
+          },
+          {
+            "frame": 0,
+            "portion": 0.95,
+            "position": "0%"
+          },
+          {
+            "frame": 1,
+            "portion": 0.05,
+            "position": "20%"
+          },
+          {
+            "frame": 1,
+            "portion": 0.95,
+            "position": "20%"
+          },
+          {
+            "frame": 2,
+            "portion": 0.05,
+            "position": "40%"
+          },
+          {
+            "frame": 2,
+            "portion": 0.95,
+            "position": "40%"
+          },
+          {
+            "frame": 3,
+            "portion": 0.05,
+            "position": "60%"
+          },
+          {
+            "frame": 3,
+            "portion": 0.95,
+            "position": "60%"
+          },
+          {
+            "frame": 4,
+            "portion": 0.05,
+            "position": "80%"
+          },
+          {
+            "frame": 4,
+            "portion": 0.95,
+            "position": "80%"
+          },
+          {
+            "frame": 5,
+            "portion": 0.05,
+            "position": "100%"
+          },
+          {
+            "frame": 5,
+            "portion": 0.95,
+            "position": "100%"
+          }
+        ],
+        "loopPosition": "0%",
+        "duration": 1000,
+        "width": 256,
+        "state": {
+          "profile": "balance",
+          "state": "playing",
+          "clip": "idle",
+          "ready": true,
+          "paused": false,
+          "reduced": false
+        }
+      },
+      "pause": {
+        "before": 146,
+        "after": 146,
+        "resumed": 227
+      },
+      "reduced": {
+        "state": {
+          "profile": "balance",
+          "state": "static",
+          "clip": null,
+          "ready": false,
+          "paused": false,
+          "reduced": true
+        },
+        "accepted": false,
+        "visibility": "visible"
+      },
+      "overlap": {
+        "blocked": true,
+        "strong": 0,
+        "idle": 0,
+        "playing": 0,
+        "acceptedAfterResume": true
+      },
+      "errors": []
+    }
+  },
+  "checks": [
+    "chromium: real 6-frame/6fps sheet, all frame boundaries, clean wrap, pause/resume and reduced motion",
+    "webkit: real 6-frame/6fps sheet, all frame boundaries, clean wrap, pause/resume and reduced motion"
+  ],
+  "status": "PASS"
+}

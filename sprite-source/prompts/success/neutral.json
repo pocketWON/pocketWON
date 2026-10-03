@@ -1,0 +1,24 @@
+{
+  "profile": "success",
+  "frame": "neutral",
+  "tool": "built-in image_gen",
+  "prompt": "Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is the immutable identity/camera/scale reference; input 2 (when provided) is the previous sequential frame to edit. Keep all artwork from the previous frame except the specifically requested pose/expression. Exact same white bean/wallet body, asymmetrical folded top, big dark oval eyes, eye spacing, navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and same canvas coordinates. Frame canvas square: artwork has the same framing as reference; grounded feet center is (50%,82%) of canvas, head approximately y=27%, body width about46% ofcanvas. Single flat 2D editorial line-art character only; no UI, text, letters, numbers, real graphs, background, shadows, extra effects, border or panels. True transparent alpha background, opaque white body. Keep transparent margins. Do not zoom, crop, recenter or change proportions. Props may be pale blue; coins small muted gold. Preserve identity over posing. SUCCESS NEUTRAL FRAME: remove only the handheld blue wallet and coin. Hands rest naturally beside the waist. Keep the identity, body, head, feet, clasp, gaze and absolute coordinates unchanged. No additional props.\n",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/balance/neutral.png"
+  ],
+  "raw": "sprite-source/raw/success/neutral.png",
+  "source": "sprite-source/frames/success/neutral.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "fb769929d2ed1b09bc89c26cc0ea0ec8241645355a0157eaa32bbddab8a0df40",
+  "sourceSha256": "143f747434cca785aed9210dcc9508c4f5d987a48f2eb3374c3b2846982407c6"
+}

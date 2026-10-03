@@ -60,7 +60,7 @@ function parsePocketWONDate(value) {
 function createRecordViewModel(state, now = new Date()) {
   const transactions = Array.isArray(state?.transactions) ? state.transactions : null;
   const known = transactions !== null && transactions.every(validPocketWONTransaction);
-  const rows = (transactions || []).map(tx => ({ tx, date: parsePocketWONDate(tx?.ts) }));
+  const rows = (transactions || []).map((tx, sourceIndex) => ({ tx, sourceIndex, date: parsePocketWONDate(tx?.ts) }));
   const grouped = known && rows.every(row => row.date !== null);
   if (grouped) rows.sort((a, b) => b.date.getTime() - a.date.getTime());
   const dayKey = date => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
@@ -72,7 +72,7 @@ function createRecordViewModel(state, now = new Date()) {
     writable: writablePocketWONState(state),
     history: transactions === null ? 'unavailable' : known ? (rows.length ? 'ready' : 'empty') : 'partial',
     grouped,
-    rows: rows.slice(0, 20).map(({ tx, date }) => {
+    rows: rows.map(({ tx, sourceIndex, date }) => {
       const valid = validPocketWONTransaction(tx);
       const key = date ? dayKey(date) : '';
       const dateLabel = !date ? '날짜 확인 안 됨' : key === today ? '오늘' : key === yesterday ? '어제'
@@ -80,7 +80,8 @@ function createRecordViewModel(state, now = new Date()) {
       return {
         valid, title: valid ? (typeof tx.memo === 'string' && tx.memo.trim() ? tx.memo : tx.category) : '확인할 수 없는 기록',
         category: valid ? tx.category : '', type: valid ? tx.type : null, amount: valid ? tx.amount : null,
-        dateLabel, dayKey: key,
+        dateLabel, dayKey: key, sourceIndex, memo: typeof tx?.memo === 'string' ? tx.memo : '',
+        timestamp: typeof tx?.ts === 'string' ? tx.ts : '', dateValid: date !== null,
       };
     }),
   };

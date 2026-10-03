@@ -1,0 +1,23 @@
+{
+  "canvas": [
+    512,
+    512
+  ],
+  "runtime": [
+    384,
+    384
+  ],
+  "anchor": [
+    256,
+    420
+  ],
+  "canonicalPreparation": {
+    "resize": "full canvas",
+    "translate": [
+      0,
+      16
+    ],
+    "alphaNoiseThreshold": 8
+  },
+  "subsequentFrames": "Resize full square canvas to 512. No content-bound cropping, per-frame scaling or translation."
+}

@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "profiles": 6,
+  "actionPlayback": true,
+  "pause": true,
+  "frameSlider": true,
+  "reducedStaticFrameSelection": true,
+  "errors": []
+}

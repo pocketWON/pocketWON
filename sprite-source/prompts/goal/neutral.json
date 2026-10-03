@@ -1,0 +1,23 @@
+{
+  "profile": "goal",
+  "frame": "neutral",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is immutable identity/camera/scale reference. When input 2 exists it is the previous sequential frame to edit. Preserve all artwork except the specifically requested pose/expression/prop changes. Exact same opaque white bean/wallet body, asymmetrical folded top, big dark oval eyes with same eye spacing and eye size, dark navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and exact canvas coordinates. Square canvas. Grounded feet center at (50%,82%). Head y approximately27%, body width about46% of canvas. Single flat 2D editorial line-art character. No UI, text, letters, numbers, graphs, background, shadow, border or panels. True transparent alpha, wide transparent margins. Do not zoom, crop, recenter, or change proportions. Props pale blue, coins muted gold. Preserve identity over posing. FRAME neutral, GOAL profile. Replace only the small wallet and coin held in front of torso with one small plain pale-blue triangular flag on a thin dark pole, held in the character's viewer-left hand at the side. Flag pole at x approximately30% and extends from y40% to y78%, flag pointing toward viewer-left with fabric constrained inside canvas. Viewer-right hand rests near waist. Maintain smiling neutral front pose, same grounded feet and body. Show one character and exactly one flag only.",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png"
+  ],
+  "raw": "sprite-source/raw/goal/neutral.png",
+  "source": "sprite-source/frames/goal/neutral.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "0af93fecbcb4a445642ecfba4175d45f625142b286d40b6f515df8c18949b31b",
+  "sourceSha256": "23d7c4f7948cd0bc06cd49784ee6305da4d4731de4ae772ffe93eadc42bf5e5b"
+}

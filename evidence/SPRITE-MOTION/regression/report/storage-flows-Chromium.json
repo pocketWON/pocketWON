@@ -1,0 +1,17 @@
+{
+  "before": {
+    "unrelated_test_value": "keep",
+    "pocketwon_intro_done": "1",
+    "pocketwon_demo_v1": "{\"user\":{\"name\":\"민준\"},\"balance\":32500,\"habitScore\":82,\"monthly\":{\"spending\":12300,\"saving\":15200,\"goal\":45000},\"goal\":{\"title\":\"게임 아이템\",\"target\":45000,\"current\":30600,\"daysLeft\":12},\"streak\":7,\"points\":1250,\"transactions\":[{\"type\":\"out\",\"amount\":3500,\"category\":\"간식\",\"ts\":\"2024-05-18T12:10:00\",\"receipt\":false},{\"type\":\"in\",\"amount\":10000,\"category\":\"용돈\",\"ts\":\"2024-05-17T09:00:00\",\"receipt\":false},{\"type\":\"out\",\"amount\":1800,\"category\":\"교통\",\"ts\":\"2024-05-16T16:40:00\",\"receipt\":false},{\"type\":\"out\",\"amount\":2700,\"category\":\"게임\",\"ts\":\"2024-05-15T19:20:00\",\"receipt\":false}],\"missions\":[true,true,true,false,false,false,false],\"recordedDays\":[1,7,8,9,10,11,13,14,15,16,17,18,19,20,21],\"specialDays\":[24],\"today\":18,\"calOffset\":0}",
+    "pocketwon_theme": "dark"
+  },
+  "after": {
+    "unrelated_test_value": "keep",
+    "pocketwon_intro_done": "1",
+    "pocketwon_demo_v1": "{\"user\":{\"name\":\"민준\"},\"balance\":32500,\"habitScore\":19,\"monthly\":{\"spending\":13300,\"saving\":16200,\"goal\":60000},\"goal\":{\"title\":\"이름만 바꾼 목표\",\"target\":60000,\"current\":30600,\"daysLeft\":12},\"streak\":7,\"points\":1250,\"transactions\":[{\"type\":\"out\",\"amount\":1000,\"category\":\"간식\",\"ts\":\"2026-10-03T07:35:32.186Z\",\"receipt\":false},{\"type\":\"in\",\"amount\":1000,\"category\":\"용돈\",\"ts\":\"2026-10-03T07:35:31.868Z\",\"receipt\":false},{\"type\":\"out\",\"amount\":3500,\"category\":\"간식\",\"ts\":\"2024-05-18T12:10:00\",\"receipt\":false},{\"type\":\"in\",\"amount\":10000,\"category\":\"용돈\",\"ts\":\"2024-05-17T09:00:00\",\"receipt\":false},{\"type\":\"out\",\"amount\":1800,\"category\":\"교통\",\"ts\":\"2024-05-16T16:40:00\",\"receipt\":false},{\"type\":\"out\",\"amount\":2700,\"category\":\"게임\",\"ts\":\"2024-05-15T19:20:00\",\"receipt\":false}],\"missions\":[true,true,true,false,false,false,false],\"recordedDays\":[1,7,8,9,10,11,13,14,15,16,17,18,19,20,21],\"specialDays\":[24],\"today\":18,\"calOffset\":0}",
+    "pocketwon_theme": "dark"
+  },
+  "reportWrites": 0,
+  "explicitRecordWrites": 2,
+  "explicitGoalWrites": 2
+}

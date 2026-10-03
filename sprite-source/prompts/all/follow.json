@@ -1,0 +1,24 @@
+{
+  "profile": "all",
+  "frame": "follow",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is immutable identity/camera/scale reference. When input 2 exists it is the previous sequential frame to edit. Preserve all artwork except the specifically requested pose/expression/prop changes. Exact same opaque white bean/wallet body, asymmetrical folded top, big dark oval eyes with same eye spacing and eye size, dark navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and exact canvas coordinates. Square canvas. Grounded feet center at (50%,82%). Head y approximately27%, body width about46% of canvas. Single flat 2D editorial line-art character. No UI, text, letters, numbers, graphs, background, shadow, border or panels. True transparent alpha, wide transparent margins. Do not zoom, crop, recenter, or change proportions. Props pale blue, coins muted gold. Preserve identity over posing. FRAME follow, HELLO wave. Edit previous raised-hand frame. Viewer-left round hand moves farther outward by15px on512canvas and tilts slightly as a friendly wave; keep it at same head height. Arm makes a clear outward curve. Character body leans very slightly toward viewer-left only2degrees, feet stay fixed original neutral positions. Keep eye size and spacing, smile, viewer-right hand down, same body clasp. No fingers, effects, props or UI. Do not change character size.",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/all/peak.png"
+  ],
+  "raw": "sprite-source/raw/all/follow.png",
+  "source": "sprite-source/frames/all/follow.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "a54cc4f0b197b34b4fc10aa19a5c391ebb1e4fae5e87c16f054f9ae9d5a311e8",
+  "sourceSha256": "ebb18c995d59f84dd176fcd58df7fcdd9b575f761c5a082f49fa896672b89160"
+}

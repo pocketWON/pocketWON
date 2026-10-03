@@ -1,0 +1,24 @@
+{
+  "profile": "goal",
+  "frame": "follow",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is immutable identity/camera/scale reference. When input 2 exists it is the previous sequential frame to edit. Preserve all artwork except the specifically requested pose/expression/prop changes. Exact same opaque white bean/wallet body, asymmetrical folded top, big dark oval eyes with same eye spacing and eye size, dark navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and exact canvas coordinates. Square canvas. Grounded feet center at (50%,82%). Head y approximately27%, body width about46% of canvas. Single flat 2D editorial line-art character. No UI, text, letters, numbers, graphs, background, shadow, border or panels. True transparent alpha, wide transparent margins. Do not zoom, crop, recenter, or change proportions. Props pale blue, coins muted gold. Preserve identity over posing. FRAME follow, GOAL landing. Edit previous hopping flag frame. Character has just landed: feet return exactly to original neutral/master foot positions at50%,82%, knees soft, body only2% squashed and same neutral width. Hold flagpole at viewer-left, flagpole vertical and bottom on82% groundline. Pale blue triangular fabric ripples to viewer-left slightly after character stops, single clear soft wave. Free hand begins returning toward waist, face satisfied. Do not add any marks or shadow under feet. No coin or wallet. Same character identity, size and camera.",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/goal/peak.png"
+  ],
+  "raw": "sprite-source/raw/goal/follow.png",
+  "source": "sprite-source/frames/goal/follow.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "5a75d12969de11309c55452857b75fed0b6c5f9e1e305d305d3de6e84a223177",
+  "sourceSha256": "209e6dfdae05ed1d9f10ac9fc12f54688770d26af412e0d508c0f4fee7504c6d"
+}

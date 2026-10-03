@@ -1,0 +1,60 @@
+/* Sprite cells own their square crop; their blue stage deliberately does not. */
+.pw-sprite {
+  position: relative;
+  display: block;
+  width: clamp(8rem, 37vw, 12rem);
+  max-width: none;
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  isolation: isolate;
+}
+.pw-sprite-poster,
+.pw-sprite-frames {
+  position: absolute;
+  display: block;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+}
+.pw-sprite-poster[hidden] { display: none; }
+.pw-sprite-frames { visibility: hidden; background-repeat: no-repeat; }
+.pw-sprite--ready > .pw-sprite-frames { visibility: visible; }
+.pw-sprite--ready > .pw-sprite-poster { visibility: hidden; }
+.pw-illustration-panel > .pw-sprite {
+  position: absolute;
+  z-index: 1;
+  right: -0.4rem;
+  bottom: -1.3rem;
+  width: min(12rem, 125%);
+}
+.pw-home-summary-card .pw-sprite { width: min(12.5rem, 165%); right: -1.75rem; bottom: -1.6rem; }
+.pw-record-summary-visual > .pw-sprite,
+.pw-goal-visual > .pw-sprite,
+.pw-report-score-visual > .pw-sprite {
+  position: absolute;
+  right: -0.4rem;
+  bottom: -1.4rem;
+  width: min(12rem, 90%);
+}
+.pw-all-card-visual > .pw-sprite { position: absolute; right: -0.4rem; bottom: -1.3rem; width: min(12rem, 125%); }
+.pw-motion-enter { opacity: 1; }
+.pw-motion-enter--visible { animation: pw-stage-enter 300ms cubic-bezier(0.22, 0.65, 0.3, 1) var(--motion-enter-delay, 0ms) both; }
+@keyframes pw-stage-enter { from { opacity: 0; translate: 0 12px; } to { opacity: 1; translate: 0 0; } }
+@media (max-width: 350px) {
+  .pw-illustration-panel > .pw-sprite,
+  .pw-all-card-visual > .pw-sprite { right: -0.15rem; width: 128%; bottom: -1.15rem; }
+  .pw-home-summary-card .pw-sprite { right: -1.1rem; width: 165%; bottom: -1.3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pw-sprite-frames { animation: none !important; visibility: hidden !important; }
+  .pw-sprite > .pw-sprite-poster { visibility: visible !important; }
+  .pw-motion-enter, .pw-motion-enter--visible { animation: none !important; opacity: 1; translate: none; }
+}

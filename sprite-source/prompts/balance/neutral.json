@@ -1,0 +1,24 @@
+{
+  "profile": "balance",
+  "frame": "neutral",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE animation frame only, not a grid or sprite sheet. Edit/reference the supplied PocketWON master character with absolute identity consistency. Transparent alpha background. Square 512 x 512 composition. Keep the exact same compact white wallet/bean mascot, dark blue-gray hand-drawn outline, large oval eyes with the same spacing, small arms/legs, and the clasp accessory on the viewer's RIGHT. Same straight-on camera, body proportions and stroke as reference. Neutral body spans approximately x=145..357,y=122..370; foot ground center is x=256,y=420 on the 512 square canvas. Preserve wide transparent margins. Frame BALANCE-NEUTRAL: mascot looking forward, gently holding a small closed pale blue wallet at waist height in its hands. Tiny coin peeks out, no inscriptions. Both feet planted. No motion lines. Character plus wallet prop only. White fill must remain opaque. No text, no logo, no letters, no numbers, no UI, no colored backdrop, no shadow, no 3D. Return only this single centered frame.\n",
+  "references": [
+    "sprite-source/master/pocketwon-motion-reference.png"
+  ],
+  "raw": "sprite-source/raw/balance/neutral.png",
+  "source": "sprite-source/frames/balance/neutral.png",
+  "canvas": [
+    512,
+    512
+  ],
+  "canonicalPreparation": {
+    "resize": "full square",
+    "translate": [
+      0,
+      16
+    ]
+  },
+  "rawSha256": "b0b8dc33a100f2f39447394b2e1e98fe535ddc13ef100f9c188932b55522feff",
+  "sourceSha256": "666184efbd04b43903cc1773f9f747d536dc8cbe7b4c07ecceb44ebca3ce21b9"
+}

@@ -1,0 +1,24 @@
+{
+  "profile": "balance",
+  "frame": "return",
+  "tool": "built-in image_gen",
+  "prompt": "Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is the immutable identity/camera/scale reference; input 2 (when provided) is the previous sequential frame to edit. Keep all artwork from the previous frame except the specifically requested pose/expression. Exact same white bean/wallet body, asymmetrical folded top, big dark oval eyes, eye spacing, navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and same canvas coordinates. Frame canvas square: artwork has the same framing as reference; grounded feet center is (50%,82%) of canvas, head approximately y=27%, body width about46% ofcanvas. Single flat 2D editorial line-art character only; no UI, text, letters, numbers, real graphs, background, shadows, extra effects, border or panels. True transparent alpha background, opaque white body. Keep transparent margins. Do not zoom, crop, recenter or change proportions. Props may be pale blue; coins small muted gold. Preserve identity over posing. BALANCE RETURN: close wallet flap fully again, both hands return to the original waist-level hold and one small coin edge peeks from top. Eyes forward normal open smile. Match the neutral master pose positions precisely; slight remaining downward hand movement only. Keep feet sameground and body sameoutline.\n",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/balance/settle.png"
+  ],
+  "raw": "sprite-source/raw/balance/return.png",
+  "source": "sprite-source/frames/balance/return.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "9d61cf376308fba07bdb4be533b9e3495776697621aac7a0c89d869c3cf4c1ce",
+  "sourceSha256": "79f6be0e1626863f72c3fc55839d790b5fe88e0970481ebd0a920c0d58c6e3b2"
+}

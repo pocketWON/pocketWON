@@ -1,0 +1,936 @@
+{
+  "startedAt": "2026-10-03T09:27:13.272Z",
+  "viewport": {
+    "width": 480,
+    "height": 360
+  },
+  "checks": [
+    {
+      "name": "chromium home short-portrait accessibility flow/controls",
+      "status": "PASS",
+      "detail": {
+        "metric": {
+          "accessible": true,
+          "width": 480,
+          "height": 360,
+          "documentWidth": 480,
+          "documentHeight": 591,
+          "scrollTop": 0
+        },
+        "controls": [
+          {
+            "label": "기록하기",
+            "box": {
+              "x": 12,
+              "y": 214,
+              "width": 222,
+              "height": 146
+            }
+          },
+          {
+            "label": "기록 내역",
+            "box": {
+              "x": 246,
+              "y": 214,
+              "width": 222,
+              "height": 146
+            }
+          },
+          {
+            "label": "목표",
+            "box": {
+              "x": 12,
+              "y": 153,
+              "width": 222,
+              "height": 146
+            }
+          },
+          {
+            "label": "리포트",
+            "box": {
+              "x": 246,
+              "y": 153,
+              "width": 222,
+              "height": 146
+            }
+          },
+          {
+            "label": "홈",
+            "box": {
+              "x": 12,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록",
+            "box": {
+              "x": 164,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "전체",
+            "box": {
+              "x": 316,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "chromium record short-portrait accessibility flow/controls",
+      "status": "PASS",
+      "detail": {
+        "metric": {
+          "accessible": true,
+          "width": 480,
+          "height": 360,
+          "documentWidth": 480,
+          "documentHeight": 503,
+          "scrollTop": 0
+        },
+        "controls": [
+          {
+            "label": "새 기록 추가",
+            "box": {
+              "x": 369.125,
+              "y": 130,
+              "width": 98.875,
+              "height": 48
+            }
+          },
+          {
+            "label": "간식, 2024년 5월 18일, −3,500원, 상세 보기",
+            "box": {
+              "x": 12,
+              "y": 186,
+              "width": 456,
+              "height": 96
+            }
+          },
+          {
+            "label": "용돈, 2024년 5월 17일, +10,000원, 상세 보기",
+            "box": {
+              "x": 12,
+              "y": 264,
+              "width": 456,
+              "height": 96
+            }
+          },
+          {
+            "label": "다음",
+            "box": {
+              "x": 396,
+              "y": 251,
+              "width": 72,
+              "height": 48
+            }
+          },
+          {
+            "label": "홈",
+            "box": {
+              "x": 12,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록",
+            "box": {
+              "x": 164,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "전체",
+            "box": {
+              "x": 316,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "chromium goal short-portrait accessibility flow/controls",
+      "status": "PASS",
+      "detail": {
+        "metric": {
+          "accessible": true,
+          "width": 480,
+          "height": 360,
+          "documentWidth": 480,
+          "documentHeight": 532,
+          "scrollTop": 0
+        },
+        "controls": [
+          {
+            "label": "목표 이름 전체 보기: 게임 아이템",
+            "box": {
+              "x": 28,
+              "y": 50,
+              "width": 424,
+              "height": 48
+            }
+          },
+          {
+            "label": "목표 수정",
+            "box": {
+              "x": 12,
+              "y": 194.9375,
+              "width": 456,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록하러 가기",
+            "box": {
+              "x": 12,
+              "y": 250.9375,
+              "width": 456,
+              "height": 48
+            }
+          },
+          {
+            "label": "홈",
+            "box": {
+              "x": 12,
+              "y": 311.9375,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록",
+            "box": {
+              "x": 164,
+              "y": 311.9375,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "전체",
+            "box": {
+              "x": 316,
+              "y": 311.9375,
+              "width": 152,
+              "height": 48
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "chromium report short-portrait accessibility flow/controls",
+      "status": "PASS",
+      "detail": {
+        "metric": {
+          "accessible": true,
+          "width": 480,
+          "height": 360,
+          "documentWidth": 480,
+          "documentHeight": 623,
+          "scrollTop": 0
+        },
+        "controls": [
+          {
+            "label": "습관",
+            "box": {
+              "x": 16,
+              "y": 38,
+              "width": 146.65625,
+              "height": 48
+            }
+          },
+          {
+            "label": "돈 흐름",
+            "box": {
+              "x": 166.65625,
+              "y": 38,
+              "width": 146.671875,
+              "height": 48
+            }
+          },
+          {
+            "label": "목표",
+            "box": {
+              "x": 317.328125,
+              "y": 38,
+              "width": 146.671875,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록 보기",
+            "box": {
+              "x": 12,
+              "y": 251,
+              "width": 456,
+              "height": 48
+            }
+          },
+          {
+            "label": "홈",
+            "box": {
+              "x": 12,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록",
+            "box": {
+              "x": 164,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "전체",
+            "box": {
+              "x": 316,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "chromium all short-portrait accessibility flow/controls",
+      "status": "PASS",
+      "detail": {
+        "metric": {
+          "accessible": true,
+          "width": 480,
+          "height": 360,
+          "documentWidth": 480,
+          "documentHeight": 611,
+          "scrollTop": 0
+        },
+        "controls": [
+          {
+            "label": "홈내 용돈과 주요 행동→",
+            "box": {
+              "x": 12,
+              "y": 34,
+              "width": 456,
+              "height": 120
+            }
+          },
+          {
+            "label": "기록받은 돈과 쓴 돈→",
+            "box": {
+              "x": 12,
+              "y": 166,
+              "width": 456,
+              "height": 120
+            }
+          },
+          {
+            "label": "목표모으고 싶은 목표→",
+            "box": {
+              "x": 12,
+              "y": 240,
+              "width": 456,
+              "height": 120
+            }
+          },
+          {
+            "label": "리포트저장된 돈 습관→",
+            "box": {
+              "x": 12,
+              "y": 179,
+              "width": 456,
+              "height": 120
+            }
+          },
+          {
+            "label": "홈",
+            "box": {
+              "x": 12,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록",
+            "box": {
+              "x": 164,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "전체",
+            "box": {
+              "x": 316,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "chromium Home record cancel restores opener",
+      "status": "PASS",
+      "detail": {
+        "accessible": true,
+        "width": 480,
+        "height": 360,
+        "documentWidth": 480,
+        "documentHeight": 591,
+        "scrollTop": 12
+      }
+    },
+    {
+      "name": "chromium incoming Record stages/save/result remain reachable",
+      "status": "PASS",
+      "detail": {
+        "metric": {
+          "accessible": true,
+          "width": 480,
+          "height": 360,
+          "documentWidth": 480,
+          "documentHeight": 503,
+          "scrollTop": 0
+        },
+        "result": {
+          "accessible": true,
+          "width": 480,
+          "height": 360,
+          "documentWidth": 480,
+          "documentHeight": 360,
+          "scrollTop": 0
+        },
+        "controls": [
+          {
+            "label": "기록 내역 보기",
+            "box": {
+              "x": 12,
+              "y": 191.921875,
+              "width": 456,
+              "height": 57.203125
+            }
+          },
+          {
+            "label": "홈",
+            "box": {
+              "x": 12,
+              "y": 303.828125,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록",
+            "box": {
+              "x": 164,
+              "y": 303.828125,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "전체",
+            "box": {
+              "x": 316,
+              "y": 303.828125,
+              "width": 152,
+              "height": 48
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "webkit home short-portrait accessibility flow/controls",
+      "status": "PASS",
+      "detail": {
+        "metric": {
+          "accessible": true,
+          "width": 480,
+          "height": 360,
+          "documentWidth": 480,
+          "documentHeight": 591,
+          "scrollTop": 0
+        },
+        "controls": [
+          {
+            "label": "기록하기",
+            "box": {
+              "x": 12,
+              "y": 214,
+              "width": 222,
+              "height": 146
+            }
+          },
+          {
+            "label": "기록 내역",
+            "box": {
+              "x": 246,
+              "y": 214,
+              "width": 222,
+              "height": 146
+            }
+          },
+          {
+            "label": "목표",
+            "box": {
+              "x": 12,
+              "y": 153,
+              "width": 222,
+              "height": 146
+            }
+          },
+          {
+            "label": "리포트",
+            "box": {
+              "x": 246,
+              "y": 153,
+              "width": 222,
+              "height": 146
+            }
+          },
+          {
+            "label": "홈",
+            "box": {
+              "x": 12,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록",
+            "box": {
+              "x": 164,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "전체",
+            "box": {
+              "x": 316,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "webkit record short-portrait accessibility flow/controls",
+      "status": "PASS",
+      "detail": {
+        "metric": {
+          "accessible": true,
+          "width": 480,
+          "height": 360,
+          "documentWidth": 480,
+          "documentHeight": 503,
+          "scrollTop": 0
+        },
+        "controls": [
+          {
+            "label": "새 기록 추가",
+            "box": {
+              "x": 369.125,
+              "y": 130,
+              "width": 98.875,
+              "height": 48
+            }
+          },
+          {
+            "label": "간식, 2024년 5월 18일, −3,500원, 상세 보기",
+            "box": {
+              "x": 12,
+              "y": 186,
+              "width": 456,
+              "height": 96
+            }
+          },
+          {
+            "label": "용돈, 2024년 5월 17일, +10,000원, 상세 보기",
+            "box": {
+              "x": 12,
+              "y": 264,
+              "width": 456,
+              "height": 96
+            }
+          },
+          {
+            "label": "다음",
+            "box": {
+              "x": 396,
+              "y": 251,
+              "width": 72,
+              "height": 48
+            }
+          },
+          {
+            "label": "홈",
+            "box": {
+              "x": 12,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록",
+            "box": {
+              "x": 164,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "전체",
+            "box": {
+              "x": 316,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "webkit goal short-portrait accessibility flow/controls",
+      "status": "PASS",
+      "detail": {
+        "metric": {
+          "accessible": true,
+          "width": 480,
+          "height": 360,
+          "documentWidth": 480,
+          "documentHeight": 532,
+          "scrollTop": 172
+        },
+        "controls": [
+          {
+            "label": "목표 이름 전체 보기: 게임 아이템",
+            "box": {
+              "x": 28,
+              "y": 50,
+              "width": 424,
+              "height": 48
+            }
+          },
+          {
+            "label": "목표 수정",
+            "box": {
+              "x": 12,
+              "y": 194.9375,
+              "width": 456,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록하러 가기",
+            "box": {
+              "x": 12,
+              "y": 250.9375,
+              "width": 456,
+              "height": 48
+            }
+          },
+          {
+            "label": "홈",
+            "box": {
+              "x": 12,
+              "y": 311.9375,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록",
+            "box": {
+              "x": 164,
+              "y": 311.9375,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "전체",
+            "box": {
+              "x": 316,
+              "y": 311.9375,
+              "width": 152,
+              "height": 48
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "webkit report short-portrait accessibility flow/controls",
+      "status": "PASS",
+      "detail": {
+        "metric": {
+          "accessible": true,
+          "width": 480,
+          "height": 360,
+          "documentWidth": 480,
+          "documentHeight": 623,
+          "scrollTop": 0
+        },
+        "controls": [
+          {
+            "label": "습관",
+            "box": {
+              "x": 16,
+              "y": 38,
+              "width": 146.65625,
+              "height": 48
+            }
+          },
+          {
+            "label": "돈 흐름",
+            "box": {
+              "x": 166.65625,
+              "y": 38,
+              "width": 146.671875,
+              "height": 48
+            }
+          },
+          {
+            "label": "목표",
+            "box": {
+              "x": 317.328125,
+              "y": 38,
+              "width": 146.65625,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록 보기",
+            "box": {
+              "x": 12,
+              "y": 251,
+              "width": 456,
+              "height": 48
+            }
+          },
+          {
+            "label": "홈",
+            "box": {
+              "x": 12,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록",
+            "box": {
+              "x": 164,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "전체",
+            "box": {
+              "x": 316,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "webkit all short-portrait accessibility flow/controls",
+      "status": "PASS",
+      "detail": {
+        "metric": {
+          "accessible": true,
+          "width": 480,
+          "height": 360,
+          "documentWidth": 480,
+          "documentHeight": 611,
+          "scrollTop": 251
+        },
+        "controls": [
+          {
+            "label": "홈내 용돈과 주요 행동→",
+            "box": {
+              "x": 12,
+              "y": 34,
+              "width": 456,
+              "height": 120
+            }
+          },
+          {
+            "label": "기록받은 돈과 쓴 돈→",
+            "box": {
+              "x": 12,
+              "y": 166,
+              "width": 456,
+              "height": 120
+            }
+          },
+          {
+            "label": "목표모으고 싶은 목표→",
+            "box": {
+              "x": 12,
+              "y": 240,
+              "width": 456,
+              "height": 120
+            }
+          },
+          {
+            "label": "리포트저장된 돈 습관→",
+            "box": {
+              "x": 12,
+              "y": 179,
+              "width": 456,
+              "height": 120
+            }
+          },
+          {
+            "label": "홈",
+            "box": {
+              "x": 12,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록",
+            "box": {
+              "x": 164,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "전체",
+            "box": {
+              "x": 316,
+              "y": 312,
+              "width": 152,
+              "height": 48
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "webkit Home record cancel restores opener",
+      "status": "PASS",
+      "detail": {
+        "accessible": true,
+        "width": 480,
+        "height": 360,
+        "documentWidth": 480,
+        "documentHeight": 591,
+        "scrollTop": 143
+      }
+    },
+    {
+      "name": "webkit incoming Record stages/save/result remain reachable",
+      "status": "PASS",
+      "detail": {
+        "metric": {
+          "accessible": true,
+          "width": 480,
+          "height": 360,
+          "documentWidth": 480,
+          "documentHeight": 503,
+          "scrollTop": 0
+        },
+        "result": {
+          "accessible": true,
+          "width": 480,
+          "height": 360,
+          "documentWidth": 480,
+          "documentHeight": 360,
+          "scrollTop": 0
+        },
+        "controls": [
+          {
+            "label": "기록 내역 보기",
+            "box": {
+              "x": 12,
+              "y": 191.90625,
+              "width": 456,
+              "height": 57.1875
+            }
+          },
+          {
+            "label": "홈",
+            "box": {
+              "x": 12,
+              "y": 303.796875,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "기록",
+            "box": {
+              "x": 164,
+              "y": 303.796875,
+              "width": 152,
+              "height": 48
+            }
+          },
+          {
+            "label": "전체",
+            "box": {
+              "x": 316,
+              "y": 303.796875,
+              "width": 152,
+              "height": 48
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "browsers": {
+    "chromium": {
+      "version": "153.0.8010.12"
+    },
+    "webkit": {
+      "version": "26.5"
+    }
+  },
+  "status": "PASS",
+  "finishedAt": "2026-10-03T09:27:23.827Z"
+}

@@ -1,0 +1,1276 @@
+{
+  "startedAt": "2026-10-03T09:15:25.485Z",
+  "cases": [
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "home",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          796
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "record",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1279
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "goal",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          703
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "report",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          795
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "report-flow",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          811
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "report-goal",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          795
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "all",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          709
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "goal-name",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          703
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "goal-target",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          703
+        ],
+        "clip": [],
+        "unreachable": [
+          {
+            "label": "이전 단계",
+            "rect": {
+              "x": 0,
+              "y": 21.765625,
+              "width": 96,
+              "height": 96,
+              "top": 21.765625,
+              "right": 96,
+              "bottom": 117.765625,
+              "left": 0
+            },
+            "centerVisible": true,
+            "hit": false,
+            "hitClass": "pw-flow-title"
+          }
+        ]
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "goal-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          703
+        ],
+        "clip": [],
+        "unreachable": [
+          {
+            "label": "이전 단계",
+            "rect": {
+              "x": 0,
+              "y": 20,
+              "width": 96,
+              "height": 96,
+              "top": 20,
+              "right": 96,
+              "bottom": 116,
+              "left": 0
+            },
+            "centerVisible": true,
+            "hit": false,
+            "hitClass": "pw-flow-title"
+          }
+        ]
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "record-type",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1279
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "home",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "record",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "goal",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "report",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "report-flow",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "report-goal",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "all",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "goal-name",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "goal-target",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "goal-confirm",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "record-type",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "home",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          796
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "record",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1279
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "goal",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          703
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "report",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          795
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "report-flow",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          811
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "report-goal",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          795
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "all",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          709
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "goal-name",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          703
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "goal-target",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          703
+        ],
+        "clip": [],
+        "unreachable": [
+          {
+            "label": "이전 단계",
+            "rect": {
+              "x": 0,
+              "y": 21.765625,
+              "width": 96,
+              "height": 96,
+              "top": 21.765625,
+              "right": 96,
+              "bottom": 117.765625,
+              "left": 0
+            },
+            "centerVisible": true,
+            "hit": false,
+            "hitClass": "pw-flow-title"
+          }
+        ]
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "goal-confirm",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          703
+        ],
+        "clip": [],
+        "unreachable": [
+          {
+            "label": "이전 단계",
+            "rect": {
+              "x": 0,
+              "y": 20,
+              "width": 96,
+              "height": 96,
+              "top": 20,
+              "right": 96,
+              "bottom": 116,
+              "left": 0
+            },
+            "centerVisible": true,
+            "hit": false,
+            "hitClass": "pw-flow-title"
+          }
+        ]
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "record-type",
+      "data": {
+        "accessible": true,
+        "rootFont": "32px",
+        "doc": [
+          320,
+          568,
+          320,
+          1279
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "home",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "record",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "goal",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "report",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "report-flow",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "report-goal",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "all",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "goal-name",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "goal-target",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "goal-confirm",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "record-type",
+      "data": {
+        "accessible": false,
+        "rootFont": "16px",
+        "doc": [
+          280,
+          480,
+          320,
+          480
+        ],
+        "clip": [],
+        "unreachable": []
+      }
+    }
+  ],
+  "failures": [
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "goal-target",
+      "horizontalOverflow": 0,
+      "clip": [],
+      "unreachable": [
+        {
+          "label": "이전 단계",
+          "rect": {
+            "x": 0,
+            "y": 21.765625,
+            "width": 96,
+            "height": 96,
+            "top": 21.765625,
+            "right": 96,
+            "bottom": 117.765625,
+            "left": 0
+          },
+          "centerVisible": true,
+          "hit": false,
+          "hitClass": "pw-flow-title"
+        }
+      ]
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "screen": "goal-confirm",
+      "horizontalOverflow": 0,
+      "clip": [],
+      "unreachable": [
+        {
+          "label": "이전 단계",
+          "rect": {
+            "x": 0,
+            "y": 20,
+            "width": 96,
+            "height": 96,
+            "top": 20,
+            "right": 96,
+            "bottom": 116,
+            "left": 0
+          },
+          "centerVisible": true,
+          "hit": false,
+          "hitClass": "pw-flow-title"
+        }
+      ]
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "home",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "record",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "goal",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "report",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "report-flow",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "report-goal",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "all",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "goal-name",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "goal-target",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "goal-confirm",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "screen": "record-type",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "goal-target",
+      "horizontalOverflow": 0,
+      "clip": [],
+      "unreachable": [
+        {
+          "label": "이전 단계",
+          "rect": {
+            "x": 0,
+            "y": 21.765625,
+            "width": 96,
+            "height": 96,
+            "top": 21.765625,
+            "right": 96,
+            "bottom": 117.765625,
+            "left": 0
+          },
+          "centerVisible": true,
+          "hit": false,
+          "hitClass": "pw-flow-title"
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "screen": "goal-confirm",
+      "horizontalOverflow": 0,
+      "clip": [],
+      "unreachable": [
+        {
+          "label": "이전 단계",
+          "rect": {
+            "x": 0,
+            "y": 20,
+            "width": 96,
+            "height": 96,
+            "top": 20,
+            "right": 96,
+            "bottom": 116,
+            "left": 0
+          },
+          "centerVisible": true,
+          "hit": false,
+          "hitClass": "pw-flow-title"
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "home",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "record",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "goal",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "report",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "report-flow",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "report-goal",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "all",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "goal-name",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "goal-target",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "goal-confirm",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "screen": "record-type",
+      "horizontalOverflow": 40,
+      "clip": [],
+      "unreachable": []
+    }
+  ],
+  "actions": [
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "screen home",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "screen record",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "screen goal",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "screen report",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "screen all",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "goal wizard save/cancel",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "text200",
+      "label": "record wizard save/cancel",
+      "passed": false,
+      "error": "locator.click: Error: strict mode violation: getByRole('button', { name: '다음', exact: true }) resolved to 2 elements:\n    1) <button disabled type=\"button\" class=\"pw-record-secondary\">다음</button> aka getByLabel('기록 페이지').getByRole('button', { name: '다음' })\n    2) <button type=\"button\" class=\"pw-butt"
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "label": "screen home",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "label": "screen record",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "label": "screen goal",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "label": "screen report",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "label": "screen all",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "label": "goal wizard save/cancel",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "mode": "narrow280",
+      "label": "record wizard save/cancel",
+      "passed": false,
+      "error": "locator.click: Error: strict mode violation: getByRole('button', { name: '다음', exact: true }) resolved to 2 elements:\n    1) <button type=\"button\" class=\"pw-record-secondary\">다음</button> aka getByLabel('기록 페이지').getByRole('button', { name: '다음' })\n    2) <button type=\"button\" class=\"pw-button\">다음</b"
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "screen home",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "screen record",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "screen goal",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "screen report",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "screen all",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "goal wizard save/cancel",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "text200",
+      "label": "record wizard save/cancel",
+      "passed": false,
+      "error": "locator.click: Error: strict mode violation: getByRole('button', { name: '다음', exact: true }) resolved to 2 elements:\n    1) <button disabled type=\"button\" class=\"pw-record-secondary\">다음</button> aka getByLabel('기록 페이지').getByRole('button', { name: '다음' })\n    2) <button type=\"button\" class=\"pw-butt"
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "label": "screen home",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "label": "screen record",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "label": "screen goal",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "label": "screen report",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "label": "screen all",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "label": "goal wizard save/cancel",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "mode": "narrow280",
+      "label": "record wizard save/cancel",
+      "passed": false,
+      "error": "locator.click: Error: strict mode violation: getByRole('button', { name: '다음', exact: true }) resolved to 2 elements:\n    1) <button type=\"button\" class=\"pw-record-secondary\">다음</button> aka getByLabel('기록 페이지').getByRole('button', { name: '다음' })\n    2) <button type=\"button\" class=\"pw-button\">다음</b"
+    }
+  ],
+  "errors": [
+    "ResizeObserver loop completed with undelivered notifications."
+  ]
+}

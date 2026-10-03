@@ -1,0 +1,25 @@
+{
+  "profile": "record",
+  "frame": "peak",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Generate exactly ONE transparent square sprite frame. Input1 immutable character/camera master; Input2 original anticipation; INPUT3 is the edit target whose body and anchored feet are APPROVED. Do not change Input3 body silhouette, camera, scale, clasp, hands, arm positions, legs, or feet in any way. In particular keep both soles exactly at current y=420/512. Change ONLY the blank receipt's hanging U-curve and pupils to create preceding action PEAK: lower the middle of the pale-blue receipt by 6 pixels (512-scale), keeping ribbon ends and width unchanged, and make pupils look a little toward viewer RIGHT instead of down. This produces the fully unfolded paper before its middle flutters upward in Input3. Keep original dark navy outline and white opaque body, no UI, writing, numbers, shadows or new objects.\n",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/record/anticipate.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/record/follow.png"
+  ],
+  "raw": "sprite-source/raw/record/peak.png",
+  "source": "sprite-source/frames/record/peak.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "fafc47ce6d37e32231c465fccc59383602076f8470a97d6bdca173c4ce982b8f",
+  "sourceSha256": "c59d72b0e05f3bbb72fe526aa553a74e3266d4f3753332edcddea8c95482ca4e"
+}

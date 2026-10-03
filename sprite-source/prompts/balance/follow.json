@@ -1,0 +1,24 @@
+{
+  "profile": "balance",
+  "frame": "follow",
+  "tool": "built-in image_gen",
+  "prompt": "Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is the immutable identity/camera/scale reference; input 2 (when provided) is the previous sequential frame to edit. Keep all artwork from the previous frame except the specifically requested pose/expression. Exact same white bean/wallet body, asymmetrical folded top, big dark oval eyes, eye spacing, navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and same canvas coordinates. Frame canvas square: artwork has the same framing as reference; grounded feet center is (50%,82%) of canvas, head approximately y=27%, body width about46% ofcanvas. Single flat 2D editorial line-art character only; no UI, text, letters, numbers, real graphs, background, shadows, extra effects, border or panels. True transparent alpha background, opaque white body. Keep transparent margins. Do not zoom, crop, recenter or change proportions. Props may be pale blue; coins small muted gold. Preserve identity over posing. BALANCE FOLLOW-THROUGH: wallet remains open at same height, hands have stopped, lid tips a little farther outward, the two coin tops settle a few pixels lower inside. Eyes shift from looking down toward front with a pleased slight smile. Keep body, feet, proportions and ground exactly unchanged.\n",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/balance/peak.png"
+  ],
+  "raw": "sprite-source/raw/balance/follow.png",
+  "source": "sprite-source/frames/balance/follow.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "b30c9ca6c4f57572b68dc526ee160b55a92d84defd0b815e75fb532680d8d544",
+  "sourceSha256": "8cf215c0cc1db749faaf4f321d952e93883e75af73d7e9ef21558c7ae31a9efe"
+}

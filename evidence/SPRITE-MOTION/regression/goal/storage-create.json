@@ -1,0 +1,16 @@
+{
+  "before": null,
+  "after": {
+    "balance": 0,
+    "monthly": {
+      "saving": 0,
+      "spending": 0
+    },
+    "transactions": [],
+    "goal": {
+      "current": 0,
+      "title": "새 자전거",
+      "target": 100000
+    }
+  }
+}

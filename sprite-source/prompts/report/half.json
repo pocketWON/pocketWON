@@ -1,0 +1,24 @@
+{
+  "profile": "report",
+  "frame": "half",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is the immutable identity/camera/scale reference; input 2 when present is the previous sequential frame to edit. Keep artwork except specifically requested pose/expression. Exact same opaque white bean/wallet body, asymmetrical folded top, big dark oval eyes, eye spacing, dark navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and exact canvas coordinates. Square canvas. Grounded feet center at (50%,82%). Head y approximately27%, body width about46% of canvas. Single flat 2D editorial line-art character. No UI, text, letters, numbers, graphs, background, shadow, border or panels. True transparent alpha, wide transparent margins. Do not zoom, crop, recenter, or change proportions. Props pale blue, coins muted gold. Preserve identity over posing.  FRAME half: Edit only eyelids: both upper eyelids lower to halfway across each eye, with oval eye boundaries remaining in original positions. The lower half of dark pupils is still visible. Eyebrows and smile stay friendly. Keep the exact prop, hands, body silhouette, feet and every canvas coordinate unchanged from Input 2. Input1 anchors identity; do not restore its wallet; keep Input2 prop.\n",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/report/glance.png"
+  ],
+  "raw": "sprite-source/raw/report/half.png",
+  "source": "sprite-source/frames/report/half.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "41dee1545e061e6f5a4ae20db536e398f36c1fe2f86dac8a1228933d63153849",
+  "sourceSha256": "97c78ef1b7d53c5a4d49df20d62c27616b4737534966ac0da6c7cf00728ec2c9"
+}

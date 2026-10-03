@@ -1,0 +1,24 @@
+{
+  "profile": "report",
+  "frame": "settle",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is the immutable identity/camera/scale reference; input 2 when present is the previous sequential frame to edit. Keep artwork except specifically requested pose/expression. Exact same opaque white bean/wallet body, asymmetrical folded top, big dark oval eyes, eye spacing, dark navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and exact canvas coordinates. Square canvas. Grounded feet center at (50%,82%). Head y approximately27%, body width about46% of canvas. Single flat 2D editorial line-art character. No UI, text, letters, numbers, graphs, background, shadow, border or panels. True transparent alpha, wide transparent margins. Do not zoom, crop, recenter, or change proportions. Props pale blue, coins muted gold. Preserve identity over posing. FRAME settle: After looking left through lens, lower same magnifier smoothly back to chest, lens center x57% y58%, hand at x64% y67%. Lens diameter now returns toward the original neutral prop size as it moves away from eye. Both eyes unobstructed and looking slightly left, friendly smile. Head settles upright and canonical body/feet unchanged. Viewer LEFT hand stays beside belly. No chart, wallet, text.\n",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/report/follow.png"
+  ],
+  "raw": "sprite-source/raw/report/settle.png",
+  "source": "sprite-source/frames/report/settle.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "973f48685f7621181ff6ddd4c7b2b9ca384defe2ce966757666706aa2f991254",
+  "sourceSha256": "58e70314f7b98013a78b43a67d65f5ce7f3d17fc031d1803afe2c65b34863e5a"
+}

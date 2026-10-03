@@ -1,0 +1,25 @@
+{
+  "profile": "goal",
+  "frame": "return",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Generate exactly ONE PocketWON sequential sprite frame, never a grid. Input 1 is immutable identity/camera/scale reference. When input 2 exists it is the previous sequential frame to edit. Preserve all artwork except the specifically requested pose/expression/prop changes. Exact same opaque white bean/wallet body, asymmetrical folded top, big dark oval eyes with same eye spacing and eye size, dark navy-blue outline thickness, clasp accessory ALWAYS on viewer RIGHT, tiny hands and feet. Same front camera, same scale and exact canvas coordinates. Square canvas. Grounded feet center at (50%,82%). Head y approximately27%, body width about46% of canvas. Single flat 2D editorial line-art character. No UI, text, letters, numbers, graphs, background, shadow, border or panels. True transparent alpha, wide transparent margins. Do not zoom, crop, recenter, or change proportions. Props pale blue, coins muted gold. Preserve identity over posing. FRAME return, GOAL ACTION neutral recovery. REFERENCE ROLES: Input1 identity master. Input2 is the EXACT NEUTRAL canvas composition to reproduce. Input3 is prior flag-wave frame only to understand continuity. Edit and copy INPUT2 almost exactly, same exact body silhouette and eyes, feet at same pixels, same head at same pixels, hands holding same short pale blue flag at same side. The only small change from INPUT2 is a very slight remaining fabric ripple on the flag's outer left edge; all character pixels and pose should match INPUT2 closely. Do not copy the shortened character proportions from INPUT3. Do not add handheld wallet/coin.",
+  "references": [
+    "/Users/jeonghu/포켓WON/sprite-source/master/pocketwon-canonical.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/goal/neutral.png",
+    "/Users/jeonghu/포켓WON/sprite-source/frames/goal/settle.png"
+  ],
+  "raw": "sprite-source/raw/goal/return.png",
+  "source": "sprite-source/frames/goal/return.png",
+  "generatedSize": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "normalization": "entire square resized; no content crop/translation",
+  "alphaNoiseThreshold": 8,
+  "rawSha256": "5b665535c56884ec1ef627489aebbabcaaf472b605760a9bb4d8a751b176f63a",
+  "sourceSha256": "aee594778472ac5164bc23bb5ba64779f5fba24ddb6396c11e7ad30015b0ee7d"
+}

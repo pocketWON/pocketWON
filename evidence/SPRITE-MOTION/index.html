@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <base href="../../ks6s3juocjzc2.kimi.page/">
+  <title>PocketWON · Sprite motion review</title>
+  <link rel="stylesheet" href="styles/sprites.css">
+  <style>
+    *{box-sizing:border-box}body{font:16px/1.6 system-ui,sans-serif;color:#29313f;background:#f4f8fb;margin:0;padding:32px}main{max-width:1120px;margin:auto}h1{font-size:32px;letter-spacing:-1px;margin:0}p{color:#5c6876}a{color:#0069b7}#grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}.card{background:white;border-radius:24px;padding:22px;box-shadow:0 8px 24px #30435610}.stage{height:250px;background:#d9eefb;border-radius:20px;display:grid;place-items:center}.stage .pw-sprite{width:280px;max-width:100%}h2{margin:16px 0 4px;font-size:20px}.controls{display:flex;gap:8px;flex-wrap:wrap}button{border:0;border-radius:999px;padding:12px 16px;background:#0077d8;color:white;font:inherit;cursor:pointer;min-height:44px}button:focus-visible,input:focus-visible{outline:3px solid #0190f8;outline-offset:3px}button.secondary{background:#e9f5fc;color:#29313f}input[type=range]{width:100%;height:44px}output{font-variant-numeric:tabular-nums}small{display:block;color:#5c6876}.motion-note{padding:12px;background:white;border-radius:12px}footer{margin-top:32px}label{display:block;margin-top:12px}@media(prefers-reduced-motion:reduce){.motion-note::after{content:' · 모션 감소 설정: 자동 재생 없이 프레임 슬라이더로 검수할 수 있습니다.'}}
+  </style>
+  <script src="scripts/sprite-manifest.js" defer></script>
+  <script src="scripts/sprites.js" defer></script>
+</head>
+<body><main>
+  <h1>Pocket<span style="color:#0190f8">WON</span> · Living graphics</h1>
+  <p>개별 AI 프레임 → 투명 Sprite Sheet → 실제 CSS 프레임 재생</p>
+  <p class="motion-note">검수용 화면입니다. 모든 재생은 버튼으로 시작하며 금융 데이터를 읽거나 저장하지 않습니다.</p>
+  <p><a href="index.html">앱 열기</a> · <a href="../evidence/SPRITE-MOTION/assets.json">에셋 명세</a> · <a href="../sprite-source/manifest.json">원본 프레임 명세</a></p>
+  <div id="grid"></div>
+  <footer><p>각 카드의 슬라이더로 모든 셀을 확인할 수 있습니다. 정지·모션 감소 상태에서도 그림과 프레임 번호는 표시됩니다.</p></footer>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const names={balance:'내 용돈 · 지갑 확인',record:'돈 흐름 · 영수증',report:'돈 습관 · 돋보기',goal:'목표 · 깃발',all:'전체 · 손짓',success:'성공 · 짧은 축하'};
+  let active=null;
+  for(const [name,profile] of Object.entries(PW_SPRITE_PROFILES)){
+    const card=document.createElement('section');card.className='card';
+    const stage=document.createElement('div');stage.className='stage';
+    const player=createPocketWONSprite(name,{autoplay:false,loading:'eager'});stage.append(player.element);
+    const title=document.createElement('h2');title.textContent=names[name];
+    const info=document.createElement('small'),controls=document.createElement('div');controls.className='controls';
+    const label=document.createElement('label');label.textContent='프레임 확인 ';
+    const output=document.createElement('output');label.append(output);
+    const range=document.createElement('input');range.type='range';range.min='0';range.step='1';range.value='0';range.setAttribute('aria-label',names[name]+' 프레임');
+    let clip=profile.clips.action?'action':'idle';
+    function describe(){const m=profile.clips[clip];range.max=String(m.frameCount-1);info.textContent=`${clip} · ${m.frameCount} frames · ${m.fps} FPS · ${(m.bytes/1024).toFixed(1)} KiB`;}
+    function seek(){
+      player.stop();const m=profile.clips[clip],layer=player.element.querySelector('.pw-sprite-frames'),index=Number(range.value);
+      // The review slider is static frame selection, not a runtime animation.
+      const poster=player.element.querySelector('.pw-sprite-poster');poster.style.setProperty('visibility','hidden','important');
+      layer.style.setProperty('visibility','visible','important');layer.style.backgroundImage=`url('${m.src}')`;layer.style.backgroundSize=`${m.frameCount*100}% 100%`;layer.style.backgroundPosition=`${index/(m.frameCount-1)*100}% 0`;output.value=`${index+1} / ${m.frameCount}`;
+    }
+    for(const kind of Object.keys(profile.clips)){
+      const button=document.createElement('button');button.textContent=kind==='idle'?'Idle 재생':'Action 재생';
+      button.addEventListener('click',async()=>{if(active)active.stop();active=player;clip=kind;range.value='0';describe();player.element.querySelector('.pw-sprite-poster').style.removeProperty('visibility');player.element.querySelector('.pw-sprite-frames').style.removeProperty('visibility');await player.play(kind);});controls.append(button);
+    }
+    const stop=document.createElement('button');stop.className='secondary';stop.textContent='정지';stop.addEventListener('click',()=>player.pause());controls.append(stop);
+    range.addEventListener('input',seek);describe();output.value=`1 / ${profile.clips[clip].frameCount}`;
+    card.append(stage,title,info,controls,label,range);document.querySelector('#grid').append(card);
+  }
+});
+</script></body></html>

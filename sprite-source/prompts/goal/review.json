@@ -1,0 +1,149 @@
+{
+  "profile": "goal",
+  "review": "Individual generated frames inspected with view_image. Same white folded body, navy outlines, viewer-right clasp, paired eyes. No UI or typography. Full-square normalization only.",
+  "idle": "Neutral/glance/half/blink/glance/neutral; endpoints reuse the same neutral source.",
+  "action": "Neutral/preparation/anticipation/peak/follow-through/settle/return/neutral.",
+  "artNotes": "Goal has drawn crouch/hop, flag follow-through and deliberate airborne feet in peak/follow. Settle/return were regenerated against neutral to restore ground anchor. Flag pole rotates/foreshortens before planting.",
+  "frames": [
+    {
+      "frame": "neutral",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        83,
+        139,
+        390,
+        421
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "glance",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        82,
+        139,
+        392,
+        421
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "half",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        82,
+        139,
+        393,
+        422
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "blink",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        82,
+        137,
+        394,
+        422
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "prepare",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        77,
+        138,
+        392,
+        421
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "anticipate",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        75,
+        156,
+        393,
+        417
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "peak",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        78,
+        129,
+        390,
+        394
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "follow",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        72,
+        139,
+        393,
+        404
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "settle",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        83,
+        139,
+        391,
+        421
+      ],
+      "alphaCorner": 0
+    },
+    {
+      "frame": "return",
+      "canvas": [
+        512,
+        512
+      ],
+      "visibleBounds": [
+        82,
+        139,
+        391,
+        421
+      ],
+      "alphaCorner": 0
+    }
+  ]
+}
