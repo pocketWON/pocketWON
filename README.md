@@ -23,6 +23,7 @@ python3 -m http.server 4173 --bind 127.0.0.1
 
 ```sh
 node tests/verify-business-contracts.cjs
+node tests/verify-habit-score.cjs
 node tests/verify-single-screen.cjs
 node tests/verify-record-stage.cjs
 node tests/verify-record-keyboard.cjs
