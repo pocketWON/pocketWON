@@ -85,7 +85,11 @@ async function geometry(page) {
         const s = getComputedStyle(el); return { image: s.backgroundImage, shadow: s.boxShadow, filter: s.backdropFilter };
       }),
       scheme: getComputedStyle(document.documentElement).colorScheme,
+      rootFontSize: parseFloat(getComputedStyle(document.documentElement).fontSize),
       background: getComputedStyle(document.querySelector('.pw-shell')).backgroundColor,
+      shellRadius: getComputedStyle(document.querySelector('.pw-shell')).borderRadius,
+      shellShadow: getComputedStyle(document.querySelector('.pw-shell')).boxShadow,
+      navShadow: getComputedStyle(document.querySelector('.pw-bottom-navigation')).boxShadow,
       active: [...document.querySelectorAll('[aria-current="page"]')].map(el => el.dataset.screen),
     };
   });
@@ -93,17 +97,27 @@ async function geometry(page) {
 
 function checkGeometry(g, width) {
   assert(g.docWidth <= width, 'Horizontal document overflow');
-  assert.equal(g.shell.width, Math.min(width, 430));
+  assert.equal(g.shell.width, Math.min(width, 520));
   // WebKit rounds flex/dvh edges to fractional layout units (observed 1/64px).
   const epsilon = 0.05;
-  assert(Math.abs(g.shell.height - g.viewport.height) <= epsilon);
-  assert(Math.abs(g.nav.bottom - g.viewport.height) <= epsilon);
+  if (width >= 560) {
+    assert(Math.abs(g.shell.y - 20) <= epsilon);
+    assert(Math.abs(g.shell.height - (g.viewport.height - 40)) <= epsilon);
+    assert(Math.abs(g.nav.bottom - (g.shell.bottom - 16)) <= epsilon);
+    assert.equal(g.shellRadius, '36px');
+    assert.notEqual(g.shellShadow, 'none');
+  } else {
+    assert(Math.abs(g.shell.height - g.viewport.height) <= epsilon);
+    assert(Math.abs(g.nav.bottom - (g.viewport.height - g.rootFontSize * 0.75)) <= epsilon);
+    assert.equal(g.shellRadius, '0px');
+  }
   assert(g.content.y + epsilon >= g.header.bottom);
   assert(g.content.bottom <= g.nav.y + epsilon);
   assert(g.controls.every(c => c.width >= 48 && c.height >= 48 && c.x >= g.shell.x && c.right <= g.shell.right && c.bottom <= g.nav.bottom));
-  assert(g.styled.every(s => s.image === 'none' && s.shadow === 'none' && s.filter === 'none'));
+  assert(g.styled.every(s => s.image === 'none' && s.filter === 'none'));
   assert.equal(g.scheme, 'light');
-  assert.equal(g.background, 'rgb(245, 248, 252)');
+  assert.equal(g.background, 'rgb(255, 255, 255)');
+  assert.notEqual(g.navShadow, 'none');
   assert.equal(g.active.length, 1);
 }
 
@@ -117,7 +131,7 @@ async function matrix(browser, engine, screenshot) {
       await page.getByRole('button', { name: labels[i], exact: true }).click();
       await page.mouse.move(0, 0);
       assert.equal(await page.locator('#pw-screen-title').textContent(), i === 3 ? '용돈 습관 리포트' : labels[i]);
-      if (i > 3) assert.equal(await page.locator('#pw-content').innerText(), labels[i]);
+      if (i > 3) { assert.equal(await page.locator('#pw-screen-title').innerText(), labels[i]); assert.equal(await page.locator('.pw-all').count(), 1); }
       else assert.equal(await page.locator(['.pw-home', '.pw-record', '.pw-goal', '.pw-report'][i]).count(), 1);
       assert.equal(await page.title(), `${labels[i]} · 포켓WON`);
       assert.equal(await page.locator('#pw-header-context').innerText(), i === 0 ? 'PocketWON' : labels[i]);
@@ -174,7 +188,7 @@ async function storageAndLight(browser, defaultState) {
     }
     await page.emulateMedia({ colorScheme: 'light' });
     await page.emulateMedia({ colorScheme: 'dark' });
-    assert.equal((await geometry(page)).background, 'rgb(245, 248, 252)');
+    assert.equal((await geometry(page)).background, 'rgb(255, 255, 255)');
     pass(`OS dark + stored ${theme}: unchanged business/intro/theme/unrelated values; read-only storage calls`);
     await context.close();
   }
@@ -217,7 +231,7 @@ async function accessibilityAndLayout(browser) {
   });
   const g = await geometry(page); checkGeometry(g, 390);
   assert.equal(g.top.height, 47); assert.equal(g.header.y, 47); assert.equal(g.bottom.height, 34);
-  assert.equal(g.nav.height, 107); assert.equal(g.docHeight, 844);
+  assert.equal(g.nav.height, 118); assert.equal(g.docHeight, 844);
   assert((await page.locator('#pw-content').evaluate(el => el.scrollTop)) > 0);
   await page.getByRole('button', { name: '홈', exact: true }).click();
   assert.equal(await page.locator('#pw-content').evaluate(el => el.scrollTop), 0);
@@ -229,8 +243,8 @@ async function accessibilityAndLayout(browser) {
   pass('360×640 short viewport and 200% root text scale: no clipping/overlap', zoom);
   await page.reload(); await ready(page);
   await page.setViewportSize({ width: 1024, height: 900 });
-  const desktop = await geometry(page); checkGeometry(desktop, 1024); assert.equal(desktop.shell.x, 297);
-  pass('Desktop: 430px centered shell without decorative phone frame', desktop);
+  const desktop = await geometry(page); checkGeometry(desktop, 1024); assert.equal(desktop.shell.x, 252);
+  pass('Desktop: 520px centered rounded shell with 20px vertical margins and floating dock', desktop);
   await context.close();
 }
 
@@ -246,34 +260,48 @@ async function fixture(browser) {
   const type = await page.locator('[class^="pw-type-"]').evaluateAll(els => els.map(el => {
     const s = getComputedStyle(el); return { class: el.className, size: s.fontSize, line: s.lineHeight, number: s.fontVariantNumeric };
   }));
-  for (const [name, size, line] of [['display', 36, 44], ['h1', 28, 36], ['h2', 24, 32], ['h3', 20, 28], ['body', 16, 24], ['body-small', 14, 20], ['caption', 12, 18], ['number-large', 40, 48], ['number-medium', 28, 36], ['button', 16, 24]]) {
+  for (const [name, size, line] of [['display', 40, 42.4], ['h1', 30, 33], ['h2', 22, 25.52], ['h3', 18, 21.24], ['body', 16, 23.68], ['body-small', 14, 18.9], ['caption', 12, 15.6], ['number-large', 39, 40.95], ['number-medium', 24, 27.6], ['button', 15, 15]]) {
     const actual = type.find(t => t.class === `pw-type-${name}`);
-    assert.equal(actual.size, `${size}px`); assert.equal(actual.line, `${line}px`);
+    assert(Math.abs(parseFloat(actual.size) - size) <= 0.05, `${name} size ${actual.size}`);
+    assert(Math.abs(parseFloat(actual.line) - line) <= 0.05, `${name} line-height ${actual.line}`);
     if (name.startsWith('number-')) assert.equal(actual.number, 'tabular-nums');
   }
-  pass('All 10 typography roles, sizes, line heights and tabular number styles', type);
+  pass('All 10 reference typography roles, compact line heights and tabular number styles', type);
   const button = page.locator('#primary');
   const style = () => button.evaluate(el => { const s = getComputedStyle(el); return { background: s.backgroundColor, color: s.color, radius: s.borderRadius }; });
-  const normal = await style(); assert.equal(normal.background, 'rgb(0, 117, 200)'); assert.equal(normal.radius, '12px');
+  const buttonTokens = await page.evaluate(() => {
+    const probe = document.createElement('span'); document.body.append(probe);
+    const colors = {};
+    for (const name of ['background', 'hover', 'pressed']) {
+      probe.style.color = `var(--pw-button-${name})`; colors[name] = getComputedStyle(probe).color;
+    }
+    probe.remove(); return colors;
+  });
+  const normal = await style(); assert.equal(normal.background, buttonTokens.background); assert.equal(normal.radius, '999px');
   assert(contrast(normal.background, normal.color) >= 4.5);
-  await button.hover(); assert.equal((await style()).background, 'rgb(0, 103, 172)');
-  await page.mouse.down(); assert.equal((await style()).background, 'rgb(0, 91, 152)'); await page.mouse.up();
+  await button.hover(); await page.waitForTimeout(200); assert.equal((await style()).background, buttonTokens.hover);
+  await page.mouse.down(); await page.waitForTimeout(200); assert.equal((await style()).background, buttonTokens.pressed); await page.mouse.up();
   assert.equal(await page.locator('.pw-button:disabled').isEnabled(), false);
   assert.equal(await page.locator('.pw-icon-button:disabled').isEnabled(), false);
   await page.mouse.move(0, 0);
-  pass('Primary normal/hover/pressed/disabled and IconButton disabled states; primary white text contrast', contrast(normal.background, normal.color));
+  pass('Pill CTA normal/hover/pressed/disabled and IconButton disabled states; white text contrast', contrast(normal.background, normal.color));
   const colors = await page.evaluate(() => {
     const s = getComputedStyle(document.documentElement);
-    const names = ['text-primary', 'text-secondary', 'text-tertiary', 'primary', 'success', 'warning', 'danger', 'finance-positive', 'finance-negative'];
+    const names = ['text-primary', 'text-secondary', 'text-tertiary', 'primary-text', 'success', 'warning', 'danger', 'finance-positive', 'finance-negative'];
     const probe = document.createElement('span'); document.body.append(probe);
     const values = {};
-    for (const name of names) { probe.style.color = `var(--pw-color-${name})`; values[name] = getComputedStyle(probe).color; }
+    for (const name of names) { probe.style.color = `var(${name === 'primary-text' ? '--pw-primary-text' : `--pw-color-${name}`})`; values[name] = getComputedStyle(probe).color; }
     probe.remove(); return values;
   });
   const ratios = Object.fromEntries(Object.entries(colors).map(([name, value]) => [name, contrast(value, 'rgb(255, 255, 255)')]));
   assert(Object.values(ratios).every(value => value >= 4.5));
-  assert(contrast(colors['text-primary'], 'rgb(245, 248, 252)') >= 4.5);
-  pass('Text, navigation and semantic foreground colors meet 4.5:1 on white; main heading on background', ratios);
+  assert(contrast(colors['text-primary'], 'rgb(250, 252, 253)') >= 4.5);
+  const accent = await page.evaluate(() => {
+    const probe = document.createElement('span'); probe.style.color = 'var(--pw-primary)'; document.body.append(probe);
+    const color = getComputedStyle(probe).color; probe.remove(); return color;
+  });
+  assert.equal(accent, 'rgb(1, 144, 248)');
+  pass('Readable text and semantic foreground colors meet 4.5:1 on white; bright primary remains the reference accent', { ratios, accent });
   await page.screenshot({ path: path.join(output, 'screenshots/design-system-fixture.png'), fullPage: true });
   await context.close();
 }

@@ -1,0 +1,403 @@
+{
+  "startedAt": "2026-10-03T06:53:56.216Z",
+  "url": "http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html",
+  "checks": [
+    {
+      "name": "Preservation: original hash and all non-target/historical files unchanged",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "B/C: immutable update, only title/target/monthly.goal change; current/daysLeft/accounting preserved",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "A: approved zero-start, null/missing goal, no invented daysLeft/monthly.goal, unknown fields preserved",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "D/E/F: target strict integers, safe bounds, equality completion, Unicode code points and trim",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "K: malformed/unsafe source blocked; large arithmetic and legacy long titles readable",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Record compatibility: Goal-first state accepts first income, transaction never contributes to goal",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: create save, one write, Home sync, reload and Record preserves current",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: edit save, one write, Home sync, reload and Record preserves current",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: title save, one write, Home sync, reload and Record preserves current",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: no-goal save, one write, Home sync, reload and Record preserves current",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: equal save, one write, Home sync, reload and Record preserves current",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: D/E/F/G invalid input, Enter no write, failed storage preserves exact string/view/draft; retry succeeds",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: bad-json cannot be repaired or overwritten",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: partial cannot be repaired or overwritten",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: invalid-goal cannot be repaired or overwritten",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: bad-monthly-goal cannot be repaired or overwritten",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: latest storage current-allowed, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: latest storage current-too-high, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: latest storage removed, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: latest storage created, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: latest storage retitled, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: latest storage read-failure, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: latest storage malformed, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: latest storage balance, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: 360x844, 100/200% screen/Sheet geometry and no writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: 390x844, 100/200% screen/Sheet geometry and no writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: 430x844, 100/200% screen/Sheet geometry and no writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: 360x640, 100/200% screen/Sheet geometry and no writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: native dialog, labels/errors, first focus, enabled/disabled Tab trap, Escape and focus-visible",
+      "status": "PASS",
+      "detail": {
+        "minScreen": 5.66891955401674,
+        "minSheet": 4.535339450041179
+      }
+    },
+    {
+      "name": "Chromium: safe area once, simulated keyboard height and fields scrolling",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: complete, exact amounts and 200% overflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: over-target, exact amounts and 200% overflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: large-long, exact amounts and 200% overflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: html-text, exact amounts and 200% overflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: invalid-fallback, exact amounts and 200% overflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: create save, one write, Home sync, reload and Record preserves current",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: edit save, one write, Home sync, reload and Record preserves current",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: title save, one write, Home sync, reload and Record preserves current",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: no-goal save, one write, Home sync, reload and Record preserves current",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: equal save, one write, Home sync, reload and Record preserves current",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: D/E/F/G invalid input, Enter no write, failed storage preserves exact string/view/draft; retry succeeds",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: bad-json cannot be repaired or overwritten",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: partial cannot be repaired or overwritten",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: invalid-goal cannot be repaired or overwritten",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: bad-monthly-goal cannot be repaired or overwritten",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: latest storage current-allowed, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: latest storage current-too-high, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: latest storage removed, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: latest storage created, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: latest storage retitled, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: latest storage read-failure, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: latest storage malformed, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: latest storage balance, no stale accounting overwrite",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: 360x844, 100/200% screen/Sheet geometry and no writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: 390x844, 100/200% screen/Sheet geometry and no writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: 430x844, 100/200% screen/Sheet geometry and no writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: 360x640, 100/200% screen/Sheet geometry and no writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: native dialog, labels/errors, first focus, enabled/disabled Tab trap, Escape and focus-visible",
+      "status": "PASS",
+      "detail": {
+        "minScreen": 5.66891955401674,
+        "minSheet": 4.535339450041179
+      }
+    },
+    {
+      "name": "WebKit: safe area once, simulated keyboard height and fields scrolling",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: complete, exact amounts and 200% overflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: over-target, exact amounts and 200% overflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: large-long, exact amounts and 200% overflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: html-text, exact amounts and 200% overflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: invalid-fallback, exact amounts and 200% overflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Console/page errors and failed resource/HTTP requests: zero",
+      "status": "PASS",
+      "detail": true
+    }
+  ],
+  "screenshots": [
+    "screenshots/empty-goal.png",
+    "screenshots/sheet-create.png",
+    "screenshots/home-after-create.png",
+    "screenshots/reload-create.png",
+    "screenshots/sheet-edit.png",
+    "screenshots/home-after-edit.png",
+    "screenshots/reload-edit.png",
+    "screenshots/home-after-title.png",
+    "screenshots/reload-title.png",
+    "screenshots/home-after-no-goal.png",
+    "screenshots/reload-no-goal.png",
+    "screenshots/home-after-equal.png",
+    "screenshots/reload-equal.png",
+    "screenshots/target-validation.png",
+    "screenshots/below-current-error.png",
+    "screenshots/storage-failure.png",
+    "screenshots/360x844-goal.png",
+    "screenshots/360x844-sheet.png",
+    "screenshots/360x844-200percent-goal.png",
+    "screenshots/360x844-200percent-sheet.png",
+    "screenshots/390x844-goal.png",
+    "screenshots/390x844-sheet.png",
+    "screenshots/390x844-200percent-goal.png",
+    "screenshots/390x844-200percent-sheet.png",
+    "screenshots/430x844-goal.png",
+    "screenshots/430x844-sheet.png",
+    "screenshots/430x844-200percent-goal.png",
+    "screenshots/430x844-200percent-sheet.png",
+    "screenshots/360x640-goal.png",
+    "screenshots/360x640-sheet.png",
+    "screenshots/360x640-200percent-goal.png",
+    "screenshots/360x640-200percent-sheet.png",
+    "screenshots/safe-area-sheet.png",
+    "screenshots/keyboard-height.png",
+    "screenshots/complete.png",
+    "screenshots/complete-200percent.png",
+    "screenshots/over-target.png",
+    "screenshots/over-target-200percent.png",
+    "screenshots/large-long.png",
+    "screenshots/large-long-200percent.png",
+    "screenshots/large-money-200percent.png",
+    "screenshots/large-amount-sheet-200percent.png",
+    "screenshots/html-text.png",
+    "screenshots/html-text-200percent.png",
+    "screenshots/invalid-fallback.png",
+    "screenshots/invalid-fallback-200percent.png"
+  ],
+  "consoleErrors": [],
+  "resourceErrors": [],
+  "browsers": {
+    "chromium": {
+      "version": "153.0.8010.12",
+      "executable": "/Users/jeonghu/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell"
+    },
+    "webkit": {
+      "version": "26.5",
+      "executable": "/Users/jeonghu/Library/Caches/ms-playwright/webkit-2287/pw_run.sh"
+    }
+  },
+  "limitations": [
+    "No physical mobile keyboard or screen reader testing",
+    "No atomic cross-tab localStorage transaction guarantee"
+  ],
+  "status": "PASS",
+  "finishedAt": "2026-10-03T06:55:02.993Z"
+}

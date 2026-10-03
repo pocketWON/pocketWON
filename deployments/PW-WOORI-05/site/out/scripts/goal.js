@@ -41,12 +41,12 @@ function createGoalView(initialLoad, navigate) {
       const scales = [[1e4, '만'], [1e8, '억'], [1e12, '조'], [1e16, '경']];
       const naturalScale = Math.max(0, scales.findLastIndex(([scale]) => value >= scale));
       for (const [scale, suffix] of scales.slice(naturalScale)) {
-        if (display.getBoundingClientRect().width <= wrapper.clientWidth + 0.05) break;
+        if (display.scrollWidth <= display.clientWidth + 0.05) break;
         // Never round a nonzero amount to zero. A larger unit can keep digits together.
         if (Math.round(value / scale * 10) < 1) continue;
         digits.textContent = compact.format(value / scale); unit.textContent = `${suffix}원`; exact.hidden = false;
       }
-      display.classList.toggle('pw-goal-money-display--wrap', display.getBoundingClientRect().width > wrapper.clientWidth + 0.05);
+      display.classList.toggle('pw-goal-money-display--wrap', display.scrollWidth > display.clientWidth + 0.05);
     }
   }
   function scheduleFit() { cancelAnimationFrame(frame); frame = requestAnimationFrame(fitAmounts); }
@@ -62,6 +62,7 @@ function createGoalView(initialLoad, navigate) {
     const model = createGoalViewModel(loaded.state);
     const valid = model.status === 'active' || model.status === 'complete';
     hero.classList.toggle('pw-goal-hero--empty', !valid);
+    hero.append(pwIllustrationPanel(model.status === 'complete' ? 'success' : 'goal', { panelClass: 'pw-goal-visual', imageClass: 'pw-goal-illustration' }));
     const name = el('h2', valid ? 'pw-goal-name pw-type-h2' : 'pw-type-h3', valid ? model.title : '아직 정한 목표가 없어요.'); name.id = 'pw-goal-name';
     if (valid) {
       hero.append(name, money(model.current, true), el('p', 'pw-goal-muted pw-type-body-small', '모았어요'));

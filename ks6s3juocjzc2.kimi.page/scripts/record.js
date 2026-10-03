@@ -73,13 +73,14 @@ function createRecordView(initialLoad) {
 
   function renderSummary() {
     const model = createRecordViewModel(loaded.state);
-    summary.replaceChildren(element('p', 'pw-record-muted pw-type-body-small', '지금 쓸 수 있는 돈'));
+    summary.replaceChildren(pwIllustrationPanel('record', { panelClass: 'pw-record-summary-visual', imageClass: 'pw-record-summary-illustration' }), element('p', 'pw-record-muted pw-type-body-small', '지금 쓸 수 있는 돈'));
     summary.append(element('p', 'pw-record-balance', model.balance === null ? '확인 전' : `${format.format(model.balance)}원`));
     if (loaded.status === 'empty') summary.append(element('p', 'pw-record-muted pw-type-caption', '첫 기록은 0원에서 시작해요. 받은 돈을 먼저 남겨보세요.'));
     else if (!model.writable) summary.append(element('p', 'pw-record-muted pw-type-body-small', '저장된 용돈 정보를 확인할 수 없어 기록을 저장할 수 없어요.'));
     recent.replaceChildren(element('h2', 'pw-type-h3', '최근 기록')); recent.firstChild.id = 'pw-recent-title';
     if (loaded.status === 'empty' || model.history === 'empty') {
       const empty = element('div', 'pw-record-empty');
+      empty.append(pwIllustration('empty', { className: 'pw-record-empty-illustration' }));
       empty.append(element('p', '', '아직 기록이 없어요.'), element('p', 'pw-record-muted pw-type-body-small', '돈을 받거나 썼을 때 한 번씩 남겨보세요.'));
       recent.append(empty); return;
     }

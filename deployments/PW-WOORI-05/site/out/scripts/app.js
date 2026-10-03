@@ -54,7 +54,15 @@
       currentView = createReportView(loadPocketWONState(), target => showScreen(target, true));
       content.replaceChildren(currentView.element);
       currentView.mount();
+    } else if (id === 'all') {
+      context.textContent = tab.label;
+      context.removeAttribute('aria-label');
+      currentView = createAllView(target => showScreen(target, true));
+      content.replaceChildren(currentView.element);
+      currentView.mount();
     } else {
+      // Keep a safe fallback for future tab additions while ensuring the
+      // heading/focus contract remains identical to the supported screens.
       context.textContent = tab.label;
       context.removeAttribute('aria-label');
       const placeholder = document.createElement('section');

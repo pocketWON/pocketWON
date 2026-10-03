@@ -60,11 +60,13 @@ function createReportView(loaded, navigate) {
     const text = loaded.status === 'empty' ? '아직 보여줄 기록이 없어요.'
       : loaded.status === 'invalid' ? '저장된 정보를 확인할 수 없어요.' : '저장된 정보를 불러오지 못했어요.';
     const empty = section('status', text, 'pw-report-surface pw-report-status');
+    empty.append(pwIllustration('empty', { className: 'pw-report-status-illustration' }));
     if (loaded.status === 'empty') {
       empty.append(el('p', 'pw-report-muted pw-type-body', '용돈을 기록하면 여기에서 한눈에 확인할 수 있어요.'), action('첫 기록 남기기', 'record'));
     }
   } else {
     const score = section('score', '습관 Score', 'pw-report-score');
+    score.append(pwIllustrationPanel('report', { panelClass: 'pw-report-score-visual', imageClass: 'pw-report-illustration' }));
     score.append(el('p', model.score.status === 'available' ? 'pw-report-score-value' : 'pw-report-score-unknown pw-type-h2',
       model.score.status === 'available' ? String(model.score.value) : '확인 안 됨'));
     score.append(el('p', 'pw-report-muted pw-type-body-small', '저장된 습관 점수'));
@@ -112,11 +114,11 @@ function createReportView(loaded, navigate) {
       const scales = [[1e4, '만'], [1e8, '억'], [1e12, '조'], [1e16, '경']];
       const start = Math.max(0, scales.findLastIndex(([scale]) => Math.abs(value) >= scale));
       for (const [scale, suffix] of scales.slice(start)) {
-        if (display.getBoundingClientRect().width <= wrapper.clientWidth + 0.05) break;
+        if (display.scrollWidth <= display.clientWidth + 0.05) break;
         if (Math.round(Math.abs(value) / scale * 10) < 1) continue;
         digits.textContent = compact.format(value / scale); unit.textContent = `${suffix}원`; exact.hidden = false;
       }
-      display.classList.toggle('pw-report-money-display--wrap', display.getBoundingClientRect().width > wrapper.clientWidth + 0.05);
+      display.classList.toggle('pw-report-money-display--wrap', display.scrollWidth > display.clientWidth + 0.05);
     }
   }
   function scheduleFit() { if (disposed) return; cancelAnimationFrame(frame); frame = requestAnimationFrame(fitAmounts); }

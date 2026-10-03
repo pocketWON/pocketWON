@@ -1,0 +1,27 @@
+{
+  "home": {
+    "status": "PASS",
+    "checks": 44
+  },
+  "record": {
+    "status": "PASS",
+    "checks": 64
+  },
+  "goal": {
+    "status": "PASS",
+    "checks": 65
+  },
+  "report": {
+    "status": "PASS",
+    "checks": 110
+  },
+  "shell": {
+    "status": "PASS",
+    "checks": 46
+  },
+  "reference-sync": {
+    "status": "PASS",
+    "checks": 67,
+    "screenshots": 64
+  }
+}

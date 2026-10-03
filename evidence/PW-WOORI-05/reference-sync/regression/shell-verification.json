@@ -1,0 +1,6338 @@
+{
+  "startedAt": "2026-10-03T06:54:06.204Z",
+  "url": "http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html",
+  "checks": [
+    {
+      "name": "Original snapshot and all 16 non-entrypoint original files preserved",
+      "status": "PASS",
+      "detail": "24405c1c583da11d362f82b067add7fb7c62e152cba55f44d331f161b62314ba"
+    },
+    {
+      "name": "Active source: no legacy styling, dark runtime, automatic storage writes or SDK; all token references resolve",
+      "status": "PASS",
+      "detail": {
+        "files": [
+          "index.html",
+          "styles/base.css",
+          "styles/goal.css",
+          "styles/home.css",
+          "styles/record.css",
+          "styles/report.css",
+          "styles/shell.css",
+          "styles/tokens.css",
+          "scripts/all.js",
+          "scripts/app.js",
+          "scripts/goal.js",
+          "scripts/home.js",
+          "scripts/icons.js",
+          "scripts/illustrations.js",
+          "scripts/record.js",
+          "scripts/report.js",
+          "scripts/state.js",
+          "scripts/tabs.js"
+        ],
+        "tokens": 100
+      }
+    },
+    {
+      "name": "Chromium: 360×844 home view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "docWidth": 360,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 844,
+          "bottom": 844,
+          "right": 360
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 120,
+          "bottom": 120,
+          "right": 360
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 360,
+          "height": 628,
+          "bottom": 748,
+          "right": 360
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "width": 328,
+          "height": 84,
+          "bottom": 832,
+          "right": 344
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 0,
+          "bottom": 0,
+          "right": 360
+        },
+        "bottom": {
+          "x": 16,
+          "y": 832,
+          "width": 328,
+          "height": 0,
+          "bottom": 832,
+          "right": 344
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 300,
+            "right": 348,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 64,
+            "height": 59.59375,
+            "x": 20,
+            "right": 84,
+            "bottom": 823.796875
+          },
+          {
+            "label": "기록",
+            "width": 64,
+            "height": 59.59375,
+            "x": 84,
+            "right": 148,
+            "bottom": 823.796875
+          },
+          {
+            "label": "목표",
+            "width": 64,
+            "height": 59.59375,
+            "x": 148,
+            "right": 212,
+            "bottom": 823.796875
+          },
+          {
+            "label": "리포트",
+            "width": 64,
+            "height": 59.59375,
+            "x": 212,
+            "right": 276,
+            "bottom": 823.796875
+          },
+          {
+            "label": "전체",
+            "width": 64,
+            "height": 59.59375,
+            "x": 276,
+            "right": 340,
+            "bottom": 823.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "home"
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 360×844 record view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "docWidth": 360,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 844,
+          "bottom": 844,
+          "right": 360
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 120,
+          "bottom": 120,
+          "right": 360
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 360,
+          "height": 628,
+          "bottom": 748,
+          "right": 360
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "width": 328,
+          "height": 84,
+          "bottom": 832,
+          "right": 344
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 0,
+          "bottom": 0,
+          "right": 360
+        },
+        "bottom": {
+          "x": 16,
+          "y": 832,
+          "width": 328,
+          "height": 0,
+          "bottom": 832,
+          "right": 344
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 300,
+            "right": 348,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 64,
+            "height": 59.59375,
+            "x": 20,
+            "right": 84,
+            "bottom": 823.796875
+          },
+          {
+            "label": "기록",
+            "width": 64,
+            "height": 59.59375,
+            "x": 84,
+            "right": 148,
+            "bottom": 823.796875
+          },
+          {
+            "label": "목표",
+            "width": 64,
+            "height": 59.59375,
+            "x": 148,
+            "right": 212,
+            "bottom": 823.796875
+          },
+          {
+            "label": "리포트",
+            "width": 64,
+            "height": 59.59375,
+            "x": 212,
+            "right": 276,
+            "bottom": 823.796875
+          },
+          {
+            "label": "전체",
+            "width": 64,
+            "height": 59.59375,
+            "x": 276,
+            "right": 340,
+            "bottom": 823.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "record"
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 360×844 goal view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "docWidth": 360,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 844,
+          "bottom": 844,
+          "right": 360
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 120,
+          "bottom": 120,
+          "right": 360
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 360,
+          "height": 628,
+          "bottom": 748,
+          "right": 360
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "width": 328,
+          "height": 84,
+          "bottom": 832,
+          "right": 344
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 0,
+          "bottom": 0,
+          "right": 360
+        },
+        "bottom": {
+          "x": 16,
+          "y": 832,
+          "width": 328,
+          "height": 0,
+          "bottom": 832,
+          "right": 344
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 300,
+            "right": 348,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 64,
+            "height": 59.59375,
+            "x": 20,
+            "right": 84,
+            "bottom": 823.796875
+          },
+          {
+            "label": "기록",
+            "width": 64,
+            "height": 59.59375,
+            "x": 84,
+            "right": 148,
+            "bottom": 823.796875
+          },
+          {
+            "label": "목표",
+            "width": 64,
+            "height": 59.59375,
+            "x": 148,
+            "right": 212,
+            "bottom": 823.796875
+          },
+          {
+            "label": "리포트",
+            "width": 64,
+            "height": 59.59375,
+            "x": 212,
+            "right": 276,
+            "bottom": 823.796875
+          },
+          {
+            "label": "전체",
+            "width": 64,
+            "height": 59.59375,
+            "x": 276,
+            "right": 340,
+            "bottom": 823.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "goal"
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 360×844 report view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "docWidth": 360,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 844,
+          "bottom": 844,
+          "right": 360
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 120,
+          "bottom": 120,
+          "right": 360
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 360,
+          "height": 628,
+          "bottom": 748,
+          "right": 360
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "width": 328,
+          "height": 84,
+          "bottom": 832,
+          "right": 344
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 0,
+          "bottom": 0,
+          "right": 360
+        },
+        "bottom": {
+          "x": 16,
+          "y": 832,
+          "width": 328,
+          "height": 0,
+          "bottom": 832,
+          "right": 344
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 300,
+            "right": 348,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 64,
+            "height": 59.59375,
+            "x": 20,
+            "right": 84,
+            "bottom": 823.796875
+          },
+          {
+            "label": "기록",
+            "width": 64,
+            "height": 59.59375,
+            "x": 84,
+            "right": 148,
+            "bottom": 823.796875
+          },
+          {
+            "label": "목표",
+            "width": 64,
+            "height": 59.59375,
+            "x": 148,
+            "right": 212,
+            "bottom": 823.796875
+          },
+          {
+            "label": "리포트",
+            "width": 64,
+            "height": 59.59375,
+            "x": 212,
+            "right": 276,
+            "bottom": 823.796875
+          },
+          {
+            "label": "전체",
+            "width": 64,
+            "height": 59.59375,
+            "x": 276,
+            "right": 340,
+            "bottom": 823.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "report"
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 360×844 all view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "docWidth": 360,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 844,
+          "bottom": 844,
+          "right": 360
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 120,
+          "bottom": 120,
+          "right": 360
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 360,
+          "height": 628,
+          "bottom": 748,
+          "right": 360
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "width": 328,
+          "height": 84,
+          "bottom": 832,
+          "right": 344
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 0,
+          "bottom": 0,
+          "right": 360
+        },
+        "bottom": {
+          "x": 16,
+          "y": 832,
+          "width": 328,
+          "height": 0,
+          "bottom": 832,
+          "right": 344
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 300,
+            "right": 348,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 64,
+            "height": 59.59375,
+            "x": 20,
+            "right": 84,
+            "bottom": 823.796875
+          },
+          {
+            "label": "기록",
+            "width": 64,
+            "height": 59.59375,
+            "x": 84,
+            "right": 148,
+            "bottom": 823.796875
+          },
+          {
+            "label": "목표",
+            "width": 64,
+            "height": 59.59375,
+            "x": 148,
+            "right": 212,
+            "bottom": 823.796875
+          },
+          {
+            "label": "리포트",
+            "width": 64,
+            "height": 59.59375,
+            "x": 212,
+            "right": 276,
+            "bottom": 823.796875
+          },
+          {
+            "label": "전체",
+            "width": 64,
+            "height": 59.59375,
+            "x": 276,
+            "right": 340,
+            "bottom": 823.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "all"
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 390×844 home view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "docWidth": 390,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "bottom": 844,
+          "right": 390
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 120,
+          "bottom": 120,
+          "right": 390
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 390,
+          "height": 628,
+          "bottom": 748,
+          "right": 390
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "width": 358,
+          "height": 84,
+          "bottom": 832,
+          "right": 374
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 0,
+          "bottom": 0,
+          "right": 390
+        },
+        "bottom": {
+          "x": 16,
+          "y": 832,
+          "width": 358,
+          "height": 0,
+          "bottom": 832,
+          "right": 374
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 330,
+            "right": 378,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 70,
+            "height": 59.59375,
+            "x": 20,
+            "right": 90,
+            "bottom": 823.796875
+          },
+          {
+            "label": "기록",
+            "width": 70,
+            "height": 59.59375,
+            "x": 90,
+            "right": 160,
+            "bottom": 823.796875
+          },
+          {
+            "label": "목표",
+            "width": 70,
+            "height": 59.59375,
+            "x": 160,
+            "right": 230,
+            "bottom": 823.796875
+          },
+          {
+            "label": "리포트",
+            "width": 70,
+            "height": 59.59375,
+            "x": 230,
+            "right": 300,
+            "bottom": 823.796875
+          },
+          {
+            "label": "전체",
+            "width": 70,
+            "height": 59.59375,
+            "x": 300,
+            "right": 370,
+            "bottom": 823.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "home"
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 390×844 record view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "docWidth": 390,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "bottom": 844,
+          "right": 390
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 120,
+          "bottom": 120,
+          "right": 390
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 390,
+          "height": 628,
+          "bottom": 748,
+          "right": 390
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "width": 358,
+          "height": 84,
+          "bottom": 832,
+          "right": 374
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 0,
+          "bottom": 0,
+          "right": 390
+        },
+        "bottom": {
+          "x": 16,
+          "y": 832,
+          "width": 358,
+          "height": 0,
+          "bottom": 832,
+          "right": 374
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 330,
+            "right": 378,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 70,
+            "height": 59.59375,
+            "x": 20,
+            "right": 90,
+            "bottom": 823.796875
+          },
+          {
+            "label": "기록",
+            "width": 70,
+            "height": 59.59375,
+            "x": 90,
+            "right": 160,
+            "bottom": 823.796875
+          },
+          {
+            "label": "목표",
+            "width": 70,
+            "height": 59.59375,
+            "x": 160,
+            "right": 230,
+            "bottom": 823.796875
+          },
+          {
+            "label": "리포트",
+            "width": 70,
+            "height": 59.59375,
+            "x": 230,
+            "right": 300,
+            "bottom": 823.796875
+          },
+          {
+            "label": "전체",
+            "width": 70,
+            "height": 59.59375,
+            "x": 300,
+            "right": 370,
+            "bottom": 823.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "record"
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 390×844 goal view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "docWidth": 390,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "bottom": 844,
+          "right": 390
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 120,
+          "bottom": 120,
+          "right": 390
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 390,
+          "height": 628,
+          "bottom": 748,
+          "right": 390
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "width": 358,
+          "height": 84,
+          "bottom": 832,
+          "right": 374
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 0,
+          "bottom": 0,
+          "right": 390
+        },
+        "bottom": {
+          "x": 16,
+          "y": 832,
+          "width": 358,
+          "height": 0,
+          "bottom": 832,
+          "right": 374
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 330,
+            "right": 378,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 70,
+            "height": 59.59375,
+            "x": 20,
+            "right": 90,
+            "bottom": 823.796875
+          },
+          {
+            "label": "기록",
+            "width": 70,
+            "height": 59.59375,
+            "x": 90,
+            "right": 160,
+            "bottom": 823.796875
+          },
+          {
+            "label": "목표",
+            "width": 70,
+            "height": 59.59375,
+            "x": 160,
+            "right": 230,
+            "bottom": 823.796875
+          },
+          {
+            "label": "리포트",
+            "width": 70,
+            "height": 59.59375,
+            "x": 230,
+            "right": 300,
+            "bottom": 823.796875
+          },
+          {
+            "label": "전체",
+            "width": 70,
+            "height": 59.59375,
+            "x": 300,
+            "right": 370,
+            "bottom": 823.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "goal"
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 390×844 report view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "docWidth": 390,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "bottom": 844,
+          "right": 390
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 120,
+          "bottom": 120,
+          "right": 390
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 390,
+          "height": 628,
+          "bottom": 748,
+          "right": 390
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "width": 358,
+          "height": 84,
+          "bottom": 832,
+          "right": 374
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 0,
+          "bottom": 0,
+          "right": 390
+        },
+        "bottom": {
+          "x": 16,
+          "y": 832,
+          "width": 358,
+          "height": 0,
+          "bottom": 832,
+          "right": 374
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 330,
+            "right": 378,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 70,
+            "height": 59.59375,
+            "x": 20,
+            "right": 90,
+            "bottom": 823.796875
+          },
+          {
+            "label": "기록",
+            "width": 70,
+            "height": 59.59375,
+            "x": 90,
+            "right": 160,
+            "bottom": 823.796875
+          },
+          {
+            "label": "목표",
+            "width": 70,
+            "height": 59.59375,
+            "x": 160,
+            "right": 230,
+            "bottom": 823.796875
+          },
+          {
+            "label": "리포트",
+            "width": 70,
+            "height": 59.59375,
+            "x": 230,
+            "right": 300,
+            "bottom": 823.796875
+          },
+          {
+            "label": "전체",
+            "width": 70,
+            "height": 59.59375,
+            "x": 300,
+            "right": 370,
+            "bottom": 823.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "report"
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 390×844 all view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "docWidth": 390,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "bottom": 844,
+          "right": 390
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 120,
+          "bottom": 120,
+          "right": 390
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 390,
+          "height": 628,
+          "bottom": 748,
+          "right": 390
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "width": 358,
+          "height": 84,
+          "bottom": 832,
+          "right": 374
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 0,
+          "bottom": 0,
+          "right": 390
+        },
+        "bottom": {
+          "x": 16,
+          "y": 832,
+          "width": 358,
+          "height": 0,
+          "bottom": 832,
+          "right": 374
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 330,
+            "right": 378,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 70,
+            "height": 59.59375,
+            "x": 20,
+            "right": 90,
+            "bottom": 823.796875
+          },
+          {
+            "label": "기록",
+            "width": 70,
+            "height": 59.59375,
+            "x": 90,
+            "right": 160,
+            "bottom": 823.796875
+          },
+          {
+            "label": "목표",
+            "width": 70,
+            "height": 59.59375,
+            "x": 160,
+            "right": 230,
+            "bottom": 823.796875
+          },
+          {
+            "label": "리포트",
+            "width": 70,
+            "height": 59.59375,
+            "x": 230,
+            "right": 300,
+            "bottom": 823.796875
+          },
+          {
+            "label": "전체",
+            "width": 70,
+            "height": 59.59375,
+            "x": 300,
+            "right": 370,
+            "bottom": 823.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "all"
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 430×844 home view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "docWidth": 430,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 844,
+          "bottom": 844,
+          "right": 430
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 120,
+          "bottom": 120,
+          "right": 430
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 430,
+          "height": 628,
+          "bottom": 748,
+          "right": 430
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "width": 398,
+          "height": 84,
+          "bottom": 832,
+          "right": 414
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 0,
+          "bottom": 0,
+          "right": 430
+        },
+        "bottom": {
+          "x": 16,
+          "y": 832,
+          "width": 398,
+          "height": 0,
+          "bottom": 832,
+          "right": 414
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 370,
+            "right": 418,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 78,
+            "height": 59.59375,
+            "x": 20,
+            "right": 98,
+            "bottom": 823.796875
+          },
+          {
+            "label": "기록",
+            "width": 78,
+            "height": 59.59375,
+            "x": 98,
+            "right": 176,
+            "bottom": 823.796875
+          },
+          {
+            "label": "목표",
+            "width": 78,
+            "height": 59.59375,
+            "x": 176,
+            "right": 254,
+            "bottom": 823.796875
+          },
+          {
+            "label": "리포트",
+            "width": 78,
+            "height": 59.59375,
+            "x": 254,
+            "right": 332,
+            "bottom": 823.796875
+          },
+          {
+            "label": "전체",
+            "width": 78,
+            "height": 59.59375,
+            "x": 332,
+            "right": 410,
+            "bottom": 823.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "home"
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 430×844 record view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "docWidth": 430,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 844,
+          "bottom": 844,
+          "right": 430
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 120,
+          "bottom": 120,
+          "right": 430
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 430,
+          "height": 628,
+          "bottom": 748,
+          "right": 430
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "width": 398,
+          "height": 84,
+          "bottom": 832,
+          "right": 414
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 0,
+          "bottom": 0,
+          "right": 430
+        },
+        "bottom": {
+          "x": 16,
+          "y": 832,
+          "width": 398,
+          "height": 0,
+          "bottom": 832,
+          "right": 414
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 370,
+            "right": 418,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 78,
+            "height": 59.59375,
+            "x": 20,
+            "right": 98,
+            "bottom": 823.796875
+          },
+          {
+            "label": "기록",
+            "width": 78,
+            "height": 59.59375,
+            "x": 98,
+            "right": 176,
+            "bottom": 823.796875
+          },
+          {
+            "label": "목표",
+            "width": 78,
+            "height": 59.59375,
+            "x": 176,
+            "right": 254,
+            "bottom": 823.796875
+          },
+          {
+            "label": "리포트",
+            "width": 78,
+            "height": 59.59375,
+            "x": 254,
+            "right": 332,
+            "bottom": 823.796875
+          },
+          {
+            "label": "전체",
+            "width": 78,
+            "height": 59.59375,
+            "x": 332,
+            "right": 410,
+            "bottom": 823.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "record"
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 430×844 goal view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "docWidth": 430,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 844,
+          "bottom": 844,
+          "right": 430
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 120,
+          "bottom": 120,
+          "right": 430
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 430,
+          "height": 628,
+          "bottom": 748,
+          "right": 430
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "width": 398,
+          "height": 84,
+          "bottom": 832,
+          "right": 414
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 0,
+          "bottom": 0,
+          "right": 430
+        },
+        "bottom": {
+          "x": 16,
+          "y": 832,
+          "width": 398,
+          "height": 0,
+          "bottom": 832,
+          "right": 414
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 370,
+            "right": 418,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 78,
+            "height": 59.59375,
+            "x": 20,
+            "right": 98,
+            "bottom": 823.796875
+          },
+          {
+            "label": "기록",
+            "width": 78,
+            "height": 59.59375,
+            "x": 98,
+            "right": 176,
+            "bottom": 823.796875
+          },
+          {
+            "label": "목표",
+            "width": 78,
+            "height": 59.59375,
+            "x": 176,
+            "right": 254,
+            "bottom": 823.796875
+          },
+          {
+            "label": "리포트",
+            "width": 78,
+            "height": 59.59375,
+            "x": 254,
+            "right": 332,
+            "bottom": 823.796875
+          },
+          {
+            "label": "전체",
+            "width": 78,
+            "height": 59.59375,
+            "x": 332,
+            "right": 410,
+            "bottom": 823.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "goal"
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 430×844 report view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "docWidth": 430,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 844,
+          "bottom": 844,
+          "right": 430
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 120,
+          "bottom": 120,
+          "right": 430
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 430,
+          "height": 628,
+          "bottom": 748,
+          "right": 430
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "width": 398,
+          "height": 84,
+          "bottom": 832,
+          "right": 414
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 0,
+          "bottom": 0,
+          "right": 430
+        },
+        "bottom": {
+          "x": 16,
+          "y": 832,
+          "width": 398,
+          "height": 0,
+          "bottom": 832,
+          "right": 414
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 370,
+            "right": 418,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 78,
+            "height": 59.59375,
+            "x": 20,
+            "right": 98,
+            "bottom": 823.796875
+          },
+          {
+            "label": "기록",
+            "width": 78,
+            "height": 59.59375,
+            "x": 98,
+            "right": 176,
+            "bottom": 823.796875
+          },
+          {
+            "label": "목표",
+            "width": 78,
+            "height": 59.59375,
+            "x": 176,
+            "right": 254,
+            "bottom": 823.796875
+          },
+          {
+            "label": "리포트",
+            "width": 78,
+            "height": 59.59375,
+            "x": 254,
+            "right": 332,
+            "bottom": 823.796875
+          },
+          {
+            "label": "전체",
+            "width": 78,
+            "height": 59.59375,
+            "x": 332,
+            "right": 410,
+            "bottom": 823.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "report"
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 430×844 all view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "docWidth": 430,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 844,
+          "bottom": 844,
+          "right": 430
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 120,
+          "bottom": 120,
+          "right": 430
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 430,
+          "height": 628,
+          "bottom": 748,
+          "right": 430
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "width": 398,
+          "height": 84,
+          "bottom": 832,
+          "right": 414
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 0,
+          "bottom": 0,
+          "right": 430
+        },
+        "bottom": {
+          "x": 16,
+          "y": 832,
+          "width": 398,
+          "height": 0,
+          "bottom": 832,
+          "right": 414
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 370,
+            "right": 418,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 78,
+            "height": 59.59375,
+            "x": 20,
+            "right": 98,
+            "bottom": 823.796875
+          },
+          {
+            "label": "기록",
+            "width": 78,
+            "height": 59.59375,
+            "x": 98,
+            "right": 176,
+            "bottom": 823.796875
+          },
+          {
+            "label": "목표",
+            "width": 78,
+            "height": 59.59375,
+            "x": 176,
+            "right": 254,
+            "bottom": 823.796875
+          },
+          {
+            "label": "리포트",
+            "width": 78,
+            "height": 59.59375,
+            "x": 254,
+            "right": 332,
+            "bottom": 823.796875
+          },
+          {
+            "label": "전체",
+            "width": 78,
+            "height": 59.59375,
+            "x": 332,
+            "right": 410,
+            "bottom": 823.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "all"
+        ]
+      }
+    },
+    {
+      "name": "Chromium: repeated tabs, header menu, reload-to-home; fresh storage remains empty",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "OS dark + stored dark: unchanged business/intro/theme/unrelated values; read-only storage calls",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "OS dark + stored system: unchanged business/intro/theme/unrelated values; read-only storage calls",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "OS dark + stored light: unchanged business/intro/theme/unrelated values; read-only storage calls",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Storage-unavailable environment: Shell navigation works",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Keyboard order, visible focus, Enter and Space activation",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Simulated 47/34px vertical and 24px horizontal safe areas applied once; independent scroll and reset",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "docWidth": 390,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "bottom": 844,
+          "right": 390
+        },
+        "header": {
+          "x": 0,
+          "y": 47,
+          "width": 390,
+          "height": 126.203125,
+          "bottom": 173.203125,
+          "right": 390
+        },
+        "content": {
+          "x": 0,
+          "y": 173.203125,
+          "width": 390,
+          "height": 540.796875,
+          "bottom": 714,
+          "right": 390
+        },
+        "nav": {
+          "x": 16,
+          "y": 714,
+          "width": 358,
+          "height": 118,
+          "bottom": 832,
+          "right": 374
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 47,
+          "bottom": 47,
+          "right": 390
+        },
+        "bottom": {
+          "x": 16,
+          "y": 798,
+          "width": 358,
+          "height": 34,
+          "bottom": 832,
+          "right": 374
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 318,
+            "right": 366,
+            "bottom": 157.203125
+          },
+          {
+            "label": "홈",
+            "width": 62,
+            "height": 59.59375,
+            "x": 40,
+            "right": 102,
+            "bottom": 789.796875
+          },
+          {
+            "label": "기록",
+            "width": 62,
+            "height": 59.59375,
+            "x": 102,
+            "right": 164,
+            "bottom": 789.796875
+          },
+          {
+            "label": "목표",
+            "width": 62,
+            "height": 59.59375,
+            "x": 164,
+            "right": 226,
+            "bottom": 789.796875
+          },
+          {
+            "label": "리포트",
+            "width": 62,
+            "height": 59.59375,
+            "x": 226,
+            "right": 288,
+            "bottom": 789.796875
+          },
+          {
+            "label": "전체",
+            "width": 62,
+            "height": 59.59375,
+            "x": 288,
+            "right": 350,
+            "bottom": 789.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.24) 0px 0px 0px 3px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "report"
+        ]
+      }
+    },
+    {
+      "name": "360×640 short viewport and 200% root text scale: no clipping/overlap",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 360,
+          "height": 640
+        },
+        "docWidth": 360,
+        "docHeight": 640,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 640,
+          "bottom": 640,
+          "right": 360
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 240,
+          "bottom": 240,
+          "right": 360
+        },
+        "content": {
+          "x": 0,
+          "y": 240,
+          "width": 360,
+          "height": 193.625,
+          "bottom": 433.625,
+          "right": 360
+        },
+        "nav": {
+          "x": 32,
+          "y": 433.625,
+          "width": 296,
+          "height": 182.375,
+          "bottom": 616,
+          "right": 328
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 0,
+          "bottom": 0,
+          "right": 360
+        },
+        "bottom": {
+          "x": 32,
+          "y": 616,
+          "width": 296,
+          "height": 0,
+          "bottom": 616,
+          "right": 328
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 96,
+            "height": 96,
+            "x": 240,
+            "right": 336,
+            "bottom": 208
+          },
+          {
+            "label": "홈",
+            "width": 56,
+            "height": 119.1875,
+            "x": 40,
+            "right": 96,
+            "bottom": 592.40625
+          },
+          {
+            "label": "기록",
+            "width": 56,
+            "height": 119.1875,
+            "x": 96,
+            "right": 152,
+            "bottom": 592.40625
+          },
+          {
+            "label": "목표",
+            "width": 56,
+            "height": 119.1875,
+            "x": 152,
+            "right": 208,
+            "bottom": 592.40625
+          },
+          {
+            "label": "리포트",
+            "width": 56,
+            "height": 150.375,
+            "x": 208,
+            "right": 264,
+            "bottom": 608
+          },
+          {
+            "label": "전체",
+            "width": 56,
+            "height": 119.1875,
+            "x": 264,
+            "right": 320,
+            "bottom": 592.40625
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 32,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "home"
+        ]
+      }
+    },
+    {
+      "name": "Desktop: 520px centered rounded shell with 20px vertical margins and floating dock",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 1024,
+          "height": 900
+        },
+        "docWidth": 1024,
+        "docHeight": 900,
+        "shell": {
+          "x": 252,
+          "y": 20,
+          "width": 520,
+          "height": 860,
+          "bottom": 880,
+          "right": 772
+        },
+        "header": {
+          "x": 252,
+          "y": 20,
+          "width": 520,
+          "height": 120,
+          "bottom": 140,
+          "right": 772
+        },
+        "content": {
+          "x": 252,
+          "y": 140,
+          "width": 520,
+          "height": 616,
+          "bottom": 756,
+          "right": 772
+        },
+        "nav": {
+          "x": 268,
+          "y": 772,
+          "width": 488,
+          "height": 92,
+          "bottom": 864,
+          "right": 756
+        },
+        "top": {
+          "x": 252,
+          "y": 20,
+          "width": 520,
+          "height": 0,
+          "bottom": 20,
+          "right": 772
+        },
+        "bottom": {
+          "x": 268,
+          "y": 856,
+          "width": 488,
+          "height": 8,
+          "bottom": 864,
+          "right": 756
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 712,
+            "right": 760,
+            "bottom": 124
+          },
+          {
+            "label": "홈",
+            "width": 96,
+            "height": 59.59375,
+            "x": 272,
+            "right": 368,
+            "bottom": 847.796875
+          },
+          {
+            "label": "기록",
+            "width": 96,
+            "height": 59.59375,
+            "x": 368,
+            "right": 464,
+            "bottom": 847.796875
+          },
+          {
+            "label": "목표",
+            "width": 96,
+            "height": 59.59375,
+            "x": 464,
+            "right": 560,
+            "bottom": 847.796875
+          },
+          {
+            "label": "리포트",
+            "width": 96,
+            "height": 59.59375,
+            "x": 560,
+            "right": 656,
+            "bottom": 847.796875
+          },
+          {
+            "label": "전체",
+            "width": 96,
+            "height": 59.59375,
+            "x": 656,
+            "right": 752,
+            "bottom": 847.796875
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.13) 0px 18px 52px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "36px",
+        "shellShadow": "rgba(40, 60, 80, 0.13) 0px 18px 52px 0px",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "home"
+        ]
+      }
+    },
+    {
+      "name": "All 10 reference typography roles, compact line heights and tabular number styles",
+      "status": "PASS",
+      "detail": [
+        {
+          "class": "pw-type-h3",
+          "size": "18px",
+          "line": "21.24px",
+          "number": "normal"
+        },
+        {
+          "class": "pw-type-body-small",
+          "size": "14px",
+          "line": "18.9px",
+          "number": "normal"
+        },
+        {
+          "class": "pw-type-display",
+          "size": "40px",
+          "line": "42.4px",
+          "number": "normal"
+        },
+        {
+          "class": "pw-type-h1",
+          "size": "30px",
+          "line": "33px",
+          "number": "normal"
+        },
+        {
+          "class": "pw-type-h2",
+          "size": "22px",
+          "line": "25.52px",
+          "number": "normal"
+        },
+        {
+          "class": "pw-type-h3",
+          "size": "18px",
+          "line": "21.24px",
+          "number": "normal"
+        },
+        {
+          "class": "pw-type-body",
+          "size": "16px",
+          "line": "23.68px",
+          "number": "normal"
+        },
+        {
+          "class": "pw-type-body-small",
+          "size": "14px",
+          "line": "18.9px",
+          "number": "normal"
+        },
+        {
+          "class": "pw-type-caption",
+          "size": "12px",
+          "line": "15.6px",
+          "number": "normal"
+        },
+        {
+          "class": "pw-type-number-large",
+          "size": "39px",
+          "line": "40.95px",
+          "number": "tabular-nums"
+        },
+        {
+          "class": "pw-type-number-medium",
+          "size": "24px",
+          "line": "27.6px",
+          "number": "tabular-nums"
+        },
+        {
+          "class": "pw-type-button",
+          "size": "15px",
+          "line": "15px",
+          "number": "normal"
+        }
+      ]
+    },
+    {
+      "name": "Pill CTA normal/hover/pressed/disabled and IconButton disabled states; white text contrast",
+      "status": "PASS",
+      "detail": 4.535339450041179
+    },
+    {
+      "name": "Readable text and semantic foreground colors meet 4.5:1 on white; bright primary remains the reference accent",
+      "status": "PASS",
+      "detail": {
+        "ratios": {
+          "text-primary": 13.080976475822297,
+          "text-secondary": 5.680605175905906,
+          "text-tertiary": 5.680605175905906,
+          "primary-text": 5.66891955401674,
+          "success": 5.185459538667206,
+          "warning": 4.6912953678760045,
+          "danger": 5.4497681945179055,
+          "finance-positive": 5.043935815491148,
+          "finance-negative": 5.4497681945179055
+        },
+        "accent": "rgb(1, 144, 248)"
+      }
+    },
+    {
+      "name": "WebKit: 360×844 home view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "docWidth": 360,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 843.984375,
+          "bottom": 843.984375,
+          "right": 360
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 120,
+          "bottom": 120,
+          "right": 360
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 360,
+          "height": 627.984375,
+          "bottom": 747.984375,
+          "right": 360
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "width": 328,
+          "height": 84,
+          "bottom": 831.984375,
+          "right": 344
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 0,
+          "bottom": 0,
+          "right": 360
+        },
+        "bottom": {
+          "x": 16,
+          "y": 831.984375,
+          "width": 328,
+          "height": 0,
+          "bottom": 831.984375,
+          "right": 344
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 300,
+            "right": 348,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 64,
+            "height": 59.59375,
+            "x": 20,
+            "right": 84,
+            "bottom": 823.78125
+          },
+          {
+            "label": "기록",
+            "width": 64,
+            "height": 59.59375,
+            "x": 84,
+            "right": 148,
+            "bottom": 823.78125
+          },
+          {
+            "label": "목표",
+            "width": 64,
+            "height": 59.59375,
+            "x": 148,
+            "right": 212,
+            "bottom": 823.78125
+          },
+          {
+            "label": "리포트",
+            "width": 64,
+            "height": 59.59375,
+            "x": 212,
+            "right": 276,
+            "bottom": 823.78125
+          },
+          {
+            "label": "전체",
+            "width": 64,
+            "height": 59.59375,
+            "x": 276,
+            "right": 340,
+            "bottom": 823.78125
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "home"
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 360×844 record view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "docWidth": 360,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 843.984375,
+          "bottom": 843.984375,
+          "right": 360
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 120,
+          "bottom": 120,
+          "right": 360
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 360,
+          "height": 627.984375,
+          "bottom": 747.984375,
+          "right": 360
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "width": 328,
+          "height": 84,
+          "bottom": 831.984375,
+          "right": 344
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 0,
+          "bottom": 0,
+          "right": 360
+        },
+        "bottom": {
+          "x": 16,
+          "y": 831.984375,
+          "width": 328,
+          "height": 0,
+          "bottom": 831.984375,
+          "right": 344
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 300,
+            "right": 348,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 64,
+            "height": 59.59375,
+            "x": 20,
+            "right": 84,
+            "bottom": 823.78125
+          },
+          {
+            "label": "기록",
+            "width": 64,
+            "height": 59.59375,
+            "x": 84,
+            "right": 148,
+            "bottom": 823.78125
+          },
+          {
+            "label": "목표",
+            "width": 64,
+            "height": 59.59375,
+            "x": 148,
+            "right": 212,
+            "bottom": 823.78125
+          },
+          {
+            "label": "리포트",
+            "width": 64,
+            "height": 59.59375,
+            "x": 212,
+            "right": 276,
+            "bottom": 823.78125
+          },
+          {
+            "label": "전체",
+            "width": 64,
+            "height": 59.59375,
+            "x": 276,
+            "right": 340,
+            "bottom": 823.78125
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "record"
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 360×844 goal view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "docWidth": 360,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 843.984375,
+          "bottom": 843.984375,
+          "right": 360
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 120,
+          "bottom": 120,
+          "right": 360
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 360,
+          "height": 627.984375,
+          "bottom": 747.984375,
+          "right": 360
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "width": 328,
+          "height": 84,
+          "bottom": 831.984375,
+          "right": 344
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 0,
+          "bottom": 0,
+          "right": 360
+        },
+        "bottom": {
+          "x": 16,
+          "y": 831.984375,
+          "width": 328,
+          "height": 0,
+          "bottom": 831.984375,
+          "right": 344
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 300,
+            "right": 348,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 64,
+            "height": 59.59375,
+            "x": 20,
+            "right": 84,
+            "bottom": 823.78125
+          },
+          {
+            "label": "기록",
+            "width": 64,
+            "height": 59.59375,
+            "x": 84,
+            "right": 148,
+            "bottom": 823.78125
+          },
+          {
+            "label": "목표",
+            "width": 64,
+            "height": 59.59375,
+            "x": 148,
+            "right": 212,
+            "bottom": 823.78125
+          },
+          {
+            "label": "리포트",
+            "width": 64,
+            "height": 59.59375,
+            "x": 212,
+            "right": 276,
+            "bottom": 823.78125
+          },
+          {
+            "label": "전체",
+            "width": 64,
+            "height": 59.59375,
+            "x": 276,
+            "right": 340,
+            "bottom": 823.78125
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "goal"
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 360×844 report view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "docWidth": 360,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 843.984375,
+          "bottom": 843.984375,
+          "right": 360
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 120,
+          "bottom": 120,
+          "right": 360
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 360,
+          "height": 627.984375,
+          "bottom": 747.984375,
+          "right": 360
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "width": 328,
+          "height": 84,
+          "bottom": 831.984375,
+          "right": 344
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 0,
+          "bottom": 0,
+          "right": 360
+        },
+        "bottom": {
+          "x": 16,
+          "y": 831.984375,
+          "width": 328,
+          "height": 0,
+          "bottom": 831.984375,
+          "right": 344
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 300,
+            "right": 348,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 64,
+            "height": 59.59375,
+            "x": 20,
+            "right": 84,
+            "bottom": 823.78125
+          },
+          {
+            "label": "기록",
+            "width": 64,
+            "height": 59.59375,
+            "x": 84,
+            "right": 148,
+            "bottom": 823.78125
+          },
+          {
+            "label": "목표",
+            "width": 64,
+            "height": 59.59375,
+            "x": 148,
+            "right": 212,
+            "bottom": 823.78125
+          },
+          {
+            "label": "리포트",
+            "width": 64,
+            "height": 59.59375,
+            "x": 212,
+            "right": 276,
+            "bottom": 823.78125
+          },
+          {
+            "label": "전체",
+            "width": 64,
+            "height": 59.59375,
+            "x": 276,
+            "right": 340,
+            "bottom": 823.78125
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "report"
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 360×844 all view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "docWidth": 360,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 843.984375,
+          "bottom": 843.984375,
+          "right": 360
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 120,
+          "bottom": 120,
+          "right": 360
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 360,
+          "height": 627.984375,
+          "bottom": 747.984375,
+          "right": 360
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "width": 328,
+          "height": 84,
+          "bottom": 831.984375,
+          "right": 344
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 0,
+          "bottom": 0,
+          "right": 360
+        },
+        "bottom": {
+          "x": 16,
+          "y": 831.984375,
+          "width": 328,
+          "height": 0,
+          "bottom": 831.984375,
+          "right": 344
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 300,
+            "right": 348,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 64,
+            "height": 59.59375,
+            "x": 20,
+            "right": 84,
+            "bottom": 823.78125
+          },
+          {
+            "label": "기록",
+            "width": 64,
+            "height": 59.59375,
+            "x": 84,
+            "right": 148,
+            "bottom": 823.78125
+          },
+          {
+            "label": "목표",
+            "width": 64,
+            "height": 59.59375,
+            "x": 148,
+            "right": 212,
+            "bottom": 823.78125
+          },
+          {
+            "label": "리포트",
+            "width": 64,
+            "height": 59.59375,
+            "x": 212,
+            "right": 276,
+            "bottom": 823.78125
+          },
+          {
+            "label": "전체",
+            "width": 64,
+            "height": 59.59375,
+            "x": 276,
+            "right": 340,
+            "bottom": 823.78125
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "all"
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 390×844 home view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "docWidth": 390,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 843.984375,
+          "bottom": 843.984375,
+          "right": 390
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 120,
+          "bottom": 120,
+          "right": 390
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 390,
+          "height": 627.984375,
+          "bottom": 747.984375,
+          "right": 390
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "width": 358,
+          "height": 84,
+          "bottom": 831.984375,
+          "right": 374
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 0,
+          "bottom": 0,
+          "right": 390
+        },
+        "bottom": {
+          "x": 16,
+          "y": 831.984375,
+          "width": 358,
+          "height": 0,
+          "bottom": 831.984375,
+          "right": 374
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 330,
+            "right": 378,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 70,
+            "height": 59.59375,
+            "x": 20,
+            "right": 90,
+            "bottom": 823.78125
+          },
+          {
+            "label": "기록",
+            "width": 70,
+            "height": 59.59375,
+            "x": 90,
+            "right": 160,
+            "bottom": 823.78125
+          },
+          {
+            "label": "목표",
+            "width": 70,
+            "height": 59.59375,
+            "x": 160,
+            "right": 230,
+            "bottom": 823.78125
+          },
+          {
+            "label": "리포트",
+            "width": 70,
+            "height": 59.59375,
+            "x": 230,
+            "right": 300,
+            "bottom": 823.78125
+          },
+          {
+            "label": "전체",
+            "width": 70,
+            "height": 59.59375,
+            "x": 300,
+            "right": 370,
+            "bottom": 823.78125
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "home"
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 390×844 record view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "docWidth": 390,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 843.984375,
+          "bottom": 843.984375,
+          "right": 390
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 120,
+          "bottom": 120,
+          "right": 390
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 390,
+          "height": 627.984375,
+          "bottom": 747.984375,
+          "right": 390
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "width": 358,
+          "height": 84,
+          "bottom": 831.984375,
+          "right": 374
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 0,
+          "bottom": 0,
+          "right": 390
+        },
+        "bottom": {
+          "x": 16,
+          "y": 831.984375,
+          "width": 358,
+          "height": 0,
+          "bottom": 831.984375,
+          "right": 374
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 330,
+            "right": 378,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 70,
+            "height": 59.59375,
+            "x": 20,
+            "right": 90,
+            "bottom": 823.78125
+          },
+          {
+            "label": "기록",
+            "width": 70,
+            "height": 59.59375,
+            "x": 90,
+            "right": 160,
+            "bottom": 823.78125
+          },
+          {
+            "label": "목표",
+            "width": 70,
+            "height": 59.59375,
+            "x": 160,
+            "right": 230,
+            "bottom": 823.78125
+          },
+          {
+            "label": "리포트",
+            "width": 70,
+            "height": 59.59375,
+            "x": 230,
+            "right": 300,
+            "bottom": 823.78125
+          },
+          {
+            "label": "전체",
+            "width": 70,
+            "height": 59.59375,
+            "x": 300,
+            "right": 370,
+            "bottom": 823.78125
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "record"
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 390×844 goal view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "docWidth": 390,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 843.984375,
+          "bottom": 843.984375,
+          "right": 390
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 120,
+          "bottom": 120,
+          "right": 390
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 390,
+          "height": 627.984375,
+          "bottom": 747.984375,
+          "right": 390
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "width": 358,
+          "height": 84,
+          "bottom": 831.984375,
+          "right": 374
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 0,
+          "bottom": 0,
+          "right": 390
+        },
+        "bottom": {
+          "x": 16,
+          "y": 831.984375,
+          "width": 358,
+          "height": 0,
+          "bottom": 831.984375,
+          "right": 374
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 330,
+            "right": 378,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 70,
+            "height": 59.59375,
+            "x": 20,
+            "right": 90,
+            "bottom": 823.78125
+          },
+          {
+            "label": "기록",
+            "width": 70,
+            "height": 59.59375,
+            "x": 90,
+            "right": 160,
+            "bottom": 823.78125
+          },
+          {
+            "label": "목표",
+            "width": 70,
+            "height": 59.59375,
+            "x": 160,
+            "right": 230,
+            "bottom": 823.78125
+          },
+          {
+            "label": "리포트",
+            "width": 70,
+            "height": 59.59375,
+            "x": 230,
+            "right": 300,
+            "bottom": 823.78125
+          },
+          {
+            "label": "전체",
+            "width": 70,
+            "height": 59.59375,
+            "x": 300,
+            "right": 370,
+            "bottom": 823.78125
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "goal"
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 390×844 report view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "docWidth": 390,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 843.984375,
+          "bottom": 843.984375,
+          "right": 390
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 120,
+          "bottom": 120,
+          "right": 390
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 390,
+          "height": 627.984375,
+          "bottom": 747.984375,
+          "right": 390
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "width": 358,
+          "height": 84,
+          "bottom": 831.984375,
+          "right": 374
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 0,
+          "bottom": 0,
+          "right": 390
+        },
+        "bottom": {
+          "x": 16,
+          "y": 831.984375,
+          "width": 358,
+          "height": 0,
+          "bottom": 831.984375,
+          "right": 374
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 330,
+            "right": 378,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 70,
+            "height": 59.59375,
+            "x": 20,
+            "right": 90,
+            "bottom": 823.78125
+          },
+          {
+            "label": "기록",
+            "width": 70,
+            "height": 59.59375,
+            "x": 90,
+            "right": 160,
+            "bottom": 823.78125
+          },
+          {
+            "label": "목표",
+            "width": 70,
+            "height": 59.59375,
+            "x": 160,
+            "right": 230,
+            "bottom": 823.78125
+          },
+          {
+            "label": "리포트",
+            "width": 70,
+            "height": 59.59375,
+            "x": 230,
+            "right": 300,
+            "bottom": 823.78125
+          },
+          {
+            "label": "전체",
+            "width": 70,
+            "height": 59.59375,
+            "x": 300,
+            "right": 370,
+            "bottom": 823.78125
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "report"
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 390×844 all view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "docWidth": 390,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 843.984375,
+          "bottom": 843.984375,
+          "right": 390
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 120,
+          "bottom": 120,
+          "right": 390
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 390,
+          "height": 627.984375,
+          "bottom": 747.984375,
+          "right": 390
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "width": 358,
+          "height": 84,
+          "bottom": 831.984375,
+          "right": 374
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 0,
+          "bottom": 0,
+          "right": 390
+        },
+        "bottom": {
+          "x": 16,
+          "y": 831.984375,
+          "width": 358,
+          "height": 0,
+          "bottom": 831.984375,
+          "right": 374
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 330,
+            "right": 378,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 70,
+            "height": 59.59375,
+            "x": 20,
+            "right": 90,
+            "bottom": 823.78125
+          },
+          {
+            "label": "기록",
+            "width": 70,
+            "height": 59.59375,
+            "x": 90,
+            "right": 160,
+            "bottom": 823.78125
+          },
+          {
+            "label": "목표",
+            "width": 70,
+            "height": 59.59375,
+            "x": 160,
+            "right": 230,
+            "bottom": 823.78125
+          },
+          {
+            "label": "리포트",
+            "width": 70,
+            "height": 59.59375,
+            "x": 230,
+            "right": 300,
+            "bottom": 823.78125
+          },
+          {
+            "label": "전체",
+            "width": 70,
+            "height": 59.59375,
+            "x": 300,
+            "right": 370,
+            "bottom": 823.78125
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "all"
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 430×844 home view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "docWidth": 430,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 843.984375,
+          "bottom": 843.984375,
+          "right": 430
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 120,
+          "bottom": 120,
+          "right": 430
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 430,
+          "height": 627.984375,
+          "bottom": 747.984375,
+          "right": 430
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "width": 398,
+          "height": 84,
+          "bottom": 831.984375,
+          "right": 414
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 0,
+          "bottom": 0,
+          "right": 430
+        },
+        "bottom": {
+          "x": 16,
+          "y": 831.984375,
+          "width": 398,
+          "height": 0,
+          "bottom": 831.984375,
+          "right": 414
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 370,
+            "right": 418,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 78,
+            "height": 59.59375,
+            "x": 20,
+            "right": 98,
+            "bottom": 823.78125
+          },
+          {
+            "label": "기록",
+            "width": 78,
+            "height": 59.59375,
+            "x": 98,
+            "right": 176,
+            "bottom": 823.78125
+          },
+          {
+            "label": "목표",
+            "width": 78,
+            "height": 59.59375,
+            "x": 176,
+            "right": 254,
+            "bottom": 823.78125
+          },
+          {
+            "label": "리포트",
+            "width": 78,
+            "height": 59.59375,
+            "x": 254,
+            "right": 332,
+            "bottom": 823.78125
+          },
+          {
+            "label": "전체",
+            "width": 78,
+            "height": 59.59375,
+            "x": 332,
+            "right": 410,
+            "bottom": 823.78125
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "home"
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 430×844 record view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "docWidth": 430,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 843.984375,
+          "bottom": 843.984375,
+          "right": 430
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 120,
+          "bottom": 120,
+          "right": 430
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 430,
+          "height": 627.984375,
+          "bottom": 747.984375,
+          "right": 430
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "width": 398,
+          "height": 84,
+          "bottom": 831.984375,
+          "right": 414
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 0,
+          "bottom": 0,
+          "right": 430
+        },
+        "bottom": {
+          "x": 16,
+          "y": 831.984375,
+          "width": 398,
+          "height": 0,
+          "bottom": 831.984375,
+          "right": 414
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 370,
+            "right": 418,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 78,
+            "height": 59.59375,
+            "x": 20,
+            "right": 98,
+            "bottom": 823.78125
+          },
+          {
+            "label": "기록",
+            "width": 78,
+            "height": 59.59375,
+            "x": 98,
+            "right": 176,
+            "bottom": 823.78125
+          },
+          {
+            "label": "목표",
+            "width": 78,
+            "height": 59.59375,
+            "x": 176,
+            "right": 254,
+            "bottom": 823.78125
+          },
+          {
+            "label": "리포트",
+            "width": 78,
+            "height": 59.59375,
+            "x": 254,
+            "right": 332,
+            "bottom": 823.78125
+          },
+          {
+            "label": "전체",
+            "width": 78,
+            "height": 59.59375,
+            "x": 332,
+            "right": 410,
+            "bottom": 823.78125
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "record"
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 430×844 goal view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "docWidth": 430,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 843.984375,
+          "bottom": 843.984375,
+          "right": 430
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 120,
+          "bottom": 120,
+          "right": 430
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 430,
+          "height": 627.984375,
+          "bottom": 747.984375,
+          "right": 430
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "width": 398,
+          "height": 84,
+          "bottom": 831.984375,
+          "right": 414
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 0,
+          "bottom": 0,
+          "right": 430
+        },
+        "bottom": {
+          "x": 16,
+          "y": 831.984375,
+          "width": 398,
+          "height": 0,
+          "bottom": 831.984375,
+          "right": 414
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 370,
+            "right": 418,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 78,
+            "height": 59.59375,
+            "x": 20,
+            "right": 98,
+            "bottom": 823.78125
+          },
+          {
+            "label": "기록",
+            "width": 78,
+            "height": 59.59375,
+            "x": 98,
+            "right": 176,
+            "bottom": 823.78125
+          },
+          {
+            "label": "목표",
+            "width": 78,
+            "height": 59.59375,
+            "x": 176,
+            "right": 254,
+            "bottom": 823.78125
+          },
+          {
+            "label": "리포트",
+            "width": 78,
+            "height": 59.59375,
+            "x": 254,
+            "right": 332,
+            "bottom": 823.78125
+          },
+          {
+            "label": "전체",
+            "width": 78,
+            "height": 59.59375,
+            "x": 332,
+            "right": 410,
+            "bottom": 823.78125
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "goal"
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 430×844 report view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "docWidth": 430,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 843.984375,
+          "bottom": 843.984375,
+          "right": 430
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 120,
+          "bottom": 120,
+          "right": 430
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 430,
+          "height": 627.984375,
+          "bottom": 747.984375,
+          "right": 430
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "width": 398,
+          "height": 84,
+          "bottom": 831.984375,
+          "right": 414
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 0,
+          "bottom": 0,
+          "right": 430
+        },
+        "bottom": {
+          "x": 16,
+          "y": 831.984375,
+          "width": 398,
+          "height": 0,
+          "bottom": 831.984375,
+          "right": 414
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 370,
+            "right": 418,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 78,
+            "height": 59.59375,
+            "x": 20,
+            "right": 98,
+            "bottom": 823.78125
+          },
+          {
+            "label": "기록",
+            "width": 78,
+            "height": 59.59375,
+            "x": 98,
+            "right": 176,
+            "bottom": 823.78125
+          },
+          {
+            "label": "목표",
+            "width": 78,
+            "height": 59.59375,
+            "x": 176,
+            "right": 254,
+            "bottom": 823.78125
+          },
+          {
+            "label": "리포트",
+            "width": 78,
+            "height": 59.59375,
+            "x": 254,
+            "right": 332,
+            "bottom": 823.78125
+          },
+          {
+            "label": "전체",
+            "width": 78,
+            "height": 59.59375,
+            "x": 332,
+            "right": 410,
+            "bottom": 823.78125
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "report"
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 430×844 all view, selection and bounds",
+      "status": "PASS",
+      "detail": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "docWidth": 430,
+        "docHeight": 844,
+        "shell": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 843.984375,
+          "bottom": 843.984375,
+          "right": 430
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 120,
+          "bottom": 120,
+          "right": 430
+        },
+        "content": {
+          "x": 0,
+          "y": 120,
+          "width": 430,
+          "height": 627.984375,
+          "bottom": 747.984375,
+          "right": 430
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "width": 398,
+          "height": 84,
+          "bottom": 831.984375,
+          "right": 414
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 0,
+          "bottom": 0,
+          "right": 430
+        },
+        "bottom": {
+          "x": 16,
+          "y": 831.984375,
+          "width": 398,
+          "height": 0,
+          "bottom": 831.984375,
+          "right": 414
+        },
+        "controls": [
+          {
+            "label": "전체 메뉴",
+            "width": 48,
+            "height": 48,
+            "x": 370,
+            "right": 418,
+            "bottom": 104
+          },
+          {
+            "label": "홈",
+            "width": 78,
+            "height": 59.59375,
+            "x": 20,
+            "right": 98,
+            "bottom": 823.78125
+          },
+          {
+            "label": "기록",
+            "width": 78,
+            "height": 59.59375,
+            "x": 98,
+            "right": 176,
+            "bottom": 823.78125
+          },
+          {
+            "label": "목표",
+            "width": 78,
+            "height": 59.59375,
+            "x": 176,
+            "right": 254,
+            "bottom": 823.78125
+          },
+          {
+            "label": "리포트",
+            "width": 78,
+            "height": 59.59375,
+            "x": 254,
+            "right": 332,
+            "bottom": 823.78125
+          },
+          {
+            "label": "전체",
+            "width": 78,
+            "height": 59.59375,
+            "x": 332,
+            "right": 410,
+            "bottom": 823.78125
+          }
+        ],
+        "styled": [
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(1, 144, 248, 0.18) 0px 8px 18px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          },
+          {
+            "image": "none",
+            "shadow": "none",
+            "filter": "none"
+          }
+        ],
+        "scheme": "light",
+        "rootFontSize": 16,
+        "background": "rgb(255, 255, 255)",
+        "shellRadius": "0px",
+        "shellShadow": "none",
+        "navShadow": "rgba(40, 60, 80, 0.05) 0px -10px 30px 0px",
+        "active": [
+          "all"
+        ]
+      }
+    },
+    {
+      "name": "WebKit: repeated tabs, header menu, reload-to-home; fresh storage remains empty",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "All browser contexts: zero console/page errors and failed resource requests",
+      "status": "PASS",
+      "detail": true
+    }
+  ],
+  "screenshots": [
+    "screenshots/360x844-home.png",
+    "screenshots/360x844-record.png",
+    "screenshots/360x844-goal.png",
+    "screenshots/360x844-report.png",
+    "screenshots/360x844-all.png",
+    "screenshots/390x844-home.png",
+    "screenshots/390x844-record.png",
+    "screenshots/390x844-goal.png",
+    "screenshots/390x844-report.png",
+    "screenshots/390x844-all.png",
+    "screenshots/430x844-home.png",
+    "screenshots/430x844-record.png",
+    "screenshots/430x844-goal.png",
+    "screenshots/430x844-report.png",
+    "screenshots/430x844-all.png"
+  ],
+  "networkErrors": [],
+  "consoleErrors": [],
+  "browsers": {
+    "chromium": {
+      "version": "153.0.8010.12",
+      "executable": "/Users/jeonghu/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell"
+    },
+    "webkit": {
+      "version": "26.5",
+      "executable": "/Users/jeonghu/Library/Caches/ms-playwright/webkit-2287/pw_run.sh"
+    }
+  },
+  "status": "PASS",
+  "finishedAt": "2026-10-03T06:54:30.607Z"
+}

@@ -1,0 +1,2543 @@
+{
+  "startedAt": "2026-10-03T06:53:56.253Z",
+  "url": "http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html",
+  "checks": [
+    {
+      "name": "Source: immutable baseline, Report has no storage writer/network/AI/share dependency",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Default fixture: exact projection and deeply frozen immutability",
+      "status": "PASS",
+      "detail": {
+        "score": {
+          "status": "available",
+          "value": 82
+        },
+        "moneyFlow": {
+          "status": "available",
+          "received": 15200,
+          "spent": 12300,
+          "difference": 2900,
+          "period": "unknown"
+        },
+        "goal": {
+          "status": "active",
+          "title": "게임 아이템",
+          "current": 30600,
+          "target": 45000,
+          "remaining": 14400,
+          "percent": 68
+        },
+        "records": {
+          "status": "available",
+          "count": 4,
+          "partial": false
+        }
+      }
+    },
+    {
+      "name": "Score: zero, 100, fractional precision, missing/type/range/nonfinite rejection",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Money: partial/invalid, real zeros, signed difference, safe integer limits and unknown period",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Goal: exact PW04 projection, empty/invalid/complete/over-target and rounded active state",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Records: established validator including unknown dates, all rows not 20-row view, mixed-invalid and absent arrays",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Load: empty, malformed/invalid root and separate getter/read failures",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture default exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture partial-report exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture score-zero exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture score-100 exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture score-unavailable exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture score-negative exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture score-high exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture score-string exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture score-fraction exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture monthly-invalid exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture money-zero exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture money-negative exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture large-money exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture goal-empty exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture goal-active exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture goal-complete exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture goal-over exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture goal-invalid exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture long-goal-title exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture html-text exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture records-empty exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture records-missing exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture records-mixed exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture records-unknown-date exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: fixture empty-object exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: empty-report, exact fallback and no repair writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: invalid-report, exact fallback and no repair writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: invalid-root, exact fallback and no repair writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: storage-read, exact fallback and no repair writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: storage-getter, exact fallback and no repair writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: FLOW A Home action to latest Report",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: FLOW B Record save updates totals/count only; score/goal preserved",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: FLOW C Record save updates totals/count only; score/goal preserved",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: FLOW D Goal save refreshes Report; current/score/records unchanged",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: FLOW E Goal save refreshes Report; current/score/records unchanged",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: FLOW F navigation and external fixture update proves re-read",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: FLOW G navigation and external fixture update proves re-read",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: FLOW H reload starts Home, stable raw string; all read-only navigation/scroll/focus",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: 360x844 layout",
+      "status": "PASS",
+      "detail": {
+        "viewport": 360,
+        "doc": 360,
+        "client": 360,
+        "scroll": 360,
+        "content": {
+          "x": 0,
+          "y": 120,
+          "right": 360,
+          "bottom": 748,
+          "width": 360,
+          "height": 628
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "right": 344,
+          "bottom": 832,
+          "width": 328,
+          "height": 84
+        },
+        "amounts": [
+          {
+            "client": 264,
+            "scroll": 264
+          },
+          {
+            "client": 83,
+            "scroll": 83
+          },
+          {
+            "client": 83,
+            "scroll": 83
+          },
+          {
+            "client": 83,
+            "scroll": 83
+          },
+          {
+            "client": 128,
+            "scroll": 128
+          },
+          {
+            "client": 128,
+            "scroll": 128
+          },
+          {
+            "client": 132,
+            "scroll": 132
+          }
+        ],
+        "controls": [
+          {
+            "x": 20,
+            "y": 1131.5625,
+            "right": 113.28125,
+            "bottom": 1179.5625,
+            "width": 93.28125,
+            "height": 48
+          },
+          {
+            "x": 125.28125,
+            "y": 1131.5625,
+            "right": 218.5625,
+            "bottom": 1179.5625,
+            "width": 93.28125,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 390x844 layout",
+      "status": "PASS",
+      "detail": {
+        "viewport": 390,
+        "doc": 390,
+        "client": 390,
+        "scroll": 390,
+        "content": {
+          "x": 0,
+          "y": 120,
+          "right": 390,
+          "bottom": 748,
+          "width": 390,
+          "height": 628
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "right": 374,
+          "bottom": 832,
+          "width": 358,
+          "height": 84
+        },
+        "amounts": [
+          {
+            "client": 294,
+            "scroll": 294
+          },
+          {
+            "client": 93,
+            "scroll": 93
+          },
+          {
+            "client": 93,
+            "scroll": 93
+          },
+          {
+            "client": 93,
+            "scroll": 93
+          },
+          {
+            "client": 143,
+            "scroll": 143
+          },
+          {
+            "client": 143,
+            "scroll": 143
+          },
+          {
+            "client": 147,
+            "scroll": 147
+          }
+        ],
+        "controls": [
+          {
+            "x": 20,
+            "y": 1137.890625,
+            "right": 113.28125,
+            "bottom": 1185.890625,
+            "width": 93.28125,
+            "height": 48
+          },
+          {
+            "x": 125.28125,
+            "y": 1137.890625,
+            "right": 218.5625,
+            "bottom": 1185.890625,
+            "width": 93.28125,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 430x844 layout",
+      "status": "PASS",
+      "detail": {
+        "viewport": 430,
+        "doc": 430,
+        "client": 430,
+        "scroll": 430,
+        "content": {
+          "x": 0,
+          "y": 120,
+          "right": 430,
+          "bottom": 748,
+          "width": 430,
+          "height": 628
+        },
+        "nav": {
+          "x": 16,
+          "y": 748,
+          "right": 414,
+          "bottom": 832,
+          "width": 398,
+          "height": 84
+        },
+        "amounts": [
+          {
+            "client": 334,
+            "scroll": 334
+          },
+          {
+            "client": 106,
+            "scroll": 106
+          },
+          {
+            "client": 106,
+            "scroll": 106
+          },
+          {
+            "client": 106,
+            "scroll": 106
+          },
+          {
+            "client": 163,
+            "scroll": 163
+          },
+          {
+            "client": 163,
+            "scroll": 163
+          },
+          {
+            "client": 167,
+            "scroll": 167
+          }
+        ],
+        "controls": [
+          {
+            "x": 20,
+            "y": 1146.328125,
+            "right": 113.28125,
+            "bottom": 1194.328125,
+            "width": 93.28125,
+            "height": 48
+          },
+          {
+            "x": 125.28125,
+            "y": 1146.328125,
+            "right": 218.5625,
+            "bottom": 1194.328125,
+            "width": 93.28125,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "name": "Chromium: headings/progressbar/accessible snapshot and text contrast",
+      "status": "PASS",
+      "detail": {
+        "minContrast": 4.75362885813678
+      }
+    },
+    {
+      "name": "Chromium: keyboard Tab/Shift+Tab, Enter/Space actions and h1 focus",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: 360 root 200% text with no clipped values",
+      "status": "PASS",
+      "detail": {
+        "viewport": 360,
+        "doc": 360,
+        "client": 360,
+        "scroll": 360,
+        "content": {
+          "x": 0,
+          "y": 240,
+          "right": 360,
+          "bottom": 433.625,
+          "width": 360,
+          "height": 193.625
+        },
+        "nav": {
+          "x": 32,
+          "y": 433.625,
+          "right": 328,
+          "bottom": 616,
+          "width": 296,
+          "height": 182.375
+        },
+        "amounts": [
+          {
+            "client": 168,
+            "scroll": 168
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          }
+        ],
+        "controls": [
+          {
+            "x": 40,
+            "y": -30.390625,
+            "right": 224.546875,
+            "bottom": 65.609375,
+            "width": 184.546875,
+            "height": 96
+          },
+          {
+            "x": 40,
+            "y": 89.609375,
+            "right": 224.546875,
+            "bottom": 185.609375,
+            "width": 184.546875,
+            "height": 96
+          }
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 390 root 200% text with no clipped values",
+      "status": "PASS",
+      "detail": {
+        "viewport": 390,
+        "doc": 390,
+        "client": 390,
+        "scroll": 390,
+        "content": {
+          "x": 0,
+          "y": 240,
+          "right": 390,
+          "bottom": 637.625,
+          "width": 390,
+          "height": 397.625
+        },
+        "nav": {
+          "x": 32,
+          "y": 637.625,
+          "right": 358,
+          "bottom": 820,
+          "width": 326,
+          "height": 182.375
+        },
+        "amounts": [
+          {
+            "client": 198,
+            "scroll": 198
+          },
+          {
+            "client": 214,
+            "scroll": 214
+          },
+          {
+            "client": 214,
+            "scroll": 214
+          },
+          {
+            "client": 214,
+            "scroll": 214
+          },
+          {
+            "client": 214,
+            "scroll": 214
+          },
+          {
+            "client": 214,
+            "scroll": 214
+          },
+          {
+            "client": 214,
+            "scroll": 214
+          }
+        ],
+        "controls": [
+          {
+            "x": 40,
+            "y": 174.359375,
+            "right": 224.546875,
+            "bottom": 270.359375,
+            "width": 184.546875,
+            "height": 96
+          },
+          {
+            "x": 40,
+            "y": 294.359375,
+            "right": 224.546875,
+            "bottom": 390.359375,
+            "width": 184.546875,
+            "height": 96
+          }
+        ]
+      }
+    },
+    {
+      "name": "Chromium: 430 root 200% text with no clipped values",
+      "status": "PASS",
+      "detail": {
+        "viewport": 430,
+        "doc": 430,
+        "client": 430,
+        "scroll": 430,
+        "content": {
+          "x": 0,
+          "y": 240,
+          "right": 430,
+          "bottom": 652,
+          "width": 430,
+          "height": 412
+        },
+        "nav": {
+          "x": 32,
+          "y": 652,
+          "right": 398,
+          "bottom": 820,
+          "width": 366,
+          "height": 168
+        },
+        "amounts": [
+          {
+            "client": 238,
+            "scroll": 238
+          },
+          {
+            "client": 254,
+            "scroll": 254
+          },
+          {
+            "client": 254,
+            "scroll": 254
+          },
+          {
+            "client": 254,
+            "scroll": 254
+          },
+          {
+            "client": 254,
+            "scroll": 254
+          },
+          {
+            "client": 254,
+            "scroll": 254
+          },
+          {
+            "client": 254,
+            "scroll": 254
+          }
+        ],
+        "controls": [
+          {
+            "x": 40,
+            "y": 188.359375,
+            "right": 224.546875,
+            "bottom": 284.359375,
+            "width": 184.546875,
+            "height": 96
+          },
+          {
+            "x": 40,
+            "y": 308.359375,
+            "right": 224.546875,
+            "bottom": 404.359375,
+            "width": 184.546875,
+            "height": 96
+          }
+        ]
+      }
+    },
+    {
+      "name": "Chromium: negative safe integer and long Korean goal at 200% retain exact accessible amounts",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "Chromium: safe area 24/34 with 200%",
+      "status": "PASS",
+      "detail": {
+        "viewport": 360,
+        "doc": 360,
+        "client": 360,
+        "scroll": 360,
+        "content": {
+          "x": 0,
+          "y": 264,
+          "right": 360,
+          "bottom": 399.625,
+          "width": 360,
+          "height": 135.625
+        },
+        "nav": {
+          "x": 32,
+          "y": 399.625,
+          "right": 328,
+          "bottom": 616,
+          "width": 296,
+          "height": 216.375
+        },
+        "amounts": [
+          {
+            "client": 168,
+            "scroll": 168
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          }
+        ],
+        "controls": [
+          {
+            "x": 40,
+            "y": 2920.609375,
+            "right": 224.546875,
+            "bottom": 3016.609375,
+            "width": 184.546875,
+            "height": 96
+          },
+          {
+            "x": 40,
+            "y": 3040.609375,
+            "right": 224.546875,
+            "bottom": 3136.609375,
+            "width": 184.546875,
+            "height": 96
+          }
+        ]
+      }
+    },
+    {
+      "name": "Chromium: safe area 47/24 with 200%",
+      "status": "PASS",
+      "detail": {
+        "viewport": 360,
+        "doc": 360,
+        "client": 360,
+        "scroll": 360,
+        "content": {
+          "x": 0,
+          "y": 287,
+          "right": 360,
+          "bottom": 409.625,
+          "width": 360,
+          "height": 122.625
+        },
+        "nav": {
+          "x": 32,
+          "y": 409.625,
+          "right": 328,
+          "bottom": 616,
+          "width": 296,
+          "height": 206.375
+        },
+        "amounts": [
+          {
+            "client": 168,
+            "scroll": 168
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          }
+        ],
+        "controls": [
+          {
+            "x": 40,
+            "y": 2943.609375,
+            "right": 224.546875,
+            "bottom": 3039.609375,
+            "width": 184.546875,
+            "height": 96
+          },
+          {
+            "x": 40,
+            "y": 3063.609375,
+            "right": 224.546875,
+            "bottom": 3159.609375,
+            "width": 184.546875,
+            "height": 96
+          }
+        ]
+      }
+    },
+    {
+      "name": "Chromium: safe area 34/47 with 200%",
+      "status": "PASS",
+      "detail": {
+        "viewport": 360,
+        "doc": 360,
+        "client": 360,
+        "scroll": 360,
+        "content": {
+          "x": 0,
+          "y": 274,
+          "right": 360,
+          "bottom": 386.625,
+          "width": 360,
+          "height": 112.625
+        },
+        "nav": {
+          "x": 32,
+          "y": 386.625,
+          "right": 328,
+          "bottom": 616,
+          "width": 296,
+          "height": 229.375
+        },
+        "amounts": [
+          {
+            "client": 168,
+            "scroll": 168
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          }
+        ],
+        "controls": [
+          {
+            "x": 40,
+            "y": 2930.609375,
+            "right": 224.546875,
+            "bottom": 3026.609375,
+            "width": 184.546875,
+            "height": 96
+          },
+          {
+            "x": 40,
+            "y": 3050.609375,
+            "right": 224.546875,
+            "bottom": 3146.609375,
+            "width": 184.546875,
+            "height": 96
+          }
+        ]
+      }
+    },
+    {
+      "name": "Chromium: repeated mount/dispose and all layout interaction remains read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture default exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture partial-report exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture score-zero exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture score-100 exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture score-unavailable exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture score-negative exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture score-high exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture score-string exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture score-fraction exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture monthly-invalid exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture money-zero exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture money-negative exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture large-money exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture goal-empty exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture goal-active exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture goal-complete exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture goal-over exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture goal-invalid exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture long-goal-title exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture html-text exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture records-empty exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture records-missing exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture records-mixed exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture records-unknown-date exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: fixture empty-object exact values, state distinctions, geometry and read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: empty-report, exact fallback and no repair writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: invalid-report, exact fallback and no repair writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: invalid-root, exact fallback and no repair writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: storage-read, exact fallback and no repair writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: storage-getter, exact fallback and no repair writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: FLOW A Home action to latest Report",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: FLOW B Record save updates totals/count only; score/goal preserved",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: FLOW C Record save updates totals/count only; score/goal preserved",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: FLOW D Goal save refreshes Report; current/score/records unchanged",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: FLOW E Goal save refreshes Report; current/score/records unchanged",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: FLOW F navigation and external fixture update proves re-read",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: FLOW G navigation and external fixture update proves re-read",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: FLOW H reload starts Home, stable raw string; all read-only navigation/scroll/focus",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: 360x844 layout",
+      "status": "PASS",
+      "detail": {
+        "viewport": 360,
+        "doc": 360,
+        "client": 360,
+        "scroll": 360,
+        "content": {
+          "x": 0,
+          "y": 120,
+          "right": 360,
+          "bottom": 747.984375,
+          "width": 360,
+          "height": 627.984375
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "right": 344,
+          "bottom": 831.984375,
+          "width": 328,
+          "height": 84
+        },
+        "amounts": [
+          {
+            "client": 264,
+            "scroll": 264
+          },
+          {
+            "client": 83,
+            "scroll": 83
+          },
+          {
+            "client": 83,
+            "scroll": 83
+          },
+          {
+            "client": 83,
+            "scroll": 83
+          },
+          {
+            "client": 128,
+            "scroll": 128
+          },
+          {
+            "client": 128,
+            "scroll": 128
+          },
+          {
+            "client": 132,
+            "scroll": 132
+          }
+        ],
+        "controls": [
+          {
+            "x": 20,
+            "y": 1130.46875,
+            "right": 113.28125,
+            "bottom": 1178.46875,
+            "width": 93.28125,
+            "height": 48
+          },
+          {
+            "x": 125.28125,
+            "y": 1130.46875,
+            "right": 218.5625,
+            "bottom": 1178.46875,
+            "width": 93.28125,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 390x844 layout",
+      "status": "PASS",
+      "detail": {
+        "viewport": 390,
+        "doc": 390,
+        "client": 390,
+        "scroll": 390,
+        "content": {
+          "x": 0,
+          "y": 120,
+          "right": 390,
+          "bottom": 747.984375,
+          "width": 390,
+          "height": 627.984375
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "right": 374,
+          "bottom": 831.984375,
+          "width": 358,
+          "height": 84
+        },
+        "amounts": [
+          {
+            "client": 294,
+            "scroll": 294
+          },
+          {
+            "client": 93,
+            "scroll": 93
+          },
+          {
+            "client": 93,
+            "scroll": 93
+          },
+          {
+            "client": 93,
+            "scroll": 93
+          },
+          {
+            "client": 143,
+            "scroll": 143
+          },
+          {
+            "client": 143,
+            "scroll": 143
+          },
+          {
+            "client": 147,
+            "scroll": 147
+          }
+        ],
+        "controls": [
+          {
+            "x": 20,
+            "y": 1136.8125,
+            "right": 113.28125,
+            "bottom": 1184.8125,
+            "width": 93.28125,
+            "height": 48
+          },
+          {
+            "x": 125.28125,
+            "y": 1136.8125,
+            "right": 218.5625,
+            "bottom": 1184.8125,
+            "width": 93.28125,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 430x844 layout",
+      "status": "PASS",
+      "detail": {
+        "viewport": 430,
+        "doc": 430,
+        "client": 430,
+        "scroll": 430,
+        "content": {
+          "x": 0,
+          "y": 120,
+          "right": 430,
+          "bottom": 747.984375,
+          "width": 430,
+          "height": 627.984375
+        },
+        "nav": {
+          "x": 16,
+          "y": 747.984375,
+          "right": 414,
+          "bottom": 831.984375,
+          "width": 398,
+          "height": 84
+        },
+        "amounts": [
+          {
+            "client": 334,
+            "scroll": 334
+          },
+          {
+            "client": 106,
+            "scroll": 106
+          },
+          {
+            "client": 106,
+            "scroll": 106
+          },
+          {
+            "client": 106,
+            "scroll": 106
+          },
+          {
+            "client": 163,
+            "scroll": 163
+          },
+          {
+            "client": 163,
+            "scroll": 163
+          },
+          {
+            "client": 167,
+            "scroll": 167
+          }
+        ],
+        "controls": [
+          {
+            "x": 20,
+            "y": 1145.25,
+            "right": 113.28125,
+            "bottom": 1193.25,
+            "width": 93.28125,
+            "height": 48
+          },
+          {
+            "x": 125.28125,
+            "y": 1145.25,
+            "right": 218.5625,
+            "bottom": 1193.25,
+            "width": 93.28125,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "name": "WebKit: headings/progressbar/accessible snapshot and text contrast",
+      "status": "PASS",
+      "detail": {
+        "minContrast": 4.75362885813678
+      }
+    },
+    {
+      "name": "WebKit: keyboard Tab/Shift+Tab, Enter/Space actions and h1 focus",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: 360 root 200% text with no clipped values",
+      "status": "PASS",
+      "detail": {
+        "viewport": 360,
+        "doc": 360,
+        "client": 360,
+        "scroll": 360,
+        "content": {
+          "x": 0,
+          "y": 240,
+          "right": 360,
+          "bottom": 433.625,
+          "width": 360,
+          "height": 193.625
+        },
+        "nav": {
+          "x": 32,
+          "y": 433.625,
+          "right": 328,
+          "bottom": 616,
+          "width": 296,
+          "height": 182.375
+        },
+        "amounts": [
+          {
+            "client": 168,
+            "scroll": 168
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          }
+        ],
+        "controls": [
+          {
+            "x": 40,
+            "y": -30.390625,
+            "right": 224.546875,
+            "bottom": 65.609375,
+            "width": 184.546875,
+            "height": 96
+          },
+          {
+            "x": 40,
+            "y": 89.609375,
+            "right": 224.546875,
+            "bottom": 185.609375,
+            "width": 184.546875,
+            "height": 96
+          }
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 390 root 200% text with no clipped values",
+      "status": "PASS",
+      "detail": {
+        "viewport": 390,
+        "doc": 390,
+        "client": 390,
+        "scroll": 390,
+        "content": {
+          "x": 0,
+          "y": 240,
+          "right": 390,
+          "bottom": 637.609375,
+          "width": 390,
+          "height": 397.609375
+        },
+        "nav": {
+          "x": 32,
+          "y": 637.609375,
+          "right": 358,
+          "bottom": 819.984375,
+          "width": 326,
+          "height": 182.375
+        },
+        "amounts": [
+          {
+            "client": 198,
+            "scroll": 198
+          },
+          {
+            "client": 214,
+            "scroll": 214
+          },
+          {
+            "client": 214,
+            "scroll": 214
+          },
+          {
+            "client": 214,
+            "scroll": 214
+          },
+          {
+            "client": 214,
+            "scroll": 214
+          },
+          {
+            "client": 214,
+            "scroll": 214
+          },
+          {
+            "client": 214,
+            "scroll": 214
+          }
+        ],
+        "controls": [
+          {
+            "x": 40,
+            "y": 174.359375,
+            "right": 224.546875,
+            "bottom": 270.359375,
+            "width": 184.546875,
+            "height": 96
+          },
+          {
+            "x": 40,
+            "y": 294.359375,
+            "right": 224.546875,
+            "bottom": 390.359375,
+            "width": 184.546875,
+            "height": 96
+          }
+        ]
+      }
+    },
+    {
+      "name": "WebKit: 430 root 200% text with no clipped values",
+      "status": "PASS",
+      "detail": {
+        "viewport": 430,
+        "doc": 430,
+        "client": 430,
+        "scroll": 430,
+        "content": {
+          "x": 0,
+          "y": 240,
+          "right": 430,
+          "bottom": 637.609375,
+          "width": 430,
+          "height": 397.609375
+        },
+        "nav": {
+          "x": 32,
+          "y": 637.609375,
+          "right": 398,
+          "bottom": 819.984375,
+          "width": 366,
+          "height": 182.375
+        },
+        "amounts": [
+          {
+            "client": 238,
+            "scroll": 238
+          },
+          {
+            "client": 254,
+            "scroll": 254
+          },
+          {
+            "client": 254,
+            "scroll": 254
+          },
+          {
+            "client": 254,
+            "scroll": 254
+          },
+          {
+            "client": 254,
+            "scroll": 254
+          },
+          {
+            "client": 254,
+            "scroll": 254
+          },
+          {
+            "client": 254,
+            "scroll": 254
+          }
+        ],
+        "controls": [
+          {
+            "x": 40,
+            "y": 174.359375,
+            "right": 224.546875,
+            "bottom": 270.359375,
+            "width": 184.546875,
+            "height": 96
+          },
+          {
+            "x": 40,
+            "y": 294.359375,
+            "right": 224.546875,
+            "bottom": 390.359375,
+            "width": 184.546875,
+            "height": 96
+          }
+        ]
+      }
+    },
+    {
+      "name": "WebKit: negative safe integer and long Korean goal at 200% retain exact accessible amounts",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "WebKit: safe area 24/34 with 200%",
+      "status": "PASS",
+      "detail": {
+        "viewport": 360,
+        "doc": 360,
+        "client": 360,
+        "scroll": 360,
+        "content": {
+          "x": 0,
+          "y": 264,
+          "right": 360,
+          "bottom": 399.625,
+          "width": 360,
+          "height": 135.625
+        },
+        "nav": {
+          "x": 32,
+          "y": 399.625,
+          "right": 328,
+          "bottom": 616,
+          "width": 296,
+          "height": 216.375
+        },
+        "amounts": [
+          {
+            "client": 168,
+            "scroll": 168
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          }
+        ],
+        "controls": [
+          {
+            "x": 40,
+            "y": 2920.609375,
+            "right": 224.546875,
+            "bottom": 3016.609375,
+            "width": 184.546875,
+            "height": 96
+          },
+          {
+            "x": 40,
+            "y": 3040.609375,
+            "right": 224.546875,
+            "bottom": 3136.609375,
+            "width": 184.546875,
+            "height": 96
+          }
+        ]
+      }
+    },
+    {
+      "name": "WebKit: safe area 47/24 with 200%",
+      "status": "PASS",
+      "detail": {
+        "viewport": 360,
+        "doc": 360,
+        "client": 360,
+        "scroll": 360,
+        "content": {
+          "x": 0,
+          "y": 287,
+          "right": 360,
+          "bottom": 409.625,
+          "width": 360,
+          "height": 122.625
+        },
+        "nav": {
+          "x": 32,
+          "y": 409.625,
+          "right": 328,
+          "bottom": 616,
+          "width": 296,
+          "height": 206.375
+        },
+        "amounts": [
+          {
+            "client": 168,
+            "scroll": 168
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          }
+        ],
+        "controls": [
+          {
+            "x": 40,
+            "y": 2943.609375,
+            "right": 224.546875,
+            "bottom": 3039.609375,
+            "width": 184.546875,
+            "height": 96
+          },
+          {
+            "x": 40,
+            "y": 3063.609375,
+            "right": 224.546875,
+            "bottom": 3159.609375,
+            "width": 184.546875,
+            "height": 96
+          }
+        ]
+      }
+    },
+    {
+      "name": "WebKit: safe area 34/47 with 200%",
+      "status": "PASS",
+      "detail": {
+        "viewport": 360,
+        "doc": 360,
+        "client": 360,
+        "scroll": 360,
+        "content": {
+          "x": 0,
+          "y": 274,
+          "right": 360,
+          "bottom": 386.625,
+          "width": 360,
+          "height": 112.625
+        },
+        "nav": {
+          "x": 32,
+          "y": 386.625,
+          "right": 328,
+          "bottom": 616,
+          "width": 296,
+          "height": 229.375
+        },
+        "amounts": [
+          {
+            "client": 168,
+            "scroll": 168
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          },
+          {
+            "client": 184,
+            "scroll": 184
+          }
+        ],
+        "controls": [
+          {
+            "x": 40,
+            "y": 2930.609375,
+            "right": 224.546875,
+            "bottom": 3026.609375,
+            "width": 184.546875,
+            "height": 96
+          },
+          {
+            "x": 40,
+            "y": 3050.609375,
+            "right": 224.546875,
+            "bottom": 3146.609375,
+            "width": 184.546875,
+            "height": 96
+          }
+        ]
+      }
+    },
+    {
+      "name": "WebKit: repeated mount/dispose and all layout interaction remains read-only",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "All browser console.error/pageerror/requestfailed/HTTP 4xx-5xx counts are zero",
+      "status": "PASS",
+      "detail": true
+    }
+  ],
+  "screenshots": [
+    "screenshots/default.png",
+    "screenshots/default-goal-detail.png",
+    "screenshots/default-bottom.png",
+    "screenshots/partial-report.png",
+    "screenshots/score-zero.png",
+    "screenshots/score-100.png",
+    "screenshots/score-unavailable.png",
+    "screenshots/score-negative.png",
+    "screenshots/score-high.png",
+    "screenshots/score-string.png",
+    "screenshots/score-fraction.png",
+    "screenshots/monthly-invalid.png",
+    "screenshots/money-zero.png",
+    "screenshots/money-negative.png",
+    "screenshots/large-money.png",
+    "screenshots/large-money-goal-detail.png",
+    "screenshots/large-money-bottom.png",
+    "screenshots/goal-empty.png",
+    "screenshots/goal-active.png",
+    "screenshots/goal-active-goal-detail.png",
+    "screenshots/goal-active-bottom.png",
+    "screenshots/goal-complete.png",
+    "screenshots/goal-complete-goal-detail.png",
+    "screenshots/goal-complete-bottom.png",
+    "screenshots/goal-over.png",
+    "screenshots/goal-invalid.png",
+    "screenshots/long-goal-title.png",
+    "screenshots/long-goal-title-goal-detail.png",
+    "screenshots/long-goal-title-bottom.png",
+    "screenshots/html-text.png",
+    "screenshots/records-empty.png",
+    "screenshots/records-missing.png",
+    "screenshots/records-mixed.png",
+    "screenshots/records-unknown-date.png",
+    "screenshots/empty-object.png",
+    "screenshots/empty-report.png",
+    "screenshots/invalid-report.png",
+    "screenshots/invalid-root.png",
+    "screenshots/storage-read.png",
+    "screenshots/storage-getter.png",
+    "screenshots/record-in-report.png",
+    "screenshots/record-out-report.png",
+    "screenshots/goal-D-report.png",
+    "screenshots/goal-E-report.png",
+    "screenshots/360x844-report.png",
+    "screenshots/390x844-report.png",
+    "screenshots/430x844-report.png",
+    "screenshots/200percent.png",
+    "screenshots/200percent-score.png",
+    "screenshots/200percent-flow.png",
+    "screenshots/200percent-goal.png",
+    "screenshots/200percent-bottom.png",
+    "screenshots/390-200percent.png",
+    "screenshots/430-200percent.png",
+    "screenshots/large-long-200percent.png",
+    "screenshots/large-money-200percent-flow.png",
+    "screenshots/large-negative-200percent-exact.png",
+    "screenshots/large-goal-200percent-exact.png",
+    "screenshots/long-goal-200percent-detail.png",
+    "screenshots/large-long-200percent-bottom.png",
+    "screenshots/safe-24-34.png",
+    "screenshots/safe-47-24.png",
+    "screenshots/safe-34-47.png"
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "requestFailures": [],
+  "httpErrors": [],
+  "browsers": {
+    "Chromium": {
+      "version": "153.0.8010.12",
+      "executable": "/Users/jeonghu/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell"
+    },
+    "WebKit": {
+      "version": "26.5",
+      "executable": "/Users/jeonghu/Library/Caches/ms-playwright/webkit-2287/pw_run.sh"
+    }
+  },
+  "storageChecks": [
+    {
+      "label": "Chromium/default",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/partial-report",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/score-zero",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/score-100",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/score-unavailable",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/score-negative",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/score-high",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/score-string",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/score-fraction",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/monthly-invalid",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/money-zero",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/money-negative",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/large-money",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/goal-empty",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/goal-active",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/goal-complete",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/goal-over",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/goal-invalid",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/long-goal-title",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/html-text",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/records-empty",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/records-missing",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/records-mixed",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/records-unknown-date",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/empty-object",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/empty-report",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 3
+    },
+    {
+      "label": "Chromium/invalid-report",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 2
+    },
+    {
+      "label": "Chromium/invalid-root",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 2
+    },
+    {
+      "label": "Chromium/storage-read",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 2
+    },
+    {
+      "label": "Chromium/storage-getter",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 2
+    },
+    {
+      "label": "Chromium/A",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 2
+    },
+    {
+      "label": "Chromium/in",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/out",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/D",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/E",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/F",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/G",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/scroll-focus",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/report-home",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 3
+    },
+    {
+      "label": "Chromium/report-record",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 5
+    },
+    {
+      "label": "Chromium/report-goal",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 7
+    },
+    {
+      "label": "Chromium/report-all",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 8
+    },
+    {
+      "label": "Chromium/reload",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "Chromium/H",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 2
+    },
+    {
+      "label": "Chromium/responsive-keyboard",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 30
+    },
+    {
+      "label": "WebKit/default",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/partial-report",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/score-zero",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/score-100",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/score-unavailable",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/score-negative",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/score-high",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/score-string",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/score-fraction",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/monthly-invalid",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/money-zero",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/money-negative",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/large-money",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/goal-empty",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/goal-active",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/goal-complete",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/goal-over",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/goal-invalid",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/long-goal-title",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/html-text",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/records-empty",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/records-missing",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/records-mixed",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/records-unknown-date",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/empty-object",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/empty-report",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 3
+    },
+    {
+      "label": "WebKit/invalid-report",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 2
+    },
+    {
+      "label": "WebKit/invalid-root",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 2
+    },
+    {
+      "label": "WebKit/storage-read",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 2
+    },
+    {
+      "label": "WebKit/storage-getter",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 2
+    },
+    {
+      "label": "WebKit/A",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 2
+    },
+    {
+      "label": "WebKit/in",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/out",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/D",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/E",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/F",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/G",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/scroll-focus",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/report-home",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 3
+    },
+    {
+      "label": "WebKit/report-record",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 5
+    },
+    {
+      "label": "WebKit/report-goal",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 7
+    },
+    {
+      "label": "WebKit/report-all",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 8
+    },
+    {
+      "label": "WebKit/reload",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 1
+    },
+    {
+      "label": "WebKit/H",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 2
+    },
+    {
+      "label": "WebKit/responsive-keyboard",
+      "rawUnchanged": true,
+      "writes": 0,
+      "otherKeys": 0,
+      "reads": 30
+    }
+  ],
+  "limitations": [
+    "Browser viewport, keyboard and accessibility tree checks; no physical screen reader or child usability study"
+  ],
+  "status": "PASS",
+  "finishedAt": "2026-10-03T06:54:52.287Z"
+}

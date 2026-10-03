@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PocketWON 레퍼런스 비교</title>
+<style>
+  *{box-sizing:border-box}body{margin:0;background:#fafcfd;color:#343b49;font:16px/1.5 system-ui,sans-serif}
+  main{max-width:1080px;margin:40px auto;padding:24px}h1{font-size:28px;letter-spacing:-1px}p{color:#5c6876}
+  .comparison{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;margin-top:32px}
+  figure{margin:0;padding:20px;background:#fff;border-radius:30px;box-shadow:0 10px 30px #30435617}
+  figcaption{font-weight:750;margin-bottom:16px}img{display:block;width:100%;height:auto}
+  figure:last-child img{max-width:390px;margin:auto}a{color:#0069b7}li{margin-bottom:8px}
+  @media(max-width:700px){main{margin:0;padding:20px}.comparison{grid-template-columns:1fr}}
+</style>
+<main>
+  <h1>PocketWON · 레퍼런스 비교</h1>
+  <p>왼쪽은 제공된 레퍼런스, 오른쪽은 실제 Chromium에서 캡처한 390px Home입니다. 오른쪽 화면의 금액·텍스트·버튼·차트·카드는 모두 프런트엔드 코드로 렌더링됩니다.</p>
+  <div class="comparison">
+    <figure><figcaption>제공된 레퍼런스</figcaption><img src="reference.png" alt="Progress 스타일 레퍼런스"></figure>
+    <figure><figcaption>구현된 PocketWON</figcaption><img src="screenshots/chromium-390-home-full.png" alt="PocketWON 전체 Home 실행 화면"></figure>
+  </div>
+  <h2>실행 화면을 확인하고 보정한 부분</h2>
+  <ul>
+    <li>흰색 카드·하늘색 패널·청회색 선화·파란 pill CTA의 대비와 28px stagger 리듬을 적용했습니다.</li>
+    <li>마스코트의 투명 여백을 고려해 summary artwork를 확대하고 패널 경계 밖으로 노출했습니다.</li>
+    <li>좁은 카드의 금액은 한 열로 정리해 숫자 겹침과 불필요한 축약을 줄였습니다.</li>
+    <li>모바일 도크를 화면 바닥에서 12px 띄우고, 200% 글자 크기와 safe area에서 마지막 카드를 확인할 수 있게 했습니다.</li>
+    <li>레퍼런스의 밝은 accent #0190F8을 유지하며, 흰 글자가 있는 CTA는 4.5:1 대비를 충족하는 #0077D8을 사용했습니다.</li>
+  </ul>
+  <p><a href="verification.json">시각 검증 67개</a> · <a href="regression-summary.json">전체 회귀 검증 396개</a></p>
+</main>
+</html>

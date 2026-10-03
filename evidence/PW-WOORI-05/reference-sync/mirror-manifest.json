@@ -1,0 +1,119 @@
+{
+  "status": "MATCH",
+  "active": "ks6s3juocjzc2.kimi.page",
+  "mirror": "deployments/PW-WOORI-05/site/out",
+  "files": {
+    "assets/fonts/OFL.txt": {
+      "sha256": "d31ddd9f2bed32fd7e302a205cf2380ba0de6529152d239ef99cfb6f261bfc04",
+      "bytes": 4418
+    },
+    "assets/fonts/PretendardVariable.woff2": {
+      "sha256": "9599f12fd42fc0bce1cd50b47a0c022e108d7aa64dd0d1bb0ed44f3282d900b4",
+      "bytes": 2057688
+    },
+    "assets/pocketwon/characters/pocketwon-mascot-all.png": {
+      "sha256": "84cdcf12e98704532b5730cd1ccc3d871e77b72b4eafb790586a426970ea7e6d",
+      "bytes": 252480
+    },
+    "assets/pocketwon/characters/pocketwon-mascot-balance.png": {
+      "sha256": "cc36876930f3c6a1f37cbe31f4c99ad7c5736db021f9b5cdfa7a4034d89f96d2",
+      "bytes": 172953
+    },
+    "assets/pocketwon/characters/pocketwon-mascot-empty.png": {
+      "sha256": "04a9cafefc7c99ee71b17317cee4243d08cebab503a0a8f76de0599736db7f33",
+      "bytes": 158002
+    },
+    "assets/pocketwon/characters/pocketwon-mascot-goal.png": {
+      "sha256": "88d88053a548858e92be7489bfcc08bfb3588239249d352507678f876b5dde96",
+      "bytes": 176984
+    },
+    "assets/pocketwon/characters/pocketwon-mascot-master.png": {
+      "sha256": "7344c6221a688d1eaa9914256e496cdd151062351eead8a41b8c2670110f9d11",
+      "bytes": 634885
+    },
+    "assets/pocketwon/characters/pocketwon-mascot-record.png": {
+      "sha256": "d7efce9b543caec460f87b45a16c3480ef9d3f6e8c62360640ce3dd6d51bd4b4",
+      "bytes": 223054
+    },
+    "assets/pocketwon/characters/pocketwon-mascot-report.png": {
+      "sha256": "852999b6ed1ed1042bf205b99f23a4381b657d38cbbf6ff55e0379d5e907b666",
+      "bytes": 161850
+    },
+    "assets/pocketwon/characters/pocketwon-mascot-success.png": {
+      "sha256": "db8014e447eae929d8f02c32f320342cb568c6318eb51e9d4844850e26ba7597",
+      "bytes": 189462
+    },
+    "index.html": {
+      "sha256": "d2d4c09c1f2a9ff4fc8cd1b6f305d56411ab0e83173510a7859fbebe11764bbe",
+      "bytes": 2167
+    },
+    "scripts/all.js": {
+      "sha256": "425772437b0fa2b894694924a711b84bda923ae011c318eaacbcca4f14be9dfa",
+      "bytes": 1948
+    },
+    "scripts/app.js": {
+      "sha256": "adf7fe1f5da31281d33562cdd8a645e00b7796e8ddf4194fc6ebf0c053b1c1f5",
+      "bytes": 3918
+    },
+    "scripts/goal.js": {
+      "sha256": "101896d00674fc8e5f52b7cec9568767c62fc0424b6d6fc3c5223de50ba0e238",
+      "bytes": 14081
+    },
+    "scripts/home.js": {
+      "sha256": "ea758a7d0eed6b07859c4d98de90cf4d259bf1ce7f5072b94c26675ac4156782",
+      "bytes": 10892
+    },
+    "scripts/icons.js": {
+      "sha256": "86231f75d52a658eb8ec64968b6ab4a965e087df64c84be60d8bdd442f1738c2",
+      "bytes": 963
+    },
+    "scripts/illustrations.js": {
+      "sha256": "f080ded82d0c8814ebb25f7d748f95041a90e2a8da24b95ac0aaff2c32a82a04",
+      "bytes": 2123
+    },
+    "scripts/record.js": {
+      "sha256": "a8f290981f7e8d8abdc95e44563417689b4d98abfb9cc88b9c64c20fd18b3fbb",
+      "bytes": 14727
+    },
+    "scripts/report.js": {
+      "sha256": "ad2e2f4bacd1ae12048c017b688f2c18c720450c22983e779ca00e5462518a65",
+      "bytes": 9472
+    },
+    "scripts/state.js": {
+      "sha256": "99e9431075673a621d77e0ba11e6e49ef374a9962d1886d458355216320395f7",
+      "bytes": 11300
+    },
+    "scripts/tabs.js": {
+      "sha256": "fb3626ad3f9829a05505984827e8c8c96f94e4f1d7a4fbc5189801b7de87fb58",
+      "bytes": 376
+    },
+    "styles/base.css": {
+      "sha256": "5fcd0c00af63afbd34b4f613b164034eb94cd4051d1e81f65e5c86bb27cd6cc9",
+      "bytes": 4415
+    },
+    "styles/goal.css": {
+      "sha256": "d5c9493b0b3f59afeded2a047547e540f1762349b10f4bc11601d593de74ec88",
+      "bytes": 7985
+    },
+    "styles/home.css": {
+      "sha256": "a82a5d0cfc8c6b8d7ee328ae5b4cb554a8b41ac0193ceb4ab3eb7ccbb82a6b2d",
+      "bytes": 11564
+    },
+    "styles/record.css": {
+      "sha256": "02a54beab0d85311a4a6fdf8333cdceb4782fd25a0731c399af921c49ae8db54",
+      "bytes": 8214
+    },
+    "styles/report.css": {
+      "sha256": "29c1ea625b556d41c799e0731d3e52f0035a9563f1e5fd6e736b854974ebf41f",
+      "bytes": 6221
+    },
+    "styles/shell.css": {
+      "sha256": "8716af2429d2a8c418db4b09691587dd0334bc8e1b3b3b09869178087c76e58b",
+      "bytes": 6299
+    },
+    "styles/tokens.css": {
+      "sha256": "91288675f6c2d540d75261e597a0a140dd96806798914ce75cffe25415f830be",
+      "bytes": 4632
+    }
+  }
+}
