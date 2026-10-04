@@ -352,9 +352,6 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
       : '사용자 간 랭킹은 아직 연결되지 않았어요. 지금은 리포트에서 내 기록으로 계산한 습관 점수를 확인할 수 있어요.';
     const panel = button('', () => openMenu('용돈 랭킹', description, [['내 습관 리포트 보기', featureRoute('habit-analysis')]], panel), 'pw-home-insight pw-home-ranking');
     panel.dataset.action = 'insight-ranking'; panel.dataset.status = isDemo ? 'demo' : 'unavailable';
-    const caption = el('span', 'pw-home-ranking-title', '용돈 랭킹');
-    if (isDemo) caption.append(el('span', 'pw-home-ranking-top', 'TOP 3'));
-    panel.append(caption);
     if (isDemo) {
       panel.setAttribute('aria-label', '용돈 랭킹 예시, ' + data.entries.map(item => `${item.rank}위 ${item.name}`).join(', ') + ', 안내 열기');
       const podium = el('span', 'pw-home-ranking-podium'); podium.setAttribute('aria-hidden', 'true');

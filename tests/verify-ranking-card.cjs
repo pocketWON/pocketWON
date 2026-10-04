@@ -8,18 +8,19 @@ async function measure(page,name){
   await ready(page);
   const g=await page.evaluate(()=>{
     const rect=n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,width:r.width,height:r.height};};
-    return {panel:rect(document.querySelector('.pw-home-ranking')),title:rect(document.querySelector('.pw-home-ranking-title')),
+    return {panel:rect(document.querySelector('.pw-home-ranking')),
       people:[...document.querySelectorAll('.pw-home-ranking-person')].map(n=>({rank:+n.dataset.rank,box:rect(n),avatar:rect(n.querySelector('.pw-home-ranking-avatar')),medal:rect(n.querySelector('svg')),name:rect(n.querySelector('.pw-home-ranking-name'))})),
       advice:rect(document.querySelector('.pw-home-insight--advice')),adviceCopy:rect(document.querySelector('.pw-home-insight--advice .pw-home-insight-body')),
       nav:rect(document.querySelector('.pw-bottom-navigation')),scroll:[document.documentElement.scrollWidth,document.documentElement.scrollHeight],viewport:[innerWidth,innerHeight]};
   });
   report.geometry.push({name,...g});
+  assert.equal(await page.locator('.pw-home-ranking-title,.pw-home-ranking-top').count(),0);
   const contains=(parent,child)=>child.x>=parent.x-1&&child.right<=parent.right+1&&child.y>=parent.y-1&&child.bottom<=parent.bottom+1;
   assert.deepEqual(g.people.map(p=>p.rank),[2,1,3],name+' podium order');
   for(const p of g.people){
     assert(Math.abs(p.avatar.width-p.avatar.height)<1,name+' stretched avatar');
     assert(contains(g.panel,p.box)&&contains(p.box,p.avatar)&&contains(p.box,p.name)&&contains(p.box,p.medal),name+' podium clipping');
-    assert(p.medal.y>=g.title.bottom-1&&p.avatar.y>=p.medal.bottom&&p.name.y>=p.avatar.bottom,name+' medal, avatar or name overlap');
+    assert(p.medal.y>=g.panel.y&&p.avatar.y>=p.medal.bottom&&p.name.y>=p.avatar.bottom,name+' medal, avatar or name overlap');
   }
   const [second,first,third]=g.people;
   assert(first.avatar.width>second.avatar.width*1.2&&first.avatar.width>third.avatar.width*1.2,name+' first place prominence');
