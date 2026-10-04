@@ -49,10 +49,11 @@
 
 ## 공개 반영
 
-주간 그래프 변경 `1208ca1`과 랭킹 확대 `92a262a`을 main에 푸시하고 함께 공개 배포했다.
+주간 그래프와 랭킹 확대에 이어 32,000원 도넛 `edf30cb`, 밝은 카드 표면 `fbdec7e`, 중앙 로고 돌출 `1b42404`를 main에 푸시하고 함께 공개 배포했다. 하단바 색상은 기존 흰 배경·파랑/청회색 아이콘으로 복원한 상태다.
 
 - 공개 앱: https://pocketwon.vercel.app/
-- 배포 ID: `dpl_CgtA1Q3Yv2Db4cc5xupUuaF5ttw8`
-- 배포 주소: https://pocketwon-p20ngrmt6-clcocloud.vercel.app
-- `evidence/RANKING-EXPANDED/production/verification.json`: 공개 HTML·home.js·home.css의 HTTP 200 및 로컬 SHA-256 일치 검증.
-- 사용자의 기존 로컬 앱 탭에서도 두 변경을 함께 확인하고 최신 화면을 열어두었다.
+- 배포 ID: `dpl_9FaZNTpmLj8w9ptZ3q2r1tYKTAo4`
+- 배포 주소: https://pocketwon-87hqhsjf8-clcocloud.vercel.app
+- `evidence/RAISED-NAV/production/verification.json`: 공개 HTML·demo.js·home.css·tokens.css·viewport.css의 HTTP 200 및 로컬 SHA-256 일치 검증.
+- 두 브라우저의 화면·전환 224건, 중앙 버튼·기록창 상호작용 6건 통과.
+- 사용자의 기존 로컬 앱 탭을 새로고침해 최종 화면을 열어두었다.
