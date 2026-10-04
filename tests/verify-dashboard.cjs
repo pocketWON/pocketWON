@@ -160,7 +160,7 @@ async function navigation(test, engine) {
 }
 async function referenceSemantics(page) {
   assert((await page.locator('.pw-home-money').innerText()).includes('32,000'));
-  assert.equal(await page.locator('.pw-home-hero-title .pw-home-card-title').innerText(),'남은 용돈');
+  assert.equal(await page.locator('.pw-home-hero-title .pw-home-card-title').innerText(),'정후의 용돈');
   assert.equal(await page.locator('.pw-home-saving-track').getAttribute('aria-valuenow'), '1');
   assert.equal(await page.locator('.pw-home-saving-track').getAttribute('aria-valuemax'), '3');
   assert.equal(await page.locator('.pw-home-donut-segment').count(), 7);

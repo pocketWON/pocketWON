@@ -183,7 +183,7 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
     const hero = el('section', 'pw-home-hero'); hero.dataset.pwMotionCard = '';
     hero.setAttribute('aria-labelledby', 'pw-home-balance-title');
     const body = el('div', 'pw-home-hero-body'), title = el('h2'); title.id = 'pw-home-balance-title';
-    title.append(link('남은 용돈', { screen:'record', stage:'list' }, 'pw-home-hero-title', 'balance-title'));
+    title.append(link('정후의 용돈', { screen:'record', stage:'list' }, 'pw-home-hero-title', 'balance-title'));
     const balance = money(dashboard.balance === undefined ? model.balance : dashboard.balance, 'pw-home-money'); balance.dataset.money = 'balance';
     if ((balance.querySelector('.pw-money-digits')?.textContent.length || 0) > 7) balance.dataset.wide = 'true';
     const balanceAction = button('', () => go({ screen: 'record', stage: 'list' }, balanceAction), 'pw-home-balance-link');
