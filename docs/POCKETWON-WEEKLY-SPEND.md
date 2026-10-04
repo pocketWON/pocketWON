@@ -45,7 +45,11 @@
 - `interaction.json`: 두 엔진, 세 화면 크기에서 중앙 로고 클릭·기록 모달 간격·닫기 후 원래 버튼 포커스 복원·저장 변경 없음 검증.
 - `delivery/`: 앱·미러 85파일 일치, 과거 증거·원본 1,168개 보존.
 
-![최종 앱](../evidence/RAISED-NAV/production/live-app.jpg)
+## 두 내부 카드의 표면 제거
+
+랭킹·‘이렇게 해보세요!’ 버튼의 배경과 테두리만 투명하게 변경했다. 바깥 용돈 인사이트 박스와 미션 배경, 패딩·열 비율·위치·크기·내용·클릭 동작은 유지한다. Chromium·WebKit에서 이전 배치 좌표와 내용이 모두 일치하고, 두 내부 표면만 투명함을 확인했다. 증거는 `evidence/OPEN-INNER-CARDS/`에 보존한다.
+
+![최종 앱](../evidence/OPEN-INNER-CARDS/production/live-app.jpg)
 
 ## 공개 반영
 
