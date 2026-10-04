@@ -45,3 +45,14 @@
 최종 결과는 `summary.json`에 정리한다. 보정 과정의 실패 폴더도 보존하며, 위 최종 통과 폴더와 구분한다. 작은 화면의 본문 축소 정책은 기존 fullscreen 요구에 따른 것이다. 물리 기기의 브라우저 UI나 키보드는 이번에 직접 검사하지 않았다.
 
 ![최종 홈](../evidence/PURCHASE-DASHBOARD/names-offset/screenshots/chromium-final-demo.png)
+
+## 공개 반영
+
+소스 커밋 `e3292f2`를 `pocketWON/pocketWON` main에 푸시하고 기존 Vercel 프로젝트에 배포했다.
+
+- 공개 앱: https://pocketwon.vercel.app/
+- 배포 ID: `dpl_Djv7uzMvmRQgqmiwyjh4mwuXE8wc`
+- 원본 배포: https://pocketwon-pkd2g8uhi-clcocloud.vercel.app
+- 공개 HTML·변경 CSS·JS 7개 경로가 HTTP 200이며 로컬 SHA-256과 일치한다.
+- 현재 인앱 브라우저에서 공개 앱을 열어 5개 품목명, 가격 제거, 점수 배지, 왕관을 확인했다.
+- 검증 기록과 실제 앱 캡처: `production/verification.json`, `production/live-app.png`.

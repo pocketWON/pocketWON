@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "sourceCommit": "e3292f2a438c423bdfa12a3e5f1b8c997eaeaff3",
+  "alias": "https://pocketwon.vercel.app/",
+  "deploymentId": "dpl_Djv7uzMvmRQgqmiwyjh4mwuXE8wc",
+  "deploymentUrl": "https://pocketwon-pkd2g8uhi-clcocloud.vercel.app",
+  "http": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "91126d029acef2045305644b5faa34ee927aecfe4aab89c6cc4e9490c8ca2ba8",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/home.js",
+      "status": 200,
+      "sha256": "56d0ecf2e636245d72add91074b664fbd8439c05f543089e47189684a09c172e",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/demo.js",
+      "status": 200,
+      "sha256": "7b6ab0ffdef2a904e899335be886bd0e6cc24ec2c81ffd773cb40091288bc687",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/report.js",
+      "status": 200,
+      "sha256": "37613bc2f27b96bd1b701055e50491f17d633c088006955235581720f8bf6265",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/viewport.js",
+      "status": 200,
+      "sha256": "a63009f001e46e8732b8c2f75e10166a4750fb9d2318292e883f01752744976b",
+      "matchesLocal": true
+    },
+    {
+      "path": "styles/home.css",
+      "status": 200,
+      "sha256": "1552cbcbafe62c3be64ff6c2fc9fab3d49f28da106c23f322aa5aebc241528cb",
+      "matchesLocal": true
+    },
+    {
+      "path": "styles/viewport.css",
+      "status": 200,
+      "sha256": "e8c7eff9dd2df25dcc8485fc9aea3151a2ee3ae764ee6ee4c2a2727b1c156a9a",
+      "matchesLocal": true
+    }
+  ]
+}

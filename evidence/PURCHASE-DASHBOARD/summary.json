@@ -39,5 +39,13 @@
     "Body may scale on short/200%-text screens per existing fullscreen requirement.",
     "Full-detail title opens existing all-records list; no parent period configuration UI or backend added."
   ],
-  "intermediateEvidence": "All other run directories are preserved iteration evidence, including failures and runs superseded by user revisions."
+  "intermediateEvidence": "All other run directories are preserved iteration evidence, including failures and runs superseded by user revisions.",
+  "production": {
+    "status": "PASS",
+    "sourceCommit": "e3292f2",
+    "deploymentId": "dpl_Djv7uzMvmRQgqmiwyjh4mwuXE8wc",
+    "url": "https://pocketwon.vercel.app/",
+    "http200AndShaMatches": 7,
+    "actualBrowserVerified": true
+  }
 }
