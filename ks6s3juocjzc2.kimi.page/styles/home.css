@@ -122,9 +122,6 @@
 .pw-home-insight-emoji { font-family:'Apple Color Emoji','Segoe UI Emoji',sans-serif; font-size:calc(17 * var(--pw-u)); line-height:1; }
 .pw-home-insight-chevron { flex:none; width:calc(7 * var(--pw-u)); height:calc(12 * var(--pw-u)); margin-left:auto; color:var(--pw-nav-inactive); }
 .pw-home-insight--advice .pw-home-insight-body { margin:0; font-size:calc(11 * var(--pw-u)); line-height:1.42; letter-spacing:-.045em; }
-.pw-home-insight--positive .pw-home-insight-body { max-width: calc(121 * var(--pw-u)); }
-.pw-home .pw-home-insight-art { inset: auto calc(0 * var(--pw-u)) calc(5 * var(--pw-u)) auto; width: calc(49 * var(--pw-u)); height: calc(48 * var(--pw-u)); }
-.pw-home .pw-home-insight-art.pw-illustration-panel > .pw-sprite { position: absolute; width: calc(85 * var(--pw-u)); height: calc(85 * var(--pw-u)); left: 50%; top: 50%; translate: -52.5% -54.7%; transform: none; max-width: none; }
 .pw-home-insight button { font: inherit; }
 .pw-home button:focus-visible { outline: 2px solid var(--pw-primary-text); outline-offset: 2px; }
 .pw-home-hero button:focus-visible { outline-color: #102355; }
@@ -163,43 +160,49 @@
 .pw-accessible .pw-home-insight-icon { display: none; }
 .pw-accessible .pw-home-insight-body { font-size: .6rem; padding-bottom: 48px; }
 .pw-accessible .pw-home-insight--advice .pw-home-insight-body { padding:0; font-size:.6rem; }
-.pw-accessible .pw-home-insight--positive .pw-home-insight-body { max-width: none; }
 
 /* Reference typography and illustration alignment after the first macro capture. */
 .pw-home-saving-title > span { display: block; white-space: nowrap; }
 .pw-home-insight-title > span:not(.pw-home-insight-icon) { color: var(--pw-primary); }
 .pw-home-weekly-bar--unknown { background: #d8e4f0; }
 .pw-home-weekly-value--highlight { color: var(--pw-navy); }
-.pw-home-insight--positive .pw-home-insight-body { width: calc(121 * var(--pw-u)); }
-
-.pw-home-insight--positive .pw-home-insight-title > span:not(.pw-home-insight-icon) { color: var(--pw-navy); }
 
 
 /* Final placement of small controls; hit areas remain 44px. */
 .pw-home-habit > .pw-home-card-heading, .pw-home-weekly > .pw-home-card-heading { position: static; }
 .pw-home-weekly .pw-home-card-menu { top: calc(-3 * var(--pw-u)); }
 
-/* Shared score and weekly chart accents. */
+/* Weekly chart accent and compact podium; avatar circles never stretch. */
 .pw-home-weekly-crown { font-size:calc(15 * var(--pw-u)); font-family:'Apple Color Emoji','Segoe UI Emoji',sans-serif; }
-.pw-home-positive-content { display:grid; grid-template-columns:minmax(0,1fr) calc(58 * var(--pw-u)); align-items:center; gap:calc(6 * var(--pw-u)); height:calc(100% - 24 * var(--pw-u)); }
-.pw-home-insight--positive .pw-home-insight-body { width:auto; max-width:none; margin:0; padding:0; }
-.pw-home-score { display:flex; align-items:center; justify-content:center; width:calc(58 * var(--pw-u)); height:calc(48 * var(--pw-u)); color:var(--pw-primary); }
-.pw-home-score-value { display:flex; align-items:baseline; gap:calc(1 * var(--pw-u)); line-height:1; }
-.pw-home-score-value strong { font-size:calc(34 * var(--pw-u)); font-weight:800; letter-spacing:-.06em; font-variant-numeric:tabular-nums; }
-.pw-home-score-value > span { font-size:calc(16 * var(--pw-u)); font-weight:750; }
-.pw-accessible .pw-home-positive-content { grid-template-columns:minmax(0,1fr) 116px; height:calc(100% - 36px); }
-.pw-accessible .pw-home-score { width:116px; height:96px; }
-.pw-accessible .pw-home-score-value strong { font-size:1.6rem; }
-.pw-accessible .pw-home-score-value > span { font-size:.75rem; }
+.pw-home-ranking { display:flex; flex-direction:column; gap:calc(2 * var(--pw-u)); padding:calc(8 * var(--pw-u)) calc(8 * var(--pw-u)) calc(6 * var(--pw-u)); }
+.pw-home-ranking-title { display:flex; align-items:center; gap:calc(5 * var(--pw-u)); font-size:calc(12 * var(--pw-u)); font-weight:750; line-height:1.2; letter-spacing:-.04em; }
+.pw-home-ranking-top { margin-left:auto; color:var(--pw-primary-text); font-size:calc(8 * var(--pw-u)); font-weight:800; letter-spacing:.04em; }
+.pw-home-ranking-podium { display:grid; grid-template-columns:1fr 1.2fr 1fr; align-items:end; gap:calc(3 * var(--pw-u)); flex:1; min-height:0; }
+.pw-home-ranking-person { --rank-color:#549BE5; --rank-surface:#E9F5FF; display:flex; flex-direction:column; align-items:center; min-width:0; gap:calc(2 * var(--pw-u)); color:var(--rank-color); }
+.pw-home-ranking-person[data-rank='1'] { --rank-color:#EF923A; --rank-surface:#FFF3D9; }
+.pw-home-ranking-person[data-rank='3'] { --rank-color:#72B574; --rank-surface:#ECF8E9; }
+.pw-home-ranking-medal { display:block; width:calc(18 * var(--pw-u)); height:calc(16 * var(--pw-u)); flex:none; }
+.pw-home-ranking-person[data-rank='1'] .pw-home-ranking-medal { width:calc(22 * var(--pw-u)); height:calc(19 * var(--pw-u)); }
+.pw-home-ranking-avatar { display:grid; place-items:center; width:calc(36 * var(--pw-u)); aspect-ratio:1; flex:none; border:calc(1.5 * var(--pw-u)) solid color-mix(in srgb,var(--rank-color) 45%,white); border-radius:50%; background:var(--rank-surface); box-shadow:inset 0 0 0 calc(2 * var(--pw-u)) #ffffffb3; }
+.pw-home-ranking-person[data-rank='1'] .pw-home-ranking-avatar { width:calc(46 * var(--pw-u)); }
+.pw-home-ranking-animal { font-family:'Apple Color Emoji','Segoe UI Emoji',sans-serif; font-size:calc(25 * var(--pw-u)); line-height:1; }
+.pw-home-ranking-person[data-rank='1'] .pw-home-ranking-animal { font-size:calc(33 * var(--pw-u)); }
+.pw-home-ranking-name { color:var(--pw-navy); max-width:100%; font-size:calc(9 * var(--pw-u)); font-weight:650; line-height:1.3; letter-spacing:-.04em; white-space:nowrap; }
+.pw-home-ranking-empty { display:flex; flex:1; flex-direction:column; justify-content:center; align-items:center; gap:calc(5 * var(--pw-u)); text-align:center; color:var(--pw-text-secondary); font-size:calc(9 * var(--pw-u)); line-height:1.4; }
+.pw-home-ranking-empty strong { color:var(--pw-navy); font-size:calc(11 * var(--pw-u)); font-weight:650; }
+.pw-home-ranking-empty-icon { font-size:calc(25 * var(--pw-u)); line-height:1; }
+.pw-accessible .pw-home-ranking { gap:10px; }
+.pw-accessible .pw-home-ranking-title { font-size:.6rem; }
+.pw-accessible .pw-home-ranking-top { font-size:.4rem; }
+.pw-accessible .pw-home-ranking-podium { align-items:center; }
+.pw-accessible .pw-home-ranking-name { font-size:.42rem; }
+.pw-accessible .pw-home-ranking-empty { font-size:.45rem; }
+.pw-accessible .pw-home-ranking-empty strong { font-size:.55rem; }
 
 
 .pw-home-breakdown { min-height:24px; }
 
 
-.pw-home-score[data-score='100'] .pw-home-score-value strong { font-size:calc(26 * var(--pw-u)); }
-.pw-home-score[data-score='100'] .pw-home-score-value > span { font-size:calc(12 * var(--pw-u)); }
-.pw-accessible .pw-home-score[data-score='100'] .pw-home-score-value strong { font-size:1.3rem; }
-.pw-accessible .pw-home-score[data-score='100'] .pw-home-score-value > span { font-size:.6rem; }
 
 /* A single large donut; purchase details appear in its center on interaction. */
 .pw-home-habit-body { display:grid; grid-template-columns:minmax(0,1fr); place-items:center; height:calc(100% - 31 * var(--pw-u)); margin-top:calc(5 * var(--pw-u)); }

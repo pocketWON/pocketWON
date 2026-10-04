@@ -31,7 +31,11 @@ window.PWDemo = (() => {
         statuses: model.statuses.map((item, i) => ({ ...item, value: ['우수', '좋아요', '45%'][i], detail: '가상 데이터로 보여주는 예시 상태' })),
         challenge: { status: 'available', target: 3, completed: 1, note: '가상 저축 기록 · 이번 주 1회' },
         week: { ...model.week, message: '이번 주도\n알차게 보냈어요!' },
-        insights: { ...model.insights, status: 'demo' } };
+        insights: { ...model.insights, status: 'demo', ranking: { status: 'demo', entries: [
+          { rank: 1, name: '저축대장', avatar: '🐥' },
+          { rank: 2, name: '알뜰곰', avatar: '🐻‍❄️' },
+          { rank: 3, name: '차곡펭귄', avatar: '🐧' },
+        ] } } };
     }
   });
 })();

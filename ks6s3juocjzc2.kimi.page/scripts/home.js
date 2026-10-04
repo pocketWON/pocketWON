@@ -98,6 +98,7 @@ function createHomeDashboardModel(loaded, now = new Date(), period) {
       crownKey: days.filter(day => day.recorded && day.amount !== null).sort((a, b) => a.amount - b.amount || b.key.localeCompare(a.key))[0]?.key || null,
       message: known ? '이번 주 용돈도\n차근차근 살펴봐요!' : '첫 기록부터\n함께 시작해요!' },
     insights: { status: 'preparing',
+      ranking: { status: 'unavailable', entries: [] },
       positive: { title: '이런 점이 좋아요!', score: habit?.status === 'available' && Number.isInteger(habit.score) ? habit.score : null,
         body: habit?.status === 'available' && Number.isInteger(habit.score) ? habit.coaching.strength || habit.coaching.next : '기록을 남기면 습관 점수를 확인할 수 있어요.' },
       advice: { title: '이렇게 해보세요!', body: '주말 예산을 먼저 정해보세요. 물건을 사기 전 꼭 필요한지 생각하고, 쓰고 남은 돈은 목표 저축에 보태보세요.' } },
@@ -332,49 +333,58 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
     const detail = el('p', 'pw-sr-only', `주간 지출, ${data.days.map(day => `${day.label} ${day.future ? '미집계' : day.amount === null ? '확인 안 됨' : `${number(day.amount)}원`}`).join(', ')}${data.crownKey ? `, 가장 적게 쓴 날 ${data.days.find(day => day.key === data.crownKey).label}` : ''}${data.omitted ? `, 유효하지 않은 기록 ${data.omitted}건 제외` : ''}`);
     body.append(chart, detail); node.append(body); return node;
   }
-  function insightIcon(kind) {
-    if (kind === 'advice') {
-      const emoji = el('span', 'pw-home-insight-emoji', '💡');
-      emoji.setAttribute('aria-hidden', 'true');
-      return emoji;
+  function rankingMedal(rank) {
+    const medal = svg('svg', { class: 'pw-home-ranking-medal', viewBox: '0 0 36 32', 'aria-hidden': 'true' });
+    medal.append(svg('path', { d: 'm18 0 1.7 3.5 3.8.6-2.8 2.7.7 3.8L18 8.8l-3.4 1.8.7-3.8-2.8-2.7 3.8-.6Z', fill: 'currentColor' }),
+      svg('path', { d: 'M8 13H3v8l5 4m20-12h5v8l-5 4', fill: 'none', stroke: 'currentColor', 'stroke-width': 3, 'stroke-linejoin': 'round' }),
+      svg('path', { d: 'm18 10 10 3v10c0 4-6 7-10 9-4-2-10-5-10-9V13Z', fill: 'currentColor' }));
+    const value = svg('text', { x: 18, y: 25, fill: '#fff', 'text-anchor': 'middle', 'font-size': 15, 'font-weight': 800 });
+    value.textContent = rank; medal.append(value); return medal;
+  }
+  function rankingCard() {
+    const data = dashboard.insights.ranking;
+    const isDemo = data?.status === 'demo' && data.entries.length === 3;
+    const description = isDemo
+      ? '화면을 체험할 수 있도록 만든 예시 랭킹이에요. 닉네임과 순위는 가상이며, 실제 사용자 순위는 아직 연결되지 않았어요. 나의 습관 점수는 리포트에서 확인할 수 있어요.'
+      : '사용자 간 랭킹은 아직 연결되지 않았어요. 지금은 리포트에서 내 기록으로 계산한 습관 점수를 확인할 수 있어요.';
+    const panel = button('', () => openMenu('용돈 랭킹', description, [['내 습관 리포트 보기', featureRoute('habit-analysis')]], panel), 'pw-home-insight pw-home-ranking');
+    panel.dataset.action = 'insight-ranking'; panel.dataset.status = isDemo ? 'demo' : 'unavailable';
+    const caption = el('span', 'pw-home-ranking-title', '용돈 랭킹');
+    if (isDemo) caption.append(el('span', 'pw-home-ranking-top', 'TOP 3'));
+    panel.append(caption);
+    if (isDemo) {
+      panel.setAttribute('aria-label', '용돈 랭킹 예시, ' + data.entries.map(item => `${item.rank}위 ${item.name}`).join(', ') + ', 안내 열기');
+      const podium = el('span', 'pw-home-ranking-podium'); podium.setAttribute('aria-hidden', 'true');
+      for (const rank of [2, 1, 3]) {
+        const item = data.entries.find(entry => entry.rank === rank);
+        const person = el('span', 'pw-home-ranking-person'); person.dataset.rank = rank;
+        const avatar = el('span', 'pw-home-ranking-avatar');
+        avatar.append(el('span', 'pw-home-ranking-animal', item.avatar));
+        person.append(rankingMedal(rank), avatar, el('span', 'pw-home-ranking-name', item.name));
+        podium.append(person);
+      }
+      panel.append(podium);
+    } else {
+      panel.setAttribute('aria-label', '용돈 랭킹 연동 준비 중, 안내 열기');
+      const empty = el('span', 'pw-home-ranking-empty');
+      const trophy = el('span', 'pw-home-ranking-empty-icon', '🏆'); trophy.setAttribute('aria-hidden', 'true');
+      empty.append(trophy, el('strong', '', '랭킹 연동 준비 중'), el('span', '', '내 습관은 리포트에서 확인해요'));
+      panel.append(empty);
     }
-    const icon = svg('svg', { viewBox: '0 0 28 28', 'aria-hidden': 'true' });
-    icon.append(svg('path', { d: 'M8 17a8 8 0 1 1 12 0c-2 2-2 3-2 4h-8c0-1 0-2-2-4Z', fill: '#FFD34E' }),
-      svg('path', { d: 'M11 23h6m-5 3h4', stroke: '#148DF4', 'stroke-width': 2.5, 'stroke-linecap': 'round' }),
-      svg('path', { d: 'M10 7c1-2 3-3 5-3', stroke: '#FFF7AF', 'stroke-width': 2, 'stroke-linecap': 'round' }));
-    return icon;
+    return panel;
   }
   function insightsSection() {
     const data = dashboard.insights, section = el('section', 'pw-home-card pw-home-insights');
     section.setAttribute('aria-label', 'AI 인사이트'); section.dataset.pwMotionCard = ''; section.dataset.status = data.status;
     const grid = el('div', 'pw-home-insight-grid');
-    for (const kind of ['positive', 'advice']) {
-      const item = data[kind], target = featureRoute(kind === 'positive' ? 'habit-analysis' : 'coaching');
-      const panel = button('', () => go(target, panel), `pw-home-insight pw-home-insight--${kind}`); panel.dataset.action = `insight-${kind}`;
-      const caption = el('span', 'pw-home-insight-title'), icon = el('span', 'pw-home-insight-icon'); icon.append(insightIcon(kind));
-      const titleText = el('span');
-      if (kind === 'positive' && item.title.endsWith('좋아요!')) titleText.append(document.createTextNode(item.title.slice(0, -4)), el('strong', '', '좋아요!'));
-      else titleText.textContent = item.title;
-      caption.append(icon, titleText);
-      if (kind === 'advice') {
-        const arrow = svg('svg', { class:'pw-home-insight-chevron', viewBox:'0 0 12 20', 'aria-hidden':'true' });
-        arrow.append(svg('path', { d:'m3 3 6 7-6 7', fill:'none', stroke:'currentColor', 'stroke-width':3, 'stroke-linecap':'round', 'stroke-linejoin':'round' }));
-        caption.append(arrow);
-      }
-      panel.append(caption);
-      const copy = el('span', 'pw-home-insight-body', item.body);
-      if (kind === 'positive') {
-        const content = el('span', 'pw-home-positive-content'), score = el('span', 'pw-home-score');
-        const known = Number.isInteger(item.score) && item.score >= 0 && item.score <= 100;
-        score.dataset.score = known ? String(item.score) : 'unknown';
-        score.setAttribute('aria-label', known ? `최근 28일 습관 점수, 100점 중 ${item.score}점` : '습관 점수 확인에 필요한 기록이 없어요');
-        const value = el('span', 'pw-home-score-value');
-        value.append(el('strong', '', known ? String(item.score) : '—'), el('span', '', '점'));
-        score.append(value);
-        content.append(copy, score); panel.append(content);
-      } else panel.append(copy);
-      grid.append(panel);
-    }
+    const panel = button('', () => go(featureRoute('coaching'), panel), 'pw-home-insight pw-home-insight--advice'); panel.dataset.action = 'insight-advice';
+    const caption = el('span', 'pw-home-insight-title'), icon = el('span', 'pw-home-insight-icon');
+    const emoji = el('span', 'pw-home-insight-emoji', '💡'); emoji.setAttribute('aria-hidden', 'true'); icon.append(emoji);
+    const arrow = svg('svg', { class:'pw-home-insight-chevron', viewBox:'0 0 12 20', 'aria-hidden':'true' });
+    arrow.append(svg('path', { d:'m3 3 6 7-6 7', fill:'none', stroke:'currentColor', 'stroke-width':3, 'stroke-linecap':'round', 'stroke-linejoin':'round' }));
+    caption.append(icon, el('span', '', data.advice.title), arrow);
+    panel.append(caption, el('span', 'pw-home-insight-body', data.advice.body));
+    grid.append(rankingCard(), panel);
     section.append(grid); return section;
   }
   const primary = el('div', 'pw-home-primary-row'); primary.append(savingCard(), habitCard());

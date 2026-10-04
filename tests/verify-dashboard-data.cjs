@@ -135,6 +135,7 @@ const score = api.createHabitScoreModel({...state,transactions:purchases},now);
 assert.equal(m.insights.positive.score,score.score); assert.equal(m.insights.positive.body,score.coaching.strength||score.coaching.next);
 assert.equal(m.habit.windowDays,28); assert.equal(m.insights.positive.title,'이런 점이 좋아요!');
 assert.equal(m.challenge.completed,null); assert.equal(m.insights.status,'preparing');
+assert.equal(m.insights.ranking.status,'unavailable');assert.equal(m.insights.ranking.entries.length,0);
 assert.equal(m.balance,state.balance); assert.equal(m.statuses.find(item=>item.id==='goal').value,'60%');
 const excludedUnsafe = modelOf([tx('2026-10-01',10000,'in'),tx('2026-10-01',2000),tx('2026-09-03',Number.MAX_SAFE_INTEGER,'in'),tx('2026-09-03',1,'in'),{...tx('2026-10-01',Number.MAX_SAFE_INTEGER,'in'),ts:'2026-10-01T23:00:00'}]);
 assert.equal(excludedUnsafe.statuses.find(item=>item.id==='spending').value,'25/25점');

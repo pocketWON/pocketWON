@@ -1,4 +1,4 @@
-/* Purchase chart, score, crown and interaction checks in isolated browser contexts. */
+/* Purchase chart, ranking, crown and interaction checks in isolated browser contexts. */
 const t = require('./product-test-utils.cjs');
 const {assert,fs,path,launch,setup,ready,unchanged}=t;
 const out=t.output('purchase-dashboard'),report={status:'RUNNING',checks:[],geometry:[]};
@@ -22,13 +22,13 @@ async function layout(p,name){
   const g=await p.evaluate(()=>{
     const rect=n=>{const r=n.getBoundingClientRect();return {left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height};};
     const donut=rect(document.querySelector('.pw-home-donut'));
-    const value=rect(document.querySelector('.pw-home-score-value')),score=rect(document.querySelector('.pw-home-score')),copy=rect(document.querySelector('.pw-home-positive-content>.pw-home-insight-body')),panel=rect(document.querySelector('.pw-home-insight--positive'));
     const crown=document.querySelector('.pw-home-weekly-crown'),plot=document.querySelector('.pw-home-weekly-plot');
-    return {donut,value,score,copy,panel,weeklyBody:rect(document.querySelector('.pw-home-weekly-body')),weeklyCard:rect(document.querySelector('.pw-home-weekly')),bars:[...plot.querySelectorAll('.pw-home-weekly-bar')].map(rect),chartText:[...plot.querySelectorAll('.pw-home-weekly-value,.pw-home-weekly-date,.pw-home-weekly-crown')].map(rect),habit:rect(document.querySelector('.pw-home-habit')),crown:crown?rect(crown):null,plot:rect(plot),crownedValue:crown?rect(plot.querySelector(`.pw-home-weekly-bar[data-date-key="${crown.dataset.dateKey}"]`).nextElementSibling):null,nav:rect(document.querySelector('.pw-bottom-navigation'))};
+    return {donut,weeklyBody:rect(document.querySelector('.pw-home-weekly-body')),weeklyCard:rect(document.querySelector('.pw-home-weekly')),bars:[...plot.querySelectorAll('.pw-home-weekly-bar')].map(rect),chartText:[...plot.querySelectorAll('.pw-home-weekly-value,.pw-home-weekly-date,.pw-home-weekly-crown')].map(rect),habit:rect(document.querySelector('.pw-home-habit')),crown:crown?rect(crown):null,plot:rect(plot),crownedValue:crown?rect(plot.querySelector(`.pw-home-weekly-bar[data-date-key="${crown.dataset.dateKey}"]`).nextElementSibling):null,nav:rect(document.querySelector('.pw-bottom-navigation'))};
   });
   report.geometry.push({name,...g});
-  assert.equal(g.nav.height,84);assert(g.value.right<=g.score.right+1&&g.value.left>=g.score.left-1,name+' score text exceeds slot');
-  assert(g.score.left>=g.copy.right-1 && g.score.bottom<=g.panel.bottom+1 && g.score.right<=g.panel.right+1,name+' score/copy overlap');
+  assert.equal(g.nav.height,84);
+  assert.equal(await p.locator('.pw-home-score,.pw-home-insight--positive').count(),0);
+  assert.equal(await p.locator('.pw-home-ranking').count(),1);
   assert.equal(await p.locator('.pw-home-weekly-reaction,.pw-home-weekly-score,.pw-home-weekly-art,.pw-home-weekly .pw-sprite,.pw-home-weekly-bubble,.pw-home-weekly-music').count(),0);
   assert(Math.abs(g.plot.left-g.weeklyBody.left)<1 && Math.abs(g.plot.right-g.weeklyBody.right)<1,name+' weekly chart must fill card content width');
   assert.equal(g.bars.length,7);
@@ -44,10 +44,8 @@ async function layout(p,name){
   const c=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'}),p=await c.newPage();
   await p.goto('http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html');await ready(p);await layout(p,engine+'-demo');
   assert.equal(await p.locator('.pw-home-insights-heading,.pw-home-insights h2').count(),0);assert.equal(await p.locator('.pw-home-overview > .pw-home-weekly,.pw-home-overview > .pw-home-insights').count(),2);assert.equal(await p.locator('.pw-home-score-label').count(),0);
-  assert.equal(await p.locator('.pw-home-score').evaluate(n=>getComputedStyle(n).backgroundImage),'none');
-  await p.evaluate(()=>{window.__scoreModel=createHomeDashboardModel;window.createHomeDashboardModel=(...args)=>{const m=__scoreModel(...args);return {...m,insights:{...m.insights,positive:{...m.insights.positive,score:100}}};};PWNavigation.go('home');});
-  for(const [width,height] of [[320,568],[390,844],[844,390]]){await p.setViewportSize({width,height});await layout(p,engine+'-100-points-'+width);}
-  await p.setViewportSize({width:390,height:844});await p.evaluate(()=>{window.createHomeDashboardModel=__scoreModel;delete window.__scoreModel;PWNavigation.go('home');});await ready(p);
+  for(const [width,height] of [[320,568],[390,844],[844,390]]){await p.setViewportSize({width,height});await layout(p,engine+'-demo-'+width);}
+  await p.setViewportSize({width:390,height:844});await ready(p);
   const d=await p.evaluate(()=>createHomeDashboardModel(PWDemo.load(),PWDemo.now));
   const ui=await p.locator('.pw-home-donut-segment').evaluateAll(ns=>ns.map(n=>({id:n.dataset.purchase,fraction:Number(n.dataset.fraction),color:n.getAttribute('stroke'),length:Number(n.getAttribute('stroke-dasharray').split(' ')[0]),radius:Number(n.getAttribute('r'))})));
   assert.equal(ui[0].fraction,.1);assert(Math.abs(ui[0].length/(2*Math.PI*ui[0].radius)-.1)<1e-12);
@@ -110,7 +108,8 @@ async function layout(p,name){
     await current.page.clock.setFixedTime(date);await current.page.evaluate(()=>PWNavigation.go('home'));await layout(current.page,engine+'-'+name);
     assert.equal(await current.page.locator('.pw-home-donut').getAttribute('data-status'),status);
     if(status!=='available') assert.equal(await current.page.locator('.pw-home-donut-segment').count(),0);
-    if(name==='no-records'||name==='read-error'||name==='overflow') assert.equal(await current.page.locator('.pw-home-score').getAttribute('data-score'),'unknown');
+    assert.equal(await current.page.locator('.pw-home-ranking').getAttribute('data-status'),'unavailable');
+    assert.equal(await current.page.locator('.pw-home-ranking-person').count(),0);
     if(name==='no-records'||name==='read-error') assert.equal(await current.page.locator('.pw-home-weekly-crown').count(),0);
     if(name==='long-purchase') {
       await current.page.locator('.pw-home-donut-segment').focus();await ready(current.page);

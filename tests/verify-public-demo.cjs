@@ -11,8 +11,10 @@ const report={status:'RUNNING',checks:[]},url='http://127.0.0.1:4173/ks6s3juocjz
   const model=await page.evaluate(()=>createHomeDashboardModel(PWDemo.load(),PWDemo.now));
   assert.equal(model.donut.spent,18000);assert.equal(model.donut.received,50000);assert.equal(model.donut.remaining,32000);assert.equal(model.donut.segments[0].fraction,.1);assert(model.week.days.every(d=>Number.isSafeInteger(d.amount)&&d.amount>0));
   const data=await page.evaluate(()=>PWDemo.load());assert.equal(data.state.monthly.saving-data.state.monthly.spending,data.state.balance);
-  const score=await page.locator('.pw-home-score').getAttribute('data-score');assert.equal(Number(score),model.habit.score);
-  assert.equal(await page.locator('.pw-home-insight--positive .pw-sprite').count(),0);
+  const score=model.habit.score;assert.equal(model.insights.positive.score,score);
+  assert.equal(await page.locator('.pw-home-ranking').getAttribute('data-status'),'demo');
+  assert.equal(await page.locator('.pw-home-ranking-person').count(),3);
+  assert.equal(await page.locator('.pw-home-ranking .pw-sprite,.pw-home-score').count(),0);
   await page.locator('.pw-nav-item[data-screen="report"]').click();await ready(page);
   assert.equal(await page.locator('.pw-report-habit-score').getAttribute('aria-label'),`100점 중 ${score}점`);
   await page.locator('.pw-nav-item[data-screen="home"]').click();await ready(page);
@@ -24,6 +26,8 @@ const report={status:'RUNNING',checks:[]},url='http://127.0.0.1:4173/ks6s3juocjz
   await page.screenshot({path:path.join(out,engine+'-record.png')});await page.keyboard.press('Escape');await ready(page);
   await page.locator('.pw-nav-item[data-screen="goal"]').click();await page.getByRole('button',{name:'목표 수정',exact:true}).click();await d.getByRole('button',{name:'다음',exact:true}).click();await d.getByRole('button',{name:'다음',exact:true}).click();assert(await page.getByRole('button',{name:'목표 저장',exact:true}).isDisabled());await page.keyboard.press('Escape');await ready(page);
   await page.locator('.pw-nav-item[data-screen="all"]').click();await page.getByRole('button',{name:'실제 기록 보기',exact:true}).click();assert.match(await page.locator('.pw-home-money').innerText(),/77/);assert.equal(await page.locator('.pw-demo-badge').count(),0);assert.equal(await page.evaluate(()=>PWDemo.enabled),false);
+  assert.equal(await page.locator('.pw-home-ranking').getAttribute('data-status'),'unavailable');
+  assert.equal(await page.locator('.pw-home-ranking-person').count(),0);
   assert(await page.evaluate(()=>localStorage.getItem('pocketwon_demo_v1')===__before));assert.deepEqual(await page.evaluate(()=>__writes),[]);assert.deepEqual(errors,[]);
   await page.locator('.pw-nav-item[data-screen="all"]').click();
   await page.getByRole('button',{name:'전체 화면',exact:true}).click();await ready(page);

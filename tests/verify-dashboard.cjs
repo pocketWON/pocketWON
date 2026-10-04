@@ -135,12 +135,20 @@ async function navigation(test, engine) {
     if (segment) assert.equal(await p.locator('.pw-report').getAttribute('data-segment'), segment);
     await p.locator('.pw-nav-item[data-screen="home"]').click(); await ready(p);
   }
-  for (const [selector, feature] of [['.pw-home-saving-open', 'goal-contribution'], ['[data-action="insight-positive"]', 'habit-analysis'], ['[data-action="insight-advice"]', 'coaching']]) {
+  for (const [selector, feature] of [['.pw-home-saving-open', 'goal-contribution'], ['[data-action="insight-advice"]', 'coaching']]) {
     await p.locator(selector).click(); await ready(p);
     assert.equal(await p.locator('.pw-feature').getAttribute('data-feature'), feature);
     await p.getByRole('button', { name: '이전 화면', exact: true }).click(); await ready(p);
     assert.equal(await p.evaluate(() => PWNavigation.current().screen), 'home');
   }
+  const ranking=p.locator('[data-action="insight-ranking"]');
+  await ranking.focus();await p.keyboard.press('Enter');await ready(p);
+  assert.match(await p.locator('dialog[open]').innerText(),/사용자 간 랭킹은 아직 연결되지/);
+  await p.keyboard.press('Escape');await ready(p);
+  assert(await ranking.evaluate(n=>n===document.activeElement),'ranking dialog focus restoration');
+  await ranking.click();await p.getByRole('button',{name:'내 습관 리포트 보기',exact:true}).click();await ready(p);
+  assert.equal(await p.locator('.pw-feature').getAttribute('data-feature'),'habit-analysis');
+  await p.getByRole('button',{name:'이전 화면',exact:true}).click();await ready(p);
   for (const label of ['저축 챌린지 더보기', '정후의 소비 습관 더보기', '용돈 인사이트 더보기']) {
     const opener = p.getByRole('button', { name: label, exact: true });
     await opener.click();
