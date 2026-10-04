@@ -29,8 +29,7 @@ function createGoalView(initialLoad, navigate, options = {}) {
       nameTrigger = button(model.title, renderFullName, 'pw-goal-name-action');
       nameTrigger.setAttribute('aria-label', `목표 이름 전체 보기: ${model.title}`);
       const nameText = el('span', 'pw-goal-name-text', model.title);
-      nameTrigger.replaceChildren(nameText, el('span', 'pw-goal-name-arrow', '›'));
-      nameTrigger.lastElementChild.setAttribute('aria-hidden', 'true'); title.append(nameTrigger);
+      nameTrigger.replaceChildren(nameText); title.append(nameTrigger);
       const overview = el('div', 'pw-goal-overview');
       const graphic = pwIllustrationPanel('goal', { panelClass: 'pw-goal-visual', ambient: model.status === 'active', goalKey: pwSpriteGoalKey(model) });
       appendMoney(overview, '지금까지 모은 돈', model.current, 'pw-goal-money--large'); overview.append(graphic);

@@ -143,7 +143,7 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
   function link(label, target, className, action) {
     const control = button('', () => go(target, control), className);
     if (action) control.dataset.action = action;
-    control.append(el('span', 'pw-home-card-title', label), chevron()); return control;
+    control.append(el('span', 'pw-home-card-title', label)); return control;
   }
   function openMenu(label, description, actions, opener) {
     if (disposed) return;
@@ -200,7 +200,7 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
       const symbol = el('span', 'pw-home-breakdown-symbol'); symbol.append(statusIcon(item.id));
       const copy = el('span', 'pw-home-breakdown-copy');
       copy.append(el('span', 'pw-home-breakdown-label', item.label), el('span', 'pw-home-breakdown-value', item.value));
-      control.append(symbol, copy, chevron('pw-home-breakdown-chevron')); breakdown.append(control);
+      control.append(symbol, copy); breakdown.append(control);
     }
     hero.append(body, stage, breakdown); return hero;
   }
@@ -364,7 +364,6 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
       if (kind === 'positive' && item.title.endsWith('좋아요!')) titleText.append(document.createTextNode(item.title.slice(0, -4)), el('strong', '', '좋아요!'));
       else titleText.textContent = item.title;
       caption.append(icon, titleText);
-      if (kind === 'advice') caption.append(chevron());
       panel.append(caption);
       const copy = el('span', 'pw-home-insight-body', item.body);
       if (kind === 'positive') {

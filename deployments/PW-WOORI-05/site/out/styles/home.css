@@ -66,7 +66,6 @@
 .pw-home-breakdown-copy { display: grid; min-width: 0; gap: calc(4 * var(--pw-u)); }
 .pw-home-breakdown-label { font-size: calc(10.5 * var(--pw-u)); font-weight: 550; letter-spacing: -.07em; white-space: nowrap; }
 .pw-home-breakdown-value { color: var(--pw-primary); font-size: calc(14 * var(--pw-u)); font-weight: 650; line-height: 1.05; white-space: nowrap; letter-spacing: -.045em; }
-.pw-home-breakdown-item > .pw-home-breakdown-chevron { position: absolute; right: calc(8 * var(--pw-u)); font-size: calc(20 * var(--pw-u)); color: var(--pw-nav-inactive); }
 .pw-home-primary-row { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: calc(5.2 * var(--pw-u)); flex: 0 0 calc(172.5 * var(--pw-u)); margin-top: calc(10 * var(--pw-u)); min-height: 0; }
 .pw-home-card, .pw-home-insights { position: relative; min-width: 0; min-height: 0; border: 1px solid #ebf5fc; border-radius: calc(14 * var(--pw-u)); background: var(--pw-surface); box-shadow: 0 calc(2 * var(--pw-u)) calc(5 * var(--pw-u)) #aed2ef24; }
 .pw-home-card-heading { position: relative; display: flex; align-items: center; min-width: 0; height: calc(27 * var(--pw-u)); }
@@ -120,7 +119,6 @@
 .pw-home-insight--positive .pw-home-insight-body { max-width: calc(121 * var(--pw-u)); }
 .pw-home .pw-home-insight-art { inset: auto calc(0 * var(--pw-u)) calc(5 * var(--pw-u)) auto; width: calc(49 * var(--pw-u)); height: calc(48 * var(--pw-u)); }
 .pw-home .pw-home-insight-art.pw-illustration-panel > .pw-sprite { position: absolute; width: calc(85 * var(--pw-u)); height: calc(85 * var(--pw-u)); left: 50%; top: 50%; translate: -52.5% -54.7%; transform: none; max-width: none; }
-.pw-home-insight-title > .pw-home-card-chevron { position: absolute; right: calc(9 * var(--pw-u)); top: calc(11 * var(--pw-u)); color: var(--pw-nav-inactive); font-size: calc(20 * var(--pw-u)); }
 .pw-home-insight button { font: inherit; }
 .pw-home button:focus-visible { outline: 2px solid var(--pw-primary-text); outline-offset: 2px; }
 .pw-home-hero button:focus-visible { outline-color: #102355; }
@@ -141,7 +139,6 @@
 .pw-accessible .pw-home-breakdown-symbol { display: none; }
 .pw-accessible .pw-home-breakdown-label { font-size: .55rem; }
 .pw-accessible .pw-home-breakdown-value { font-size: .65rem; }
-.pw-accessible .pw-home-breakdown-item > .pw-home-breakdown-chevron { display: none; }
 .pw-accessible .pw-home-primary-row { flex-basis: auto; min-height: 390px; }
 .pw-accessible .pw-home-card-title { font-size: .7rem; white-space: normal; }
 .pw-accessible .pw-home-card-heading { height: auto; min-height: 60px; padding-right: 34px; }
@@ -167,7 +164,6 @@
 .pw-home-saving-title > span { display: block; white-space: nowrap; }
 .pw-home-insights-more { display: flex; align-items: center; gap: calc(3 * var(--pw-u)); }
 .pw-home-insights-more .pw-home-card-title { font-size: inherit; font-weight: inherit; color: inherit; }
-.pw-home-insights-more .pw-home-card-chevron { color: inherit; font-size: calc(18 * var(--pw-u)); }
 .pw-home-insight-title > span:not(.pw-home-insight-icon) { color: var(--pw-primary); }
 .pw-home-weekly-bar--unknown { fill: #d8e4f0; }
 .pw-home-weekly-value--highlight { fill: var(--pw-navy); }
@@ -179,7 +175,6 @@
 /* Final placement of small controls; hit areas remain 44px. */
 .pw-home-habit > .pw-home-card-heading, .pw-home-weekly > .pw-home-card-heading { position: static; }
 .pw-home-weekly .pw-home-card-menu { top: calc(-3 * var(--pw-u)); }
-.pw-home-insight--advice .pw-home-insight-title > .pw-home-card-chevron { color: var(--pw-nav-inactive); }
 
 /* Shared score and weekly chart accents. */
 .pw-home-weekly-crown { font-size:15px; font-family:'Apple Color Emoji','Segoe UI Emoji',sans-serif; }
