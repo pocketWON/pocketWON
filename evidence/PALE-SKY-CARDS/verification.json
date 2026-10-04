@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "engine": "chromium",
+      "sky": [
+        "radial-gradient(at 25% 35%, rgb(253, 254, 255), rgb(247, 252, 255))",
+        "radial-gradient(at 25% 35%, rgb(253, 254, 255), rgb(247, 252, 255))",
+        "radial-gradient(at 25% 35%, rgb(253, 254, 255), rgb(247, 252, 255))"
+      ],
+      "nav": {
+        "background": "rgb(254, 254, 254)",
+        "image": "none",
+        "height": 84
+      },
+      "icons": [
+        {
+          "active": true,
+          "color": "rgb(12, 141, 254)"
+        },
+        {
+          "active": false,
+          "color": "rgb(168, 174, 190)"
+        },
+        {
+          "active": false,
+          "color": "rgb(168, 174, 190)"
+        },
+        {
+          "active": false,
+          "color": "rgb(168, 174, 190)"
+        }
+      ],
+      "scroll": [
+        false,
+        false
+      ]
+    },
+    {
+      "engine": "webkit",
+      "sky": [
+        "radial-gradient(at 25% 35%, rgb(253, 254, 255), rgb(247, 252, 255))",
+        "radial-gradient(at 25% 35%, rgb(253, 254, 255), rgb(247, 252, 255))",
+        "radial-gradient(at 25% 35%, rgb(253, 254, 255), rgb(247, 252, 255))"
+      ],
+      "nav": {
+        "background": "rgb(254, 254, 254)",
+        "image": "none",
+        "height": 84
+      },
+      "icons": [
+        {
+          "active": true,
+          "color": "rgb(12, 141, 254)"
+        },
+        {
+          "active": false,
+          "color": "rgb(168, 174, 190)"
+        },
+        {
+          "active": false,
+          "color": "rgb(168, 174, 190)"
+        },
+        {
+          "active": false,
+          "color": "rgb(168, 174, 190)"
+        }
+      ],
+      "scroll": [
+        false,
+        false
+      ]
+    }
+  ]
+}

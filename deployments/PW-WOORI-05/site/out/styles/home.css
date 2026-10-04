@@ -26,7 +26,7 @@
 }
 .pw-shell[data-screen='home'] .pw-navigation-items { height: calc(74.8 * var(--pw-u)); }
 .pw-home {
-  --pw-home-sky-surface: radial-gradient(ellipse at 25% 35%,#f8fcff,#f0f8fd);
+  --pw-home-sky-surface: radial-gradient(ellipse at 25% 35%,#fdfeff,#f7fcff);
   display: flex; flex-direction: column; gap: 0;
   height: auto; min-height: 0; overflow: clip;
   padding: calc(12 * var(--pw-u)) calc(7.9 * var(--pw-u)) calc(8.4 * var(--pw-u)) calc(9.9 * var(--pw-u));
