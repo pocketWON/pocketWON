@@ -10,12 +10,12 @@ async function layout(p,name){
   const g=await p.evaluate(()=>{
     const rect=n=>{const r=n.getBoundingClientRect();return {left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height};};
     const pairs=[...document.querySelectorAll('.pw-home-purchase')].map(n=>({button:rect(n),name:rect(n.querySelector('.pw-home-legend-label'))}));
-    const score=rect(document.querySelector('.pw-home-score')),copy=rect(document.querySelector('.pw-home-positive-content>.pw-home-insight-body')),panel=rect(document.querySelector('.pw-home-insight--positive'));
+    const value=rect(document.querySelector('.pw-home-score-value')),score=rect(document.querySelector('.pw-home-score')),copy=rect(document.querySelector('.pw-home-positive-content>.pw-home-insight-body')),panel=rect(document.querySelector('.pw-home-insight--positive'));
     const crown=document.querySelector('.pw-home-weekly-crown'),plot=document.querySelector('.pw-home-weekly-plot');
-    return {pairs,score,copy,panel,habit:rect(document.querySelector('.pw-home-habit')),crown:crown?rect(crown):null,plot:rect(plot),crownedValue:crown?rect(plot.querySelector(`rect[data-date-key="${crown.dataset.dateKey}"]`).nextElementSibling):null,nav:rect(document.querySelector('.pw-bottom-navigation'))};
+    return {pairs,value,score,copy,panel,habit:rect(document.querySelector('.pw-home-habit')),crown:crown?rect(crown):null,plot:rect(plot),crownedValue:crown?rect(plot.querySelector(`rect[data-date-key="${crown.dataset.dateKey}"]`).nextElementSibling):null,nav:rect(document.querySelector('.pw-bottom-navigation'))};
   });
   report.geometry.push({name,...g});
-  assert.equal(g.nav.height,84);
+  assert.equal(g.nav.height,84);assert(g.value.right<=g.score.right+1&&g.value.left>=g.score.left-1,name+' score text exceeds slot');
   assert(g.score.left>=g.copy.right-1 && g.score.bottom<=g.panel.bottom+1 && g.score.right<=g.panel.right+1,name+' score/copy overlap');
   for(const row of g.pairs) assert(row.name.right<=g.habit.right-3 && row.name.bottom<=row.button.bottom+1 && row.name.bottom<=g.habit.bottom-3,name+' purchase label clipping '+JSON.stringify(row));
   if(g.crown){assert(g.crown.top>=g.plot.top-1 && g.crown.bottom<=g.crownedValue.top+1,name+' crown overlaps value or exceeds plot '+JSON.stringify(g));}
@@ -25,6 +25,11 @@ async function layout(p,name){
   browser=await launch(engine);
   const c=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'}),p=await c.newPage();
   await p.goto('http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html');await ready(p);await layout(p,engine+'-demo');
+  assert.equal(await p.locator('.pw-home-insights h2 .pw-home-card-title').innerText(),'AI 인사이트');assert.equal(await p.locator('.pw-home-score-label').count(),0);
+  assert.equal(await p.locator('.pw-home-score').evaluate(n=>getComputedStyle(n).backgroundImage),'none');
+  await p.evaluate(()=>{window.__scoreModel=createHomeDashboardModel;window.createHomeDashboardModel=(...args)=>{const m=__scoreModel(...args);return {...m,insights:{...m.insights,positive:{...m.insights.positive,score:100}}};};PWNavigation.go('home');});
+  for(const [width,height] of [[320,568],[390,844],[844,390]]){await p.setViewportSize({width,height});await layout(p,engine+'-100-points-'+width);}
+  await p.setViewportSize({width:390,height:844});await p.evaluate(()=>{window.createHomeDashboardModel=__scoreModel;delete window.__scoreModel;PWNavigation.go('home');});await ready(p);
   const d=await p.evaluate(()=>createHomeDashboardModel(PWDemo.load(),PWDemo.now));
   const ui=await p.locator('.pw-home-donut-segment').evaluateAll(ns=>ns.map(n=>({id:n.dataset.purchase,fraction:Number(n.dataset.fraction),color:n.getAttribute('stroke'),length:Number(n.getAttribute('stroke-dasharray').split(' ')[0]),radius:Number(n.getAttribute('r'))})));
   assert.equal(ui[0].fraction,.1);assert(Math.abs(ui[0].length/(2*Math.PI*ui[0].radius)-.1)<1e-12);

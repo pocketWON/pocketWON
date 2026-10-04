@@ -157,7 +157,7 @@
     {
       "path": "index.html",
       "bytes": 4814,
-      "sha256": "91126d029acef2045305644b5faa34ee927aecfe4aab89c6cc4e9490c8ca2ba8"
+      "sha256": "30a25807e339f45800f405e65206cc50803eb88a70035fb8a80d43a4e9ad25d3"
     },
     {
       "path": "manifest.webmanifest",
@@ -246,8 +246,8 @@
     },
     {
       "path": "scripts/home.js",
-      "bytes": 27690,
-      "sha256": "56d0ecf2e636245d72add91074b664fbd8439c05f543089e47189684a09c172e"
+      "bytes": 27617,
+      "sha256": "167d984d63dde236c99e6fde92fed30c98b62b8050ab751b5fddab57f05dcd4e"
     },
     {
       "path": "scripts/icons.js",
@@ -371,8 +371,8 @@
     },
     {
       "path": "styles/home.css",
-      "bytes": 25675,
-      "sha256": "1552cbcbafe62c3be64ff6c2fc9fab3d49f28da106c23f322aa5aebc241528cb"
+      "bytes": 25640,
+      "sha256": "c2ad857e03c4f09bbc8b504c5235a4ffc00a05ca1bcc72fa177c5ab4cbb0d665"
     },
     {
       "path": "styles/record.css",

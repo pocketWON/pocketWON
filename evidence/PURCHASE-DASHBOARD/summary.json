@@ -12,7 +12,10 @@
       "#C1E8FF",
       "#55CBE8",
       "#79A4E8"
-    ]
+    ],
+    "insightTitle": "AI 인사이트",
+    "score": "Large blue number and smaller blue 점; no circular badge",
+    "nameAdditionalOffset": -2
   },
   "checks": {
     "businessGroups": 29,
@@ -26,8 +29,8 @@
     "historicalHashes": 1168
   },
   "finalEvidence": {
-    "purchaseUI": "names-offset/verification.json",
-    "responsive": "responsive-final/verification.json",
+    "purchaseUI": "blue-score-final/verification.json",
+    "responsive": "blue-score-layout/verification.json",
     "lastOffset": "offset-final/verification.json",
     "viewport": "accepted-viewport/verification.json",
     "storage": "accepted-data/verification.json",

@@ -309,10 +309,10 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
   }
   function insightsSection() {
     const data = dashboard.insights, section = el('section', 'pw-home-card pw-home-insights');
-    section.setAttribute('aria-label', 'AI 맞춤 인사이트'); section.dataset.pwMotionCard = ''; section.dataset.status = data.status;
+    section.setAttribute('aria-label', 'AI 인사이트'); section.dataset.pwMotionCard = ''; section.dataset.status = data.status;
     const header = el('div', 'pw-home-insights-heading'), title = el('h2');
-    title.append(link('AI 맞춤 인사이트', featureRoute('ai-report'), 'pw-home-card-link', 'insights'));
-    const more = link('더보기', featureRoute('ai-report'), 'pw-home-insights-more', 'insights-more'); more.setAttribute('aria-label', 'AI 맞춤 인사이트 더보기');
+    title.append(link('AI 인사이트', featureRoute('ai-report'), 'pw-home-card-link', 'insights'));
+    const more = link('더보기', featureRoute('ai-report'), 'pw-home-insights-more', 'insights-more'); more.setAttribute('aria-label', 'AI 인사이트 더보기');
     header.append(title, more);
     const grid = el('div', 'pw-home-insight-grid');
     for (const kind of ['positive', 'advice']) {
@@ -333,7 +333,7 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
         score.setAttribute('aria-label', known ? `최근 28일 습관 점수, 100점 중 ${item.score}점` : '습관 점수 확인에 필요한 기록이 없어요');
         const value = el('span', 'pw-home-score-value');
         value.append(el('strong', '', known ? String(item.score) : '—'), el('span', '', '점'));
-        score.append(value, el('span', 'pw-home-score-label', '습관 점수'));
+        score.append(value);
         content.append(copy, score); panel.append(content);
       } else panel.append(copy);
       grid.append(panel);
