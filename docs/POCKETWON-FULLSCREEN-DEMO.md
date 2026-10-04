@@ -21,7 +21,7 @@
 
 홈의 ‘가상 데이터’, 다른 화면의 ‘데모’, 기능 화면의 ‘가상 데이터’ 표기로 예시임을 알린다. 챌린지와 AI/제품 서비스 화면도 예시 값이며 실제 분석·계좌·서버 연결은 없다.
 
-`전체 → 실제 기록 보기` 또는 `?demo=0`으로 기존 로컬 기록에 돌아간다. `?demo=1`은 가상 화면이다. 개발자 Preview는 기존 방식으로 분리된다. 가상 모드에서는 금융 저장 버튼과 최종 저장 경로를 차단한다. 진입·이동·전환으로 저장소를 읽거나 쓰지 않으며, 실제 모드에서는 기존 저장 계약을 그대로 사용한다. 기타 제품 초안은 기존처럼 메모리에만 존재한다.
+`전체 → 실제 기록 보기` 또는 `?demo=0`으로 기존 로컬 기록에 돌아간다. `?demo=1`은 가상 화면이다. 개발자 Preview는 기존 방식으로 분리된다. 가상 모드에서는 금융 저장 버튼과 최종 저장 경로를 차단한다. 가상 모드 자체는 기존 저장소를 읽거나 쓰지 않으며, 실제 모드에서는 기존 저장 계약을 그대로 사용한다. 기타 제품 초안은 기존처럼 메모리에만 존재한다.
 
 ## 변경 범위
 
@@ -42,3 +42,14 @@
 최종 통과 결과는 `viewport-final`(216 cases), `data-complete`(양 브라우저), `flows-final`(22 checks), `record-keyboard-pass2`(20 checks), `dashboard-final`, `dashboard-edges-verified`, `header-final`(16 checks)이다. 전체 결과는 `evidence/FULLSCREEN-DEMO/summary.json`에 기록했다. 이 목록에 없는 실패 폴더는 보정 과정의 증거다.
 
 로컬 미러는 앱 파일 82개가 동일하며, 원본과 과거 증거 파일 1,168개의 해시를 보존했다.
+
+## 공개 반영
+
+소스 커밋 `66354f0`을 `pocketWON/pocketWON`의 main에 푸시했다. 기존 Vercel 프로젝트는 다른 Git 저장소에 연결되어 있어 연결 설정은 유지하고, 검증한 앱 디렉터리만 CLI로 배포했다.
+
+- 공개 주소: https://pocketwon.vercel.app/
+- 배포 ID: `dpl_BTqjmNBUQdW3J8xCJpLZto4TXtVa`
+- 원본 배포: https://pocketwon-jqssw7stp-clcocloud.vercel.app
+- 공개 HTML·CSS·JS·manifest 6개 경로의 HTTP 200 및 로컬 SHA-256 일치를 확인했다.
+- 실제 Chrome 1347×633에서 문서 크기 1347×633, 하단바 84px, 상단 카드 여백 16.55px, 가상 데이터 표시를 확인했다.
+- 증거: `evidence/FULLSCREEN-DEMO/production/verification.json`, `live-chrome.png`

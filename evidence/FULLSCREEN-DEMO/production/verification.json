@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "sourceCommit": "66354f02adcfbb3659035e76450b8e4645c93251",
+  "url": "https://pocketwon.vercel.app/",
+  "deploymentId": "dpl_BTqjmNBUQdW3J8xCJpLZto4TXtVa",
+  "deploymentUrl": "https://pocketwon-jqssw7stp-clcocloud.vercel.app",
+  "checks": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "41c832d9a59cf563ec2b7ddd58c05f15e249453d679559e899b859d5cb5af45e",
+      "matchesLocal": true
+    },
+    {
+      "path": "styles/viewport.css",
+      "status": 200,
+      "sha256": "8195f8b0fe562f72d65545be0e0e650066d37815905f53e2c06b9f8a08733ddd",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/viewport.js",
+      "status": 200,
+      "sha256": "380c471b5c386c634cde06e98e701be0501034bae7f48650f08ec2f44ddec1d1",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/demo.js",
+      "status": 200,
+      "sha256": "3a8cb2616c78cdbdfdac6842c2018f307989bbe481436955b193b082c85baf4b",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/ui.js",
+      "status": 200,
+      "sha256": "c359f02f44337f9e3fa29561ada118a7d85f879524b14b46cc5249536e1c9d34",
+      "matchesLocal": true
+    },
+    {
+      "path": "manifest.webmanifest",
+      "status": 200,
+      "sha256": "3921cc84bec7e2aad024c1cbb67e71522a017664ea54e0cd292b91a9c2085b2f",
+      "matchesLocal": true
+    }
+  ],
+  "liveChrome": {
+    "viewport": [
+      1347,
+      633
+    ],
+    "document": [
+      1347,
+      633
+    ],
+    "navigationHeight": 84,
+    "heroTop": 16.5546875,
+    "virtualDataLabel": "가상 데이터",
+    "screenshot": "live-chrome.png"
+  }
+}
