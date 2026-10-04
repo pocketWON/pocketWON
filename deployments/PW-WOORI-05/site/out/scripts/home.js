@@ -294,9 +294,13 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
     });
     const detail = el('p', 'pw-sr-only', `주간 지출, ${data.days.map(day => `${day.label} ${day.future ? '미집계' : day.amount === null ? '확인 안 됨' : `${number(day.amount)}원`}`).join(', ')}${data.crownKey ? `, 가장 적게 쓴 날 ${data.days.find(day => day.key === data.crownKey).label}` : ''}${data.omitted ? `, 유효하지 않은 기록 ${data.omitted}건 제외` : ''}`);
     const reaction = el('div', 'pw-home-weekly-reaction');
-    reaction.append(el('p', 'pw-home-weekly-bubble', data.message || '이번 주 용돈도\n차근차근 살펴봐요!'),
-      pwIllustrationPanel('all', { panelClass: 'pw-compact-visual pw-home-weekly-art' }));
-    const music = el('span', 'pw-home-weekly-music', '♪'); music.setAttribute('aria-hidden', 'true'); reaction.append(music);
+    reaction.append(pwIllustrationPanel('all', { panelClass: 'pw-compact-visual pw-home-weekly-art' }));
+    const score = dashboard.insights.positive.score, knownScore = Number.isInteger(score) && score >= 0 && score <= 100;
+    const scoreNode = el('span', 'pw-home-weekly-score');
+    scoreNode.dataset.score = knownScore ? String(score) : 'unknown';
+    scoreNode.setAttribute('aria-label', knownScore ? `최근 28일, 100점 중 ${score}점` : '점수를 계산할 기록이 없어요');
+    scoreNode.append(el('strong', '', knownScore ? String(score) : '—'), el('span', '', '점'));
+    reaction.append(scoreNode);
     body.append(chart, reaction, detail); node.append(body); return node;
   }
   function insightIcon(kind) {

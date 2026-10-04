@@ -12,11 +12,17 @@ async function layout(p,name){
     const pairs=[...document.querySelectorAll('.pw-home-purchase')].map(n=>({button:rect(n),name:rect(n.querySelector('.pw-home-legend-label'))}));
     const value=rect(document.querySelector('.pw-home-score-value')),score=rect(document.querySelector('.pw-home-score')),copy=rect(document.querySelector('.pw-home-positive-content>.pw-home-insight-body')),panel=rect(document.querySelector('.pw-home-insight--positive'));
     const crown=document.querySelector('.pw-home-weekly-crown'),plot=document.querySelector('.pw-home-weekly-plot');
-    return {pairs,value,score,copy,panel,habit:rect(document.querySelector('.pw-home-habit')),crown:crown?rect(crown):null,plot:rect(plot),crownedValue:crown?rect(plot.querySelector(`rect[data-date-key="${crown.dataset.dateKey}"]`).nextElementSibling):null,nav:rect(document.querySelector('.pw-bottom-navigation'))};
+    const weeklyScore=document.querySelector('.pw-home-weekly-score'),weeklyArt=document.querySelector('.pw-home-weekly-art');
+    return {pairs,value,score,copy,panel,weeklyScore:rect(weeklyScore),weeklyGlyphs:[...weeklyScore.children].map(rect),weeklyArt:rect(weeklyArt),weeklyCard:rect(document.querySelector('.pw-home-weekly')),habit:rect(document.querySelector('.pw-home-habit')),crown:crown?rect(crown):null,plot:rect(plot),crownedValue:crown?rect(plot.querySelector(`rect[data-date-key="${crown.dataset.dateKey}"]`).nextElementSibling):null,nav:rect(document.querySelector('.pw-bottom-navigation'))};
   });
   report.geometry.push({name,...g});
   assert.equal(g.nav.height,84);assert(g.value.right<=g.score.right+1&&g.value.left>=g.score.left-1,name+' score text exceeds slot');
   assert(g.score.left>=g.copy.right-1 && g.score.bottom<=g.panel.bottom+1 && g.score.right<=g.panel.right+1,name+' score/copy overlap');
+  assert(g.plot.right<=g.weeklyArt.left+1 && g.weeklyArt.right<=g.weeklyScore.left+1,name+' weekly plot/character/score overlap');
+  for(const glyph of g.weeklyGlyphs) assert(glyph.left>=g.weeklyScore.left-1 && glyph.right<=g.weeklyScore.right+1 && glyph.top>=g.weeklyCard.top && glyph.bottom<=g.weeklyCard.bottom,name+' weekly score clipping');
+  assert.equal(await p.locator('.pw-home-weekly-score').getAttribute('data-score'),await p.locator('.pw-home-score').getAttribute('data-score'),name+' weekly and insight scores differ');
+  assert.equal(await p.locator('.pw-home-weekly-bubble,.pw-home-weekly-music').count(),0);
+  assert(!((await p.locator('.pw-home-weekly-reaction').innerText()).includes('습관 점수')));
   for(const row of g.pairs) assert(row.name.right<=g.habit.right-3 && row.name.bottom<=row.button.bottom+1 && row.name.bottom<=g.habit.bottom-3,name+' purchase label clipping '+JSON.stringify(row));
   if(g.crown){assert(g.crown.top>=g.plot.top-1 && g.crown.bottom<=g.crownedValue.top+1,name+' crown overlaps value or exceeds plot '+JSON.stringify(g));}
 }
@@ -69,7 +75,7 @@ async function layout(p,name){
     if(name==='over-budget') assert.equal(await current.page.locator('.pw-home-donut-value').innerText(),'4,000원');
     await current.page.screenshot({path:path.join(out,'screenshots',engine+'-'+name+'.png')});await unchanged(current);await current.context.close();current=null;
   }
-  report.checks.push(engine+' exact allowance arc, blue dot/segment identity, purchase detail/list routing, crown headroom, score layout, price-free five names and seven edge states');
+  report.checks.push(engine+' exact allowance arc, blue dot/segment identity, purchase detail/list routing, crown headroom, matching scores with character/plot separation and no bubble or score label, price-free five names and seven edge states');
   await browser.close();browser=null;
  }
  report.status='PASS';
