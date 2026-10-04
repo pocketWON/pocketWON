@@ -30,6 +30,7 @@ Full Product Shell은 AI 9개와 비AI 22개 제품 영역을 상태·입력·�
 node tests/verify-business-contracts.cjs
 node tests/verify-dashboard-data.cjs
 PW_EVIDENCE_ROOT=evidence/REFERENCE-DASHBOARD/new-run node tests/verify-dashboard.cjs
+node tests/verify-habit-score.cjs
 node tests/verify-single-screen.cjs
 node tests/verify-record-stage.cjs
 node tests/verify-record-keyboard.cjs

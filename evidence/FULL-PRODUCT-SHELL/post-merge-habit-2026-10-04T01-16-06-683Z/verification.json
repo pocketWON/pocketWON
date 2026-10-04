@@ -1,0 +1,73 @@
+{
+  "status": "PASS",
+  "checks": [
+    "chromium/360x667/recent transactions",
+    "chromium/390x844/recent transactions",
+    "chromium/430x932/recent transactions",
+    "webkit/360x667/recent transactions",
+    "webkit/390x844/recent transactions",
+    "webkit/430x932/recent transactions"
+  ],
+  "geometry": [
+    {
+      "engine": "chromium",
+      "width": 360,
+      "height": 667,
+      "safe": true,
+      "accessible": false,
+      "scrollHeight": 501,
+      "clientHeight": 501,
+      "outside": []
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "safe": false,
+      "accessible": false,
+      "scrollHeight": 712,
+      "clientHeight": 712,
+      "outside": []
+    },
+    {
+      "engine": "chromium",
+      "width": 430,
+      "height": 932,
+      "safe": true,
+      "accessible": false,
+      "scrollHeight": 746,
+      "clientHeight": 746,
+      "outside": []
+    },
+    {
+      "engine": "webkit",
+      "width": 360,
+      "height": 667,
+      "safe": true,
+      "accessible": false,
+      "scrollHeight": 501,
+      "clientHeight": 501,
+      "outside": []
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "safe": false,
+      "accessible": false,
+      "scrollHeight": 712,
+      "clientHeight": 712,
+      "outside": []
+    },
+    {
+      "engine": "webkit",
+      "width": 430,
+      "height": 932,
+      "safe": true,
+      "accessible": false,
+      "scrollHeight": 746,
+      "clientHeight": 746,
+      "outside": []
+    }
+  ]
+}

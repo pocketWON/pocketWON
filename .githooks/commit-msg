@@ -1,0 +1,30 @@
+#!/bin/sh
+# Conventional Commits 검사 — COMMIT_CONVENTION.md 참고
+
+msg_file="$1"
+subject=$(grep -v '^#' "$msg_file" | sed '/^[[:space:]]*$/d' | head -n 1)
+
+# git이 자동 생성하는 메시지는 통과
+case "$subject" in
+  Merge\ *|Revert\ *|fixup!\ *|squash!\ *|amend!\ *) exit 0 ;;
+esac
+
+types='feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert'
+pattern="^($types)(\([a-z0-9._/-]+\))?!?: [^[:space:]].*[^.]$"
+
+if ! printf '%s' "$subject" | grep -Eq "$pattern"; then
+  echo "✗ 커밋 메시지가 컨벤션에 맞지 않습니다." >&2
+  echo "  입력: $subject" >&2
+  echo "  형식: <type>(<scope>): <subject>   예) feat(goal): 목표 적립 버튼 추가" >&2
+  echo "  type: ${types}" | tr '|' ' ' >&2
+  echo "  자세한 내용: COMMIT_CONVENTION.md" >&2
+  exit 1
+fi
+
+# 제목 길이 경고 (글자 수 기준, 거부하지 않음)
+len=$(printf '%s' "$subject" | wc -m | tr -d ' ')
+if [ "$len" -gt 72 ]; then
+  echo "⚠ 제목이 ${len}자입니다. 50자 이내를 권장합니다." >&2
+fi
+
+exit 0

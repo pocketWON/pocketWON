@@ -42,7 +42,8 @@ async function setup(browser, { data = fixture, width = 320, height = 568, motio
   return { context, page };
 }
 async function ready(page) {
-  await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.querySelectorAll('img')].map(n => n.decode().catch(() => {}))); await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))); });
+  // Hidden lazy posters do not load; only wait for images in rendered panels.
+  await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.querySelectorAll('img')].filter(n => n.getClientRects().length).map(n => n.decode().catch(() => {}))); await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))); });
 }
 async function enter(page, id) {
   if (id === 'record') {
