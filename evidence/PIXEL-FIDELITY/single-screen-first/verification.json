@@ -1,0 +1,265 @@
+{
+  "checks": [],
+  "geometry": [
+    {
+      "label": "chromium/320x568/false/home",
+      "home": true,
+      "accessible": true,
+      "frames": [
+        {
+          "cls": "pw-accessible",
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "right": 320,
+          "bottom": 568,
+          "sh": 1416,
+          "ch": 568,
+          "sw": 331,
+          "cw": 320
+        },
+        {
+          "cls": "pw-shell",
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 1416.375,
+          "right": 320,
+          "bottom": 1416.375,
+          "sh": 1416,
+          "ch": 1416,
+          "sw": 331,
+          "cw": 320
+        },
+        {
+          "cls": "pw-content",
+          "x": 0,
+          "y": 60,
+          "w": 320,
+          "h": 1268.375,
+          "right": 320,
+          "bottom": 1328.375,
+          "sh": 1268,
+          "ch": 1268,
+          "sw": 331,
+          "cw": 320
+        },
+        {
+          "cls": "pw-screen pw-home",
+          "x": 0,
+          "y": 60,
+          "w": 320,
+          "h": 1268.375,
+          "right": 320,
+          "bottom": 1328.375,
+          "sh": 1268,
+          "ch": 1268,
+          "sw": 331,
+          "cw": 320
+        }
+      ],
+      "controls": [
+        {
+          "cls": "pw-home-hero-title",
+          "x": 20.171875,
+          "y": 75.4375,
+          "w": 96.75,
+          "h": 44,
+          "right": 116.921875,
+          "bottom": 119.4375,
+          "sh": 44,
+          "ch": 44,
+          "sw": 97,
+          "cw": 97
+        },
+        {
+          "cls": "pw-home-breakdown-item",
+          "x": 11.546875,
+          "y": 308.203125,
+          "w": 98.96875,
+          "h": 85,
+          "right": 110.515625,
+          "bottom": 393.203125,
+          "sh": 85,
+          "ch": 85,
+          "sw": 99,
+          "cw": 99
+        },
+        {
+          "cls": "pw-home-breakdown-item",
+          "x": 110.515625,
+          "y": 308.203125,
+          "w": 98.96875,
+          "h": 85,
+          "right": 209.484375,
+          "bottom": 393.203125,
+          "sh": 85,
+          "ch": 85,
+          "sw": 99,
+          "cw": 99
+        },
+        {
+          "cls": "pw-home-breakdown-item",
+          "x": 209.484375,
+          "y": 308.203125,
+          "w": 98.96875,
+          "h": 85,
+          "right": 308.453125,
+          "bottom": 393.203125,
+          "sh": 85,
+          "ch": 85,
+          "sw": 99,
+          "cw": 99
+        },
+        {
+          "cls": "pw-home-card-menu",
+          "x": 117.78125,
+          "y": 410.015625,
+          "w": 44,
+          "h": 44,
+          "right": 161.78125,
+          "bottom": 454.015625,
+          "sh": 44,
+          "ch": 44,
+          "sw": 44,
+          "cw": 44
+        },
+        {
+          "cls": "pw-home-saving-open",
+          "x": 105.484375,
+          "y": 713.203125,
+          "w": 44,
+          "h": 44,
+          "right": 149.484375,
+          "bottom": 757.203125,
+          "sh": 44,
+          "ch": 44,
+          "sw": 44,
+          "cw": 44
+        },
+        {
+          "cls": "pw-home-card-link",
+          "x": 172.96875,
+          "y": 426.21875,
+          "w": 69.34375,
+          "h": 44,
+          "right": 242.3125,
+          "bottom": 470.21875,
+          "sh": 44,
+          "ch": 44,
+          "sw": 69,
+          "cw": 69
+        },
+        {
+          "cls": "pw-home-card-menu",
+          "x": 266.890625,
+          "y": 419.03125,
+          "w": 44,
+          "h": 44,
+          "right": 310.890625,
+          "bottom": 463.03125,
+          "sh": 44,
+          "ch": 44,
+          "sw": 44,
+          "cw": 44
+        },
+        {
+          "cls": "pw-home-card-link",
+          "x": 18.125,
+          "y": 818.515625,
+          "w": 80.921875,
+          "h": 44,
+          "right": 99.046875,
+          "bottom": 862.515625,
+          "sh": 44,
+          "ch": 44,
+          "sw": 81,
+          "cw": 81
+        },
+        {
+          "cls": "pw-home-card-menu",
+          "x": 263.609375,
+          "y": 811.328125,
+          "w": 44,
+          "h": 44,
+          "right": 307.609375,
+          "bottom": 855.328125,
+          "sh": 44,
+          "ch": 44,
+          "sw": 44,
+          "cw": 44
+        },
+        {
+          "cls": "pw-home-card-link",
+          "x": 19.765625,
+          "y": 1051.21875,
+          "w": 80.734375,
+          "h": 44,
+          "right": 100.5,
+          "bottom": 1095.21875,
+          "sh": 44,
+          "ch": 44,
+          "sw": 81,
+          "cw": 81
+        },
+        {
+          "cls": "pw-home-insights-more",
+          "x": 268.390625,
+          "y": 1051.21875,
+          "w": 37.578125,
+          "h": 44,
+          "right": 305.96875,
+          "bottom": 1095.21875,
+          "sh": 44,
+          "ch": 44,
+          "sw": 38,
+          "cw": 38
+        },
+        {
+          "cls": "pw-home-insight pw-home-insight--positive",
+          "x": 15.671875,
+          "y": 1103.21875,
+          "w": 146.328125,
+          "h": 205,
+          "right": 162,
+          "bottom": 1308.21875,
+          "sh": 211,
+          "ch": 203,
+          "sw": 157,
+          "cw": 144
+        },
+        {
+          "cls": "pw-home-insight pw-home-insight--advice",
+          "x": 168.5625,
+          "y": 1103.21875,
+          "w": 137.390625,
+          "h": 205,
+          "right": 305.953125,
+          "bottom": 1308.21875,
+          "sh": 203,
+          "ch": 203,
+          "sw": 135,
+          "cw": 135
+        }
+      ],
+      "outside": [],
+      "textOutside": [],
+      "viewport": [
+        320,
+        568
+      ]
+    }
+  ],
+  "screenshots": [],
+  "errors": [],
+  "engines": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12"
+    }
+  ],
+  "physicalKeyboardVerified": false,
+  "status": "FAIL",
+  "failure": "AssertionError [ERR_ASSERTION]: chromium/320x568/false/home horizontal scroll extent [{\"cls\":\"pw-accessible\",\"x\":0,\"y\":0,\"w\":320,\"h\":568,\"right\":320,\"bottom\":568,\"sh\":1416,\"ch\":568,\"sw\":331,\"cw\":320},{\"cls\":\"pw-shell\",\"x\":0,\"y\":0,\"w\":320,\"h\":1416.375,\"right\":320,\"bottom\":1416.375,\"sh\":1416,\"ch\":1416,\"sw\":331,\"cw\":320},{\"cls\":\"pw-content\",\"x\":0,\"y\":60,\"w\":320,\"h\":1268.375,\"right\":320,\"bottom\":1328.375,\"sh\":1268,\"ch\":1268,\"sw\":331,\"cw\":320},{\"cls\":\"pw-screen pw-home\",\"x\":0,\"y\":60,\"w\":320,\"h\":1268.375,\"right\":320,\"bottom\":1328.375,\"sh\":1268,\"ch\":1268,\"sw\":331,\"cw\":320}]\n    at geometry (/Users/jeonghu/포켓WON/tests/verify-single-screen.cjs:66:3)\n    at async matrix (/Users/jeonghu/포켓WON/tests/verify-single-screen.cjs:82:35)\n    at async /Users/jeonghu/포켓WON/tests/verify-single-screen.cjs:137:237"
+}

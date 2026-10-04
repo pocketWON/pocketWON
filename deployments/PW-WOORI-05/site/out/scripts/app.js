@@ -5,7 +5,7 @@
  const buttons=['home','report','add','goal','all'].map(id=>{
   if(id==='add'){
    const b=PWUI.button('',()=>{const route=PWNavigation.current(),entryMotion=currentView?pwSpriteEntryMotion(currentView.element,b,'record'):undefined;addReturnRoute={...route,focusAction:'form'};PWNavigation.go({screen:'record',stage:'form',returnTo:addReturnRoute},entryMotion);},'pw-nav-item pw-nav-add');
-   b.dataset.action='form';b.setAttribute('aria-label','기록하기');b.innerHTML=pwIcon('add');navigation.append(b);return b;
+   b.dataset.action='form';b.setAttribute('aria-label','기록하기');const logo=PWUI.el('img','pw-nav-add-logo');logo.src='./assets/pocketwon/graphics/pocketwon-w-ring-logo.png';logo.alt='';logo.setAttribute('aria-hidden','true');logo.width=1254;logo.height=1254;logo.draggable=false;b.append(logo);navigation.append(b);return b;
   }
   const tab=PW_TABS.find(t=>t.id===id),b=PWUI.button('',()=>PWNavigation.go(tab.id),'pw-nav-item');b.dataset.screen=tab.id;b.innerHTML=pwIcon(tab.id);b.append(PWUI.el('span','',tab.label));navigation.append(b);return b;
  });
@@ -24,16 +24,9 @@
   const opts={...(memory[route.screen]||{}),...route},navigate=(next,motion)=>PWNavigation.go(next,motion),label=feature?.title||tab.label;document.title=label+' · 포켓WON';context.textContent=label;shell.dataset.screen=route.screen;
   // Keep the original UI destination in memory; router history remains one level deep.
   if(route.screen==='record'&&route.stage==='form'&&addReturnRoute)opts.returnTo=addReturnRoute;else addReturnRoute=null;
-  if(route.screen==='home'){context.innerHTML='포켓<span class="pw-brand-accent">WON</span>';context.setAttribute('aria-label','포켓WON');}else context.removeAttribute('aria-label');
-  context.parentElement.querySelectorAll('.pw-home-header-actions,.pw-header-action,.pw-retry').forEach(n=>n.remove());const loaded=loadPocketWONState();
-  if(route.screen==='home'&&['invalid','unavailable'].includes(loaded.status)){const retry=PWUI.button('다시',()=>navigate('home'),'pw-icon-button pw-retry');retry.setAttribute('aria-label','잔액 다시 불러오기');context.parentElement.append(retry);}
-  if(route.screen==='home'){
-   const actions=PWUI.el('div','pw-home-header-actions'),notification=PWUI.button('',()=>navigate(pwFeatureRoute('notifications',route)),'pw-icon-button pw-header-action pw-header-notification'),profile=PWUI.button('',()=>navigate(pwFeatureRoute('profile',route)),'pw-icon-button pw-header-action pw-header-profile');
-   notification.innerHTML=pwIcon('bell');notification.setAttribute('aria-label','알림');profile.setAttribute('aria-label','프로필');
-   const avatar=PWUI.el('span','pw-header-avatar'),image=PWUI.el('img');image.src='./assets/pocketwon/sprites/pocketwon-balance-poster.webp';image.alt='';image.setAttribute('aria-hidden','true');image.width=384;image.height=384;avatar.append(image);profile.append(avatar);actions.append(notification,profile);
-   if(PWPreview.enabled){const preview=PWUI.button('미리보기',()=>previewControls(route,navigate),'pw-core-header-action pw-header-action');preview.setAttribute('aria-label','개발용 Preview 상태 선택');actions.prepend(preview);}
-   context.parentElement.append(actions);
-  }else if(PWPreview.enabled||listsScreen(route.screen)){
+  context.hidden=route.screen==='home';context.parentElement.hidden=context.hidden;if(context.hidden)context.textContent='';context.removeAttribute('aria-label');
+  context.parentElement.querySelectorAll('.pw-home-brand,.pw-home-header-actions,.pw-header-action,.pw-retry').forEach(n=>n.remove());const loaded=loadPocketWONState();
+  if(route.screen!=='home'&&(PWPreview.enabled||listsScreen(route.screen))){
    const action=PWUI.button(PWPreview.enabled?'미리보기':'도구',()=>PWPreview.enabled?previewControls(route,navigate):tools(route.screen,route,navigate),'pw-core-header-action pw-header-action');action.setAttribute('aria-label',PWPreview.enabled?'개발용 Preview 상태 선택':label+' 도구 열기');context.parentElement.append(action);
   }
   if(route.screen==='home')currentView=createHomeView(createHomeViewModel(loaded.state),navigate,loaded.status,loaded);

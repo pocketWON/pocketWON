@@ -1,0 +1,107 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 360,
+      "height": 740,
+      "logo": {
+        "x": 12.921875,
+        "y": -0.927884578704834,
+        "right": 59.0625,
+        "width": 46.140625,
+        "height": 46.140625
+      },
+      "bell": {
+        "x": 304.9375,
+        "y": 0.15024042129516602
+      },
+      "position": "static"
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "logo": {
+        "x": 14,
+        "y": -1,
+        "right": 64,
+        "width": 50,
+        "height": 50
+      },
+      "bell": {
+        "x": 334,
+        "y": 2
+      },
+      "position": "static"
+    },
+    {
+      "engine": "chromium",
+      "width": 430,
+      "height": 740,
+      "logo": {
+        "x": 15.421875,
+        "y": -1.1065707206726074,
+        "right": 70.546875,
+        "width": 55.125,
+        "height": 55.125
+      },
+      "bell": {
+        "x": 368.28125,
+        "y": 2.2059292793273926
+      },
+      "position": "static"
+    },
+    {
+      "engine": "webkit",
+      "width": 360,
+      "height": 740,
+      "logo": {
+        "x": 12.921875,
+        "y": -0.927884578704834,
+        "right": 59.0625,
+        "width": 46.140625,
+        "height": 46.140625
+      },
+      "bell": {
+        "x": 304.9375,
+        "y": 0.15024042129516602
+      },
+      "position": "static"
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "logo": {
+        "x": 14,
+        "y": -1,
+        "right": 64,
+        "width": 50,
+        "height": 50
+      },
+      "bell": {
+        "x": 334,
+        "y": 2
+      },
+      "position": "static"
+    },
+    {
+      "engine": "webkit",
+      "width": 430,
+      "height": 740,
+      "logo": {
+        "x": 15.421875,
+        "y": -1.1065707206726074,
+        "right": 70.546875,
+        "width": 55.125,
+        "height": 55.125
+      },
+      "bell": {
+        "x": 368.28125,
+        "y": 2.2059292793273926
+      },
+      "position": "static"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "method": "RGB similarity = 100*(1-mean absolute channel error/255). This is not perceptual fidelity or a claim of pixel identity. Blur radius=5 CSS pixels. Final appearance mask excludes traced reference/actual mascot silhouettes and 2px antialias fringe, not entire cards. All frames and character layout are verified separately.",
+  "results": [
+    {
+      "pass": "01-macro",
+      "mean_absolute_RGB_error_0_to_255": 20.655,
+      "normalized_RGB_similarity_percent": 91.9,
+      "blur5_RGB_similarity_percent": 95.582
+    },
+    {
+      "pass": "02-color",
+      "mean_absolute_RGB_error_0_to_255": 17.746,
+      "normalized_RGB_similarity_percent": 93.041,
+      "blur5_RGB_similarity_percent": 96.762
+    },
+    {
+      "pass": "03-components",
+      "mean_absolute_RGB_error_0_to_255": 17.102,
+      "normalized_RGB_similarity_percent": 93.293,
+      "blur5_RGB_similarity_percent": 96.908
+    },
+    {
+      "pass": "04-typography",
+      "mean_absolute_RGB_error_0_to_255": 16.603,
+      "normalized_RGB_similarity_percent": 93.489,
+      "blur5_RGB_similarity_percent": 97.071
+    },
+    {
+      "pass": "05-spacing",
+      "mean_absolute_RGB_error_0_to_255": 16.605,
+      "normalized_RGB_similarity_percent": 93.488,
+      "blur5_RGB_similarity_percent": 97.072
+    },
+    {
+      "pass": "06-optical",
+      "mean_absolute_RGB_error_0_to_255": 15.76,
+      "normalized_RGB_similarity_percent": 93.82,
+      "blur5_RGB_similarity_percent": 97.197
+    },
+    {
+      "pass": "final-reference",
+      "mean_absolute_RGB_error_0_to_255": 14.969,
+      "normalized_RGB_similarity_percent": 94.13,
+      "blur5_RGB_similarity_percent": 97.325,
+      "character_masked_RGB_similarity_percent": 95.475,
+      "mask_included_fraction": 0.9344
+    }
+  ]
+}

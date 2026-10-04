@@ -1,12 +1,17 @@
 # PocketWON / 포켓WON
 
-Vanilla HTML/CSS/JavaScript 금융 기록 앱입니다. 현재 홈은 레퍼런스 기반 **잔액 Hero + 3분할 요약 + 동일 크기 2×2 정보 카드**로 구성합니다. 목표·금융 습관·거래 달력·주간 지출은 실제 저장 데이터에 연결하며, 하단 메뉴는 홈 / 리포트 / + / 목표 / 전체입니다. 기록 목록·긴 상세·입력 흐름은 기존 화면과 상태 교체를 유지합니다.
+Vanilla HTML/CSS/JavaScript 금융 기록 앱입니다. 현재 홈은 상단 헤더 없이 **잔액 Hero·3분할 상태 → 저축 챌린지/6색 도넛 → 주간 막대 차트 → AI 인사이트 → 홈/리포트/포켓WON 로고/목표/전체** 순서로 표시합니다. 중앙 로고는 기록 추가 버튼이고, 리포트에는 보고서 모양 아이콘을 사용합니다. 세로 스크롤은 유지하면서 스크롤바를 숨깁니다. 이미지에서 추출한 파랑·네이비·파스텔과 기존 캐릭터 Sprite를 사용하며, 주간 저축 이력·AI 서비스가 없는 영역은 미연동 상태를 표시합니다.
 
 ```sh
 python3 -m http.server 4173 --bind 127.0.0.1
 ```
 
 - [실행 앱](http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html)
+- [Golden Master 최종 구현·검증 보고서](docs/POCKETWON-PIXEL-FIDELITY.md)
+- [Golden Master 비교·오버레이 갤러리](evidence/PIXEL-FIDELITY/index.html)
+
+홈은 대표 390×844에서 한 화면에 들어갑니다. 짧은 화면과 safe area로 공간이 부족하면 카드 비율을 유지하고 세로 스크롤을 허용합니다. 초기 Golden Master 검증은 양 브라우저 552개 보고 항목과 대시보드 148개 geometry case를 통과했습니다. 이후 사용자 요청으로 헤더와 캐릭터 옆 문구·강조선을 제거하고 하단 아이콘을 수정했습니다. [최신 화면](evidence/REPORT-DOCUMENT-ICON/chromium-home.png) · [최신 대시보드 검증](evidence/MAIN-PUSH/dashboard/verification.json) · [헤더 제거·화면 복귀 검증](evidence/MAIN-PUSH/header/verification.json) · [최신 로컬 미러 검증](evidence/MAIN-PUSH/delivery/delivery-integrity.json). 아래 이전 보고서는 당시 구현 기록으로 보존합니다.
+
 - [Reference Dashboard 구현·검증 보고서](docs/POCKETWON-REFERENCE-DASHBOARD.md)
 - [Reference Dashboard 비교 갤러리](evidence/REFERENCE-DASHBOARD/index.html)
 - [Full Product Shell 보고서](<docs/POCKETWON-FULL-PRODUCT-SHELL.md>)
@@ -29,7 +34,8 @@ Full Product Shell은 AI 9개와 비AI 22개 제품 영역을 상태·입력·�
 ```sh
 node tests/verify-business-contracts.cjs
 node tests/verify-dashboard-data.cjs
-PW_EVIDENCE_ROOT=evidence/REFERENCE-DASHBOARD/new-run node tests/verify-dashboard.cjs
+PW_EVIDENCE_ROOT=evidence/PIXEL-FIDELITY/new-run node tests/verify-dashboard.cjs
+node tests/verify-header-scroll.cjs
 node tests/verify-habit-score.cjs
 node tests/verify-single-screen.cjs
 node tests/verify-record-stage.cjs

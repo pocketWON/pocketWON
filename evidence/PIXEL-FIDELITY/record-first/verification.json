@@ -1,0 +1,70 @@
+{
+  "startedAt": "2026-10-04T01:33:48.908Z",
+  "url": "http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html",
+  "checks": [
+    {
+      "name": "chromium: incoming skips category, supports optional memo, and confirms 용돈 without writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "chromium: one final read preserves latest fields/current and transaction order; duplicate activation saves once",
+      "status": "PASS",
+      "detail": {
+        "writes": [
+          {
+            "method": "setItem",
+            "key": "pocketwon_demo_v1"
+          }
+        ],
+        "transactionCount": 6
+      }
+    },
+    {
+      "name": "chromium: every backward/forward step retains type, amount, category and memo draft",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "chromium: Close and Escape discard draft and restore the original opener without writes",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "chromium: Home form Close/Escape returns focus to the original 기록하기 action",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "chromium: Tab stays inside the modal; input and composing Enter never advance or save",
+      "status": "PASS",
+      "detail": {
+        "tabSamples": 10,
+        "composingEnterPrevented": true
+      }
+    },
+    {
+      "name": "chromium: latest insufficient balance prevents writes and preserves the complete draft",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "name": "chromium: read-error retry reads recovered storage once and never repairs or writes",
+      "status": "PASS",
+      "detail": true
+    }
+  ],
+  "browsers": {
+    "chromium": {
+      "version": "153.0.8010.12",
+      "executable": "/Users/jeonghu/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell"
+    }
+  },
+  "errors": [],
+  "status": "FAIL",
+  "limitations": [
+    "Keyboard events run in isolated desktop engines; physical mobile IME and keyboard are not verified"
+  ],
+  "failure": "page.waitForFunction: Timeout 5000ms exceeded.\n    at paginationResize (/Users/jeonghu/포켓WON/tests/verify-record-stage.cjs:215:16)\n    at async /Users/jeonghu/포켓WON/tests/verify-record-stage.cjs:247:89",
+  "finishedAt": "2026-10-04T01:34:11.632Z"
+}

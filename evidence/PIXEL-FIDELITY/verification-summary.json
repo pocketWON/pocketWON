@@ -1,0 +1,86 @@
+{
+  "status": "PASS",
+  "browser_engines": [
+    "Chromium",
+    "WebKit"
+  ],
+  "browser_suites": {
+    "dashboard": {
+      "status": "PASS",
+      "checks": 5,
+      "geometry_cases": 148,
+      "report": "dashboard-final/verification.json"
+    },
+    "capture": {
+      "status": "PASS",
+      "checks": 3,
+      "geometry_cases": 2,
+      "report": "capture-optical-final/verification.json"
+    },
+    "single-screen": {
+      "status": "PASS",
+      "checks": 380,
+      "geometry_cases": 368,
+      "report": "single-screen-final/verification.json"
+    },
+    "sprites": {
+      "status": "PASS",
+      "checks": 32,
+      "geometry_cases": 0,
+      "report": "sprites-first/sprites/verification.json"
+    },
+    "record": {
+      "status": "PASS",
+      "checks": 20,
+      "geometry_cases": 0,
+      "report": "record-pass2/verification.json"
+    },
+    "product-shell": {
+      "status": "PASS",
+      "checks": 14,
+      "geometry_cases": 0,
+      "report": "product-shell-first/verification.json"
+    },
+    "ai-shell": {
+      "status": "PASS",
+      "checks": 22,
+      "geometry_cases": 0,
+      "report": "ai-shell/verification.json"
+    },
+    "product-flows": {
+      "status": "PASS",
+      "checks": 22,
+      "geometry_cases": 0,
+      "report": "product-flows/verification.json"
+    },
+    "product-edge-cases": {
+      "status": "PASS",
+      "checks": 12,
+      "geometry_cases": 0,
+      "report": "product-edge-final/verification.json"
+    },
+    "feature-accessibility": {
+      "status": "PASS",
+      "checks": 22,
+      "geometry_cases": 0,
+      "report": "feature-accessibility/verification.json"
+    },
+    "record-keyboard": {
+      "status": "PASS",
+      "checks": 20,
+      "geometry_cases": 0,
+      "report": "record-keyboard/verification.json"
+    }
+  },
+  "grouped_browser_checks": 552,
+  "pure_checks": {
+    "business_contract_groups": 29,
+    "dashboard_data_groups": 9,
+    "habit_score_groups": 6,
+    "feature_contracts": "PASS"
+  },
+  "primary_max_boundary_error_css_px": 0.09,
+  "scenarios": "132 viewport combinations +16 live-data/safe-area/text-zoom edge geometries; nested routes, financial writes/failure handling, pause/reduced-motion, keyboard, feature flows, overflow guards",
+  "physical_device_tested": false,
+  "note": "Earlier FAIL or interrupted attempts are retained as correction evidence and superseded by the explicit PASS reports listed here."
+}

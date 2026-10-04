@@ -1,0 +1,403 @@
+{
+  "source": "/Users/jeonghu/Downloads/포켓WON 스마트 금융 대시보드(1).png",
+  "sha256": "137d51fa9af1fa4cbdae52c591bf25a8fe6b942ba24cc0ffc82a0d1307de56cb",
+  "image": [
+    852,
+    1846
+  ],
+  "viewport": [
+    53,
+    171,
+    746,
+    1577
+  ],
+  "viewport_note": "Content normalization excludes hardware, status bar and rounded bottom hardware corners. 19.56px remaining at390x844 is bottom background.",
+  "boxes": {
+    "header": {
+      "source": [
+        72,
+        174,
+        712,
+        91
+      ],
+      "at390": [
+        9.933,
+        1.568,
+        372.225,
+        47.574
+      ]
+    },
+    "hero": {
+      "source": [
+        71,
+        282,
+        713,
+        453
+      ],
+      "at390": [
+        9.41,
+        58.029,
+        372.748,
+        236.823
+      ]
+    },
+    "status": {
+      "source": [
+        80,
+        600,
+        692,
+        119
+      ],
+      "at390": [
+        14.115,
+        224.276,
+        361.769,
+        62.212
+      ]
+    },
+    "saving": {
+      "source": [
+        72,
+        754,
+        351,
+        330
+      ],
+      "at390": [
+        9.933,
+        304.786,
+        183.499,
+        172.52
+      ]
+    },
+    "habit": {
+      "source": [
+        433,
+        754,
+        351,
+        330
+      ],
+      "at390": [
+        198.66,
+        304.786,
+        183.499,
+        172.52
+      ]
+    },
+    "weekly": {
+      "source": [
+        72,
+        1097,
+        712,
+        227
+      ],
+      "at390": [
+        9.933,
+        484.102,
+        372.225,
+        118.673
+      ]
+    },
+    "insights": {
+      "source": [
+        72,
+        1342,
+        712,
+        247
+      ],
+      "at390": [
+        9.933,
+        612.185,
+        372.225,
+        129.129
+      ]
+    },
+    "nav": {
+      "source": [
+        53,
+        1605,
+        746,
+        143
+      ],
+      "at390": [
+        0.0,
+        749.678,
+        390.0,
+        74.759
+      ]
+    }
+  },
+  "colors": {
+    "background": {
+      "sample_box": [
+        57,
+        743,
+        69,
+        751
+      ],
+      "rgb": [
+        247,
+        251,
+        254
+      ],
+      "hex": "#f7fbfe"
+    },
+    "surface": {
+      "sample_box": [
+        703,
+        1062,
+        733,
+        1072
+      ],
+      "rgb": [
+        254,
+        254,
+        254
+      ],
+      "hex": "#fefefe"
+    },
+    "surface-soft": {
+      "sample_box": [
+        260,
+        1028,
+        290,
+        1045
+      ],
+      "rgb": [
+        242,
+        248,
+        254
+      ],
+      "hex": "#f2f8fe"
+    },
+    "hero-left": {
+      "sample_box": [
+        111,
+        299,
+        180,
+        314
+      ],
+      "rgb": [
+        68,
+        182,
+        253
+      ],
+      "hex": "#44b6fd"
+    },
+    "hero-center": {
+      "sample_box": [
+        396,
+        298,
+        442,
+        315
+      ],
+      "rgb": [
+        95,
+        191,
+        253
+      ],
+      "hex": "#5fbffd"
+    },
+    "hero-right": {
+      "sample_box": [
+        738,
+        300,
+        766,
+        317
+      ],
+      "rgb": [
+        34,
+        167,
+        253
+      ],
+      "hex": "#22a7fd"
+    },
+    "hero-bottom": {
+      "sample_box": [
+        437,
+        722,
+        487,
+        730
+      ],
+      "rgb": [
+        123,
+        203,
+        252
+      ],
+      "hex": "#7bcbfc"
+    },
+    "primary": {
+      "sample_box": [
+        351,
+        219,
+        372,
+        232
+      ],
+      "rgb": [
+        12,
+        141,
+        254
+      ],
+      "hex": "#0c8dfe"
+    },
+    "navy": {
+      "sample_box": [
+        95,
+        195,
+        117,
+        207
+      ],
+      "rgb": [
+        16,
+        35,
+        85
+      ],
+      "hex": "#102355"
+    },
+    "green": {
+      "sample_box": [
+        445,
+        938,
+        460,
+        967
+      ],
+      "rgb": [
+        151,
+        228,
+        151
+      ],
+      "hex": "#97e497"
+    },
+    "green-soft": {
+      "sample_box": [
+        132,
+        632,
+        148,
+        643
+      ],
+      "rgb": [
+        218,
+        248,
+        227
+      ],
+      "hex": "#daf8e3"
+    },
+    "pink": {
+      "sample_box": [
+        518,
+        998,
+        542,
+        1019
+      ],
+      "rgb": [
+        254,
+        175,
+        180
+      ],
+      "hex": "#feafb4"
+    },
+    "pink-soft": {
+      "sample_box": [
+        359,
+        632,
+        377,
+        644
+      ],
+      "rgb": [
+        252,
+        233,
+        239
+      ],
+      "hex": "#fce9ef"
+    },
+    "yellow": {
+      "sample_box": [
+        467,
+        996,
+        480,
+        1006
+      ],
+      "rgb": [
+        254,
+        225,
+        110
+      ],
+      "hex": "#fee16e"
+    },
+    "yellow-soft": {
+      "sample_box": [
+        584,
+        631,
+        605,
+        642
+      ],
+      "rgb": [
+        253,
+        246,
+        218
+      ],
+      "hex": "#fdf6da"
+    },
+    "purple": {
+      "sample_box": [
+        467,
+        899,
+        480,
+        915
+      ],
+      "rgb": [
+        185,
+        160,
+        251
+      ],
+      "hex": "#b9a0fb"
+    },
+    "primary-light": {
+      "sample_box": [
+        509,
+        1247,
+        528,
+        1265
+      ],
+      "rgb": [
+        194,
+        226,
+        251
+      ],
+      "hex": "#c2e2fb"
+    },
+    "nav-inactive": {
+      "sample_box": [
+        700,
+        1643,
+        710,
+        1653
+      ],
+      "rgb": [
+        168,
+        174,
+        190
+      ],
+      "hex": "#a8aebe"
+    },
+    "primary-cyan": {
+      "sample_box": [
+        103,
+        284,
+        171,
+        288
+      ],
+      "rgb": [
+        72,
+        207,
+        253
+      ],
+      "hex": "#48cffd"
+    }
+  },
+  "radius_estimates_css": {
+    "hero": 15,
+    "card": 14,
+    "status": 12.5
+  },
+  "shadow_estimate": "Cool-blue diffuse edge; tune against screenshot (alpha cannot be uniquely recovered from composited source)."
+}

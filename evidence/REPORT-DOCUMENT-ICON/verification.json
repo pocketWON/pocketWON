@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "engine": "chromium",
+      "inactive": {
+        "color": "rgb(168, 174, 190)",
+        "icon": {
+          "width": 30,
+          "height": 30
+        }
+      },
+      "active": "rgb(12, 141, 254)"
+    },
+    {
+      "engine": "webkit",
+      "inactive": {
+        "color": "rgb(168, 174, 190)",
+        "icon": {
+          "width": 30,
+          "height": 30
+        }
+      },
+      "active": "rgb(12, 141, 254)"
+    }
+  ]
+}

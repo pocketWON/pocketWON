@@ -1,0 +1,103 @@
+{
+  "regions": {
+    ".pw-header": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 58
+    },
+    ".pw-home-hero": {
+      "x": 9.390625,
+      "y": 58,
+      "width": 372.71875,
+      "height": 236.796875
+    },
+    ".pw-home-breakdown": {
+      "x": 14.078125,
+      "y": 224.3125,
+      "width": 361.84375,
+      "height": 62.1875
+    },
+    ".pw-home-saving": {
+      "x": 9.890625,
+      "y": 304.796875,
+      "width": 183.515625,
+      "height": 172.5
+    },
+    ".pw-home-habit": {
+      "x": 198.59375,
+      "y": 304.796875,
+      "width": 183.515625,
+      "height": 172.5
+    },
+    ".pw-home-weekly": {
+      "x": 9.890625,
+      "y": 484.09375,
+      "width": 372.21875,
+      "height": 118.6875
+    },
+    ".pw-home-insights": {
+      "x": 9.890625,
+      "y": 612.171875,
+      "width": 372.21875,
+      "height": 129.09375
+    },
+    ".pw-navigation-items": {
+      "x": 0,
+      "y": 749.609375,
+      "width": 390,
+      "height": 74.796875
+    }
+  },
+  "sprites": [
+    {
+      "profile": "balance",
+      "box": {
+        "x": 181.22537231445312,
+        "y": 40.673675537109375,
+        "width": 222,
+        "height": 222
+      },
+      "panel": {
+        "x": 9.390625,
+        "y": 58,
+        "width": 372.71875,
+        "height": 236.796875
+      },
+      "poster": "http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-balance-poster.webp"
+    },
+    {
+      "profile": "all",
+      "box": {
+        "x": 289.8443603515625,
+        "y": 519.26171875,
+        "width": 95,
+        "height": 95
+      },
+      "panel": {
+        "x": 9.890625,
+        "y": 484.09375,
+        "width": 372.21875,
+        "height": 118.6875
+      },
+      "poster": "http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-all-poster.webp"
+    },
+    {
+      "profile": "report",
+      "box": {
+        "x": 127.3125,
+        "y": 657.6768798828125,
+        "width": 85,
+        "height": 85
+      },
+      "panel": {
+        "x": 9.890625,
+        "y": 612.171875,
+        "width": 372.21875,
+        "height": 129.09375
+      },
+      "poster": "http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/assets/pocketwon/sprites/pocketwon-report-poster.webp"
+    }
+  ],
+  "errors": []
+}

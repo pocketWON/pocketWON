@@ -1,0 +1,344 @@
+{
+  "background": {
+    "reference": [
+      247,
+      251,
+      254
+    ],
+    "implementation": [
+      247,
+      251,
+      254
+    ],
+    "mean_absolute_channel_error": 0.0,
+    "css_box": [
+      2,
+      299,
+      8,
+      303
+    ]
+  },
+  "surface": {
+    "reference": [
+      254,
+      254,
+      254
+    ],
+    "implementation": [
+      254,
+      254,
+      254
+    ],
+    "mean_absolute_channel_error": 0.0,
+    "css_box": [
+      340,
+      466,
+      355,
+      471
+    ]
+  },
+  "surface-soft": {
+    "reference": [
+      242,
+      248,
+      254
+    ],
+    "implementation": [
+      242,
+      249,
+      253
+    ],
+    "mean_absolute_channel_error": 0.67,
+    "css_box": [
+      108,
+      448,
+      124,
+      457
+    ]
+  },
+  "hero-left": {
+    "reference": [
+      68,
+      182,
+      253
+    ],
+    "implementation": [
+      60,
+      182,
+      252
+    ],
+    "mean_absolute_channel_error": 3.0,
+    "css_box": [
+      30,
+      67,
+      66,
+      75
+    ]
+  },
+  "hero-center": {
+    "reference": [
+      95,
+      191,
+      253
+    ],
+    "implementation": [
+      95,
+      190,
+      252
+    ],
+    "mean_absolute_channel_error": 0.67,
+    "css_box": [
+      179,
+      66,
+      203,
+      75
+    ]
+  },
+  "hero-right": {
+    "reference": [
+      34,
+      167,
+      253
+    ],
+    "implementation": [
+      25,
+      163,
+      252
+    ],
+    "mean_absolute_channel_error": 4.67,
+    "css_box": [
+      358,
+      67,
+      373,
+      76
+    ]
+  },
+  "hero-bottom": {
+    "reference": [
+      123,
+      203,
+      252
+    ],
+    "implementation": [
+      123,
+      204,
+      253
+    ],
+    "mean_absolute_channel_error": 0.67,
+    "css_box": [
+      201,
+      288,
+      227,
+      292
+    ]
+  },
+  "primary": {
+    "reference": [
+      12,
+      141,
+      254
+    ],
+    "implementation": [
+      12,
+      141,
+      254
+    ],
+    "mean_absolute_channel_error": 0.0,
+    "css_box": [
+      156,
+      25,
+      167,
+      32
+    ]
+  },
+  "navy": {
+    "reference": [
+      16,
+      35,
+      85
+    ],
+    "implementation": [
+      16,
+      35,
+      85
+    ],
+    "mean_absolute_channel_error": 0.0,
+    "css_box": [
+      22,
+      13,
+      33,
+      19
+    ]
+  },
+  "green": {
+    "reference": [
+      151,
+      228,
+      151
+    ],
+    "implementation": [
+      151,
+      228,
+      151
+    ],
+    "mean_absolute_channel_error": 0.0,
+    "css_box": [
+      205,
+      401,
+      213,
+      416
+    ]
+  },
+  "green-soft": {
+    "reference": [
+      218,
+      248,
+      227
+    ],
+    "implementation": [
+      218,
+      248,
+      227
+    ],
+    "mean_absolute_channel_error": 0.0,
+    "css_box": [
+      41,
+      241,
+      50,
+      247
+    ]
+  },
+  "pink": {
+    "reference": [
+      254,
+      175,
+      180
+    ],
+    "implementation": [
+      254,
+      175,
+      180
+    ],
+    "mean_absolute_channel_error": 0.0,
+    "css_box": [
+      243,
+      432,
+      256,
+      443
+    ]
+  },
+  "pink-soft": {
+    "reference": [
+      252,
+      233,
+      239
+    ],
+    "implementation": [
+      252,
+      233,
+      239
+    ],
+    "mean_absolute_channel_error": 0.0,
+    "css_box": [
+      160,
+      241,
+      169,
+      247
+    ]
+  },
+  "yellow": {
+    "reference": [
+      254,
+      225,
+      110
+    ],
+    "implementation": [
+      254,
+      225,
+      110
+    ],
+    "mean_absolute_channel_error": 0.0,
+    "css_box": [
+      216,
+      431,
+      223,
+      437
+    ]
+  },
+  "yellow-soft": {
+    "reference": [
+      253,
+      246,
+      218
+    ],
+    "implementation": [
+      253,
+      246,
+      218
+    ],
+    "mean_absolute_channel_error": 0.0,
+    "css_box": [
+      278,
+      240,
+      289,
+      246
+    ]
+  },
+  "purple": {
+    "reference": [
+      185,
+      160,
+      251
+    ],
+    "implementation": [
+      185,
+      160,
+      251
+    ],
+    "mean_absolute_channel_error": 0.0,
+    "css_box": [
+      216,
+      381,
+      223,
+      389
+    ]
+  },
+  "primary-light": {
+    "reference": [
+      194,
+      226,
+      251
+    ],
+    "implementation": [
+      194,
+      226,
+      251
+    ],
+    "mean_absolute_channel_error": 0.0,
+    "css_box": [
+      238,
+      563,
+      248,
+      572
+    ]
+  },
+  "nav-inactive": {
+    "reference": [
+      168,
+      174,
+      190
+    ],
+    "implementation": [
+      168,
+      174,
+      190
+    ],
+    "mean_absolute_channel_error": 0.0,
+    "css_box": [
+      338,
+      770,
+      343,
+      775
+    ]
+  }
+}

@@ -1,0 +1,407 @@
+{
+  "scope": "Local mirror only; no public deployment",
+  "source": "ks6s3juocjzc2.kimi.page",
+  "mirror": "deployments/PW-WOORI-05/site/out",
+  "verified": true,
+  "files": [
+    {
+      "path": "assets/fonts/OFL.txt",
+      "bytes": 4418,
+      "sha256": "d31ddd9f2bed32fd7e302a205cf2380ba0de6529152d239ef99cfb6f261bfc04"
+    },
+    {
+      "path": "assets/fonts/PretendardVariable.woff2",
+      "bytes": 2057688,
+      "sha256": "9599f12fd42fc0bce1cd50b47a0c022e108d7aa64dd0d1bb0ed44f3282d900b4"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-all.png",
+      "bytes": 252480,
+      "sha256": "84cdcf12e98704532b5730cd1ccc3d871e77b72b4eafb790586a426970ea7e6d"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-balance.png",
+      "bytes": 172953,
+      "sha256": "cc36876930f3c6a1f37cbe31f4c99ad7c5736db021f9b5cdfa7a4034d89f96d2"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-empty.png",
+      "bytes": 158002,
+      "sha256": "04a9cafefc7c99ee71b17317cee4243d08cebab503a0a8f76de0599736db7f33"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-goal.png",
+      "bytes": 176984,
+      "sha256": "88d88053a548858e92be7489bfcc08bfb3588239249d352507678f876b5dde96"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-master.png",
+      "bytes": 634885,
+      "sha256": "7344c6221a688d1eaa9914256e496cdd151062351eead8a41b8c2670110f9d11"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-record.png",
+      "bytes": 223054,
+      "sha256": "d7efce9b543caec460f87b45a16c3480ef9d3f6e8c62360640ce3dd6d51bd4b4"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-report.png",
+      "bytes": 161850,
+      "sha256": "852999b6ed1ed1042bf205b99f23a4381b657d38cbbf6ff55e0379d5e907b666"
+    },
+    {
+      "path": "assets/pocketwon/characters/pocketwon-mascot-success.png",
+      "bytes": 189462,
+      "sha256": "db8014e447eae929d8f02c32f320342cb568c6318eb51e9d4844850e26ba7597"
+    },
+    {
+      "path": "assets/pocketwon/graphics/pocketwon-w-ring-logo.png",
+      "bytes": 593698,
+      "sha256": "4fb3bae80bede5d98ff3a7d964e4c6cb1ded33d1516ed2739e032e7e8bdb3e5d"
+    },
+    {
+      "path": "assets/pocketwon/graphics/savings-pig-generated.png",
+      "bytes": 1084364,
+      "sha256": "8f1b78b28a176c00f0109fbe5aa64232c0cc392fcb3858c3122ec1b4496337e5"
+    },
+    {
+      "path": "assets/pocketwon/graphics/savings-pig.svg",
+      "bytes": 3811,
+      "sha256": "73e549b53dd595cb33e4e4279b43e0f626c814f9af5bc9ca7c1a2ccb7c20b8c2"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-all-action-sprite.webp",
+      "bytes": 294054,
+      "sha256": "d234587fd2d2e9070972e72c1f0cf68384fbd6418d181583b19b1c141b7a8a17"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-all-idle-sprite.webp",
+      "bytes": 162778,
+      "sha256": "1510613a868346912240776e08010256510b83d1e618002ade681f3b65793e5a"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-all-poster.webp",
+      "bytes": 37318,
+      "sha256": "146337934586e92c079475260357262c5b47a8c1c5d7b9eebc6f8c263c00562f"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-balance-action-sprite.webp",
+      "bytes": 307170,
+      "sha256": "fc34ef0e1de4f6ac7cf43bd85969f8d8615a3e724cec0851a04ce211e43f8d0d"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-balance-idle-sprite.webp",
+      "bytes": 169720,
+      "sha256": "3864042d06d56c29417c8508223f2910388901162b00a175c62b5ad0cff06a47"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-balance-poster.webp",
+      "bytes": 39924,
+      "sha256": "3df0660517ec5904147e5bbd73c9981b43e077a954817a86859b3145a30f5a18"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-goal-action-sprite.webp",
+      "bytes": 302190,
+      "sha256": "c5f158b3955d9c7b847cc91bcb2287df626e49f48a279ee749cc65bac7cd2b6c"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-goal-idle-sprite.webp",
+      "bytes": 173230,
+      "sha256": "9b424b0b210c5b96e9f8ff178ed98bb67bf3748c6e42cdfe7a7eeeed9f9e0023"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-goal-poster.webp",
+      "bytes": 39864,
+      "sha256": "5cffbd8d0369b2116d5673dbbcc99bd368520eb0732ea1f1ed22cb45a0def937"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-record-action-sprite.webp",
+      "bytes": 304920,
+      "sha256": "a9c0f0042513ce762a1357a1b199d00311feae94b32c66cc3e667b6acccdb047"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-record-idle-sprite.webp",
+      "bytes": 167224,
+      "sha256": "7b597a7d08e945e014597484b6a3f7b364577bcc6b345ccd7cda8351a3f515ff"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-record-poster.webp",
+      "bytes": 39178,
+      "sha256": "5657ce8005b82cb2121c7d3870e489f869a53f0eb7b71628e68b04e17d595e0c"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-report-action-sprite.webp",
+      "bytes": 297610,
+      "sha256": "f899120c4a06e3d177d07e30f2021e9972d3dfdea7839ecef05c16c65590f86a"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-report-idle-sprite.webp",
+      "bytes": 165556,
+      "sha256": "66a3bf38fd81c26ecb242838caffe8b4683bebffdffdf45976e5f7ea35528a4b"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-report-poster.webp",
+      "bytes": 38990,
+      "sha256": "cf38853fcd6262f8f89e141243d154448ee3bdd12ee75f02fc4cf8586e83ad60"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-success-action-sprite.webp",
+      "bytes": 379368,
+      "sha256": "6e52f2b03c4cb98bc411ac142a03a26c00a49453a9ce4791ce40405e41cd73e9"
+    },
+    {
+      "path": "assets/pocketwon/sprites/pocketwon-success-poster.webp",
+      "bytes": 36620,
+      "sha256": "cf1acc5075ca7f87e9246c2542edc63edb16c0da60e49ecec89d792e931d154f"
+    },
+    {
+      "path": "index.html",
+      "bytes": 4249,
+      "sha256": "b2b106251cfa334edf2bb6a859ad31f9f0dff2f452fec901f408448db11c4f64"
+    },
+    {
+      "path": "scripts/ai-views.js",
+      "bytes": 6835,
+      "sha256": "4fc9591540489d447a6ad0d6c9e647609b95e7553feed7868321df9e541a47bf"
+    },
+    {
+      "path": "scripts/all.js",
+      "bytes": 3602,
+      "sha256": "2832200c438aee2fab005328c1c35f554920f6497506b247166e02f02f1a4ab7"
+    },
+    {
+      "path": "scripts/allowance.js",
+      "bytes": 11485,
+      "sha256": "bd06b6f6adde7a5e8f5a400b3c5126f6ae7448a779508e0a417b58288623ec82"
+    },
+    {
+      "path": "scripts/app.js",
+      "bytes": 7750,
+      "sha256": "9c81a6888f49d74651eca5bacb4f5c870699b3dfe1d6d6f4c10b81120675cf32"
+    },
+    {
+      "path": "scripts/family.js",
+      "bytes": 17779,
+      "sha256": "db6f9a38ab4cd3c7228462bc43d3487a3bc8c3765836d8537d958a886e077ef2"
+    },
+    {
+      "path": "scripts/feature-contracts.js",
+      "bytes": 4627,
+      "sha256": "d0f7ab4d0c2054d984dd8a4bef597d2671ba49197c6f65d80cb7500cbafa4d1f"
+    },
+    {
+      "path": "scripts/feature-models.js",
+      "bytes": 3230,
+      "sha256": "a9ae812cb63b01217faf3c65e170e56e748f5ca77e1a0e5c9d666243420726c6"
+    },
+    {
+      "path": "scripts/feature-navigation.js",
+      "bytes": 2641,
+      "sha256": "a8db7fcb6e27e73c665597ca9f1031dccc8bf9732d5c59f1b6442036d08d74ff"
+    },
+    {
+      "path": "scripts/feature-providers.js",
+      "bytes": 1902,
+      "sha256": "031bb244d44feb46a83a8fea43f28137eb878a5b3a4e5fa30b269571cc4b1763"
+    },
+    {
+      "path": "scripts/feature-state.js",
+      "bytes": 3010,
+      "sha256": "0b860852941c90a346544e6ddc4ea6418415c470f5f973df84ab6f51dffd2ca8"
+    },
+    {
+      "path": "scripts/feature-ui.js",
+      "bytes": 9280,
+      "sha256": "cd4dd6c6a32c798fdfeb3f14c19f78567c2c4ac52ca4cc9efd0150ccfefd2d62"
+    },
+    {
+      "path": "scripts/finance.js",
+      "bytes": 13174,
+      "sha256": "c645081a108254ff77efad781e2992d10395c414127cf629b410bc8592641bcd"
+    },
+    {
+      "path": "scripts/goal.js",
+      "bytes": 13726,
+      "sha256": "a71a9dd8ae309e20039bf40ac1d345f6cc21b8109416e79b986c68c58261adc0"
+    },
+    {
+      "path": "scripts/habit.js",
+      "bytes": 5471,
+      "sha256": "cdb97a62ab45a6a2dbf8468bc4b3924d53212dfccfeb3fa312263d7c1afef538"
+    },
+    {
+      "path": "scripts/habits.js",
+      "bytes": 20415,
+      "sha256": "38cd9733d5752def33efa0af9f730c5e72ce5175ee38889aab57fc64854f074e"
+    },
+    {
+      "path": "scripts/home.js",
+      "bytes": 23575,
+      "sha256": "ff5c6a1ad5bfb249bc870e5583865e17256cb66b12fe3727fa162a8661628f7b"
+    },
+    {
+      "path": "scripts/icons.js",
+      "bytes": 1623,
+      "sha256": "e1b6e25d324839d72f5bad4037e090d851df3a082d6071b8c21463f0eabf45c6"
+    },
+    {
+      "path": "scripts/illustrations.js",
+      "bytes": 3562,
+      "sha256": "673204c50f44cb658676ce66f375feb1820fe739cf41c8895d6bb0a251ac0d0d"
+    },
+    {
+      "path": "scripts/notifications.js",
+      "bytes": 13784,
+      "sha256": "361f55ea9cb3fd1092202e288c65e7062e01e9f4bc050eef9f59164d0b75bacc"
+    },
+    {
+      "path": "scripts/preview-fixtures.js",
+      "bytes": 6104,
+      "sha256": "82a142888c59e45106b3e9a35c1f2949450905fa0972db89001d185b69e621a5"
+    },
+    {
+      "path": "scripts/quiz.js",
+      "bytes": 3732,
+      "sha256": "fc7638f745c31fee87baf15b0d6f3e4619a527a91ae4652745b8bd433f42cafc"
+    },
+    {
+      "path": "scripts/record-tools.js",
+      "bytes": 13442,
+      "sha256": "6edf569c7c182e60b854f867bf3a8afd45e22c959c14f6acea77a7a2cd9840bd"
+    },
+    {
+      "path": "scripts/record.js",
+      "bytes": 20626,
+      "sha256": "b8e27e04be134d50b07a16c367af94dd9c41f65efbe1df7356cba0d22eb25c2a"
+    },
+    {
+      "path": "scripts/report.js",
+      "bytes": 13134,
+      "sha256": "451218b979445b1bece6d451048c5e42bcef8577758ad70c2cc90a3896cd86f8"
+    },
+    {
+      "path": "scripts/rewards.js",
+      "bytes": 13454,
+      "sha256": "d826b3a0d392a4d3fc9e54ed4522c974b566d2e7f537539eed397522216281d1"
+    },
+    {
+      "path": "scripts/settings.js",
+      "bytes": 22882,
+      "sha256": "84d8bcc4522e3153df1ada1466a5c486bd8f7c21daf6ec3c8e0e6718b806145d"
+    },
+    {
+      "path": "scripts/sprite-manifest.js",
+      "bytes": 5627,
+      "sha256": "f12a5f1556fac3635d43176b2d38653e723fd33aea09692c1491b3a6f91c53bf"
+    },
+    {
+      "path": "scripts/sprites.js",
+      "bytes": 23280,
+      "sha256": "e0b86d02b9d682941c985ee7a2b096dd2195876b3ac146b3513bcba3c7356195"
+    },
+    {
+      "path": "scripts/state.js",
+      "bytes": 11478,
+      "sha256": "d7669998ad65a1460802dd82d46029e90cb7b67a6e6917cf38275e464deaafd6"
+    },
+    {
+      "path": "scripts/tabs.js",
+      "bytes": 376,
+      "sha256": "fb3626ad3f9829a05505984827e8c8c96f94e4f1d7a4fbc5189801b7de87fb58"
+    },
+    {
+      "path": "scripts/thoughtbox.js",
+      "bytes": 14595,
+      "sha256": "92cee744df2ab70e48904382509f5e0fefc4ed584f5057ed4eda587229639369"
+    },
+    {
+      "path": "scripts/ui.js",
+      "bytes": 5964,
+      "sha256": "691f647fc8235eab2727177bc03688d1f53f51fa1dd804c6824871306b6c4b90"
+    },
+    {
+      "path": "styles/ai.css",
+      "bytes": 1183,
+      "sha256": "f4d950f7fdbb4aca5f9df60d6d2d7575a12f94d30f2cc22d2faed7f0c3d5ec40"
+    },
+    {
+      "path": "styles/all.css",
+      "bytes": 2682,
+      "sha256": "22e838491b104c9dd3e8a4dc1e81e2b89a650dd9f708a37ddf53c062a9a9cc3e"
+    },
+    {
+      "path": "styles/base.css",
+      "bytes": 4415,
+      "sha256": "5fcd0c00af63afbd34b4f613b164034eb94cd4051d1e81f65e5c86bb27cd6cc9"
+    },
+    {
+      "path": "styles/family.css",
+      "bytes": 2853,
+      "sha256": "10f238d64648eb5347f8ce0d925a6dbaa8400b98182e568130430098fe6d3aeb"
+    },
+    {
+      "path": "styles/features.css",
+      "bytes": 7415,
+      "sha256": "6a1ffe2d8fb6d6f73a2325bd1b96945a451d38d442253cd17db4dbe7cc44c425"
+    },
+    {
+      "path": "styles/goal.css",
+      "bytes": 6670,
+      "sha256": "30cb70709bf652807d7039a928fef07eabe408d3b02d3aa6586dde051061e3c0"
+    },
+    {
+      "path": "styles/habits.css",
+      "bytes": 9828,
+      "sha256": "1b2a8bf6b4fc4969cef1185c2f73331ae712372f5ec42e78a4406899ecbbf826"
+    },
+    {
+      "path": "styles/home.css",
+      "bytes": 22155,
+      "sha256": "3b888c1d96543fe503f1c1c390d16c7c3cb41ec060dba17ee6e10758d3230b8c"
+    },
+    {
+      "path": "styles/record.css",
+      "bytes": 9228,
+      "sha256": "63da2aeac8da0944c1d1a59c29fede742b697f569b5ff65060e4946bc546e588"
+    },
+    {
+      "path": "styles/report.css",
+      "bytes": 11227,
+      "sha256": "ca1936d2b168692abef68d51138cf065d8437fb301b9f66b768d55950d832a0e"
+    },
+    {
+      "path": "styles/settings.css",
+      "bytes": 2476,
+      "sha256": "d809c7fefa58ceb93d31d84e19c5677d813c5fa87ed9956af96c5ac412b3fd2d"
+    },
+    {
+      "path": "styles/shell.css",
+      "bytes": 12211,
+      "sha256": "184ba0019c3c78dcd410a15fbf267b2d2626be5735275b5f11854c982b9f2d13"
+    },
+    {
+      "path": "styles/sprites.css",
+      "bytes": 2146,
+      "sha256": "b6397c27b5f6c62166445508f2f9d45218cbe132abe1d538e2b8f0b382f30d88"
+    },
+    {
+      "path": "styles/stage-sprites.css",
+      "bytes": 862,
+      "sha256": "c83860a5a6040182b21acc92ce2b823f62a278e51545c68cb236c5f68563f670"
+    },
+    {
+      "path": "styles/tokens.css",
+      "bytes": 6046,
+      "sha256": "9c52b64b3686757e3a1fd38af8fee41e476b449a07e5d593ef2d4e4c796107ab"
+    }
+  ],
+  "fileCount": 78,
+  "spriteSheetCount": 11,
+  "spriteSheetBytes": 2723820,
+  "sourceFramesExcluded": true,
+  "historicalReleaseMetadataUnchanged": [
+    "deployment.json",
+    "source-manifest.json",
+    "site.tar.gz"
+  ]
+}

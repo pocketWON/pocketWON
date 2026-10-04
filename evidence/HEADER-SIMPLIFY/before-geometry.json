@@ -1,0 +1,20 @@
+{
+  ".pw-header-notification": {
+    "x": 282,
+    "y": 2,
+    "width": 44,
+    "height": 44
+  },
+  ".pw-header-profile": {
+    "x": 334,
+    "y": 2,
+    "width": 44,
+    "height": 44
+  },
+  ".pw-home-hero": {
+    "x": 9.390625,
+    "y": 58,
+    "width": 372.71875,
+    "height": 236.796875
+  }
+}

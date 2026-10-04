@@ -1,0 +1,10 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "skill": "/Users/jeonghu/.codex/skills/.system/imagegen/SKILL.md",
+  "prompt": "Use case: stylized-concept. Asset type: transparent UI illustration for a youth finance savings challenge. Generate ONE small glossy pink ceramic/plastic piggy bank with a single golden coin dropping into the slot on its back. Subject in three-quarter view looking to the LEFT, prominent round short snout with two dark pink nostrils on left, tiny shiny black eyes, two pink ears, very plump rounded body on right, four short legs and a tiny curly tail. Soft puffy 3D mobile app icon aesthetic, gently reflective pink shading, pale pink highlights, rich rose undersides, cheerful cute proportions. Golden coin upright slightly tilted above the pig's shoulders. No text, no UI, no other objects, no platform, no border. Isolate on genuine transparent background with only a very soft close contact shadow. Square composition with pig and coin occupying around 85% of canvas height and 85% width, tight centered framing. High detail clean edges, intended to remain legible at 60 CSS pixels.",
+  "transparent_background": true,
+  "original": "/Users/jeonghu/.codex/generated_images/01a10482-2a27-7321-8c23-8a0a8192ec94/exec-674ca1b1-f5cb-4eba-bf2a-582a8a1af5f9.png",
+  "application_asset": "ks6s3juocjzc2.kimi.page/assets/pocketwon/graphics/savings-pig-generated.png",
+  "first_svg_attempt": "ks6s3juocjzc2.kimi.page/assets/pocketwon/graphics/savings-pig.svg",
+  "note": "Only non-character pig illustration is generated. Existing PocketWON character assets remain unchanged."
+}

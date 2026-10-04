@@ -1,0 +1,134 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "engine": "chromium",
+      "scenario": "reference",
+      "heroTop": 0,
+      "contentTop": 0,
+      "safeTop": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "scenario": "compact",
+      "heroTop": 0,
+      "contentTop": 0,
+      "safeTop": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "scenario": "short-document",
+      "heroTop": 0,
+      "contentTop": 0,
+      "safeTop": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "scenario": "short-safe-area",
+      "heroTop": 20,
+      "contentTop": 20,
+      "safeTop": 20,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "scenario": "large-text",
+      "heroTop": 0,
+      "contentTop": 0,
+      "safeTop": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "scenario": "wide-short",
+      "heroTop": 0,
+      "contentTop": 0,
+      "safeTop": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "scenario": "read-error",
+      "heroTop": 0,
+      "contentTop": 0,
+      "safeTop": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "scenario": "preview",
+      "heroTop": 0,
+      "contentTop": 0,
+      "safeTop": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "reference",
+      "heroTop": 0,
+      "contentTop": 0,
+      "safeTop": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "compact",
+      "heroTop": 0,
+      "contentTop": 0,
+      "safeTop": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "short-document",
+      "heroTop": 0,
+      "contentTop": 0,
+      "safeTop": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "short-safe-area",
+      "heroTop": 20,
+      "contentTop": 20,
+      "safeTop": 20,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "large-text",
+      "heroTop": 0,
+      "contentTop": 0,
+      "safeTop": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "wide-short",
+      "heroTop": 0,
+      "contentTop": 0,
+      "safeTop": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "read-error",
+      "heroTop": 0,
+      "contentTop": 0,
+      "safeTop": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "preview",
+      "heroTop": 0,
+      "contentTop": 0,
+      "safeTop": 0,
+      "horizontalOverflow": false
+    }
+  ],
+  "errors": []
+}

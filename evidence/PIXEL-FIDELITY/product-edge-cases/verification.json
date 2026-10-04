@@ -1,0 +1,26 @@
+{
+  "status": "FAIL",
+  "checks": [
+    "chromium zero exact fixture score, comparison null",
+    "chromium max exact fixture score, comparison null",
+    "chromium fraction exact fixture score, comparison null",
+    "chromium MAXSAFE/long legacy/unknown date read-only",
+    "chromium unsupported receipt image error, no upload",
+    "chromium denied storage read stays unavailable",
+    "webkit zero exact fixture score, comparison null",
+    "webkit max exact fixture score, comparison null",
+    "webkit fraction exact fixture score, comparison null"
+  ],
+  "engines": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12"
+    },
+    {
+      "engine": "webkit",
+      "version": "26.5"
+    }
+  ],
+  "errors": [],
+  "failure": "AssertionError [ERR_ASSERTION]: {\"accessible\":true,\"width\":320,\"height\":568,\"main\":{\"x\":0,\"y\":27.5,\"right\":320,\"bottom\":1725.28125,\"width\":320,\"height\":1697.78125},\"nav\":{\"x\":0,\"y\":1725.28125,\"right\":320,\"bottom\":1774.46875,\"width\":320,\"height\":49.1875},\"dialog\":null,\"headers\":[{\"className\":\"pw-feature-header\",\"box\":{\"x\":12,\"y\":39.5,\"right\":308,\"bottom\":92.59375,\"width\":296,\"height\":53.09375}},{\"className\":\"pw-feature-footer\",\"box\":{\"x\":12,\"y\":1665.28125,\"right\":308,\"bottom\":1713.28125,\"width\":296,\"height\":48}}],\"horizontal\":true,\"buttons\":[{\"label\":\"‹\",\"box\":{\"x\":12,\"y\":42.046875,\"right\":60,\"bottom\":90.046875,\"width\":48,\"height\":48}},{\"label\":\"정정 미리보기\",\"box\":{\"x\":12,\"y\":1665.28125,\"right\":156,\"bottom\":1713.28125,\"width\":144,\"height\":48}},{\"label\":\"삭제 화면 보기\",\"box\":{\"x\":164,\"y\":1665.28125,\"right\":308,\"bottom\":1713.28125,\"width\":144,\"height\":48}}],\"limit\":1725.28125}\n\ntrue !== false\n\n    at geometry (/Users/jeonghu/포켓WON/tests/product-test-utils.cjs:20:1134)\n    at async /Users/jeonghu/포켓WON/tests/verify-product-edge-cases.cjs:3:628"
+}

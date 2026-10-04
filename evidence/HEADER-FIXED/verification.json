@@ -1,0 +1,423 @@
+{
+  "status": "FAIL",
+  "checks": [
+    {
+      "engine": "chromium",
+      "scenario": "reference",
+      "before": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 58
+        },
+        "bell": {
+          "x": 334,
+          "y": 2,
+          "width": 44,
+          "height": 44
+        },
+        "hero": {
+          "x": 9.390625,
+          "y": 58,
+          "width": 372.71875,
+          "height": 236.796875
+        },
+        "documentScroll": 0,
+        "contentScroll": 0,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      },
+      "after": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 58
+        },
+        "bell": {
+          "x": 334,
+          "y": 2,
+          "width": 44,
+          "height": 44
+        },
+        "hero": {
+          "x": 9.390625,
+          "y": 58,
+          "width": 372.71875,
+          "height": 236.796875
+        },
+        "documentScroll": 0,
+        "contentScroll": 0,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "engine": "chromium",
+      "scenario": "content-scroll",
+      "before": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 58
+        },
+        "bell": {
+          "x": 334,
+          "y": 2,
+          "width": 44,
+          "height": 44
+        },
+        "hero": {
+          "x": 9.390625,
+          "y": 58,
+          "width": 372.71875,
+          "height": 236.796875
+        },
+        "documentScroll": 0,
+        "contentScroll": 0,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      },
+      "after": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 58
+        },
+        "bell": {
+          "x": 334,
+          "y": 2,
+          "width": 44,
+          "height": 44
+        },
+        "hero": {
+          "x": 9.390625,
+          "y": -27,
+          "width": 372.71875,
+          "height": 236.796875
+        },
+        "documentScroll": 0,
+        "contentScroll": 85,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "engine": "chromium",
+      "scenario": "short-document",
+      "before": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 60
+        },
+        "bell": {
+          "x": 319.46875,
+          "y": 3.192307472229004,
+          "width": 44,
+          "height": 44
+        },
+        "hero": {
+          "x": 9.046875,
+          "y": 60,
+          "width": 358.359375,
+          "height": 340
+        },
+        "documentScroll": 0,
+        "contentScroll": 0,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      },
+      "after": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 60
+        },
+        "bell": {
+          "x": 319.46875,
+          "y": 3.192307472229004,
+          "width": 44,
+          "height": 44
+        },
+        "hero": {
+          "x": 9.046875,
+          "y": -290,
+          "width": 358.359375,
+          "height": 340
+        },
+        "documentScroll": 350,
+        "contentScroll": 0,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "engine": "chromium",
+      "scenario": "short-safe-area",
+      "before": {
+        "header": {
+          "x": 12,
+          "y": 20,
+          "width": 351,
+          "height": 60
+        },
+        "bell": {
+          "x": 308.203125,
+          "y": 23.5,
+          "width": 44,
+          "height": 44
+        },
+        "hero": {
+          "x": 20.46875,
+          "y": 80,
+          "width": 335.421875,
+          "height": 340
+        },
+        "documentScroll": 0,
+        "contentScroll": 0,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      },
+      "after": {
+        "header": {
+          "x": 12,
+          "y": 20,
+          "width": 351,
+          "height": 60
+        },
+        "bell": {
+          "x": 308.203125,
+          "y": 23.5,
+          "width": 44,
+          "height": 44
+        },
+        "hero": {
+          "x": 20.46875,
+          "y": -270,
+          "width": 335.421875,
+          "height": 340
+        },
+        "documentScroll": 350,
+        "contentScroll": 0,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "engine": "chromium",
+      "scenario": "large-text",
+      "before": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 60
+        },
+        "bell": {
+          "x": 334,
+          "y": 3,
+          "width": 44,
+          "height": 44
+        },
+        "hero": {
+          "x": 9.390625,
+          "y": 60,
+          "width": 372.71875,
+          "height": 340
+        },
+        "documentScroll": 0,
+        "contentScroll": 0,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      },
+      "after": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 60
+        },
+        "bell": {
+          "x": 334,
+          "y": 3,
+          "width": 44,
+          "height": 44
+        },
+        "hero": {
+          "x": 9.390625,
+          "y": -290,
+          "width": 372.71875,
+          "height": 340
+        },
+        "documentScroll": 350,
+        "contentScroll": 0,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "engine": "chromium",
+      "scenario": "wide-short",
+      "before": {
+        "header": {
+          "x": 252,
+          "y": 0,
+          "width": 520,
+          "height": 74.65625
+        },
+        "bell": {
+          "x": 697.34375,
+          "y": 1.3333334922790527,
+          "width": 58.65625,
+          "height": 58.65625
+        },
+        "hero": {
+          "x": 264.53125,
+          "y": 74.65625,
+          "width": 496.9375,
+          "height": 340
+        },
+        "documentScroll": 0,
+        "contentScroll": 0,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      },
+      "after": {
+        "header": {
+          "x": 252,
+          "y": 0,
+          "width": 520,
+          "height": 74.65625
+        },
+        "bell": {
+          "x": 697.34375,
+          "y": 1.3333334922790527,
+          "width": 58.65625,
+          "height": 58.65625
+        },
+        "hero": {
+          "x": 264.53125,
+          "y": -275.34375,
+          "width": 496.9375,
+          "height": 340
+        },
+        "documentScroll": 350,
+        "contentScroll": 0,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "engine": "webkit",
+      "scenario": "reference",
+      "before": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 58
+        },
+        "bell": {
+          "x": 334,
+          "y": 2,
+          "width": 44,
+          "height": 44
+        },
+        "hero": {
+          "x": 9.390625,
+          "y": 58,
+          "width": 372.71875,
+          "height": 236.796875
+        },
+        "documentScroll": 0,
+        "contentScroll": 0,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      },
+      "after": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 58
+        },
+        "bell": {
+          "x": 334,
+          "y": 2,
+          "width": 44,
+          "height": 44
+        },
+        "hero": {
+          "x": 9.390625,
+          "y": 58,
+          "width": 372.71875,
+          "height": 236.796875
+        },
+        "documentScroll": 0,
+        "contentScroll": 0,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      }
+    },
+    {
+      "engine": "webkit",
+      "scenario": "content-scroll",
+      "before": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 58
+        },
+        "bell": {
+          "x": 334,
+          "y": 2,
+          "width": 44,
+          "height": 44
+        },
+        "hero": {
+          "x": 9.390625,
+          "y": 58,
+          "width": 372.71875,
+          "height": 236.796875
+        },
+        "documentScroll": 0,
+        "contentScroll": 0,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      },
+      "after": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 58
+        },
+        "bell": {
+          "x": 334,
+          "y": 2,
+          "width": 44,
+          "height": 44
+        },
+        "hero": {
+          "x": 9.390625,
+          "y": -27,
+          "width": 372.71875,
+          "height": 236.796875
+        },
+        "documentScroll": 0,
+        "contentScroll": 85,
+        "headerReceivesPointer": true,
+        "horizontalOverflow": false
+      }
+    }
+  ],
+  "errors": [],
+  "failure": "AssertionError [ERR_ASSERTION]: webkit/short-document/bell moved\n+ actual - expected\n\n  {\n    height: 44,\n    width: 44,\n    x: 319.46875,\n+   y: 3.19232177734375\n-   y: 3.192307472229004\n  }\n\n    at /Users/jeonghu/포켓WON/tests/verify-header-scroll.cjs:42:57"
+}

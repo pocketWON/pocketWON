@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "button": {
+        "x": 165.703125,
+        "y": 747.609375,
+        "width": 58.59375,
+        "height": 59.59375
+      },
+      "recordEntryAndCancel": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "width": 360,
+      "height": 640,
+      "button": {
+        "x": 152.953125,
+        "y": 569.125,
+        "width": 54.078125,
+        "height": 55
+      },
+      "recordEntryAndCancel": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "button": {
+        "x": 165.703125,
+        "y": 747.609375,
+        "width": 58.59375,
+        "height": 59.59375
+      },
+      "recordEntryAndCancel": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "width": 360,
+      "height": 640,
+      "button": {
+        "x": 152.953125,
+        "y": 569.125,
+        "width": 54.078125,
+        "height": 55
+      },
+      "recordEntryAndCancel": "PASS"
+    }
+  ]
+}
