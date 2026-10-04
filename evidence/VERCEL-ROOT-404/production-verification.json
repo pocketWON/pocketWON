@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "url": "https://pocketwon.vercel.app/",
+  "checks": [
+    {
+      "engine": "chromium",
+      "rootStatus": 200,
+      "loadedResources": 54,
+      "errors": [],
+      "routing": "report, home, record, cancel",
+      "matchesLatestHtml": true
+    },
+    {
+      "engine": "webkit",
+      "rootStatus": 200,
+      "loadedResources": 55,
+      "errors": [],
+      "routing": "report, home, record, cancel",
+      "matchesLatestHtml": true
+    }
+  ],
+  "verifiedAt": "2026-10-04T02:40:52.008Z"
+}
