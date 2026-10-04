@@ -49,6 +49,7 @@ node tests/verify-business-contracts.cjs
 node tests/verify-dashboard-data.cjs
 node tests/verify-feature-contracts.cjs
 node tests/verify-habit-score.cjs
+node tests/verify-games.cjs
 node tests/verify-purchase-dashboard.cjs
 node tests/verify-viewport-demo.cjs
 node tests/verify-public-demo.cjs
