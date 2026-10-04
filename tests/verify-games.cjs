@@ -37,7 +37,7 @@ pass('Price questions have one cheaper side each and are frozen');
 const state = { balance: 32500, monthly: { saving: 15200, spending: 12300 }, transactions: [], goal: { title: '헤드폰', target: 45000, current: 27000 } };
 const before = JSON.stringify(state);
 const goal = api.createGoalViewModel(state);
-assert.deepEqual(api.PW_GOAL_STEPS.map(step => api.pwWeeksToGoal(goal, step).weeks), [18, 6, 4]);
+assert.deepEqual(copy(api.PW_GOAL_STEPS.map(step => api.pwWeeksToGoal(goal, step).weeks)), [18, 6, 4]);
 assert.deepEqual(copy(api.pwWeeksToGoal(goal, 5000)), { status: 'active', remaining: 18000, perWeek: 5000, weeks: 4 });
 assert.equal(api.pwWeeksToGoal(api.createGoalViewModel({ goal: { title: 'x', target: 10, current: 3 } }), 3).weeks, 3);
 assert.equal(JSON.stringify(state), before);

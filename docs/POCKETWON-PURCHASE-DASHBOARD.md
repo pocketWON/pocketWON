@@ -47,7 +47,7 @@
 
 최종 결과는 `summary.json`에 정리한다. 보정 과정의 실패 폴더도 보존하며, 위 최종 통과 폴더와 구분한다. 작은 화면의 본문 축소 정책은 기존 fullscreen 요구에 따른 것이다. 물리 기기의 브라우저 UI나 키보드는 이번에 직접 검사하지 않았다.
 
-![최종 홈](../evidence/COMBINED-OVERVIEW/named-capture/screenshots/chromium-390x844.png)
+![최종 홈](../evidence/SAVING-CARD/production/live-app.jpg)
 
 ## 공개 반영
 
@@ -96,3 +96,10 @@
 - `evidence/COMBINED-OVERVIEW/layout/verification.json`: 작은 휴대폰·390×844·가로·데스크톱·safe area·200% 글자 등 40개 화면 조건 통과. `named-capture`와 `named-navigation`은 최종 명칭 적용 후 화면·메뉴·이동·포커스 검증이다.
 - `evidence/COMBINED-OVERVIEW/motion/sprites/verification.json`: 양 브라우저 32검사 통과. 홈에는 Hero 플레이어 하나만 존재한다. 별도의 테스트용 두 번째 플레이어로 기존 action 1개 + idle 1개 예산도 계속 검사한다. 앱의 캐릭터 원본·시트·재생 타이밍은 그대로다.
 - 통합 전 보정 화면과 테스트용 probe의 중간 오류는 `evidence/WEEKLY-FULLWIDTH/`에 보존했다. 최종 통과 화면과 결과는 통합 폴더를 따른다.
+
+## 저축 챌린지 비율 보정
+
+- 첨부된 원본 카드의 배치에 맞춰 그림·두 줄 제목을 상단에, 횟수·진행 막대·원형 화살표를 하단에 배치했다. 화면 높이 때문에 작아지던 요소는 카드 너비와 높이를 기준으로 조절한다.
+- 기존 돼지 PNG는 수정하지 않았다. 실제 원본 크기인 1254×1254를 이미지 속성에 반영하고 `aspect-ratio:1`, `object-fit:contain`으로 원래 그림 비율을 보존했다.
+- `evidence/SAVING-CARD/capture`와 `responsive`에 양 브라우저 캡처·화면 검사 결과를 보존한다. `production/live-app.jpg`는 현재 인앱 브라우저 화면이다.
+- 원격 main의 미니게임 변경도 병합해 보존했다. 미니게임 규칙 검사는 VM에서 나온 배열을 기존 `copy` 함수로 비교하도록 테스트만 보완했고 4개 그룹이 통과했다. 관련 결과는 `evidence/COMBINED-OVERVIEW/merged-delivery/game-rules.txt`다.

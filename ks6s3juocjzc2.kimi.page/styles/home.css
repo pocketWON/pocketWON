@@ -75,14 +75,15 @@
 .pw-home-card-menu { position: absolute; top: calc(1 * var(--pw-u)); right: calc(-5 * var(--pw-u)); display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--pw-nav-inactive); font-size: calc(25 * var(--pw-u)); line-height: 1; z-index: 4; }
 .pw-home-card-menu svg { width: calc(9 * var(--pw-u)); height: calc(19 * var(--pw-u)); }
 .pw-home-saving::before { position: absolute; content: ''; inset: calc(8 * var(--pw-u)) calc(5 * var(--pw-u)); border-radius: calc(12 * var(--pw-u)); background: radial-gradient(ellipse at 25% 35%,#f8fcff,#f0f8fd); }
-.pw-home-saving-main { position: absolute; top: calc(26 * var(--pw-u)); left: calc(12 * var(--pw-u)); right: calc(8 * var(--pw-u)); display: grid; grid-template-columns: calc(61 * var(--pw-u)) minmax(0,1fr); align-items: center; gap: calc(3 * var(--pw-u)); }
-.pw-home-pig { width: calc(61 * var(--pw-u)); height: calc(70 * var(--pw-u)); object-fit: contain; }
-.pw-home-saving-title { margin: 0; font-size: calc(15 * var(--pw-u)); font-weight: 750; letter-spacing: -.06em; line-height: 1.48; }
-.pw-home-saving-count { position: absolute; left: calc(16.8 * var(--pw-u)); bottom: calc(43 * var(--pw-u)); color: var(--pw-primary); font-size: calc(18 * var(--pw-u)); font-weight: 700; line-height: 1; }
-.pw-home-saving-track { position: absolute; left: calc(18.3 * var(--pw-u)); right: calc(60.5 * var(--pw-u)); bottom: calc(25.9 * var(--pw-u)); height: calc(13.5 * var(--pw-u)); border-radius: 999px; background: #dceffc; overflow: hidden; }
+.pw-home-saving { container-type:inline-size; }
+.pw-home-saving-main { position:absolute; top:14%; left:7%; right:6%; height:36%; display:grid; grid-template-columns:38% minmax(0,1fr); align-items:center; gap:3%; }
+.pw-home-pig { width:100%; height:auto; max-height:100%; aspect-ratio:1; object-fit:contain; }
+.pw-home-saving-title { margin:0; font-size:min(calc(20 * var(--pw-u)),8.1cqw); font-weight:750; letter-spacing:-.055em; line-height:1.48; }
+.pw-home-saving-count { position:absolute; left:10%; bottom:28%; color:var(--pw-primary); font-size:min(calc(28 * var(--pw-u)),11cqw); font-weight:750; line-height:1; }
+.pw-home-saving-track { position:absolute; left:10%; right:33%; bottom:16%; height:7%; max-height:16px; border-radius:999px; background:#dceffc; overflow:hidden; }
 .pw-home-saving-fill { display: block; height: 100%; border-radius: inherit; background: linear-gradient(110deg,#149ffd,#078eff); }
-.pw-home-saving-open { position: absolute; right: calc(10 * var(--pw-u)); bottom: calc(18 * var(--pw-u)); display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--pw-navy); font-size: calc(29 * var(--pw-u)); font-weight: 700; }
-.pw-home-saving-open::before { position: absolute; content: ''; width: calc(30 * var(--pw-u)); height: calc(30 * var(--pw-u)); border: 1px solid #cfe7ff; border-radius: 50%; }
+.pw-home-saving-open { position:absolute; right:7%; bottom:12%; display:grid; place-items:center; width:44px; height:44px; padding:0; border:0; border-radius:50%; background:transparent; color:var(--pw-navy); font-size:min(calc(38 * var(--pw-u)),17cqw); font-weight:700; }
+.pw-home-saving-open::before { position:absolute; content:''; width:min(40px,19cqw); aspect-ratio:1; border:1px solid #cfe7ff; border-radius:50%; }
 .pw-home-saving-note { position: absolute; bottom: calc(10 * var(--pw-u)); left: calc(18 * var(--pw-u)); margin: 0; font-size: calc(9 * var(--pw-u)); color: var(--pw-text-secondary); }
 .pw-home-habit { padding: calc(11 * var(--pw-u)) calc(7 * var(--pw-u)) calc(10 * var(--pw-u)); }
 .pw-home-habit .pw-home-card-heading { padding-left: calc(4 * var(--pw-u)); }
@@ -141,7 +142,8 @@
 .pw-accessible .pw-home-primary-row { flex-basis: auto; min-height: 390px; }
 .pw-accessible .pw-home-card-title { font-size: .7rem; white-space: normal; }
 .pw-accessible .pw-home-card-heading { height: auto; min-height: 60px; padding-right: 34px; }
-.pw-accessible .pw-home-saving-main { top: 50px; grid-template-columns: 1fr; }
+.pw-accessible .pw-home-saving-main { top:50px; height:auto; grid-template-columns:1fr; }
+.pw-accessible .pw-home-pig { width:90px; height:90px; justify-self:center; }
 .pw-accessible .pw-home-saving-title { font-size: .8rem; }
 .pw-accessible .pw-home-saving-count { font-size: 1rem; bottom: 80px; }
 .pw-accessible .pw-home-saving-track { bottom: 57px; }

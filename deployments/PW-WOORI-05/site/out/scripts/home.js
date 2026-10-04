@@ -212,7 +212,7 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
       : `일주일 동안 ${data.target}번 저축하기, 현재 ${data.completed}번 완료했어요.`,
     [['목표에 모으기 안내', target], ['내 목표 보기', { screen: 'goal' }]]);
     const main = el('div', 'pw-home-saving-main'), pig = el('img', 'pw-home-pig');
-    pig.src = './assets/pocketwon/graphics/savings-pig-generated.png'; pig.alt = ''; pig.width = 160; pig.height = 170; pig.setAttribute('aria-hidden', 'true');
+    pig.src = './assets/pocketwon/graphics/savings-pig-generated.png'; pig.alt = ''; pig.width = 1254; pig.height = 1254; pig.setAttribute('aria-hidden', 'true');
     const title = el('h2', 'pw-home-saving-title');
     title.append(el('span', '', '일주일 동안'), el('span', '', `${data.target}번 저축하기`)); main.append(pig, title);
     const progress = el('div', 'pw-home-saving-progress'), count = el('span', 'pw-home-saving-count', `${data.completed === null ? '—' : data.completed}/${data.target}`);
