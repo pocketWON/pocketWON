@@ -116,6 +116,12 @@
 .pw-home-insight-icon { display: grid; place-items: center; flex: none; width: calc(24 * var(--pw-u)); height: calc(24 * var(--pw-u)); margin-left: calc(-1 * var(--pw-u)); border-radius: 50%; background: #e6f4ff; color: var(--pw-primary); }
 .pw-home-insight-icon svg { width: 59%; height: 59%; }
 .pw-home-insight-body { display: block; white-space: pre-line; position: relative; z-index: 1; margin: calc(2 * var(--pw-u)) 0 0; color: var(--pw-text-secondary); font-size: calc(11 * var(--pw-u)); font-weight: 450; line-height: 1.42; letter-spacing: -.055em; word-break: keep-all; overflow-wrap: anywhere; }
+.pw-home-insight--advice { display:flex; flex-direction:column; justify-content:flex-start; gap:calc(7 * var(--pw-u)); padding:calc(9 * var(--pw-u)) calc(11 * var(--pw-u)); }
+.pw-home-insight--advice .pw-home-insight-title { flex:none; width:100%; gap:calc(7 * var(--pw-u)); font-size:calc(12 * var(--pw-u)); letter-spacing:-.05em; }
+.pw-home-insight--advice .pw-home-insight-icon { width:calc(26 * var(--pw-u)); height:calc(26 * var(--pw-u)); }
+.pw-home-insight-emoji { font-family:'Apple Color Emoji','Segoe UI Emoji',sans-serif; font-size:calc(17 * var(--pw-u)); line-height:1; }
+.pw-home-insight-chevron { flex:none; width:calc(7 * var(--pw-u)); height:calc(12 * var(--pw-u)); margin-left:auto; color:var(--pw-nav-inactive); }
+.pw-home-insight--advice .pw-home-insight-body { margin:0; font-size:calc(11 * var(--pw-u)); line-height:1.42; letter-spacing:-.045em; }
 .pw-home-insight--positive .pw-home-insight-body { max-width: calc(121 * var(--pw-u)); }
 .pw-home .pw-home-insight-art { inset: auto calc(0 * var(--pw-u)) calc(5 * var(--pw-u)) auto; width: calc(49 * var(--pw-u)); height: calc(48 * var(--pw-u)); }
 .pw-home .pw-home-insight-art.pw-illustration-panel > .pw-sprite { position: absolute; width: calc(85 * var(--pw-u)); height: calc(85 * var(--pw-u)); left: 50%; top: 50%; translate: -52.5% -54.7%; transform: none; max-width: none; }
@@ -156,6 +162,7 @@
 .pw-accessible .pw-home-insight-title { font-size: .6rem; }
 .pw-accessible .pw-home-insight-icon { display: none; }
 .pw-accessible .pw-home-insight-body { font-size: .6rem; padding-bottom: 48px; }
+.pw-accessible .pw-home-insight--advice .pw-home-insight-body { padding:0; font-size:.6rem; }
 .pw-accessible .pw-home-insight--positive .pw-home-insight-body { max-width: none; }
 
 /* Reference typography and illustration alignment after the first macro capture. */

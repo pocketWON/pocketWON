@@ -47,7 +47,7 @@
 
 최종 결과는 `summary.json`에 정리한다. 보정 과정의 실패 폴더도 보존하며, 위 최종 통과 폴더와 구분한다. 작은 화면의 본문 축소 정책은 기존 fullscreen 요구에 따른 것이다. 물리 기기의 브라우저 UI나 키보드는 이번에 직접 검사하지 않았다.
 
-![최종 홈](../evidence/SAVING-CARD/production/live-app.jpg)
+![최종 홈](../evidence/ADVICE-BULB/production/live-app.jpg)
 
 ## 공개 반영
 
@@ -104,3 +104,10 @@
 - 기존 돼지 PNG는 수정하지 않았다. 실제 원본 크기인 1254×1254를 이미지 속성에 반영하고 `aspect-ratio:1`, `object-fit:contain`으로 원래 그림 비율을 보존했다.
 - `evidence/SAVING-CARD/capture`와 `responsive`에 양 브라우저 캡처·화면 검사 결과를 보존한다. `production/live-app.jpg`는 현재 인앱 브라우저 화면이다.
 - 원격 main의 미니게임 변경도 병합해 보존했다. 미니게임 규칙 검사는 VM에서 나온 배열을 기존 `copy` 함수로 비교하도록 테스트만 보완했고 4개 그룹이 통과했다. 관련 결과는 `evidence/COMBINED-OVERVIEW/merged-delivery/game-rules.txt`다.
+
+## 전구 제안 카드와 상세 문구
+
+- 제안 카드를 새 참조 이미지처럼 연한 파란 원형 아이콘, 파란 제목, 오른쪽 작은 회색 화살표, 여유 있는 본문 간격으로 구성했다. 이 카드의 차트 아이콘만 실제 💡 이모지로 교체했다.
+- 본문은 ‘주말 예산을 먼저 정해보세요. 물건을 사기 전 꼭 필요한지 생각하고, 쓰고 남은 돈은 목표 저축에 보태보세요.’로 늘렸다. 예산·구매 판단·저축의 구체적인 행동을 안내하며, 실제 분석하지 않은 지출 추세는 주장하지 않는다.
+- 데모와 실제 기록 화면이 같은 제안 문구를 사용하도록 데모의 별도 짧은 문구를 제거했다. 점수·지출·저장 로직은 유지한다.
+- `evidence/ADVICE-BULB/detail-fit/geometry.json`: Chromium/WebKit의 작은 화면·가로·데스크톱·200% 글자 등 18개 조합에서 본문과 제목의 겹침·잘림 없음을 확인했다. `navigation/verification.json`은 기존 이동과 포커스 검사 결과다.

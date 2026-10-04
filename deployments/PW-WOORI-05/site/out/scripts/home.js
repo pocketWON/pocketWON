@@ -100,7 +100,7 @@ function createHomeDashboardModel(loaded, now = new Date(), period) {
     insights: { status: 'preparing',
       positive: { title: '이런 점이 좋아요!', score: habit?.status === 'available' && Number.isInteger(habit.score) ? habit.score : null,
         body: habit?.status === 'available' && Number.isInteger(habit.score) ? habit.coaching.strength || habit.coaching.next : '기록을 남기면 습관 점수를 확인할 수 있어요.' },
-      advice: { title: '이렇게 해보세요!', body: '다음 용돈을 받기 전, 남은 돈과 필요한 지출을 함께 확인해보는 건 어떨까요?' } },
+      advice: { title: '이렇게 해보세요!', body: '주말 예산을 먼저 정해보세요. 물건을 사기 전 꼭 필요한지 생각하고, 쓰고 남은 돈은 목표 저축에 보태보세요.' } },
   };
 }
 
@@ -333,11 +333,15 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
     body.append(chart, detail); node.append(body); return node;
   }
   function insightIcon(kind) {
+    if (kind === 'advice') {
+      const emoji = el('span', 'pw-home-insight-emoji', '💡');
+      emoji.setAttribute('aria-hidden', 'true');
+      return emoji;
+    }
     const icon = svg('svg', { viewBox: '0 0 28 28', 'aria-hidden': 'true' });
-    if (kind === 'positive') icon.append(svg('path', { d: 'M8 17a8 8 0 1 1 12 0c-2 2-2 3-2 4h-8c0-1 0-2-2-4Z', fill: '#FFD34E' }),
+    icon.append(svg('path', { d: 'M8 17a8 8 0 1 1 12 0c-2 2-2 3-2 4h-8c0-1 0-2-2-4Z', fill: '#FFD34E' }),
       svg('path', { d: 'M11 23h6m-5 3h4', stroke: '#148DF4', 'stroke-width': 2.5, 'stroke-linecap': 'round' }),
       svg('path', { d: 'M10 7c1-2 3-3 5-3', stroke: '#FFF7AF', 'stroke-width': 2, 'stroke-linecap': 'round' }));
-    else for (const [x, y, height] of [[4, 17, 8], [12, 11, 14], [20, 4, 21]]) icon.append(svg('rect', { x, y, width: 5, height, rx: 2.5, fill: '#078FFB' }));
     return icon;
   }
   function insightsSection() {
@@ -352,6 +356,11 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
       if (kind === 'positive' && item.title.endsWith('좋아요!')) titleText.append(document.createTextNode(item.title.slice(0, -4)), el('strong', '', '좋아요!'));
       else titleText.textContent = item.title;
       caption.append(icon, titleText);
+      if (kind === 'advice') {
+        const arrow = svg('svg', { class:'pw-home-insight-chevron', viewBox:'0 0 12 20', 'aria-hidden':'true' });
+        arrow.append(svg('path', { d:'m3 3 6 7-6 7', fill:'none', stroke:'currentColor', 'stroke-width':3, 'stroke-linecap':'round', 'stroke-linejoin':'round' }));
+        caption.append(arrow);
+      }
       panel.append(caption);
       const copy = el('span', 'pw-home-insight-body', item.body);
       if (kind === 'positive') {

@@ -31,8 +31,7 @@ window.PWDemo = (() => {
         statuses: model.statuses.map((item, i) => ({ ...item, value: ['우수', '좋아요', '45%'][i], detail: '가상 데이터로 보여주는 예시 상태' })),
         challenge: { status: 'available', target: 3, completed: 1, note: '가상 저축 기록 · 이번 주 1회' },
         week: { ...model.week, message: '이번 주도\n알차게 보냈어요!' },
-        insights: { ...model.insights, status: 'demo',
-          advice: { title: '이렇게 해보세요!', body: '주말에 쓸 용돈을 미리 정해볼까요? 목표를 향해 조금씩 모아보세요.' } } };
+        insights: { ...model.insights, status: 'demo' } };
     }
   });
 })();
