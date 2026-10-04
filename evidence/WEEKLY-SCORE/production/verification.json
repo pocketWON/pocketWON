@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "sourceCommit": "0419e308b4a6ee71fcd0ed33964bd45cfcaaa5ab",
+  "alias": "https://pocketwon.vercel.app/",
+  "deploymentId": "dpl_3A2cGfZhwuz7hbBjZrCTHHfgwJQS",
+  "deploymentUrl": "https://pocketwon-g0sy6oknt-clcocloud.vercel.app",
+  "http": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "19aa2701e263d3aa726e2d2e63e1c7b1a94ccbc5901d7148b1dec3c70a5db080",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/home.js",
+      "status": 200,
+      "sha256": "0f8b7beef982f768ea370ea853991dba85f9a94d3525dd3494186d20540d22b3",
+      "matchesLocal": true
+    },
+    {
+      "path": "styles/home.css",
+      "status": 200,
+      "sha256": "1d18eaeb08c7c04fe49a311a73669a452e673de12ada61e2f716767d6ac55838",
+      "matchesLocal": true
+    }
+  ],
+  "liveBrowser": {
+    "url": "https://pocketwon.vercel.app/",
+    "verified": true,
+    "screenshot": "live-app.jpg",
+    "weeklyScore": 65,
+    "speechBubbleVisible": false,
+    "scoreLabelVisible": false,
+    "purchaseNamesBesideDonut": true
+  }
+}

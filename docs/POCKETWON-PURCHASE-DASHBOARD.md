@@ -48,15 +48,15 @@
 
 ## 공개 반영
 
-최종 소스 커밋 `444fde0`을 `pocketWON/pocketWON` main에 푸시하고 기존 Vercel 프로젝트에 배포했다.
+최종 소스 커밋 `0419e30`을 `pocketWON/pocketWON` main에 푸시하고 기존 Vercel 프로젝트에 배포했다.
 
 - 공개 앱: https://pocketwon.vercel.app/
-- 배포 ID: `dpl_FL523ndFwPM2kQbLYUKPwjifZy23`
-- 원본 배포: https://pocketwon-7rb18yaax-clcocloud.vercel.app
-- 공개 HTML·변경 CSS·JS·돼지와 중앙 로고 9개 경로가 HTTP 200이며 로컬 SHA-256과 일치한다.
-- 실제 인앱 브라우저에서 ‘AI 인사이트’, 큰 파란 65점, 가격 없는 품목명 5개를 확인했다.
-- 최신 검증과 캡처: `production-blue-score/verification.json`, `production-blue-score/live-app.png`.
-- 앞선 배포 검증은 `production/`에 그대로 보존했다.
+- 배포 ID: `dpl_3A2cGfZhwuz7hbBjZrCTHHfgwJQS`
+- 원본 배포: https://pocketwon-g0sy6oknt-clcocloud.vercel.app
+- 공개 HTML·변경 CSS·JS 3개 경로가 HTTP 200이며 로컬 SHA-256과 일치한다.
+- 실제 인앱 브라우저에서 도넛 가까이 붙인 품목명, 말풍선 없는 캐릭터와 파란 65점의 좌우 배치를 확인했다. 점수 명칭은 보이지 않는다.
+- 최신 검증과 캡처: `evidence/WEEKLY-SCORE/production/verification.json`, `evidence/WEEKLY-SCORE/production/live-app.jpg`.
+- 앞선 배포 증거는 `evidence/PURCHASE-DASHBOARD/production/`, `production-blue-score/`에 보존했다.
 
 ## 주간 카드 점수 배치 후속 검증
 
