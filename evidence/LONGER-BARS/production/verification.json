@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "verifiedAt": "2026-10-04T05:12:51.773785+00:00",
+  "sourceCommit": "792f479",
+  "deploymentId": "dpl_48Ev44qc6npqJqWtjsEFAJjqqKqq",
+  "deploymentUrl": "https://pocketwon-jruzc3ow5-clcocloud.vercel.app",
+  "alias": "https://pocketwon.vercel.app/",
+  "files": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "0c3d8c1f146c0bbafc80bac169521e1c92fabcd529ab8dd9958894dab964dfb3",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/home.js",
+      "status": 200,
+      "sha256": "9d5f0c98f147735a03f6c2af9b32cec753ab4727dc9b4b907f0043f681bbfd54",
+      "matchesLocal": true
+    },
+    {
+      "path": "styles/home.css",
+      "status": 200,
+      "sha256": "2d0622f5b7e6f108464dadaa96ad6a5a61e16bb9a5eba353629104ffc5b8b5b3",
+      "matchesLocal": true
+    },
+    {
+      "path": "styles/viewport.css",
+      "status": 200,
+      "sha256": "0b1a80f5124c58543234180565176dd6d61838906ff0763dd67196429357187c",
+      "matchesLocal": true
+    }
+  ]
+}
