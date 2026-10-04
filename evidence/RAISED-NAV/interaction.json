@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "height": 568,
+      "gap": 8,
+      "focusRestored": true,
+      "storageUnchanged": true
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "gap": 8,
+      "focusRestored": true,
+      "storageUnchanged": true
+    },
+    {
+      "engine": "chromium",
+      "width": 844,
+      "height": 390,
+      "gap": 8,
+      "focusRestored": true,
+      "storageUnchanged": true
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "height": 568,
+      "gap": 8,
+      "focusRestored": true,
+      "storageUnchanged": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "gap": 7.984375,
+      "focusRestored": true,
+      "storageUnchanged": true
+    },
+    {
+      "engine": "webkit",
+      "width": 844,
+      "height": 390,
+      "gap": 8,
+      "focusRestored": true,
+      "storageUnchanged": true
+    }
+  ]
+}

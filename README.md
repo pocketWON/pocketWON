@@ -17,7 +17,7 @@ Vercel은 저장소 루트의 `vercel.json`을 사용합니다. 프로젝트의 
 - [최신 홈 도넛·카드 디자인 검증](docs/POCKETWON-WEEKLY-SPEND.md)
 - [랭킹 카드·검증 보고서](docs/POCKETWON-RANKING-CARD.md)
 - [홈 구매 도넛 개선 보고서](docs/POCKETWON-PURCHASE-DASHBOARD.md)
-- [최신 모바일 화면](evidence/PALE-SKY-CARDS/production/live-app.jpg)
+- [최신 모바일 화면](evidence/RAISED-NAV/production/live-app.jpg)
 - [이번 변경 및 한계](docs/POCKETWON-FULLSCREEN-DEMO.md)
 - [모바일 화면](evidence/FULLSCREEN-DEMO/viewport-final/chromium-390x844.png) · [데스크톱 화면](evidence/FULLSCREEN-DEMO/viewport-final/chromium-1440x900.png)
 - [화면·하단바 검증](evidence/FULLSCREEN-DEMO/viewport-final/verification.json) · [가상 데이터·저장 격리](evidence/FULLSCREEN-DEMO/data-complete/verification.json)

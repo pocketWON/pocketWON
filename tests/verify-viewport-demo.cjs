@@ -8,15 +8,24 @@ async function geometry(page, name, baseline) {
   await ready(page); await page.waitForTimeout(60);
   const result = await page.evaluate(() => {
     const rect = n => { const r=n.getBoundingClientRect(); return [r.x,r.y,r.width,r.height].map(v=>+v.toFixed(2)); };
-    const nav=document.querySelector('.pw-bottom-navigation'),root=document.querySelector('.pw-content>.pw-screen'),limit=nav.getBoundingClientRect().top;
+    const nav=document.querySelector('.pw-bottom-navigation'),root=document.querySelector('.pw-content>.pw-screen');
+    const arch=getComputedStyle(nav,'::before'),archTop=nav.getBoundingClientRect().top+parseFloat(arch.top),limit=archTop-8;
     const controls=[...root.querySelectorAll('button,input,select,summary')].filter(n=>n.getClientRects().length);
     const outside=controls.filter(n=>{const r=n.getBoundingClientRect();return r.top<-.5||r.bottom>limit+1||r.left<-.5||r.right>innerWidth+.5;}).map(n=>n.textContent||n.getAttribute('aria-label'));
     const scrollers=[...root.querySelectorAll('*')].filter(n=>n.getClientRects().length&&/auto|scroll/.test(getComputedStyle(n).overflowY)&&n.scrollHeight>n.clientHeight+2&&!['TEXTAREA','INPUT'].includes(n.tagName)).map(n=>n.className);
-    return { nav:rect(nav),buttons:[...nav.querySelectorAll('button')].map(rect),outside,scrollers,document:[document.documentElement.scrollWidth,document.documentElement.scrollHeight],viewport:[innerWidth,innerHeight],scale:root.dataset.viewportScale||'1' };
+    return { nav:rect(nav),buttons:[...nav.querySelectorAll('button')].map(rect),arch:{top:archTop,width:parseFloat(arch.width),height:parseFloat(arch.height),clearance:archTop-document.querySelector('.pw-content').getBoundingClientRect().bottom},outside,scrollers,document:[document.documentElement.scrollWidth,document.documentElement.scrollHeight],viewport:[innerWidth,innerHeight],scale:root.dataset.viewportScale||'1' };
   });
   report.geometry.push({name,...result});
   if(result.outside.length||result.scrollers.length||result.document.some((v,i)=>v>result.viewport[i]+1))report.errors.push({name,...result});
   if(baseline)assert.deepEqual([result.nav,result.buttons],[baseline.nav,baseline.buttons],name+' navigation changed');
+  assert.equal(result.nav[3],84,name+' fixed navigation height');
+  assert(result.arch.clearance>=7.5,name+' content clears raised arch');
+  assert.equal(result.arch.width,80,name+' arch width');
+  assert.equal(result.arch.height,40,name+' semicircle height');
+  const logo=result.buttons[2];
+  assert.deepEqual(logo.slice(2),[60,60],name+' original logo button size');
+  assert.equal(logo[1],result.nav[1]-14,name+' raised logo position');
+  assert(Math.abs(logo[0]+logo[2]/2-(result.nav[0]+result.nav[2]/2))<.5,name+' centered logo');
   return result;
 }
 (async()=>{let browser;

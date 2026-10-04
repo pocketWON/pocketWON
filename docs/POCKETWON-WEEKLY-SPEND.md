@@ -37,7 +37,15 @@
 
 `evidence/PALE-SKY-CARDS/verification.json`에서 Chromium·WebKit의 세 카드 배경 일치, 원래 하단바 색상, 84px 높이, 문서 스크롤 없음을 확인했다. `delivery/`에서 로컬 미러 85파일 일치와 기존 원본·증거 1,168개 보존을 확인했다. `evidence/BLUE-NAV/`는 철회한 시안의 중간 검증 기록으로 보존하며 최종 디자인 증거로 사용하지 않는다.
 
-![최종 앱](../evidence/PALE-SKY-CARDS/production/live-app.jpg)
+## 중앙 로고 돌출과 반원 받침
+
+하단바 중앙 로고 버튼은 60×60px을 유지하며 위로 18px 올렸다. 뒤에는 하단바와 동일한 흰색의 80×40px 반원 받침을 두고, 그중 24px이 하단바 위로 나오게 했다. 콘텐츠 영역에 32px을 예약해 반원 꼭대기와 최소 8px 간격을 확보한다. 하단바 자체 높이는 84px이며 모든 탭에서 위치·크기를 공유한다. 입력 모달도 같은 간격을 확보하고, 키보드가 열린 경우에는 기존 화면 맞춤 규칙을 유지한다. 원본 로고 이미지와 클릭 동작은 그대로다.
+
+- `evidence/RAISED-NAV/routes/verification.json`: Chromium·WebKit의 작은 휴대폰·가로 화면·데스크톱·safe area·글자 확대에서 탭/기능 화면 전환 후 내비게이션 크기·중앙 위치와 콘텐츠 간격 검증.
+- `interaction.json`: 두 엔진, 세 화면 크기에서 중앙 로고 클릭·기록 모달 간격·닫기 후 원래 버튼 포커스 복원·저장 변경 없음 검증.
+- `delivery/`: 앱·미러 85파일 일치, 과거 증거·원본 1,168개 보존.
+
+![최종 앱](../evidence/RAISED-NAV/production/live-app.jpg)
 
 ## 공개 반영
 
