@@ -48,7 +48,7 @@ async function setup(browser, { state = fixture, width = 390, height = 844, read
   const page = await context.newPage(); page.setDefaultTimeout(5000);
   page.on('pageerror', error => report.errors.push(error.message));
   await page.goto(url); await page.evaluate(() => document.fonts.ready);
-  await page.locator('.pw-home-hero-title').click();
+  await page.locator('.pw-home-balance-link').click();
   await page.waitForFunction(() => Number(document.querySelector('.pw-record')?.dataset.pageSize) >= 1);
   return { context, page };
 }
@@ -227,7 +227,7 @@ async function paginationResize(browser, engine) {
     const expectedPage = String(Math.floor(anchor / smallerCapacity) + 1);
     assert.equal(await page.locator('.pw-record').getAttribute('data-page'), expectedPage);
     const firstSource = await page.locator('.pw-record-list [data-source-index]').first().getAttribute('data-source-index');
-    await page.locator('.pw-nav-item[data-screen="home"]').click(); await page.locator('.pw-home-hero-title').click();
+    await page.locator('.pw-nav-item[data-screen="home"]').click(); await page.locator('.pw-home-balance-link').click();
     await page.waitForFunction(capacity => Number(document.querySelector('.pw-record').dataset.pageSize) === capacity, smallerCapacity);
     assert.equal(await page.locator('.pw-record').getAttribute('data-page'), expectedPage);
     assert.equal(await page.locator('.pw-record-list [data-source-index]').first().getAttribute('data-source-index'), firstSource);

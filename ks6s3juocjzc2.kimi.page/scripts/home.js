@@ -183,11 +183,13 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
     const hero = el('section', 'pw-home-hero'); hero.dataset.pwMotionCard = '';
     hero.setAttribute('aria-labelledby', 'pw-home-balance-title');
     const body = el('div', 'pw-home-hero-body'), title = el('h2'); title.id = 'pw-home-balance-title';
-    const titleAction = link('지금 남은 용돈', { screen: 'record', stage: 'list' }, 'pw-home-hero-title', 'list');
-    titleAction.setAttribute('aria-label', '용돈 내역'); title.append(titleAction);
+    title.append(link('남은 용돈', { screen:'record', stage:'list' }, 'pw-home-hero-title', 'balance-title'));
     const balance = money(dashboard.balance === undefined ? model.balance : dashboard.balance, 'pw-home-money'); balance.dataset.money = 'balance';
     if ((balance.querySelector('.pw-money-digits')?.textContent.length || 0) > 7) balance.dataset.wide = 'true';
-    body.append(title, balance, el('p', 'pw-home-status', dashboard.statusPill));
+    const balanceAction = button('', () => go({ screen: 'record', stage: 'list' }, balanceAction), 'pw-home-balance-link');
+    balanceAction.dataset.action = 'list';
+    balanceAction.setAttribute('aria-label', `${balance.getAttribute('aria-label') || '잔액 확인 안 됨'}, 용돈 내역 보기`);
+    balanceAction.append(balance); body.append(title, balanceAction);
     const stage = el('div', 'pw-home-character-stage'); stage.setAttribute('aria-hidden', 'true');
     stage.append(pwIllustrationPanel('balance', { panelClass: 'pw-compact-visual pw-home-hero-art' }));
     const breakdown = el('div', 'pw-home-breakdown'); breakdown.setAttribute('aria-label', '나의 금융 습관 요약');
@@ -234,39 +236,75 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
       [['지출 리포트 보기', { screen: 'report', segment: 'flow' }], ['용돈 내역 보기', { screen: 'record', stage: 'list' }]])));
     const body = el('div', 'pw-home-habit-body'), donut = el('div', 'pw-home-donut');
     donut.dataset.status = data.status;
-    const chart = svg('svg', { class: 'pw-home-donut-chart', viewBox: '0 0 120 120', 'aria-hidden': 'true' });
+    const chart = svg('svg', { class: 'pw-home-donut-chart', viewBox: '0 0 120 120', role:'group', 'aria-label':'구매 구간별 용돈 사용 내역' });
     const radius = 46, circumference = 2 * Math.PI * radius;
-    chart.append(svg('circle', { class: 'pw-home-donut-track', cx: 60, cy: 60, r: radius, fill: 'none', stroke: data.status === 'overspent' ? '#ED8494' : '#E7EDF4', 'stroke-width': 22 }));
-    let offset = 0;
-    if (data.status === 'available') for (const item of data.segments) {
-      const length = item.fraction * circumference;
-      // No visual gap subtraction: a 5,000 / 50,000 purchase occupies exactly 10%.
-      chart.append(svg('circle', { class: 'pw-home-donut-segment', cx: 60, cy: 60, r: radius, fill: 'none', stroke: item.color, 'stroke-width': 22,
-        'stroke-dasharray': `${length} ${circumference}`, 'stroke-dashoffset': -offset, transform: 'rotate(-90 60 60)', 'data-purchase': item.id, 'data-fraction': item.fraction }));
-      offset += length;
-    }
-    const center = el('div', 'pw-home-donut-center');
+    chart.append(svg('circle', { class: 'pw-home-donut-track', cx: 60, cy: 60, r: radius, fill: 'none', stroke: data.status === 'overspent' ? '#ED8494' : '#E7EDF4', 'stroke-width': 22, 'aria-hidden':'true' }));
     const label = data.status === 'overspent' ? '용돈 초과' : data.status === 'no-allowance' ? '용돈 기록 필요' : data.status === 'unavailable' ? '기록 확인 필요' : data.periodLabel;
     const value = data.status === 'overspent' ? data.overBudget : data.received;
-    const total = el('strong', 'pw-home-donut-value', value === null ? '—' : `${value >= 1e6 ? compactAmount(value) : number(value)}원`);
+    const defaultValue = value === null ? '—' : `${value >= 1e6 ? compactAmount(value) : number(value)}원`;
+    const center = button('', () => {
+      const item = preview || selected;
+      go(item?.sourceIndex !== undefined ? { screen:'record', stage:'detail', sourceIndex:item.sourceIndex, returnTo:{screen:'home'} } : { screen:'record', stage:'list' }, center);
+    }, 'pw-home-donut-center');
+    const centerLabel = el('span','pw-home-donut-label',label), total = el('strong','pw-home-donut-value',defaultValue);
     total.dataset.money = data.status === 'overspent' ? 'allowance-overflow' : 'allowance-received';
-    center.append(el('span', 'pw-home-donut-label', label), total); donut.append(chart, center);
-    const explanation = data.status === 'unavailable' ? '용돈 확인 필요' : data.status === 'no-allowance' ? '받은 용돈을 기록해요' : data.status === 'overspent' ? `${number(data.overBudget)}원 초과` : `남은 용돈 ${number(data.remaining)}원`;
-    donut.setAttribute('role', 'img'); donut.setAttribute('aria-label', `${data.period}, 받은 용돈 ${number(data.received)}원, 구매 ${number(data.spent)}원, ${explanation}`);
-    const legend = el('ul', 'pw-home-legend'); legend.setAttribute('aria-label', '가격순 구매 품목');
-    for (const item of data.segments.slice(0, 5)) {
-      const row = el('li', 'pw-home-legend-row'); row.dataset.purchase = item.id;
-      const target = item.sourceIndex === null ? { screen: 'record', stage: 'list' } : { screen: 'record', stage: 'detail', sourceIndex: item.sourceIndex, returnTo: { screen: 'home' } };
-      const action = button('', () => go(target, action), 'pw-home-purchase');
-      action.setAttribute('aria-label', `${item.label}, 구매 상세 보기`);
-      action.title = item.label;
-      const dot = el('span', 'pw-home-legend-dot'); dot.style.background = item.color; dot.setAttribute('aria-hidden', 'true');
-      action.append(dot, el('span', 'pw-home-legend-label', item.label));
-      row.append(action); legend.append(row);
+    center.append(centerLabel,total);
+    const announcement = el('span','pw-sr-only'); announcement.setAttribute('role','status');
+    let selected = null, preview = null;
+    const controls = [];
+    function paint() {
+      const item = preview || selected;
+      // Keep the pressed center's text nodes stable when arc focus changes.
+      const setText = (node, text) => { if (node.textContent !== text) node.textContent = text; };
+      setText(centerLabel, item ? item.label : label);
+      setText(total, item ? `${item.sourceIndex !== undefined ? '−' : ''}${item.amount >= 1e6 ? compactAmount(item.amount) : number(item.amount)}원` : defaultValue);
+      center.dataset.purchase = item?.id || '';
+      center.title = item ? `${item.label} · ${number(item.amount)}원` : `${label} · ${number(value)}원`;
+      center.setAttribute('aria-label', item ? `${item.label}, ${number(item.amount)}원, ${item.sourceIndex !== undefined ? '구매 상세' : '전체 내역'} 보기` : `${label}, ${number(value)}원, 전체 내역 보기`);
+      setText(announcement, item ? `${item.label}, ${number(item.amount)}원` : '');
+      for (const control of controls) {
+        control.element.dataset.active = String(control.item === item);
+        control.element.setAttribute('aria-pressed',String(control.item === selected));
+      }
     }
-    if (!data.segments.length) legend.append(el('li', 'pw-home-purchase-empty', data.status === 'unavailable' ? '구매 기록을 확인할 수 없어요.' : '아직 구매한 품목이 없어요.'));
-    body.append(donut, legend); node.append(body); return node;
+    function addArc(item, offset, className) {
+      // Exact arc length: a 5,000 / 50,000 purchase fills 10% of the circle.
+      const arc = svg('circle', { class:className, cx:60, cy:60, r:radius, fill:'none', stroke:item.color, 'stroke-width':22,
+        'stroke-dasharray':`${item.fraction * circumference} ${circumference}`, 'stroke-dashoffset':-offset * circumference, transform:'rotate(-90 60 60)',
+        'data-purchase':item.id, 'data-fraction':item.fraction, 'data-offset':offset, role:'button', tabindex:controls.length ? -1 : 0,
+        'aria-label':`${item.label}, ${number(item.amount)}원`, 'aria-pressed':'false' });
+      const select = () => { selected = selected === item ? null : item; preview = null; paint(); };
+      arc.addEventListener('pointerenter', event => { if(event.pointerType !== 'touch') { preview = item; paint(); } });
+      arc.addEventListener('pointerleave', () => { preview = null; paint(); });
+      arc.addEventListener('focus', () => { preview = item; for(const control of controls) control.element.tabIndex = control.element === arc ? 0 : -1; paint(); });
+      arc.addEventListener('blur', () => { preview = null; paint(); });
+      arc.addEventListener('click', select);
+      arc.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); select(); }
+        else if (event.key === 'Escape') { event.preventDefault(); selected = preview = null; paint(); }
+        else if (['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(event.key)) {
+          event.preventDefault(); const index = controls.findIndex(control => control.element === arc);
+          const next = event.key === 'Home' ? 0 : event.key === 'End' ? controls.length - 1 : (index + (['ArrowLeft','ArrowUp'].includes(event.key) ? -1 : 1) + controls.length) % controls.length;
+          controls[next].element.focus();
+        }
+      });
+      controls.push({item,element:arc}); chart.append(arc);
+    }
+    if (data.status === 'available') {
+      const colors = data.segments.map(item => item.color);
+      let offset = 0;
+      for (const [index,purchase] of data.items.entries()) {
+        const item = {...purchase, color:colors[index % colors.length], fraction:purchase.amount / data.received};
+        addArc(item,offset,'pw-home-donut-segment'); offset += item.fraction;
+      }
+      if (data.remaining > 0) addArc({id:'remaining',label:'남은 용돈',amount:data.remaining,fraction:data.remaining/data.received,color:'#E7EDF4'},offset,'pw-home-donut-remaining');
+    }
+    paint();
+    const explanation = data.status === 'unavailable' ? '용돈 확인 필요' : data.status === 'no-allowance' ? '받은 용돈을 기록해요' : data.status === 'overspent' ? `${number(data.overBudget)}원 초과` : `남은 용돈 ${number(data.remaining)}원`;
+    donut.setAttribute('role','group'); donut.setAttribute('aria-label',`${data.period}, 받은 용돈 ${number(data.received)}원, 구매 ${number(data.spent)}원, ${explanation}. 구간을 누르면 구매명과 가격을 확인할 수 있어요. 키보드는 화살표로 이동하고 Escape로 해제해요.`);
+    donut.append(chart,center,announcement); body.append(donut); node.append(body); return node;
   }
+
   function weeklyCard() {
     const data = dashboard.week, node = card('pw-home-weekly', '이번 주 용돈 흐름');
     node.append(cardHeader('이번 주 용돈 흐름', { screen: 'report', segment: 'flow' }, 'weekly', menu('이번 주 용돈 흐름',

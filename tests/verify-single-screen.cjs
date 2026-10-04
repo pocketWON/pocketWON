@@ -49,7 +49,7 @@ async function ready(page) {
 async function enter(page, id) {
   if (id === 'record') {
     await page.locator('.pw-nav-item[data-screen="home"]').click();
-    await page.locator('.pw-home-hero-title').click();
+    await page.locator('.pw-home-balance-link').click();
   } else await page.locator('.pw-nav-item[data-screen="' + id + '"]').click();
   await ready(page);
 }
@@ -99,7 +99,7 @@ async function records(browser, engine) {
   const seen = new Set(); let longIndex;
   while (true) { for (const id of await page.locator('.pw-record-row-button').evaluateAll(nodes => nodes.map(n=>n.dataset.sourceIndex))) seen.add(id); const next=page.locator('.pw-record-pagination').getByRole('button',{name:'다음',exact:true}); if (await next.isDisabled()) break; await next.click(); await ready(page); await geometry(page,engine+'/history-page'); }
   assert.equal(seen.size,37); pass(engine+' all 37 stored rows reachable without storage writes');
-  await enter(page,'home'); await page.locator('.pw-home-hero-title').click();
+  await enter(page,'home'); await page.locator('.pw-home-balance-link').click();
   while (await page.locator('.pw-record-pagination').getByRole('button',{name:'이전',exact:true}).isEnabled()) await page.locator('.pw-record-pagination').getByRole('button',{name:'이전',exact:true}).click();
   await page.locator('.pw-record-row-button[data-source-index="36"]').click(); await ready(page); await geometry(page,engine+'/long-record-detail');
   let text=''; while(true){text+=await page.locator('.pw-text-page').innerText();const next=page.locator('.pw-text-pager').getByRole('button',{name:'다음',exact:true});if(!await next.isVisible()||await next.isDisabled())break;await next.click();await ready(page);}

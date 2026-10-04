@@ -9,6 +9,7 @@ const alpha = JSON.parse(fs.readFileSync(path.join(root, 'evidence/SINGLE-SCREEN
 const runs = JSON.parse(fs.readFileSync(path.join(root, 'evidence/SINGLE-SCREEN/art-bounds/alpha-runs.json')));
 const baseline = JSON.parse(fs.readFileSync(path.join(root, 'evidence/REFERENCE-DASHBOARD/baseline/manifest.json')));
 const report = { status: 'RUNNING', checks: [], geometry: [], errors: [], screenshots: [], fixture: 'Isolated reference override; default demo and real-data mode tested separately' };
+const heroSizes = new Map();
 function preserved() {
   for (const [name, hash] of Object.entries(baseline)) {
     const characterAsset = /\/assets\/pocketwon\/(characters|sprites)\//.test(name);
@@ -46,6 +47,9 @@ async function inspect(page, name, { reference = false } = {}) {
       designUnit: parseFloat(getComputedStyle(q('.pw-home-hero')).borderTopLeftRadius) / 15, contentScale: Number(document.querySelector('.pw-home').dataset.viewportScale || 1), accessible: document.documentElement.classList.contains('pw-accessible'), viewport: [innerWidth, innerHeight],
       document: [document.documentElement.scrollWidth, document.documentElement.scrollHeight],
       hero: box(q('.pw-home-hero')), status: box(q('.pw-home-breakdown')), row: box(q('.pw-home-primary-row')), saving: box(q('.pw-home-saving')), habit: box(q('.pw-home-habit')),
+      balance: box(q('.pw-home-balance-link')), balanceFont:parseFloat(getComputedStyle(q('.pw-home-money .pw-money-digits,.pw-home-money .pw-money-unknown')).fontSize),
+      balanceGlyphs:[...document.querySelectorAll('.pw-home-money .pw-money-digits,.pw-home-money .pw-money-unit,.pw-home-money .pw-money-exact,.pw-home-money .pw-money-unknown')].flatMap(n=>{const range=document.createRange();range.selectNodeContents(n);return [...range.getClientRects()].map(r=>({left:r.left,top:r.top,right:r.right,bottom:r.bottom}));}),
+      obsoleteHeroCopy: !!document.querySelector('.pw-home-status') || /지금 남은 용돈|오늘도 잘 관리하고/.test(q('.pw-home-hero').textContent),
       weekly: box(q('.pw-home-weekly')), insights: box(q('.pw-home-insights')), nav: box(q('.pw-bottom-navigation')), navVisual: box(q('.pw-navigation-items')), add: box(q('.pw-nav-add')),
       sprites, panels: panels.map(box),
       graphics: [...document.querySelectorAll('.pw-home-donut-chart,.pw-home-weekly-plot')].map(n => ({ box: box(n), panel: box(n.closest('.pw-home-card')) })),
@@ -59,6 +63,8 @@ async function inspect(page, name, { reference = false } = {}) {
   report.geometry.push({ name, ...g });
   assert.equal(g.horizontal, false, name + ' horizontal overflow');
   assert.equal(g.nestedButtons, 0, name + ' nested buttons');
+  assert.equal(g.obsoleteHeroCopy,false,name+' obsolete hero heading or pill');
+  for(const glyph of g.balanceGlyphs) assert(glyph.left>=g.hero.left+7 && glyph.right<=g.hero.right-7 && glyph.top>=g.hero.top+7 && glyph.bottom<=g.status.top-7,name+' balance glyph exceeds hero space '+JSON.stringify(glyph));
   assert.equal(g.removedCalendar, false, name + ' obsolete calendar card remains');
   assert.deepEqual(g.profiles, ['all', 'balance'], name + ' original character components');
   if (g.viewport[0] >= 700 && !g.accessible) {
@@ -80,6 +86,7 @@ async function inspect(page, name, { reference = false } = {}) {
     assert(g.nav.bottom <= g.viewport[1] + 1 && g.nav.top >= 0, name + ' navigation outside viewport');
   }
   if (reference) {
+    assert(g.balanceFont/g.designUnit>=54,name+' representative balance is not substantially enlarged');
     assert(g.insights.bottom <= g.nav.top + 1, name + ' representative dashboard does not fit above navigation');
     assert(g.document[1] <= g.viewport[1] + 1, name + ' representative dashboard scrolls');
     // Historical reference deltas are reported, not acceptance limits: the requested fluid viewport replaces fixed Golden Master coordinates.
@@ -95,7 +102,12 @@ async function inspect(page, name, { reference = false } = {}) {
     const art = { left: r.left + bounds[0] / 384 * r.width, top: r.top + bounds[1] / 384 * r.height, right: r.left + bounds[2] / 384 * r.width, bottom: r.top + bounds[3] / 384 * r.height };
     assert(art.left >= s.panel.left - 1 && art.right <= s.panel.right + 1 && art.top >= s.panel.top - 1 && art.bottom <= s.panel.bottom + 1, name + ' all-frame art clipping ' + JSON.stringify({ profile: s.profile, art, panel: s.panel }));
     if (s.profile === 'balance') {
+      const sizeKey=JSON.stringify([g.viewport,g.hero.width,g.hero.height,g.designUnit,g.contentScale]);
+      if(heroSizes.has(sizeKey)) assert(Math.abs(heroSizes.get(sizeKey)-r.width)<.1,name+' amount changes character size');
+      else heroSizes.set(sizeKey,r.width);
+      assert(Math.abs(r.width-r.height)<.1,name+' character aspect ratio changed');
       assert(art.left >= s.panel.left + 7.8 && art.top >= s.panel.top + 7.8 && art.right <= s.panel.right - 7.8 && art.bottom <= g.status.top - 7.8, name + ' Hero 8px frame/status clearance ' + JSON.stringify({art,panel:s.panel,status:g.status}));
+      for(const text of g.balanceGlyphs) assert(art.left>=text.right+7.8 || art.right<=text.left-7.8 || art.top>=text.bottom+7.8 || art.bottom<=text.top-7.8,name+' enlarged balance/character clearance '+JSON.stringify({art,text}));
       for(const text of s.texts) assert(art.left >= text.rect.right + 7.8 || art.right <= text.rect.left - 7.8 || art.top >= text.rect.bottom + 7.8 || art.bottom <= text.rect.top - 7.8, name + ' Hero 8px text clearance ' + text.label);
     }
     const collisions = s.texts.filter(v => pixelsIntersect(s.profile, s.layer, v.rect));
@@ -115,7 +127,7 @@ async function navReachable(page) {
 }
 async function navigation(test, engine) {
   const p = test.page;
-  for (const [selector, target, segment] of [['.pw-home-hero-title', 'record'], ['.pw-home-habit [data-action="habit"]', 'record'], ['.pw-home-weekly [data-action="weekly"]', 'report', 'flow'], ['.pw-home-breakdown-item[data-status="spending"]', 'report', 'habit'], ['.pw-home-breakdown-item[data-status="saving"]', 'report', 'habit'], ['.pw-home-breakdown-item[data-status="goal"]', 'goal']]) {
+  for (const [selector, target, segment] of [['.pw-home-hero-title', 'record'], ['.pw-home-balance-link', 'record'], ['.pw-home-habit [data-action="habit"]', 'record'], ['.pw-home-weekly [data-action="weekly"]', 'report', 'flow'], ['.pw-home-breakdown-item[data-status="spending"]', 'report', 'habit'], ['.pw-home-breakdown-item[data-status="saving"]', 'report', 'habit'], ['.pw-home-breakdown-item[data-status="goal"]', 'goal']]) {
     await p.locator(selector).focus(); await p.keyboard.press('Enter'); await ready(p);
     assert.equal(await p.evaluate(() => PWNavigation.current().screen), target);
     if (segment) assert.equal(await p.locator('.pw-report').getAttribute('data-segment'), segment);
@@ -148,12 +160,13 @@ async function navigation(test, engine) {
 }
 async function referenceSemantics(page) {
   assert((await page.locator('.pw-home-money').innerText()).includes('32,000'));
+  assert.equal(await page.locator('.pw-home-hero-title .pw-home-card-title').innerText(),'남은 용돈');
   assert.equal(await page.locator('.pw-home-saving-track').getAttribute('aria-valuenow'), '1');
   assert.equal(await page.locator('.pw-home-saving-track').getAttribute('aria-valuemax'), '3');
-  assert.equal(await page.locator('.pw-home-donut-segment').count(), 6);
+  assert.equal(await page.locator('.pw-home-donut-segment').count(), 7);
   assert.equal(await page.locator('.pw-home-donut-value').innerText(), '50,000원');
   assert.equal(await page.locator('.pw-home-legend-value').count(),0);
-  assert.deepEqual(await page.locator('.pw-home-legend-label').allTextContents(),['문구 세트','크레파스','동화책','필통','색종이']);
+  assert.equal(await page.locator('.pw-home-legend,.pw-home-purchase').count(),0);
   assert.deepEqual(await page.locator('.pw-home-weekly-bar').evaluateAll(nodes => nodes.map(node => Number(node.dataset.value))), [5000, 3000, 2800, 1000, 2000, 2400, 1800]);
   assert.equal(await page.locator('.pw-home-weekly-bar--highlight').getAttribute('data-date-key'), '2026-10-04');
   assert.equal(await page.locator('.pw-home-insight').count(), 2);

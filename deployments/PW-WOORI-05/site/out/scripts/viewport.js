@@ -41,14 +41,19 @@ window.PWViewport = (() => {
     if (!(scale > 0 && unit > 0)) return;
     // Union of every balance action/idle frame: [105,100,297,319] in a 384px cell.
     const alphaWidth = 192 / 384, alphaHeight = 219 / 384, gap = 8;
-    const obstacles = [...hero.querySelectorAll('.pw-home-hero-title,.pw-home-money,.pw-home-status')].map(node => node.getBoundingClientRect());
     const right = box.right - Math.max(gap, 18 * unit * scale);
     const bottom = hero.querySelector('.pw-home-breakdown').getBoundingClientRect().top - gap;
-    const areas = [
-      { left: Math.max(box.left, ...obstacles.map(rect => rect.right)) + gap, top: box.top + gap },
-      { left: box.left + gap, top: Math.max(box.top, ...obstacles.map(rect => rect.bottom)) + gap },
-    ];
-    const size = Math.max(0, ...areas.map(area => Math.min(250 * unit * scale, (right - area.left) / alphaWidth, (bottom - area.top) / alphaHeight)));
+    // Character size depends on its card, never the amount or its number of digits.
+    const size = Math.max(0, Math.min(250 * unit * scale, (right - box.left - gap) / alphaWidth, (bottom - box.top - gap) / alphaHeight));
+    const balance = hero.querySelector('.pw-home-balance-link');
+    balance.style.removeProperty('--pw-balance-fit');
+    const available = right - size * alphaWidth - gap - balance.getBoundingClientRect().left;
+    let balanceFit = 1;
+    // The digits scale while the unit gap stays fixed; remeasure once for that gap.
+    for (let pass = 0; pass < 2; pass++) {
+      balanceFit *= Math.min(1, Math.max(.1, (available - .5) / Math.max(1, balance.getBoundingClientRect().width)));
+      balance.style.setProperty('--pw-balance-fit', String(balanceFit));
+    }
     stage.style.left = ((right - size * 297 / 384 - box.left) / scale) + 'px';
     stage.style.top = ((bottom - size * 319 / 384 - box.top) / scale) + 'px';
     stage.style.right = 'auto'; stage.style.bottom = 'auto';

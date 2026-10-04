@@ -76,7 +76,7 @@ async function setup(browser, { state = fixture, motion = 'no-preference', width
 // The center + opens input; the allowance title preserves the history entry.
 async function enterRecordList(page) {
   await page.locator('.pw-nav-item[data-screen="home"]').click();
-  await page.locator('.pw-home-hero-title').click();
+  await page.locator('.pw-home-balance-link').click();
   await page.waitForFunction(() => document.querySelector('.pw-record')?.dataset.stage === 'list');
 }
 
@@ -278,7 +278,7 @@ async function budgetAndReplacement(page, engine) {
   await page.waitForFunction(() => window.__offFrameSprite.controller.inspect().state === 'playing');
   pass(`${engine}: real IntersectionObserver pauses outside the Frame and resumes the retained timeline`, offFrame);
 
-  const navigation = await page.locator('.pw-home-hero-title').evaluate(button => {
+  const navigation = await page.locator('.pw-home-balance-link').evaluate(button => {
     const oldRoot = document.querySelector('.pw-home'), oldSession = PocketWONMotion.controllerFor(oldRoot), start = performance.now();
     button.click();
     return { elapsed: performance.now() - start, heading: document.activeElement.id, rootRemoved: !oldRoot.isConnected, oldPlayers: oldSession.inspect().players.length, sessions: PocketWONMotion.inspect().length, record: !!document.querySelector('.pw-record') };
@@ -415,7 +415,7 @@ async function loadAndFallback(browser, engine) {
       await sprite.locator('.pw-sprite-poster').evaluate(async image => { image.loading = 'eager'; await image.decode(); });
       const state = await sprite.evaluate(node => ({ state: node.dataset.spriteState, fallback: node.dataset.spriteFallback, loaded: node.querySelector('img').complete && node.querySelector('img').naturalWidth > 0, width: node.getBoundingClientRect().width }));
       assert.equal(state.state, 'static'); assert.equal(state.loaded, true); assert(state.width > 0); if (posterFailure) assert.equal(state.fallback, 'true');
-      await page.locator('.pw-home-hero-title').click(); assert.equal(await page.locator('.pw-record').count(), 1);
+      await page.locator('.pw-home-balance-link').click(); assert.equal(await page.locator('.pw-record').count(), 1);
       pass(`${engine}: ${posterFailure ? 'sheet/poster' : 'sheet'} error falls back while cards keep navigating`, state);
     } finally { await context.close(); }
   }
