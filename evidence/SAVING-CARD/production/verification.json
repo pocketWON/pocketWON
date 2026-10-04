@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "sourceCommit": "cb8d8b7f9b09fb20399a84e0a966ed4775e9ddcd",
+  "alias": "https://pocketwon.vercel.app/",
+  "deploymentId": "dpl_4hZescrddnbMJgczfcFcdjjRneu8",
+  "deploymentUrl": "https://pocketwon-kiig6gpif-clcocloud.vercel.app",
+  "http": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "e0fdeb6c30cd69fa196f9df88fa75851423661c17d4b29a7487e62579572d5d1",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/home.js",
+      "status": 200,
+      "sha256": "8ebea699c895f8ceb445973120c851e6a684de0912a1241a960f57971cd60106",
+      "matchesLocal": true
+    },
+    {
+      "path": "styles/home.css",
+      "status": 200,
+      "sha256": "1d2599fff7100465343375b726c6c5e35816d5d913a1e8717ab25e6424cb5db6",
+      "matchesLocal": true
+    },
+    {
+      "path": "styles/viewport.css",
+      "status": 200,
+      "sha256": "9816a30beaf47606e92553cc38e5f0dab933229b99d38d391ef8b7342664f62c",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/all.js",
+      "status": 200,
+      "sha256": "a975c3cb9827be0ec371cfca3b4f06730be23f264c4f4b16b3aaba6593404868",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/feature-state.js",
+      "status": 200,
+      "sha256": "11592b54d575b3c2f5efb029d21fa8bfa51aaba7fdb45e11d8a3e8ba2e9bfc0d",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/games.js",
+      "status": 200,
+      "sha256": "66b8597d87ed621924ebc5029807ce8ed887644847cb86e45c4c4925bd9d05b8",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/game-views.js",
+      "status": 200,
+      "sha256": "29a28b1df539c6d964100396215568d4ef765ad144106c520bc56f24ba789933",
+      "matchesLocal": true
+    },
+    {
+      "path": "styles/games.css",
+      "status": 200,
+      "sha256": "8e846d3de4dab54425324208ba58311c65e424ea0e2dfd7f49ebe3d3166d1fdf",
+      "matchesLocal": true
+    },
+    {
+      "path": "assets/pocketwon/graphics/savings-pig-generated.png",
+      "status": 200,
+      "sha256": "8f1b78b28a176c00f0109fbe5aa64232c0cc392fcb3858c3122ec1b4496337e5",
+      "matchesLocal": true
+    }
+  ],
+  "liveBrowser": {
+    "url": "http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html?v=header-simplify-20261004",
+    "verified": true,
+    "screenshots": [
+      "live-app.jpg"
+    ]
+  },
+  "checks": {
+    "responsiveCases": 40,
+    "motionChecks": 32,
+    "preservedHashes": 1168,
+    "mirrorFiles": 85,
+    "remoteGamesPreserved": true
+  }
+}

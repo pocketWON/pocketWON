@@ -51,14 +51,15 @@
 
 ## 공개 반영
 
-최종 소스 커밋 `4bcdcb1`을 `pocketWON/pocketWON` main에 푸시하고 기존 Vercel 프로젝트에 배포했다.
+최종 소스 커밋 `cb8d8b7`을 `pocketWON/pocketWON` main에 푸시하고 기존 Vercel 프로젝트에 배포했다. 원격 미니게임 변경도 병합해 포함했다.
 
 - 공개 앱: https://pocketwon.vercel.app/
-- 배포 ID: `dpl_EedMCZ7UuBJMLnE2Kfs2C7q5QAVe`
-- 원본 배포: https://pocketwon-oz1or2dhb-clcocloud.vercel.app
-- 공개 HTML·변경 CSS·JS 4개 경로가 HTTP 200이며 로컬 SHA-256과 일치한다.
-- 실제 로컬 인앱 브라우저에서 ‘남은 용돈’ 제목, 아래의 큰 잔액, 기존 비율의 캐릭터, 목록 없는 도넛을 확인했다. 구매 구간을 직접 눌러 ‘문구 세트 −5,000원’ 표시도 확인했다.
-- 최신 검증과 캡처: `evidence/DONUT-INTERACTION/production/verification.json`, `live-app.jpg`, `live-selected.jpg`.
+- 배포 ID: `dpl_4hZescrddnbMJgczfcFcdjjRneu8`
+- 원본 배포: https://pocketwon-kiig6gpif-clcocloud.vercel.app
+- 공개 루트 HTML·변경 CSS·JS·돼지 이미지 등 10개 경로가 HTTP 200이며 로컬 SHA-256과 일치한다.
+- 실제 로컬 인앱 브라우저에서 ‘정후의 소비 습관’, ‘용돈 인사이트’, 통합 카드와 다듬은 저축 카드 배치를 확인했다. 도넛 구간의 파란 포커스 박스 제거와 품목·가격 표시도 이전 단계에서 직접 확인했고 이후 자동 검증을 통과했다.
+- 최신 검증과 캡처: `evidence/SAVING-CARD/production/verification.json`, `live-app.jpg`.
+- 최종 미러는 앱 85파일과 일치하고 과거 증거·원본 1,168개 해시를 보존했다.
 - 앞선 배포 증거는 기존 폴더에 보존했다.
 
 ## 주간 카드 점수 배치 후속 검증
