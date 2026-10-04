@@ -44,7 +44,7 @@
   color: #fff;
 }
 /* A compact title above a large balance; the character keeps a stable footprint. */
-.pw-home-hero-body { position:absolute; top:calc(24 * var(--pw-u)); bottom:calc(70.5 * var(--pw-u) + 10px); left:max(8px,calc(15.2 * var(--pw-u))); z-index:2; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:calc(8 * var(--pw-u)); pointer-events:none; }
+.pw-home-hero-body { position:absolute; top:calc(24 * var(--pw-u)); bottom:calc(70.5 * var(--pw-u) + 10px); left:max(8px,calc(15.2 * var(--pw-u))); z-index:2; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding-top:calc(48 * var(--pw-u)); pointer-events:none; }
 .pw-home-balance-link { display:flex; align-items:center; min-height:24px; padding:0; border:0; background:transparent; color:inherit; text-align:left; pointer-events:auto; }
 .pw-home-money .pw-money-line { gap:calc(3 * var(--pw-u)); }
 .pw-home-money .pw-money-digits { color:#fff; font-size:calc(64 * var(--pw-u) * var(--pw-balance-fit,1)); font-weight:800; line-height:1.04; letter-spacing:-.055em; }
@@ -233,11 +233,8 @@
 .pw-accessible .pw-home-donut-value { font-size:.8rem; }
 
 .pw-home-hero-body h2 { margin:0; }
-.pw-home-hero-title { display:flex; align-items:center; gap:calc(7 * var(--pw-u)); min-height:24px; padding:0; border:0; background:transparent; color:#fff; pointer-events:auto; font-size:calc(18 * var(--pw-u)); font-weight:650; line-height:1.15; }
-.pw-home-hero-title .pw-home-card-title { color:inherit; font:inherit; }
-.pw-home-hero-title .pw-home-card-chevron { color:inherit; font-size:calc(25 * var(--pw-u)); }
-.pw-accessible .pw-home-hero-title { font-size:.8rem; }
+.pw-home-hero-title { position:absolute; top:0; left:0; color:#fff; font-size:calc(24 * var(--pw-u)); font-weight:750; letter-spacing:-.035em; line-height:1.15; white-space:nowrap; }
+.pw-accessible .pw-home-hero-title { font-size:.9rem; }
 @media (max-height:440px) and (max-width:699px) {
-  .pw-home-hero-body { gap:0; }
   .pw-home-money .pw-money-digits { font-size:calc(56 * var(--pw-u) * var(--pw-balance-fit,1)); }
 }

@@ -127,7 +127,7 @@ async function navReachable(page) {
 }
 async function navigation(test, engine) {
   const p = test.page;
-  for (const [selector, target, segment] of [['.pw-home-hero-title', 'record'], ['.pw-home-balance-link', 'record'], ['.pw-home-habit [data-action="habit"]', 'record'], ['.pw-home-weekly [data-action="weekly"]', 'report', 'flow'], ['.pw-home-breakdown-item[data-status="spending"]', 'report', 'habit'], ['.pw-home-breakdown-item[data-status="saving"]', 'report', 'habit'], ['.pw-home-breakdown-item[data-status="goal"]', 'goal']]) {
+  for (const [selector, target, segment] of [['.pw-home-balance-link', 'record'], ['.pw-home-habit [data-action="habit"]', 'record'], ['.pw-home-weekly [data-action="weekly"]', 'report', 'flow'], ['.pw-home-breakdown-item[data-status="spending"]', 'report', 'habit'], ['.pw-home-breakdown-item[data-status="saving"]', 'report', 'habit'], ['.pw-home-breakdown-item[data-status="goal"]', 'goal']]) {
     await p.locator(selector).focus(); await p.keyboard.press('Enter'); await ready(p);
     assert.equal(await p.evaluate(() => PWNavigation.current().screen), target);
     if (segment) assert.equal(await p.locator('.pw-report').getAttribute('data-segment'), segment);
@@ -160,7 +160,8 @@ async function navigation(test, engine) {
 }
 async function referenceSemantics(page) {
   assert((await page.locator('.pw-home-money').innerText()).includes('32,000'));
-  assert.equal(await page.locator('.pw-home-hero-title .pw-home-card-title').innerText(),'정후의 용돈');
+  assert.equal(await page.locator('.pw-home-hero-title').innerText(),'정후의 용돈');
+  assert.equal(await page.locator('.pw-home-hero-title .pw-home-card-chevron').count(),0);
   assert.equal(await page.locator('.pw-home-saving-track').getAttribute('aria-valuenow'), '1');
   assert.equal(await page.locator('.pw-home-saving-track').getAttribute('aria-valuemax'), '3');
   assert.equal(await page.locator('.pw-home-donut-segment').count(), 7);
