@@ -101,7 +101,7 @@ function createHomeDashboardModel(loaded, now = new Date(), period) {
       ranking: { status: 'unavailable', entries: [] },
       positive: { title: '이런 점이 좋아요!', score: habit?.status === 'available' && Number.isInteger(habit.score) ? habit.score : null,
         body: habit?.status === 'available' && Number.isInteger(habit.score) ? habit.coaching.strength || habit.coaching.next : '기록을 남기면 습관 점수를 확인할 수 있어요.' },
-      advice: { title: '이렇게 해보세요!', body: '주말 예산을 먼저 정해보세요. 물건을 사기 전 꼭 필요한지 생각하고, 쓰고 남은 돈은 목표 저축에 보태보세요.' } },
+      advice: { title: '이렇게 해보세요!', body: '주말에 쓸 용돈을 미리 정해보세요. 물건을 사기 전에는 꼭 필요한지, 비슷한 물건이 이미 있는지 살펴보세요. 작은 지출도 바로 기록하면 남은 용돈을 알기 쉬워요. 쓰고 남은 돈은 저축 목표에 조금씩 보태보세요.' } },
   };
 }
 
@@ -378,11 +378,8 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
     section.setAttribute('aria-label', 'AI 인사이트'); section.dataset.pwMotionCard = ''; section.dataset.status = data.status;
     const grid = el('div', 'pw-home-insight-grid');
     const panel = button('', () => go(featureRoute('coaching'), panel), 'pw-home-insight pw-home-insight--advice'); panel.dataset.action = 'insight-advice';
-    const caption = el('span', 'pw-home-insight-title'), icon = el('span', 'pw-home-insight-icon');
-    const emoji = el('span', 'pw-home-insight-emoji', '💡'); emoji.setAttribute('aria-hidden', 'true'); icon.append(emoji);
-    const arrow = svg('svg', { class:'pw-home-insight-chevron', viewBox:'0 0 12 20', 'aria-hidden':'true' });
-    arrow.append(svg('path', { d:'m3 3 6 7-6 7', fill:'none', stroke:'currentColor', 'stroke-width':3, 'stroke-linecap':'round', 'stroke-linejoin':'round' }));
-    caption.append(icon, el('span', '', data.advice.title), arrow);
+    const caption = el('span', 'pw-home-insight-title');
+    caption.append(el('span', '', data.advice.title));
     panel.append(caption, el('span', 'pw-home-insight-body', data.advice.body));
     grid.append(rankingCard(), panel);
     section.append(grid); return section;
