@@ -75,3 +75,5 @@
 - 사용자의 기존 로컬 앱 탭을 새로고침해 최종 화면을 열어두었다.
 
 두 내부 카드 표면 변경 `928cb0c`도 main에 푸시하고 배포했다. 최종 배포 ID는 `dpl_3MKTmtRJX2docsy8hAxzsAkW6J61`, 배포 주소는 https://pocketwon-7lzsiil0q-clcocloud.vercel.app 이다. `evidence/OPEN-INNER-CARDS/production/verification.json`에서 공개 HTML·home.css와 로컬 파일 일치를 확인했다.
+
+아래 영역 확장 `829afbf`와 두 내용의 간격·수직 위치 변경 `69d242b`를 함께 공개 배포했다. 최종 배포 ID는 `dpl_6qkXCXg7gqriBeHcv1m6KwdUvdqt`, 배포 주소는 https://pocketwon-4n0mjmlfq-clcocloud.vercel.app 이다. 공개 파일 일치 검증은 `evidence/LOWER-INNER-CONTENT/production/verification.json`에 기록했다.
