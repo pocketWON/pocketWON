@@ -179,7 +179,9 @@ async function referenceSemantics(page) {
   assert.equal(await page.locator('.pw-home-legend-value').count(),0);
   assert.equal(await page.locator('.pw-home-legend,.pw-home-purchase').count(),0);
   assert.deepEqual(await page.locator('.pw-home-weekly-bar').evaluateAll(nodes => nodes.map(node => Number(node.dataset.value))), [5000, 3000, 2800, 1000, 2000, 2400, 1800]);
-  assert.equal(await page.locator('.pw-home-weekly-bar--highlight').getAttribute('data-date-key'), '2026-10-04');
+  assert.deepEqual(await page.locator('.pw-home-weekly-value').allTextContents(), ['-5,000원','-3,000원','-2,800원','-1,000원','-2,000원','-2,400원','-1,800원']);
+  assert.equal(await page.locator('.pw-home-weekly-date--highlight').innerText(), '일');
+  assert.equal(await page.locator('.pw-home-weekly-bar--highlight,.pw-home-weekly-crown').count(),0);
   assert.equal(await page.locator('.pw-home-insight').count(), 2);
 }
 (async () => {

@@ -308,7 +308,7 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
   function weeklyCard() {
     const data = dashboard.week, node = card('pw-home-weekly', '용돈 인사이트');
     node.append(cardHeader('용돈 인사이트', { screen: 'report', segment: 'flow' }, 'weekly', menu('용돈 인사이트',
-      '월요일부터 일요일까지 기록한 지출이에요. 아직 오지 않은 날은 미집계로 표시하고, 확인할 수 없는 기록을 0원으로 바꾸지 않아요.',
+      '월요일부터 일요일까지 기록한 지출이에요. 많이 쓴 날일수록 막대가 높고 파랑이 진해져요. 아직 오지 않은 날은 미집계로 표시하고, 확인할 수 없는 기록을 0원으로 바꾸지 않아요.',
       [['돈 흐름 리포트 보기', { screen: 'report', segment: 'flow' }], ['용돈 내역 보기', { screen: 'record', stage: 'list' }]])));
     const body = el('div', 'pw-home-weekly-body');
     const chart = el('div', 'pw-home-weekly-plot');
@@ -316,21 +316,24 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
     const maximum = Math.max(1, ...data.days.filter(day => day.amount !== null).map(day => day.amount));
     data.days.forEach((day, index) => {
       const column = el('div', 'pw-home-weekly-day');
-      column.style.setProperty('--pw-bar-ratio', String(day.amount === null ? 0 : day.amount / maximum));
+      const ratio = day.amount === null ? 0 : day.amount / maximum;
+      column.style.setProperty('--pw-bar-ratio', String(ratio));
       const highlighted = day.key === data.highlightKey;
-      const bar = el('span', `pw-home-weekly-bar${highlighted ? ' pw-home-weekly-bar--highlight' : ''}${day.amount === null ? ' pw-home-weekly-bar--unknown' : ''}`);
+      const bar = el('span', `pw-home-weekly-bar${day.amount === null ? ' pw-home-weekly-bar--unknown' : ''}`);
       bar.dataset.dateKey = day.key;
-      if (day.amount !== null) bar.dataset.value = String(day.amount);
-      const value = el('span', `pw-home-weekly-value${highlighted ? ' pw-home-weekly-value--highlight' : ''}`);
-      value.textContent = day.amount === null ? '—' : compactAmount(day.amount);
-      const label = el('span', `pw-home-weekly-date${highlighted ? ' pw-home-weekly-date--highlight' : ''}`);
-      if (day.key === data.crownKey) {
-        const crown = el('span', 'pw-home-weekly-crown', '👑'); crown.dataset.dateKey = day.key;
-        column.append(crown);
+      if (day.amount !== null) {
+        bar.dataset.value = String(day.amount);
+        // Solid pale-to-bright blues encode spend; today's date never overrides the amount color.
+        const color = [199, 234, 255].map((channel, i) => Math.round(channel + ([24, 158, 247][i] - channel) * ratio));
+        bar.style.setProperty('--pw-bar-color', `rgb(${color.join(', ')})`);
       }
+      const value = el('span', 'pw-home-weekly-value');
+      value.textContent = day.amount === null ? '—' : `${day.amount > 0 ? '-' : ''}${number(day.amount)}원`;
+      if (value.textContent.length > 8) value.classList.add('pw-home-weekly-value--long');
+      const label = el('span', `pw-home-weekly-date${highlighted ? ' pw-home-weekly-date--highlight' : ''}`);
       label.textContent = day.weekday || ['월', '화', '수', '목', '금', '토', '일'][index]; column.append(bar, value, label); chart.append(column);
     });
-    const detail = el('p', 'pw-sr-only', `주간 지출, ${data.days.map(day => `${day.label} ${day.future ? '미집계' : day.amount === null ? '확인 안 됨' : `${number(day.amount)}원`}`).join(', ')}${data.crownKey ? `, 가장 적게 쓴 날 ${data.days.find(day => day.key === data.crownKey).label}` : ''}${data.omitted ? `, 유효하지 않은 기록 ${data.omitted}건 제외` : ''}`);
+    const detail = el('p', 'pw-sr-only', `주간 지출, 많이 쓴 날일수록 높은 막대와 진한 파랑으로 표시, ${data.days.map(day => `${day.label} ${day.future ? '미집계' : day.amount === null ? '확인 안 됨' : `${number(day.amount)}원 지출`}`).join(', ')}${data.omitted ? `, 유효하지 않은 기록 ${data.omitted}건 제외` : ''}`);
     body.append(chart, detail); node.append(body); return node;
   }
   function rankingMedal(rank) {

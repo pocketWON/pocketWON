@@ -1,4 +1,4 @@
-/* Purchase chart, ranking, crown and interaction checks in isolated browser contexts. */
+/* Purchase chart, ranking, spend colors and interaction checks in isolated browser contexts. */
 const t = require('./product-test-utils.cjs');
 const {assert,fs,path,launch,setup,ready,unchanged}=t;
 const out=t.output('purchase-dashboard'),report={status:'RUNNING',checks:[],geometry:[]};
@@ -22,8 +22,9 @@ async function layout(p,name){
   const g=await p.evaluate(()=>{
     const rect=n=>{const r=n.getBoundingClientRect();return {left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height};};
     const donut=rect(document.querySelector('.pw-home-donut'));
-    const crown=document.querySelector('.pw-home-weekly-crown'),plot=document.querySelector('.pw-home-weekly-plot');
-    return {donut,weeklyBody:rect(document.querySelector('.pw-home-weekly-body')),weeklyCard:rect(document.querySelector('.pw-home-weekly')),bars:[...plot.querySelectorAll('.pw-home-weekly-bar')].map(rect),chartText:[...plot.querySelectorAll('.pw-home-weekly-value,.pw-home-weekly-date,.pw-home-weekly-crown')].map(rect),habit:rect(document.querySelector('.pw-home-habit')),crown:crown?rect(crown):null,plot:rect(plot),crownedValue:crown?rect(plot.querySelector(`.pw-home-weekly-bar[data-date-key="${crown.dataset.dateKey}"]`).nextElementSibling):null,nav:rect(document.querySelector('.pw-bottom-navigation'))};
+    const plot=document.querySelector('.pw-home-weekly-plot');
+    return {donut,weeklyBody:rect(document.querySelector('.pw-home-weekly-body')),weeklyCard:rect(document.querySelector('.pw-home-weekly')),bars:[...plot.querySelectorAll('.pw-home-weekly-bar')].map(rect),chartText:[...plot.querySelectorAll('.pw-home-weekly-value,.pw-home-weekly-date')].map(rect),habit:rect(document.querySelector('.pw-home-habit')),plot:rect(plot),nav:rect(document.querySelector('.pw-bottom-navigation')),
+      days:[...plot.querySelectorAll('.pw-home-weekly-day')].map(n=>{const bar=n.querySelector('.pw-home-weekly-bar'),label=n.querySelector('.pw-home-weekly-value');return {value:bar.dataset.value??null,color:getComputedStyle(bar).backgroundColor,label:label.textContent,labelBox:rect(label),column:rect(n)};})};
   });
   report.geometry.push({name,...g});
   assert.equal(g.nav.height,84);
@@ -36,7 +37,21 @@ async function layout(p,name){
   for(let i=1;i<g.bars.length;i++) assert(Math.abs((g.bars[i].left-g.bars[i-1].left)-g.plot.width/7)<1,name+' bars must be equally spaced');
   assert(Math.abs(g.donut.width-g.donut.height)<1 && Math.abs((g.donut.left+g.donut.right)-(g.habit.left+g.habit.right))<2,name+' donut is not round and centered');
   assert.equal(await p.locator('.pw-home-legend,.pw-home-purchase').count(),0);
-  if(g.crown){assert(g.crown.top>=g.plot.top-1 && g.crown.bottom<=g.crownedValue.top+1,name+' crown overlaps value or exceeds plot '+JSON.stringify(g));}
+  assert.equal(await p.locator('.pw-home-weekly-crown,.pw-home-weekly-bar--highlight').count(),0);
+  const known=g.days.filter(d=>d.value!==null).sort((a,b)=>Number(a.value)-Number(b.value));
+  for(const day of g.days){
+    assert.equal(day.label,day.value===null?'—':(Number(day.value)>0?'-':'')+Number(day.value).toLocaleString('ko-KR')+'원',name+' exact won label');
+    assert(day.labelBox.left>=day.column.left&&day.labelBox.right<=day.column.right,name+' adjacent amount labels overlap');
+  }
+  for(let i=0;i<known.length;i++){
+    const rgb=known[i].color.match(/\d+/g).map(Number);
+    assert(rgb[2]>=230&&rgb[1]>=150&&rgb[2]>rgb[1]&&rgb[1]>rgb[0],name+' palette must stay bright blue');
+    if(i){
+      const previous=known[i-1].color.match(/\d+/g).map(Number);
+      assert(rgb.every((c,j)=>c<=previous[j]),name+' more spend must have a deeper blue');
+      if(known[i].value===known[i-1].value)assert.equal(known[i].color,known[i-1].color,name+' equal spend must share a color, even today');
+    }
+  }
 }
 (async()=>{let browser,current;try{
  for(const engine of ['chromium','webkit']){
@@ -78,7 +93,7 @@ async function layout(p,name){
   const route=await p.evaluate(()=>PWNavigation.current());assert.equal(route.screen,'record');assert.equal(route.stage,'detail');assert.equal(route.sourceIndex,first.sourceIndex);
   assert.match(await p.locator('.pw-record-detail-money').innerText(),/5,000/);
   await p.locator('.pw-nav-item[data-screen="home"]').click();await ready(p);
-  assert.equal(await p.locator('.pw-home-weekly-crown').getAttribute('data-date-key'),d.week.crownKey);
+  assert.equal(await p.locator('.pw-home-weekly-crown').count(),0);
   await p.locator('.pw-home-habit [data-action="habit"]').click();await ready(p);assert.equal(await p.locator('.pw-record[data-stage="list"]').count(),1);
   const seen=new Set();do {for(const id of await p.locator('.pw-record-row-button').evaluateAll(ns=>ns.map(n=>Number(n.dataset.sourceIndex))))seen.add(id);if(await p.getByRole('button',{name:'다음',exact:true}).isDisabled())break;await p.getByRole('button',{name:'다음',exact:true}).click();await ready(p);}while(true);
   assert(d.donut.items.every(item=>seen.has(item.sourceIndex)),'All weekly purchases reachable through card title');
@@ -121,7 +136,7 @@ async function layout(p,name){
     if(name==='over-budget') assert.equal(await current.page.locator('.pw-home-donut-value').innerText(),'4,000원');
     await current.page.screenshot({path:path.join(out,'screenshots',engine+'-'+name+'.png')});await unchanged(current);await current.context.close();current=null;
   }
-  report.checks.push(engine+' exact individual purchase arcs, hover/click/touch/keyboard/remaining details without focus boxes, detail/list routing, centered donut without a legend, full-width weekly chart without character/score and seven edge states');
+  report.checks.push(engine+' exact individual purchase arcs, hover/click/touch/keyboard/remaining details without focus boxes, detail/list routing, full weekly won labels, no crown, monotonic bright blue spend colors, and seven edge states');
   await browser.close();browser=null;
  }
  report.status='PASS';
