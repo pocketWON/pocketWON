@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "sourceCommit": "dd7f1c081d0fc14a542dd1c8f3072afe0baa72b1",
+  "alias": "https://pocketwon.vercel.app/",
+  "deploymentId": "dpl_F9BjE7uf1C4sZbngvTCaunSZV1PH",
+  "deploymentUrl": "https://pocketwon-a32p7u9pz-clcocloud.vercel.app",
+  "http": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "e2387bcd76d1a0d748df0f70a4475534a760f262e67579e46f6909f61255f369",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/home.js",
+      "status": 200,
+      "sha256": "40a537980095e9a7ae4021a728fd5a8a2d387d41af202d0ab62fd776b41b7c92",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/demo.js",
+      "status": 200,
+      "sha256": "6ce3f474a8240f3f203eee1fbd50387611147288b52ef9bfc59a85b34e6a304c",
+      "matchesLocal": true
+    },
+    {
+      "path": "styles/home.css",
+      "status": 200,
+      "sha256": "b5d8b044d33e4651b20b219324ce1e9d5472433a1e0ad53fa58dca4e859b483e",
+      "matchesLocal": true
+    }
+  ],
+  "liveBrowser": {
+    "url": "http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html?v=header-simplify-20261004",
+    "verified": true,
+    "screenshots": [
+      "live-app.jpg"
+    ]
+  },
+  "layoutCases": 18
+}
