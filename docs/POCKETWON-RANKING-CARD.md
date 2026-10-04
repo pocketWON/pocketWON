@@ -39,4 +39,9 @@
 
 ## 공개 반영
 
-배포 완료 후 소스 커밋과 공개 파일 해시 검증을 이곳에 기록한다.
+- 소스 커밋 `0cc5eea`을 `pocketWON/pocketWON` main에 푸시했다.
+- 기존 공개 앱: https://pocketwon.vercel.app/
+- 배포 ID: `dpl_AcREiaUDCHhoh9HRQGrwHXoAQT2d`
+- 배포 주소: https://pocketwon-b3autimme-clcocloud.vercel.app
+- `production/verification.json`에 공개 HTML·변경 JS·CSS의 HTTP 응답 및 로컬 파일과의 SHA-256 일치 결과를 기록한다.
+- `production/live-app.jpg`는 최신 소스를 연 실제 로컬 인앱 브라우저 화면이다. 사용자의 기존 앱 탭을 새로고침해 열어두었다.

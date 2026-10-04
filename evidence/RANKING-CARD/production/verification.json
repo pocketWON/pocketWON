@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "verifiedAt": "2026-10-04T04:33:54.217476+00:00",
+  "sourceCommit": "0cc5eea",
+  "deploymentId": "dpl_AcREiaUDCHhoh9HRQGrwHXoAQT2d",
+  "deploymentUrl": "https://pocketwon-b3autimme-clcocloud.vercel.app",
+  "alias": "https://pocketwon.vercel.app/",
+  "files": [
+    {
+      "path": "index.html",
+      "url": "https://pocketwon.vercel.app/",
+      "status": 200,
+      "sha256": "3ce204d25d01f7e4839e093b80e22f37ce71bef5a41dd341603bfb83e1739445",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/home.js",
+      "url": "https://pocketwon.vercel.app/scripts/home.js",
+      "status": 200,
+      "sha256": "9b87d523fde427f928a28533b21949e0b71aed7326384be8caea57ac5cffe481",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/demo.js",
+      "url": "https://pocketwon.vercel.app/scripts/demo.js",
+      "status": 200,
+      "sha256": "713889020e83aec0c7d3c709d5a93a45d015358f52bbd6d256ec7feca7ea4e10",
+      "matchesLocal": true
+    },
+    {
+      "path": "styles/home.css",
+      "url": "https://pocketwon.vercel.app/styles/home.css",
+      "status": 200,
+      "sha256": "e22cf4416bdaa68f40ed21d6d841c01909d61f370ae99b2019ef3395eb07195e",
+      "matchesLocal": true
+    }
+  ],
+  "liveScreenshot": "live-app.jpg"
+}
