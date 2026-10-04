@@ -67,7 +67,7 @@ function createReportView(loaded, navigate, options = {}) {
       model.score.status === 'available' ? String(model.score.value) : '확인 안 됨');
     if (model.score.status === 'available') value.setAttribute('aria-label', `${model.score.value}점`);
     area.append(visual('report', 'pw-report-score-visual'), titleNode, value,
-      el('p', 'pw-meta pw-muted', model.score.status === 'available' ? '저장된 값 그대로 보여드려요.' : '저장된 습관 점수가 없어요.'));
+      el('p', 'pw-meta pw-muted', model.score.status === 'available' ? '저장된 값 그대로예요. AI 분석은 준비 중이에요.' : '저장된 점수가 없어요. AI 분석 준비 중이에요.'));
     return area;
   }
   function flowPanel() {

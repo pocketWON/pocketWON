@@ -1,0 +1,30 @@
+{
+  "status": "FAIL",
+  "checks": [
+    "chromium 320x568 safe=false all feature geometry",
+    "chromium 360x640 safe=true all feature geometry",
+    "chromium 390x844 safe=false all feature geometry",
+    "chromium 430x932 safe=false all feature geometry",
+    "chromium 844x390 safe=true all feature geometry",
+    "chromium 280x480 safe=false all feature geometry",
+    "chromium 480x360 safe=false all feature geometry",
+    "chromium 200% text reflow",
+    "chromium native focus trap/ESC/focus restoration",
+    "chromium one Sprite session/reduced motion"
+  ],
+  "engines": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12"
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "chromium-320-habit-analysis.png",
+    "chromium-320-coaching.png",
+    "chromium-320-parent-view.png",
+    "chromium-320-calendar.png",
+    "chromium-320-settings.png"
+  ],
+  "failure": "AssertionError [ERR_ASSERTION]: {\"accessible\":false,\"width\":320,\"height\":568,\"main\":{\"x\":0,\"y\":48,\"right\":320,\"bottom\":512,\"width\":320,\"height\":464},\"nav\":{\"x\":0,\"y\":512,\"right\":320,\"bottom\":568,\"width\":320,\"height\":56},\"dialog\":{\"x\":0,\"y\":24,\"right\":320,\"bottom\":284,\"width\":320,\"height\":260},\"headers\":[{\"className\":\"pw-flow-header\",\"box\":{\"x\":12,\"y\":24,\"right\":308,\"bottom\":72,\"width\":296,\"height\":48}},{\"className\":\"pw-flow-footer\",\"box\":{\"x\":12,\"y\":236,\"right\":308,\"bottom\":284,\"width\":296,\"height\":48}}],\"horizontal\":false,\"buttons\":[{\"label\":\"×\",\"box\":{\"x\":260,\"y\":24,\"right\":308,\"bottom\":72,\"width\":48,\"height\":48}},{\"label\":\"확인했어요\",\"box\":{\"x\":12,\"y\":236,\"right\":308,\"bottom\":284,\"width\":296,\"height\":48}}],\"limit\":260}\n    at geometry (/Users/jeonghu/포켓WON/tests/product-test-utils.cjs:20:1193)\n    at async /Users/jeonghu/포켓WON/tests/verify-feature-accessibility.cjs:5:371"
+}

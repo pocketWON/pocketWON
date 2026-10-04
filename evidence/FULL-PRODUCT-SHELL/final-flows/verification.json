@@ -1,0 +1,15 @@
+{
+  "status": "FAIL",
+  "checks": [
+    "chromium user-entered reward review/confirmation (no auto evaluation)",
+    "chromium weekly allowance review and invalid monthly day/cancel"
+  ],
+  "engines": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12"
+    }
+  ],
+  "errors": [],
+  "failure": "locator.click: Timeout 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: '상세 보기', exact: true })\n\n    at click (/Users/jeonghu/포켓WON/tests/verify-product-flows.cjs:3:325)\n    at /Users/jeonghu/포켓WON/tests/verify-product-flows.cjs:6:316"
+}

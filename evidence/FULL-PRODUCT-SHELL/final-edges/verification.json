@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "checks": [
+    "chromium zero exact fixture score, comparison null",
+    "chromium max exact fixture score, comparison null",
+    "chromium fraction exact fixture score, comparison null",
+    "chromium MAXSAFE/long legacy/unknown date read-only",
+    "chromium unsupported receipt image error, no upload",
+    "chromium denied storage read stays unavailable",
+    "webkit zero exact fixture score, comparison null",
+    "webkit max exact fixture score, comparison null",
+    "webkit fraction exact fixture score, comparison null",
+    "webkit MAXSAFE/long legacy/unknown date read-only",
+    "webkit unsupported receipt image error, no upload",
+    "webkit denied storage read stays unavailable"
+  ],
+  "engines": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12"
+    },
+    {
+      "engine": "webkit",
+      "version": "26.5"
+    }
+  ],
+  "errors": []
+}

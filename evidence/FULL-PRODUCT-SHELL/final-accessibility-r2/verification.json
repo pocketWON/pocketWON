@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "checks": [
+    "chromium 320x568 safe=false all feature geometry",
+    "chromium 360x640 safe=true all feature geometry",
+    "chromium 390x844 safe=false all feature geometry",
+    "chromium 430x932 safe=false all feature geometry",
+    "chromium 844x390 safe=true all feature geometry",
+    "chromium 280x480 safe=false all feature geometry",
+    "chromium 480x360 safe=false all feature geometry",
+    "chromium 200% text reflow",
+    "chromium native focus trap/ESC/focus restoration",
+    "chromium one Sprite session/reduced motion",
+    "chromium VisualViewport 260px and offset sheet fitting",
+    "webkit 320x568 safe=false all feature geometry",
+    "webkit 360x640 safe=true all feature geometry",
+    "webkit 390x844 safe=false all feature geometry",
+    "webkit 430x932 safe=false all feature geometry",
+    "webkit 844x390 safe=true all feature geometry",
+    "webkit 280x480 safe=false all feature geometry",
+    "webkit 480x360 safe=false all feature geometry",
+    "webkit 200% text reflow",
+    "webkit native focus trap/ESC/focus restoration",
+    "webkit one Sprite session/reduced motion",
+    "webkit VisualViewport 260px and offset sheet fitting"
+  ],
+  "engines": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12"
+    },
+    {
+      "engine": "webkit",
+      "version": "26.5"
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "chromium-320-habit-analysis.png",
+    "chromium-320-coaching.png",
+    "chromium-320-parent-view.png",
+    "chromium-320-calendar.png",
+    "chromium-320-settings.png"
+  ]
+}

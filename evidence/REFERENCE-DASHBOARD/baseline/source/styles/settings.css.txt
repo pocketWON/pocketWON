@@ -1,0 +1,38 @@
+/* Read-only settings and unavailable finance views use the shared shell and dialog. */
+.pw-settings-stack { display: grid; gap: 12px; min-width: 0; flex-shrink: 0; }
+.pw-settings .pw-feature-body > * { flex-shrink: 0; }
+.pw-settings .pw-feature-card,
+.pw-settings-sheet .pw-feature-card { overflow-wrap: anywhere; min-width: 0; }
+.pw-settings .pw-feature-row,
+.pw-settings-sheet .pw-feature-row { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 12px; align-items: start; }
+.pw-settings .pw-feature-row > *,
+.pw-settings-sheet .pw-feature-row > * { min-width: 0; overflow-wrap: anywhere; }
+.pw-settings .pw-feature-accordion > summary,
+.pw-settings-sheet .pw-feature-accordion > summary { min-height: 48px; padding-block: 12px; line-height: 1.5; cursor: pointer; overflow-wrap: anywhere; }
+.pw-settings .pw-button,
+.pw-settings-sheet .pw-button,
+.pw-settings .pw-feature-toggle,
+.pw-settings-sheet .pw-feature-toggle { min-height: 48px; min-width: 48px; white-space: normal; overflow-wrap: anywhere; }
+.pw-settings .pw-feature-field input,
+.pw-settings .pw-feature-field select,
+.pw-settings-sheet .pw-feature-field input,
+.pw-settings-sheet .pw-feature-field select,
+.pw-settings-sheet .pw-feature-field textarea { width: 100%; min-width: 0; min-height: 48px; padding: 12px; border: 1px solid var(--pw-divider); border-radius: 14px; background: var(--pw-surface); color: var(--pw-ink-strong); font-size: 1rem; }
+.pw-settings-sheet .pw-flow-body { justify-content: flex-start; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; padding: 3px; }
+.pw-settings-sheet .pw-flow-body > * { flex-shrink: 0; }
+.pw-settings-sheet .pw-flow-title { line-height: 1.4; overflow-wrap: anywhere; }
+.pw-settings-sheet .pw-flow-footer { padding-inline: 3px; }
+.pw-settings-form { display: grid; gap: 14px; min-width: 0; }
+.pw-settings-form [aria-invalid="true"] { border-color: var(--pw-color-danger); }
+.pw-settings .pw-money-line,
+.pw-settings-sheet .pw-money-line { flex-wrap: wrap; }
+.pw-settings .pw-money-digits,
+.pw-settings-sheet .pw-money-digits { min-width: 0; overflow-wrap: anywhere; font-size: clamp(22px, 6vw, 30px); }
+.pw-finance .pw-status-chip { white-space: normal; }
+@media (max-width: 360px) {
+  .pw-settings .pw-feature-row,
+  .pw-settings-sheet .pw-feature-row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pw-settings *, .pw-settings-sheet * { scroll-behavior: auto; }
+}

@@ -1,45 +1,14 @@
-/* All is a destination menu for screens that already exist in PocketWON. */
-function createAllView(navigate, options = {}) {
-  const { el, button, heading } = PWUI;
-  let disposed = false;
-  const players = [];
-  const root = el('div', 'pw-all pw-screen');
-  root.append(heading('전체 메뉴'));
-  const list = el('div', 'pw-all-list');
-  const destinations = [
-    ['home', '홈', '내 용돈과 주요 행동', 'balance'],
-    ['record', '기록', '받은 돈과 쓴 돈', 'record'],
-    ['goal', '목표', '모으고 싶은 목표', 'goal'],
-    ['report', '리포트', '저장된 돈 습관', 'report'],
-  ];
-  for (const [screen, title, description, profile] of destinations) {
-    const item = button('', () => {
-      if (disposed) return;
-      if (typeof PocketWONMotion !== 'undefined') PocketWONMotion.controllerFor(root)?.request(player.element, 'action', 'interaction');
-      navigate(screen, { profile: screen === 'home' ? 'balance' : profile, clip: 'action' });
-    }, `pw-all-item pw-all-item--${screen}`);
-    item.dataset.pwMotionCard = '';
-    item.dataset.screen = screen;
-    const stage = el('span', 'pw-all-item-visual pw-compact-visual');
-    stage.setAttribute('aria-hidden', 'true');
-    const player = createPocketWONSprite(profile, { autoplay: false, loading: 'eager' });
-    players.push(player);
-    stage.append(player.element);
-    const body = el('span', 'pw-all-item-body');
-    const titleNode = el('span', 'pw-all-item-title', title);
-    titleNode.id = `pw-all-${screen}-title`;
-    const copy = el('span', 'pw-all-item-description pw-meta pw-muted', description);
-    body.append(titleNode, copy);
-    const arrow = el('span', 'pw-all-item-chevron', '→');
-    arrow.setAttribute('aria-hidden', 'true');
-    item.setAttribute('aria-labelledby', titleNode.id);
-    item.append(stage, body, arrow);
-    list.append(item);
-  }
-  root.append(list);
-  return {
-    element: root,
-    mount() { if (!disposed) PWUI.refreshMotion(root); },
-    dispose() { disposed = true; for (const player of players) player.dispose(); },
-  };
+/* Progressive feature hub: existing destinations plus canonical grouped entries. */
+function createAllView(navigate,options={}){
+ const U=PWFeatureUI,{el,button,heading}=PWUI,root=el('div','pw-screen pw-all pw-all-hub');root.append(heading('전체 메뉴'));let disposed=false,observer,frame;
+ const core=[['home','홈'],['record','기록'],['goal','목표'],['report','리포트']],groups=[['money','내 돈',['record','goal','calendar','thoughtbox']],['habit','나의 습관',['report','coaching','badges','streak']],['together','함께하기',['parent-view','rewards','family-connection','family-permissions','next-plan']],['learning','배우기',['quiz']],['convenience','편의 기능',['notifications','receipt','allowance','reflection','category-suggestion']],['settings','설정',['profile','settings','privacy','notification-settings','data','finance','card','app-info']],['ai','AI 기능',['habit-analysis','coaching','ai-report','parent-view','next-plan','quiz']]];
+ const selected=groups.find(g=>g[0]===options.group);const top=el('div','pw-all-shortcuts');
+ if(!selected){for(const [id,label]of core){const b=button(label,()=>navigate(id),'pw-all-shortcut');b.dataset.screen=id;top.append(b);}const grid=el('div','pw-all-groups');for(const [id,label,items]of groups){const b=button('',()=>navigate({screen:'all',group:id}),'pw-all-group');b.dataset.group=id;const icon=el('span');if(id==='money')icon.append(pwIllustrationPanel('all',{panelClass:'pw-all-hub-art pw-compact-visual',ambient:false}));else icon.innerHTML=pwIcon('all');b.append(icon,el('span','',label),el('span','pw-meta',items.length+'개'));grid.append(b);}root.append(top,grid);}
+ else {top.classList.add('pw-all-subheader');const back=U.action('‹ 전체 메뉴',()=>PWNavigation.back({screen:'all'}),true);top.append(back,el('h2','',selected[1]));const panel=el('div','pw-all-group-content'),list=el('div','pw-all-group-list'),paging=el('nav','pw-pagination');paging.setAttribute('aria-label','기능 메뉴 페이지');let page=1,capacity=4;const label=el('span','pw-meta');label.setAttribute('role','status');const prev=U.action('이전',()=>{page--;paint();list.querySelector('button')?.focus();},true),next=U.action('다음',()=>{page++;paint();list.querySelector('button')?.focus();},true);paging.append(prev,label,next);panel.append(list,paging);root.append(top,panel);
+  function paint(){const pages=Math.max(1,Math.ceil(selected[2].length/capacity));page=Math.max(1,Math.min(pages,page));list.replaceChildren();for(const id of selected[2].slice((page-1)*capacity,page*capacity)){const native=PW_TABS.find(t=>t.id===id),info=PW_FEATURES[id],b=button('',()=>navigate(native?{screen:id}:pwFeatureRoute(id,{screen:'all',group:selected[0]})),'pw-all-feature-row');b.dataset.featureLink=id;b.append(el('span','pw-all-feature-label',native?.label||info.title),U.chip(native?'active':info.state,native?'이 기기에 저장':undefined));list.append(b);}prev.disabled=page<=1;next.disabled=page>=pages;label.textContent=page+' / '+pages;}
+  function measure(){if(disposed||!list.isConnected)return;const count=document.documentElement.classList.contains('pw-accessible')?selected[2].length:Math.max(1,Math.min(6,Math.floor((list.clientHeight+8)/68)));if(count!==capacity){capacity=count;paint();}}
+  paint();observer=new ResizeObserver(()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(measure);});
+  return {element:root,mount(){observer.observe(list);measure();},dispose(){disposed=true;observer.disconnect();cancelAnimationFrame(frame);}};
+ }
+ return {element:root,mount(){},dispose(){disposed=true;}};
 }

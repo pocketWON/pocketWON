@@ -53,7 +53,7 @@ function createRecordView(initialLoad, navigate, options = {}) {
       }
       for (const row of rows.slice((page - 1) * capacity, page * capacity)) {
         const item = el('li', 'pw-record-row');
-        const trigger = button('', () => showDetail(row.sourceIndex), 'pw-record-row-button');
+        const trigger = button('', () => navigate({screen:'record',stage:'detail',sourceIndex:row.sourceIndex,page,returnTo:{screen:'record',stage:'list',page,focusSource:row.sourceIndex}}), 'pw-record-row-button');
         trigger.dataset.sourceIndex = String(row.sourceIndex);
         const icon = el('span', 'pw-record-row-icon'); icon.innerHTML = pwIcon('record'); icon.setAttribute('aria-hidden', 'true');
         const description = el('span', 'pw-record-row-description');
@@ -98,19 +98,20 @@ function createRecordView(initialLoad, navigate, options = {}) {
     stopPager(); stopList(); stage = 'detail';
     root.className = 'pw-screen pw-record pw-record-detail'; root.dataset.stage = stage;
     const header = el('div', 'pw-record-detail-header');
-    header.append(smallButton('목록으로', () => showList(sourceIndex)), el('h2', 'pw-record-section-title', '기록 상세'));
+    header.append(smallButton('목록으로', () => navigate({screen:'record',stage:'list',page,focusSource:sourceIndex})), el('h2', 'pw-record-section-title', '기록 상세'));
     const details = el('section', 'pw-panel pw-record-detail-panel'); details.setAttribute('aria-label', '거래 상세');
     details.append(el('p', 'pw-muted', row.type === 'in' ? '받은 돈' : row.type === 'out' ? '쓴 돈' : '기록 확인'), el('p', 'pw-record-detail-money', row.valid ? `${format.format(row.amount)}원` : '금액 확인 안 됨'));
     const fullDate = row.dateValid ? row.timestamp : row.timestamp ? `${row.timestamp} (날짜 확인 안 됨)` : '날짜 확인 안 됨';
     textPager = PWUI.createTextPager(`분류: ${row.category || '확인 안 됨'}\n날짜: ${fullDate}\n메모: ${row.memo || '메모 없음'}`);
     textPager.element.classList.add('pw-record-detail-text'); details.append(textPager.element);
-    root.replaceChildren(heading('기록 상세'), header, details);
+    const tools=el('div','pw-core-tools');tools.append(button('수정·삭제·정정 미리보기',()=>navigate({screen:'feature',featureId:'transaction-correction',sourceIndex,returnTo:{screen:'record',stage:'detail',sourceIndex,page}}),'pw-button pw-button--secondary'));
+     root.replaceChildren(heading('기록 상세'), header, details, tools);
     if (mounted) textPager.mount(); refreshMotion();
     requestAnimationFrame(() => { if (!disposed && stage === 'detail') header.querySelector('button')?.focus({ preventScroll: true }); });
   }
 
   function showResult(savedDraft) {
-    stopPager(); stopList(); stage = 'result'; root.dataset.stage = stage;
+    stopPager(); stopList(); stage = 'result'; root.dataset.stage = stage; window.PWNavigation?.settle({screen:'record',stage:'list',page:1});
     root.className = 'pw-screen pw-record pw-record-result';
     const panel = el('section', 'pw-panel pw-record-result-panel'); panel.setAttribute('role', 'status');
     panel.append(pwIllustrationPanel('record', { panelClass: 'pw-compact-visual pw-record-result-visual', ambient: false, idle: false }), el('h2', 'pw-record-result-title', '기록했어요.'), el('p', 'pw-muted', savedDraft.type === 'in' ? '받은 돈을 남겼어요.' : '쓴 돈을 남겼어요.'), money(Number(savedDraft.amount), 'pw-record-result-money'));
@@ -122,7 +123,7 @@ function createRecordView(initialLoad, navigate, options = {}) {
 
   function cancelWizard() {
     stopWizardPager();
-    wizard?.dismiss();
+    wizard?.dismiss();window.PWNavigation?.settle({screen:'record',stage:'list',page});
     draft = null; busy = false; composing = false;
     if (disposed) return;
     if (options.stage === 'form' && typeof navigate === 'function') navigate(options.returnTo || { screen: 'record', stage: 'list', page });
@@ -163,15 +164,15 @@ function createRecordView(initialLoad, navigate, options = {}) {
     const next = button(step === 'confirm' ? '기록 저장' : step === 'memo' && !draft.memo ? '건너뛰기' : '다음', () => {
       if (busy || submitted || !draft || composing) return;
       if (step === 'confirm') { saveDraft(error, next); return; }
-      const checked = checkDraft(), message = checked.errors[step];
+      const checked = checkDraft(), message = checked.errors[step],preview=step==='confirm'&&typeof PWPreview!=='undefined'&&PWPreview.enabled;
       if (message) { error.textContent = message; error.hidden = false; controls[0]?.focus({ preventScroll: true }); return; }
       step = steps()[steps().indexOf(step) + 1]; renderStep(); focusStep();
     });
     const update = () => {
-      const checked = checkDraft(), message = checked.errors[step];
-      next.disabled = busy || submitted || (step !== 'confirm' && !!message);
+      const checked = checkDraft(), message = checked.errors[step],preview=step==='confirm'&&typeof PWPreview!=='undefined'&&PWPreview.enabled;
+      next.disabled = busy || submitted || preview || (step !== 'confirm' && !!message);
       if (step === 'memo') next.textContent = draft.memo ? '다음' : '건너뛰기';
-      error.textContent = message || ''; error.hidden = !message;
+      error.textContent = preview?'개발용 Preview에서는 실제 기록을 저장하지 않아요.':message || ''; error.hidden = !message&&!preview;
       for (const control of controls) control.setAttribute('aria-invalid', message ? 'true' : 'false');
     };
     const choice = (name, value, label, className) => {
@@ -190,13 +191,13 @@ function createRecordView(initialLoad, navigate, options = {}) {
           wizard.progress.textContent = `${steps().indexOf(step) + 1} / ${steps().length}`; update();
         }); options.append(item.wrapper);
       }
-      group.append(options); field.append(group);
+      group.append(options); field.append(group);if(step==='category')field.append(el('p','pw-record-help pw-feature-inline-note','AI 추천 카테고리 준비 중 · 지금은 직접 골라주세요.'));
     } else if (step === 'amount' || step === 'memo') {
       const input = el('input', `pw-input pw-record-input${step === 'amount' ? ' pw-record-amount' : ''}`);
       input.type = 'text'; input.id = `pw-record-${step}`; input.value = draft[step]; input.autocomplete = 'off';
       if (step === 'amount') input.inputMode = 'numeric';
       const label = el('label', 'pw-label pw-record-label', step === 'amount' ? '얼마인가요?' : '메모를 남길까요?'); label.htmlFor = input.id;
-      const help = el('p', 'pw-muted pw-record-help', step === 'amount' ? '원 단위로 숫자만 입력해주세요.' : '50자까지 적을 수 있어요. 건너뛰어도 괜찮아요.'); help.id = `pw-${step}-help`;
+      const help = el('p', 'pw-muted pw-record-help', step === 'amount' ? '원 단위로 숫자만 입력해주세요.' : draft.type==='out'?'50자까지 적을 수 있어요. AI 추천 카테고리는 준비 중이에요.':'50자까지 적을 수 있어요. 출처·날짜 선택은 준비 중이며 기록 시각을 저장해요.'); help.id = `pw-${step}-help`;
       input.placeholder = step === 'amount' ? '숫자로 입력' : '예: 학교 끝나고 간식'; input.setAttribute('aria-describedby', `${help.id} ${error.id}`); controls.push(input);
       field.append(label);
       if (step === 'amount') {
@@ -220,9 +221,10 @@ function createRecordView(initialLoad, navigate, options = {}) {
     if (wizardPager) wizardPager.mount();
     // Initial untouched fields stay quiet; clicking or entering a value reveals errors.
     next.disabled = step !== 'confirm' && !!checkDraft().errors[step];
+     if(step==='confirm'&&typeof PWPreview!=='undefined'&&PWPreview.enabled){next.disabled=true;error.textContent='개발용 Preview에서는 실제 기록을 저장하지 않아요.';error.hidden=false;}
   }
   function saveDraft(error, save) {
-    if (disposed || !wizard.dialog.open || !draft || busy || submitted) return;
+    if (disposed || !wizard.dialog.open || !draft || busy || submitted || (typeof PWPreview!=='undefined'&&PWPreview.enabled)) return;
     busy = true; save.disabled = true;
     validationLoad = loadPocketWONState();
     const checked = checkDraft();
@@ -244,7 +246,8 @@ function createRecordView(initialLoad, navigate, options = {}) {
     element: root,
     mount() {
       mounted = true;
-      if (stage === 'list') showList(); else if (stage === 'detail') textPager?.mount();
+      if (stage === 'list') showList(options.focusSource); else if (stage === 'detail') textPager?.mount();
+       if (options.stage === 'detail'&&Number.isInteger(options.sourceIndex)) showDetail(options.sourceIndex);
       if (options.stage === 'form') openWizard();
     },
     dispose() { disposed = true; mounted = false; stopList(); stopPager(); stopWizardPager(); wizard?.dispose(); draft = null; },

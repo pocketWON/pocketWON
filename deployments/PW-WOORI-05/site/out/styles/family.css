@@ -1,0 +1,40 @@
+/* Family, promise and allowance previews stay inside the existing 520px frame. */
+.pw-family-stack { display: grid; gap: 12px; min-width: 0; flex-shrink: 0; }
+.pw-family-list { margin: 0; padding-left: 22px; display: grid; gap: 8px; line-height: 1.5; overflow-wrap: anywhere; }
+.pw-family-placeholder { display: grid; gap: 8px; padding: 16px; border: 1px dashed var(--pw-divider); border-radius: 16px; background: var(--pw-surface); overflow-wrap: anywhere; }
+.pw-family .pw-feature-row,
+.pw-family-sheet .pw-feature-row { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 12px; align-items: start; }
+.pw-family .pw-feature-row > *,
+.pw-family-sheet .pw-feature-row > * { min-width: 0; overflow-wrap: anywhere; }
+.pw-family .pw-feature-row > :last-child,
+.pw-family-sheet .pw-feature-row > :last-child { justify-self: stretch; }
+.pw-family .pw-money-line,
+.pw-family-sheet .pw-money-line { flex-wrap: wrap; }
+.pw-family .pw-money-digits,
+.pw-family-sheet .pw-money-digits { min-width: 0; overflow-wrap: anywhere; font-size: clamp(22px, 6vw, 30px); }
+.pw-family .pw-feature-accordion > summary,
+.pw-family-sheet .pw-feature-accordion > summary { min-height: 48px; padding-block: 12px; line-height: 1.5; cursor: pointer; overflow-wrap: anywhere; }
+.pw-family .pw-button,
+.pw-family .pw-feature-toggle,
+.pw-family-sheet .pw-button,
+.pw-family-sheet .pw-feature-toggle { min-height: 48px; min-width: 48px; white-space: normal; overflow-wrap: anywhere; }
+.pw-family .pw-feature-body > * { flex-shrink: 0; }
+.pw-family-sheet .pw-flow-body { justify-content: flex-start; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; padding: 3px; }
+.pw-family-sheet .pw-flow-body > * { flex-shrink: 0; }
+.pw-family-sheet .pw-flow-title { overflow-wrap: anywhere; line-height: 1.4; }
+.pw-family-sheet .pw-flow-footer { padding-inline: 3px; }
+.pw-family-sheet-art { width: 120px; height: 120px; object-fit: contain; align-self: center; flex-shrink: 0; }
+.pw-family-form { display: grid; gap: 14px; min-width: 0; }
+.pw-family-form .pw-feature-field input,
+.pw-family-form .pw-feature-field textarea,
+.pw-family-form .pw-feature-field select { width: 100%; min-width: 0; min-height: 48px; padding: 12px; border: 1px solid var(--pw-divider); border-radius: 14px; background: var(--pw-surface); color: var(--pw-ink-strong); font-size: 1rem; }
+.pw-family-form .pw-feature-field textarea { min-height: 100px; resize: vertical; }
+.pw-family-form [aria-invalid="true"] { border-color: var(--pw-color-danger); }
+.pw-family-sheet .pw-flow-body .pw-feature-card { overflow: visible; }
+@media (max-width: 360px) {
+  .pw-family .pw-feature-row,
+  .pw-family-sheet .pw-feature-row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pw-family *, .pw-family-sheet * { scroll-behavior: auto; }
+}

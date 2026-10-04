@@ -1,0 +1,51 @@
+@font-face { font-family: "Pretendard Variable"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("../assets/fonts/PretendardVariable.woff2") format("woff2"); }
+*, *::before, *::after { box-sizing: border-box; }
+html { color-scheme: light; -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-width: 320px; color: var(--pw-color-text-primary); background: var(--pw-color-background); font: var(--pw-type-body); }
+button, input, textarea, select { font: inherit; }
+button { color: inherit; cursor: pointer; }
+button:disabled { cursor: default; }
+button, input, textarea, select { -webkit-tap-highlight-color: transparent; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, p, dl, dd, dt { margin: 0; }
+:focus-visible { outline: var(--pw-focus-width) solid var(--pw-color-focus); outline-offset: var(--pw-focus-offset); box-shadow: var(--pw-shadow-focus); }
+.pw-type-display { font: var(--pw-type-display); letter-spacing: -0.045em; }
+.pw-type-h1 { font: var(--pw-type-h1); letter-spacing: -0.045em; }
+.pw-type-h2 { font: var(--pw-type-h2); letter-spacing: -0.035em; }
+.pw-type-h3 { font: var(--pw-type-h3); letter-spacing: -0.028em; }
+.pw-type-body { font: var(--pw-type-body); }
+.pw-type-body-small { font: var(--pw-type-body-small); }
+.pw-type-caption { font: var(--pw-type-caption); }
+.pw-type-number-large { font: var(--pw-type-number-large); letter-spacing: -0.045em; }
+.pw-type-number-medium { font: var(--pw-type-number-medium); letter-spacing: -0.03em; }
+.pw-type-number-large, .pw-type-number-medium { font-variant-numeric: tabular-nums; }
+.pw-type-button { font: var(--pw-type-button); letter-spacing: -0.02em; }
+.pw-button {
+  display: inline-flex; min-height: var(--pw-touch-target); min-width: var(--pw-touch-target); align-items: center; justify-content: center; gap: var(--pw-space-2);
+  padding: 0.875rem 1.5rem; border: 0; border-radius: var(--pw-radius-button);
+  background: var(--pw-button-background); color: var(--pw-button-foreground); font: var(--pw-type-button); white-space: nowrap;
+  box-shadow: var(--pw-shadow-cta); transition: background-color var(--pw-motion-fast) var(--pw-motion-easing), transform var(--pw-motion-fast) var(--pw-motion-easing), box-shadow var(--pw-motion-fast) var(--pw-motion-easing);
+}
+.pw-button:hover:not(:disabled) { background: var(--pw-button-hover); box-shadow: var(--pw-shadow-cta-hover); }
+.pw-button:active:not(:disabled) { background: var(--pw-button-pressed); transform: scale(0.97); box-shadow: var(--pw-shadow-cta-pressed); }
+.pw-button:disabled { background: var(--pw-button-disabled-background); color: var(--pw-button-disabled-foreground); box-shadow: none; }
+.pw-icon-button {
+  display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; width: var(--pw-touch-target); height: var(--pw-touch-target); padding: var(--pw-space-3);
+  border: 0; border-radius: var(--pw-radius-control); background: transparent; color: var(--pw-color-text-primary); transition: background-color var(--pw-motion-fast) var(--pw-motion-easing), color var(--pw-motion-fast) var(--pw-motion-easing), transform var(--pw-motion-fast) var(--pw-motion-easing);
+}
+.pw-icon-button:hover:not(:disabled) { background: var(--pw-color-primary-soft); color: var(--pw-color-primary); }
+.pw-icon-button:active:not(:disabled) { background: var(--pw-visual-blue); color: var(--pw-color-primary-pressed); transform: scale(0.96); }
+.pw-icon-button:disabled { color: var(--pw-color-text-tertiary); }
+.pw-icon { display: block; width: var(--pw-icon-size); height: var(--pw-icon-size); flex: 0 0 auto; }
+.pw-surface {
+  min-width: 0; padding: var(--pw-surface-padding); background: var(--pw-surface-background); border: var(--pw-border-width) solid var(--pw-surface-border);
+  border-radius: var(--pw-surface-radius); box-shadow: var(--pw-shadow);
+}
+.pw-surface--hero { border-radius: var(--pw-radius-card); box-shadow: var(--pw-shadow-large); }
+.pw-surface--subtle { background: var(--pw-color-surface-subtle); box-shadow: none; }
+.pw-surface--blue { background: var(--pw-visual-blue); box-shadow: none; }
+.pw-divider { height: 1px; border: 0; background: var(--pw-color-divider); }
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition: none !important; }
+}

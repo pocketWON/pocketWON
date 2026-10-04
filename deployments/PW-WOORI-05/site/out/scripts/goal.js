@@ -140,12 +140,13 @@ function createGoalView(initialLoad, navigate, options = {}) {
       if (editing) confirmation.append(el('p', 'pw-meta pw-muted', `지금까지 모은 ${format.format(openedGoal.current)}원은 유지돼요.`));
       error.textContent = saveError || checked.errors.form || checked.errors.title || checked.errors.target || ''; error.hidden = !error.textContent;
       next = button('목표 저장', saveGoal); next.disabled = busy || submitted || !checked.valid;
+       if(typeof PWPreview!=='undefined'&&PWPreview.enabled){next.disabled=true;error.textContent='개발용 Preview에서는 실제 목표를 저장하지 않아요.';error.hidden=false;}
       next.setAttribute('aria-describedby', error.id); flow.body.append(confirmation, error); flow.footer.append(next);
     }
     if (focus) focusStep();
   }
   function saveGoal() {
-    if (disposed || !flow?.dialog.open || !draft || step !== 2 || busy || submitted || !check().valid) return;
+    if (disposed || !flow?.dialog.open || !draft || step !== 2 || busy || submitted || !check().valid || (typeof PWPreview!=='undefined'&&PWPreview.enabled)) return;
     busy = true; flow.footer.querySelector('button').disabled = true;
     validationLoad = loadPocketWONState(); const latest = createGoalViewModel(validationLoad.state);
     conflict = editing ? !['active', 'complete'].includes(latest.status) || latest.title !== openedGoal.title || latest.target !== openedGoal.target
@@ -162,7 +163,7 @@ function createGoalView(initialLoad, navigate, options = {}) {
     renderResult();
   }
   function renderResult() {
-    clearPager(); root.replaceChildren(heading('목표 저장 완료')); root.dataset.stage = 'result';
+    clearPager(); root.replaceChildren(heading('목표 저장 완료')); root.dataset.stage = 'result';window.PWNavigation?.settle({screen:'goal'});
     const model = createGoalViewModel(loaded.state);
     const panel = el('section', 'pw-panel pw-goal-result');
     panel.append(pwIllustrationPanel('goal', { panelClass: 'pw-goal-result-visual', ambient: false, goalKey: pwSpriteGoalKey(model) }),

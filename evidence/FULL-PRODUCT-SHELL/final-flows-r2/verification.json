@@ -1,0 +1,23 @@
+{
+  "status": "FAIL",
+  "checks": [
+    "chromium user-entered reward review/confirmation (no auto evaluation)",
+    "chromium weekly allowance review and invalid monthly day/cancel",
+    "chromium wishlist direct input/detail/goal preview/deletion (no core goal mutation)",
+    "chromium profile text-only draft, no HTML or storage injection",
+    "chromium consent/export/delete/reset confirmations never mutate",
+    "chromium card settings UI only, no bank/card/payment identifiers",
+    "chromium five temporary notification switches, no OS permission",
+    "chromium repeated native sheets release registry/listeners",
+    "chromium aborted async provider result suppressed",
+    "chromium history accepts UI metadata only"
+  ],
+  "engines": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12"
+    }
+  ],
+  "errors": [],
+  "failure": "locator.click: Error: strict mode violation: getByRole('button', { name: '다음', exact: true }) resolved to 2 elements:\n    1) <button disabled type=\"button\" class=\"pw-record-secondary\">다음</button> aka getByLabel('기록 페이지').getByRole('button', { name: '다음' })\n    2) <button type=\"button\" class=\"pw-button\">다음</button> aka getByLabel('돈 기록하기', { exact: true }).getByRole('button', { name: '다음' })\n\nCall log:\n  - waiting for getByRole('button', { name: '다음', exact: true })\n\n    at /Users/jeonghu/포켓WON/tests/verify-product-flows.cjs:13:260"
+}

@@ -48,7 +48,7 @@ async function setup(browser, { state = fixture, width = 390, height = 844, read
   const page = await context.newPage(); page.setDefaultTimeout(5000);
   page.on('pageerror', error => report.errors.push(error.message));
   await page.goto(url); await page.evaluate(() => document.fonts.ready);
-  await page.locator('.pw-nav-item[data-screen="record"]').click();
+  await page.getByRole('button', { name: '용돈 내역', exact: true }).click();
   await page.waitForFunction(() => Number(document.querySelector('.pw-record')?.dataset.pageSize) >= 1);
   return { context, page };
 }
@@ -131,7 +131,7 @@ async function homeEntryCancellation(browser, engine) {
     const before = await raw(page);
     await page.locator('.pw-nav-item[data-screen="home"]').click();
     for (const method of ['Close', 'Escape']) {
-      await page.locator('.pw-home-card[aria-label="기록하기"]').click();
+      await page.getByRole('button', { name: '기록하기', exact: true }).click();
       assert.equal(await dialog(page).getAttribute('data-step'), 'type');
       if (method === 'Close') await dialog(page).getByRole('button', { name: '돈 기록하기 닫기', exact: true }).click();
       else await page.keyboard.press('Escape');
@@ -222,7 +222,7 @@ async function paginationResize(browser, engine) {
     await page.waitForFunction(() => document.querySelector('.pw-record').dataset.pageSize === '3');
     assert.equal(await page.locator('.pw-record').getAttribute('data-page'), '5');
     assert.equal(await page.locator('.pw-record-list [data-source-index]').first().getAttribute('data-source-index'), '12');
-    await page.locator('.pw-nav-item[data-screen="home"]').click(); await page.locator('.pw-nav-item[data-screen="record"]').click();
+    await page.locator('.pw-nav-item[data-screen="home"]').click(); await page.getByRole('button', { name: '용돈 내역', exact: true }).click();
     await page.waitForFunction(() => document.querySelector('.pw-record').dataset.pageSize === '3');
     assert.equal(await page.locator('.pw-record').getAttribute('data-page'), '5');
     assert.equal(await page.locator('.pw-record-list [data-source-index]').first().getAttribute('data-source-index'), '12');

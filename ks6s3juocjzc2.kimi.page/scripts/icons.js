@@ -7,6 +7,8 @@ const PW_ICONS = Object.freeze({
   report: '<path d="M4 4v16h16M8 15v-4M12 15V7M16 15V9"/>',
   all: '<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/>',
   menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
+  bell: '<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/>',
+  add: '<path d="M12 5v14M5 12h14"/>',
 });
 
 function pwIcon(name) {

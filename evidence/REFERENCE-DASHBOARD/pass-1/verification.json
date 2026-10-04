@@ -1,0 +1,404 @@
+{
+  "status": "FAIL",
+  "checks": [
+    "Existing assets, sprite runtime/timing, palette/font and business/router sources byte-preserved"
+  ],
+  "geometry": [
+    {
+      "name": "chromium/390x844",
+      "accessible": false,
+      "viewport": [
+        390,
+        844
+      ],
+      "document": [
+        390,
+        844
+      ],
+      "hero": {
+        "left": 10,
+        "top": 66,
+        "right": 380,
+        "bottom": 314.125,
+        "width": 370,
+        "height": 248.125
+      },
+      "grid": {
+        "left": 10,
+        "top": 324.125,
+        "right": 380,
+        "bottom": 746,
+        "width": 370,
+        "height": 421.875
+      },
+      "nav": {
+        "left": 0,
+        "top": 768,
+        "right": 390,
+        "bottom": 844,
+        "width": 390,
+        "height": 76
+      },
+      "add": {
+        "left": 165.984375,
+        "top": 757,
+        "right": 223.984375,
+        "bottom": 815,
+        "width": 58,
+        "height": 58
+      },
+      "cards": [
+        {
+          "left": 10,
+          "top": 324.125,
+          "right": 190,
+          "bottom": 530.0625,
+          "width": 180,
+          "height": 205.9375
+        },
+        {
+          "left": 200,
+          "top": 324.125,
+          "right": 380,
+          "bottom": 530.0625,
+          "width": 180,
+          "height": 205.9375
+        },
+        {
+          "left": 10,
+          "top": 540.0625,
+          "right": 190,
+          "bottom": 746,
+          "width": 180,
+          "height": 205.9375
+        },
+        {
+          "left": 200,
+          "top": 540.0625,
+          "right": 380,
+          "bottom": 746,
+          "width": 180,
+          "height": 205.9375
+        }
+      ],
+      "sprites": [
+        {
+          "profile": "balance",
+          "layer": {
+            "left": 183.5,
+            "top": 46.125,
+            "right": 421.5,
+            "bottom": 284.125,
+            "width": 238,
+            "height": 238
+          },
+          "panel": {
+            "left": 10,
+            "top": 66,
+            "right": 380,
+            "bottom": 314.125,
+            "width": 370,
+            "height": 248.125
+          },
+          "texts": [
+            {
+              "label": "지금 남은 용돈",
+              "rect": {
+                "left": 27,
+                "top": 95.703125,
+                "right": 124.03125,
+                "bottom": 115.703125,
+                "width": 97.03125,
+                "height": 20
+              }
+            },
+            {
+              "label": "지금 쓸 수 있는 돈이에요.",
+              "rect": {
+                "left": 37,
+                "top": 209.015625,
+                "right": 145.4375,
+                "bottom": 222.015625,
+                "width": 108.4375,
+                "height": 13
+              }
+            },
+            {
+              "label": "받은 돈",
+              "rect": {
+                "left": 59,
+                "top": 254.75,
+                "right": 87.28125,
+                "bottom": 266.75,
+                "width": 28.28125,
+                "height": 12
+              }
+            },
+            {
+              "label": "쓴 돈",
+              "rect": {
+                "left": 175.328125,
+                "top": 254.75,
+                "right": 194.96875,
+                "bottom": 266.75,
+                "width": 19.640625,
+                "height": 12
+              }
+            },
+            {
+              "label": "남은 돈",
+              "rect": {
+                "left": 290.65625,
+                "top": 254.75,
+                "right": 318.9375,
+                "bottom": 266.75,
+                "width": 28.28125,
+                "height": 12
+              }
+            }
+          ]
+        },
+        {
+          "profile": "goal",
+          "layer": {
+            "left": 3.734375,
+            "top": 379.734375,
+            "right": 99.734375,
+            "bottom": 475.734375,
+            "width": 96,
+            "height": 96
+          },
+          "panel": {
+            "left": 10,
+            "top": 324.125,
+            "right": 190,
+            "bottom": 530.0625,
+            "width": 180,
+            "height": 205.9375
+          },
+          "texts": [
+            {
+              "label": "목표 달성하기",
+              "rect": {
+                "left": 21,
+                "top": 339.578125,
+                "right": 94.046875,
+                "bottom": 356.578125,
+                "width": 73.046875,
+                "height": 17
+              }
+            },
+            {
+              "label": "새 자전거",
+              "rect": {
+                "left": 85,
+                "top": 407.9375,
+                "right": 136.59375,
+                "bottom": 423.9375,
+                "width": 51.59375,
+                "height": 16
+              }
+            },
+            {
+              "label": "18만",
+              "rect": {
+                "left": 85,
+                "top": 434.125,
+                "right": 108.765625,
+                "bottom": 447.125,
+                "width": 23.765625,
+                "height": 13
+              }
+            },
+            {
+              "label": "/ 30만원",
+              "rect": {
+                "left": 108.765625,
+                "top": 434.125,
+                "right": 150.5,
+                "bottom": 447.125,
+                "width": 41.734375,
+                "height": 13
+              }
+            },
+            {
+              "label": "60%",
+              "rect": {
+                "left": 146.859375,
+                "top": 498.34375,
+                "right": 179,
+                "bottom": 514.34375,
+                "width": 32.140625,
+                "height": 16
+              }
+            }
+          ]
+        }
+      ],
+      "buttons": [
+        {
+          "label": "알림",
+          "box": {
+            "left": 282,
+            "top": 6,
+            "right": 326,
+            "bottom": 50,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "프로필",
+          "box": {
+            "left": 330,
+            "top": 6,
+            "right": 374,
+            "bottom": 50,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "지금 남은 용돈, 용돈 내역 보기",
+          "box": {
+            "left": 27,
+            "top": 84,
+            "right": 139.59375,
+            "bottom": 128,
+            "width": 112.59375,
+            "height": 44
+          }
+        },
+        {
+          "label": "목표 달성하기, 새 자전거, 180,000원 / 300,000원, 60%",
+          "box": {
+            "left": 10,
+            "top": 324.125,
+            "right": 190,
+            "bottom": 530.0625,
+            "width": 180,
+            "height": 205.9375
+          }
+        },
+        {
+          "label": "나의 금융 습관, 습관 점수 82점",
+          "box": {
+            "left": 200,
+            "top": 324.125,
+            "right": 380,
+            "bottom": 530.0625,
+            "width": 180,
+            "height": 205.9375
+          }
+        },
+        {
+          "label": "용돈 내역",
+          "box": {
+            "left": 17,
+            "top": 549.0625,
+            "right": 183,
+            "bottom": 593.0625,
+            "width": 166,
+            "height": 44
+          }
+        },
+        {
+          "label": "이전 달",
+          "box": {
+            "left": 17,
+            "top": 594.0625,
+            "right": 61,
+            "bottom": 638.0625,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "다음 달",
+          "box": {
+            "left": 139,
+            "top": 594.0625,
+            "right": 183,
+            "bottom": 638.0625,
+            "width": 44,
+            "height": 44
+          }
+        },
+        {
+          "label": "이번 주 지표, 주간 지출, 9/28 6,500원, 9/29 8,200원, 9/30 7,200원, 10/1 9,000원, 10/2 7,800원, 10/3 4,300원, 10/4 5,000원",
+          "box": {
+            "left": 200,
+            "top": 540.0625,
+            "right": 380,
+            "bottom": 746,
+            "width": 180,
+            "height": 205.9375
+          }
+        },
+        {
+          "label": "홈",
+          "box": {
+            "left": 16,
+            "top": 782.5,
+            "right": 87.59375,
+            "bottom": 830.5,
+            "width": 71.59375,
+            "height": 48
+          }
+        },
+        {
+          "label": "리포트",
+          "box": {
+            "left": 87.59375,
+            "top": 782.5,
+            "right": 159.1875,
+            "bottom": 830.5,
+            "width": 71.59375,
+            "height": 48
+          }
+        },
+        {
+          "label": "기록하기",
+          "box": {
+            "left": 165.984375,
+            "top": 757,
+            "right": 223.984375,
+            "bottom": 815,
+            "width": 58,
+            "height": 58
+          }
+        },
+        {
+          "label": "목표",
+          "box": {
+            "left": 230.796875,
+            "top": 782.5,
+            "right": 302.390625,
+            "bottom": 830.5,
+            "width": 71.59375,
+            "height": 48
+          }
+        },
+        {
+          "label": "전체",
+          "box": {
+            "left": 302.390625,
+            "top": 782.5,
+            "right": 373.984375,
+            "bottom": 830.5,
+            "width": 71.59375,
+            "height": 48
+          }
+        }
+      ],
+      "horizontal": true,
+      "calendarColumns": 7
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "chromium-390x844.png"
+  ],
+  "fixture": "Isolated QA transactions, not app defaults or user storage",
+  "failure": "AssertionError [ERR_ASSERTION]: chromium/390x844 horizontal overflow\n\ntrue !== false\n\n    at inspect (/Users/jeonghu/포켓WON/tests/verify-dashboard.cjs:17:46)\n    at async /Users/jeonghu/포켓WON/tests/verify-dashboard.cjs:24:478"
+}

@@ -1,0 +1,59 @@
+{
+  "browserChecks": 544,
+  "suites": [
+    {
+      "suite": "single-screen-final",
+      "status": "PASS",
+      "checks": 380,
+      "errors": 0
+    },
+    {
+      "suite": "record-stage",
+      "status": "PASS",
+      "checks": 20,
+      "errors": 0
+    },
+    {
+      "suite": "record-keyboard",
+      "status": "PASS",
+      "checks": 20,
+      "errors": 0
+    },
+    {
+      "suite": "sprite-stage/sprites",
+      "status": "PASS",
+      "checks": 32,
+      "errors": 0
+    },
+    {
+      "suite": "product-shell",
+      "status": "PASS",
+      "checks": 14,
+      "errors": 0
+    },
+    {
+      "suite": "product-flows",
+      "status": "PASS",
+      "checks": 22,
+      "errors": 0
+    },
+    {
+      "suite": "product-edge",
+      "status": "PASS",
+      "checks": 12,
+      "errors": 0
+    },
+    {
+      "suite": "ai-shell",
+      "status": "PASS",
+      "checks": 22,
+      "errors": 0
+    },
+    {
+      "suite": "feature-accessibility",
+      "status": "PASS",
+      "checks": 22,
+      "errors": 0
+    }
+  ]
+}

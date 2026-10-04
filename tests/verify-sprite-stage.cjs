@@ -73,6 +73,13 @@ async function setup(browser, { state = fixture, motion = 'no-preference', width
   return { context, page };
 }
 
+// The center + opens input; the Calendar card preserves the history entry.
+async function enterRecordList(page) {
+  await page.locator('.pw-nav-item[data-screen="home"]').click();
+  await page.getByRole('button', { name: '용돈 내역', exact: true }).click();
+  await page.waitForFunction(() => document.querySelector('.pw-record')?.dataset.stage === 'list');
+}
+
 async function screenshot(page, name) {
   const file = `screenshots/${name}.png`;
   await page.screenshot({ path: path.join(output, file) }); report.screenshots.push(file);
@@ -198,7 +205,7 @@ async function lifecycle(page, engine) {
 async function overlappingPauseReasons(page, engine) {
   const scenarios = [];
   for (const reason of ['hidden', 'dialog']) {
-    await page.locator('.pw-nav-item[data-screen="record"]').click();
+    await enterRecordList(page);
     await page.waitForFunction(() => PocketWONMotion.inspect()[0]?.players.some(player => player.visible));
     await page.evaluate(() => PocketWONMotion.controllerFor(document.querySelector('.pw-record')).request('record', 'action', 'success'));
     await page.waitForFunction(() => PocketWONMotion.inspect()[0].players.some(player => player.state === 'playing'));
@@ -233,13 +240,14 @@ async function overlappingPauseReasons(page, engine) {
 
 async function budgetAndReplacement(page, engine) {
   await page.locator('.pw-nav-item[data-screen="home"]').click();
-  await page.waitForFunction(() => PocketWONMotion.inspect()[0]?.players.filter(player => player.visible).length >= 4);
+  await page.waitForFunction(() => PocketWONMotion.inspect()[0]?.players.filter(player => player.visible).length === 2);
+  assert.deepEqual(await page.evaluate(() => PocketWONMotion.inspect()[0].players.map(player => player.profile).sort()), ['balance', 'goal']);
   const budget = await page.evaluate(async () => {
     const session = PocketWONMotion.controllerFor(document.querySelector('.pw-home'));
     const accepted = session.request('balance', 'action', 'interaction');
-    const idle = session.request('record', 'idle', 'idle');
+    const idle = session.request('goal', 'idle', 'idle');
     const repeat = session.request('balance', 'action', 'interaction');
-    const rejectedStrong = session.request('report', 'action', 'interaction');
+    const rejectedStrong = session.request('goal', 'action', 'interaction');
     const samples = [];
     for (let i = 0; i < 25; i++) {
       const state = session.inspect(); samples.push({ strong: state.strong, idle: state.idle, playing: state.players.filter(player => player.state === 'playing').length });
@@ -270,7 +278,7 @@ async function budgetAndReplacement(page, engine) {
   await page.waitForFunction(() => window.__offFrameSprite.controller.inspect().state === 'playing');
   pass(`${engine}: real IntersectionObserver pauses outside the Frame and resumes the retained timeline`, offFrame);
 
-  const navigation = await page.locator('.pw-home-card[aria-label="기록 내역"]').evaluate(button => {
+  const navigation = await page.getByRole('button', { name: '용돈 내역', exact: true }).evaluate(button => {
     const oldRoot = document.querySelector('.pw-home'), oldSession = PocketWONMotion.controllerFor(oldRoot), start = performance.now();
     button.click();
     return { elapsed: performance.now() - start, heading: document.activeElement.id, rootRemoved: !oldRoot.isConnected, oldPlayers: oldSession.inspect().players.length, sessions: PocketWONMotion.inspect().length, record: !!document.querySelector('.pw-record') };
@@ -279,7 +287,7 @@ async function budgetAndReplacement(page, engine) {
   assert.equal(navigation.heading, 'pw-screen-title'); assert.equal(navigation.rootRemoved, true);
   assert.equal(navigation.oldPlayers, 0); assert.equal(navigation.sessions, 1); assert.equal(navigation.record, true);
   await page.locator('.pw-nav-item[data-screen="home"]').click();
-  await page.locator('.pw-home-card[aria-label="리포트"]').focus(); await page.keyboard.press('Enter');
+  await page.getByRole('button', { name: /^이번 주 지표(?:,|$)/ }).focus(); await page.keyboard.press('Enter');
   assert.equal(await page.locator('.pw-report').count(), 1);
   const replaced = [];
   for (const label of ['돈 흐름', '목표', '습관']) {
@@ -311,10 +319,8 @@ async function budgetAndReplacement(page, engine) {
 async function reducedAndDecoration(page, engine) {
   const assertions = [];
   for (const screen of ['home', 'record', 'goal', 'report', 'all']) {
-    if (['goal', 'report'].includes(screen)) {
-      await page.locator('.pw-nav-item[data-screen="home"]').click();
-      await page.locator(`.pw-home-card[aria-label="${screen === 'goal' ? '목표' : '리포트'}"]`).click();
-    } else await page.locator(`.pw-nav-item[data-screen="${screen}"]`).click();
+    if (screen === 'record') await enterRecordList(page);
+    else await page.locator(`.pw-nav-item[data-screen="${screen}"]`).click();
     const state = await page.evaluate(() => ({
       active: [...document.querySelectorAll('.pw-sprite')].flatMap(node => node.getAnimations({ subtree: true })).filter(animation => animation.playState === 'running').length,
       sprites: [...document.querySelectorAll('#pw-content .pw-sprite')].map(node => ({ width: node.getBoundingClientRect().width, height: node.getBoundingClientRect().height, hidden: node.getAttribute('aria-hidden'), events: getComputedStyle(node).pointerEvents, controls: node.querySelectorAll('button,input,a').length })),
@@ -326,7 +332,7 @@ async function reducedAndDecoration(page, engine) {
   const successLoads = [];
   page.on('request', request => { if (/pocketwon-success-action-sprite/.test(request.url())) successLoads.push(request.url()); });
   assert.equal(await page.evaluate(() => PocketWONMotion.prepareSuccess()), false);
-  await page.locator('.pw-nav-item[data-screen="record"]').click();
+  await enterRecordList(page);
   await page.getByRole('button', { name: '새 기록 추가', exact: true }).click();
   await page.waitForTimeout(100); assert.deepEqual(successLoads, []); await page.keyboard.press('Escape');
   assert.deepEqual(await page.evaluate(() => window.__spriteWrites), []);
@@ -338,7 +344,7 @@ async function confirmedSaves(browser, engine) {
     const { context, page } = await setup(browser);
     try {
       if (screen === 'record') {
-        await page.locator('.pw-nav-item[data-screen="record"]').click();
+        await enterRecordList(page);
         await page.getByRole('button', { name: '새 기록 추가', exact: true }).click();
         await page.getByRole('radio', { name: '받은 돈', exact: true }).check();
         await page.locator('dialog').getByRole('button', { name: '다음', exact: true }).click();
@@ -346,7 +352,7 @@ async function confirmedSaves(browser, engine) {
         await page.locator('dialog').getByRole('button', { name: '다음', exact: true }).click();
         await page.locator('dialog').getByRole('button', { name: '건너뛰기', exact: true }).click();
       } else {
-        await page.locator('.pw-home-card[aria-label="목표"]').click();
+        await page.getByRole('button', { name: /^목표 달성하기(?:,|$)/ }).click();
         await page.getByRole('button', { name: '목표 수정', exact: true }).click();
         await page.locator('#pw-goal-title').fill('Sprite 검증 목표');
         await page.locator('dialog').getByRole('button', { name: '다음', exact: true }).click();
@@ -379,12 +385,12 @@ async function exactGoalBoundary(browser, engine) {
   for (const current of [999, 1000]) {
     const { context, page } = await setup(browser, { state: { ...fixture, goal: { title: '경계 목표', current, target: 1000 } } });
     try {
-      await page.locator('.pw-home-card[aria-label="목표"]').click();
+      await page.getByRole('button', { name: /^목표 달성하기(?:,|$)/ }).click();
       if (current === 1000) await page.waitForFunction(() => window.__spriteSuccessEvents.length === 1);
       else { await page.waitForTimeout(1100); assert.deepEqual(await page.evaluate(() => window.__spriteSuccessEvents), []); }
       assert.equal(await page.locator('.pw-goal-complete').count(), current === 1000 ? 1 : 0);
       await page.locator('.pw-nav-item[data-screen="home"]').click();
-      await page.locator('.pw-home-card[aria-label="목표"]').click();
+      await page.getByRole('button', { name: /^목표 달성하기(?:,|$)/ }).click();
       await page.waitForTimeout(1100);
       assert.equal((await page.evaluate(() => window.__spriteSuccessEvents)).length, current === 1000 ? 1 : 0);
       assert.deepEqual(await page.evaluate(() => window.__spriteWrites), []);
@@ -409,7 +415,7 @@ async function loadAndFallback(browser, engine) {
       await sprite.locator('.pw-sprite-poster').evaluate(async image => { image.loading = 'eager'; await image.decode(); });
       const state = await sprite.evaluate(node => ({ state: node.dataset.spriteState, fallback: node.dataset.spriteFallback, loaded: node.querySelector('img').complete && node.querySelector('img').naturalWidth > 0, width: node.getBoundingClientRect().width }));
       assert.equal(state.state, 'static'); assert.equal(state.loaded, true); assert(state.width > 0); if (posterFailure) assert.equal(state.fallback, 'true');
-      await page.locator('.pw-home-card[aria-label="기록 내역"]').click(); assert.equal(await page.locator('.pw-record').count(), 1);
+      await page.getByRole('button', { name: '용돈 내역', exact: true }).click(); assert.equal(await page.locator('.pw-record').count(), 1);
       pass(`${engine}: ${posterFailure ? 'sheet/poster' : 'sheet'} error falls back while cards keep navigating`, state);
     } finally { await context.close(); }
   }

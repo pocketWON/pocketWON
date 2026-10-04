@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "checks": [
+    "chromium normal all feature factories, geometry, unchanged storage/finance",
+    "chromium categorized menu 7 groups and page controls",
+    "chromium existing detail/correction/delete previews/back",
+    "chromium goal contribution valid/insufficient preview only",
+    "chromium preview all feature factories, geometry, unchanged storage/finance",
+    "chromium categorized menu 7 groups and page controls",
+    "chromium empty/malformed/partial/zero source states",
+    "webkit normal all feature factories, geometry, unchanged storage/finance",
+    "webkit categorized menu 7 groups and page controls",
+    "webkit existing detail/correction/delete previews/back",
+    "webkit goal contribution valid/insufficient preview only",
+    "webkit preview all feature factories, geometry, unchanged storage/finance",
+    "webkit categorized menu 7 groups and page controls",
+    "webkit empty/malformed/partial/zero source states"
+  ],
+  "engines": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12"
+    },
+    {
+      "engine": "webkit",
+      "version": "26.5"
+    }
+  ],
+  "errors": [],
+  "screenshots": []
+}

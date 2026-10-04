@@ -1,0 +1,172 @@
+{
+  "checks": [],
+  "geometry": [
+    {
+      "label": "chromium/320x568/false/home",
+      "frames": [
+        {
+          "cls": "",
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "right": 320,
+          "bottom": 568,
+          "sh": 568,
+          "ch": 568,
+          "sw": 320,
+          "cw": 320
+        },
+        {
+          "cls": "pw-shell",
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "right": 320,
+          "bottom": 568,
+          "sh": 568,
+          "ch": 568,
+          "sw": 353,
+          "cw": 320
+        },
+        {
+          "cls": "pw-content",
+          "x": 0,
+          "y": 48,
+          "w": 320,
+          "h": 456,
+          "right": 320,
+          "bottom": 504,
+          "sh": 472,
+          "ch": 456,
+          "sw": 353,
+          "cw": 320
+        },
+        {
+          "cls": "pw-screen pw-home",
+          "x": 0,
+          "y": 48,
+          "w": 320,
+          "h": 456,
+          "right": 320,
+          "bottom": 504,
+          "sh": 472,
+          "ch": 456,
+          "sw": 353,
+          "cw": 320
+        }
+      ],
+      "controls": [
+        {
+          "cls": "pw-home-hero-title",
+          "x": 25,
+          "y": 68,
+          "w": 120.859375,
+          "h": 32,
+          "right": 145.859375,
+          "bottom": 100,
+          "sh": 32,
+          "ch": 32,
+          "sw": 121,
+          "cw": 121
+        },
+        {
+          "cls": "pw-home-card pw-home-goal pw-motion-enter--visible",
+          "x": 8,
+          "y": 230,
+          "w": 149,
+          "h": 124,
+          "right": 157,
+          "bottom": 354,
+          "sh": 150,
+          "ch": 122,
+          "sw": 147,
+          "cw": 147
+        },
+        {
+          "cls": "pw-home-card pw-home-habit",
+          "x": 163,
+          "y": 230,
+          "w": 149,
+          "h": 124,
+          "right": 312,
+          "bottom": 354,
+          "sh": 191,
+          "ch": 122,
+          "sw": 147,
+          "cw": 147
+        },
+        {
+          "cls": "pw-home-calendar-title",
+          "x": 13,
+          "y": 366,
+          "w": 139,
+          "h": 32,
+          "right": 152,
+          "bottom": 398,
+          "sh": 32,
+          "ch": 32,
+          "sw": 139,
+          "cw": 139
+        },
+        {
+          "cls": "pw-home-calendar-month-button",
+          "x": 13,
+          "y": 398,
+          "w": 44,
+          "h": 44,
+          "right": 57,
+          "bottom": 442,
+          "sh": 44,
+          "ch": 44,
+          "sw": 44,
+          "cw": 44
+        },
+        {
+          "cls": "pw-home-calendar-month-button",
+          "x": 108,
+          "y": 398,
+          "w": 44,
+          "h": 44,
+          "right": 152,
+          "bottom": 442,
+          "sh": 44,
+          "ch": 44,
+          "sw": 44,
+          "cw": 44
+        },
+        {
+          "cls": "pw-home-card pw-home-weekly",
+          "x": 163,
+          "y": 360,
+          "w": 149,
+          "h": 124,
+          "right": 312,
+          "bottom": 484,
+          "sh": 159,
+          "ch": 122,
+          "sw": 147,
+          "cw": 147
+        }
+      ],
+      "outside": [],
+      "textOutside": [],
+      "viewport": [
+        320,
+        568
+      ]
+    }
+  ],
+  "screenshots": [],
+  "errors": [],
+  "engines": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12"
+    }
+  ],
+  "physicalKeyboardVerified": false,
+  "status": "FAIL",
+  "failure": "AssertionError [ERR_ASSERTION]: chromium/320x568/false/home scroll extent [{\"cls\":\"\",\"x\":0,\"y\":0,\"w\":320,\"h\":568,\"right\":320,\"bottom\":568,\"sh\":568,\"ch\":568,\"sw\":320,\"cw\":320},{\"cls\":\"pw-shell\",\"x\":0,\"y\":0,\"w\":320,\"h\":568,\"right\":320,\"bottom\":568,\"sh\":568,\"ch\":568,\"sw\":353,\"cw\":320},{\"cls\":\"pw-content\",\"x\":0,\"y\":48,\"w\":320,\"h\":456,\"right\":320,\"bottom\":504,\"sh\":472,\"ch\":456,\"sw\":353,\"cw\":320},{\"cls\":\"pw-screen pw-home\",\"x\":0,\"y\":48,\"w\":320,\"h\":456,\"right\":320,\"bottom\":504,\"sh\":472,\"ch\":456,\"sw\":353,\"cw\":320}]\n    at geometry (/Users/jeonghu/포켓WON/tests/verify-single-screen.cjs:65:3)\n    at async matrix (/Users/jeonghu/포켓WON/tests/verify-single-screen.cjs:78:35)\n    at async /Users/jeonghu/포켓WON/tests/verify-single-screen.cjs:132:237"
+}

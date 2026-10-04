@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "checks": [
+    "chromium all 9 default preparing, home entry, geometry, no writes/API",
+    "chromium 9 result previews isolated",
+    "chromium quiz full 3-question selection/explanation/completion",
+    "chromium category fixture selection does not classify input",
+    "chromium local image selection/remove, no OCR or result mapping",
+    "chromium next-plan confirmation/ESC",
+    "chromium reflection native sheet/browser Back",
+    "chromium common empty states across 9 AI features",
+    "chromium common error states across 9 AI features",
+    "chromium common loading states across 9 AI features",
+    "chromium common preparing states across 9 AI features",
+    "webkit all 9 default preparing, home entry, geometry, no writes/API",
+    "webkit 9 result previews isolated",
+    "webkit quiz full 3-question selection/explanation/completion",
+    "webkit category fixture selection does not classify input",
+    "webkit local image selection/remove, no OCR or result mapping",
+    "webkit next-plan confirmation/ESC",
+    "webkit reflection native sheet/browser Back",
+    "webkit common empty states across 9 AI features",
+    "webkit common error states across 9 AI features",
+    "webkit common loading states across 9 AI features",
+    "webkit common preparing states across 9 AI features"
+  ],
+  "engines": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12"
+    },
+    {
+      "engine": "webkit",
+      "version": "26.5"
+    }
+  ],
+  "errors": []
+}

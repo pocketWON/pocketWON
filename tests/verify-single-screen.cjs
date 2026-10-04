@@ -45,8 +45,10 @@ async function ready(page) {
   await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.querySelectorAll('img')].map(n => n.decode().catch(() => {}))); await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))); });
 }
 async function enter(page, id) {
-  if (['home', 'record', 'all'].includes(id)) await page.locator('.pw-nav-item[data-screen="' + id + '"]').click();
-  else { await page.locator('.pw-nav-item[data-screen="home"]').click(); await page.getByRole('button', { name: id === 'goal' ? '목표' : '리포트', exact: true }).click(); }
+  if (id === 'record') {
+    await page.locator('.pw-nav-item[data-screen="home"]').click();
+    await page.getByRole('button', { name: '용돈 내역', exact: true }).click();
+  } else await page.locator('.pw-nav-item[data-screen="' + id + '"]').click();
   await ready(page);
 }
 async function geometry(page, label) {
@@ -57,10 +59,13 @@ async function geometry(page, label) {
     const rect = active.getBoundingClientRect();
     const controls = [...active.querySelectorAll('button,input')].filter(n => n.getClientRects().length && n.type !== 'radio').map(box);
     const outside = controls.filter(r => r.x < rect.x - 1 || r.y < rect.y - 1 || r.right > rect.right + 1 || r.bottom > rect.bottom + 1);
-    const textOutside=[...active.querySelectorAll('p,dt,dd,h2,h3,span')].filter(n=>n.getClientRects().length&&!n.closest('[aria-hidden="true"],.pw-sr-only')&&n.textContent.trim()).map(box).filter(r=>r.x<rect.x-1||r.y<rect.y-1||r.right>rect.right+1||r.bottom>rect.bottom+1); return { frames: frames.filter(Boolean).map(box), controls, outside, textOutside, stage: active.dataset.stage, viewport: [innerWidth, innerHeight] };
+    const textOutside=[...active.querySelectorAll('p,dt,dd,h2,h3,span')].filter(n=>n.getClientRects().length&&!n.closest('[aria-hidden="true"],.pw-sr-only')&&n.textContent.trim()).map(box).filter(r=>r.x<rect.x-1||r.y<rect.y-1||r.right>rect.right+1||r.bottom>rect.bottom+1); return { accessible: document.documentElement.classList.contains('pw-accessible'), frames: frames.filter(Boolean).map(box), controls, outside, textOutside, stage: active.dataset.stage, viewport: [innerWidth, innerHeight] };
   });
   report.geometry.push({ label, ...result });
-  assert(result.frames.every(r => r.sh <= r.ch + 1 && r.sw <= r.cw + 1), label + ' scroll extent ' + JSON.stringify(result.frames));
+  assert(result.frames.every(r => r.sw <= r.cw + 1), label + ' horizontal scroll extent ' + JSON.stringify(result.frames));
+  // Large type and very short screens intentionally use document reflow.
+  // Normal dashboards retain the full no-scroll contract.
+  if (!result.accessible) assert(result.frames.every(r => r.sh <= r.ch + 1), label + ' vertical scroll extent ' + JSON.stringify(result.frames));
   assert.deepEqual(result.outside, [], label + ' controls outside frame'); assert.deepEqual(result.textOutside,[],label+' meaningful text outside frame');
   assert(result.controls.every(r => r.h >= 44 && r.w >= 44), label + ' target smaller than 44px ' + JSON.stringify(result.controls.filter(r => r.h < 44 || r.w < 44)));
   pass(label + ' contains content and controls');
@@ -79,7 +84,8 @@ async function matrix(browser, engine) {
       }
       assert.equal(await page.evaluate(() => window.__read()), before); assert.deepEqual(await page.evaluate(() => window.__writes), []);
       const bounds = await page.evaluate(() => { const c = document.querySelector('#pw-content'); return [c.scrollTop, c.scrollLeft]; });
-      await page.mouse.wheel(0, 600); await ready(page); assert.deepEqual(await page.evaluate(() => { const c = document.querySelector('#pw-content'); return [c.scrollTop, c.scrollLeft]; }), bounds);
+      await page.mouse.wheel(0, 600); await ready(page);
+      if (!await page.locator('html').evaluate(n => n.classList.contains('pw-accessible'))) assert.deepEqual(await page.evaluate(() => { const c = document.querySelector('#pw-content'); return [c.scrollTop, c.scrollLeft]; }), bounds);
       await context.close();
     }
   }
@@ -91,7 +97,7 @@ async function records(browser, engine) {
   const seen = new Set(); let longIndex;
   while (true) { for (const id of await page.locator('.pw-record-row-button').evaluateAll(nodes => nodes.map(n=>n.dataset.sourceIndex))) seen.add(id); const next=page.locator('.pw-record-pagination').getByRole('button',{name:'다음',exact:true}); if (await next.isDisabled()) break; await next.click(); await ready(page); await geometry(page,engine+'/history-page'); }
   assert.equal(seen.size,37); pass(engine+' all 37 stored rows reachable without storage writes');
-  await enter(page,'home'); await page.getByRole('button',{name:'기록 내역',exact:true}).click();
+  await enter(page,'home'); await page.getByRole('button',{name:'용돈 내역',exact:true}).click();
   while (await page.locator('.pw-record-pagination').getByRole('button',{name:'이전',exact:true}).isEnabled()) await page.locator('.pw-record-pagination').getByRole('button',{name:'이전',exact:true}).click();
   await page.locator('.pw-record-row-button[data-source-index="36"]').click(); await ready(page); await geometry(page,engine+'/long-record-detail');
   let text=''; while(true){text+=await page.locator('.pw-text-page').innerText();const next=page.locator('.pw-text-pager').getByRole('button',{name:'다음',exact:true});if(!await next.isVisible()||await next.isDisabled())break;await next.click();await ready(page);}

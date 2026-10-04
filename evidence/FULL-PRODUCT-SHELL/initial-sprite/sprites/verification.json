@@ -1,0 +1,2829 @@
+{
+  "startedAt": "2026-10-03T11:54:47.024Z",
+  "url": "http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html",
+  "status": "FAIL",
+  "checks": [
+    {
+      "name": "chromium: 11 alpha sheets, exact metadata/grid, changing artwork and mobile byte budget",
+      "status": "PASS",
+      "detail": {
+        "clips": [
+          {
+            "profile": "balance",
+            "kind": "idle",
+            "src": "./assets/pocketwon/sprites/pocketwon-balance-idle-sprite.webp",
+            "poster": "./assets/pocketwon/sprites/pocketwon-balance-poster.webp",
+            "frameWidth": 384,
+            "frameHeight": 384,
+            "frameCount": 6,
+            "fps": 6,
+            "loop": false,
+            "anchor": {
+              "x": 192,
+              "y": 315
+            },
+            "bytes": 169720
+          },
+          {
+            "profile": "balance",
+            "kind": "action",
+            "src": "./assets/pocketwon/sprites/pocketwon-balance-action-sprite.webp",
+            "poster": "./assets/pocketwon/sprites/pocketwon-balance-poster.webp",
+            "frameWidth": 384,
+            "frameHeight": 384,
+            "frameCount": 8,
+            "fps": 10,
+            "loop": false,
+            "anchor": {
+              "x": 192,
+              "y": 315
+            },
+            "bytes": 307170
+          },
+          {
+            "profile": "record",
+            "kind": "idle",
+            "src": "./assets/pocketwon/sprites/pocketwon-record-idle-sprite.webp",
+            "poster": "./assets/pocketwon/sprites/pocketwon-record-poster.webp",
+            "frameWidth": 384,
+            "frameHeight": 384,
+            "frameCount": 6,
+            "fps": 6,
+            "loop": false,
+            "anchor": {
+              "x": 192,
+              "y": 315
+            },
+            "bytes": 167224
+          },
+          {
+            "profile": "record",
+            "kind": "action",
+            "src": "./assets/pocketwon/sprites/pocketwon-record-action-sprite.webp",
+            "poster": "./assets/pocketwon/sprites/pocketwon-record-poster.webp",
+            "frameWidth": 384,
+            "frameHeight": 384,
+            "frameCount": 8,
+            "fps": 10,
+            "loop": false,
+            "anchor": {
+              "x": 192,
+              "y": 315
+            },
+            "bytes": 304920
+          },
+          {
+            "profile": "report",
+            "kind": "idle",
+            "src": "./assets/pocketwon/sprites/pocketwon-report-idle-sprite.webp",
+            "poster": "./assets/pocketwon/sprites/pocketwon-report-poster.webp",
+            "frameWidth": 384,
+            "frameHeight": 384,
+            "frameCount": 6,
+            "fps": 6,
+            "loop": false,
+            "anchor": {
+              "x": 192,
+              "y": 315
+            },
+            "bytes": 165556
+          },
+          {
+            "profile": "report",
+            "kind": "action",
+            "src": "./assets/pocketwon/sprites/pocketwon-report-action-sprite.webp",
+            "poster": "./assets/pocketwon/sprites/pocketwon-report-poster.webp",
+            "frameWidth": 384,
+            "frameHeight": 384,
+            "frameCount": 8,
+            "fps": 10,
+            "loop": false,
+            "anchor": {
+              "x": 192,
+              "y": 315
+            },
+            "bytes": 297610
+          },
+          {
+            "profile": "goal",
+            "kind": "idle",
+            "src": "./assets/pocketwon/sprites/pocketwon-goal-idle-sprite.webp",
+            "poster": "./assets/pocketwon/sprites/pocketwon-goal-poster.webp",
+            "frameWidth": 384,
+            "frameHeight": 384,
+            "frameCount": 6,
+            "fps": 6,
+            "loop": false,
+            "anchor": {
+              "x": 192,
+              "y": 315
+            },
+            "bytes": 173230
+          },
+          {
+            "profile": "goal",
+            "kind": "action",
+            "src": "./assets/pocketwon/sprites/pocketwon-goal-action-sprite.webp",
+            "poster": "./assets/pocketwon/sprites/pocketwon-goal-poster.webp",
+            "frameWidth": 384,
+            "frameHeight": 384,
+            "frameCount": 8,
+            "fps": 10,
+            "loop": false,
+            "anchor": {
+              "x": 192,
+              "y": 315
+            },
+            "bytes": 302190
+          },
+          {
+            "profile": "all",
+            "kind": "idle",
+            "src": "./assets/pocketwon/sprites/pocketwon-all-idle-sprite.webp",
+            "poster": "./assets/pocketwon/sprites/pocketwon-all-poster.webp",
+            "frameWidth": 384,
+            "frameHeight": 384,
+            "frameCount": 6,
+            "fps": 6,
+            "loop": false,
+            "anchor": {
+              "x": 192,
+              "y": 315
+            },
+            "bytes": 162778
+          },
+          {
+            "profile": "all",
+            "kind": "action",
+            "src": "./assets/pocketwon/sprites/pocketwon-all-action-sprite.webp",
+            "poster": "./assets/pocketwon/sprites/pocketwon-all-poster.webp",
+            "frameWidth": 384,
+            "frameHeight": 384,
+            "frameCount": 8,
+            "fps": 10,
+            "loop": false,
+            "anchor": {
+              "x": 192,
+              "y": 315
+            },
+            "bytes": 294054
+          },
+          {
+            "profile": "success",
+            "kind": "action",
+            "src": "./assets/pocketwon/sprites/pocketwon-success-action-sprite.webp",
+            "poster": "./assets/pocketwon/sprites/pocketwon-success-poster.webp",
+            "frameWidth": 384,
+            "frameHeight": 384,
+            "frameCount": 10,
+            "fps": 10,
+            "loop": false,
+            "anchor": {
+              "x": 192,
+              "y": 315
+            },
+            "bytes": 379368
+          }
+        ],
+        "samples": [
+          {
+            "src": "./assets/pocketwon/sprites/pocketwon-balance-idle-sprite.webp",
+            "width": 2304,
+            "height": 384,
+            "frames": [
+              {
+                "hash": 3575548265,
+                "visible": 29522,
+                "transparent": 117934,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 259955417,
+                "visible": 30040,
+                "transparent": 117416,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 1633516369,
+                "visible": 30190,
+                "transparent": 117266,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3644725838,
+                "visible": 30488,
+                "transparent": 116968,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 259955417,
+                "visible": 30040,
+                "transparent": 117416,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3575548265,
+                "visible": 29522,
+                "transparent": 117934,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "src": "./assets/pocketwon/sprites/pocketwon-balance-action-sprite.webp",
+            "width": 3072,
+            "height": 384,
+            "frames": [
+              {
+                "hash": 3575548265,
+                "visible": 29522,
+                "transparent": 117934,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 2387595283,
+                "visible": 30104,
+                "transparent": 117352,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3752465098,
+                "visible": 30422,
+                "transparent": 117034,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3793631734,
+                "visible": 30338,
+                "transparent": 117118,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3379759455,
+                "visible": 30327,
+                "transparent": 117129,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 1425922336,
+                "visible": 30515,
+                "transparent": 116941,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3662769835,
+                "visible": 30253,
+                "transparent": 117203,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3575548265,
+                "visible": 29522,
+                "transparent": 117934,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "src": "./assets/pocketwon/sprites/pocketwon-record-idle-sprite.webp",
+            "width": 2304,
+            "height": 384,
+            "frames": [
+              {
+                "hash": 722029051,
+                "visible": 30335,
+                "transparent": 117121,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3955438162,
+                "visible": 30304,
+                "transparent": 117152,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 1492935530,
+                "visible": 30367,
+                "transparent": 117089,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 1536397706,
+                "visible": 30339,
+                "transparent": 117117,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3955438162,
+                "visible": 30304,
+                "transparent": 117152,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 722029051,
+                "visible": 30335,
+                "transparent": 117121,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "src": "./assets/pocketwon/sprites/pocketwon-record-action-sprite.webp",
+            "width": 3072,
+            "height": 384,
+            "frames": [
+              {
+                "hash": 722029051,
+                "visible": 30335,
+                "transparent": 117121,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 2193380549,
+                "visible": 30685,
+                "transparent": 116771,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 774702256,
+                "visible": 28099,
+                "transparent": 119357,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 2786393685,
+                "visible": 33739,
+                "transparent": 113717,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 124244943,
+                "visible": 30898,
+                "transparent": 116558,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3533686727,
+                "visible": 29782,
+                "transparent": 117674,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 298478255,
+                "visible": 30148,
+                "transparent": 117308,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 722029051,
+                "visible": 30335,
+                "transparent": 117121,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "src": "./assets/pocketwon/sprites/pocketwon-report-idle-sprite.webp",
+            "width": 2304,
+            "height": 384,
+            "frames": [
+              {
+                "hash": 2339650415,
+                "visible": 29996,
+                "transparent": 117460,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 2911648413,
+                "visible": 30340,
+                "transparent": 117116,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3640155140,
+                "visible": 30396,
+                "transparent": 117060,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3080870217,
+                "visible": 30403,
+                "transparent": 117053,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 2911648413,
+                "visible": 30340,
+                "transparent": 117116,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 2339650415,
+                "visible": 29996,
+                "transparent": 117460,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "src": "./assets/pocketwon/sprites/pocketwon-report-action-sprite.webp",
+            "width": 3072,
+            "height": 384,
+            "frames": [
+              {
+                "hash": 2339650415,
+                "visible": 29996,
+                "transparent": 117460,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 334354301,
+                "visible": 30261,
+                "transparent": 117195,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 1691103346,
+                "visible": 30383,
+                "transparent": 117073,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3953532349,
+                "visible": 30217,
+                "transparent": 117239,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 443561157,
+                "visible": 30300,
+                "transparent": 117156,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3610058624,
+                "visible": 30520,
+                "transparent": 116936,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3080689522,
+                "visible": 30433,
+                "transparent": 117023,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 2339650415,
+                "visible": 29996,
+                "transparent": 117460,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "src": "./assets/pocketwon/sprites/pocketwon-goal-idle-sprite.webp",
+            "width": 2304,
+            "height": 384,
+            "frames": [
+              {
+                "hash": 2332168392,
+                "visible": 31561,
+                "transparent": 115895,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 1848997904,
+                "visible": 31944,
+                "transparent": 115512,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 14936993,
+                "visible": 32265,
+                "transparent": 115191,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 1507948043,
+                "visible": 32508,
+                "transparent": 114948,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 1848997904,
+                "visible": 31944,
+                "transparent": 115512,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 2332168392,
+                "visible": 31561,
+                "transparent": 115895,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "src": "./assets/pocketwon/sprites/pocketwon-goal-action-sprite.webp",
+            "width": 3072,
+            "height": 384,
+            "frames": [
+              {
+                "hash": 2332168392,
+                "visible": 31561,
+                "transparent": 115895,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3502643421,
+                "visible": 32248,
+                "transparent": 115208,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 1302173906,
+                "visible": 29691,
+                "transparent": 117765,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 1471478148,
+                "visible": 30129,
+                "transparent": 117327,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3179209085,
+                "visible": 31201,
+                "transparent": 116255,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3511539523,
+                "visible": 31872,
+                "transparent": 115584,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3842517294,
+                "visible": 31825,
+                "transparent": 115631,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 2332168392,
+                "visible": 31561,
+                "transparent": 115895,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "src": "./assets/pocketwon/sprites/pocketwon-all-idle-sprite.webp",
+            "width": 2304,
+            "height": 384,
+            "frames": [
+              {
+                "hash": 3316096174,
+                "visible": 30057,
+                "transparent": 117399,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 590884914,
+                "visible": 30617,
+                "transparent": 116839,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3901902828,
+                "visible": 30225,
+                "transparent": 117231,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3861849595,
+                "visible": 30183,
+                "transparent": 117273,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 590884914,
+                "visible": 30617,
+                "transparent": 116839,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3316096174,
+                "visible": 30057,
+                "transparent": 117399,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "src": "./assets/pocketwon/sprites/pocketwon-all-action-sprite.webp",
+            "width": 3072,
+            "height": 384,
+            "frames": [
+              {
+                "hash": 3316096174,
+                "visible": 30057,
+                "transparent": 117399,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3386548914,
+                "visible": 30542,
+                "transparent": 116914,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 1123080067,
+                "visible": 30478,
+                "transparent": 116978,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 2708376614,
+                "visible": 30478,
+                "transparent": 116978,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 307992706,
+                "visible": 31231,
+                "transparent": 116225,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 1021468706,
+                "visible": 30767,
+                "transparent": 116689,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 446384774,
+                "visible": 30159,
+                "transparent": 117297,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3316096174,
+                "visible": 30057,
+                "transparent": 117399,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "src": "./assets/pocketwon/sprites/pocketwon-success-action-sprite.webp",
+            "width": 3840,
+            "height": 384,
+            "frames": [
+              {
+                "hash": 2344104052,
+                "visible": 30026,
+                "transparent": 117430,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 1289605854,
+                "visible": 29076,
+                "transparent": 118380,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 1759082406,
+                "visible": 29978,
+                "transparent": 117478,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3011739624,
+                "visible": 30668,
+                "transparent": 116788,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 2535397618,
+                "visible": 30677,
+                "transparent": 116779,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 2153191641,
+                "visible": 30790,
+                "transparent": 116666,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 1132739420,
+                "visible": 28828,
+                "transparent": 118628,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 377249097,
+                "visible": 29123,
+                "transparent": 118333,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 3630901823,
+                "visible": 29975,
+                "transparent": 117481,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "hash": 2344104052,
+                "visible": 30026,
+                "transparent": 117430,
+                "corners": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "chromium: every frame occupies its full interval, first/last cells included without blank wrap",
+      "status": "PASS",
+      "detail": [
+        {
+          "name": "balance",
+          "kind": "idle",
+          "duration": 1000,
+          "expectedDuration": 1000,
+          "samples": [
+            {
+              "frame": 0,
+              "fraction": 0.05,
+              "x": "0%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 0,
+              "fraction": 0.95,
+              "x": "0%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.05,
+              "x": "20%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.95,
+              "x": "20%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.05,
+              "x": "40%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.95,
+              "x": "40%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.05,
+              "x": "60%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.95,
+              "x": "60%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.05,
+              "x": "80%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.95,
+              "x": "80%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.05,
+              "x": "100%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.95,
+              "x": "100%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            }
+          ]
+        },
+        {
+          "name": "balance",
+          "kind": "action",
+          "duration": 800,
+          "expectedDuration": 800,
+          "samples": [
+            {
+              "frame": 0,
+              "fraction": 0.05,
+              "x": "0%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 0,
+              "fraction": 0.95,
+              "x": "0%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.05,
+              "x": "14.2857%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.95,
+              "x": "14.2857%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.05,
+              "x": "28.5714%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.95,
+              "x": "28.5714%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.05,
+              "x": "42.8571%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.95,
+              "x": "42.8571%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.05,
+              "x": "57.1429%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.95,
+              "x": "57.1429%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.05,
+              "x": "71.4286%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.95,
+              "x": "71.4286%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 6,
+              "fraction": 0.05,
+              "x": "85.7143%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 6,
+              "fraction": 0.95,
+              "x": "85.7143%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 7,
+              "fraction": 0.05,
+              "x": "100%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 7,
+              "fraction": 0.95,
+              "x": "100%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            }
+          ]
+        },
+        {
+          "name": "record",
+          "kind": "idle",
+          "duration": 1000,
+          "expectedDuration": 1000,
+          "samples": [
+            {
+              "frame": 0,
+              "fraction": 0.05,
+              "x": "0%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 0,
+              "fraction": 0.95,
+              "x": "0%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.05,
+              "x": "20%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.95,
+              "x": "20%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.05,
+              "x": "40%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.95,
+              "x": "40%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.05,
+              "x": "60%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.95,
+              "x": "60%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.05,
+              "x": "80%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.95,
+              "x": "80%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.05,
+              "x": "100%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.95,
+              "x": "100%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            }
+          ]
+        },
+        {
+          "name": "record",
+          "kind": "action",
+          "duration": 800,
+          "expectedDuration": 800,
+          "samples": [
+            {
+              "frame": 0,
+              "fraction": 0.05,
+              "x": "0%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 0,
+              "fraction": 0.95,
+              "x": "0%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.05,
+              "x": "14.2857%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.95,
+              "x": "14.2857%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.05,
+              "x": "28.5714%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.95,
+              "x": "28.5714%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.05,
+              "x": "42.8571%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.95,
+              "x": "42.8571%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.05,
+              "x": "57.1429%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.95,
+              "x": "57.1429%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.05,
+              "x": "71.4286%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.95,
+              "x": "71.4286%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 6,
+              "fraction": 0.05,
+              "x": "85.7143%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 6,
+              "fraction": 0.95,
+              "x": "85.7143%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 7,
+              "fraction": 0.05,
+              "x": "100%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 7,
+              "fraction": 0.95,
+              "x": "100%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            }
+          ]
+        },
+        {
+          "name": "report",
+          "kind": "idle",
+          "duration": 1000,
+          "expectedDuration": 1000,
+          "samples": [
+            {
+              "frame": 0,
+              "fraction": 0.05,
+              "x": "0%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 0,
+              "fraction": 0.95,
+              "x": "0%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.05,
+              "x": "20%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.95,
+              "x": "20%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.05,
+              "x": "40%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.95,
+              "x": "40%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.05,
+              "x": "60%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.95,
+              "x": "60%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.05,
+              "x": "80%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.95,
+              "x": "80%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.05,
+              "x": "100%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.95,
+              "x": "100%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            }
+          ]
+        },
+        {
+          "name": "report",
+          "kind": "action",
+          "duration": 800,
+          "expectedDuration": 800,
+          "samples": [
+            {
+              "frame": 0,
+              "fraction": 0.05,
+              "x": "0%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 0,
+              "fraction": 0.95,
+              "x": "0%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.05,
+              "x": "14.2857%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.95,
+              "x": "14.2857%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.05,
+              "x": "28.5714%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.95,
+              "x": "28.5714%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.05,
+              "x": "42.8571%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.95,
+              "x": "42.8571%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.05,
+              "x": "57.1429%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.95,
+              "x": "57.1429%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.05,
+              "x": "71.4286%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.95,
+              "x": "71.4286%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 6,
+              "fraction": 0.05,
+              "x": "85.7143%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 6,
+              "fraction": 0.95,
+              "x": "85.7143%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 7,
+              "fraction": 0.05,
+              "x": "100%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 7,
+              "fraction": 0.95,
+              "x": "100%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            }
+          ]
+        },
+        {
+          "name": "goal",
+          "kind": "idle",
+          "duration": 1000,
+          "expectedDuration": 1000,
+          "samples": [
+            {
+              "frame": 0,
+              "fraction": 0.05,
+              "x": "0%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 0,
+              "fraction": 0.95,
+              "x": "0%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.05,
+              "x": "20%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.95,
+              "x": "20%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.05,
+              "x": "40%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.95,
+              "x": "40%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.05,
+              "x": "60%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.95,
+              "x": "60%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.05,
+              "x": "80%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.95,
+              "x": "80%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.05,
+              "x": "100%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.95,
+              "x": "100%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            }
+          ]
+        },
+        {
+          "name": "goal",
+          "kind": "action",
+          "duration": 800,
+          "expectedDuration": 800,
+          "samples": [
+            {
+              "frame": 0,
+              "fraction": 0.05,
+              "x": "0%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 0,
+              "fraction": 0.95,
+              "x": "0%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.05,
+              "x": "14.2857%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.95,
+              "x": "14.2857%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.05,
+              "x": "28.5714%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.95,
+              "x": "28.5714%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.05,
+              "x": "42.8571%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.95,
+              "x": "42.8571%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.05,
+              "x": "57.1429%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.95,
+              "x": "57.1429%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.05,
+              "x": "71.4286%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.95,
+              "x": "71.4286%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 6,
+              "fraction": 0.05,
+              "x": "85.7143%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 6,
+              "fraction": 0.95,
+              "x": "85.7143%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 7,
+              "fraction": 0.05,
+              "x": "100%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 7,
+              "fraction": 0.95,
+              "x": "100%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            }
+          ]
+        },
+        {
+          "name": "all",
+          "kind": "idle",
+          "duration": 1000,
+          "expectedDuration": 1000,
+          "samples": [
+            {
+              "frame": 0,
+              "fraction": 0.05,
+              "x": "0%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 0,
+              "fraction": 0.95,
+              "x": "0%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.05,
+              "x": "20%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.95,
+              "x": "20%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.05,
+              "x": "40%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.95,
+              "x": "40%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.05,
+              "x": "60%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.95,
+              "x": "60%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.05,
+              "x": "80%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.95,
+              "x": "80%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.05,
+              "x": "100%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.95,
+              "x": "100%",
+              "y": "0px",
+              "size": "600% 100%",
+              "width": 192
+            }
+          ]
+        },
+        {
+          "name": "all",
+          "kind": "action",
+          "duration": 800,
+          "expectedDuration": 800,
+          "samples": [
+            {
+              "frame": 0,
+              "fraction": 0.05,
+              "x": "0%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 0,
+              "fraction": 0.95,
+              "x": "0%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.05,
+              "x": "14.2857%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.95,
+              "x": "14.2857%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.05,
+              "x": "28.5714%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.95,
+              "x": "28.5714%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.05,
+              "x": "42.8571%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.95,
+              "x": "42.8571%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.05,
+              "x": "57.1429%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.95,
+              "x": "57.1429%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.05,
+              "x": "71.4286%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.95,
+              "x": "71.4286%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 6,
+              "fraction": 0.05,
+              "x": "85.7143%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 6,
+              "fraction": 0.95,
+              "x": "85.7143%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 7,
+              "fraction": 0.05,
+              "x": "100%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            },
+            {
+              "frame": 7,
+              "fraction": 0.95,
+              "x": "100%",
+              "y": "0px",
+              "size": "800% 100%",
+              "width": 192
+            }
+          ]
+        },
+        {
+          "name": "success",
+          "kind": "action",
+          "duration": 1000,
+          "expectedDuration": 1000,
+          "samples": [
+            {
+              "frame": 0,
+              "fraction": 0.05,
+              "x": "0%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 0,
+              "fraction": 0.95,
+              "x": "0%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.05,
+              "x": "11.1111%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 1,
+              "fraction": 0.95,
+              "x": "11.1111%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.05,
+              "x": "22.2222%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 2,
+              "fraction": 0.95,
+              "x": "22.2222%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.05,
+              "x": "33.3333%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 3,
+              "fraction": 0.95,
+              "x": "33.3333%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.05,
+              "x": "44.4444%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 4,
+              "fraction": 0.95,
+              "x": "44.4444%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.05,
+              "x": "55.5556%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 5,
+              "fraction": 0.95,
+              "x": "55.5556%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 6,
+              "fraction": 0.05,
+              "x": "66.6667%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 6,
+              "fraction": 0.95,
+              "x": "66.6667%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 7,
+              "fraction": 0.05,
+              "x": "77.7778%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 7,
+              "fraction": 0.95,
+              "x": "77.7778%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 8,
+              "fraction": 0.05,
+              "x": "88.8889%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 8,
+              "fraction": 0.95,
+              "x": "88.8889%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 9,
+              "fraction": 0.05,
+              "x": "100%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            },
+            {
+              "frame": 9,
+              "fraction": 0.95,
+              "x": "100%",
+              "y": "0px",
+              "size": "1000% 100%",
+              "width": 192
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "chromium: pause/resume, complete once, duplicate end, cancellation, loop and dispose",
+      "status": "PASS",
+      "detail": {
+        "pausedTime": 66.69999999999999,
+        "stoppedTime": 83.39999999999992,
+        "paused": {
+          "profile": "balance",
+          "state": "paused",
+          "clip": "action",
+          "ready": true,
+          "paused": true,
+          "reduced": false
+        },
+        "resumedTime": 150.00000000000034,
+        "once": 1,
+        "duplicate": 1,
+        "cancelled": 1,
+        "looping": 1,
+        "disposed": {
+          "profile": "balance",
+          "state": "disposed",
+          "clip": null,
+          "ready": false,
+          "paused": false,
+          "reduced": false
+        },
+        "afterDispose": 1,
+        "acceptedAfterDispose": false
+      }
+    },
+    {
+      "name": "chromium: current Home honors one action and one idle; repeated interactions do not queue",
+      "status": "PASS",
+      "detail": {
+        "accepted": true,
+        "idle": true,
+        "repeat": false,
+        "rejectedStrong": false,
+        "samples": [
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 0
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 1,
+            "playing": 2
+          },
+          {
+            "strong": 1,
+            "idle": 0,
+            "playing": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "chromium: real IntersectionObserver pauses outside the Frame and resumes the retained timeline",
+      "status": "PASS",
+      "detail": {
+        "before": 33.39999999999943,
+        "after": 33.39999999999943,
+        "state": "paused"
+      }
+    },
+    {
+      "name": "chromium: card navigation disposes sessions; report replacement disposes old players without writes",
+      "status": "PASS",
+      "detail": {
+        "navigation": {
+          "elapsed": 11.800000011920929,
+          "heading": "pw-screen-title",
+          "rootRemoved": true,
+          "oldPlayers": 0,
+          "sessions": 1,
+          "record": true
+        },
+        "replaced": [
+          {
+            "label": "돈 흐름",
+            "state": {
+              "previous": [
+                {
+                  "connected": false,
+                  "state": "disposed"
+                }
+              ],
+              "sessions": 1,
+              "strong": 1,
+              "idle": 0,
+              "players": [
+                {
+                  "profile": "record",
+                  "connected": true
+                }
+              ]
+            }
+          },
+          {
+            "label": "목표",
+            "state": {
+              "previous": [
+                {
+                  "connected": false,
+                  "state": "disposed"
+                }
+              ],
+              "sessions": 1,
+              "strong": 1,
+              "idle": 0,
+              "players": [
+                {
+                  "profile": "goal",
+                  "connected": true
+                }
+              ]
+            }
+          },
+          {
+            "label": "습관",
+            "state": {
+              "previous": [
+                {
+                  "connected": false,
+                  "state": "disposed"
+                }
+              ],
+              "sessions": 1,
+              "strong": 1,
+              "idle": 0,
+              "players": [
+                {
+                  "profile": "report",
+                  "connected": true
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "chromium: hidden-document suspension remains effective in a fixed Frame",
+      "status": "PASS",
+      "detail": {
+        "blocked": true,
+        "playing": 0
+      }
+    },
+    {
+      "name": "chromium: reduced motion during hidden/dialog pause cancels stale timelines without starving the budget",
+      "status": "PASS",
+      "detail": [
+        {
+          "reason": "hidden",
+          "stillBlocked": {
+            "blocked": true,
+            "strong": 0,
+            "idle": 0,
+            "playing": 0
+          },
+          "accepted": true
+        },
+        {
+          "reason": "dialog",
+          "stillBlocked": {
+            "blocked": true,
+            "strong": 0,
+            "idle": 0,
+            "playing": 0
+          },
+          "accepted": true
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    "screenshots/chromium-normal-stage.png"
+  ],
+  "browsers": {
+    "chromium": {
+      "executable": "/Users/jeonghu/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "version": "153.0.8010.12"
+    }
+  },
+  "pageErrors": [],
+  "limitations": [
+    "Synthetic fixture only; no real bank connection or user storage",
+    "Alpha, geometry and timing checks complement manual character/art continuity review",
+    "Visibilitychange contract is simulated; no physical-device battery measurement",
+    "Layout Shift API is unavailable in WebKit; geometry stability is checked in both engines"
+  ],
+  "failure": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(state.sprites.length)\n\n    at reducedAndDecoration (/Users/jeonghu/포켓WON/tests/verify-sprite-stage.cjs:322:36)\n    at async run (/Users/jeonghu/포켓WON/tests/verify-sprite-stage.cjs:426:9)\n    at async /Users/jeonghu/포켓WON/tests/verify-sprite-stage.cjs:436:93",
+  "finishedAt": "2026-10-03T11:54:57.628Z"
+}

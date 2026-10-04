@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "checks": [
+    "chromium user-entered reward review/confirmation (no auto evaluation)",
+    "chromium weekly allowance review and invalid monthly day/cancel",
+    "chromium wishlist direct input/detail/goal preview/deletion (no core goal mutation)",
+    "chromium profile text-only draft, no HTML or storage injection",
+    "chromium consent/export/delete/reset confirmations never mutate",
+    "chromium card settings UI only, no bank/card/payment identifiers",
+    "chromium five temporary notification switches, no OS permission",
+    "chromium repeated native sheets release registry/listeners",
+    "chromium aborted async provider result suppressed",
+    "chromium history accepts UI metadata only",
+    "chromium developer preview blocks original record final save",
+    "webkit user-entered reward review/confirmation (no auto evaluation)",
+    "webkit weekly allowance review and invalid monthly day/cancel",
+    "webkit wishlist direct input/detail/goal preview/deletion (no core goal mutation)",
+    "webkit profile text-only draft, no HTML or storage injection",
+    "webkit consent/export/delete/reset confirmations never mutate",
+    "webkit card settings UI only, no bank/card/payment identifiers",
+    "webkit five temporary notification switches, no OS permission",
+    "webkit repeated native sheets release registry/listeners",
+    "webkit aborted async provider result suppressed",
+    "webkit history accepts UI metadata only",
+    "webkit developer preview blocks original record final save"
+  ],
+  "engines": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12"
+    },
+    {
+      "engine": "webkit",
+      "version": "26.5"
+    }
+  ],
+  "errors": []
+}
