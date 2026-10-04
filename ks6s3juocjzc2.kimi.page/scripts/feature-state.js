@@ -4,7 +4,7 @@ const AI_FEATURE_STATE = Object.freeze({unavailable:'unavailable',idle:'idle',pr
 const PWPreview = (() => {
  const q=new URLSearchParams(location.search),local=['localhost','127.0.0.1','[::1]'].includes(location.hostname)||location.protocol==='file:';
  const enabled=local&&(q.get('preview')==='1'||q.get('aiPreview')==='1'),states=new Map();
- return Object.freeze({enabled,scenario:q.get('previewCase')||'standard',state(id){return enabled?(states.get(id)||q.get('previewState')||'success'):'preparing';},select(id,state){if(enabled)states.set(id,state);}});
+ return Object.freeze({enabled,get readOnly(){return enabled||!!window.PWDemo?.enabled;},scenario:q.get('previewCase')||'standard',state(id){return enabled?(states.get(id)||q.get('previewState')||'success'):'preparing';},select(id,state){if(enabled)states.set(id,state);}});
 })();
 const PW_FEATURES = Object.freeze(Object.fromEntries([
  ['habit-analysis','AI 습관 분석','report','ai',true],['coaching','AI 코칭','all','habit',true],['ai-report','AI 습관 리포트','report','ai',true],['parent-view','부모님과 함께 보기','goal','together',true],['next-plan','다음 용돈·목표 계획','goal','together',true],['receipt','영수증으로 기록','record','convenience',true],['category-suggestion','AI 추천 카테고리','record','convenience',true],['quiz','금융 퀴즈','report','learning',true],['reflection','사기 전 생각 도우미','balance','convenience',true],

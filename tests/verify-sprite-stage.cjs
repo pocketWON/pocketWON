@@ -12,7 +12,7 @@ const app = path.join(root, 'ks6s3juocjzc2.kimi.page');
 const output = path.resolve(root, process.env.PW_EVIDENCE_ROOT || 'evidence/SINGLE-SCREEN/sprite-stage-' + new Date().toISOString().replace(/[:.]/g, '-'), 'sprites');
 const origin = process.env.PW_BASE_URL || 'http://127.0.0.1:4173';
 assert(['localhost', '127.0.0.1'].includes(new URL(origin).hostname), 'Only use isolated local origin');
-const url = `${origin}/ks6s3juocjzc2.kimi.page/index.html`;
+const url = `${origin}/ks6s3juocjzc2.kimi.page/index.html?demo=0`;
 const snapshot = fs.readFileSync(path.join(root, 'preservation/PW-WOORI-01/original-index.html.txt'), 'utf8');
 const fixture = JSON.parse(JSON.stringify(vm.runInNewContext(`(${snapshot.match(/const defaultState = (\{[\s\S]*?\n        \});/)[1]})`)));
 fs.mkdirSync(path.join(output, 'screenshots'), { recursive: true });

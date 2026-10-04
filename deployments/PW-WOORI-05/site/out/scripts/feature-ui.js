@@ -21,7 +21,7 @@ const PWFeatureUI=(()=>{
  }
  function page(id,loaded,navigate,options={}){
   const info=PW_FEATURES[id],root=el('div','pw-screen pw-feature');root.dataset.feature=id;root.dataset.stage='detail';root.append(PWUI.heading(info.title));
-  const header=el('div','pw-feature-header'),back=action('‹',()=>window.PWNavigation?PWNavigation.back(options.returnTo||{screen:'all',group:info.group}):navigate(options.returnTo||'all'),true);back.className='pw-icon-button';back.setAttribute('aria-label','이전 화면');const title=el('div','pw-feature-heading');title.append(el('h2','',info.title),chip(PWPreview.enabled?'preview':info.state));header.append(back,title);
+  const header=el('div','pw-feature-header'),back=action('‹',()=>window.PWNavigation?PWNavigation.back(options.returnTo||{screen:'all',group:info.group}):navigate(options.returnTo||'all'),true);back.className='pw-icon-button';back.setAttribute('aria-label','이전 화면');const title=el('div','pw-feature-heading');title.append(el('h2','',info.title),chip(PWPreview.enabled||window.PWDemo?.enabled?'preview':info.state,window.PWDemo?.enabled?'가상 데이터':undefined));header.append(back,title);
   const body=el('div','pw-feature-body'),footer=el('div','pw-feature-footer');body.setAttribute('role','region');body.setAttribute('aria-label',info.title+' 내용');body.tabIndex=0;root.append(header,body,footer);
   if(PWPreview.enabled)body.append(notice('개발용 예제 데이터예요. 실제 분석·연결·저장은 하지 않아요. 기존 금융 저장도 이 모드에서는 사용할 수 없어요.'));
   const cleanup=new Set();let disposed=false,observer;

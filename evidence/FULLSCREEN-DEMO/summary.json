@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "checks": {
+    "viewport-final": {
+      "status": "PASS",
+      "cases": 216
+    },
+    "data-complete": {
+      "status": "PASS",
+      "cases": 2
+    },
+    "flows-final": {
+      "status": "PASS",
+      "cases": 22
+    },
+    "record-keyboard-pass2": {
+      "status": "PASS",
+      "cases": 20
+    },
+    "dashboard-final": {
+      "status": "PASS",
+      "cases": 2
+    },
+    "dashboard-edges-verified": {
+      "status": "PASS",
+      "cases": 16
+    },
+    "header-final": {
+      "status": "PASS",
+      "cases": 16
+    }
+  },
+  "delivery": {
+    "status": "PASS",
+    "historicalAndSourceFilesPreserved": 1168,
+    "sourceAndMirrorFilesMatched": 82,
+    "publicDeploymentPerformed": false
+  },
+  "notes": [
+    "Default values are labeled virtual data; real storage is untouched.",
+    "Browser UI hiding requires user activation or supported installed app mode.",
+    "Content may scale down on small screens; navigation remains 84px.",
+    "Keyboard and safe areas are simulated, not physical-device tested."
+  ]
+}

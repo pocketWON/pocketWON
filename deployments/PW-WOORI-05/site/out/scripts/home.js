@@ -89,7 +89,8 @@ function createHomeDashboardModel(loaded, now = new Date()) {
 function createHomeView(model, navigate, status, loaded = { status, state: null }) {
   const { el, button, heading, money } = PWUI;
   const format = new Intl.NumberFormat('ko-KR'), compact = new Intl.NumberFormat('ko-KR', { maximumFractionDigits: 1 });
-  const dashboard = createHomeDashboardModel(loaded), root = el('div', 'pw-screen pw-home'), sheets = new Set();
+  const base = createHomeDashboardModel(loaded, window.PWDemo?.enabled ? PWDemo.now : new Date());
+  const dashboard = window.PWDemo?.enabled ? PWDemo.dashboard(base) : base, root = el('div', 'pw-screen pw-home'), sheets = new Set();
   root.append(heading('홈'));
   let disposed = false;
   const number = value => Number.isSafeInteger(value) ? format.format(value) : '확인 안 됨';
@@ -162,6 +163,7 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
   }
   function allowanceHero() {
     const hero = el('section', 'pw-home-hero'); hero.dataset.pwMotionCard = '';
+    if(window.PWDemo?.enabled)hero.append(el('span','pw-demo-badge','가상 데이터'));
     hero.setAttribute('aria-labelledby', 'pw-home-balance-title');
     const body = el('div', 'pw-home-hero-body'), title = el('h2'); title.id = 'pw-home-balance-title';
     const titleAction = link('지금 남은 용돈', { screen: 'record', stage: 'list' }, 'pw-home-hero-title', 'list');

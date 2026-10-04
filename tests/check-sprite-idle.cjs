@@ -28,7 +28,7 @@ function executable(engine, type) {
         const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'no-preference' });
         const page = await context.newPage();
         const errors = []; page.on('pageerror', error => errors.push(error.message));
-        await page.goto(`${origin}/ks6s3juocjzc2.kimi.page/index.html`);
+        await page.goto(`${origin}/ks6s3juocjzc2.kimi.page/index.html?demo=0`);
         await page.waitForFunction(() => typeof PW_SPRITE_PROFILES !== 'undefined' && PW_SPRITE_PROFILES.balance?.clips?.idle);
         await page.evaluate(() => document.fonts.ready);
         await page.waitForTimeout(450);

@@ -1,0 +1,9 @@
+PASS current week uses browser-local Monday–Sunday, excludes income/invalid dates and keeps source positions
+PASS daily integer overflow remains unknown without affecting other days
+PASS valid zero is distinct from empty storage, missing data, failed reads and future dates
+PASS Sunday/Monday, month and year boundary geometry keeps local dates
+PASS saved home values and financial functions stay intact; dashboard never writes storage
+PASS donut uses the current local calendar month, excludes future/income/invalid rows, and maps legacy labels without mutation
+PASS rounded shares sum to 100; real zero, unavailable sources and aggregate overflow remain distinct
+PASS live balance and goal state bind exactly; unavailable saving/AI sources never become fictional successes
+PASS unsafe recent habit aggregates stay unknown; future/out-of-window rows cannot poison independent current scores

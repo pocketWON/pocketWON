@@ -31,7 +31,7 @@ function createRecordView(initialLoad, navigate, options = {}) {
     const notice = el('p', 'pw-muted pw-record-notice');
     if (!['loaded', 'empty'].includes(loaded.status)) {
       notice.textContent = '저장된 용돈 정보를 불러오지 못했어요.';
-      toolbar.replaceChildren(el('h2', 'pw-record-section-title', '기록 내역'), smallButton('다시 불러오기', () => { loaded = loadPocketWONState(); showList(); }));
+      toolbar.replaceChildren(el('h2', 'pw-record-section-title', '기록 내역'), smallButton('다시 불러오기', () => { loaded = (window.PWDemo?.enabled ? PWDemo.load() : loadPocketWONState()); showList(); }));
     } else if (current.history === 'partial' || current.history === 'unavailable') notice.textContent = '일부 기록 정보를 확인할 수 없어요.';
     notice.hidden = !notice.textContent;
     const paging = el('nav', 'pw-record-pagination'); paging.setAttribute('aria-label', '기록 페이지');
@@ -137,7 +137,7 @@ function createRecordView(initialLoad, navigate, options = {}) {
   function openWizard(event) {
     if (disposed || wizard?.dialog.open) return;
     returnFocus = event?.currentTarget || root.querySelector('.pw-record-add') || document.activeElement;
-    validationLoad = loadPocketWONState();
+    validationLoad = (window.PWDemo?.enabled ? PWDemo.load() : loadPocketWONState());
     draft = { type: '', amount: '', category: '', memo: '' }; step = 'type'; busy = false; submitted = false;
     stopWizardPager(); wizard?.dispose(); wizard = PWUI.flow('돈 기록하기', cancelWizard); wizard.dialog.classList.add('pw-record-sheet');
     wizard.back.addEventListener('click', () => { if (!busy && draft) { step = steps()[Math.max(0, steps().indexOf(step) - 1)]; renderStep(); } });
@@ -164,15 +164,15 @@ function createRecordView(initialLoad, navigate, options = {}) {
     const next = button(step === 'confirm' ? '기록 저장' : step === 'memo' && !draft.memo ? '건너뛰기' : '다음', () => {
       if (busy || submitted || !draft || composing) return;
       if (step === 'confirm') { saveDraft(error, next); return; }
-      const checked = checkDraft(), message = checked.errors[step],preview=step==='confirm'&&typeof PWPreview!=='undefined'&&PWPreview.enabled;
+      const checked = checkDraft(), message = checked.errors[step],preview=step==='confirm'&&typeof PWPreview!=='undefined'&&PWPreview.readOnly;
       if (message) { error.textContent = message; error.hidden = false; controls[0]?.focus({ preventScroll: true }); return; }
       step = steps()[steps().indexOf(step) + 1]; renderStep(); focusStep();
     });
     const update = () => {
-      const checked = checkDraft(), message = checked.errors[step],preview=step==='confirm'&&typeof PWPreview!=='undefined'&&PWPreview.enabled;
+      const checked = checkDraft(), message = checked.errors[step],preview=step==='confirm'&&typeof PWPreview!=='undefined'&&PWPreview.readOnly;
       next.disabled = busy || submitted || preview || (step !== 'confirm' && !!message);
       if (step === 'memo') next.textContent = draft.memo ? '다음' : '건너뛰기';
-      error.textContent = preview?'개발용 Preview에서는 실제 기록을 저장하지 않아요.':message || ''; error.hidden = !message&&!preview;
+      error.textContent = preview?'가상 데이터 화면에서는 실제 기록을 저장하지 않아요.':message || ''; error.hidden = !message&&!preview;
       for (const control of controls) control.setAttribute('aria-invalid', message ? 'true' : 'false');
     };
     const choice = (name, value, label, className) => {
@@ -221,12 +221,12 @@ function createRecordView(initialLoad, navigate, options = {}) {
     if (wizardPager) wizardPager.mount();
     // Initial untouched fields stay quiet; clicking or entering a value reveals errors.
     next.disabled = step !== 'confirm' && !!checkDraft().errors[step];
-     if(step==='confirm'&&typeof PWPreview!=='undefined'&&PWPreview.enabled){next.disabled=true;error.textContent='개발용 Preview에서는 실제 기록을 저장하지 않아요.';error.hidden=false;}
+     if(step==='confirm'&&typeof PWPreview!=='undefined'&&PWPreview.readOnly){next.disabled=true;error.textContent='가상 데이터 화면에서는 실제 기록을 저장하지 않아요.';error.hidden=false;}
   }
   function saveDraft(error, save) {
-    if (disposed || !wizard.dialog.open || !draft || busy || submitted || (typeof PWPreview!=='undefined'&&PWPreview.enabled)) return;
+    if (disposed || !wizard.dialog.open || !draft || busy || submitted || (typeof PWPreview!=='undefined'&&PWPreview.readOnly)) return;
     busy = true; save.disabled = true;
-    validationLoad = loadPocketWONState();
+    validationLoad = (window.PWDemo?.enabled ? PWDemo.load() : loadPocketWONState());
     const checked = checkDraft();
     if (!checked.valid) {
       busy = false; save.disabled = false;

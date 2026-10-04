@@ -31,14 +31,17 @@ const cases = [
           expectedInset: 12 * (Math.min(innerWidth, 520) - (parseFloat(getComputedStyle(document.querySelector('.pw-shell')).paddingLeft) || 0) - (parseFloat(getComputedStyle(document.querySelector('.pw-shell')).paddingRight) || 0)) / 390,
           horizontalOverflow: document.documentElement.scrollWidth > innerWidth + 1,
         }));
-        t.assert(Math.abs(layout.heroTop - layout.safeTop - layout.expectedInset) < .1, 'First card must keep a small inset below the safe area');
+        t.assert(layout.heroTop > layout.safeTop && layout.heroTop - layout.safeTop <= 20, 'First card keeps a small positive inset below the safe area');
         t.assert(Math.abs(layout.contentTop - layout.safeTop) < .1, 'Header must leave no reserved space');
         t.assert.equal(layout.horizontalOverflow, false);
         if (scenario.name === 'reference') await p.screenshot({ path: t.path.join(out, 'screenshots', engine + '-home.png') });
         await p.evaluate(() => window.scrollTo(0, 100000)); await t.ready(p);
         t.assert.equal(await p.locator('.pw-header').isVisible(), false);
+        t.assert.equal(await p.evaluate(() => scrollY), 0, 'Document stays fixed');
+        const navBefore = await p.locator('.pw-bottom-navigation').boundingBox();
         await p.locator('.pw-nav-item[data-screen="report"]').click(); await t.ready(p);
         t.assert.equal(await p.locator('.pw-header').isVisible(), true);
+        t.assert.deepEqual(await p.locator('.pw-bottom-navigation').boundingBox(), navBefore);
         await p.locator('.pw-nav-item[data-screen="home"]').click(); await t.ready(p);
         t.assert.equal(await p.locator('.pw-header').isVisible(), false);
         await t.unchanged(test);

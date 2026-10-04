@@ -1,0 +1,12 @@
+{
+  "status": "FAIL",
+  "checks": [],
+  "engines": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12"
+    }
+  ],
+  "errors": [],
+  "failure": "AssertionError [ERR_ASSERTION]: {\"accessible\":false,\"width\":320,\"height\":568,\"main\":{\"x\":0,\"y\":48,\"right\":320,\"bottom\":484,\"width\":320,\"height\":436},\"nav\":{\"x\":0,\"y\":484,\"right\":320,\"bottom\":568,\"width\":320,\"height\":84},\"dialog\":{\"x\":0,\"y\":0,\"right\":320,\"bottom\":484,\"width\":320,\"height\":484},\"headers\":[{\"className\":\"pw-flow-header\",\"box\":{\"x\":12,\"y\":-282,\"right\":308,\"bottom\":-234,\"width\":296,\"height\":48}},{\"className\":\"pw-flow-footer\",\"box\":{\"x\":12,\"y\":82,\"right\":308,\"bottom\":202,\"width\":296,\"height\":120}}],\"horizontal\":false,\"buttons\":[{\"label\":\"‹\",\"box\":{\"x\":12,\"y\":-282,\"right\":60,\"bottom\":-234,\"width\":48,\"height\":48}},{\"label\":\"×\",\"box\":{\"x\":260,\"y\":-282,\"right\":308,\"bottom\":-234,\"width\":48,\"height\":48}},{\"label\":\"임시 약속 화면 확인\",\"box\":{\"x\":15,\"y\":90,\"right\":305,\"bottom\":138,\"width\":290,\"height\":48}},{\"label\":\"다시 입력\",\"box\":{\"x\":15,\"y\":146,\"right\":305,\"bottom\":194,\"width\":290,\"height\":48}}],\"limit\":568}\n    at geometry (/Users/jeonghu/포켓WON/tests/product-test-utils.cjs:20:1242)\n    at async /Users/jeonghu/포켓WON/tests/verify-product-flows.cjs:4:359"
+}

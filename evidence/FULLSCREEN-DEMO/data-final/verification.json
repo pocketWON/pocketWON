@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "engine": "chromium",
+      "demoValues": true,
+      "consistentTotals": true,
+      "recordAndGoalSaveBlocked": true,
+      "existingDataRestored": true,
+      "storageWrites": 0,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "demoValues": true,
+      "consistentTotals": true,
+      "recordAndGoalSaveBlocked": true,
+      "existingDataRestored": true,
+      "storageWrites": 0,
+      "errors": []
+    }
+  ]
+}

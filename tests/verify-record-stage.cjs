@@ -9,7 +9,7 @@ const root = path.resolve(__dirname, '..');
 const output = path.resolve(root, process.env.PW_EVIDENCE_ROOT || 'evidence/SINGLE-SCREEN/record-stage-' + new Date().toISOString().replace(/[:.]/g, '-'));
 const origin = process.env.PW_BASE_URL || 'http://127.0.0.1:4173';
 assert(['localhost', '127.0.0.1'].includes(new URL(origin).hostname));
-const url = origin + '/ks6s3juocjzc2.kimi.page/index.html';
+const url = origin + '/ks6s3juocjzc2.kimi.page/index.html?demo=0';
 const original = fs.readFileSync(path.join(root, 'preservation/PW-WOORI-01/original-index.html.txt'), 'utf8');
 const fixture = JSON.parse(JSON.stringify(vm.runInNewContext('(' + original.match(/const defaultState = (\{[\s\S]*?\n        \});/)[1] + ')')));
 const copy = data => JSON.parse(JSON.stringify(data));

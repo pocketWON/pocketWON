@@ -1,0 +1,1425 @@
+{
+  "startedAt": "2026-10-04T03:00:35.857Z",
+  "visualViewport": {
+    "height": 260,
+    "scale": 1,
+    "offsetTop": 0
+  },
+  "checks": [],
+  "errors": [],
+  "samples": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "name": "type-transient260",
+      "step": "type",
+      "compact": "true",
+      "keyboard": "true",
+      "dialog": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 260,
+        "bottom": 260,
+        "right": 320
+      },
+      "body": {
+        "x": 12,
+        "y": 96.1875,
+        "width": 296,
+        "height": 76.796875,
+        "bottom": 172.984375,
+        "right": 308
+      },
+      "parts": [
+        {
+          "selector": ".pw-flow-header",
+          "text": "‹돈 기록하기×",
+          "box": {
+            "x": 12,
+            "y": 20,
+            "width": 296,
+            "height": 48,
+            "bottom": 68,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-progress",
+          "text": "1 / 4",
+          "box": {
+            "x": 12,
+            "y": 74,
+            "width": 296,
+            "height": 16.1875,
+            "bottom": 90.1875,
+            "right": 308
+          },
+          "clientHeight": 16,
+          "scrollHeight": 16,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "12px"
+        },
+        {
+          "selector": ".pw-flow-body",
+          "text": "어떤 돈인가요?받은 돈쓴 돈",
+          "box": {
+            "x": 12,
+            "y": 96.1875,
+            "width": 296,
+            "height": 76.796875,
+            "bottom": 172.984375,
+            "right": 308
+          },
+          "clientHeight": 77,
+          "scrollHeight": 77,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-footer",
+          "text": "다음",
+          "box": {
+            "x": 12,
+            "y": 212,
+            "width": 296,
+            "height": 48,
+            "bottom": 260,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-field",
+          "text": "어떤 돈인가요?받은 돈쓴 돈",
+          "box": {
+            "x": 12,
+            "y": 96.1875,
+            "width": 296,
+            "height": 76.796875,
+            "bottom": 172.984375,
+            "right": 308
+          },
+          "clientHeight": 77,
+          "scrollHeight": 77,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-label",
+          "text": "어떤 돈인가요?",
+          "box": {
+            "x": 12,
+            "y": 96.1875,
+            "width": 99.375,
+            "height": 20.796875,
+            "bottom": 116.984375,
+            "right": 111.375
+          },
+          "clientHeight": 21,
+          "scrollHeight": 21,
+          "clientWidth": 99,
+          "scrollWidth": 99,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-choice>span",
+          "text": "받은 돈",
+          "box": {
+            "x": 12,
+            "y": 116.984375,
+            "width": 144,
+            "height": 56,
+            "bottom": 172.984375,
+            "right": 156
+          },
+          "clientHeight": 54,
+          "scrollHeight": 54,
+          "clientWidth": 142,
+          "scrollWidth": 142,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-choice>span",
+          "text": "쓴 돈",
+          "box": {
+            "x": 164,
+            "y": 116.984375,
+            "width": 144,
+            "height": 56,
+            "bottom": 172.984375,
+            "right": 308
+          },
+          "clientHeight": 54,
+          "scrollHeight": 54,
+          "clientWidth": 142,
+          "scrollWidth": 142,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-footer>.pw-button",
+          "text": "다음",
+          "box": {
+            "x": 12,
+            "y": 212,
+            "width": 296,
+            "height": 48,
+            "bottom": 260,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "15px"
+        }
+      ],
+      "overflow": [],
+      "frameOverflow": [],
+      "dialogScroll": {
+        "height": 260,
+        "clientHeight": 260,
+        "width": 320,
+        "clientWidth": 320
+      },
+      "bodyScroll": {
+        "height": 77,
+        "clientHeight": 77,
+        "width": 296,
+        "clientWidth": 296
+      }
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "name": "amount-empty",
+      "step": "amount",
+      "compact": "true",
+      "keyboard": "true",
+      "dialog": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 260,
+        "bottom": 260,
+        "right": 320
+      },
+      "body": {
+        "x": 12,
+        "y": 96.1875,
+        "width": 296,
+        "height": 110,
+        "bottom": 206.1875,
+        "right": 308
+      },
+      "parts": [
+        {
+          "selector": ".pw-flow-header",
+          "text": "‹돈 기록하기×",
+          "box": {
+            "x": 12,
+            "y": 20,
+            "width": 296,
+            "height": 48,
+            "bottom": 68,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-progress",
+          "text": "2 / 5",
+          "box": {
+            "x": 12,
+            "y": 74,
+            "width": 296,
+            "height": 16.1875,
+            "bottom": 90.1875,
+            "right": 308
+          },
+          "clientHeight": 16,
+          "scrollHeight": 16,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "12px"
+        },
+        {
+          "selector": ".pw-flow-body",
+          "text": "얼마인가요?0원원 단위로 숫자만 입력해주세요.",
+          "box": {
+            "x": 12,
+            "y": 96.1875,
+            "width": 296,
+            "height": 110,
+            "bottom": 206.1875,
+            "right": 308
+          },
+          "clientHeight": 110,
+          "scrollHeight": 110,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-footer",
+          "text": "다음",
+          "box": {
+            "x": 12,
+            "y": 212,
+            "width": 296,
+            "height": 48,
+            "bottom": 260,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-field",
+          "text": "얼마인가요?0원원 단위로 숫자만 입력해주세요.",
+          "box": {
+            "x": 12,
+            "y": 112.953125,
+            "width": 296,
+            "height": 76.46875,
+            "bottom": 189.421875,
+            "right": 308
+          },
+          "clientHeight": 76,
+          "scrollHeight": 76,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-label",
+          "text": "얼마인가요?",
+          "box": {
+            "x": 12,
+            "y": 112.953125,
+            "width": 296,
+            "height": 20.796875,
+            "bottom": 133.75,
+            "right": 308
+          },
+          "clientHeight": 21,
+          "scrollHeight": 21,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-input",
+          "text": "",
+          "box": {
+            "x": 12,
+            "y": 139.75,
+            "width": 296,
+            "height": 49.671875,
+            "bottom": 189.421875,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 294,
+          "scrollWidth": 294,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-footer>.pw-button",
+          "text": "다음",
+          "box": {
+            "x": 12,
+            "y": 212,
+            "width": 296,
+            "height": 48,
+            "bottom": 260,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "15px"
+        }
+      ],
+      "overflow": [],
+      "frameOverflow": [],
+      "dialogScroll": {
+        "height": 260,
+        "clientHeight": 260,
+        "width": 320,
+        "clientWidth": 320
+      },
+      "bodyScroll": {
+        "height": 110,
+        "clientHeight": 110,
+        "width": 296,
+        "clientWidth": 296
+      }
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "name": "amount-invalid",
+      "step": "amount",
+      "compact": "true",
+      "keyboard": "true",
+      "dialog": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 260,
+        "bottom": 260,
+        "right": 320
+      },
+      "body": {
+        "x": 12,
+        "y": 96.1875,
+        "width": 296,
+        "height": 110,
+        "bottom": 206.1875,
+        "right": 308
+      },
+      "parts": [
+        {
+          "selector": ".pw-flow-header",
+          "text": "‹돈 기록하기×",
+          "box": {
+            "x": 12,
+            "y": 20,
+            "width": 296,
+            "height": 48,
+            "bottom": 68,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-progress",
+          "text": "2 / 5",
+          "box": {
+            "x": 12,
+            "y": 74,
+            "width": 296,
+            "height": 16.1875,
+            "bottom": 90.1875,
+            "right": 308
+          },
+          "clientHeight": 16,
+          "scrollHeight": 16,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "12px"
+        },
+        {
+          "selector": ".pw-flow-body",
+          "text": "얼마인가요?금액 확인원 단위로 숫자만 입력해주세요.1원 이상의 정수로 입력해주세요.",
+          "box": {
+            "x": 12,
+            "y": 96.1875,
+            "width": 296,
+            "height": 110,
+            "bottom": 206.1875,
+            "right": 308
+          },
+          "clientHeight": 110,
+          "scrollHeight": 110,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-footer",
+          "text": "다음",
+          "box": {
+            "x": 12,
+            "y": 212,
+            "width": 296,
+            "height": 48,
+            "bottom": 260,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-field",
+          "text": "얼마인가요?금액 확인원 단위로 숫자만 입력해주세요.1원 이상의 정수로 입력해주세요.",
+          "box": {
+            "x": 12,
+            "y": 100.15625,
+            "width": 296,
+            "height": 102.0625,
+            "bottom": 202.21875,
+            "right": 308
+          },
+          "clientHeight": 102,
+          "scrollHeight": 102,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-label",
+          "text": "얼마인가요?",
+          "box": {
+            "x": 12,
+            "y": 100.15625,
+            "width": 296,
+            "height": 20.796875,
+            "bottom": 120.953125,
+            "right": 308
+          },
+          "clientHeight": 21,
+          "scrollHeight": 21,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-input",
+          "text": "",
+          "box": {
+            "x": 12,
+            "y": 126.953125,
+            "width": 296,
+            "height": 49.671875,
+            "bottom": 176.625,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 294,
+          "scrollWidth": 294,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-error",
+          "text": "1원 이상의 정수로 입력해주세요.",
+          "box": {
+            "x": 12,
+            "y": 182.625,
+            "width": 296,
+            "height": 19.59375,
+            "bottom": 202.21875,
+            "right": 308
+          },
+          "clientHeight": 20,
+          "scrollHeight": 20,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "14px"
+        },
+        {
+          "selector": ".pw-flow-footer>.pw-button",
+          "text": "다음",
+          "box": {
+            "x": 12,
+            "y": 212,
+            "width": 296,
+            "height": 48,
+            "bottom": 260,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "15px"
+        }
+      ],
+      "overflow": [],
+      "frameOverflow": [],
+      "dialogScroll": {
+        "height": 260,
+        "clientHeight": 260,
+        "width": 320,
+        "clientWidth": 320
+      },
+      "bodyScroll": {
+        "height": 110,
+        "clientHeight": 110,
+        "width": 296,
+        "clientWidth": 296
+      }
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "name": "amount-unsafe",
+      "step": "amount",
+      "compact": "true",
+      "keyboard": "true",
+      "dialog": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 260,
+        "bottom": 260,
+        "right": 320
+      },
+      "body": {
+        "x": 12,
+        "y": 96.1875,
+        "width": 296,
+        "height": 110,
+        "bottom": 206.1875,
+        "right": 308
+      },
+      "parts": [
+        {
+          "selector": ".pw-flow-header",
+          "text": "‹돈 기록하기×",
+          "box": {
+            "x": 12,
+            "y": 20,
+            "width": 296,
+            "height": 48,
+            "bottom": 68,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-progress",
+          "text": "2 / 5",
+          "box": {
+            "x": 12,
+            "y": 74,
+            "width": 296,
+            "height": 16.1875,
+            "bottom": 90.1875,
+            "right": 308
+          },
+          "clientHeight": 16,
+          "scrollHeight": 16,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "12px"
+        },
+        {
+          "selector": ".pw-flow-body",
+          "text": "얼마인가요?금액 확인원 단위로 숫자만 입력해주세요.1원 이상의 정수로 입력해주세요.",
+          "box": {
+            "x": 12,
+            "y": 96.1875,
+            "width": 296,
+            "height": 110,
+            "bottom": 206.1875,
+            "right": 308
+          },
+          "clientHeight": 110,
+          "scrollHeight": 110,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-footer",
+          "text": "다음",
+          "box": {
+            "x": 12,
+            "y": 212,
+            "width": 296,
+            "height": 48,
+            "bottom": 260,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-field",
+          "text": "얼마인가요?금액 확인원 단위로 숫자만 입력해주세요.1원 이상의 정수로 입력해주세요.",
+          "box": {
+            "x": 12,
+            "y": 100.15625,
+            "width": 296,
+            "height": 102.0625,
+            "bottom": 202.21875,
+            "right": 308
+          },
+          "clientHeight": 102,
+          "scrollHeight": 102,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-label",
+          "text": "얼마인가요?",
+          "box": {
+            "x": 12,
+            "y": 100.15625,
+            "width": 296,
+            "height": 20.796875,
+            "bottom": 120.953125,
+            "right": 308
+          },
+          "clientHeight": 21,
+          "scrollHeight": 21,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-input",
+          "text": "",
+          "box": {
+            "x": 12,
+            "y": 126.953125,
+            "width": 296,
+            "height": 49.671875,
+            "bottom": 176.625,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 294,
+          "scrollWidth": 294,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-error",
+          "text": "1원 이상의 정수로 입력해주세요.",
+          "box": {
+            "x": 12,
+            "y": 182.625,
+            "width": 296,
+            "height": 19.59375,
+            "bottom": 202.21875,
+            "right": 308
+          },
+          "clientHeight": 20,
+          "scrollHeight": 20,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "14px"
+        },
+        {
+          "selector": ".pw-flow-footer>.pw-button",
+          "text": "다음",
+          "box": {
+            "x": 12,
+            "y": 212,
+            "width": 296,
+            "height": 48,
+            "bottom": 260,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "15px"
+        }
+      ],
+      "overflow": [],
+      "frameOverflow": [],
+      "dialogScroll": {
+        "height": 260,
+        "clientHeight": 260,
+        "width": 320,
+        "clientWidth": 320
+      },
+      "bodyScroll": {
+        "height": 110,
+        "clientHeight": 110,
+        "width": 296,
+        "clientWidth": 296
+      }
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "name": "amount-MAXSAFE",
+      "step": "amount",
+      "compact": "true",
+      "keyboard": "true",
+      "dialog": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 260,
+        "bottom": 260,
+        "right": 320
+      },
+      "body": {
+        "x": 12,
+        "y": 96.1875,
+        "width": 296,
+        "height": 110,
+        "bottom": 206.1875,
+        "right": 308
+      },
+      "parts": [
+        {
+          "selector": ".pw-flow-header",
+          "text": "‹돈 기록하기×",
+          "box": {
+            "x": 12,
+            "y": 20,
+            "width": 296,
+            "height": 48,
+            "bottom": 68,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-progress",
+          "text": "2 / 5",
+          "box": {
+            "x": 12,
+            "y": 74,
+            "width": 296,
+            "height": 16.1875,
+            "bottom": 90.1875,
+            "right": 308
+          },
+          "clientHeight": 16,
+          "scrollHeight": 16,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "12px"
+        },
+        {
+          "selector": ".pw-flow-body",
+          "text": "얼마인가요?9,007,199,254,740,991원원 단위로 숫자만 입력해주세요.",
+          "box": {
+            "x": 12,
+            "y": 96.1875,
+            "width": 296,
+            "height": 110,
+            "bottom": 206.1875,
+            "right": 308
+          },
+          "clientHeight": 110,
+          "scrollHeight": 110,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-footer",
+          "text": "다음",
+          "box": {
+            "x": 12,
+            "y": 212,
+            "width": 296,
+            "height": 48,
+            "bottom": 260,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-field",
+          "text": "얼마인가요?9,007,199,254,740,991원원 단위로 숫자만 입력해주세요.",
+          "box": {
+            "x": 12,
+            "y": 112.953125,
+            "width": 296,
+            "height": 76.46875,
+            "bottom": 189.421875,
+            "right": 308
+          },
+          "clientHeight": 76,
+          "scrollHeight": 76,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-label",
+          "text": "얼마인가요?",
+          "box": {
+            "x": 12,
+            "y": 112.953125,
+            "width": 296,
+            "height": 20.796875,
+            "bottom": 133.75,
+            "right": 308
+          },
+          "clientHeight": 21,
+          "scrollHeight": 21,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-input",
+          "text": "",
+          "box": {
+            "x": 12,
+            "y": 139.75,
+            "width": 296,
+            "height": 49.671875,
+            "bottom": 189.421875,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 294,
+          "scrollWidth": 294,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-footer>.pw-button",
+          "text": "다음",
+          "box": {
+            "x": 12,
+            "y": 212,
+            "width": 296,
+            "height": 48,
+            "bottom": 260,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "15px"
+        }
+      ],
+      "overflow": [],
+      "frameOverflow": [],
+      "dialogScroll": {
+        "height": 260,
+        "clientHeight": 260,
+        "width": 320,
+        "clientWidth": 320
+      },
+      "bodyScroll": {
+        "height": 110,
+        "clientHeight": 110,
+        "width": 296,
+        "clientWidth": 296
+      }
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "name": "category-transient260",
+      "step": "category",
+      "compact": "true",
+      "keyboard": "true",
+      "dialog": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 260,
+        "bottom": 260,
+        "right": 320
+      },
+      "body": {
+        "x": 12,
+        "y": 74,
+        "width": 296,
+        "height": 122.796875,
+        "bottom": 196.796875,
+        "right": 308
+      },
+      "parts": [
+        {
+          "selector": ".pw-flow-header",
+          "text": "‹돈 기록하기×",
+          "box": {
+            "x": 12,
+            "y": 20,
+            "width": 296,
+            "height": 48,
+            "bottom": 68,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-body",
+          "text": "어디에 썼나요?간식문구게임교통기타AI 추천 카테고리 준비 중 · 지금은 직접 골라주세요.",
+          "box": {
+            "x": 12,
+            "y": 74,
+            "width": 296,
+            "height": 122.796875,
+            "bottom": 196.796875,
+            "right": 308
+          },
+          "clientHeight": 123,
+          "scrollHeight": 123,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-footer",
+          "text": "다음",
+          "box": {
+            "x": 12,
+            "y": 212,
+            "width": 296,
+            "height": 48,
+            "bottom": 260,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-field",
+          "text": "어디에 썼나요?간식문구게임교통기타AI 추천 카테고리 준비 중 · 지금은 직접 골라주세요.",
+          "box": {
+            "x": 12,
+            "y": 74,
+            "width": 296,
+            "height": 122.796875,
+            "bottom": 196.796875,
+            "right": 308
+          },
+          "clientHeight": 123,
+          "scrollHeight": 123,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-label",
+          "text": "어디에 썼나요?",
+          "box": {
+            "x": 12,
+            "y": 74,
+            "width": 99.375,
+            "height": 20.796875,
+            "bottom": 94.796875,
+            "right": 111.375
+          },
+          "clientHeight": 21,
+          "scrollHeight": 21,
+          "clientWidth": 99,
+          "scrollWidth": 99,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-chip>span",
+          "text": "간식",
+          "box": {
+            "x": 12,
+            "y": 94.796875,
+            "width": 94.65625,
+            "height": 48,
+            "bottom": 142.796875,
+            "right": 106.65625
+          },
+          "clientHeight": 46,
+          "scrollHeight": 46,
+          "clientWidth": 93,
+          "scrollWidth": 93,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-chip>span",
+          "text": "문구",
+          "box": {
+            "x": 112.65625,
+            "y": 94.796875,
+            "width": 94.671875,
+            "height": 48,
+            "bottom": 142.796875,
+            "right": 207.328125
+          },
+          "clientHeight": 46,
+          "scrollHeight": 46,
+          "clientWidth": 93,
+          "scrollWidth": 93,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-chip>span",
+          "text": "게임",
+          "box": {
+            "x": 213.328125,
+            "y": 94.796875,
+            "width": 94.65625,
+            "height": 48,
+            "bottom": 142.796875,
+            "right": 307.984375
+          },
+          "clientHeight": 46,
+          "scrollHeight": 46,
+          "clientWidth": 93,
+          "scrollWidth": 93,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-chip>span",
+          "text": "교통",
+          "box": {
+            "x": 12,
+            "y": 148.796875,
+            "width": 94.65625,
+            "height": 48,
+            "bottom": 196.796875,
+            "right": 106.65625
+          },
+          "clientHeight": 46,
+          "scrollHeight": 46,
+          "clientWidth": 93,
+          "scrollWidth": 93,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-chip>span",
+          "text": "기타",
+          "box": {
+            "x": 112.65625,
+            "y": 148.796875,
+            "width": 94.671875,
+            "height": 48,
+            "bottom": 196.796875,
+            "right": 207.328125
+          },
+          "clientHeight": 46,
+          "scrollHeight": 46,
+          "clientWidth": 93,
+          "scrollWidth": 93,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-footer>.pw-button",
+          "text": "다음",
+          "box": {
+            "x": 12,
+            "y": 212,
+            "width": 296,
+            "height": 48,
+            "bottom": 260,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "15px"
+        }
+      ],
+      "overflow": [],
+      "frameOverflow": [],
+      "dialogScroll": {
+        "height": 260,
+        "clientHeight": 260,
+        "width": 320,
+        "clientWidth": 320
+      },
+      "bodyScroll": {
+        "height": 123,
+        "clientHeight": 123,
+        "width": 296,
+        "clientWidth": 296
+      }
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "name": "category-native-dismissal",
+      "step": "category",
+      "compact": "false",
+      "keyboard": "false",
+      "dialog": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 450,
+        "bottom": 450,
+        "right": 320
+      },
+      "body": {
+        "x": 12.003158569335938,
+        "y": 108.1875,
+        "width": 295.99365234375,
+        "height": 227.9971923828125,
+        "bottom": 336.1846923828125,
+        "right": 307.99681091308594
+      },
+      "parts": [
+        {
+          "selector": ".pw-flow-header",
+          "text": "‹돈 기록하기×",
+          "box": {
+            "x": 12,
+            "y": 20,
+            "width": 296,
+            "height": 48,
+            "bottom": 68,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-progress",
+          "text": "3 / 5",
+          "box": {
+            "x": 12,
+            "y": 80,
+            "width": 296,
+            "height": 16.1875,
+            "bottom": 96.1875,
+            "right": 308
+          },
+          "clientHeight": 16,
+          "scrollHeight": 16,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "12px"
+        },
+        {
+          "selector": ".pw-flow-body",
+          "text": "어디에 썼나요?간식문구게임교통기타AI 추천 카테고리 준비 중 · 지금은 직접 골라주세요.",
+          "box": {
+            "x": 12.003158569335938,
+            "y": 108.1875,
+            "width": 295.99365234375,
+            "height": 227.9971923828125,
+            "bottom": 336.1846923828125,
+            "right": 307.99681091308594
+          },
+          "clientHeight": 257,
+          "scrollHeight": 257,
+          "clientWidth": 333,
+          "scrollWidth": 333,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-footer",
+          "text": "다음",
+          "box": {
+            "x": 12,
+            "y": 348,
+            "width": 296,
+            "height": 68,
+            "bottom": 416,
+            "right": 308
+          },
+          "clientHeight": 68,
+          "scrollHeight": 68,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-field",
+          "text": "어디에 썼나요?간식문구게임교통기타AI 추천 카테고리 준비 중 · 지금은 직접 골라주세요.",
+          "box": {
+            "x": 12.003158569335938,
+            "y": 109.32609558105469,
+            "width": 295.99365234375,
+            "height": 225.7061309814453,
+            "bottom": 335.0322265625,
+            "right": 307.99681091308594
+          },
+          "clientHeight": 254,
+          "scrollHeight": 254,
+          "clientWidth": 333,
+          "scrollWidth": 333,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-label",
+          "text": "어디에 썼나요?",
+          "box": {
+            "x": 12.003158569335938,
+            "y": 109.32609558105469,
+            "width": 98.90524291992188,
+            "height": 22.383163452148438,
+            "bottom": 131.70925903320312,
+            "right": 110.90840148925781
+          },
+          "clientHeight": 25,
+          "scrollHeight": 25,
+          "clientWidth": 111,
+          "scrollWidth": 111,
+          "fontSize": "18px"
+        },
+        {
+          "selector": ".pw-record-chip>span",
+          "text": "간식",
+          "box": {
+            "x": 12.003158569335938,
+            "y": 145.92784118652344,
+            "width": 144.4352569580078,
+            "height": 49.76502990722656,
+            "bottom": 195.69287109375,
+            "right": 156.43841552734375
+          },
+          "clientHeight": 54,
+          "scrollHeight": 54,
+          "clientWidth": 161,
+          "scrollWidth": 161,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-chip>span",
+          "text": "문구",
+          "box": {
+            "x": 163.54769897460938,
+            "y": 145.92784118652344,
+            "width": 144.44912719726562,
+            "height": 49.76502990722656,
+            "bottom": 195.69287109375,
+            "right": 307.996826171875
+          },
+          "clientHeight": 54,
+          "scrollHeight": 54,
+          "clientWidth": 161,
+          "scrollWidth": 161,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-chip>span",
+          "text": "게임",
+          "box": {
+            "x": 12.003158569335938,
+            "y": 202.8021697998047,
+            "width": 144.4352569580078,
+            "height": 49.765045166015625,
+            "bottom": 252.5672149658203,
+            "right": 156.43841552734375
+          },
+          "clientHeight": 54,
+          "scrollHeight": 54,
+          "clientWidth": 161,
+          "scrollWidth": 161,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-chip>span",
+          "text": "교통",
+          "box": {
+            "x": 163.54769897460938,
+            "y": 202.8021697998047,
+            "width": 144.44912719726562,
+            "height": 49.765045166015625,
+            "bottom": 252.5672149658203,
+            "right": 307.996826171875
+          },
+          "clientHeight": 54,
+          "scrollHeight": 54,
+          "clientWidth": 161,
+          "scrollWidth": 161,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-record-chip>span",
+          "text": "기타",
+          "box": {
+            "x": 12.003158569335938,
+            "y": 259.676513671875,
+            "width": 144.4352569580078,
+            "height": 49.7650146484375,
+            "bottom": 309.4415283203125,
+            "right": 156.43841552734375
+          },
+          "clientHeight": 54,
+          "scrollHeight": 54,
+          "clientWidth": 161,
+          "scrollWidth": 161,
+          "fontSize": "16px"
+        },
+        {
+          "selector": ".pw-flow-footer>.pw-button",
+          "text": "다음",
+          "box": {
+            "x": 12,
+            "y": 356,
+            "width": 296,
+            "height": 48,
+            "bottom": 404,
+            "right": 308
+          },
+          "clientHeight": 48,
+          "scrollHeight": 48,
+          "clientWidth": 296,
+          "scrollWidth": 296,
+          "fontSize": "15px"
+        }
+      ],
+      "overflow": [],
+      "frameOverflow": [],
+      "dialogScroll": {
+        "height": 450,
+        "clientHeight": 450,
+        "width": 320,
+        "clientWidth": 320
+      },
+      "bodyScroll": {
+        "height": 257,
+        "clientHeight": 257,
+        "width": 333,
+        "clientWidth": 333
+      }
+    }
+  ],
+  "browsers": {
+    "chromium": {
+      "version": "153.0.8010.12"
+    }
+  },
+  "status": "FAIL",
+  "limitations": [
+    "VisualViewport and safe areas are mocked; native mobile keyboard dismissal is modeled by restoring full height on non-input steps."
+  ],
+  "failure": "locator.check: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('dialog[open]').getByRole('radio', { name: '교통', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <input value=\"교통\" type=\"radio\" name=\"record-category\" aria-describedby=\"pw-category-error\"/>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - element is outside of the viewport\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - element is outside of the viewport\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    10 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - element is outside of the viewport\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at /Users/jeonghu/포켓WON/tests/verify-record-keyboard.cjs:15:419",
+  "finishedAt": "2026-10-04T03:00:41.557Z"
+}

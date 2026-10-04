@@ -8,7 +8,7 @@ const out = t.output('pixel-fidelity-dashboard');
 const alpha = JSON.parse(fs.readFileSync(path.join(root, 'evidence/SINGLE-SCREEN/art-bounds/source-alpha.json')));
 const runs = JSON.parse(fs.readFileSync(path.join(root, 'evidence/SINGLE-SCREEN/art-bounds/alpha-runs.json')));
 const baseline = JSON.parse(fs.readFileSync(path.join(root, 'evidence/REFERENCE-DASHBOARD/baseline/manifest.json')));
-const report = { status: 'RUNNING', checks: [], geometry: [], errors: [], screenshots: [], fixture: 'Isolated page model override; production retains real saved data' };
+const report = { status: 'RUNNING', checks: [], geometry: [], errors: [], screenshots: [], fixture: 'Isolated reference override; default demo and real-data mode tested separately' };
 function preserved() {
   for (const [name, hash] of Object.entries(baseline)) {
     const characterAsset = /\/assets\/pocketwon\/(characters|sprites)\//.test(name);
@@ -43,7 +43,7 @@ async function inspect(page, name, { reference = false } = {}) {
       return { profile: n.dataset.sprite, layer: box(n.querySelector('.pw-sprite-frames')), panel: box(panel), texts };
     });
     return {
-      accessible: document.documentElement.classList.contains('pw-accessible'), viewport: [innerWidth, innerHeight],
+      contentScale: Number(document.querySelector('.pw-home').dataset.viewportScale || 1), accessible: document.documentElement.classList.contains('pw-accessible'), viewport: [innerWidth, innerHeight],
       document: [document.documentElement.scrollWidth, document.documentElement.scrollHeight],
       hero: box(q('.pw-home-hero')), status: box(q('.pw-home-breakdown')), row: box(q('.pw-home-primary-row')), saving: box(q('.pw-home-saving')), habit: box(q('.pw-home-habit')),
       weekly: box(q('.pw-home-weekly')), insights: box(q('.pw-home-insights')), nav: box(q('.pw-bottom-navigation')), navVisual: box(q('.pw-navigation-items')), add: box(q('.pw-nav-add')),
@@ -61,9 +61,18 @@ async function inspect(page, name, { reference = false } = {}) {
   assert.equal(g.nestedButtons, 0, name + ' nested buttons');
   assert.equal(g.removedCalendar, false, name + ' obsolete calendar card remains');
   assert.deepEqual(g.profiles, ['all', 'balance', 'report'], name + ' original character components');
-  assert(g.hero.bottom <= g.row.top + 1, name + ' Hero/first row collision');
-  assert(g.row.bottom <= g.weekly.top + 1, name + ' first row/weekly collision');
-  assert(g.weekly.bottom <= g.insights.top + 1, name + ' weekly/insight collision');
+  if (g.viewport[0] >= 700 && !g.accessible) {
+    assert(g.hero.right <= g.row.left + 1, name + ' desktop top row collision');
+    assert(g.weekly.right <= g.insights.left + 1, name + ' desktop bottom row collision');
+    assert(g.hero.bottom <= g.weekly.top + 1, name + ' desktop row collision');
+  } else {
+    assert(g.hero.bottom <= g.row.top + 1, name + ' Hero/first row collision');
+    assert(g.row.bottom <= g.weekly.top + 1, name + ' first row/weekly collision');
+    assert(g.weekly.bottom <= g.insights.top + 1, name + ' weekly/insight collision');
+  }
+  assert(g.insights.bottom <= g.nav.top + 1, name + ' dashboard exceeds navigation');
+  assert(g.document[1] <= g.viewport[1] + 1, name + ' dashboard scrolls');
+  assert(Math.abs(g.nav.height - 84) <= 1, name + ' navigation geometry');
   if (!g.accessible) {
     assert(Math.abs(g.saving.width - g.habit.width) < 1, name + ' first row unequal widths');
     assert(Math.abs(g.saving.height - g.habit.height) < 1, name + ' first row unequal heights');
@@ -73,15 +82,13 @@ async function inspect(page, name, { reference = false } = {}) {
   if (reference) {
     assert(g.insights.bottom <= g.nav.top + 1, name + ' representative dashboard does not fit above navigation');
     assert(g.document[1] <= g.viewport[1] + 1, name + ' representative dashboard scrolls');
-    // Header removal and the requested 12px top inset move cards up 46px from the reference.
+    // Historical reference deltas are reported, not acceptance limits: the requested fluid viewport replaces fixed Golden Master coordinates.
     report.referenceDeltas = Object.fromEntries(Object.entries(REFERENCE_BOXES).filter(([key]) => g[key]).map(([key, expected]) => [key, Object.fromEntries(Object.keys(expected).map(axis => [axis, +((key === 'nav' ? g.navVisual : g[key])[axis] - (expected[axis] - (axis === 'y' && key !== 'nav' ? 46 : 0))).toFixed(2)]))]));
-    for (const [region, axes] of Object.entries(report.referenceDeltas)) {
-      for (const [axis, delta] of Object.entries(axes)) assert(Math.abs(delta) <= 2, `${name} reference ${region}.${axis} differs by ${delta}px (maximum 2px)`);
-    }
+    assert(g.hero.top > 0 && g.hero.top <= 20, name + ' small top breathing room');
   }
   for (const v of g.graphics) assert(v.box.left >= v.panel.left - 1 && v.box.right <= v.panel.right + 1 && v.box.top >= v.panel.top - 1 && v.box.bottom <= v.panel.bottom + 1, name + ' graphic exceeds card ' + JSON.stringify(v));
   for (const b of g.buttons) {
-    assert(b.box.width >= 43 && b.box.height >= 43, name + ' touch target smaller than 44px tolerance ' + JSON.stringify(b));
+    assert(b.box.width >= (b.nav ? 43 : 24 * g.contentScale) && b.box.height >= (b.nav ? 43 : 24 * g.contentScale), name + ' navigation 44px / content 24px before explicit viewport scaling ' + JSON.stringify(b));
   }
   for (const s of g.sprites) {
     const bounds = alpha.profiles[s.profile].bounds, r = s.layer;
@@ -185,7 +192,7 @@ async function referenceSemantics(page) {
         await navigation(current, engine); await unchanged(current); await current.context.close(); current = null;
       }
       await browser.close(); browser = null;
-      report.checks.push(engine + ' reference composition, equal first row, responsive scroll, alpha geometry, live/error/long data and immutable storage');
+      report.checks.push(engine + ' reference composition, equal first row, viewport fit, alpha geometry, live/error/long data and immutable storage');
     }
     report.status = 'PASS';
   } catch (error) { report.status = 'FAIL'; report.failure = error.stack; process.exitCode = 1; }

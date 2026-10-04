@@ -1,0 +1,13 @@
+{
+  "name": "포켓WON",
+  "short_name": "포켓WON",
+  "lang": "ko",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
+  "background_color": "#F7FBFE",
+  "theme_color": "#F7FBFE",
+  "icons": [{ "src": "./assets/pocketwon/graphics/pocketwon-w-ring-logo.png", "sizes": "1254x1254", "type": "image/png", "purpose": "any" }]
+}

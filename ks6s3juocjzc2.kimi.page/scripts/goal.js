@@ -10,7 +10,7 @@ function createGoalView(initialLoad, navigate, options = {}) {
 
   function refresh() { if (mounted && root.isConnected) PWUI.refreshMotion(root); }
   function clearPager() { pager?.dispose(); pager = null; }
-  function retry() { loaded = loadPocketWONState(); renderDetail(); }
+  function retry() { loaded = (window.PWDemo?.enabled ? PWDemo.load() : loadPocketWONState()); renderDetail(); }
   function appendMoney(parent, label, value, className = '') {
     const group = el('div', 'pw-goal-value');
     group.append(el('p', 'pw-meta pw-muted', label), money(value, `pw-goal-money ${className}`));
@@ -83,7 +83,7 @@ function createGoalView(initialLoad, navigate, options = {}) {
     if (disposed || flow) return;
     opener = event?.currentTarget || trigger || document.activeElement;
     if (typeof PocketWONMotion !== 'undefined') PocketWONMotion.prepareSuccess();
-    validationLoad = loadPocketWONState(); openedGoal = createGoalViewModel(validationLoad.state);
+    validationLoad = (window.PWDemo?.enabled ? PWDemo.load() : loadPocketWONState()); openedGoal = createGoalViewModel(validationLoad.state);
     editing = ['active', 'complete'].includes(openedGoal.status);
     draft = { title: editing ? openedGoal.title : '', target: editing ? String(openedGoal.target) : '' };
     touched = {}; step = 0; busy = false; submitted = false; conflict = false; saveError = '';
@@ -140,15 +140,15 @@ function createGoalView(initialLoad, navigate, options = {}) {
       if (editing) confirmation.append(el('p', 'pw-meta pw-muted', `지금까지 모은 ${format.format(openedGoal.current)}원은 유지돼요.`));
       error.textContent = saveError || checked.errors.form || checked.errors.title || checked.errors.target || ''; error.hidden = !error.textContent;
       next = button('목표 저장', saveGoal); next.disabled = busy || submitted || !checked.valid;
-       if(typeof PWPreview!=='undefined'&&PWPreview.enabled){next.disabled=true;error.textContent='개발용 Preview에서는 실제 목표를 저장하지 않아요.';error.hidden=false;}
+       if(typeof PWPreview!=='undefined'&&PWPreview.readOnly){next.disabled=true;error.textContent='가상 데이터 화면에서는 실제 목표를 저장하지 않아요.';error.hidden=false;}
       next.setAttribute('aria-describedby', error.id); flow.body.append(confirmation, error); flow.footer.append(next);
     }
     if (focus) focusStep();
   }
   function saveGoal() {
-    if (disposed || !flow?.dialog.open || !draft || step !== 2 || busy || submitted || !check().valid || (typeof PWPreview!=='undefined'&&PWPreview.enabled)) return;
+    if (disposed || !flow?.dialog.open || !draft || step !== 2 || busy || submitted || !check().valid || (typeof PWPreview!=='undefined'&&PWPreview.readOnly)) return;
     busy = true; flow.footer.querySelector('button').disabled = true;
-    validationLoad = loadPocketWONState(); const latest = createGoalViewModel(validationLoad.state);
+    validationLoad = (window.PWDemo?.enabled ? PWDemo.load() : loadPocketWONState()); const latest = createGoalViewModel(validationLoad.state);
     conflict = editing ? !['active', 'complete'].includes(latest.status) || latest.title !== openedGoal.title || latest.target !== openedGoal.target
       : latest.status !== openedGoal.status;
     const result = check();

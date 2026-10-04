@@ -25,7 +25,8 @@
   // Keep the original UI destination in memory; router history remains one level deep.
   if(route.screen==='record'&&route.stage==='form'&&addReturnRoute)opts.returnTo=addReturnRoute;else addReturnRoute=null;
   context.hidden=route.screen==='home';context.parentElement.hidden=context.hidden;if(context.hidden)context.textContent='';context.removeAttribute('aria-label');
-  context.parentElement.querySelectorAll('.pw-home-brand,.pw-home-header-actions,.pw-header-action,.pw-retry').forEach(n=>n.remove());const loaded=loadPocketWONState();
+  context.parentElement.querySelectorAll('.pw-home-brand,.pw-home-header-actions,.pw-header-action,.pw-retry').forEach(n=>n.remove());const loaded=PWDemo.enabled?PWDemo.load():loadPocketWONState();
+  if(PWDemo.enabled&&!context.hidden)context.textContent=label+' · 데모';
   if(route.screen!=='home'&&(PWPreview.enabled||listsScreen(route.screen))){
    const action=PWUI.button(PWPreview.enabled?'미리보기':'도구',()=>PWPreview.enabled?previewControls(route,navigate):tools(route.screen,route,navigate),'pw-core-header-action pw-header-action');action.setAttribute('aria-label',PWPreview.enabled?'개발용 Preview 상태 선택':label+' 도구 열기');context.parentElement.append(action);
   }
@@ -43,6 +44,6 @@
  }
  function listsScreen(screen){return ['record','goal','report'].includes(screen);}
  content.addEventListener('pw:motion-refresh',event=>{if(currentView&&event.target===currentView.element)currentMotion?.refresh();});
- function accessibility(){document.documentElement.classList.toggle('pw-accessible',parseFloat(getComputedStyle(document.documentElement).fontSize)>20||innerWidth<300||innerHeight<440||(innerWidth<500&&innerHeight<620));}
+ function accessibility(){document.documentElement.classList.toggle('pw-accessible',parseFloat(getComputedStyle(document.documentElement).fontSize)>20);window.PWViewport?.schedule();}
  const probe=PWUI.el('span','pw-size-probe');probe.setAttribute('aria-hidden','true');document.body.append(probe);new ResizeObserver(accessibility).observe(probe);window.addEventListener('resize',accessibility);accessibility();PWNavigation.init(showScreen);
 })();

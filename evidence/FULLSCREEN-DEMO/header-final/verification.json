@@ -1,0 +1,150 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "engine": "chromium",
+      "scenario": "reference",
+      "heroTop": 12,
+      "contentTop": 0,
+      "safeTop": 0,
+      "expectedInset": 12,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "scenario": "compact",
+      "heroTop": 11.15625,
+      "contentTop": 0,
+      "safeTop": 0,
+      "expectedInset": 12,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "scenario": "short-document",
+      "heroTop": 8.234375,
+      "contentTop": 0,
+      "safeTop": 0,
+      "expectedInset": 11.538461538461538,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "scenario": "short-safe-area",
+      "heroTop": 27.3125,
+      "contentTop": 20,
+      "safeTop": 20,
+      "expectedInset": 10.8,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "scenario": "large-text",
+      "heroTop": 6.16117000579834,
+      "contentTop": 0,
+      "safeTop": 0,
+      "expectedInset": 12,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "scenario": "wide-short",
+      "heroTop": 9.515625,
+      "contentTop": 0,
+      "safeTop": 0,
+      "expectedInset": 16,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "scenario": "read-error",
+      "heroTop": 12,
+      "contentTop": 0,
+      "safeTop": 0,
+      "expectedInset": 12,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "chromium",
+      "scenario": "preview",
+      "heroTop": 12,
+      "contentTop": 0,
+      "safeTop": 0,
+      "expectedInset": 12,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "reference",
+      "heroTop": 12,
+      "contentTop": 0,
+      "safeTop": 0,
+      "expectedInset": 12,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "compact",
+      "heroTop": 11.15625,
+      "contentTop": 0,
+      "safeTop": 0,
+      "expectedInset": 12,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "short-document",
+      "heroTop": 8.234375,
+      "contentTop": 0,
+      "safeTop": 0,
+      "expectedInset": 11.538461538461538,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "short-safe-area",
+      "heroTop": 27.3125,
+      "contentTop": 20,
+      "safeTop": 20,
+      "expectedInset": 10.8,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "large-text",
+      "heroTop": 6.16117000579834,
+      "contentTop": 0,
+      "safeTop": 0,
+      "expectedInset": 12,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "wide-short",
+      "heroTop": 9.515625,
+      "contentTop": 0,
+      "safeTop": 0,
+      "expectedInset": 16,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "read-error",
+      "heroTop": 12,
+      "contentTop": 0,
+      "safeTop": 0,
+      "expectedInset": 12,
+      "horizontalOverflow": false
+    },
+    {
+      "engine": "webkit",
+      "scenario": "preview",
+      "heroTop": 12,
+      "contentTop": 0,
+      "safeTop": 0,
+      "expectedInset": 12,
+      "horizontalOverflow": false
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,30 @@
+PASS Financial function bodies match the rebuild baseline ({"functions":10})
+PASS Category allowlists and primitive financial guards match the rebuild baseline
+PASS Original fixture mapping and frozen source immutability ({"greeting":{"name":"민준"},"balance":32500,"monthly":{"received":15200,"spent":12300,"remaining":2900,"period":"unknown"},"habit":{"score":82},"goal":{"status":"active","title":"게임 아이템","target":45000,"current":30600,"percent":68},"mission":{"status":"unavailable"}})
+PASS Storage empty, invalid JSON/root, getter/read exceptions, partial and valid roots
+PASS Missing versus zero, strict numeric checks, negative difference and score bounds
+PASS Goal empty/invalid/active/complete, progress clamp and undated mission boundary
+PASS Active runtime: one getItem and one explicit-save setItem call site, no Home write/delete, demo fallback, preservation fetch or API
+PASS A/B: immutable original schema, exact balance/aggregates, no ID, unrelated fields preserved
+PASS Empty-key first save creates only money fields; unknown existing properties survive
+PASS C/D/E: strict full-string amount, type/category allowlist, 50-code-point optional memo
+PASS Unsafe aggregate arithmetic and malformed stored data cannot be written
+PASS Strict dates/grouping, unavailable rows and normalized persist errors
+PASS Source: one persist write site, no other storage keys/removal/network business path
+PASS B/C: immutable update, only title/target/monthly.goal change; current/daysLeft/accounting preserved
+PASS A: approved zero-start, null/missing goal, no invented daysLeft/monthly.goal, unknown fields preserved
+PASS D/E/F: target strict integers, safe bounds, equality completion, Unicode code points and trim
+PASS K: malformed/unsafe source blocked; large arithmetic and legacy long titles readable
+PASS Record compatibility: Goal-first state accepts first income, transaction never contributes to goal
+PASS Source: immutable baseline, Report has no storage writer/network/AI/share dependency
+PASS Default fixture: exact projection and deeply frozen immutability ({"score":{"status":"available","value":82},"moneyFlow":{"status":"available","received":15200,"spent":12300,"difference":2900,"period":"unknown"},"goal":{"status":"active","title":"게임 아이템","current":30600,"target":45000,"remaining":14400,"percent":68},"records":{"status":"available","count":4,"partial":false}})
+PASS Score: zero, 100, fractional precision, missing/type/range/nonfinite rejection
+PASS Money: partial/invalid, real zeros, signed difference, safe integer limits and unknown period
+PASS Goal: exact PW04 projection, empty/invalid/complete/over-target and rounded active state
+PASS Records: established validator including unknown dates, all rows not 20-row view, mixed-invalid and absent arrays
+PASS Load: empty, malformed/invalid root and separate getter/read failures
+PASS Report fractional precision and signed money differences remain exact
+PASS Unbounded record projection, stable exact-date sorting, original indices, full memo/timestamp and immutable source
+PASS Invalid dates and partial rows preserve stored order, absence stays unknown, day labels are exact
+PASS Latest-state revalidation, newest current/unknown fields, conditional monthly goal, and empty/failed-read distinction
+PASS 29 business contract groups; original Home/Record/Goal/Report pure assertions reused.
