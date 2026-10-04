@@ -45,10 +45,10 @@
   "intermediateEvidence": "All other run directories are preserved iteration evidence, including failures and runs superseded by user revisions.",
   "production": {
     "status": "PASS",
-    "sourceCommit": "e3292f2",
-    "deploymentId": "dpl_Djv7uzMvmRQgqmiwyjh4mwuXE8wc",
+    "sourceCommit": "444fde0",
+    "deploymentId": "dpl_FL523ndFwPM2kQbLYUKPwjifZy23",
     "url": "https://pocketwon.vercel.app/",
-    "http200AndShaMatches": 7,
+    "http200AndShaMatches": 9,
     "actualBrowserVerified": true
   }
 }

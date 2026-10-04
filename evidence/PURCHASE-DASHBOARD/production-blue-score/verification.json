@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "sourceCommit": "444fde03114ee4a341fcd3ddcd3175960e280bb4",
+  "alias": "https://pocketwon.vercel.app/",
+  "deploymentId": "dpl_FL523ndFwPM2kQbLYUKPwjifZy23",
+  "deploymentUrl": "https://pocketwon-7rb18yaax-clcocloud.vercel.app",
+  "http": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "30a25807e339f45800f405e65206cc50803eb88a70035fb8a80d43a4e9ad25d3",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/home.js",
+      "status": 200,
+      "sha256": "167d984d63dde236c99e6fde92fed30c98b62b8050ab751b5fddab57f05dcd4e",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/demo.js",
+      "status": 200,
+      "sha256": "7b6ab0ffdef2a904e899335be886bd0e6cc24ec2c81ffd773cb40091288bc687",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/report.js",
+      "status": 200,
+      "sha256": "37613bc2f27b96bd1b701055e50491f17d633c088006955235581720f8bf6265",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/viewport.js",
+      "status": 200,
+      "sha256": "a63009f001e46e8732b8c2f75e10166a4750fb9d2318292e883f01752744976b",
+      "matchesLocal": true
+    },
+    {
+      "path": "styles/home.css",
+      "status": 200,
+      "sha256": "c2ad857e03c4f09bbc8b504c5235a4ffc00a05ca1bcc72fa177c5ab4cbb0d665",
+      "matchesLocal": true
+    },
+    {
+      "path": "styles/viewport.css",
+      "status": 200,
+      "sha256": "e8c7eff9dd2df25dcc8485fc9aea3151a2ee3ae764ee6ee4c2a2727b1c156a9a",
+      "matchesLocal": true
+    },
+    {
+      "path": "assets/pocketwon/graphics/savings-pig-generated.png",
+      "status": 200,
+      "sha256": "8f1b78b28a176c00f0109fbe5aa64232c0cc392fcb3858c3122ec1b4496337e5",
+      "matchesLocal": true
+    },
+    {
+      "path": "assets/pocketwon/graphics/pocketwon-w-ring-logo.png",
+      "status": 200,
+      "sha256": "4fb3bae80bede5d98ff3a7d964e4c6cb1ded33d1516ed2739e032e7e8bdb3e5d",
+      "matchesLocal": true
+    }
+  ]
+}

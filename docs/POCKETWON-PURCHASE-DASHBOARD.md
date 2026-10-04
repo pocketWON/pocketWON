@@ -48,11 +48,12 @@
 
 ## 공개 반영
 
-소스 커밋 `e3292f2`를 `pocketWON/pocketWON` main에 푸시하고 기존 Vercel 프로젝트에 배포했다.
+최종 소스 커밋 `444fde0`을 `pocketWON/pocketWON` main에 푸시하고 기존 Vercel 프로젝트에 배포했다.
 
 - 공개 앱: https://pocketwon.vercel.app/
-- 배포 ID: `dpl_Djv7uzMvmRQgqmiwyjh4mwuXE8wc`
-- 원본 배포: https://pocketwon-pkd2g8uhi-clcocloud.vercel.app
-- 공개 HTML·변경 CSS·JS 7개 경로가 HTTP 200이며 로컬 SHA-256과 일치한다.
-- 현재 인앱 브라우저에서 공개 앱을 열어 5개 품목명, 가격 제거, 점수 배지, 왕관을 확인했다.
-- 검증 기록과 실제 앱 캡처: `production/verification.json`, `production/live-app.png`.
+- 배포 ID: `dpl_FL523ndFwPM2kQbLYUKPwjifZy23`
+- 원본 배포: https://pocketwon-7rb18yaax-clcocloud.vercel.app
+- 공개 HTML·변경 CSS·JS·돼지와 중앙 로고 9개 경로가 HTTP 200이며 로컬 SHA-256과 일치한다.
+- 실제 인앱 브라우저에서 ‘AI 인사이트’, 큰 파란 65점, 가격 없는 품목명 5개를 확인했다.
+- 최신 검증과 캡처: `production-blue-score/verification.json`, `production-blue-score/live-app.png`.
+- 앞선 배포 검증은 `production/`에 그대로 보존했다.
