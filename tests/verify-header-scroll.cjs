@@ -1,4 +1,4 @@
-/* Home has no header or reserved gap; other screens retain their titles and tools. */
+/* Home has a small top inset without a header; other screens retain their titles and tools. */
 const t = require('./product-test-utils.cjs');
 const out = t.output('home-without-header');
 const report = { status: 'RUNNING', checks: [], errors: [] };
@@ -28,9 +28,10 @@ const cases = [
           heroTop: document.querySelector('.pw-home-hero').getBoundingClientRect().top,
           contentTop: document.querySelector('#pw-content').getBoundingClientRect().top,
           safeTop: parseFloat(getComputedStyle(document.querySelector('.pw-shell')).paddingTop),
+          expectedInset: 12 * (Math.min(innerWidth, 520) - (parseFloat(getComputedStyle(document.querySelector('.pw-shell')).paddingLeft) || 0) - (parseFloat(getComputedStyle(document.querySelector('.pw-shell')).paddingRight) || 0)) / 390,
           horizontalOverflow: document.documentElement.scrollWidth > innerWidth + 1,
         }));
-        t.assert(Math.abs(layout.heroTop - layout.safeTop) < .1, 'First card must begin at the safe-area edge');
+        t.assert(Math.abs(layout.heroTop - layout.safeTop - layout.expectedInset) < .1, 'First card must keep a small inset below the safe area');
         t.assert(Math.abs(layout.contentTop - layout.safeTop) < .1, 'Header must leave no reserved space');
         t.assert.equal(layout.horizontalOverflow, false);
         if (scenario.name === 'reference') await p.screenshot({ path: t.path.join(out, 'screenshots', engine + '-home.png') });

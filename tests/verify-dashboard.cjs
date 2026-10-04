@@ -73,8 +73,8 @@ async function inspect(page, name, { reference = false } = {}) {
   if (reference) {
     assert(g.insights.bottom <= g.nav.top + 1, name + ' representative dashboard does not fit above navigation');
     assert(g.document[1] <= g.viewport[1] + 1, name + ' representative dashboard scrolls');
-    // The requested header removal moves cards up 58px; retain the original reference measurements.
-    report.referenceDeltas = Object.fromEntries(Object.entries(REFERENCE_BOXES).filter(([key]) => g[key]).map(([key, expected]) => [key, Object.fromEntries(Object.keys(expected).map(axis => [axis, +((key === 'nav' ? g.navVisual : g[key])[axis] - (expected[axis] - (axis === 'y' && key !== 'nav' ? 58 : 0))).toFixed(2)]))]));
+    // Header removal and the requested 12px top inset move cards up 46px from the reference.
+    report.referenceDeltas = Object.fromEntries(Object.entries(REFERENCE_BOXES).filter(([key]) => g[key]).map(([key, expected]) => [key, Object.fromEntries(Object.keys(expected).map(axis => [axis, +((key === 'nav' ? g.navVisual : g[key])[axis] - (expected[axis] - (axis === 'y' && key !== 'nav' ? 46 : 0))).toFixed(2)]))]));
     for (const [region, axes] of Object.entries(report.referenceDeltas)) {
       for (const [axis, delta] of Object.entries(axes)) assert(Math.abs(delta) <= 2, `${name} reference ${region}.${axis} differs by ${delta}px (maximum 2px)`);
     }

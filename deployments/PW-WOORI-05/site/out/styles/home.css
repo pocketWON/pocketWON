@@ -13,7 +13,7 @@
   box-shadow: none;
   background: var(--pw-background);
 }
-/* Home starts directly with its first card; only the bottom menu stays visible. */
+/* Home has a small top inset without a header; only the bottom menu stays visible. */
 .pw-shell[data-screen='home'] > .pw-header { display: none; }
 .pw-shell[data-screen='home'] > .pw-content { grid-row: 1; overflow: visible; }
 .pw-shell[data-screen='home'] > .pw-bottom-navigation {
@@ -28,7 +28,7 @@
 .pw-home {
   display: flex; flex-direction: column; gap: 0;
   height: auto; min-height: 0; overflow: clip;
-  padding: 0 calc(7.9 * var(--pw-u)) calc(8.4 * var(--pw-u)) calc(9.9 * var(--pw-u));
+  padding: calc(12 * var(--pw-u)) calc(7.9 * var(--pw-u)) calc(8.4 * var(--pw-u)) calc(9.9 * var(--pw-u));
   color: var(--pw-navy); background: var(--pw-background);
 }
 .pw-home *, .pw-home *::before, .pw-home *::after { box-sizing: border-box; }
