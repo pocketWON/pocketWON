@@ -23,4 +23,10 @@
 
 ## 공개 반영
 
-배포 완료 후 공개 파일 해시와 소스 커밋을 기록한다.
+주간 그래프 변경 `1208ca1`과 랭킹 확대 `92a262a`을 main에 푸시하고 함께 공개 배포했다.
+
+- 공개 앱: https://pocketwon.vercel.app/
+- 배포 ID: `dpl_CgtA1Q3Yv2Db4cc5xupUuaF5ttw8`
+- 배포 주소: https://pocketwon-p20ngrmt6-clcocloud.vercel.app
+- `evidence/RANKING-EXPANDED/production/verification.json`: 공개 HTML·home.js·home.css의 HTTP 200 및 로컬 SHA-256 일치 검증.
+- 사용자의 기존 로컬 앱 탭에서도 두 변경을 함께 확인하고 최신 화면을 열어두었다.
