@@ -61,3 +61,5 @@
 - `evidence/RAISED-NAV/production/verification.json`: 공개 HTML·demo.js·home.css·tokens.css·viewport.css의 HTTP 200 및 로컬 SHA-256 일치 검증.
 - 두 브라우저의 화면·전환 224건, 중앙 버튼·기록창 상호작용 6건 통과.
 - 사용자의 기존 로컬 앱 탭을 새로고침해 최종 화면을 열어두었다.
+
+두 내부 카드 표면 변경 `928cb0c`도 main에 푸시하고 배포했다. 최종 배포 ID는 `dpl_3MKTmtRJX2docsy8hAxzsAkW6J61`, 배포 주소는 https://pocketwon-7lzsiil0q-clcocloud.vercel.app 이다. `evidence/OPEN-INNER-CARDS/production/verification.json`에서 공개 HTML·home.css와 로컬 파일 일치를 확인했다.
