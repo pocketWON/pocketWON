@@ -12,10 +12,10 @@ python3 -m http.server 4173 --bind 127.0.0.1
 
 Vercel은 저장소 루트의 `vercel.json`을 사용합니다. 프로젝트의 Root Directory는 저장소 루트로 두고, `outputDirectory`로 지정한 `ks6s3juocjzc2.kimi.page/`만 서비스합니다. 별도 설치·빌드 과정은 없습니다. 이 폴더의 `index.html`이 `/`에 열리며 CSS·JavaScript·폰트·캐릭터도 같은 폴더의 상대 경로로 로드됩니다. 저장소 루트에는 앱 `index.html`이 없으므로 Output Directory 설정을 제거하면 기본 주소에서 `404 NOT_FOUND`가 발생합니다.
 
-홈은 화면 높이에 맞춰 4행으로 배치하고, 폭 700px 이상에서는 2열×2행으로 가용 화면을 채웁니다. 긴 세부 화면은 하단바를 제외한 영역에 맞춥니다. 작은 화면에서는 본문이 축소될 수 있습니다. 브라우저 주소창은 웹페이지가 자동으로 제거할 수 없으므로 ‘전체 → 전체 화면’ 버튼 또는 지원 브라우저의 홈 화면 추가를 사용합니다.
+홈은 화면 높이에 맞춰 Hero·구매 카드·흐름/인사이트 통합 카드의 3행으로 배치합니다. 폭 700px 이상에서는 위쪽 Hero와 구매 카드를 나란히 놓고, 아래 통합 카드가 전체 너비를 채웁니다. 긴 세부 화면은 하단바를 제외한 영역에 맞춥니다. 작은 화면에서는 본문이 축소될 수 있습니다. 브라우저 주소창은 웹페이지가 자동으로 제거할 수 없으므로 ‘전체 → 전체 화면’ 버튼 또는 지원 브라우저의 홈 화면 추가를 사용합니다.
 
 - [최신 홈 개선·검증 보고서](docs/POCKETWON-PURCHASE-DASHBOARD.md)
-- [최신 모바일 화면](evidence/DONUT-FOCUS/interaction/screenshots/chromium-final-demo.png)
+- [최신 모바일 화면](evidence/COMBINED-OVERVIEW/named-capture/screenshots/chromium-390x844.png)
 - [이번 변경 및 한계](docs/POCKETWON-FULLSCREEN-DEMO.md)
 - [모바일 화면](evidence/FULLSCREEN-DEMO/viewport-final/chromium-390x844.png) · [데스크톱 화면](evidence/FULLSCREEN-DEMO/viewport-final/chromium-1440x900.png)
 - [화면·하단바 검증](evidence/FULLSCREEN-DEMO/viewport-final/verification.json) · [가상 데이터·저장 격리](evidence/FULLSCREEN-DEMO/data-complete/verification.json)

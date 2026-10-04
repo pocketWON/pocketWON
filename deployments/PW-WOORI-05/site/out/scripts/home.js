@@ -229,8 +229,8 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
     return node;
   }
   function habitCard() {
-    const data = dashboard.donut, node = card('pw-home-habit', '나의 금융 습관');
-    node.append(cardHeader('나의 금융 습관', { screen: 'record', stage: 'list' }, 'habit', menu('금융 습관',
+    const data = dashboard.donut, node = card('pw-home-habit', '정후의 소비 습관');
+    node.append(cardHeader('정후의 소비 습관', { screen: 'record', stage: 'list' }, 'habit', menu('정후의 소비 습관',
       `${data.period}에 받은 용돈 대비 구매한 품목의 가격을 표시해요. 회청색 빈 부분은 아직 쓰지 않은 용돈이에요.${data.omitted ? ` 날짜나 금액을 확인할 수 없는 기록 ${data.omitted}건은 제외했어요.` : ''}`,
       [['지출 리포트 보기', { screen: 'report', segment: 'flow' }], ['용돈 내역 보기', { screen: 'record', stage: 'list' }]])));
     const body = el('div', 'pw-home-habit-body'), donut = el('div', 'pw-home-donut');
@@ -305,40 +305,32 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
   }
 
   function weeklyCard() {
-    const data = dashboard.week, node = card('pw-home-weekly', '이번 주 용돈 흐름');
-    node.append(cardHeader('이번 주 용돈 흐름', { screen: 'report', segment: 'flow' }, 'weekly', menu('이번 주 용돈 흐름',
+    const data = dashboard.week, node = card('pw-home-weekly', '용돈 인사이트');
+    node.append(cardHeader('용돈 인사이트', { screen: 'report', segment: 'flow' }, 'weekly', menu('용돈 인사이트',
       '월요일부터 일요일까지 기록한 지출이에요. 아직 오지 않은 날은 미집계로 표시하고, 확인할 수 없는 기록을 0원으로 바꾸지 않아요.',
       [['돈 흐름 리포트 보기', { screen: 'report', segment: 'flow' }], ['용돈 내역 보기', { screen: 'record', stage: 'list' }]])));
     const body = el('div', 'pw-home-weekly-body');
-    const chart = svg('svg', { class: 'pw-home-weekly-plot', viewBox: '0 0 244 96', preserveAspectRatio: 'none', 'aria-hidden': 'true' }); chart.dataset.chartKind = 'spending';
+    const chart = el('div', 'pw-home-weekly-plot');
+    chart.setAttribute('aria-hidden', 'true'); chart.dataset.chartKind = 'spending';
     const maximum = Math.max(1, ...data.days.filter(day => day.amount !== null).map(day => day.amount));
-    const baseline = 78, top = 44;
-    chart.append(svg('line', { class: 'pw-home-weekly-baseline', x1: 2, x2: 242, y1: baseline, y2: baseline }));
     data.days.forEach((day, index) => {
-      const x = 18 + index * 34.4, height = day.amount === null ? 2 : Math.max(1.8, day.amount / maximum * (baseline - top));
+      const column = el('div', 'pw-home-weekly-day');
+      column.style.setProperty('--pw-bar-ratio', String(day.amount === null ? 0 : day.amount / maximum));
       const highlighted = day.key === data.highlightKey;
-      const bar = svg('rect', { class: `pw-home-weekly-bar${highlighted ? ' pw-home-weekly-bar--highlight' : ''}${day.amount === null ? ' pw-home-weekly-bar--unknown' : ''}`,
-        x: x - 12, y: baseline - height, width: 24, height, rx: Math.min(8, height / 2), 'data-date-key': day.key });
+      const bar = el('span', `pw-home-weekly-bar${highlighted ? ' pw-home-weekly-bar--highlight' : ''}${day.amount === null ? ' pw-home-weekly-bar--unknown' : ''}`);
+      bar.dataset.dateKey = day.key;
       if (day.amount !== null) bar.dataset.value = String(day.amount);
-      const value = svg('text', { class: `pw-home-weekly-value${highlighted ? ' pw-home-weekly-value--highlight' : ''}`, x, y: baseline - height - 7, 'text-anchor': 'middle' });
+      const value = el('span', `pw-home-weekly-value${highlighted ? ' pw-home-weekly-value--highlight' : ''}`);
       value.textContent = day.amount === null ? '—' : compactAmount(day.amount);
-      const label = svg('text', { class: `pw-home-weekly-date${highlighted ? ' pw-home-weekly-date--highlight' : ''}`, x, y: 93, 'text-anchor': 'middle' });
+      const label = el('span', `pw-home-weekly-date${highlighted ? ' pw-home-weekly-date--highlight' : ''}`);
       if (day.key === data.crownKey) {
-        const crown = svg('text', { class: 'pw-home-weekly-crown', x, y: baseline - height - 25, 'text-anchor': 'middle', 'data-date-key': day.key });
-        crown.textContent = '👑'; chart.append(crown);
+        const crown = el('span', 'pw-home-weekly-crown', '👑'); crown.dataset.dateKey = day.key;
+        column.append(crown);
       }
-      label.textContent = day.weekday || ['월', '화', '수', '목', '금', '토', '일'][index]; chart.append(bar, value, label);
+      label.textContent = day.weekday || ['월', '화', '수', '목', '금', '토', '일'][index]; column.append(bar, value, label); chart.append(column);
     });
     const detail = el('p', 'pw-sr-only', `주간 지출, ${data.days.map(day => `${day.label} ${day.future ? '미집계' : day.amount === null ? '확인 안 됨' : `${number(day.amount)}원`}`).join(', ')}${data.crownKey ? `, 가장 적게 쓴 날 ${data.days.find(day => day.key === data.crownKey).label}` : ''}${data.omitted ? `, 유효하지 않은 기록 ${data.omitted}건 제외` : ''}`);
-    const reaction = el('div', 'pw-home-weekly-reaction');
-    reaction.append(pwIllustrationPanel('all', { panelClass: 'pw-compact-visual pw-home-weekly-art' }));
-    const score = dashboard.insights.positive.score, knownScore = Number.isInteger(score) && score >= 0 && score <= 100;
-    const scoreNode = el('span', 'pw-home-weekly-score');
-    scoreNode.dataset.score = knownScore ? String(score) : 'unknown';
-    scoreNode.setAttribute('aria-label', knownScore ? `최근 28일, 100점 중 ${score}점` : '점수를 계산할 기록이 없어요');
-    scoreNode.append(el('strong', '', knownScore ? String(score) : '—'), el('span', '', '점'));
-    reaction.append(scoreNode);
-    body.append(chart, reaction, detail); node.append(body); return node;
+    body.append(chart, detail); node.append(body); return node;
   }
   function insightIcon(kind) {
     const icon = svg('svg', { viewBox: '0 0 28 28', 'aria-hidden': 'true' });
@@ -351,10 +343,6 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
   function insightsSection() {
     const data = dashboard.insights, section = el('section', 'pw-home-card pw-home-insights');
     section.setAttribute('aria-label', 'AI 인사이트'); section.dataset.pwMotionCard = ''; section.dataset.status = data.status;
-    const header = el('div', 'pw-home-insights-heading'), title = el('h2');
-    title.append(link('AI 인사이트', featureRoute('ai-report'), 'pw-home-card-link', 'insights'));
-    const more = link('더보기', featureRoute('ai-report'), 'pw-home-insights-more', 'insights-more'); more.setAttribute('aria-label', 'AI 인사이트 더보기');
-    header.append(title, more);
     const grid = el('div', 'pw-home-insight-grid');
     for (const kind of ['positive', 'advice']) {
       const item = data[kind], target = featureRoute(kind === 'positive' ? 'habit-analysis' : 'coaching');
@@ -378,9 +366,12 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
       } else panel.append(copy);
       grid.append(panel);
     }
-    section.append(header, grid); return section;
+    section.append(grid); return section;
   }
   const primary = el('div', 'pw-home-primary-row'); primary.append(savingCard(), habitCard());
-  root.append(allowanceHero(), primary, weeklyCard(), insightsSection());
+  const overview = el('section', 'pw-home-card pw-home-overview');
+  overview.setAttribute('aria-label', '용돈 인사이트');
+  overview.append(weeklyCard(), insightsSection());
+  root.append(allowanceHero(), primary, overview);
   return { element: root, mount() {}, dispose() { disposed = true; for (const flow of [...sheets]) flow.dispose(); } };
 }

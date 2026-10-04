@@ -240,8 +240,17 @@ async function overlappingPauseReasons(page, engine) {
 
 async function budgetAndReplacement(page, engine) {
   await page.locator('.pw-nav-item[data-screen="home"]').click();
+  await page.waitForFunction(() => PocketWONMotion.inspect()[0]?.players.filter(player => player.visible).length === 1);
+  assert.deepEqual(await page.evaluate(() => PocketWONMotion.inspect()[0].players.map(player => player.profile).sort()), ['balance']);
+  // Keep the two-player budget contract covered independently of Home decoration.
+  await page.evaluate(() => {
+    const probe = createPocketWONSprite('all').element;
+    probe.id = 'sprite-budget-probe';
+    probe.style.cssText = 'position:absolute;left:0;top:0;width:80px;height:80px;z-index:100;';
+    document.querySelector('.pw-home-hero').append(probe);
+    PocketWONMotion.controllerFor(document.querySelector('.pw-home')).refresh();
+  });
   await page.waitForFunction(() => PocketWONMotion.inspect()[0]?.players.filter(player => player.visible).length === 2);
-  assert.deepEqual(await page.evaluate(() => PocketWONMotion.inspect()[0].players.map(player => player.profile).sort()), ['all', 'balance']);
   const budget = await page.evaluate(async () => {
     const session = PocketWONMotion.controllerFor(document.querySelector('.pw-home'));
     const accepted = session.request('balance', 'action', 'interaction');
@@ -258,7 +267,12 @@ async function budgetAndReplacement(page, engine) {
   assert.equal(budget.accepted, true); assert.equal(budget.idle, true);
   assert.equal(budget.repeat, false); assert.equal(budget.rejectedStrong, false);
   assert(budget.samples.every(sample => sample.strong <= 1 && sample.idle <= 1 && sample.playing <= 2));
-  pass(`${engine}: current Home honors one action and one idle; repeated interactions do not queue`, budget);
+  pass(`${engine}: Home has only the Hero player; an isolated second-player probe verifies action/idle budgets and no queued repeats`, budget);
+  await page.evaluate(() => {
+    document.querySelector('#sprite-budget-probe').remove();
+    PocketWONMotion.controllerFor(document.querySelector('.pw-home')).refresh();
+  });
+  assert.deepEqual(await page.evaluate(() => PocketWONMotion.inspect()[0].players.map(player => player.profile)), ['balance']);
 
   await page.evaluate(() => {
     const sprite = document.querySelector('.pw-home .pw-sprite[data-sprite="balance"]');

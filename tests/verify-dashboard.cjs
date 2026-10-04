@@ -50,7 +50,7 @@ async function inspect(page, name, { reference = false } = {}) {
       balance: box(q('.pw-home-balance-link')), balanceFont:parseFloat(getComputedStyle(q('.pw-home-money .pw-money-digits,.pw-home-money .pw-money-unknown')).fontSize),
       balanceGlyphs:[...document.querySelectorAll('.pw-home-money .pw-money-digits,.pw-home-money .pw-money-unit,.pw-home-money .pw-money-exact,.pw-home-money .pw-money-unknown')].flatMap(n=>{const range=document.createRange();range.selectNodeContents(n);return [...range.getClientRects()].map(r=>({left:r.left,top:r.top,right:r.right,bottom:r.bottom}));}),
       obsoleteHeroCopy: !!document.querySelector('.pw-home-status') || /지금 남은 용돈|오늘도 잘 관리하고/.test(q('.pw-home-hero').textContent),
-      weekly: box(q('.pw-home-weekly')), insights: box(q('.pw-home-insights')), nav: box(q('.pw-bottom-navigation')), navVisual: box(q('.pw-navigation-items')), add: box(q('.pw-nav-add')),
+      overview: box(q('.pw-home-overview')), weekly: box(q('.pw-home-weekly')), insights: box(q('.pw-home-insights')), nav: box(q('.pw-bottom-navigation')), navVisual: box(q('.pw-navigation-items')), add: box(q('.pw-nav-add')),
       sprites, panels: panels.map(box),
       graphics: [...document.querySelectorAll('.pw-home-donut-chart,.pw-home-weekly-plot')].map(n => ({ box: box(n), panel: box(n.closest('.pw-home-card')) })),
       buttons: [...document.querySelectorAll('.pw-shell button')].filter(n => n.getClientRects().length).map(n => ({ label: n.getAttribute('aria-label') || n.textContent, nav: !!n.closest('.pw-bottom-navigation'), purchase: n.classList.contains('pw-home-purchase'), box: box(n) })),
@@ -63,10 +63,12 @@ async function inspect(page, name, { reference = false } = {}) {
   report.geometry.push({ name, ...g });
   assert.equal(g.horizontal, false, name + ' horizontal overflow');
   assert.equal(g.nestedButtons, 0, name + ' nested buttons');
+  assert.equal(await page.locator('.pw-home-overview > .pw-home-weekly,.pw-home-overview > .pw-home-insights').count(),2,name+' combined card');
+  assert.equal(await page.locator('.pw-home-insights-heading').count(),0,name+' removed AI heading row');
   assert.equal(g.obsoleteHeroCopy,false,name+' obsolete hero heading or pill');
   for(const glyph of g.balanceGlyphs) assert(glyph.left>=g.hero.left+7 && glyph.right<=g.hero.right-7 && glyph.top>=g.hero.top+7 && glyph.bottom<=g.status.top-7,name+' balance glyph exceeds hero space '+JSON.stringify(glyph));
   assert.equal(g.removedCalendar, false, name + ' obsolete calendar card remains');
-  assert.deepEqual(g.profiles, ['all', 'balance'], name + ' original character components');
+  assert.deepEqual(g.profiles, ['balance'], name + ' Hero character only');
   if (g.viewport[0] >= 700 && !g.accessible) {
     assert(g.hero.right <= g.row.left + 1, name + ' desktop top row collision');
     assert(g.weekly.right <= g.insights.left + 1, name + ' desktop bottom row collision');
@@ -74,7 +76,7 @@ async function inspect(page, name, { reference = false } = {}) {
   } else {
     assert(g.hero.bottom <= g.row.top + 1, name + ' Hero/first row collision');
     assert(g.row.bottom <= g.weekly.top + 1, name + ' first row/weekly collision');
-    assert(g.weekly.bottom <= g.insights.top + 1, name + ' weekly/insight collision');
+    assert(Math.abs(g.weekly.bottom-g.insights.top)<1,name+' combined sections must meet without a card gap');
   }
   assert(g.insights.bottom <= g.nav.top + 1, name + ' dashboard exceeds navigation');
   assert(g.document[1] <= g.viewport[1] + 1, name + ' dashboard scrolls');
@@ -133,13 +135,13 @@ async function navigation(test, engine) {
     if (segment) assert.equal(await p.locator('.pw-report').getAttribute('data-segment'), segment);
     await p.locator('.pw-nav-item[data-screen="home"]').click(); await ready(p);
   }
-  for (const [selector, feature] of [['.pw-home-saving-open', 'goal-contribution'], ['.pw-home-insights-more', 'ai-report'], ['[data-action="insight-positive"]', 'habit-analysis'], ['[data-action="insight-advice"]', 'coaching']]) {
+  for (const [selector, feature] of [['.pw-home-saving-open', 'goal-contribution'], ['[data-action="insight-positive"]', 'habit-analysis'], ['[data-action="insight-advice"]', 'coaching']]) {
     await p.locator(selector).click(); await ready(p);
     assert.equal(await p.locator('.pw-feature').getAttribute('data-feature'), feature);
     await p.getByRole('button', { name: '이전 화면', exact: true }).click(); await ready(p);
     assert.equal(await p.evaluate(() => PWNavigation.current().screen), 'home');
   }
-  for (const label of ['저축 챌린지 더보기', '금융 습관 더보기', '이번 주 용돈 흐름 더보기']) {
+  for (const label of ['저축 챌린지 더보기', '정후의 소비 습관 더보기', '용돈 인사이트 더보기']) {
     const opener = p.getByRole('button', { name: label, exact: true });
     await opener.click();
     assert.equal(await p.locator('dialog[open]').count(), 1);

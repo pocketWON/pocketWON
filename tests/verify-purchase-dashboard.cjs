@@ -24,17 +24,16 @@ async function layout(p,name){
     const donut=rect(document.querySelector('.pw-home-donut'));
     const value=rect(document.querySelector('.pw-home-score-value')),score=rect(document.querySelector('.pw-home-score')),copy=rect(document.querySelector('.pw-home-positive-content>.pw-home-insight-body')),panel=rect(document.querySelector('.pw-home-insight--positive'));
     const crown=document.querySelector('.pw-home-weekly-crown'),plot=document.querySelector('.pw-home-weekly-plot');
-    const weeklyScore=document.querySelector('.pw-home-weekly-score'),weeklyArt=document.querySelector('.pw-home-weekly-art');
-    return {donut,value,score,copy,panel,weeklyScore:rect(weeklyScore),weeklyGlyphs:[...weeklyScore.children].map(rect),weeklyArt:rect(weeklyArt),weeklyCard:rect(document.querySelector('.pw-home-weekly')),habit:rect(document.querySelector('.pw-home-habit')),crown:crown?rect(crown):null,plot:rect(plot),crownedValue:crown?rect(plot.querySelector(`rect[data-date-key="${crown.dataset.dateKey}"]`).nextElementSibling):null,nav:rect(document.querySelector('.pw-bottom-navigation'))};
+    return {donut,value,score,copy,panel,weeklyBody:rect(document.querySelector('.pw-home-weekly-body')),weeklyCard:rect(document.querySelector('.pw-home-weekly')),bars:[...plot.querySelectorAll('.pw-home-weekly-bar')].map(rect),chartText:[...plot.querySelectorAll('.pw-home-weekly-value,.pw-home-weekly-date,.pw-home-weekly-crown')].map(rect),habit:rect(document.querySelector('.pw-home-habit')),crown:crown?rect(crown):null,plot:rect(plot),crownedValue:crown?rect(plot.querySelector(`.pw-home-weekly-bar[data-date-key="${crown.dataset.dateKey}"]`).nextElementSibling):null,nav:rect(document.querySelector('.pw-bottom-navigation'))};
   });
   report.geometry.push({name,...g});
   assert.equal(g.nav.height,84);assert(g.value.right<=g.score.right+1&&g.value.left>=g.score.left-1,name+' score text exceeds slot');
   assert(g.score.left>=g.copy.right-1 && g.score.bottom<=g.panel.bottom+1 && g.score.right<=g.panel.right+1,name+' score/copy overlap');
-  assert(g.plot.right<=g.weeklyArt.left+1 && g.weeklyArt.right<=g.weeklyScore.left+1,name+' weekly plot/character/score overlap');
-  for(const glyph of g.weeklyGlyphs) assert(glyph.left>=g.weeklyScore.left-1 && glyph.right<=g.weeklyScore.right+1 && glyph.top>=g.weeklyCard.top && glyph.bottom<=g.weeklyCard.bottom,name+' weekly score clipping');
-  assert.equal(await p.locator('.pw-home-weekly-score').getAttribute('data-score'),await p.locator('.pw-home-score').getAttribute('data-score'),name+' weekly and insight scores differ');
-  assert.equal(await p.locator('.pw-home-weekly-bubble,.pw-home-weekly-music').count(),0);
-  assert(!((await p.locator('.pw-home-weekly-reaction').innerText()).includes('습관 점수')));
+  assert.equal(await p.locator('.pw-home-weekly-reaction,.pw-home-weekly-score,.pw-home-weekly-art,.pw-home-weekly .pw-sprite,.pw-home-weekly-bubble,.pw-home-weekly-music').count(),0);
+  assert(Math.abs(g.plot.left-g.weeklyBody.left)<1 && Math.abs(g.plot.right-g.weeklyBody.right)<1,name+' weekly chart must fill card content width');
+  assert.equal(g.bars.length,7);
+  for(const glyph of g.chartText) assert(glyph.left>=g.weeklyCard.left && glyph.right<=g.weeklyCard.right && glyph.top>=g.plot.top-1 && glyph.bottom<=g.weeklyCard.bottom,name+' weekly chart text clipping');
+  for(let i=1;i<g.bars.length;i++) assert(Math.abs((g.bars[i].left-g.bars[i-1].left)-g.plot.width/7)<1,name+' bars must be equally spaced');
   assert(Math.abs(g.donut.width-g.donut.height)<1 && Math.abs((g.donut.left+g.donut.right)-(g.habit.left+g.habit.right))<2,name+' donut is not round and centered');
   assert.equal(await p.locator('.pw-home-legend,.pw-home-purchase').count(),0);
   if(g.crown){assert(g.crown.top>=g.plot.top-1 && g.crown.bottom<=g.crownedValue.top+1,name+' crown overlaps value or exceeds plot '+JSON.stringify(g));}
@@ -44,7 +43,7 @@ async function layout(p,name){
   browser=await launch(engine);
   const c=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'}),p=await c.newPage();
   await p.goto('http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html');await ready(p);await layout(p,engine+'-demo');
-  assert.equal(await p.locator('.pw-home-insights h2 .pw-home-card-title').innerText(),'AI 인사이트');assert.equal(await p.locator('.pw-home-score-label').count(),0);
+  assert.equal(await p.locator('.pw-home-insights-heading,.pw-home-insights h2').count(),0);assert.equal(await p.locator('.pw-home-overview > .pw-home-weekly,.pw-home-overview > .pw-home-insights').count(),2);assert.equal(await p.locator('.pw-home-score-label').count(),0);
   assert.equal(await p.locator('.pw-home-score').evaluate(n=>getComputedStyle(n).backgroundImage),'none');
   await p.evaluate(()=>{window.__scoreModel=createHomeDashboardModel;window.createHomeDashboardModel=(...args)=>{const m=__scoreModel(...args);return {...m,insights:{...m.insights,positive:{...m.insights.positive,score:100}}};};PWNavigation.go('home');});
   for(const [width,height] of [[320,568],[390,844],[844,390]]){await p.setViewportSize({width,height});await layout(p,engine+'-100-points-'+width);}
@@ -123,7 +122,7 @@ async function layout(p,name){
     if(name==='over-budget') assert.equal(await current.page.locator('.pw-home-donut-value').innerText(),'4,000원');
     await current.page.screenshot({path:path.join(out,'screenshots',engine+'-'+name+'.png')});await unchanged(current);await current.context.close();current=null;
   }
-  report.checks.push(engine+' exact individual purchase arcs, hover/click/touch/keyboard/remaining details, detail/list routing, centered donut without a legend, matching scores and seven edge states');
+  report.checks.push(engine+' exact individual purchase arcs, hover/click/touch/keyboard/remaining details without focus boxes, detail/list routing, centered donut without a legend, full-width weekly chart without character/score and seven edge states');
   await browser.close();browser=null;
  }
  report.status='PASS';
