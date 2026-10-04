@@ -16,10 +16,11 @@ function referenceData() {
   data.monthly = { ...data.monthly, saving: 50000, spending: 18000 };
   data.habitScore = 82;
   data.goal = { title: '새 자전거', current: 180000, target: 300000 };
-  data.transactions = [6000, 12000, 8000, 5000, 7000, 9000, 6000].map((amount, index) => ({
-    type: 'out', amount, category: ['간식', '쇼핑', '교통', '문화', '생활', '기타', '간식'][index],
-    memo: '분리된 시각 검증 데이터', ts: new Date(Date.UTC(2026, 8, 28 + index, 3)).toISOString(), receipt: false,
+  data.transactions = [5000, 3000, 2800, 1000, 2000, 2400, 1800].map((amount, index) => ({
+    type: 'out', amount, category: '문구', memo: ['문구 세트','크레파스','동화책','버스 카드 충전','색종이','필통','스티커'][index],
+    ts: new Date(Date.UTC(2026, 8, 28 + index, 2)).toISOString(), receipt: false,
   }));
+  data.transactions.push({ type:'in', amount:50000, category:'용돈', memo:'이번 주 용돈', ts:'2026-09-28T09:00:00+09:00' });
   return data;
 }
 async function freezeDate(page) {
@@ -32,7 +33,6 @@ async function applyReferenceFixture(page) {
     window.__pwReferenceOriginalModel ||= createHomeDashboardModel;
     window.createHomeDashboardModel = function (...args) {
       const model = window.__pwReferenceOriginalModel(...args);
-      const shares = [34, 24, 12, 11, 10, 9];
       return {
         ...model,
         balance: 32000,
@@ -43,21 +43,7 @@ async function applyReferenceFixture(page) {
           { id: 'goal', label: '목표 달성', value: '순항 중', detail: '목표 달성 순항 중' },
         ],
         challenge: { completed: 1, target: 3, note: '' },
-        donut: {
-          ...model.donut, status: 'available', total: 18000, period: '이번 달',
-          categories: model.donut.categories.map((category, index) => ({ ...category, amount: 180 * shares[index], percent: shares[index] })),
-        },
-        week: {
-          ...model.week, status: 'available', omitted: 0,
-          days: model.week.days.map((day, index) => ({ ...day, amount: [6000, 12000, 8000, 5000, 7000, 9000, 6000][index], future: false })),
-          highlightKey: model.week.days[5].key,
-          message: '이번 주도\n알차게 보냈어요!',
-        },
-        insights: {
-          status: 'available',
-          positive: { title: '이번 점이 좋아요!', body: '이번 달은 불필요한 지출이\n지난 달보다 28% 줄었어요.\n정말 잘하고 있어요!' },
-          advice: { title: '이렇게 해보세요!', body: '주말에 지출이 늘어나는\n경향이 있어요. 주말 예산을\n미리 정해보는 건 어떨까요?' },
-        },
+        week: { ...model.week, message: '이번 주도\n알차게 보냈어요!' },
       };
     };
     PWNavigation.go('home');

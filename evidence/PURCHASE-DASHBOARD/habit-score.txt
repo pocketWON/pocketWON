@@ -1,0 +1,8 @@
+PASS Unavailable / insufficient statuses; 28-day boundary; future and invalid rows ignored
+PASS All-full window scores 100 with the "keep going" message
+PASS Linear spending scale, goal progress and weekly saving are rounded per item; total = item sum
+PASS No income, 100% spending, missing goal and invalid goal (total stays unknown)
+PASS Score change compares with the previous 28-day window, null when there is nothing to compare
+PASS Input is never mutated, stored habitScore is ignored, no storage/network/randomness
+
+6 habit score checks passed

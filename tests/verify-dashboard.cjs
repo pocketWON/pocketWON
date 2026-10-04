@@ -43,13 +43,13 @@ async function inspect(page, name, { reference = false } = {}) {
       return { profile: n.dataset.sprite, layer: box(n.querySelector('.pw-sprite-frames')), panel: box(panel), texts };
     });
     return {
-      contentScale: Number(document.querySelector('.pw-home').dataset.viewportScale || 1), accessible: document.documentElement.classList.contains('pw-accessible'), viewport: [innerWidth, innerHeight],
+      designUnit: parseFloat(getComputedStyle(q('.pw-home-hero')).borderTopLeftRadius) / 15, contentScale: Number(document.querySelector('.pw-home').dataset.viewportScale || 1), accessible: document.documentElement.classList.contains('pw-accessible'), viewport: [innerWidth, innerHeight],
       document: [document.documentElement.scrollWidth, document.documentElement.scrollHeight],
       hero: box(q('.pw-home-hero')), status: box(q('.pw-home-breakdown')), row: box(q('.pw-home-primary-row')), saving: box(q('.pw-home-saving')), habit: box(q('.pw-home-habit')),
       weekly: box(q('.pw-home-weekly')), insights: box(q('.pw-home-insights')), nav: box(q('.pw-bottom-navigation')), navVisual: box(q('.pw-navigation-items')), add: box(q('.pw-nav-add')),
       sprites, panels: panels.map(box),
       graphics: [...document.querySelectorAll('.pw-home-donut-chart,.pw-home-weekly-plot')].map(n => ({ box: box(n), panel: box(n.closest('.pw-home-card')) })),
-      buttons: [...document.querySelectorAll('.pw-shell button')].filter(n => n.getClientRects().length).map(n => ({ label: n.getAttribute('aria-label') || n.textContent, nav: !!n.closest('.pw-bottom-navigation'), box: box(n) })),
+      buttons: [...document.querySelectorAll('.pw-shell button')].filter(n => n.getClientRects().length).map(n => ({ label: n.getAttribute('aria-label') || n.textContent, nav: !!n.closest('.pw-bottom-navigation'), purchase: n.classList.contains('pw-home-purchase'), box: box(n) })),
       nestedButtons: document.querySelectorAll('.pw-home button button').length,
       horizontal: (!['clip', 'hidden'].includes(getComputedStyle(q('.pw-home')).overflowX) && q('.pw-home').scrollWidth > q('.pw-home').clientWidth + 1) || document.documentElement.scrollWidth > innerWidth + 1,
       profiles: sprites.map(sprite => sprite.profile).sort(),
@@ -60,7 +60,7 @@ async function inspect(page, name, { reference = false } = {}) {
   assert.equal(g.horizontal, false, name + ' horizontal overflow');
   assert.equal(g.nestedButtons, 0, name + ' nested buttons');
   assert.equal(g.removedCalendar, false, name + ' obsolete calendar card remains');
-  assert.deepEqual(g.profiles, ['all', 'balance', 'report'], name + ' original character components');
+  assert.deepEqual(g.profiles, ['all', 'balance'], name + ' original character components');
   if (g.viewport[0] >= 700 && !g.accessible) {
     assert(g.hero.right <= g.row.left + 1, name + ' desktop top row collision');
     assert(g.weekly.right <= g.insights.left + 1, name + ' desktop bottom row collision');
@@ -88,12 +88,16 @@ async function inspect(page, name, { reference = false } = {}) {
   }
   for (const v of g.graphics) assert(v.box.left >= v.panel.left - 1 && v.box.right <= v.panel.right + 1 && v.box.top >= v.panel.top - 1 && v.box.bottom <= v.panel.bottom + 1, name + ' graphic exceeds card ' + JSON.stringify(v));
   for (const b of g.buttons) {
-    assert(b.box.width >= (b.nav ? 43 : 24 * g.contentScale) && b.box.height >= (b.nav ? 43 : 24 * g.contentScale), name + ' navigation 44px / content 24px before explicit viewport scaling ' + JSON.stringify(b));
+    assert(b.box.width >= (b.nav ? 43 : 24 * g.contentScale * (b.purchase ? g.designUnit : 1) - .1) && b.box.height >= (b.nav ? 43 : 24 * g.contentScale * (b.purchase ? g.designUnit : 1) - .1), name + ' navigation 44px / content 24px before explicit viewport scaling ' + JSON.stringify(b));
   }
   for (const s of g.sprites) {
     const bounds = alpha.profiles[s.profile].bounds, r = s.layer;
     const art = { left: r.left + bounds[0] / 384 * r.width, top: r.top + bounds[1] / 384 * r.height, right: r.left + bounds[2] / 384 * r.width, bottom: r.top + bounds[3] / 384 * r.height };
     assert(art.left >= s.panel.left - 1 && art.right <= s.panel.right + 1 && art.top >= s.panel.top - 1 && art.bottom <= s.panel.bottom + 1, name + ' all-frame art clipping ' + JSON.stringify({ profile: s.profile, art, panel: s.panel }));
+    if (s.profile === 'balance') {
+      assert(art.left >= s.panel.left + 7.8 && art.top >= s.panel.top + 7.8 && art.right <= s.panel.right - 7.8 && art.bottom <= g.status.top - 7.8, name + ' Hero 8px frame/status clearance ' + JSON.stringify({art,panel:s.panel,status:g.status}));
+      for(const text of s.texts) assert(art.left >= text.rect.right + 7.8 || art.right <= text.rect.left - 7.8 || art.top >= text.rect.bottom + 7.8 || art.bottom <= text.rect.top - 7.8, name + ' Hero 8px text clearance ' + text.label);
+    }
     const collisions = s.texts.filter(v => pixelsIntersect(s.profile, s.layer, v.rect));
     assert.equal(collisions.length, 0, name + ' all-frame art/text overlap ' + JSON.stringify({ profile: s.profile, collisions }));
   }
@@ -111,7 +115,7 @@ async function navReachable(page) {
 }
 async function navigation(test, engine) {
   const p = test.page;
-  for (const [selector, target, segment] of [['.pw-home-hero-title', 'record'], ['.pw-home-habit [data-action="habit"]', 'report', 'flow'], ['.pw-home-weekly [data-action="weekly"]', 'report', 'flow'], ['.pw-home-breakdown-item[data-status="spending"]', 'report', 'habit'], ['.pw-home-breakdown-item[data-status="saving"]', 'report', 'habit'], ['.pw-home-breakdown-item[data-status="goal"]', 'goal']]) {
+  for (const [selector, target, segment] of [['.pw-home-hero-title', 'record'], ['.pw-home-habit [data-action="habit"]', 'record'], ['.pw-home-weekly [data-action="weekly"]', 'report', 'flow'], ['.pw-home-breakdown-item[data-status="spending"]', 'report', 'habit'], ['.pw-home-breakdown-item[data-status="saving"]', 'report', 'habit'], ['.pw-home-breakdown-item[data-status="goal"]', 'goal']]) {
     await p.locator(selector).focus(); await p.keyboard.press('Enter'); await ready(p);
     assert.equal(await p.evaluate(() => PWNavigation.current().screen), target);
     if (segment) assert.equal(await p.locator('.pw-report').getAttribute('data-segment'), segment);
@@ -147,10 +151,11 @@ async function referenceSemantics(page) {
   assert.equal(await page.locator('.pw-home-saving-track').getAttribute('aria-valuenow'), '1');
   assert.equal(await page.locator('.pw-home-saving-track').getAttribute('aria-valuemax'), '3');
   assert.equal(await page.locator('.pw-home-donut-segment').count(), 6);
-  assert.equal(await page.locator('.pw-home-donut-value').innerText(), '18,000원');
-  assert.deepEqual(await page.locator('.pw-home-legend-value').allTextContents(), ['34%', '24%', '12%', '11%', '10%', '9%']);
-  assert.deepEqual(await page.locator('.pw-home-weekly-bar').evaluateAll(nodes => nodes.map(node => Number(node.dataset.value))), [6000, 12000, 8000, 5000, 7000, 9000, 6000]);
-  assert.equal(await page.locator('.pw-home-weekly-bar--highlight').getAttribute('data-date-key'), '2026-10-03');
+  assert.equal(await page.locator('.pw-home-donut-value').innerText(), '50,000원');
+  assert.equal(await page.locator('.pw-home-legend-value').count(),0);
+  assert.deepEqual(await page.locator('.pw-home-legend-label').allTextContents(),['문구 세트','크레파스','동화책','필통','색종이']);
+  assert.deepEqual(await page.locator('.pw-home-weekly-bar').evaluateAll(nodes => nodes.map(node => Number(node.dataset.value))), [5000, 3000, 2800, 1000, 2000, 2400, 1800]);
+  assert.equal(await page.locator('.pw-home-weekly-bar--highlight').getAttribute('data-date-key'), '2026-10-04');
   assert.equal(await page.locator('.pw-home-insight').count(), 2);
 }
 (async () => {
@@ -159,7 +164,7 @@ async function referenceSemantics(page) {
     preserved();
     for (const engine of capture && !process.argv.includes('--both') ? ['chromium'] : ['chromium', 'webkit']) {
       browser = await launch(engine);
-      const matrix = edges ? [] : capture ? [[390, 844]] : [...[360, 375, 390, 393, 402, 412, 430].flatMap(w => [667, 740, 780, 812, 844, 852, 874, 896, 932].map(h => [w, h])), [320, 568], [1024, 900], [667, 375]];
+      const matrix = edges ? [] : capture ? [[390, 844]] : process.argv.includes('--responsive') ? [[320,568],[360,640],[375,667],[390,844],[393,852],[402,874],[412,896],[430,932],[667,375],[844,390],[1024,768],[1440,900]] : [...[360, 375, 390, 393, 402, 412, 430].flatMap(w => [667, 740, 780, 812, 844, 852, 874, 896, 932].map(h => [w, h])), [320, 568], [1024, 900], [667, 375]];
       for (const [width, height] of matrix) {
         current = await setup(browser, { data: referenceData(), width, height });
         await applyReferenceFixture(current.page);

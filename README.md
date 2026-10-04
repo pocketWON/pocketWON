@@ -1,6 +1,6 @@
 # PocketWON / 포켓WON
 
-Vanilla HTML/CSS/JavaScript 금융 기록 앱입니다. 현재 홈은 상단 헤더 없이 **잔액 Hero·3분할 상태 → 저축 챌린지/6색 도넛 → 주간 막대 차트 → AI 인사이트 → 홈/리포트/포켓WON 로고/목표/전체** 순서로 표시합니다. 중앙 로고는 기록 추가 버튼이고, 리포트에는 보고서 모양 아이콘을 사용합니다. 앱은 한 뷰포트를 채우며 문서 스크롤 없이 표시합니다. 모든 탭의 하단바는 84px로 고정됩니다. 이미지에서 추출한 파랑·네이비·파스텔과 기존 캐릭터 Sprite를 사용하며, 기본 접속에서는 가상 거래·잔액·목표·AI 예시를 표시합니다. ‘전체 → 실제 기록 보기’로 기존 로컬 데이터에 돌아갈 수 있습니다.
+Vanilla HTML/CSS/JavaScript 금융 기록 앱입니다. 현재 홈은 상단 헤더 없이 **잔액 Hero·3분할 상태 → 저축 챌린지/용돈 대비 구매 도넛 → 최소 지출일 왕관이 있는 주간 막대 → 습관 점수·AI 인사이트 → 홈/리포트/포켓WON 로고/목표/전체** 순서로 표시합니다. 중앙 로고는 기록 추가 버튼이고, 리포트에는 보고서 모양 아이콘을 사용합니다. 앱은 한 뷰포트를 채우며 문서 스크롤 없이 표시합니다. 모든 탭의 하단바는 84px로 고정됩니다. 이미지에서 추출한 파랑·네이비·파스텔과 기존 캐릭터 Sprite를 사용하며, 기본 접속에서는 가상 거래·잔액·목표·AI 예시를 표시합니다. ‘전체 → 실제 기록 보기’로 기존 로컬 데이터에 돌아갈 수 있습니다.
 
 ```sh
 python3 -m http.server 4173 --bind 127.0.0.1
@@ -14,6 +14,8 @@ Vercel은 저장소 루트의 `vercel.json`을 사용합니다. 프로젝트의 
 
 홈은 화면 높이에 맞춰 4행으로 배치하고, 폭 700px 이상에서는 2열×2행으로 가용 화면을 채웁니다. 긴 세부 화면은 하단바를 제외한 영역에 맞춥니다. 작은 화면에서는 본문이 축소될 수 있습니다. 브라우저 주소창은 웹페이지가 자동으로 제거할 수 없으므로 ‘전체 → 전체 화면’ 버튼 또는 지원 브라우저의 홈 화면 추가를 사용합니다.
 
+- [최신 홈 개선·검증 보고서](docs/POCKETWON-PURCHASE-DASHBOARD.md)
+- [최신 모바일 화면](evidence/PURCHASE-DASHBOARD/names-offset/screenshots/chromium-final-demo.png)
 - [이번 변경 및 한계](docs/POCKETWON-FULLSCREEN-DEMO.md)
 - [모바일 화면](evidence/FULLSCREEN-DEMO/viewport-final/chromium-390x844.png) · [데스크톱 화면](evidence/FULLSCREEN-DEMO/viewport-final/chromium-1440x900.png)
 - [화면·하단바 검증](evidence/FULLSCREEN-DEMO/viewport-final/verification.json) · [가상 데이터·저장 격리](evidence/FULLSCREEN-DEMO/data-complete/verification.json)
@@ -46,6 +48,8 @@ Full Product Shell은 AI 9개와 비AI 22개 제품 영역을 상태·입력·�
 node tests/verify-business-contracts.cjs
 node tests/verify-dashboard-data.cjs
 node tests/verify-feature-contracts.cjs
+node tests/verify-habit-score.cjs
+node tests/verify-purchase-dashboard.cjs
 node tests/verify-viewport-demo.cjs
 node tests/verify-public-demo.cjs
 node tests/verify-dashboard.cjs --capture --both

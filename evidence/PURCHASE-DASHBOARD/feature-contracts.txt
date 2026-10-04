@@ -1,0 +1,1 @@
+PASS feature contracts: 9 AI IDs, nullable defaults, default/preview isolation, frozen source, calendar partial dates, no new writer/transport/permissions.

@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "date": "2026-10-04",
+  "latestUI": {
+    "homeList": "Five highest-price purchase names; no prices or extra rows",
+    "donutDesignSize": 130,
+    "legendOffset": -4,
+    "palette": [
+      "#168FF5",
+      "#A0DFFE",
+      "#4AAFEA",
+      "#C1E8FF",
+      "#55CBE8",
+      "#79A4E8"
+    ]
+  },
+  "checks": {
+    "businessGroups": 29,
+    "dataGroups": 10,
+    "habitGroups": 6,
+    "responsiveCases": 40,
+    "viewportCases": 216,
+    "spriteChecks": 32,
+    "storageWrites": 0,
+    "mirroredFiles": 82,
+    "historicalHashes": 1168
+  },
+  "finalEvidence": {
+    "purchaseUI": "names-offset/verification.json",
+    "responsive": "responsive-final/verification.json",
+    "lastOffset": "offset-final/verification.json",
+    "viewport": "accepted-viewport/verification.json",
+    "storage": "accepted-data/verification.json",
+    "motion": "motion-final/sprites/verification.json",
+    "delivery": "delivery/delivery-integrity.json"
+  },
+  "limitations": [
+    "Browser engines tested in isolated contexts, not physical phones.",
+    "Body may scale on short/200%-text screens per existing fullscreen requirement.",
+    "Full-detail title opens existing all-records list; no parent period configuration UI or backend added."
+  ],
+  "intermediateEvidence": "All other run directories are preserved iteration evidence, including failures and runs superseded by user revisions."
+}

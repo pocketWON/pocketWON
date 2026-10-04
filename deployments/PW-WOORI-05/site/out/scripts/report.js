@@ -23,7 +23,8 @@ function createReportView(loaded, navigate, options = {}) {
   const { el, button, heading, money } = PWUI;
   const source = loaded || { status: 'unavailable', state: null };
   const model = createReportViewModel(source.state);
-  const habit = createHabitScoreModel(source.state);
+  const now = window.PWDemo?.enabled ? PWDemo.now : new Date();
+  const habit = createHomeDashboardModel(source, now).habit || { status: 'unavailable', windowDays: PW_HABIT_WINDOW_DAYS };
   const format = new Intl.NumberFormat('ko-KR');
   const segments = [['habit', '습관'], ['flow', '돈 흐름'], ['goal', '목표']];
   let activeSegment = segments.some(([id]) => id === options.segment) ? options.segment : 'habit';

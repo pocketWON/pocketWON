@@ -1,5 +1,45 @@
 /* Read-only dashboard projections. Financial state and writes remain in state.js. */
-function createHomeDashboardModel(loaded, now = new Date()) {
+/* One purchase per saved expense; period bounds are inclusive local calendar dates. */
+function createPurchaseDonutModel(loaded, now = new Date(), period) {
+  const keyOf = date => [date.getFullYear(), String(date.getMonth() + 1).padStart(2, '0'), String(date.getDate()).padStart(2, '0')].join('-');
+  const monday = new Date(now); monday.setDate(monday.getDate() - (monday.getDay() + 6) % 7);
+  const sunday = new Date(monday); sunday.setDate(sunday.getDate() + 6);
+  const start = period ? period.start : keyOf(monday), end = period ? period.end : keyOf(sunday);
+  const validDay = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && parsePocketWONDate(value + 'T12:00:00');
+  const calendar = PWFeatureModels.calendar(loaded, now);
+  const validPeriod = !!(validDay(start) && validDay(end) && start <= end);
+  const known = loaded?.status === 'loaded' && calendar.status !== 'unavailable' && validPeriod;
+  let received = known ? 0 : null, spent = known ? 0 : null;
+  const purchases = [];
+  const add = (total, amount) => total !== null && Number.isSafeInteger(total + amount) ? total + amount : null;
+  if (known) for (const [key, rows] of calendar.days) {
+    if (key < start || key > end) continue;
+    for (const row of rows) {
+      const time = parsePocketWONDate(row.timestamp).getTime();
+      if (time > now.getTime()) continue;
+      if (row.type === 'in') received = add(received, row.amount);
+      else {
+        spent = add(spent, row.amount);
+        purchases.push({ id: 'purchase-' + row.sourceIndex, sourceIndex: row.sourceIndex, label: row.memo.trim() || '이름 없는 구매', amount: row.amount, timestamp: row.timestamp, time });
+      }
+    }
+  }
+  purchases.sort((a, b) => b.amount - a.amount || b.time - a.time || a.sourceIndex - b.sourceIndex);
+  // Alternate light and dark solid blues so adjacent purchases stay distinguishable.
+  const colors = ['#168FF5', '#A0DFFE', '#4AAFEA', '#C1E8FF', '#55CBE8', '#79A4E8'];
+  const segments = purchases.slice(0, 5).map((item, index) => ({ ...item, color: colors[index], count: 1 }));
+  if (purchases.length > 5) segments.push({ id: 'other-purchases', sourceIndex: null, label: '외 ' + (purchases.length - 5) + '건', count: purchases.length - 5,
+    amount: purchases.slice(5).reduce((sum, item) => add(sum, item.amount), 0), color: colors[5] });
+  const safe = received !== null && spent !== null;
+  for (const item of segments) item.fraction = safe && received > 0 ? item.amount / received : null;
+  const remaining = safe ? Math.max(0, received - spent) : null, overBudget = safe ? Math.max(0, spent - received) : null;
+  const status = !safe ? 'unavailable' : received === 0 ? 'no-allowance' : overBudget > 0 ? 'overspent' : spent === 0 ? 'empty' : 'available';
+  return { status, received, spent, remaining, overBudget, items: purchases, segments, omitted: calendar.omitted,
+    periodStart: validPeriod ? start : null, periodEnd: validPeriod ? end : null,
+    period: validPeriod ? start + ' ~ ' + end : '기간 확인 필요', periodLabel: period ? '기간 내 용돈' : '이번 주 용돈' };
+}
+
+function createHomeDashboardModel(loaded, now = new Date(), period) {
   const calendar = PWFeatureModels.calendar(loaded, now);
   const home = createHomeViewModel(loaded?.state);
   const keyOf = date => [date.getFullYear(), String(date.getMonth() + 1).padStart(2, '0'), String(date.getDate()).padStart(2, '0')].join('-');
@@ -12,26 +52,17 @@ function createHomeDashboardModel(loaded, now = new Date()) {
     const date = localDay(monday); date.setDate(date.getDate() + index);
     const key = keyOf(date), future = date.getTime() > today.getTime();
     let amount = known && !future ? 0 : null;
+    const recorded = known && !future && (calendar.days.get(key) || []).some(row => parsePocketWONDate(row.timestamp).getTime() <= now.getTime());
     if (amount !== null) for (const row of calendar.days.get(key) || []) {
       if (row.type !== 'out' || parsePocketWONDate(row.timestamp)?.getTime() > now.getTime()) continue;
       if (!Number.isSafeInteger(amount + row.amount)) { amount = null; break; }
       amount += row.amount;
     }
-    return { date, key, label: `${date.getMonth() + 1}/${date.getDate()}`, weekday: weekdays[index], amount, future };
+    return { date, key, label: `${date.getMonth() + 1}/${date.getDate()}`, weekday: weekdays[index], amount, future, recorded };
   });
-  const categories = [
-    { id: 'food', label: '식비', color: '#1897FE' },
-    { id: 'shopping', label: '쇼핑', color: '#FEAFB4' },
-    { id: 'transport', label: '교통', color: '#FEE16E' },
-    { id: 'culture', label: '문화·여가', color: '#97E497' },
-    { id: 'living', label: '생활비', color: '#B9A0FB' },
-    { id: 'other', label: '기타', color: '#CDD2DC' },
-  ].map(item => ({ ...item, amount: known ? 0 : null, percent: known ? 0 : null }));
-  const categoryIndex = { '간식': 0, '식비': 0, '문구': 1, '쇼핑': 1, '교통': 2, '게임': 3, '문화·여가': 3, '생활비': 4 };
   const dayIndex = date => Math.floor(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86400000);
   const todayIndex = dayIndex(now), recentAmounts = { in: 0, out: 0 };
   let habitAmountsSafe = true;
-  let total = known ? 0 : null;
   if (known) for (const rows of calendar.days.values()) for (const row of rows) {
     const date = parsePocketWONDate(row.timestamp);
     if (!date || date.getTime() > now.getTime()) continue;
@@ -41,20 +72,6 @@ function createHomeDashboardModel(loaded, now = new Date()) {
       if (!Number.isSafeInteger(amount)) habitAmountsSafe = false;
       else recentAmounts[row.type] = amount;
     }
-    if (row.type !== 'out' || date.getFullYear() !== now.getFullYear() || date.getMonth() !== now.getMonth()) continue;
-    const index = Object.hasOwn(categoryIndex, row.category) ? categoryIndex[row.category] : 5;
-    if (total === null || !Number.isSafeInteger(total + row.amount)) { total = null; continue; }
-    total += row.amount; categories[index].amount += row.amount;
-  }
-  if (total === null) for (const category of categories) { category.amount = null; category.percent = null; }
-  else if (total > 0) {
-    const shares = categories.map((category, index) => {
-      const exact = category.amount / total * 100;
-      category.percent = Math.floor(exact);
-      return { index, fraction: exact - category.percent };
-    }).sort((a, b) => b.fraction - a.fraction || a.index - b.index);
-    const remaining = 100 - categories.reduce((sum, category) => sum + category.percent, 0);
-    for (let index = 0; index < remaining; index++) categories[shares[index].index].percent++;
   }
   const habit = loaded?.status === 'loaded' && habitAmountsSafe && typeof createHabitScoreModel === 'function'
     ? createHabitScoreModel(loaded.state, now) : null;
@@ -66,7 +83,7 @@ function createHomeDashboardModel(loaded, now = new Date()) {
       detail: item ? `최근 ${habit.windowDays}일 기록으로 계산한 점수, ${item.detail}` : '기록을 남기면 습관 점수를 확인할 수 있어요' };
   };
   return {
-    calendar, today: keyOf(today), balance: home.balance,
+    calendar, habit, today: keyOf(today), balance: home.balance,
     statusPill: loaded?.status === 'empty' ? '첫 기록을 남겨볼까요? 💙'
       : loaded?.status !== 'loaded' || home.balance === null ? '용돈 정보를 확인하고 있어요'
       : '지금 쓸 수 있는 용돈이에요! 💙',
@@ -76,12 +93,13 @@ function createHomeDashboardModel(loaded, now = new Date()) {
       { id: 'goal', label: '목표 달성', value: goalKnown ? `${home.goal.percent}%` : home.goal.status === 'empty' ? '시작' : '확인 중', detail: goalKnown ? `${home.goal.title}, ${home.goal.percent}% 달성` : '저장된 목표 확인하기' },
     ],
     challenge: { status: 'unavailable', completed: null, target: 3, note: '저축 기록 연동 준비 중' },
-    donut: { status: total === null ? 'unavailable' : total === 0 ? 'empty' : 'available', total,
-      period: `${now.getFullYear()}년 ${now.getMonth() + 1}월`, categories, omitted: calendar.omitted },
+    donut: createPurchaseDonutModel(loaded, now, period),
     week: { status: known ? 'available' : 'unavailable', days, omitted: calendar.omitted, highlightKey: keyOf(today),
+      crownKey: days.filter(day => day.recorded && day.amount !== null).sort((a, b) => a.amount - b.amount || b.key.localeCompare(a.key))[0]?.key || null,
       message: known ? '이번 주 용돈도\n차근차근 살펴봐요!' : '첫 기록부터\n함께 시작해요!' },
     insights: { status: 'preparing',
-      positive: { title: '이번 점이 좋아요!', body: 'AI 분석을 준비하고 있어요.\n기록을 차곡차곡 남기며\n나의 습관을 알아봐요.' },
+      positive: { title: '이런 점이 좋아요!', score: habit?.status === 'available' && Number.isInteger(habit.score) ? habit.score : null,
+        body: habit?.status === 'available' && Number.isInteger(habit.score) ? habit.coaching.strength || habit.coaching.next : '기록을 남기면 습관 점수를 확인할 수 있어요.' },
       advice: { title: '이렇게 해보세요!', body: '다음 용돈을 받기 전, 남은 돈과 필요한 지출을 함께 확인해보는 건 어떨까요?' } },
   };
 }
@@ -163,7 +181,6 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
   }
   function allowanceHero() {
     const hero = el('section', 'pw-home-hero'); hero.dataset.pwMotionCard = '';
-    if(window.PWDemo?.enabled)hero.append(el('span','pw-demo-badge','가상 데이터'));
     hero.setAttribute('aria-labelledby', 'pw-home-balance-title');
     const body = el('div', 'pw-home-hero-body'), title = el('h2'); title.id = 'pw-home-balance-title';
     const titleAction = link('지금 남은 용돈', { screen: 'record', stage: 'list' }, 'pw-home-hero-title', 'list');
@@ -212,32 +229,42 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
   }
   function habitCard() {
     const data = dashboard.donut, node = card('pw-home-habit', '나의 금융 습관');
-    node.append(cardHeader('나의 금융 습관', { screen: 'report', segment: 'flow' }, 'habit', menu('금융 습관',
-      `${data.period}에 기록한 지출을 분류한 차트예요. 간식은 식비, 문구는 쇼핑, 게임은 문화·여가로 표시하며 저장된 분류는 그대로 유지해요.${data.omitted ? ` 날짜나 금액을 확인할 수 없는 기록 ${data.omitted}건은 제외했어요.` : ''}`,
+    node.append(cardHeader('나의 금융 습관', { screen: 'record', stage: 'list' }, 'habit', menu('금융 습관',
+      `${data.period}에 받은 용돈 대비 구매한 품목의 가격을 표시해요. 회청색 빈 부분은 아직 쓰지 않은 용돈이에요.${data.omitted ? ` 날짜나 금액을 확인할 수 없는 기록 ${data.omitted}건은 제외했어요.` : ''}`,
       [['지출 리포트 보기', { screen: 'report', segment: 'flow' }], ['용돈 내역 보기', { screen: 'record', stage: 'list' }]])));
     const body = el('div', 'pw-home-habit-body'), donut = el('div', 'pw-home-donut');
     donut.dataset.status = data.status;
     const chart = svg('svg', { class: 'pw-home-donut-chart', viewBox: '0 0 120 120', 'aria-hidden': 'true' });
     const radius = 46, circumference = 2 * Math.PI * radius;
-    chart.append(svg('circle', { class: 'pw-home-donut-track', cx: 60, cy: 60, r: radius, fill: 'none', stroke: '#E7EDF4', 'stroke-width': 22 }));
+    chart.append(svg('circle', { class: 'pw-home-donut-track', cx: 60, cy: 60, r: radius, fill: 'none', stroke: data.status === 'overspent' ? '#ED8494' : '#E7EDF4', 'stroke-width': 22 }));
     let offset = 0;
-    if (data.total > 0) for (const category of data.categories) {
-      const fraction = category.amount / data.total, length = fraction * circumference;
-      if (length > 0) chart.append(svg('circle', { class: 'pw-home-donut-segment', cx: 60, cy: 60, r: radius, fill: 'none', stroke: category.color, 'stroke-width': 22,
-        'stroke-dasharray': `${Math.max(0, length - 1.1)} ${circumference}`, 'stroke-dashoffset': -offset, transform: 'rotate(-90 60 60)', 'data-category': category.id }));
+    if (data.status === 'available') for (const item of data.segments) {
+      const length = item.fraction * circumference;
+      // No visual gap subtraction: a 5,000 / 50,000 purchase occupies exactly 10%.
+      chart.append(svg('circle', { class: 'pw-home-donut-segment', cx: 60, cy: 60, r: radius, fill: 'none', stroke: item.color, 'stroke-width': 22,
+        'stroke-dasharray': `${length} ${circumference}`, 'stroke-dashoffset': -offset, transform: 'rotate(-90 60 60)', 'data-purchase': item.id, 'data-fraction': item.fraction }));
       offset += length;
     }
     const center = el('div', 'pw-home-donut-center');
-    const total = el('strong', 'pw-home-donut-value', data.total === null ? '—' : `${data.total >= 1e6 ? compactAmount(data.total) : number(data.total)}원`);
-    total.dataset.money = 'category-spent';
-    center.append(el('span', 'pw-home-donut-label', '총 지출'), total); donut.append(chart, center);
-    donut.setAttribute('role', 'img'); donut.setAttribute('aria-label', `${data.period}, 총 지출 ${data.total === null ? '확인 안 됨' : `${number(data.total)}원`}`);
-    const legend = el('ul', 'pw-home-legend'); legend.setAttribute('aria-label', '이번 달 지출 분류');
-    for (const category of data.categories) {
-      const row = el('li', 'pw-home-legend-row'); row.dataset.category = category.id;
-      const dot = el('span', 'pw-home-legend-dot'); dot.style.background = category.color; dot.setAttribute('aria-hidden', 'true');
-      row.append(dot, el('span', 'pw-home-legend-label', category.label), el('span', 'pw-home-legend-value', category.percent === null ? '—' : `${category.percent}%`)); legend.append(row);
+    const label = data.status === 'overspent' ? '용돈 초과' : data.status === 'no-allowance' ? '용돈 기록 필요' : data.status === 'unavailable' ? '기록 확인 필요' : data.periodLabel;
+    const value = data.status === 'overspent' ? data.overBudget : data.received;
+    const total = el('strong', 'pw-home-donut-value', value === null ? '—' : `${value >= 1e6 ? compactAmount(value) : number(value)}원`);
+    total.dataset.money = data.status === 'overspent' ? 'allowance-overflow' : 'allowance-received';
+    center.append(el('span', 'pw-home-donut-label', label), total); donut.append(chart, center);
+    const explanation = data.status === 'unavailable' ? '용돈 확인 필요' : data.status === 'no-allowance' ? '받은 용돈을 기록해요' : data.status === 'overspent' ? `${number(data.overBudget)}원 초과` : `남은 용돈 ${number(data.remaining)}원`;
+    donut.setAttribute('role', 'img'); donut.setAttribute('aria-label', `${data.period}, 받은 용돈 ${number(data.received)}원, 구매 ${number(data.spent)}원, ${explanation}`);
+    const legend = el('ul', 'pw-home-legend'); legend.setAttribute('aria-label', '가격순 구매 품목');
+    for (const item of data.segments.slice(0, 5)) {
+      const row = el('li', 'pw-home-legend-row'); row.dataset.purchase = item.id;
+      const target = item.sourceIndex === null ? { screen: 'record', stage: 'list' } : { screen: 'record', stage: 'detail', sourceIndex: item.sourceIndex, returnTo: { screen: 'home' } };
+      const action = button('', () => go(target, action), 'pw-home-purchase');
+      action.setAttribute('aria-label', `${item.label}, 구매 상세 보기`);
+      action.title = item.label;
+      const dot = el('span', 'pw-home-legend-dot'); dot.style.background = item.color; dot.setAttribute('aria-hidden', 'true');
+      action.append(dot, el('span', 'pw-home-legend-label', item.label));
+      row.append(action); legend.append(row);
     }
+    if (!data.segments.length) legend.append(el('li', 'pw-home-purchase-empty', data.status === 'unavailable' ? '구매 기록을 확인할 수 없어요.' : '아직 구매한 품목이 없어요.'));
     body.append(donut, legend); node.append(body); return node;
   }
   function weeklyCard() {
@@ -246,9 +273,9 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
       '월요일부터 일요일까지 기록한 지출이에요. 아직 오지 않은 날은 미집계로 표시하고, 확인할 수 없는 기록을 0원으로 바꾸지 않아요.',
       [['돈 흐름 리포트 보기', { screen: 'report', segment: 'flow' }], ['용돈 내역 보기', { screen: 'record', stage: 'list' }]])));
     const body = el('div', 'pw-home-weekly-body');
-    const chart = svg('svg', { class: 'pw-home-weekly-plot', viewBox: '0 0 244 78', preserveAspectRatio: 'none', 'aria-hidden': 'true' }); chart.dataset.chartKind = 'spending';
+    const chart = svg('svg', { class: 'pw-home-weekly-plot', viewBox: '0 0 244 96', preserveAspectRatio: 'none', 'aria-hidden': 'true' }); chart.dataset.chartKind = 'spending';
     const maximum = Math.max(1, ...data.days.filter(day => day.amount !== null).map(day => day.amount));
-    const baseline = 60, top = 20;
+    const baseline = 78, top = 44;
     chart.append(svg('line', { class: 'pw-home-weekly-baseline', x1: 2, x2: 242, y1: baseline, y2: baseline }));
     data.days.forEach((day, index) => {
       const x = 18 + index * 34.4, height = day.amount === null ? 2 : Math.max(1.8, day.amount / maximum * (baseline - top));
@@ -256,12 +283,16 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
       const bar = svg('rect', { class: `pw-home-weekly-bar${highlighted ? ' pw-home-weekly-bar--highlight' : ''}${day.amount === null ? ' pw-home-weekly-bar--unknown' : ''}`,
         x: x - 12, y: baseline - height, width: 24, height, rx: Math.min(8, height / 2), 'data-date-key': day.key });
       if (day.amount !== null) bar.dataset.value = String(day.amount);
-      const value = svg('text', { class: `pw-home-weekly-value${highlighted ? ' pw-home-weekly-value--highlight' : ''}`, x, y: Math.max(12, baseline - height - 7), 'text-anchor': 'middle' });
+      const value = svg('text', { class: `pw-home-weekly-value${highlighted ? ' pw-home-weekly-value--highlight' : ''}`, x, y: baseline - height - 7, 'text-anchor': 'middle' });
       value.textContent = day.amount === null ? '—' : compactAmount(day.amount);
-      const label = svg('text', { class: `pw-home-weekly-date${highlighted ? ' pw-home-weekly-date--highlight' : ''}`, x, y: 75, 'text-anchor': 'middle' });
+      const label = svg('text', { class: `pw-home-weekly-date${highlighted ? ' pw-home-weekly-date--highlight' : ''}`, x, y: 93, 'text-anchor': 'middle' });
+      if (day.key === data.crownKey) {
+        const crown = svg('text', { class: 'pw-home-weekly-crown', x, y: baseline - height - 25, 'text-anchor': 'middle', 'data-date-key': day.key });
+        crown.textContent = '👑'; chart.append(crown);
+      }
       label.textContent = day.weekday || ['월', '화', '수', '목', '금', '토', '일'][index]; chart.append(bar, value, label);
     });
-    const detail = el('p', 'pw-sr-only', `주간 지출, ${data.days.map(day => `${day.label} ${day.future ? '미집계' : day.amount === null ? '확인 안 됨' : `${number(day.amount)}원`}`).join(', ')}${data.omitted ? `, 유효하지 않은 기록 ${data.omitted}건 제외` : ''}`);
+    const detail = el('p', 'pw-sr-only', `주간 지출, ${data.days.map(day => `${day.label} ${day.future ? '미집계' : day.amount === null ? '확인 안 됨' : `${number(day.amount)}원`}`).join(', ')}${data.crownKey ? `, 가장 적게 쓴 날 ${data.days.find(day => day.key === data.crownKey).label}` : ''}${data.omitted ? `, 유효하지 않은 기록 ${data.omitted}건 제외` : ''}`);
     const reaction = el('div', 'pw-home-weekly-reaction');
     reaction.append(el('p', 'pw-home-weekly-bubble', data.message || '이번 주 용돈도\n차근차근 살펴봐요!'),
       pwIllustrationPanel('all', { panelClass: 'pw-compact-visual pw-home-weekly-art' }));
@@ -293,8 +324,18 @@ function createHomeView(model, navigate, status, loaded = { status, state: null 
       else titleText.textContent = item.title;
       caption.append(icon, titleText);
       if (kind === 'advice') caption.append(chevron());
-      panel.append(caption, el('span', 'pw-home-insight-body', item.body));
-      if (kind === 'positive') panel.append(pwIllustrationPanel('report', { panelClass: 'pw-compact-visual pw-home-insight-art' }));
+      panel.append(caption);
+      const copy = el('span', 'pw-home-insight-body', item.body);
+      if (kind === 'positive') {
+        const content = el('span', 'pw-home-positive-content'), score = el('span', 'pw-home-score');
+        const known = Number.isInteger(item.score) && item.score >= 0 && item.score <= 100;
+        score.dataset.score = known ? String(item.score) : 'unknown';
+        score.setAttribute('aria-label', known ? `최근 28일 습관 점수, 100점 중 ${item.score}점` : '습관 점수 확인에 필요한 기록이 없어요');
+        const value = el('span', 'pw-home-score-value');
+        value.append(el('strong', '', known ? String(item.score) : '—'), el('span', '', '점'));
+        score.append(value, el('span', 'pw-home-score-label', '습관 점수'));
+        content.append(copy, score); panel.append(content);
+      } else panel.append(copy);
       grid.append(panel);
     }
     section.append(header, grid); return section;

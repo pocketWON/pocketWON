@@ -7,10 +7,16 @@ const report={status:'RUNNING',checks:[]},url='http://127.0.0.1:4173/ks6s3juocjz
   page.on('pageerror',e=>errors.push(e.message));
   await context.addInitScript(()=>{const state={balance:77,monthly:{saving:77,spending:0},transactions:[]};localStorage.setItem('pocketwon_demo_v1',JSON.stringify(state));window.__before=localStorage.getItem('pocketwon_demo_v1');window.__writes=[];for(const name of ['setItem','removeItem','clear']){const fn=Storage.prototype[name];Storage.prototype[name]=function(...args){__writes.push([name,...args]);return fn.apply(this,args);};}});
   await page.goto(url);await ready(page);
-  assert.match(await page.locator('.pw-home-money').innerText(),/32,000/);assert.equal(await page.locator('.pw-demo-badge').innerText(),'가상 데이터');
+  assert.match(await page.locator('.pw-home-money').innerText(),/32,000/);assert.equal(await page.locator('.pw-demo-badge').count(),0);
   const model=await page.evaluate(()=>createHomeDashboardModel(PWDemo.load(),PWDemo.now));
-  assert.equal(model.donut.categories.reduce((n,c)=>n+c.amount,0),model.donut.total);assert.equal(model.donut.categories.reduce((n,c)=>n+c.percent,0),100);assert(model.week.days.every(d=>Number.isSafeInteger(d.amount)&&d.amount>0));
+  assert.equal(model.donut.spent,18000);assert.equal(model.donut.received,50000);assert.equal(model.donut.remaining,32000);assert.equal(model.donut.segments[0].fraction,.1);assert(model.week.days.every(d=>Number.isSafeInteger(d.amount)&&d.amount>0));
   const data=await page.evaluate(()=>PWDemo.load());assert.equal(data.state.monthly.saving-data.state.monthly.spending,data.state.balance);
+  const score=await page.locator('.pw-home-score').getAttribute('data-score');assert.equal(Number(score),model.habit.score);
+  assert.equal(await page.locator('.pw-home-insight--positive .pw-sprite').count(),0);
+  await page.locator('.pw-nav-item[data-screen="report"]').click();await ready(page);
+  assert.equal(await page.locator('.pw-report-habit-score').getAttribute('aria-label'),`100점 중 ${score}점`);
+  await page.locator('.pw-nav-item[data-screen="home"]').click();await ready(page);
+
   await page.getByRole('button',{name:'기록하기',exact:true}).click();const d=page.locator('dialog[open]');
   await page.getByLabel('받은 돈',{exact:true}).check();await d.getByRole('button',{name:'다음',exact:true}).click();await d.locator('input[inputmode="numeric"]').fill('1000');await d.getByRole('button',{name:'다음',exact:true}).click();await d.getByRole('textbox').fill('데모 저장 차단');await d.getByRole('button',{name:'다음',exact:true}).click();
   assert(await page.getByRole('button',{name:'기록 저장',exact:true}).isDisabled());

@@ -5,7 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const app = path.resolve(__dirname, '../ks6s3juocjzc2.kimi.page');
 const source = ['state.js', 'habit.js', 'feature-models.js', 'home.js'].map(file => fs.readFileSync(path.join(app, 'scripts', file), 'utf8')).join('\n');
-const api = vm.runInNewContext(`${source}\n({createHomeDashboardModel, createHomeViewModel})`, { Date });
+const api = vm.runInNewContext(`${source}\n({createHomeDashboardModel, createHomeViewModel, createPurchaseDonutModel, createHabitScoreModel})`, { Date });
 const now = new Date(2026, 9, 1, 12);
 const tx = (day, amount, type = 'out', memo = '') => ({ type, amount, category: type === 'in' ? '용돈' : '간식', memo, ts: `${day}T10:00:00` });
 const state = { balance: 32000, monthly: { saving: 50000, spending: 18000 }, habitScore: 82.75, goal: { title: '새 자전거', current: 180000, target: 300000 }, transactions: [
@@ -65,72 +65,77 @@ assert.equal(home.goal.percent, 60);
 assert(!/localStorage|setItem|persistPocketWONState|applyTransaction/.test(fs.readFileSync(path.join(app, 'scripts/home.js'), 'utf8')));
 console.log('PASS saved home values and financial functions stay intact; dashboard never writes storage');
 
-const spend = (category, amount, day = '2026-10-01', time = '10:00:00') => ({ type: 'out', category, amount, ts: `${day}T${time}`, memo: '' });
-const mix = { ...state, transactions: [
-  spend('간식', 6120), spend('문구', 4320), spend('교통', 2160), spend('게임', 1980), spend('생활비', 1800), spend('옛 분류', 1620),
-  spend('간식', 9999, '2026-09-30'), spend('간식', 9999, '2026-10-02'), spend('간식', 9999, '2026-10-01', '23:00:00'),
-  tx('2026-10-01', 10000, 'in'), spend('간식', 5, '2026-02-30'), spend('간식', -1), null,
-] };
-freeze(mix);
-const mixBefore = JSON.stringify(mix), categoryModel = api.createHomeDashboardModel({ status: 'loaded', state: mix }, now);
-assert.equal(categoryModel.donut.total, 18000);
-assert.equal(categoryModel.donut.period, '2026년 10월');
-assert.equal(categoryModel.donut.status, 'available');
-assert.deepEqual(array(categoryModel.donut.categories.map(category => category.id)), ['food', 'shopping', 'transport', 'culture', 'living', 'other']);
-assert.deepEqual(array(categoryModel.donut.categories.map(category => category.amount)), [6120, 4320, 2160, 1980, 1800, 1620]);
-assert.deepEqual(array(categoryModel.donut.categories.map(category => category.percent)), [34, 24, 12, 11, 10, 9]);
-assert.equal(categoryModel.week.days[3].amount, 18000, 'Same-day future spending is not reported early');
-assert.equal(categoryModel.week.highlightKey, categoryModel.today);
-assert.deepEqual(array(categoryModel.week.days.map(day => day.weekday)), ['월', '화', '수', '목', '금', '토', '일']);
-assert.equal(JSON.stringify(mix), mixBefore);
-console.log('PASS donut uses the current local calendar month, excludes future/income/invalid rows, and maps legacy labels without mutation');
-
-const thirds = api.createHomeDashboardModel({ status: 'loaded', state: { transactions: [spend('간식', 1), spend('문구', 1), spend('교통', 1)] } }, now);
-assert.deepEqual(array(thirds.donut.categories.map(category => category.percent)), [34, 33, 33, 0, 0, 0]);
-assert.equal(thirds.donut.categories.reduce((sum, category) => sum + category.percent, 0), 100);
-const zero = api.createHomeDashboardModel({ status: 'loaded', state: { balance: 0, transactions: [] } }, now);
-assert.equal(zero.balance, 0); assert.equal(zero.donut.status, 'empty'); assert.equal(zero.donut.total, 0);
-assert(zero.donut.categories.every(category => category.amount === 0 && category.percent === 0));
-for (const loaded of [{ status: 'empty', state: null }, { status: 'invalid', state: null }, { status: 'unavailable', state: null }, { status: 'loaded', state: {} }]) {
-  const model = api.createHomeDashboardModel(loaded, now);
-  assert.equal(model.donut.status, 'unavailable'); assert.equal(model.donut.total, null);
-  assert(model.donut.categories.every(category => category.amount === null && category.percent === null));
+const modelOf = transactions => api.createHomeDashboardModel({ status: 'loaded', state: { ...state, transactions } }, now);
+const purchases = [
+  tx('2026-09-28', 50000, 'in'), tx('2026-09-28', 5000, 'out', '문구 세트'),
+  tx('2026-09-29', 3000, 'out', '크레파스'), tx('2026-09-30', 2800, 'out', '동화책'),
+  tx('2026-10-01', 2400, 'out', '필통'), tx('2026-09-28', 2000, 'out', '색종이'),
+  tx('2026-09-29', 1800, 'out', '스티커'), tx('2026-09-30', 1000, 'out', '버스 카드 충전'),
+];
+freeze(purchases);
+const purchaseBefore = JSON.stringify(purchases), m = modelOf(purchases), d = m.donut;
+assert.equal(d.received, 50000); assert.equal(d.spent, 18000); assert.equal(d.remaining, 32000);
+assert.equal(d.segments[0].fraction, .1);
+assert(Math.abs(d.segments.reduce((sum, item) => sum + item.fraction, 0) - .36) < 1e-12);
+assert.equal(d.remaining / d.received, .64);
+assert.deepEqual(array(d.segments.map(item => item.amount)), [5000, 3000, 2800, 2400, 2000, 2800]);
+assert.equal(d.segments[5].label, '외 2건'); assert.equal(d.segments[5].count, 2); assert.equal(d.segments[5].sourceIndex, null);
+assert.equal(d.segments[0].sourceIndex, 1); assert.equal(new Set(d.segments.map(item => item.color)).size, 6);
+// Solid blue palette with a significant luminance change across every adjacent segment.
+const luminance = hex => hex.slice(1).match(/../g).map(x => parseInt(x,16)/255).map(v => v <= .04045 ? v/12.92 : ((v+.055)/1.055)**2.4).reduce((sum,v,i) => sum + v*[.2126,.7152,.0722][i],0);
+for (const [i,item] of d.segments.entries()) {
+  const [r,g,b] = item.color.slice(1).match(/../g).map(x => parseInt(x,16)); assert(b > r && b >= g); assert(luminance(item.color) >= .25, 'All purchase blues must stay bright');
+  if (i) assert(Math.abs(luminance(item.color)-luminance(d.segments[i-1].color)) > .12);
 }
-const unsafeTotal = api.createHomeDashboardModel({ status: 'loaded', state: { transactions: [spend('간식', Number.MAX_SAFE_INTEGER), spend('문구', 1)] } }, now);
-assert.equal(unsafeTotal.donut.total, null); assert.equal(unsafeTotal.donut.status, 'unavailable');
-assert(unsafeTotal.donut.categories.every(category => category.amount === null && category.percent === null));
-console.log('PASS rounded shares sum to 100; real zero, unavailable sources and aggregate overflow remain distinct');
+assert.equal(JSON.stringify(purchases), purchaseBefore);
+console.log('PASS exact 10% purchase, neutral 64% remainder, sorted top five + remainder, distinct solid blue palette, original source indices and no mutation');
 
-assert.equal(categoryModel.balance, state.balance);
-assert.equal(categoryModel.challenge.completed, null, 'Income and goal progress do not establish dated saving events');
-assert.equal(categoryModel.challenge.target, 3);
-assert.equal(categoryModel.insights.status, 'preparing');
-assert(!categoryModel.insights.positive.body.includes('28%'), 'Unconnected AI must not fabricate reference findings');
-assert.equal(categoryModel.statuses.find(item => item.id === 'goal').value, '60%');
-assert(categoryModel.statuses.find(item => item.id === 'goal').detail.includes('60% 달성'));
-assert.equal(categoryModel.statuses.find(item => item.id === 'saving').value, '0/20점');
-assert.equal(categoryModel.statuses.find(item => item.id === 'spending').value, '0/25점');
-const frugal = api.createHomeDashboardModel({ status: 'loaded', state: { transactions: [tx('2026-10-01', 10000, 'in'), spend('간식', 2000)] } }, now);
-assert.equal(frugal.statuses.find(item => item.id === 'spending').value, '25/25점');
-assert.equal(frugal.statuses.find(item => item.id === 'saving').value, '5/20점');
-assert(frugal.statuses.find(item => item.id === 'saving').detail.includes('최근 28일'));
-assert.equal(frugal.challenge.completed, null, 'A weekly net-positive habit score is not a count of saving events');
-assert.equal(api.createHomeDashboardModel({ status: 'loaded', state: { ...mix, balance: 24680 } }, now).balance, 24680);
-console.log('PASS live balance and goal state bind exactly; unavailable saving/AI sources never become fictional successes');
+const tied = modelOf([tx('2026-09-28', 50000, 'in'), tx('2026-09-29', 5000, 'out', '같은 이름'), tx('2026-10-01', 5000, 'out', '같은 이름'), tx('2026-09-30', 3000, 'out', '  ')]).donut;
+assert.deepEqual(array(tied.items.map(item => item.sourceIndex)), [2,1,3]);
+assert.equal(tied.items[2].label, '이름 없는 구매'); assert.equal(tied.items.length, 3);
+const exclusions = modelOf([...purchases, tx('2026-09-27', 3000), tx('2026-10-02', 4000), { ...tx('2026-10-01', 5000), ts:'2026-10-01T23:00:00' }, tx('2026-02-30', 20), tx('2026-10-01', -1), tx('2026-10-01', 1.5), tx('2026-10-01', Number.MAX_SAFE_INTEGER+1), { ...tx('2026-10-01', 50), type:'bad' }]);
+assert.equal(exclusions.donut.spent, 18000); assert.equal(exclusions.donut.received, 50000);
+assert.equal(exclusions.week.days[3].amount, 2400);
+const custom = api.createPurchaseDonutModel({status:'loaded',state:{transactions:purchases}}, now, {start:'2026-09-29',end:'2026-09-30'});
+assert.equal(custom.spent, 8600); assert.equal(custom.received, 0); assert.equal(custom.status, 'no-allowance'); assert.equal(custom.periodLabel, '기간 내 용돈');
+const single = api.createPurchaseDonutModel({status:'loaded',state:{transactions:purchases}}, now, {start:'2026-09-28',end:'2026-09-28'});
+assert.equal(single.received, 50000); assert.equal(single.spent, 7000);
+for (const period of [{start:'2026-02-30',end:'2026-03-01'}, {start:'2026-10-02',end:'2026-10-01'}, {}, {start:'bad',end:'2026-10-01'}]) assert.equal(api.createPurchaseDonutModel({status:'loaded',state:{transactions:purchases}},now,period).status,'unavailable');
+assert.equal(d.periodStart,'2026-09-28'); assert.equal(d.periodEnd,'2026-10-04');
+assert.equal(newYear.donut.periodStart,'2026-12-28'); assert.equal(newYear.donut.periodEnd,'2027-01-03');
+console.log('PASS memo fallback, duplicate purchases, newest-first ties, future and invalid exclusions, inclusive custom periods, month/year bounds');
 
-const unsafeHabit = api.createHomeDashboardModel({ status: 'loaded', state: { ...mix, transactions: [
-  tx('2026-10-01', Number.MAX_SAFE_INTEGER, 'in'), tx('2026-10-01', 1, 'in'), tx('2026-10-01', 1, 'in'),
-  spend('간식', Number.MAX_SAFE_INTEGER), spend('간식', 2),
-] } }, now);
-for (const id of ['spending', 'saving']) {
-  assert.equal(unsafeHabit.statuses.find(item => item.id === id).value, '확인 중');
+const none = modelOf([]).donut; assert.equal(none.status,'no-allowance'); assert.equal(none.received,0); assert.equal(none.spent,0);
+const noIncome = modelOf([tx('2026-10-01',5000)]).donut;
+assert.equal(noIncome.status,'no-allowance'); assert.equal(noIncome.segments[0].fraction,null); assert.equal(noIncome.items[0].amount,5000);
+const unspent = modelOf([tx('2026-10-01',50000,'in')]).donut;
+assert.equal(unspent.status,'empty'); assert.equal(unspent.remaining,50000);
+const excess = modelOf([tx('2026-10-01',1000,'in'),tx('2026-10-01',5000)]).donut;
+assert.equal(excess.status,'overspent'); assert.equal(excess.overBudget,4000); assert.equal(excess.items[0].amount,5000);
+for (const loaded of [{status:'empty',state:null},{status:'invalid',state:null},{status:'unavailable',state:null},{status:'loaded',state:{}}]) {
+  const result=api.createHomeDashboardModel(loaded,now); assert.equal(result.donut.status,'unavailable'); assert.equal(result.donut.received,null); assert.equal(result.insights.positive.score,null);
 }
-assert.equal(unsafeHabit.statuses.find(item => item.id === 'goal').value, '60%', 'Independent goal remains available when financial totals overflow');
-const excludedUnsafeHabit = api.createHomeDashboardModel({ status: 'loaded', state: { transactions: [
-  tx('2026-10-01', 10000, 'in'), spend('간식', 2000),
-  tx('2026-09-03', Number.MAX_SAFE_INTEGER, 'in'), tx('2026-09-03', 1, 'in'),
-  { ...tx('2026-10-01', Number.MAX_SAFE_INTEGER, 'in'), ts: '2026-10-01T23:00:00' },
-] } }, now);
-assert.equal(excludedUnsafeHabit.statuses.find(item => item.id === 'spending').value, '25/25점');
-assert.equal(excludedUnsafeHabit.statuses.find(item => item.id === 'saving').value, '5/20점');
-console.log('PASS unsafe recent habit aggregates stay unknown; future/out-of-window rows cannot poison independent current scores');
+for (const transactions of [[tx('2026-10-01',Number.MAX_SAFE_INTEGER,'in'),tx('2026-10-01',1,'in')], [tx('2026-10-01',Number.MAX_SAFE_INTEGER),tx('2026-10-01',1)]]) {
+  const unsafe=modelOf(transactions); assert.equal(unsafe.donut.status,'unavailable'); assert(unsafe.donut.segments.every(item=>item.fraction===null)); assert.equal(unsafe.insights.positive.score,null);
+  for(const id of ['spending','saving']) assert.equal(unsafe.statuses.find(item=>item.id===id).value,'확인 중');
+  assert.equal(unsafe.statuses.find(item=>item.id==='goal').value,'60%');
+}
+console.log('PASS empty, unavailable, no income, overspending and unsafe aggregates preserve amounts without inventing shares/scores');
+
+assert.equal(m.week.crownKey,'2026-10-01');
+assert.equal(modelOf([tx('2026-09-28',100),tx('2026-09-30',100)]).week.crownKey,'2026-09-30');
+assert.equal(modelOf([tx('2026-09-28',100),tx('2026-09-30',1000,'in')]).week.crownKey,'2026-09-30');
+assert.equal(modelOf([]).week.crownKey,null);
+assert.equal(modelOf([tx('2026-10-02',100),tx('2026-02-30',100)]).week.crownKey,null);
+assert.equal(modelOf([tx('2026-09-28',Number.MAX_SAFE_INTEGER),tx('2026-09-28',1)]).week.crownKey,null);
+assert.equal(projected.week.crownKey,'2026-09-29');
+console.log('PASS crown chooses recorded minimum, most recent ties and income-only zero; excludes future/unknown/unrecorded days');
+
+const score = api.createHabitScoreModel({...state,transactions:purchases},now);
+assert.equal(m.insights.positive.score,score.score); assert.equal(m.insights.positive.body,score.coaching.strength||score.coaching.next);
+assert.equal(m.habit.windowDays,28); assert.equal(m.insights.positive.title,'이런 점이 좋아요!');
+assert.equal(m.challenge.completed,null); assert.equal(m.insights.status,'preparing');
+assert.equal(m.balance,state.balance); assert.equal(m.statuses.find(item=>item.id==='goal').value,'60%');
+const excludedUnsafe = modelOf([tx('2026-10-01',10000,'in'),tx('2026-10-01',2000),tx('2026-09-03',Number.MAX_SAFE_INTEGER,'in'),tx('2026-09-03',1,'in'),{...tx('2026-10-01',Number.MAX_SAFE_INTEGER,'in'),ts:'2026-10-01T23:00:00'}]);
+assert.equal(excludedUnsafe.statuses.find(item=>item.id==='spending').value,'25/25점');
+console.log('PASS Home uses the same recent-28-day habit score and strength; out-of-window overflow cannot poison it');

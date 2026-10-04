@@ -240,8 +240,8 @@ async function overlappingPauseReasons(page, engine) {
 
 async function budgetAndReplacement(page, engine) {
   await page.locator('.pw-nav-item[data-screen="home"]').click();
-  await page.waitForFunction(() => PocketWONMotion.inspect()[0]?.players.filter(player => player.visible).length === 3);
-  assert.deepEqual(await page.evaluate(() => PocketWONMotion.inspect()[0].players.map(player => player.profile).sort()), ['all', 'balance', 'report']);
+  await page.waitForFunction(() => PocketWONMotion.inspect()[0]?.players.filter(player => player.visible).length === 2);
+  assert.deepEqual(await page.evaluate(() => PocketWONMotion.inspect()[0].players.map(player => player.profile).sort()), ['all', 'balance']);
   const budget = await page.evaluate(async () => {
     const session = PocketWONMotion.controllerFor(document.querySelector('.pw-home'));
     const accepted = session.request('balance', 'action', 'interaction');

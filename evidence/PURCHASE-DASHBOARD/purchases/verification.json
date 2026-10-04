@@ -1,0 +1,306 @@
+{
+  "status": "FAIL",
+  "checks": [],
+  "geometry": [
+    {
+      "name": "chromium-demo",
+      "pairs": [
+        {
+          "button": {
+            "left": 284.59375,
+            "top": 308.390625,
+            "right": 372.609375,
+            "bottom": 332.390625,
+            "width": 88.015625,
+            "height": 24
+          },
+          "name": {
+            "left": 291.59375,
+            "top": 314.640625,
+            "right": 335.515625,
+            "bottom": 326.140625,
+            "width": 43.921875,
+            "height": 11.5
+          },
+          "price": {
+            "left": 337.515625,
+            "top": 315.21875,
+            "right": 372.609375,
+            "bottom": 325.5625,
+            "width": 35.09375,
+            "height": 10.34375
+          },
+          "priceOverflow": false
+        },
+        {
+          "button": {
+            "left": 284.59375,
+            "top": 332.390625,
+            "right": 372.609375,
+            "bottom": 356.390625,
+            "width": 88.015625,
+            "height": 24
+          },
+          "name": {
+            "left": 291.59375,
+            "top": 338.640625,
+            "right": 335.515625,
+            "bottom": 350.140625,
+            "width": 43.921875,
+            "height": 11.5
+          },
+          "price": {
+            "left": 337.515625,
+            "top": 339.21875,
+            "right": 372.609375,
+            "bottom": 349.5625,
+            "width": 35.09375,
+            "height": 10.34375
+          },
+          "priceOverflow": false
+        },
+        {
+          "button": {
+            "left": 284.59375,
+            "top": 356.390625,
+            "right": 372.609375,
+            "bottom": 380.390625,
+            "width": 88.015625,
+            "height": 24
+          },
+          "name": {
+            "left": 291.59375,
+            "top": 362.640625,
+            "right": 335.515625,
+            "bottom": 374.140625,
+            "width": 43.921875,
+            "height": 11.5
+          },
+          "price": {
+            "left": 337.515625,
+            "top": 363.21875,
+            "right": 372.609375,
+            "bottom": 373.5625,
+            "width": 35.09375,
+            "height": 10.34375
+          },
+          "priceOverflow": false
+        },
+        {
+          "button": {
+            "left": 284.59375,
+            "top": 380.390625,
+            "right": 372.609375,
+            "bottom": 404.390625,
+            "width": 88.015625,
+            "height": 24
+          },
+          "name": {
+            "left": 291.59375,
+            "top": 386.640625,
+            "right": 335.515625,
+            "bottom": 398.140625,
+            "width": 43.921875,
+            "height": 11.5
+          },
+          "price": {
+            "left": 337.515625,
+            "top": 387.21875,
+            "right": 372.609375,
+            "bottom": 397.5625,
+            "width": 35.09375,
+            "height": 10.34375
+          },
+          "priceOverflow": false
+        },
+        {
+          "button": {
+            "left": 284.59375,
+            "top": 404.390625,
+            "right": 372.609375,
+            "bottom": 428.390625,
+            "width": 88.015625,
+            "height": 24
+          },
+          "name": {
+            "left": 291.59375,
+            "top": 410.640625,
+            "right": 335.515625,
+            "bottom": 422.140625,
+            "width": 43.921875,
+            "height": 11.5
+          },
+          "price": {
+            "left": 337.515625,
+            "top": 411.21875,
+            "right": 372.609375,
+            "bottom": 421.5625,
+            "width": 35.09375,
+            "height": 10.34375
+          },
+          "priceOverflow": false
+        },
+        {
+          "button": {
+            "left": 284.59375,
+            "top": 428.390625,
+            "right": 372.609375,
+            "bottom": 452.390625,
+            "width": 88.015625,
+            "height": 24
+          },
+          "name": {
+            "left": 291.59375,
+            "top": 434.640625,
+            "right": 335.515625,
+            "bottom": 446.140625,
+            "width": 43.921875,
+            "height": 11.5
+          },
+          "price": {
+            "left": 337.515625,
+            "top": 435.21875,
+            "right": 372.609375,
+            "bottom": 445.5625,
+            "width": 35.09375,
+            "height": 10.34375
+          },
+          "priceOverflow": false
+        }
+      ],
+      "score": {
+        "left": 138.421875,
+        "top": 682.109375,
+        "right": 186.421875,
+        "bottom": 730.109375,
+        "width": 48,
+        "height": 48
+      },
+      "copy": {
+        "left": 28.390625,
+        "top": 690.5,
+        "right": 132.421875,
+        "bottom": 721.71875,
+        "width": 104.03125,
+        "height": 31.21875
+      },
+      "panel": {
+        "left": 18.390625,
+        "top": 650.109375,
+        "right": 196.421875,
+        "bottom": 734.5,
+        "width": 178.03125,
+        "height": 84.390625
+      },
+      "habit": {
+        "left": 197.59375,
+        "top": 260.984375,
+        "right": 380.609375,
+        "bottom": 479.796875,
+        "width": 183.015625,
+        "height": 218.8125
+      },
+      "crown": {
+        "left": 128.37496948242188,
+        "top": 543.6858520507812,
+        "right": 149.881591796875,
+        "bottom": 562.0560913085938,
+        "width": 21.506622314453125,
+        "height": 18.3702392578125
+      },
+      "plot": {
+        "left": 17.390625,
+        "top": 515.609375,
+        "right": 261.390625,
+        "bottom": 597.609375,
+        "width": 244,
+        "height": 82
+      },
+      "crownedValue": {
+        "left": 131.06329345703125,
+        "top": 561.1552734375,
+        "right": 146.11793518066406,
+        "bottom": 571.2589111328125,
+        "width": 15.054641723632812,
+        "height": 10.1036376953125
+      },
+      "nav": {
+        "left": 0,
+        "top": 760,
+        "right": 390,
+        "bottom": 844,
+        "width": 390,
+        "height": 84
+      }
+    },
+    {
+      "name": "chromium-unspent",
+      "pairs": [],
+      "score": {
+        "left": 136.015625,
+        "top": 502.953125,
+        "right": 173.859375,
+        "bottom": 540.796875,
+        "width": 37.84375,
+        "height": 37.84375
+      },
+      "copy": {
+        "left": 22.796875,
+        "top": 515.71875,
+        "right": 131.296875,
+        "bottom": 528.03125,
+        "width": 108.5,
+        "height": 12.3125
+      },
+      "panel": {
+        "left": 14.703125,
+        "top": 477.515625,
+        "right": 181.953125,
+        "bottom": 535.671875,
+        "width": 167.25,
+        "height": 58.15625
+      },
+      "habit": {
+        "left": 182.046875,
+        "top": 191.140625,
+        "right": 352.59375,
+        "bottom": 350.390625,
+        "width": 170.546875,
+        "height": 159.25
+      },
+      "crown": {
+        "left": 182.27117919921875,
+        "top": 397.2176513671875,
+        "right": 199.47642517089844,
+        "bottom": 411.9139099121094,
+        "width": 17.205245971679688,
+        "height": 14.696258544921875
+      },
+      "plot": {
+        "left": 13.9375,
+        "top": 371.0625,
+        "right": 206.328125,
+        "bottom": 435.71875,
+        "width": 192.390625,
+        "height": 64.65625
+      },
+      "crownedValue": {
+        "left": 188.3450927734375,
+        "top": 411.2392883300781,
+        "right": 193.40249633789062,
+        "bottom": 419.50592041015625,
+        "width": 5.057403564453125,
+        "height": 8.266632080078125
+      },
+      "nav": {
+        "left": 0,
+        "top": 556,
+        "right": 360,
+        "bottom": 640,
+        "width": 360,
+        "height": 84
+      }
+    }
+  ],
+  "failure": "AssertionError [ERR_ASSERTION]: chromium-unspent score/copy overlap\n    at layout (/Users/jeonghu/포켓WON/tests/verify-purchase-dashboard.cjs:19:3)\n    at async /Users/jeonghu/포켓WON/tests/verify-purchase-dashboard.cjs:54:106"
+}

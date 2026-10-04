@@ -1,0 +1,10 @@
+PASS current week uses browser-local Monday–Sunday, excludes income/invalid dates and keeps source positions
+PASS daily integer overflow remains unknown without affecting other days
+PASS valid zero is distinct from empty storage, missing data, failed reads and future dates
+PASS Sunday/Monday, month and year boundary geometry keeps local dates
+PASS saved home values and financial functions stay intact; dashboard never writes storage
+PASS exact 10% purchase, neutral 64% remainder, sorted top five + remainder, distinct solid blue palette, original source indices and no mutation
+PASS memo fallback, duplicate purchases, newest-first ties, future and invalid exclusions, inclusive custom periods, month/year bounds
+PASS empty, unavailable, no income, overspending and unsafe aggregates preserve amounts without inventing shares/scores
+PASS crown chooses recorded minimum, most recent ties and income-only zero; excludes future/unknown/unrecorded days
+PASS Home uses the same recent-28-day habit score and strength; out-of-window overflow cannot poison it

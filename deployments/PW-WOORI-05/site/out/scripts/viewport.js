@@ -32,8 +32,33 @@ window.PWViewport = (() => {
     root.style.transform = `translateX(-50%) scale(${scale})`;
     root.dataset.viewportScale = String(scale);
   }
+  function fitHero() {
+    const hero = content.querySelector('.pw-home-hero');
+    const stage = hero?.querySelector('.pw-home-character-stage'), sprite = stage?.querySelector('.pw-sprite');
+    if (!sprite) return;
+    const box = hero.getBoundingClientRect(), style = getComputedStyle(hero);
+    const scale = box.width / parseFloat(style.width), unit = parseFloat(style.borderTopLeftRadius) / 15;
+    if (!(scale > 0 && unit > 0)) return;
+    // Union of every balance action/idle frame: [105,100,297,319] in a 384px cell.
+    const alphaWidth = 192 / 384, alphaHeight = 219 / 384, gap = 8;
+    const obstacles = [...hero.querySelectorAll('.pw-home-hero-title,.pw-home-money,.pw-home-status')].map(node => node.getBoundingClientRect());
+    const right = box.right - Math.max(gap, 18 * unit * scale);
+    const bottom = hero.querySelector('.pw-home-breakdown').getBoundingClientRect().top - gap;
+    const areas = [
+      { left: Math.max(box.left, ...obstacles.map(rect => rect.right)) + gap, top: box.top + gap },
+      { left: box.left + gap, top: Math.max(box.top, ...obstacles.map(rect => rect.bottom)) + gap },
+    ];
+    const size = Math.max(0, ...areas.map(area => Math.min(250 * unit * scale, (right - area.left) / alphaWidth, (bottom - area.top) / alphaHeight)));
+    stage.style.left = ((right - size * 297 / 384 - box.left) / scale) + 'px';
+    stage.style.top = ((bottom - size * 319 / 384 - box.top) / scale) + 'px';
+    stage.style.right = 'auto'; stage.style.bottom = 'auto';
+    stage.style.width = stage.style.height = (size / scale) + 'px';
+    sprite.style.width = sprite.style.height = '100%';
+    sprite.style.left = sprite.style.top = '0'; sprite.style.translate = 'none';
+  }
   function schedule() { cancelAnimationFrame(frame); frame = requestAnimationFrame(() => {
     fit();
+    fitHero();
     for (const [dialog, stage] of dialogs) if (dialog.open) {
       fitStage(stage.body, stage.container);
       dialog.scrollTop = 0;
