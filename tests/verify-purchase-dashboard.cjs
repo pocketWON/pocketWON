@@ -6,6 +6,17 @@ const date=new Date('2026-10-04T14:59:00Z');
 const transaction=(amount,type='out',memo='문구 세트',day=4)=>({amount,type,memo,category:type==='in'?'용돈':'문구',ts:`2026-10-0${day}T10:00:00+09:00`});
 const state=transactions=>({balance:32000,monthly:{saving:50000,spending:18000},goal:{title:'책',target:100000,current:45000},transactions});
 async function arcPoint(page,id){return page.locator(`[data-purchase="${id}"][role="button"]`).evaluate(n=>{const r=n.ownerSVGElement.getBoundingClientRect(),angle=(-.25+Number(n.dataset.offset)+Number(n.dataset.fraction)/2)*2*Math.PI;return {x:r.left+r.width*(60+46*Math.cos(angle))/120,y:r.top+r.height*(60+46*Math.sin(angle))/120};});}
+async function arcAppearance(page,name){
+  const styles=await page.locator('.pw-home-donut-chart [role="button"]').evaluateAll(ns=>ns.map(n=>{const s=getComputedStyle(n);return {id:n.dataset.purchase,active:n.dataset.active,focused:n===document.activeElement,outline:s.outlineStyle,shadow:s.boxShadow,filter:s.filter,width:parseFloat(s.strokeWidth),tap:s.webkitTapHighlightColor};}));
+  for(const style of styles){
+    assert.equal(style.outline,'none',name+' unexpected arc outline');
+    assert.equal(style.shadow,'none',name+' rectangular focus shadow');
+    assert.equal(style.filter,'none',name+' unexpected arc glow');
+    assert.equal(style.width,22,name+' arc thickness changed');
+    assert.equal(style.tap,'rgba(0, 0, 0, 0)',name+' native tap highlight');
+  }
+  (report.arcStyles ||= []).push({name,styles});
+}
 async function layout(p,name){
   await ready(p);
   const g=await p.evaluate(()=>{
@@ -51,15 +62,20 @@ async function layout(p,name){
    const q=await point(item.id);await p.mouse.move(q.x,q.y);await ready(p);
    assert.equal(await p.locator('.pw-home-donut-label').innerText(),item.label,'hover must identify each individual purchase');
    assert.equal(await p.locator('.pw-home-donut-value').innerText(),'−'+item.amount.toLocaleString('ko-KR')+'원');
+   await arcAppearance(p,engine+'-hover-'+item.id);
   }
   await p.mouse.move(1,1);await ready(p);assert.equal(await p.locator('.pw-home-donut-value').innerText(),'50,000원');
   const first=d.donut.items[0],q=await point(first.id);
   await p.mouse.click(q.x,q.y);await p.mouse.move(1,1);await ready(p);
   assert.equal(await p.locator('.pw-home-donut-center').getAttribute('data-purchase'),first.id,'clicked selection must persist');
+  await arcAppearance(p,engine+'-selected');
   await p.screenshot({path:path.join(out,'screenshots',engine+'-purchase-selected.png')});
   const firstArc=p.locator(`.pw-home-donut-segment[data-purchase="${first.id}"]`);
   await firstArc.focus();await p.keyboard.press('ArrowRight');await ready(p);assert.equal(await p.locator('.pw-home-donut-label').innerText(),d.donut.items[1].label);
+  await arcAppearance(p,engine+'-keyboard-focus');
+  await p.screenshot({path:path.join(out,'screenshots',engine+'-purchase-focused.png')});
   await p.keyboard.press('End');await ready(p);assert.equal(await p.locator('.pw-home-donut-label').innerText(),'남은 용돈');assert.equal(await p.locator('.pw-home-donut-value').innerText(),'32,000원');
+  await arcAppearance(p,engine+'-remaining-focus');
   await p.keyboard.press('Escape');await ready(p);assert.equal(await p.locator('.pw-home-donut-value').innerText(),'50,000원');
   await p.mouse.click(q.x,q.y);await p.locator('.pw-home-donut-center').click();await ready(p);
   const route=await p.evaluate(()=>PWNavigation.current());assert.equal(route.screen,'record');assert.equal(route.stage,'detail');assert.equal(route.sourceIndex,first.sourceIndex);
@@ -68,7 +84,7 @@ async function layout(p,name){
   assert.equal(await p.locator('.pw-home-weekly-crown').getAttribute('data-date-key'),d.week.crownKey);
   await p.locator('.pw-home-habit [data-action="habit"]').click();await ready(p);assert.equal(await p.locator('.pw-record[data-stage="list"]').count(),1);
   const seen=new Set();do {for(const id of await p.locator('.pw-record-row-button').evaluateAll(ns=>ns.map(n=>Number(n.dataset.sourceIndex))))seen.add(id);if(await p.getByRole('button',{name:'다음',exact:true}).isDisabled())break;await p.getByRole('button',{name:'다음',exact:true}).click();await ready(p);}while(true);
-  assert(d.donut.items.every(item=>seen.has(item.sourceIndex)),'All weekly purchases reachable through title arrow');
+  assert(d.donut.items.every(item=>seen.has(item.sourceIndex)),'All weekly purchases reachable through card title');
   await p.locator('.pw-nav-item[data-screen="home"]').click();await ready(p);await p.mouse.move(1,1);
   await p.screenshot({path:path.join(out,'screenshots',engine+'-final-demo.png')});await c.close();
   const touch=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,reducedMotion:'reduce'}),touchPage=await touch.newPage();
@@ -77,6 +93,7 @@ async function layout(p,name){
   await touchPage.touchscreen.tap(touchPoint.x,touchPoint.y);await ready(touchPage);
   assert.equal(await touchPage.locator('.pw-home-donut-label').innerText(),first.label);
   assert.equal(await touchPage.locator('.pw-home-donut-value').innerText(),'−5,000원');
+  await arcAppearance(touchPage,engine+'-touch-selected');
   await touchPage.touchscreen.tap(touchPoint.x,touchPoint.y);await ready(touchPage);
   assert.equal(await touchPage.locator('.pw-home-donut-value').innerText(),'50,000원','second tap restores total');
   await touch.close();
