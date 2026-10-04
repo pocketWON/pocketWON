@@ -49,7 +49,13 @@
 
 랭킹·‘이렇게 해보세요!’ 버튼의 배경과 테두리만 투명하게 변경했다. 바깥 용돈 인사이트 박스와 미션 배경, 패딩·열 비율·위치·크기·내용·클릭 동작은 유지한다. Chromium·WebKit에서 이전 배치 좌표와 내용이 모두 일치하고, 두 내부 표면만 투명함을 확인했다. 증거는 `evidence/OPEN-INNER-CARDS/`에 보존한다.
 
-![최종 앱](../evidence/OPEN-INNER-CARDS/production/live-app.jpg)
+## 표시된 아래 공간 확장
+
+첨부 표시선을 기준으로 용돈 인사이트의 양옆 아래 경계를 28 CSS px 확장했다. 같은 만큼 내부 아래 여백을 늘려 그래프·랭킹·조언의 내용 좌표는 유지한다. 중앙에는 반경 48px의 곡선으로 로고 공간을 비웠다. 하단바·버튼·원본 로고 크기와 위치는 그대로이며, 기존 확대 글자 모드의 배치는 유지한다.
+
+`evidence/EXTENDED-INSIGHTS/verification.json`에 Chromium·WebKit, 작은 휴대폰·390×844·가로 화면·데스크톱의 내용 좌표 보존, 아래 28px 증가, 로고 간격과 버튼 동작을 기록했다. 이전 증거와 로컬 미러도 보존했다.
+
+![최종 앱](../evidence/EXTENDED-INSIGHTS/production/live-app.jpg)
 
 ## 공개 반영
 
