@@ -45,19 +45,19 @@
 
 최종 결과는 `summary.json`에 정리한다. 보정 과정의 실패 폴더도 보존하며, 위 최종 통과 폴더와 구분한다. 작은 화면의 본문 축소 정책은 기존 fullscreen 요구에 따른 것이다. 물리 기기의 브라우저 UI나 키보드는 이번에 직접 검사하지 않았다.
 
-![최종 홈](../evidence/DONUT-INTERACTION/accepted-layout-v3/screenshots/chromium-390x844.png)
+![최종 홈](../evidence/DONUT-INTERACTION/production/live-app.jpg)
 
 ## 공개 반영
 
-최종 소스 커밋 `0419e30`을 `pocketWON/pocketWON` main에 푸시하고 기존 Vercel 프로젝트에 배포했다.
+최종 소스 커밋 `4bcdcb1`을 `pocketWON/pocketWON` main에 푸시하고 기존 Vercel 프로젝트에 배포했다.
 
 - 공개 앱: https://pocketwon.vercel.app/
-- 배포 ID: `dpl_3A2cGfZhwuz7hbBjZrCTHHfgwJQS`
-- 원본 배포: https://pocketwon-g0sy6oknt-clcocloud.vercel.app
-- 공개 HTML·변경 CSS·JS 3개 경로가 HTTP 200이며 로컬 SHA-256과 일치한다.
-- 실제 인앱 브라우저에서 도넛 가까이 붙인 품목명, 말풍선 없는 캐릭터와 파란 65점의 좌우 배치를 확인했다. 점수 명칭은 보이지 않는다.
-- 최신 검증과 캡처: `evidence/WEEKLY-SCORE/production/verification.json`, `evidence/WEEKLY-SCORE/production/live-app.jpg`.
-- 앞선 배포 증거는 `evidence/PURCHASE-DASHBOARD/production/`, `production-blue-score/`에 보존했다.
+- 배포 ID: `dpl_EedMCZ7UuBJMLnE2Kfs2C7q5QAVe`
+- 원본 배포: https://pocketwon-oz1or2dhb-clcocloud.vercel.app
+- 공개 HTML·변경 CSS·JS 4개 경로가 HTTP 200이며 로컬 SHA-256과 일치한다.
+- 실제 로컬 인앱 브라우저에서 ‘남은 용돈’ 제목, 아래의 큰 잔액, 기존 비율의 캐릭터, 목록 없는 도넛을 확인했다. 구매 구간을 직접 눌러 ‘문구 세트 −5,000원’ 표시도 확인했다.
+- 최신 검증과 캡처: `evidence/DONUT-INTERACTION/production/verification.json`, `live-app.jpg`, `live-selected.jpg`.
+- 앞선 배포 증거는 기존 폴더에 보존했다.
 
 ## 주간 카드 점수 배치 후속 검증
 

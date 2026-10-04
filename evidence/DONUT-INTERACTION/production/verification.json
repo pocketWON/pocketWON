@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "sourceCommit": "4bcdcb124b9253f775bda8e7bca083a419fa1c69",
+  "alias": "https://pocketwon.vercel.app/",
+  "deploymentId": "dpl_EedMCZ7UuBJMLnE2Kfs2C7q5QAVe",
+  "deploymentUrl": "https://pocketwon-oz1or2dhb-clcocloud.vercel.app",
+  "http": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "9319e09c3c4e11a4a35a3e558012283f6d9fae38892a5151681067e2c2a685b7",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/home.js",
+      "status": 200,
+      "sha256": "49ff82e4bd7382016e8b60643bbc689da5f42af6c3889c7cf7b1fae82c0afe6f",
+      "matchesLocal": true
+    },
+    {
+      "path": "scripts/viewport.js",
+      "status": 200,
+      "sha256": "da57e385a6a5613a65340833f5769bf59b1b443c512a1016e29e25d05a6f9335",
+      "matchesLocal": true
+    },
+    {
+      "path": "styles/home.css",
+      "status": 200,
+      "sha256": "922664054bd3ef88a8de5348d08cf53172461927223bc92109a3b4fd1edbc7ad",
+      "matchesLocal": true
+    }
+  ],
+  "liveBrowser": {
+    "url": "http://127.0.0.1:4173/ks6s3juocjzc2.kimi.page/index.html?v=header-simplify-20261004",
+    "verified": true,
+    "screenshots": [
+      "live-app.jpg",
+      "live-selected.jpg"
+    ],
+    "title": "남은 용돈",
+    "selection": "문구 세트 −5,000원"
+  }
+}
