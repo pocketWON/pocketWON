@@ -10,6 +10,8 @@ python3 -m http.server 4173 --bind 127.0.0.1
 - [Golden Master 최종 구현·검증 보고서](docs/POCKETWON-PIXEL-FIDELITY.md)
 - [Golden Master 비교·오버레이 갤러리](evidence/PIXEL-FIDELITY/index.html)
 
+Vercel은 저장소 루트의 `vercel.json`을 사용합니다. 프로젝트의 Root Directory는 저장소 루트로 두고, `outputDirectory`로 지정한 `ks6s3juocjzc2.kimi.page/`만 서비스합니다. 별도 설치·빌드 과정은 없습니다. 이 폴더의 `index.html`이 `/`에 열리며 CSS·JavaScript·폰트·캐릭터도 같은 폴더의 상대 경로로 로드됩니다. 저장소 루트에는 앱 `index.html`이 없으므로 Output Directory 설정을 제거하면 기본 주소에서 `404 NOT_FOUND`가 발생합니다.
+
 홈은 대표 390×844에서 한 화면에 들어갑니다. 짧은 화면과 safe area로 공간이 부족하면 카드 비율을 유지하고 세로 스크롤을 허용합니다. 초기 Golden Master 검증은 양 브라우저 552개 보고 항목과 대시보드 148개 geometry case를 통과했습니다. 이후 사용자 요청으로 헤더와 캐릭터 옆 문구·강조선을 제거하고 하단 아이콘을 수정했습니다. [최신 화면](evidence/REPORT-DOCUMENT-ICON/chromium-home.png) · [최신 대시보드 검증](evidence/MAIN-PUSH/dashboard/verification.json) · [헤더 제거·화면 복귀 검증](evidence/MAIN-PUSH/header/verification.json) · [최신 로컬 미러 검증](evidence/MAIN-PUSH/delivery/delivery-integrity.json). 아래 이전 보고서는 당시 구현 기록으로 보존합니다.
 
 - [Reference Dashboard 구현·검증 보고서](docs/POCKETWON-REFERENCE-DASHBOARD.md)

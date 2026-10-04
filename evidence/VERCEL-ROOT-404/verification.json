@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "config": {
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "framework": null,
+    "installCommand": "",
+    "buildCommand": "",
+    "outputDirectory": "ks6s3juocjzc2.kimi.page"
+  },
+  "checks": [
+    {
+      "engine": "chromium",
+      "status": "PASS",
+      "rootStatus": 200,
+      "assets": 58,
+      "errors": [],
+      "routing": "report,home,record,cancel",
+      "storageUnchanged": true
+    },
+    {
+      "engine": "webkit",
+      "status": "PASS",
+      "rootStatus": 200,
+      "assets": 55,
+      "errors": [],
+      "routing": "report,home,record,cancel",
+      "storageUnchanged": true
+    }
+  ]
+}
