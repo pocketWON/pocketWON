@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "engine": "chromium",
+      "mission": "radial-gradient(at 25% 35%, rgb(248, 252, 255), rgb(240, 248, 253))",
+      "ranking": "radial-gradient(at 25% 35%, rgb(248, 252, 255), rgb(240, 248, 253))",
+      "advice": "radial-gradient(at 25% 35%, rgb(248, 252, 255), rgb(240, 248, 253))",
+      "total": "32,000원"
+    },
+    {
+      "engine": "webkit",
+      "mission": "radial-gradient(at 25% 35%, rgb(248, 252, 255), rgb(240, 248, 253))",
+      "ranking": "radial-gradient(at 25% 35%, rgb(248, 252, 255), rgb(240, 248, 253))",
+      "advice": "radial-gradient(at 25% 35%, rgb(248, 252, 255), rgb(240, 248, 253))",
+      "total": "32,000원"
+    }
+  ]
+}

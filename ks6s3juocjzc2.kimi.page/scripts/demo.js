@@ -14,7 +14,10 @@ window.PWDemo = (() => {
     return { type: 'out', amount, category, ts: date.toISOString(), memo };
   });
   const income = new Date(now); income.setDate(income.getDate() - 6); income.setHours(9, 0, 0, 0);
-  transactions.push({ type: 'in', amount: 50000, category: '용돈', ts: income.toISOString(), memo: '이번 주 용돈 · 예시' });
+  transactions.push({ type: 'in', amount: 32000, category: '용돈', ts: income.toISOString(), memo: '이번 주 용돈 · 예시' });
+  // Prior-week funds keep the overall balance separate from this week's allowance.
+  const carryover = new Date(income); carryover.setDate(carryover.getDate() - 1);
+  transactions.push({ type: 'in', amount: 18000, category: '용돈', ts: carryover.toISOString(), memo: '지난주 용돈 · 이월 예시' });
   const state = { user: { name: '우리' }, balance: 32000, monthly: { saving: 50000, spending: 18000 },
     goal: { title: '갖고 싶은 자전거', current: 45000, target: 100000 }, transactions };
   const clone = value => JSON.parse(JSON.stringify(value));

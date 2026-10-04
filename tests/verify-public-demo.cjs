@@ -9,8 +9,12 @@ const report={status:'RUNNING',checks:[]},url='http://127.0.0.1:4173/ks6s3juocjz
   await page.goto(url);await ready(page);
   assert.match(await page.locator('.pw-home-money').innerText(),/32,000/);assert.equal(await page.locator('.pw-demo-badge').count(),0);
   const model=await page.evaluate(()=>createHomeDashboardModel(PWDemo.load(),PWDemo.now));
-  assert.equal(model.donut.spent,18000);assert.equal(model.donut.received,50000);assert.equal(model.donut.remaining,32000);assert.equal(model.donut.segments[0].fraction,.1);assert(model.week.days.every(d=>Number.isSafeInteger(d.amount)&&d.amount>0));
+  assert.equal(model.donut.spent,18000);assert.equal(model.donut.received,32000);assert.equal(model.donut.remaining,14000);assert.equal(model.donut.segments[0].fraction,.15625);assert(model.week.days.every(d=>Number.isSafeInteger(d.amount)&&d.amount>0));
   const data=await page.evaluate(()=>PWDemo.load());assert.equal(data.state.monthly.saving-data.state.monthly.spending,data.state.balance);
+  const receipts=data.state.transactions.filter(t=>t.type==='in');
+  assert.equal(receipts.reduce((sum,t)=>sum+t.amount,0)-model.donut.spent,data.state.balance);
+  assert.equal(receipts.filter(t=>t.memo.includes('이월')).reduce((sum,t)=>sum+t.amount,0),18000);
+  assert.equal(model.donut.remaining+18000,data.state.balance);
   const score=model.habit.score;assert.equal(model.insights.positive.score,score);
   assert.equal(await page.locator('.pw-home-ranking').getAttribute('data-status'),'demo');
   assert.equal(await page.locator('.pw-home-ranking-person').count(),3);

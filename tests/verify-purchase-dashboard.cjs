@@ -63,7 +63,8 @@ async function layout(p,name){
   await p.setViewportSize({width:390,height:844});await ready(p);
   const d=await p.evaluate(()=>createHomeDashboardModel(PWDemo.load(),PWDemo.now));
   const ui=await p.locator('.pw-home-donut-segment').evaluateAll(ns=>ns.map(n=>({id:n.dataset.purchase,fraction:Number(n.dataset.fraction),color:n.getAttribute('stroke'),length:Number(n.getAttribute('stroke-dasharray').split(' ')[0]),radius:Number(n.getAttribute('r'))})));
-  assert.equal(ui[0].fraction,.1);assert(Math.abs(ui[0].length/(2*Math.PI*ui[0].radius)-.1)<1e-12);
+  assert.equal(ui[0].fraction,.15625);assert(Math.abs(ui[0].length/(2*Math.PI*ui[0].radius)-.15625)<1e-12);
+  assert.equal(ui.reduce((sum,item)=>sum+item.fraction,0),.5625);
   assert.equal(ui.length,d.donut.items.length);
   for(const [index,item] of d.donut.items.entries()) {
    assert.equal(ui[index].id,item.id);assert.equal(ui[index].color,d.donut.segments[index % d.donut.segments.length].color);
@@ -76,7 +77,7 @@ async function layout(p,name){
    assert.equal(await p.locator('.pw-home-donut-value').innerText(),'−'+item.amount.toLocaleString('ko-KR')+'원');
    await arcAppearance(p,engine+'-hover-'+item.id);
   }
-  await p.mouse.move(1,1);await ready(p);assert.equal(await p.locator('.pw-home-donut-value').innerText(),'50,000원');
+  await p.mouse.move(1,1);await ready(p);assert.equal(await p.locator('.pw-home-donut-value').innerText(),'32,000원');
   const first=d.donut.items[0],q=await point(first.id);
   await p.mouse.click(q.x,q.y);await p.mouse.move(1,1);await ready(p);
   assert.equal(await p.locator('.pw-home-donut-center').getAttribute('data-purchase'),first.id,'clicked selection must persist');
@@ -86,9 +87,9 @@ async function layout(p,name){
   await firstArc.focus();await p.keyboard.press('ArrowRight');await ready(p);assert.equal(await p.locator('.pw-home-donut-label').innerText(),d.donut.items[1].label);
   await arcAppearance(p,engine+'-keyboard-focus');
   await p.screenshot({path:path.join(out,'screenshots',engine+'-purchase-focused.png')});
-  await p.keyboard.press('End');await ready(p);assert.equal(await p.locator('.pw-home-donut-label').innerText(),'남은 용돈');assert.equal(await p.locator('.pw-home-donut-value').innerText(),'32,000원');
+  await p.keyboard.press('End');await ready(p);assert.equal(await p.locator('.pw-home-donut-label').innerText(),'남은 용돈');assert.equal(await p.locator('.pw-home-donut-value').innerText(),'14,000원');
   await arcAppearance(p,engine+'-remaining-focus');
-  await p.keyboard.press('Escape');await ready(p);assert.equal(await p.locator('.pw-home-donut-value').innerText(),'50,000원');
+  await p.keyboard.press('Escape');await ready(p);assert.equal(await p.locator('.pw-home-donut-value').innerText(),'32,000원');
   await p.mouse.click(q.x,q.y);await p.locator('.pw-home-donut-center').click();await ready(p);
   const route=await p.evaluate(()=>PWNavigation.current());assert.equal(route.screen,'record');assert.equal(route.stage,'detail');assert.equal(route.sourceIndex,first.sourceIndex);
   assert.match(await p.locator('.pw-record-detail-money').innerText(),/5,000/);
@@ -107,7 +108,7 @@ async function layout(p,name){
   assert.equal(await touchPage.locator('.pw-home-donut-value').innerText(),'−5,000원');
   await arcAppearance(touchPage,engine+'-touch-selected');
   await touchPage.touchscreen.tap(touchPoint.x,touchPoint.y);await ready(touchPage);
-  assert.equal(await touchPage.locator('.pw-home-donut-value').innerText(),'50,000원','second tap restores total');
+  assert.equal(await touchPage.locator('.pw-home-donut-value').innerText(),'32,000원','second tap restores total');
   await touch.close();
   const scenarios=[
    ['unspent',state([transaction(50000,'in')]),'empty'],
