@@ -1,0 +1,269 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "height": 568,
+      "gap": "40px",
+      "pieces": [
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 68.83843846579343,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 30.38681909736563,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 5.222722620371464,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-title",
+          "clearance": 42.607810869841686,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-body",
+          "clearance": 13.226414464061179,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "engine": "chromium",
+      "width": 385,
+      "height": 664,
+      "gap": "40px",
+      "pieces": [
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 88.89760265717311,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 39.985131134648256,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 7.857443148412415,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-title",
+          "clearance": 53.64703212895594,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-body",
+          "clearance": 17.771423330753038,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "gap": "40px",
+      "pieces": [
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 89.22897027669896,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 42.99886916579307,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 12.800978883593025,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-title",
+          "clearance": 74.40996771224353,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-body",
+          "clearance": 13.176813737416069,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "engine": "chromium",
+      "width": 844,
+      "height": 390,
+      "gap": "40px",
+      "pieces": [
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 14.350340347156482,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 53.37980804142225,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 107.0874446192071,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-title",
+          "clearance": 218.60138427191845,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-body",
+          "clearance": 208.18210085567677,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "height": 568,
+      "gap": "40px",
+      "pieces": [
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 68.83843846579344,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 30.38681909736563,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 5.222722620371464,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-title",
+          "clearance": 42.607810869841686,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-body",
+          "clearance": 13.226414464061179,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "width": 385,
+      "height": 664,
+      "gap": "40px",
+      "pieces": [
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 88.89760265717311,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 39.985131134648256,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 7.857443148412415,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-title",
+          "clearance": 53.64703212895593,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-body",
+          "clearance": 17.771423330753038,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "gap": "40px",
+      "pieces": [
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 89.23502344575255,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 43.007997266208704,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 12.814639768367044,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-title",
+          "clearance": 74.40996771224351,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-body",
+          "clearance": 13.284118367342934,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "width": 844,
+      "height": 390,
+      "gap": "40px",
+      "pieces": [
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 14.37367311339176,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 53.39415976655472,
+          "inside": true
+        },
+        {
+          "className": "pw-home-ranking-person",
+          "clearance": 107.09682664311873,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-title",
+          "clearance": 218.60677753599026,
+          "inside": true
+        },
+        {
+          "className": "pw-home-insight-body",
+          "clearance": 208.19551488209765,
+          "inside": true
+        }
+      ]
+    }
+  ]
+}

@@ -55,7 +55,13 @@
 
 `evidence/EXTENDED-INSIGHTS/verification.json`에 Chromium·WebKit, 작은 휴대폰·390×844·가로 화면·데스크톱의 내용 좌표 보존, 아래 28px 증가, 로고 간격과 버튼 동작을 기록했다. 이전 증거와 로컬 미러도 보존했다.
 
-![최종 앱](../evidence/EXTENDED-INSIGHTS/production/live-app.jpg)
+## 확보한 공간 안의 랭킹·조언 배치
+
+랭킹·조언을 같은 폭의 두 열로 맞추고 사이 간격을 40px로 넓혔다. 내부 줄만 14px 아래로 내려 앞서 확보한 28px의 공간을 활용한다. 외부 박스·곡선·그래프·파란 카드·하단바는 유지한다. 확대 글자 모드에서는 기존 수직 위치를 유지한다.
+
+`evidence/LOWER-INNER-CONTENT/layout/verification.json`의 양 엔진 20개 배치·내용 경계·랭킹 크기 비율·실제 모드 안내·키보드 포커스·리포트 이동 검사를 통과했다. `logo-clearance.json`에서 글자와 프로필이 곡선의 잘림 영역에 들어가지 않는지 별도로 확인했다.
+
+![최종 앱](../evidence/LOWER-INNER-CONTENT/production/live-app.jpg)
 
 ## 공개 반영
 
